@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "problem": "zgemm",
+  "version": "Z1-pack-pair1",
+  "parent": "Z0-pair1",
+  "strategy": "仅重排A为3行K优先的连续微面板并用NEON向量lane读取9个分量，减少内核A的独立加载流和load指令；保留3x4形状、MB24及3M运算顺序",
+  "created_at": "2026-09-08T01:33:55.255705+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
+    "bench_zgemm.c": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+    "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+    "zgemm.c": "3a26f10b2080d057cace983db2fa26c375e654e219991e23e2e61eb58baefba9"
+  },
+  "status": "passed",
+  "custom_campaign_note": "源码与策略测前已冻结于 2026-09-08T00:54:15.088297+00:00；本候选在同作业测量后正式创建并关联，created_at 未倒填；来源 Z1-pack，父版本 Z0-pair1；冻结清单 SHA256=4dc4c6d7ac6a82fb5dd1d5dba1287a9bd49cb242b81ac74f0f7d814b6b090698；真实共享 job=1485263",
+  "recorded_at": "2026-09-08T01:33:56.093659+00:00",
+  "environment": "kunpeng-pair1-compute-node-A-aarch64-3-114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+  "reference": "官方 benchmark 内置 reference_zgemm；无外部 BLAS",
+  "verified": true,
+  "log_sha256": "1c91bcb2ba301739ea58b852285213cee2c3cc89cfd30e7624de6b6dd9e827c5",
+  "log": "benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        7427,
+        7427,
+        256
+      ],
+      "times_ms": [
+        242.6,
+        242.3,
+        241.74
+      ],
+      "median_ms": 242.3,
+      "min_ms": 241.74,
+      "max_ms": 242.6,
+      "spread_pct": 0.35493190260007645,
+      "gflops": [
+        465.6538,
+        466.2338,
+        467.3169
+      ],
+      "max_error": 3.05e-12
+    },
+    {
+      "dims": [
+        14848,
+        14848,
+        256
+      ],
+      "times_ms": [
+        962.5,
+        963.35,
+        962.32
+      ],
+      "median_ms": 962.5,
+      "min_ms": 962.32,
+      "max_ms": 963.35,
+      "spread_pct": 0.10701298701298419,
+      "gflops": [
+        469.098,
+        468.6865,
+        469.1867
+      ],
+      "max_error": 3.51e-12
+    },
+    {
+      "dims": [
+        37360,
+        8192,
+        512
+      ],
+      "times_ms": [
+        2533.31,
+        2534.12,
+        2534.36
+      ],
+      "median_ms": 2534.12,
+      "min_ms": 2533.31,
+      "max_ms": 2534.36,
+      "spread_pct": 0.0414345019178327,
+      "gflops": [
+        494.8443,
+        494.6861,
+        494.6382
+      ],
+      "max_error": 6.04e-12
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 3738.92,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "compute-node-A",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) <PRIVATE_IP>",
+      "gcc (GCC) <PRIVATE_IP>"
+    ]
+  },
+  "job_id": "1485263",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "promoted_at": "2026-09-08T01:34:18.129235+00:00",
+  "publication_note": "Public copy: compute/login aliases and private paths/usernames redacted. Original log hashes refer to unredacted private evidence; public hashes are in artifact-manifest.json."
+}

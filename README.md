@@ -4,6 +4,8 @@
 
 `conv/`、`zgemm/`、`trsm/` 保存当前晋级版本。现有版本的验证范围与环境见 [基线说明](docs/BASELINES.md)，不要把历史测试直接当作当前排行榜成绩。
 
+**手动提交入口：[三题最佳提交包与分数反馈](SUBMISSIONS.md)。** 每题只保留当前最佳 ZIP，位置为 `题目/result/版本/题目.zip`；解压源码与对应实测快照一致。版本说明、耗时、文件校验值和待反馈分数字段放在 ZIP 旁边。
+
 ## 先把环境跑通
 
 1. 安装 Python 3，并确保本机可以使用 Git、SSH。本机配置位于 `config/cluster.local.json`；服务器主机密钥已按用户确认更新到 `config/known_hosts.local`。不要把密码、私钥、令牌写进仓库。

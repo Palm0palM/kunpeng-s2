@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T0-r2",
+  "parent": null,
+  "strategy": "T0源码不变的同一资源分配内三轮测量基线；与T2-k128及T2-unroll交错测量，避免独立作业CPU/NUMA变化；不是新优化版本",
+  "created_at": "2026-09-08T01:19:30.043082+00:00",
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "6b66766196b2a6024fcbbeac45ff1b4189e19cc8ac8d75d001e4ddfea004abac"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T01:24:32.966044+00:00",
+  "reference": "OpenBLAS 0.3.28 static; USE_OPENMP ARMV8; SHA256=c1bb71567c95b7cdff011ecd65b1d10de9001d373a5e87ac6468d7b9755c0ed0; not official KML 25.2.0",
+  "verified": true,
+  "log_sha256": "4c452d0eb5d06ad364c872fb859a53c74215d25f79d50fafda95310a78c274dc",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        22.42,
+        22.3,
+        22.43
+      ],
+      "median_ms": 22.42,
+      "min_ms": 22.3,
+      "max_ms": 22.43,
+      "spread_pct": 0.579839429081173,
+      "gflops": [
+        233.4649,
+        234.78,
+        233.3706
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        254.59,
+        253.7,
+        255.21
+      ],
+      "median_ms": 254.59,
+      "min_ms": 253.7,
+      "max_ms": 255.21,
+      "spread_pct": 0.5931104913783021,
+      "gflops": [
+        395.4995,
+        396.8911,
+        394.5453
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        502.04,
+        499.13,
+        501.17
+      ],
+      "median_ms": 501.17,
+      "min_ms": 499.13,
+      "max_ms": 502.04,
+      "spread_pct": 0.5806412993595037,
+      "gflops": [
+        295.5656,
+        297.287,
+        296.081
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 778.1800000000001,
+  "official_score": null,
+  "ranking": null,
+  "job_id": "1485273",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "environment": {
+    "architecture": "aarch64",
+    "compiler": "GCC 10.3.1",
+    "cpu_target": "generic",
+    "threads": 38,
+    "numa_nodes": 1,
+    "test_runs_per_case": 3,
+    "independent_full_suites": 3,
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PROC_BIND": "close",
+    "OMP_PLACES": "cores",
+    "flags": "-O3 -ffp-contract=off -fopenmp -mcpu=generic",
+    "reference_library_sha256": "c1bb71567c95b7cdff011ecd65b1d10de9001d373a5e87ac6468d7b9755c0ed0"
+  },
+  "publication_note": "公开副本移除私有路径、用户与主机身份；原始记录保留在本地。log_sha256 是原始日志身份，公开文件校验见 evidence/manifest.json。",
+  "original_record_sha256": "4ed6ed330debe4c433fd87075215e7d97ba8aee11f5da21b1611c43b403ec656",
+  "published_log": "T0-r2/benchmark.log"
+}

@@ -289,6 +289,48 @@ class SnapshotAndPromotionTests(IsolatedRoot):
         with self.assertRaises(ValueError):
             self.new("C1-test", "C0")
 
+    def test_submission_archives_do_not_change_parent_identity_or_enter_new_snapshot(self):
+        # A fresh clone has published archives but no local parent source snapshot.
+        parent = measured()
+        parent["source_hashes"] = EXPERIMENT.source_files(self.root / "conv")
+        EXPERIMENT.write_json(EXPERIMENT.record_path("conv", "C0"), parent)
+        archive = self.root / "conv/result/C0"
+        archive.mkdir(parents=True, exist_ok=True)
+        (archive / "README.md").write_text("Submission notes and platform feedback\n")
+        (archive / "old_kernel.c").write_text("/* historical source, not current */\n")
+        (archive / "conv.zip").write_bytes(b"submission archive fixture")
+
+        self.assertEqual(EXPERIMENT.source_files(self.root / "conv"), parent["source_hashes"])
+        folder = self.new("C1-test", "C0")
+        metadata = EXPERIMENT.read_json(folder / "experiment.json")
+        self.assertEqual(metadata["source_hashes"], parent["source_hashes"])
+        self.assertFalse((folder / "source/result").exists())
+
+    def test_promote_preserves_submission_archives_added_after_measurement(self):
+        parent_source = self.new()
+        parent = measured()
+        parent["source_hashes"] = EXPERIMENT.source_files(parent_source / "source")
+        EXPERIMENT.write_json(EXPERIMENT.record_path("conv", "C0"), parent)
+        EXPERIMENT.write_json(self.root / "records/best.json", {"conv": "C0"})
+        folder = self.new("C1-test", "C0")
+        with (folder / "source/conv2d.c").open("a") as output:
+            output.write("\n/* candidate fixture */\n")
+        candidate = measured("C1-test", (80, 160, 240, 320))
+        candidate.update(parent="C0", source_hashes=EXPERIMENT.source_files(folder / "source"))
+        EXPERIMENT.write_json(EXPERIMENT.record_path("conv", "C1-test"), candidate)
+        archive = self.root / "conv/result/C0"
+        archive.mkdir(parents=True, exist_ok=True)
+        archive_files = {"README.md": b"Platform feedback\n", "conv.zip": b"archive fixture",
+                         "old_kernel.c": b"/* preserved history */\n"}
+        for name, content in archive_files.items():
+            (archive / name).write_bytes(content)
+
+        EXPERIMENT.promote(argparse.Namespace(problem="conv", version="C1-test"))
+
+        self.assertEqual(EXPERIMENT.source_files(self.root / "conv"), candidate["source_hashes"])
+        self.assertEqual(EXPERIMENT.read_json(self.root / "records/best.json")["conv"], "C1-test")
+        self.assertEqual({name: (archive / name).read_bytes() for name in archive_files}, archive_files)
+
     def test_promote_rejects_source_changed_after_measurement(self):
         folder = self.new()
         original = EXPERIMENT.source_files(self.root / "conv")

@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C2",
+  "parent_version": "C1",
+  "experiment_id": "C8-r1",
+  "initial_promotion_experiment": "C8-sve128",
+  "strategy": "八个显式 SVE 寄存器累加器；实机 128 列主块；保留严格累加顺序与通用回退。",
+  "recommended": true,
+  "package": "conv.zip",
+  "package_sha256": "20c77e9910257a74a48b0f443a315bb4b2c53ec32c35cdf1d598d4aecb09624e",
+  "archive_root": "conv/",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "e5c7d2fecc2acaf5476ba7579d60be88e6f140f190fe47e7434018f92e4456f8",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "verified",
+  "correctness": {
+    "official_cases": 4,
+    "independent_suites": 3,
+    "pass_rows": 12,
+    "max_error": 0.0,
+    "tolerance": 1e-05
+  },
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        69.1,
+        69.12,
+        69.38
+      ],
+      "median_ms": 69.12,
+      "min_ms": 69.1,
+      "max_ms": 69.38,
+      "spread_pct": 0.4050925925925942,
+      "gflops": [
+        1090.7832,
+        1090.509,
+        1086.3876
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        88.4,
+        88.45,
+        88.37
+      ],
+      "median_ms": 88.4,
+      "min_ms": 88.37,
+      "max_ms": 88.45,
+      "spread_pct": 0.09049773755655915,
+      "gflops": [
+        941.5288,
+        941.062,
+        941.8952
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        146.24,
+        146.18,
+        146.16
+      ],
+      "median_ms": 146.18,
+      "min_ms": 146.16,
+      "max_ms": 146.24,
+      "spread_pct": 0.054727048843899645,
+      "gflops": [
+        1101.4761,
+        1101.9107,
+        1102.0702
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        326.21,
+        326.09,
+        326.27
+      ],
+      "median_ms": 326.21,
+      "min_ms": 326.09,
+      "max_ms": 326.27,
+      "spread_pct": 0.055179179056438134,
+      "gflops": [
+        1059.9661,
+        1060.3539,
+        1059.7774
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "total_median_ms": 629.9100000000001,
+  "metric": "sum of per-case medians across three independent suites; not official score",
+  "measurement_job_id": "1485378",
+  "measured_at": "2026-09-08T01:50:56.582288+00:00",
+  "environment": {
+    "architecture": "aarch64",
+    "compiler": "GCC 10.3.1",
+    "cpu_target": "generic",
+    "threads": 38,
+    "numa_count": 1,
+    "reference": "官方内置参考",
+    "svcntw": 16
+  },
+  "record": "../../../records/experiments/conv/C8-r1.json",
+  "notes": [
+    "重新封装 ZIP；包内四个文件与实测快照逐字节一致。",
+    "包内 README 为测量时原件；版本与策略以包外说明为准。"
+  ],
+  "official_score": null,
+  "ranking": null,
+  "submitted_at": null,
+  "platform_submission_id": null,
+  "feedback": null
+}
