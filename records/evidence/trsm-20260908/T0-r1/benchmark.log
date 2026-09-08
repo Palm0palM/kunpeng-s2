@@ -1,0 +1,179 @@
+BENCH_JOB_BEGIN 2026-09-08T00:41:58Z
+HOST=COMPUTE_NODE_1
+ARCH=aarch64
+OMP_NUM_THREADS=38
+CPU_TARGET=generic
+ALLOWED_CPUS=266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303
+NUMA_NODE=7
+{
+  "bench_repeats": 3,
+  "environment": {
+    "BENCH_REPEATS": "3",
+    "CPU_TARGET": "generic",
+    "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+    "NUMA_NODE": "7",
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_NUM_THREADS": "38",
+    "OMP_PLACES": "cores",
+    "OMP_PROC_BIND": "close",
+    "TEST_RUNS": "3"
+  },
+  "numa_policy": "38 allowed CPUs within one NUMA node",
+  "scheduler_resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "queue": "q_kunpeng",
+    "walltime_seconds": 1800
+  }
+}
+UTC: 2026-09-08T00:41:58Z
+COMPUTE_NODE_1
+Linux COMPUTE_NODE_1 5.10.0-285.5.v2403.ky10p.aarch64 #1 SMP Mon May 11 10:51:36 CST 2026 aarch64 aarch64 aarch64 GNU/Linux
+Architecture:                       aarch64
+CPU op-mode(s):                     64-bit
+Byte Order:                         Little Endian
+CPU(s):                             608
+On-line CPU(s) list:                0-607
+Vendor ID:                          HiSilicon
+Model:                              0
+Thread(s) per core:                 1
+Core(s) per socket:                 304
+Socket(s):                          2
+Stepping:                           0x0
+Frequency boost:                    enabled
+CPU max MHz:                        2000.0000
+CPU min MHz:                        1200.0000
+BogoMIPS:                           200.00
+Flags:                              fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm ssbs sb paca pacg dcpodp sve2 sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh ecv afp rpres sme smef64f64 smei8i32 smef16f32 smeb16f32 smef32f32 smefa64 wfxt
+L1d cache:                          19 MiB (608 instances)
+L1i cache:                          19 MiB (608 instances)
+L2 cache:                           456 MiB (608 instances)
+NUMA node(s):                       32
+NUMA node0 CPU(s):                  0-37
+NUMA node1 CPU(s):                  38-75
+NUMA node2 CPU(s):                  76-113
+NUMA node3 CPU(s):                  114-151
+NUMA node4 CPU(s):                  152-189
+NUMA node5 CPU(s):                  190-227
+NUMA node6 CPU(s):                  228-265
+NUMA node7 CPU(s):                  266-303
+NUMA node8 CPU(s):                  304-341
+NUMA node9 CPU(s):                  342-379
+NUMA node10 CPU(s):                 380-417
+NUMA node11 CPU(s):                 418-455
+NUMA node12 CPU(s):                 456-493
+NUMA node13 CPU(s):                 494-531
+NUMA node14 CPU(s):                 532-569
+NUMA node15 CPU(s):                 570-607
+NUMA node16 CPU(s):                 
+NUMA node17 CPU(s):                 
+NUMA node18 CPU(s):                 
+NUMA node19 CPU(s):                 
+NUMA node20 CPU(s):                 
+NUMA node21 CPU(s):                 
+NUMA node22 CPU(s):                 
+NUMA node23 CPU(s):                 
+NUMA node24 CPU(s):                 
+NUMA node25 CPU(s):                 
+NUMA node26 CPU(s):                 
+NUMA node27 CPU(s):                 
+NUMA node28 CPU(s):                 
+NUMA node29 CPU(s):                 
+NUMA node30 CPU(s):                 
+NUMA node31 CPU(s):                 
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Not affected
+Vulnerability Spec rstack overflow: Not affected
+Vulnerability Spec store bypass:    Not affected
+Vulnerability Spectre v1:           Mitigation; __user pointer sanitization
+Vulnerability Spectre v2:           Mitigation; CSV2, but not BHB
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
+policy: default
+preferred node: current
+physcpubind: 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303 
+cpubind: 7 
+nodebind: 7 
+membind: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+preferred: 
+No Modulefiles Currently Loaded.
+Compiler from initial PATH (run.sh also records its actual selected compiler):
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+BENCH_REPEAT 1/3 BEGIN
+Compiler: gcc (GCC) 10.3.1
+CPUs=266-303 NUMA=7 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.69     230.6813     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       261.47     385.1011     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       503.74     294.5686     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260908-084159-gdp7ZR
+BENCH_REPEAT 1/3 END
+
+BENCH_REPEAT 2/3 BEGIN
+Compiler: gcc (GCC) 10.3.1
+CPUs=266-303 NUMA=7 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.69     230.7325     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       258.37     389.7130     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       513.62     288.9047     1.11e-15     PASS
+BENCH_REPEAT 2/3 END
+
+BENCH_REPEAT 3/3 BEGIN
+All three official cases PASS. Logs: results/run-20260908-084209-S5Nbk7
+Compiler: gcc (GCC) 10.3.1
+CPUs=266-303 NUMA=7 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        23.34     224.2908     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       257.04     391.7381     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       502.84     295.0955     1.11e-15     PASS
+BENCH_REPEAT 3/3 END
+All three official cases PASS. Logs: results/run-20260908-084218-DtGctm
+BENCH_JOB_END 2026-09-08T00:42:27Z

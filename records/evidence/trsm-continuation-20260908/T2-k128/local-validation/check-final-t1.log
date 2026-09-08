@@ -1,0 +1,9 @@
+Working directory: /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2
+Command: OMP_NUM_THREADS=1 OMP_DYNAMIC=FALSE UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-k128/local/check-final-ubsan
+Started UTC: 2026-09-08T01:16:15.146145+00:00
+ZGEMM: 270 cases PASS; long-double reference max error 1.814e-14
+TRSM: 7 cases PASS; known solution max error 3.886e-16; padding and L unchanged
+
+Exit code: 0
+Ended UTC: 2026-09-08T01:16:15.464705+00:00
+Wall seconds: 0.318445

@@ -1,0 +1,36 @@
+{
+  "eligible": false,
+  "reasons": [
+    "提速 2.35% 未超过测量波动/最低1%门槛 9.70%"
+  ],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 22.27,
+      "candidate_ms": 22.27,
+      "gain_pct": 0.0
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 256.19,
+      "candidate_ms": 258.69,
+      "gain_pct": -0.9758382450525
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 502.78,
+      "candidate_ms": 481.95,
+      "gain_pct": 4.142965113966344
+    }
+  ],
+  "metric": "sum of per-case median ms; not official score"
+}

@@ -1,0 +1,227 @@
+[
+  {
+    "version": "T0",
+    "submit_command_local": [
+      "python3",
+      "tools/cluster.py",
+      "submit",
+      ".runs/trsm/T0"
+    ],
+    "submit_command_remote": "dsub -n kp-T0-ebc0b8b6de9f -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/kp-T0-ebc0b8b6de9f/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/kp-T0-ebc0b8b6de9f/remote_job.sh",
+    "job_id": "1485178",
+    "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/kp-T0-ebc0b8b6de9f",
+    "settings": {
+      "bench_repeats": 3,
+      "environment": {
+        "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+        "TEST_RUNS": "3",
+        "OMP_NUM_THREADS": "38",
+        "OMP_DYNAMIC": "FALSE",
+        "OMP_PROC_BIND": "close",
+        "OMP_PLACES": "cores",
+        "CPU_TARGET": "generic"
+      },
+      "scheduler_resources": {
+        "queue": "q_kunpeng",
+        "cpus": 38,
+        "memory_mb": 24576,
+        "numa_count": 1,
+        "numa_distribution": "pack",
+        "walltime_seconds": 1800
+      },
+      "numa_policy": "38 allowed CPUs within one NUMA node"
+    },
+    "status_command": [
+      "python3",
+      "tools/cluster.py",
+      "status",
+      ".runs/trsm/T0"
+    ],
+    "fetch_command": [
+      "python3",
+      "tools/cluster.py",
+      "fetch",
+      ".runs/trsm/T0"
+    ]
+  },
+  {
+    "version": "T1-panel",
+    "submit_command_local": [
+      "python3",
+      "tools/cluster.py",
+      "submit",
+      ".runs/trsm/T1-panel"
+    ],
+    "submit_command_remote": "dsub -n kp-T1-panel-43f6594143c8 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-panel-43f6594143c8/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-panel-43f6594143c8/remote_job.sh",
+    "job_id": "1485182",
+    "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-panel-43f6594143c8",
+    "settings": {
+      "bench_repeats": 3,
+      "environment": {
+        "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+        "TEST_RUNS": "3",
+        "OMP_NUM_THREADS": "38",
+        "OMP_DYNAMIC": "FALSE",
+        "OMP_PROC_BIND": "close",
+        "OMP_PLACES": "cores",
+        "CPU_TARGET": "generic"
+      },
+      "scheduler_resources": {
+        "queue": "q_kunpeng",
+        "cpus": 38,
+        "memory_mb": 24576,
+        "numa_count": 1,
+        "numa_distribution": "pack",
+        "walltime_seconds": 1800
+      },
+      "numa_policy": "38 allowed CPUs within one NUMA node"
+    },
+    "status_command": [
+      "python3",
+      "tools/cluster.py",
+      "status",
+      ".runs/trsm/T1-panel"
+    ],
+    "fetch_command": [
+      "python3",
+      "tools/cluster.py",
+      "fetch",
+      ".runs/trsm/T1-panel"
+    ]
+  },
+  {
+    "version": "T0-r1",
+    "submit_command_local": [
+      "python3",
+      "tools/cluster.py",
+      "submit",
+      ".runs/trsm/T0-r1"
+    ],
+    "submit_command_remote": "dsub -n kp-T0-r1-992a82628919 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/kp-T0-r1-992a82628919/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/kp-T0-r1-992a82628919/remote_job.sh",
+    "job_id": "1485186",
+    "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/kp-T0-r1-992a82628919",
+    "settings": {
+      "bench_repeats": 3,
+      "environment": {
+        "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+        "TEST_RUNS": "3",
+        "OMP_NUM_THREADS": "38",
+        "OMP_DYNAMIC": "FALSE",
+        "OMP_PROC_BIND": "close",
+        "OMP_PLACES": "cores",
+        "CPU_TARGET": "generic"
+      },
+      "scheduler_resources": {
+        "queue": "q_kunpeng",
+        "cpus": 38,
+        "memory_mb": 24576,
+        "numa_count": 1,
+        "numa_distribution": "pack",
+        "walltime_seconds": 1800
+      },
+      "numa_policy": "38 allowed CPUs within one NUMA node"
+    },
+    "status_command": [
+      "python3",
+      "tools/cluster.py",
+      "status",
+      ".runs/trsm/T0-r1"
+    ],
+    "fetch_command": [
+      "python3",
+      "tools/cluster.py",
+      "fetch",
+      ".runs/trsm/T0-r1"
+    ]
+  },
+  {
+    "version": "T1-panel-r1",
+    "submit_command_local": [
+      "python3",
+      "tools/cluster.py",
+      "submit",
+      ".runs/trsm/T1-panel-r1"
+    ],
+    "submit_command_remote": "dsub -n kp-T1-panel-r1-eb8f886731c9 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-panel-r1-eb8f886731c9/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-panel-r1-eb8f886731c9/remote_job.sh",
+    "job_id": "1485188",
+    "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-panel-r1-eb8f886731c9",
+    "settings": {
+      "bench_repeats": 3,
+      "environment": {
+        "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+        "TEST_RUNS": "3",
+        "OMP_NUM_THREADS": "38",
+        "OMP_DYNAMIC": "FALSE",
+        "OMP_PROC_BIND": "close",
+        "OMP_PLACES": "cores",
+        "CPU_TARGET": "generic"
+      },
+      "scheduler_resources": {
+        "queue": "q_kunpeng",
+        "cpus": 38,
+        "memory_mb": 24576,
+        "numa_count": 1,
+        "numa_distribution": "pack",
+        "walltime_seconds": 1800
+      },
+      "numa_policy": "38 allowed CPUs within one NUMA node"
+    },
+    "status_command": [
+      "python3",
+      "tools/cluster.py",
+      "status",
+      ".runs/trsm/T1-panel-r1"
+    ],
+    "fetch_command": [
+      "python3",
+      "tools/cluster.py",
+      "fetch",
+      ".runs/trsm/T1-panel-r1"
+    ]
+  },
+  {
+    "version": "T1-colreuse",
+    "submit_command_local": [
+      "python3",
+      "tools/cluster.py",
+      "submit",
+      ".runs/trsm/T1-colreuse"
+    ],
+    "submit_command_remote": "dsub -n kp-T1-colreuse-72a2086e0d4e -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-colreuse-72a2086e0d4e/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-colreuse-72a2086e0d4e/remote_job.sh",
+    "job_id": "1485191",
+    "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-colreuse-72a2086e0d4e",
+    "settings": {
+      "bench_repeats": 3,
+      "environment": {
+        "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+        "TEST_RUNS": "3",
+        "OMP_NUM_THREADS": "38",
+        "OMP_DYNAMIC": "FALSE",
+        "OMP_PROC_BIND": "close",
+        "OMP_PLACES": "cores",
+        "CPU_TARGET": "generic"
+      },
+      "scheduler_resources": {
+        "queue": "q_kunpeng",
+        "cpus": 38,
+        "memory_mb": 24576,
+        "numa_count": 1,
+        "numa_distribution": "pack",
+        "walltime_seconds": 1800
+      },
+      "numa_policy": "38 allowed CPUs within one NUMA node"
+    },
+    "status_command": [
+      "python3",
+      "tools/cluster.py",
+      "status",
+      ".runs/trsm/T1-colreuse"
+    ],
+    "fetch_command": [
+      "python3",
+      "tools/cluster.py",
+      "fetch",
+      ".runs/trsm/T1-colreuse"
+    ]
+  }
+]

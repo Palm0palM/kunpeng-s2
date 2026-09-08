@@ -1,0 +1,21 @@
+{
+  "state": "completed",
+  "cohort_id": "trsm-cohort-93aa8a624f08",
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-93aa8a624f08",
+  "created_at": "2026-09-08T01:21:13.161421+00:00",
+  "job_id": "1485273",
+  "driver_sha256": "a879ad820443a5ef1bf931b66835baa1c5cab237bc6fb2d1ee088a6c2c647f6d",
+  "payload_sha256": "18835723df539d51f572e904004017d73b50e9f49778cb0e64c85c3041cf22e8",
+  "upload_command": "mkdir -p /CLUSTER_USER_HOME/kunpeng-experiments && mkdir /CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-93aa8a624f08 && tar -xzf - -C /CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-93aa8a624f08",
+  "submit_command": "dsub -n trsm-cohort-93aa8a624f08 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-93aa8a624f08/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-93aa8a624f08/remote_job.sh",
+  "submission_started_at": "2026-09-08T01:22:14.322691+00:00",
+  "submitted_at": "2026-09-08T01:22:14.847251+00:00",
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1485273",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "status_checked_at": "2026-09-08T01:24:18.053493+00:00"
+}

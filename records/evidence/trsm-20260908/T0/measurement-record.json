@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T0",
+  "parent": null,
+  "strategy": "当前TRSM已验证源码的同环境三轮基线复测，优先验证官方KML",
+  "created_at": "2026-09-08T00:10:06.148247+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "6b66766196b2a6024fcbbeac45ff1b4189e19cc8ac8d75d001e4ddfea004abac"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T00:39:37.853930+00:00",
+  "environment": "COMPUTE_NODE_1-gcc10.3.1-generic-38-openmp",
+  "reference": "OpenBLAS 0.3.28 static; USE_OPENMP ARMV8; SHA256=c1bb71567c95b7cdff011ecd65b1d10de9001d373a5e87ac6468d7b9755c0ed0; not official KML 25.2.0",
+  "verified": true,
+  "log_sha256": "bc45496e56cdf1fc063d2ede60e9a2677a38acf2375e3b9addee9524c1b40e65",
+  "log": ".runs/trsm/T0/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        21.86,
+        22.66,
+        22.27
+      ],
+      "median_ms": 22.27,
+      "min_ms": 21.86,
+      "max_ms": 22.66,
+      "spread_pct": 3.5922766052986113,
+      "gflops": [
+        239.456,
+        231.0411,
+        235.0362
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        256.29,
+        253.66,
+        256.19
+      ],
+      "median_ms": 256.19,
+      "min_ms": 253.66,
+      "max_ms": 256.29,
+      "spread_pct": 1.0265818337952395,
+      "gflops": [
+        392.8849,
+        396.9562,
+        393.0313
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        512.21,
+        502.17,
+        502.78
+      ],
+      "median_ms": 502.78,
+      "min_ms": 502.17,
+      "max_ms": 512.21,
+      "spread_pct": 1.9968972512828715,
+      "gflops": [
+        289.6962,
+        295.4924,
+        295.133
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 781.24,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "6",
+    "ALLOWED_CPUS": "228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485178",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "promoted_at": "2026-09-08T00:39:37.902447+00:00"
+}

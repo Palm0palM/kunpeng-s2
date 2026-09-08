@@ -141,7 +141,7 @@ enum { KB = 256, CT = 64 };
  * 更新改变浮点分组顺序，必须以官方 1e-12 容差验证。
  */
 #if defined(__aarch64__)
-static inline void update4x8(int count,const double *L,int lda,const double *X,int ldb,double *C)
+static inline void update4x8(int count,const double *L,int lda,const double *X,int ldx,double *C,int ldc)
 {
     float64x2_t a0_0=vdupq_n_f64(0);
     float64x2_t a0_2=vdupq_n_f64(0);
@@ -160,10 +160,10 @@ static inline void update4x8(int count,const double *L,int lda,const double *X,i
     float64x2_t a3_4=vdupq_n_f64(0);
     float64x2_t a3_6=vdupq_n_f64(0);
     for(int k=0;k<count;++k) {
-        float64x2_t b0=vld1q_f64(X+(size_t)k*ldb+0);
-        float64x2_t b2=vld1q_f64(X+(size_t)k*ldb+2);
-        float64x2_t b4=vld1q_f64(X+(size_t)k*ldb+4);
-        float64x2_t b6=vld1q_f64(X+(size_t)k*ldb+6);
+        float64x2_t b0=vld1q_f64(X+(size_t)k*ldx+0);
+        float64x2_t b2=vld1q_f64(X+(size_t)k*ldx+2);
+        float64x2_t b4=vld1q_f64(X+(size_t)k*ldx+4);
+        float64x2_t b6=vld1q_f64(X+(size_t)k*ldx+6);
         { double l=L[(size_t)0*lda+k];
             a0_0=vfmaq_n_f64(a0_0,b0,l);
             a0_2=vfmaq_n_f64(a0_2,b2,l);
@@ -189,27 +189,34 @@ static inline void update4x8(int count,const double *L,int lda,const double *X,i
             a3_6=vfmaq_n_f64(a3_6,b6,l);
         }
     }
-    vst1q_f64(C+(size_t)0*ldb+0,vsubq_f64(vld1q_f64(C+(size_t)0*ldb+0),a0_0));
-    vst1q_f64(C+(size_t)0*ldb+2,vsubq_f64(vld1q_f64(C+(size_t)0*ldb+2),a0_2));
-    vst1q_f64(C+(size_t)0*ldb+4,vsubq_f64(vld1q_f64(C+(size_t)0*ldb+4),a0_4));
-    vst1q_f64(C+(size_t)0*ldb+6,vsubq_f64(vld1q_f64(C+(size_t)0*ldb+6),a0_6));
-    vst1q_f64(C+(size_t)1*ldb+0,vsubq_f64(vld1q_f64(C+(size_t)1*ldb+0),a1_0));
-    vst1q_f64(C+(size_t)1*ldb+2,vsubq_f64(vld1q_f64(C+(size_t)1*ldb+2),a1_2));
-    vst1q_f64(C+(size_t)1*ldb+4,vsubq_f64(vld1q_f64(C+(size_t)1*ldb+4),a1_4));
-    vst1q_f64(C+(size_t)1*ldb+6,vsubq_f64(vld1q_f64(C+(size_t)1*ldb+6),a1_6));
-    vst1q_f64(C+(size_t)2*ldb+0,vsubq_f64(vld1q_f64(C+(size_t)2*ldb+0),a2_0));
-    vst1q_f64(C+(size_t)2*ldb+2,vsubq_f64(vld1q_f64(C+(size_t)2*ldb+2),a2_2));
-    vst1q_f64(C+(size_t)2*ldb+4,vsubq_f64(vld1q_f64(C+(size_t)2*ldb+4),a2_4));
-    vst1q_f64(C+(size_t)2*ldb+6,vsubq_f64(vld1q_f64(C+(size_t)2*ldb+6),a2_6));
-    vst1q_f64(C+(size_t)3*ldb+0,vsubq_f64(vld1q_f64(C+(size_t)3*ldb+0),a3_0));
-    vst1q_f64(C+(size_t)3*ldb+2,vsubq_f64(vld1q_f64(C+(size_t)3*ldb+2),a3_2));
-    vst1q_f64(C+(size_t)3*ldb+4,vsubq_f64(vld1q_f64(C+(size_t)3*ldb+4),a3_4));
-    vst1q_f64(C+(size_t)3*ldb+6,vsubq_f64(vld1q_f64(C+(size_t)3*ldb+6),a3_6));
+    vst1q_f64(C+(size_t)0*ldc+0,vsubq_f64(vld1q_f64(C+(size_t)0*ldc+0),a0_0));
+    vst1q_f64(C+(size_t)0*ldc+2,vsubq_f64(vld1q_f64(C+(size_t)0*ldc+2),a0_2));
+    vst1q_f64(C+(size_t)0*ldc+4,vsubq_f64(vld1q_f64(C+(size_t)0*ldc+4),a0_4));
+    vst1q_f64(C+(size_t)0*ldc+6,vsubq_f64(vld1q_f64(C+(size_t)0*ldc+6),a0_6));
+    vst1q_f64(C+(size_t)1*ldc+0,vsubq_f64(vld1q_f64(C+(size_t)1*ldc+0),a1_0));
+    vst1q_f64(C+(size_t)1*ldc+2,vsubq_f64(vld1q_f64(C+(size_t)1*ldc+2),a1_2));
+    vst1q_f64(C+(size_t)1*ldc+4,vsubq_f64(vld1q_f64(C+(size_t)1*ldc+4),a1_4));
+    vst1q_f64(C+(size_t)1*ldc+6,vsubq_f64(vld1q_f64(C+(size_t)1*ldc+6),a1_6));
+    vst1q_f64(C+(size_t)2*ldc+0,vsubq_f64(vld1q_f64(C+(size_t)2*ldc+0),a2_0));
+    vst1q_f64(C+(size_t)2*ldc+2,vsubq_f64(vld1q_f64(C+(size_t)2*ldc+2),a2_2));
+    vst1q_f64(C+(size_t)2*ldc+4,vsubq_f64(vld1q_f64(C+(size_t)2*ldc+4),a2_4));
+    vst1q_f64(C+(size_t)2*ldc+6,vsubq_f64(vld1q_f64(C+(size_t)2*ldc+6),a2_6));
+    vst1q_f64(C+(size_t)3*ldc+0,vsubq_f64(vld1q_f64(C+(size_t)3*ldc+0),a3_0));
+    vst1q_f64(C+(size_t)3*ldc+2,vsubq_f64(vld1q_f64(C+(size_t)3*ldc+2),a3_2));
+    vst1q_f64(C+(size_t)3*ldc+4,vsubq_f64(vld1q_f64(C+(size_t)3*ldc+4),a3_4));
+    vst1q_f64(C+(size_t)3*ldc+6,vsubq_f64(vld1q_f64(C+(size_t)3*ldc+6),a3_6));
 }
 #endif
 static void solve_blocked(int m,int n,const double *L,int lda,double *B,int ldb)
 {
     if(m<=0 || n<=0) return;
+    /* Shared solved RHS panels: [ceil(n/RHS)][KB][RHS]. Packing once
+     * per diagonal block lets every lower row tile read X contiguously.
+     * Keep the original strided path available if allocation fails. */
+    double *packed=NULL;
+    size_t panels=((size_t)n+RHS-1)/RHS;
+    if(posix_memalign((void**)&packed,64,panels*KB*RHS*sizeof(double))!=0)
+        packed=NULL;
 #pragma omp parallel
     {
         for(int kk=0;kk<m;kk+=KB) {
@@ -230,14 +237,31 @@ static void solve_blocked(int m,int n,const double *L,int lda,double *B,int ldb)
                     for(int j=0;j<w;++j)B[(size_t)i*ldb+jb+j]=(B[(size_t)i*ldb+jb+j]-sum[j])/diag;
                 }
             }
+            /* The preceding barrier finishes the diagonal solve. The
+             * packing barrier publishes all panels before their consumers. */
+            if(packed) {
+#pragma omp for schedule(static)
+                for(int jb=0;jb<n;jb+=RHS) {
+                    int width=n-jb<RHS?n-jb:RHS;
+                    double *panel=packed+(size_t)(jb/RHS)*KB*RHS;
+                    for(int k=kk;k<end;++k) {
+                        for(int j=0;j<width;++j)
+                            panel[(size_t)(k-kk)*RHS+j]=B[(size_t)k*ldb+jb+j];
+                        for(int j=width;j<RHS;++j)
+                            panel[(size_t)(k-kk)*RHS+j]=0;
+                    }
+                }
+            }
             // B[下面,:] -= L[下面,当前块] * X[当前块,:]。
 #pragma omp for collapse(2) schedule(static)
             for(int ib=end;ib<m;ib+=CT)for(int jb=0;jb<n;jb+=CT) {
                 int ie=m-ib<CT?m:ib+CT,je=n-jb<CT?n:jb+CT;
                 for(int i=ib;i<ie;i+=4)for(int j=jb;j<je;j+=8) {
                     int rows=ie-i<4?ie-i:4,cols=je-j<8?je-j:8;
+                    const double *xp=packed?packed+(size_t)(j/RHS)*KB*RHS:B+(size_t)kk*ldb+j;
+                    int xstride=packed?RHS:ldb;
 #if defined(__aarch64__)
-                    if(rows==4 && cols==8)update4x8(end-kk,L+(size_t)i*lda+kk,lda,B+(size_t)kk*ldb+j,ldb,B+(size_t)i*ldb+j);
+                    if(rows==4 && cols==8)update4x8(end-kk,L+(size_t)i*lda+kk,lda,xp,xstride,B+(size_t)i*ldb+j,ldb);
                     else
 #endif
                     for(int r=0;r<rows;++r) {
@@ -245,7 +269,7 @@ static void solve_blocked(int m,int n,const double *L,int lda,double *B,int ldb)
                         for(int k=kk;k<end;++k) {
                             double a=L[(size_t)(i+r)*lda+k];
 #pragma omp simd
-                            for(int c=0;c<cols;++c)sum[c]+=a*B[(size_t)k*ldb+j+c];
+                            for(int c=0;c<cols;++c)sum[c]+=a*xp[(size_t)(k-kk)*xstride+c];
                         }
 #pragma omp simd
                         for(int c=0;c<cols;++c)B[(size_t)(i+r)*ldb+j+c]-=sum[c];
@@ -254,6 +278,7 @@ static void solve_blocked(int m,int n,const double *L,int lda,double *B,int ldb)
             }
         }
     }
+    free(packed);
 }
 
 /* 用三角矩阵工作集估计选择通用算法，不对公开测试尺寸作等值分支。

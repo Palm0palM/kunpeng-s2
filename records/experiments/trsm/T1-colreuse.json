@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T1-colreuse",
+  "parent": "T0",
+  "strategy": "derived_from T1-panel：基于已测已解右端项打包实现，仅将 solve_blocked 更新微块内部 i/j 循环顺序交换为 j/i，使同一已解 RHS 连续面板依次供同一 CT 块的多行更新复用；父版本仍为当前最佳 T0，其余代码、分块、线程、精度、benchmark 和 runner 均不变，检验面板复用局部性的单一假设",
+  "created_at": "2026-09-08T00:42:14.179078+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "e0cee4d518144cfbc83e25cfffc55e64cfabc1687ef79ac449720fa84ed76d9f"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T00:46:40.523192+00:00",
+  "environment": "COMPUTE_NODE_1-gcc10.3.1-generic-38-openmp",
+  "reference": "OpenBLAS 0.3.28 static; USE_OPENMP ARMV8; SHA256=c1bb71567c95b7cdff011ecd65b1d10de9001d373a5e87ac6468d7b9755c0ed0; not official KML 25.2.0",
+  "verified": true,
+  "log_sha256": "776d0efafbfe051919715651d7246d2bc2dbcec7aa328922c5970ddb78f97416",
+  "log": ".runs/trsm/T1-colreuse/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        22.33,
+        24.33,
+        23.2
+      ],
+      "median_ms": 23.2,
+      "min_ms": 22.33,
+      "max_ms": 24.33,
+      "spread_pct": 8.620689655172415,
+      "gflops": [
+        234.3883,
+        215.1697,
+        225.645
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        255.63,
+        255.93,
+        257.29
+      ],
+      "median_ms": 255.93,
+      "min_ms": 255.63,
+      "max_ms": 257.29,
+      "spread_pct": 0.6486148556245945,
+      "gflops": [
+        393.8901,
+        393.4279,
+        391.3447
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        487.13,
+        486.96,
+        488.61
+      ],
+      "median_ms": 487.13,
+      "min_ms": 486.96,
+      "max_ms": 488.61,
+      "spread_pct": 0.33871861720691276,
+      "gflops": [
+        304.6124,
+        304.7194,
+        303.6878
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 766.26,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "6",
+    "ALLOWED_CPUS": "228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485191",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "published_log": "records/evidence/trsm-20260908/T1-colreuse/benchmark.log",
+  "publication_note": "公开日志已脱敏；log保留原始本地执行路径，已有校验字段指向本地原件，不以公开副本重新执行晋级验证。"
+}

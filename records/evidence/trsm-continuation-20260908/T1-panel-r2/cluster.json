@@ -1,0 +1,74 @@
+{
+  "state": "submitted",
+  "created_at": "2026-09-08T01:25:23.078879+00:00",
+  "host": "CLUSTER_HOST",
+  "user": "REDACTED_USER",
+  "port": 22,
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-7a6db13b50a3/T1-panel-r2",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "fea6ee11cce8785ac3f13f641f9feb195a829493a27a9c902000a743545dbf73"
+  },
+  "job_id": "1485286",
+  "cohort_id": "trsm-cohort-7a6db13b50a3",
+  "cohort_driver_sha256": "9389eb3d22b574608a9ca6941560ba4dacc8e2dfb29b6e3adbd6566c4e4f841b",
+  "cohort_round_order": [
+    [
+      "T0-r3",
+      "T1-panel-r2"
+    ],
+    [
+      "T1-panel-r2",
+      "T0-r3"
+    ],
+    [
+      "T0-r3",
+      "T1-panel-r2"
+    ]
+  ],
+  "cohort_submission": "One real scheduler job shared by all members; individual logs originate during each runner execution",
+  "submit_command": "dsub -n trsm-cohort-7a6db13b50a3 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-7a6db13b50a3/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-7a6db13b50a3/remote_job.sh",
+  "submission_started_at": "2026-09-08T01:25:35.015891+00:00",
+  "submitted_at": "2026-09-08T01:25:35.565881+00:00",
+  "status_checked_at": "2026-09-08T01:26:48.531096+00:00",
+  "status_returncode": 0,
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1485286",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "fetch_state": "complete",
+  "fetched_at": "2026-09-08T01:26:49.073260+00:00",
+  "artifacts_sha256": {
+    "benchmark.log": "8b8c3dd99085c2f60956c50adfce652fbd348d2de4a6ab87087f2073a723830d",
+    "environment.log": "b4ad3248c1950f56776573ee6ba8b8902b3a3ee96789cb622fde9bddd795127c",
+    "source-sha256.txt": "4c16a3242907ad81d06c0b1e0ec231df02d791daa77beab1ffbab17b4a625314",
+    "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  }
+}

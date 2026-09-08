@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T1-panel-r2",
+  "parent": "T0-r3",
+  "strategy": "与T1-panel源码逐字节相同的确认测量；同分配交错三轮，解决首轮波动过大的晋级不确定性；不是新实现",
+  "created_at": "2026-09-08T01:25:22.994306+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "fea6ee11cce8785ac3f13f641f9feb195a829493a27a9c902000a743545dbf73"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T01:27:02.001444+00:00",
+  "environment": "COMPUTE_NODE_1-gcc10.3.1-generic-38-openmp",
+  "reference": "OpenBLAS 0.3.28 static; USE_OPENMP ARMV8; SHA256=c1bb71567c95b7cdff011ecd65b1d10de9001d373a5e87ac6468d7b9755c0ed0; not official KML 25.2.0",
+  "verified": true,
+  "log_sha256": "8b8c3dd99085c2f60956c50adfce652fbd348d2de4a6ab87087f2073a723830d",
+  "log": ".runs/trsm/T1-panel-r2/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        22.68,
+        22.17,
+        22.54
+      ],
+      "median_ms": 22.54,
+      "min_ms": 22.17,
+      "max_ms": 22.68,
+      "spread_pct": 2.262644188110018,
+      "gflops": [
+        230.7515,
+        236.1422,
+        232.269
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        259.85,
+        254.2,
+        255.04
+      ],
+      "median_ms": 255.04,
+      "min_ms": 254.2,
+      "max_ms": 259.85,
+      "spread_pct": 2.215338770388972,
+      "gflops": [
+        387.5002,
+        396.1042,
+        394.8
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        480.73,
+        481.4,
+        480.38
+      ],
+      "median_ms": 480.73,
+      "min_ms": 480.38,
+      "max_ms": 481.4,
+      "spread_pct": 0.21217731366879158,
+      "gflops": [
+        308.6661,
+        308.2403,
+        308.8963
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 758.31,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "6",
+    "ALLOWED_CPUS": "228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485286",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "promoted_at": "2026-09-08T01:27:20.945624+00:00",
+  "published_log": "records/evidence/trsm-continuation-20260908/T1-panel-r2/benchmark.log",
+  "publication_note": "公开日志已脱敏；log保留原始本地执行路径，已有校验字段指向本地原件，不以公开副本重新执行晋级验证。"
+}
