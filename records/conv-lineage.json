@@ -1,0 +1,43 @@
+{
+  "current_label": "C2",
+  "notice": "C labels here count verified source improvements; experiment IDs and r suffixes also include rejected candidates and repeat measurements. Times are internal metrics, not official scores.",
+  "versions": [
+    {
+      "label": "C0",
+      "experiment": "C0-r5",
+      "kernel_sha256": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+      "total_median_ms": 1867.33
+    },
+    {
+      "label": "C1",
+      "experiment": "C7-sve64",
+      "parent_label": "C0",
+      "kernel_sha256": "c72163fe41fcd237aa70adda359d73a51731e64675394cc1ec1f93dc77b3ee8a",
+      "total_median_ms": 642.9100000000001,
+      "time_reduction_pct": 65.57062758055619,
+      "strategy": "显式四向量SVE寄存器累加；原顺序乘法和加法；实机64列主块",
+      "promoted_at": "2026-09-08T01:42:17.171435+00:00",
+      "official_score": null
+    },
+    {
+      "label": "C2",
+      "experiment": "C8-sve128",
+      "parent_label": "C1",
+      "comparison_baseline": "C7-r1",
+      "kernel_sha256": "e5c7d2fecc2acaf5476ba7579d60be88e6f140f190fe47e7434018f92e4456f8",
+      "total_median_ms": 630.5,
+      "time_reduction_pct": 1.9531614468323248,
+      "strategy": "八个显式SVE寄存器累加器；实机128列主块；其余数值路径不变",
+      "promoted_at": "2026-09-08T01:47:28.245995+00:00",
+      "official_score": null,
+      "repeat_measurements": [
+        {
+          "experiment": "C8-r1",
+          "total_median_ms": 629.9100000000001
+        }
+      ]
+    }
+  ],
+  "current_measurement": "C8-r1",
+  "current_total_median_ms": 629.9100000000001
+}

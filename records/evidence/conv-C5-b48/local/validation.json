@@ -1,0 +1,49 @@
+{
+  "version": "C5-b48",
+  "parent": "C0-r3",
+  "checked_at": "2026-09-08T01:29:45.515514+00:00",
+  "changed_file": "source/run.sh",
+  "change": "CONV_BLOCK default 32 -> 48",
+  "unroll": 2,
+  "fp_flags": [
+    "-fno-fast-math",
+    "-ffp-contract=off"
+  ],
+  "official_benchmark_unmodified": true,
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+    "run.sh": "de2dc75e455b953d8160ad8547c1552a91b679218388036c8192e538cd6bdd13"
+  },
+  "local_command": "bash .runs/conv/C5-b48/local/run_checks.sh",
+  "local_platform": "Darwin arm64, Apple Clang 17.0.0",
+  "local_check_results": {
+    "ubsan-1thread.log": {
+      "sha256": "44a3c8c8fa78ea208d296631491a182963b0ba77631a86c37ffe4246d58ce9fb",
+      "exit_code": 0,
+      "cases": 418,
+      "bitwise_equal": true
+    },
+    "ubsan-4thread.log": {
+      "sha256": "44a3c8c8fa78ea208d296631491a182963b0ba77631a86c37ffe4246d58ce9fb",
+      "exit_code": 0,
+      "cases": 418,
+      "bitwise_equal": true
+    },
+    "guard-1thread.log": {
+      "sha256": "6c11c2efeec7a299d86a2a46d455e2ee526a600697a37ea51b925de03920eab9",
+      "exit_code": 0,
+      "cases": 418,
+      "bitwise_equal": true
+    },
+    "guard-4thread.log": {
+      "sha256": "6c11c2efeec7a299d86a2a46d455e2ee526a600697a37ea51b925de03920eab9",
+      "exit_code": 0,
+      "cases": 418,
+      "bitwise_equal": true
+    }
+  },
+  "target_performance": "not measured",
+  "decision": "prepared; remote three-suite controlled benchmark required"
+}

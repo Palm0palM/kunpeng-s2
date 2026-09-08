@@ -1,4 +1,4 @@
-# 公开副本与证据说明
+# 首次公开快照与证据说明
 
 本副本从已提交的实验快照导出，供向项目仓库 Palm0palM/kunpeng-s2 提交协作改动。个人 fork 是协作镜像。
 
@@ -8,7 +8,9 @@
 
 不得用脱敏日志冒充原件通过自动验证，也不得以公开日志的哈希不匹配为由改写源实验判定。需要复核时应使用本地原始证据，或在授权环境中重新运行实验。示例命令和记录中的 `CLUSTER_HOST`、`REDACTED_USER`、`LOCAL_USER_HOME`、`CLUSTER_USER_HOME`、`COMPUTE_NODE_1` 与 `LOGIN_NODE_1` 需要按实际授权环境配置，不能直接连接。
 
-核心源码、官方 benchmark、运行脚本与工具逻辑均保持原字节；测试中 4 处主机名 fixture 改为合成名称 `compute-node-1`，测试逻辑保持不变。此公开副本不包含实际认证配置、密码、令牌或私钥。
+首次脱敏导出时，核心源码、官方 benchmark、运行脚本与工具逻辑均保持原字节；测试中 4 处主机名 fixture 改为合成名称 `compute-node-1`，测试逻辑保持不变。此公开副本不包含实际认证配置、密码、令牌或私钥。
+
+`records/publication.json` 对应首次公开快照；后续代码与文档修改由 Git 历史保存。本轮 CONV 新实验的公开文件校验和见 `records/conv-publication.json`，说明见 `PUBLICATION-CONV.md`；首次快照的旧校验和不用于验证后续编辑后的文件。
 
 ## 本轮 TRSM 发布
 

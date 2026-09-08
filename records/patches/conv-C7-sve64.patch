@@ -1,0 +1,100 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -1,4 +1,13 @@
+ #include <stddef.h>
++
++#if defined(__linux__) && defined(__aarch64__)
++#include <arm_sve.h>
++#include <sys/auxv.h>
++#include <asm/hwcap.h>
++#define CONV_CAN_DISPATCH_SVE 1
++#else
++#define CONV_CAN_DISPATCH_SVE 0
++#endif
+ 
+ typedef float CONVFLOAT;
+ typedef int CONVINT;
+@@ -106,6 +115,60 @@
+ #undef DEFINE_CONV_TILE
+ #undef CONV_INLINE
+ 
++#if CONV_CAN_DISPATCH_SVE
++/* Generic TU dispatches here only when Linux reports usable SVE. Each lane is
++ * an independent output; four accumulators span the entire kernel. Keep the
++ * multiplication and addition separate, in the reference jk/ik order. */
++__attribute__((target("arch=armv8-a+sve"), noinline))
++static int conv_sve_prefix(const float *restrict base, size_t stride,
++                           const float *restrict kernel, int kh, int kw,
++                           float *restrict dst, int ow)
++{
++    const int lanes = (int)svcntw();
++    const int block = 4 * lanes;
++    const svbool_t pg = svptrue_b32();
++    int i = 0;
++    for (; ow - i >= block; i += block) {
++        svfloat32_t a0 = svdup_n_f32(0.0f);
++        svfloat32_t a1 = svdup_n_f32(0.0f);
++        svfloat32_t a2 = svdup_n_f32(0.0f);
++        svfloat32_t a3 = svdup_n_f32(0.0f);
++        const float *krow = kernel;
++        for (int jk = 0; jk < kh; ++jk) {
++            const float *row = base + (size_t)jk * stride + i;
++            int ik = 0;
++            for (; ik < kw - 1; ik += 2) {
++                const svfloat32_t k0 = svdup_n_f32(krow[ik]);
++                const svfloat32_t k1 = svdup_n_f32(krow[ik + 1]);
++                const float *p = row + ik;
++                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svld1(pg, p), k0));
++                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + lanes), k0));
++                a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svld1(pg, p + 2 * lanes), k0));
++                a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svld1(pg, p + 3 * lanes), k0));
++                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svld1(pg, p + 1), k1));
++                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + lanes + 1), k1));
++                a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svld1(pg, p + 2 * lanes + 1), k1));
++                a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svld1(pg, p + 3 * lanes + 1), k1));
++            }
++            for (; ik < kw; ++ik) {
++                const svfloat32_t k = svdup_n_f32(krow[ik]);
++                const float *p = row + ik;
++                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svld1(pg, p), k));
++                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + lanes), k));
++                a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svld1(pg, p + 2 * lanes), k));
++                a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svld1(pg, p + 3 * lanes), k));
++            }
++            krow += kw;
++        }
++        svst1(pg, dst + i, a0);
++        svst1(pg, dst + i + lanes, a1);
++        svst1(pg, dst + i + 2 * lanes, a2);
++        svst1(pg, dst + i + 3 * lanes, a3);
++    }
++    return i;
++}
++#endif
++
+ void conv2d(const CONVFLOAT *input, CONVINT inputHeight, CONVINT inputWidth,
+             const CONVFLOAT *kernel, CONVINT kernelHeight, CONVINT kernelWidth,
+             CONVFLOAT *output)
+@@ -121,6 +184,9 @@
+     const int oh = inputHeight - kernelHeight + 1;
+     const int ow = inputWidth - kernelWidth + 1;
+     const size_t stride = (size_t)inputWidth;
++#if CONV_CAN_DISPATCH_SVE
++    const int use_sve = (getauxval(AT_HWCAP) & HWCAP_SVE) != 0;
++#endif
+ 
+     /*
+      * 每行工作量相同，静态划分使线程写连续区域。acc 是线程局部变量；
+@@ -132,6 +198,12 @@
+         const float *base = input + (size_t)j * stride;
+         float *dst = output + (size_t)j * (size_t)ow;
+         int i = 0;
++#if CONV_CAN_DISPATCH_SVE
++        if (use_sve) {
++            i = conv_sve_prefix(base, stride, kernel, kernelHeight,
++                                kernelWidth, dst, ow);
++        }
++#endif
+ 
+         /*
+          * ow-i >= B 等价于 i+B <= ow，但不会让 i+B 溢出。

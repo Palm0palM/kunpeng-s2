@@ -1,0 +1,138 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -4,7 +4,8 @@
+ typedef int CONVINT;
+ 
+ /*
+- * V2：固定输出分块 + 固定宽度 tail + 可选 kernel 两步展开。
++ * C6-row2：默认配置使用两行 × 16 列微块，同为 32 个 float 累加器。
++ * 在行对内共享 kernel 读取，较窄列窗口的性能收益需目标机器验证。
+  *
+  * 语义：连续行主序 float 矩阵，valid 卷积（与官方相同，不翻转 kernel）。
+  * input/kernel 只读；output 不能与它们重叠，每个输出被完整覆盖。
+@@ -12,7 +13,8 @@
+  * SIMD lane 对应不同输出，不能对同一输出做 partial sum 后重新求和。
+  * benchmark 与本文件都要使用 -ffp-contract=off，且不能使用 fast-math。
+  *
+- * 本轮只写代码：寄存器驻留、向量指令、速度和 PASS 均待目标机器验证。
++ * 非默认 CONV_BLOCK 保留原单行微块；默认配置的奇数输出行走单行尾部。
++ * 寄存器驻留、向量指令和速度均待目标机器验证。
+  */
+ #ifdef __FAST_MATH__
+ #error "Strict reference accumulation requires disabling fast-math"
+@@ -104,6 +106,65 @@
+ DEFINE_CONV_TILE(conv_tile_2, 2)
+ DEFINE_CONV_TILE(conv_tile_1, 1)
+ #undef DEFINE_CONV_TILE
++
++/*
++ * 两行共享同一对 kernel 系数，各有独立的 N 个累加器。
++ * 每个输出的乘法、加法仍严格沿 jk/ik 顺序进行；不合并部分和。
++ * base1 = base0 + stride，第二行最后一次读取仅在 j + 1 < oh 时发生。
++ * 默认主块 N=16，总计 32 个累加器，与原 1x32 微块相同。
++ */
++#define DEFINE_CONV_ROWPAIR(NAME, N)                                         \
++CONV_INLINE void NAME(const float *restrict base, size_t stride,              \
++                      const float *restrict kernel, int kh, int kw,          \
++                      float *restrict dst0, float *restrict dst1)            \
++{                                                                            \
++    float acc0[N] = {0.0f};                                                   \
++    float acc1[N] = {0.0f};                                                   \
++    const float *krow = kernel;                                               \
++    for (int jk = 0; jk < kh; ++jk) {                                         \
++        const float *row0 = base + (size_t)jk * stride;                       \
++        const float *row1 = row0 + stride;                                   \
++        int ik = 0;                                                          \
++        if (CONV_KERNEL_UNROLL == 2) {                                        \
++            for (; ik < kw - 1; ik += 2) {                                   \
++                const float k0 = krow[ik];                                   \
++                const float k1 = krow[ik + 1];                               \
++                const float *window0 = row0 + ik;                            \
++                const float *window1 = row1 + ik;                            \
++                _Pragma("omp simd")                                         \
++                for (int b = 0; b < (N); ++b) {                               \
++                    acc0[b] += window0[b] * k0;                              \
++                    acc0[b] += window0[b + 1] * k1;                          \
++                    acc1[b] += window1[b] * k0;                              \
++                    acc1[b] += window1[b + 1] * k1;                          \
++                }                                                            \
++            }                                                                \
++        }                                                                    \
++        for (; ik < kw; ++ik) {                                               \
++            const float k = krow[ik];                                        \
++            const float *window0 = row0 + ik;                                \
++            const float *window1 = row1 + ik;                                \
++            _Pragma("omp simd")                                              \
++            for (int b = 0; b < (N); ++b) {                                   \
++                acc0[b] += window0[b] * k;                                   \
++                acc1[b] += window1[b] * k;                                   \
++            }                                                                \
++        }                                                                    \
++        krow += kw;                                                          \
++    }                                                                        \
++    _Pragma("omp simd")                                                       \
++    for (int b = 0; b < (N); ++b) {                                           \
++        dst0[b] = acc0[b];                                                    \
++        dst1[b] = acc1[b];                                                    \
++    }                                                                        \
++}
++
++DEFINE_CONV_ROWPAIR(conv_rowpair_16, 16)
++DEFINE_CONV_ROWPAIR(conv_rowpair_8, 8)
++DEFINE_CONV_ROWPAIR(conv_rowpair_4, 4)
++DEFINE_CONV_ROWPAIR(conv_rowpair_2, 2)
++DEFINE_CONV_ROWPAIR(conv_rowpair_1, 1)
++#undef DEFINE_CONV_ROWPAIR
+ #undef CONV_INLINE
+ 
+ void conv2d(const CONVFLOAT *input, CONVINT inputHeight, CONVINT inputWidth,
+@@ -123,15 +184,47 @@
+     const size_t stride = (size_t)inputWidth;
+ 
+     /*
+-     * 每行工作量相同，静态划分使线程写连续区域。acc 是线程局部变量；
++     * 默认配置按行对静态划分，非默认 CONV_BLOCK 保留单行任务。
++     * 同一行对内的线程写连续区域。acc 是线程局部变量；
+      * 不需要原子操作、跨线程 reduction 或计时区内的 malloc。
+      * 官方尺寸有足够多的输出行，暂不增加 collapse 和动态调度。
+      */
++    const int rows_per_task = CONV_BLOCK == 32 ? 2 : 1;
++    const int tasks = oh / rows_per_task + (oh % rows_per_task != 0);
+ #pragma omp parallel for schedule(static)
+-    for (int j = 0; j < oh; ++j) {
++    for (int task = 0; task < tasks; ++task) {
++        const int j = task * rows_per_task;
+         const float *base = input + (size_t)j * stride;
+         float *dst = output + (size_t)j * (size_t)ow;
+         int i = 0;
++
++        if (CONV_BLOCK == 32 && oh - j >= 2) {
++            float *dst1 = dst + (size_t)ow;
++            for (; ow - i >= 16; i += 16) {
++                conv_rowpair_16(base + i, stride, kernel,
++                                kernelHeight, kernelWidth, dst + i, dst1 + i);
++            }
++            if (ow - i >= 8) {
++                conv_rowpair_8(base + i, stride, kernel,
++                               kernelHeight, kernelWidth, dst + i, dst1 + i);
++                i += 8;
++            }
++            if (ow - i >= 4) {
++                conv_rowpair_4(base + i, stride, kernel,
++                               kernelHeight, kernelWidth, dst + i, dst1 + i);
++                i += 4;
++            }
++            if (ow - i >= 2) {
++                conv_rowpair_2(base + i, stride, kernel,
++                               kernelHeight, kernelWidth, dst + i, dst1 + i);
++                i += 2;
++            }
++            if (i < ow) {
++                conv_rowpair_1(base + i, stride, kernel,
++                               kernelHeight, kernelWidth, dst + i, dst1 + i);
++            }
++            continue;
++        }
+ 
+         /*
+          * ow-i >= B 等价于 i+B <= ow，但不会让 i+B 溢出。

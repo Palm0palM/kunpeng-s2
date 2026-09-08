@@ -1,0 +1,4 @@
+# Local Mac fallback guard checks, no server timing claims.
+/usr/bin/clang -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=all -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include check_conv_guard_extended.c ../source/conv2d.c -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib -lomp -o check_conv_guard_extended
+OMP_NUM_THREADS=1 ./check_conv_guard_extended
+OMP_NUM_THREADS=4 ./check_conv_guard_extended

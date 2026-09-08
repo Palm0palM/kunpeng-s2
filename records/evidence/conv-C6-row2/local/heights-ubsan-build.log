@@ -1,0 +1,10 @@
+clang -O3 -g -fno-fast-math -ffp-contract=off -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib -lomp -fsanitize=undefined -fno-sanitize-recover=all LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/C6-row2/source/conv2d.c LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/C6-row2/local/check_conv_heights.c -o LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/C6-row2/local/check_heights-ubsan
+LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/C6-row2/source/conv2d.c:102:1: warning: loop not vectorized: the optimizer was unable to perform the requested transformation; the transformation might be disabled or specified as part of an unsupported transformation ordering [-Wpass-failed=transform-warning]
+  102 | DEFINE_CONV_TILE(conv_tile_main, CONV_BLOCK)
+      | ^
+LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/C6-row2/source/conv2d.c:102:1: warning: loop not vectorized: the optimizer was unable to perform the requested transformation; the transformation might be disabled or specified as part of an unsupported transformation ordering [-Wpass-failed=transform-warning]
+LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/C6-row2/source/conv2d.c:162:1: warning: loop not vectorized: the optimizer was unable to perform the requested transformation; the transformation might be disabled or specified as part of an unsupported transformation ordering [-Wpass-failed=transform-warning]
+  162 | DEFINE_CONV_ROWPAIR(conv_rowpair_16, 16)
+      | ^
+LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/C6-row2/source/conv2d.c:162:1: warning: loop not vectorized: the optimizer was unable to perform the requested transformation; the transformation might be disabled or specified as part of an unsupported transformation ordering [-Wpass-failed=transform-warning]
+4 warnings generated.

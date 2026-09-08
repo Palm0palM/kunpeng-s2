@@ -1,0 +1,13 @@
++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++ gcc -O3 -std=c11 -fno-fast-math -ffp-contract=off -mcpu=generic attribute_probe.c -o attribute_probe
++ objdump -d attribute_probe
++ ./attribute_probe 2.0
+TARGET_HELPER_EXECUTED=1 SVE_FLOAT_LANES=16 ERRORS=0
++ printf 'PROBE_COMPLETE=1\n'
+PROBE_COMPLETE=1
++ printf '0\n'

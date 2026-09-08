@@ -16,7 +16,7 @@
 
 本地工作分支为 `setup/agent-workflow`；`origin` 保留上游仓库，`personal` 指向当前账号的仓库。个人仓库用于保存协作镜像，项目成果通过 Pull Request 提交到项目仓库。
 
-CONV 本轮保留 C0-r2，四组用例各三轮耗时中位数合计 1867.77 ms，三个候选均未晋级。完整结果见 [CONV 实测记录](docs/CONV_RESULTS.md)，提交包对应的源码校验见 [包清单](outputs/conv-best.json)。
+CONV 最新最佳版本、父子关系和耗时见 [晋级台账](records/conv-lineage.json) 与 [本轮逐版本记录](docs/CONV_ROUND_RECORDS.md)；本轮已确认显式 SVE 优化产生稳定提速。候选失败与退化也完整留档，[此前实验](docs/CONV_RESULTS.md) 保留作历史对照。提交包对应的源码校验见 [包清单](outputs/conv-best.json)，记录及公开导出方式见 [记录说明](docs/CONV_RECORDING.md)。
 
 ## 先重测当前基线
 
