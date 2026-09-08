@@ -1,13 +1,22 @@
 {
-  "version": "C0-r2",
-  "job_id": "1485192",
-  "zip_sha256": "f038f604eb62fb8fd2029530a39b32d34e532c3a95d797830c0f45ec14fde045",
+  "label": "C2",
+  "experiment": "C8-r1",
+  "initial_promotion": "C8-sve128",
   "source_hashes": {
     "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
     "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
-    "conv2d.c": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+    "conv2d.c": "e5c7d2fecc2acaf5476ba7579d60be88e6f140f190fe47e7434018f92e4456f8",
     "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
   },
-  "total_median_ms": 1867.77,
-  "official_submission": false
+  "package_sha256": "5d6ee98e6834b702bbca0580a322ffa478d28968d12e7c02e892e143bd2570f3",
+  "total_median_ms": 629.9100000000001,
+  "metric": "sum of four per-case medians across three independent suites, not official score",
+  "verification": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  }
 }

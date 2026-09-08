@@ -1,0 +1,12 @@
+{
+  "hot_loop": ".L5 to bgt .L5",
+  "vector_spill": true,
+  "address": "x14 = sp + 672",
+  "reload": "ldr z31, [x14]",
+  "store": "str z23, [x14]",
+  "frequency": "One vector load and store in each two-kernel-element hot-loop iteration",
+  "vector_bytes_on_this_machine": 64,
+  "source": ".runs/conv/C9-sve256/sve-correctness/raw/conv2d-sve.s",
+  "fused_fp_instructions_found": false,
+  "performance_inference": null
+}

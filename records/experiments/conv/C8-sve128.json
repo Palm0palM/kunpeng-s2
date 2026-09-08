@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C8-sve128",
+  "parent": "C7-r1",
+  "strategy": "与 C7-sve64 并行候选：以其已验证 SVE 实现为模板，将独立累加器从 4 增至 8，每块 8*svcntw() 个输出（当前实机128列），提高指令并行、分摊循环开销；可能增加寄存器和缓存压力。保持运行时 SVE 检查、逐输出严格累加顺序、回退路径、run.sh 和官方 benchmark 不变。",
+  "created_at": "2026-09-08T01:38:01.149623+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "e5c7d2fecc2acaf5476ba7579d60be88e6f140f190fe47e7434018f92e4456f8",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "comparison_design": "C7 four-vector SVE has been validated and promoted as C1; before any performance measurement, C8 is compared against the same C1 source in one shared allocation.",
+  "recorded_at": "2026-09-08T01:46:51.772289+00:00",
+  "environment": "kunpeng-gcc10-generic-38",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "3d1bbba1de2b888ba6c8370c2bab046c75703bd26a6b6208bb0ee052903c0074",
+  "log": ".runs/conv/C8-sve128/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        69.11,
+        69.02,
+        69.04
+      ],
+      "median_ms": 69.04,
+      "min_ms": 69.02,
+      "max_ms": 69.11,
+      "spread_pct": 0.13035921205098985,
+      "gflops": [
+        1090.6337,
+        1092.0127,
+        1091.8339
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        88.42,
+        88.54,
+        88.82
+      ],
+      "median_ms": 88.54,
+      "min_ms": 88.42,
+      "max_ms": 88.82,
+      "spread_pct": 0.4517732098486463,
+      "gflops": [
+        941.3345,
+        940.0615,
+        937.1439
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        146.37,
+        146.12,
+        146.09
+      ],
+      "median_ms": 146.12,
+      "min_ms": 146.09,
+      "max_ms": 146.37,
+      "spread_pct": 0.1916233232959219,
+      "gflops": [
+        1100.4688,
+        1102.368,
+        1102.5824
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        326.52,
+        331.09,
+        326.8
+      ],
+      "median_ms": 326.8,
+      "min_ms": 326.52,
+      "max_ms": 331.09,
+      "spread_pct": 1.398408812729496,
+      "gflops": [
+        1058.946,
+        1044.3345,
+        1058.0624
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 630.5,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "5",
+    "ALLOWED_CPUS": "190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485366",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 69.69,
+        "candidate_ms": 69.04,
+        "gain_pct": 0.9327019658487467
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 90.16,
+        "candidate_ms": 88.54,
+        "gain_pct": 1.7968056787932458
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 150.39,
+        "candidate_ms": 146.12,
+        "gain_pct": 2.8392845268967233
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 332.82,
+        "candidate_ms": 326.8,
+        "gain_pct": 1.808785529715757
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "同作业、同38核与NUMA，对照C1四向量与八向量，完整三轮。",
+  "promoted_at": "2026-09-08T01:47:28.245995+00:00"
+}

@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C9-sve256",
+  "parent": "C8-r1",
+  "strategy": "本轮最后一个有界并行候选：以 C8 的 8 个 SVE 累加器实现为模板扩展到 16 个显式独立累加器，每块 16*svcntw() 个输出（当前实机256列）；提高独立指令并行并分摊循环控制，但更大工作集与寄存器压力可能导致栈spill。保持运行时检查、strict逐输出累加顺序、回退路径、run.sh和official benchmark。当前parent C7-r1（已晋级C1源码）；尚未性能测量前协调者按C8对照结果选择共同基线。",
+  "created_at": "2026-09-08T01:44:34.703416+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "3a583d6fa7d907c0238a9ae2ef87fee5b1e7f3fd130b6505f0e46a5e87883cd6",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "comparison_design": "Eight-vector SVE validated and promoted as C2; before official performance measurement, compare sixteen vectors against byte-identical C2 in one shared allocation.",
+  "recorded_at": "2026-09-08T01:50:57.629065+00:00",
+  "environment": "kunpeng-gcc10-generic-38",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "3cebac622ace46d9118b1df7ff76e1884ba9da20fee18b08e0e00fec77d930de",
+  "log": ".runs/conv/C9-sve256/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        75.3,
+        75.23,
+        75.19
+      ],
+      "median_ms": 75.23,
+      "min_ms": 75.19,
+      "max_ms": 75.3,
+      "spread_pct": 0.1462182639904286,
+      "gflops": [
+        1000.9727,
+        1001.9777,
+        1002.4755
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        94.84,
+        94.46,
+        95.37
+      ],
+      "median_ms": 94.84,
+      "min_ms": 94.46,
+      "max_ms": 95.37,
+      "spread_pct": 0.9595107549557262,
+      "gflops": [
+        877.6055,
+        881.1765,
+        872.752
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        152.75,
+        152.01,
+        152.9
+      ],
+      "median_ms": 152.75,
+      "min_ms": 152.01,
+      "max_ms": 152.9,
+      "spread_pct": 0.5826513911620391,
+      "gflops": [
+        1054.4999,
+        1059.6601,
+        1053.4909
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        327.12,
+        326.43,
+        326.57
+      ],
+      "median_ms": 326.57,
+      "min_ms": 326.43,
+      "max_ms": 327.12,
+      "spread_pct": 0.21128701350399537,
+      "gflops": [
+        1057.0125,
+        1059.2644,
+        1058.7907
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 649.39,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "5",
+    "ALLOWED_CPUS": "190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485378",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -3.09% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 69.12,
+        "candidate_ms": 75.23,
+        "gain_pct": -8.839699074074073
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 88.4,
+        "candidate_ms": 94.84,
+        "gain_pct": -7.285067873303164
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 146.18,
+        "candidate_ms": 152.75,
+        "gain_pct": -4.494458886304551
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 326.21,
+        "candidate_ms": 326.57,
+        "gain_pct": -0.11035835811287627
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "同一作业对照C2八向量和十六向量。未满足晋级条件；继续保留C2八向量版"
+}

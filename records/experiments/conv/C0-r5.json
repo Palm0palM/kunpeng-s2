@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C0-r5",
+  "parent": null,
+  "strategy": "与显式SVE候选共享同一次38核单NUMA分配的原版基线；官方编译与校验不变",
+  "created_at": "2026-09-08T01:37:11.458196+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T01:41:34.283429+00:00",
+  "environment": "kunpeng-gcc10-generic-38",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "65f6b9cf000d842c6676b26c6935a3bcfec795be2bda55c3c9c947e68bc58ba0",
+  "log": ".runs/conv/C0-r5/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        213.83,
+        213.57,
+        213.52
+      ],
+      "median_ms": 213.57,
+      "min_ms": 213.52,
+      "max_ms": 213.83,
+      "spread_pct": 0.14515147258510197,
+      "gflops": [
+        352.5036,
+        352.9298,
+        353.0198
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        238.88,
+        239.0,
+        239.25
+      ],
+      "median_ms": 239.0,
+      "min_ms": 238.88,
+      "max_ms": 239.25,
+      "spread_pct": 0.15481171548117345,
+      "gflops": [
+        348.4377,
+        348.265,
+        347.8995
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        449.91,
+        449.9,
+        449.95
+      ],
+      "median_ms": 449.91,
+      "min_ms": 449.9,
+      "max_ms": 449.95,
+      "spread_pct": 0.011113333777869211,
+      "gflops": [
+        358.0141,
+        358.0197,
+        357.9846
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        964.85,
+        964.51,
+        965.2
+      ],
+      "median_ms": 964.85,
+      "min_ms": 964.51,
+      "max_ms": 965.2,
+      "spread_pct": 0.07151370679380781,
+      "gflops": [
+        358.3694,
+        358.4964,
+        358.2375
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 1867.33,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "7",
+    "ALLOWED_CPUS": "266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485354",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "promoted_at": "2026-09-08T01:42:17.078868+00:00"
+}

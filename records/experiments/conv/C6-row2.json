@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C6-row2",
+  "parent": "C0-r4",
+  "strategy": "Fuse two output rows by sixteen columns with thirty-two float accumulators; share kernel coefficients, preserve strict jk/ik accumulation and two-step unroll; keep nondefault block fallback",
+  "created_at": "2026-09-08T01:28:19.231426+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "f60d7def60273efd4fa1a6a4da9df354bb31c0db1cbcb81c904395a1bb7f315e",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "comparison_design": "Before any server measurement, parent updated to byte-identical C0-r4 for sequential execution in one shared 38-core NUMA allocation.",
+  "recorded_at": "2026-09-08T01:39:51.812430+00:00",
+  "environment": "kunpeng-gcc10-generic-38",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "0cf933c201cbf4be6bb372e993c5f158270b2b6a2fbb67ca8625546a76456120",
+  "log": ".runs/conv/C6-row2/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        219.44,
+        219.45,
+        219.45
+      ],
+      "median_ms": 219.45,
+      "min_ms": 219.44,
+      "max_ms": 219.45,
+      "spread_pct": 0.004556846662105676,
+      "gflops": [
+        343.482,
+        343.4663,
+        343.4763
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        242.57,
+        242.62,
+        242.62
+      ],
+      "median_ms": 242.62,
+      "min_ms": 242.57,
+      "max_ms": 242.62,
+      "spread_pct": 0.02060835875031381,
+      "gflops": [
+        343.1468,
+        343.0648,
+        343.0738
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        460.41,
+        460.42,
+        460.33
+      ],
+      "median_ms": 460.41,
+      "min_ms": 460.33,
+      "max_ms": 460.42,
+      "spread_pct": 0.019547794357210276,
+      "gflops": [
+        349.8483,
+        349.8392,
+        349.9072
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        977.45,
+        977.3,
+        977.42
+      ],
+      "median_ms": 977.42,
+      "min_ms": 977.3,
+      "max_ms": 977.45,
+      "spread_pct": 0.015346524523755494,
+      "gflops": [
+        353.7487,
+        353.8026,
+        353.7609
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 1899.9,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "6",
+    "ALLOWED_CPUS": "228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485328",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -1.71% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 213.59,
+        "candidate_ms": 219.45,
+        "gain_pct": -2.7435741373659743
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 239.14,
+        "candidate_ms": 242.62,
+        "gain_pct": -1.4552145186919874
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 449.92,
+        "candidate_ms": 460.41,
+        "gain_pct": -2.3315256045519224
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 965.23,
+        "candidate_ms": 977.42,
+        "gain_pct": -1.262911430436263
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "同一作业38核与NUMA对照；保留原版，候选未达到晋级条件"
+}
