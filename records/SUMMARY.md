@@ -26,5 +26,10 @@
 | conv | C9-sve256 | C8-r1 | passed | 649.39 | 本轮最后一个有界并行候选：以 C8 的 8 个 SVE 累加器实现为模板扩展到 16 个显式独立累加器，每块 16*svcntw() 个输出（当前实机256列）；提高独立指令并行并分摊循环控制，但更大工作集与寄存器压力可能导致栈spill。保持运行时检查、strict逐输出累加顺序、回退路径、run.sh和official benchmark。当前parent C7-r1（已晋级C1源码）；尚未性能测量前协调者按C8对照结果选择共同基线。 |
 | trsm | T0 | — | prepared | — | 当前TRSM已验证源码的同环境三轮基线复测，优先验证官方KML |
 | trsm | T1-panel | T0 | prepared | — | 大工作集分块前代每个已解256x8右端项块共享打包为连续面板，使所有下方4x8更新复用连续读取，降低跨行大步长访存；其余算法与分块不变 |
-| zgemm | Z0 | — | prepared | — | 当前ZGEMM已验证源码的同环境三轮基线复测 |
-| zgemm | Z1-pack | Z0 | prepared | — | 仅重排A为3行K优先的连续微面板并用NEON向量lane读取9个分量，减少内核A的独立加载流和load指令；保留3x4形状、MB24及3M运算顺序 |
+| zgemm | Z0 | — | passed | 4522.77 | 当前ZGEMM已验证源码的同环境三轮基线复测 |
+| zgemm | Z0-pair1 | — | passed | 4554.89 | 保持Z0源码不变，在单个38核NUMA作业内与冻结的Z1-pack各执行三轮完整官方用例，建立可比较基线；来源Z0，TEST_RUNS=3 |
+| zgemm | Z1-control2 | — | passed | 3737.22 | 保持已晋级Z1-pack-pair1源码不变，与MB48候选在同一个38核NUMA作业内各执行三轮官方用例，建立第二轮可比较控制基线；来源Z1-pack-pair1 |
+| zgemm | Z1-pack | Z0 | passed | 3738.57 | 仅重排A为3行K优先的连续微面板并用NEON向量lane读取9个分量，减少内核A的独立加载流和load指令；保留3x4形状、MB24及3M运算顺序 |
+| zgemm | Z1-pack-pair1 | Z0-pair1 | passed | 3738.92 | 仅重排A为3行K优先的连续微面板并用NEON向量lane读取9个分量，减少内核A的独立加载流和load指令；保留3x4形状、MB24及3M运算顺序 |
+| zgemm | Z2-mb48 | Z1-pack-pair1 | prepared | — | 仅将MB24改为MB48，保留三行A连续打包、3x4微内核和3M累加顺序；检验增加行复用能否降低B跨行块扫描开销，K512复用域理论约624KiB（不含C），仍需实测 |
+| zgemm | Z2-mb48-pair2 | Z1-control2 | passed | 3862.22 | 仅将MB24改为MB48，保留三行A连续打包、3x4微内核和3M累加顺序；检验增加行复用能否降低B跨行块扫描开销，K512复用域理论约624KiB（不含C），仍需实测 |
