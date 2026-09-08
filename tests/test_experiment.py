@@ -75,7 +75,14 @@ class IsolatedRoot(unittest.TestCase):
     def install_history(self):
         target = self.root / "records/history.json"
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(REPO / "records/history.json", target)
+        # Model a historical snapshot of this isolated fixture. The repository's
+        # best operator can advance while its real C0 history remains immutable.
+        files = EXPERIMENT.source_files(self.root / "conv")
+        EXPERIMENT.write_json(target, {"versions": [{
+            "id": "C0", "problem": "conv",
+            "source_files": [{"path": "conv/" + name, "sha256": digest}
+                             for name, digest in files.items()],
+        }]})
 
     def new(self, version="C0", parent=None):
         EXPERIMENT.new(argparse.Namespace(problem="conv", version=version, parent=parent,

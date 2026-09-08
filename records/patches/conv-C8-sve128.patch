@@ -1,0 +1,72 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -117,7 +117,7 @@
+ 
+ #if CONV_CAN_DISPATCH_SVE
+ /* Generic TU dispatches here only when Linux reports usable SVE. Each lane is
+- * an independent output; four accumulators span the entire kernel. Keep the
++ * an independent output; eight accumulators span the entire kernel. Keep the
+  * multiplication and addition separate, in the reference jk/ik order. */
+ __attribute__((target("arch=armv8-a+sve"), noinline))
+ static int conv_sve_prefix(const float *restrict base, size_t stride,
+@@ -125,7 +125,7 @@
+                            float *restrict dst, int ow)
+ {
+     const int lanes = (int)svcntw();
+-    const int block = 4 * lanes;
++    const int block = 8 * lanes;
+     const svbool_t pg = svptrue_b32();
+     int i = 0;
+     for (; ow - i >= block; i += block) {
+@@ -133,6 +133,10 @@
+         svfloat32_t a1 = svdup_n_f32(0.0f);
+         svfloat32_t a2 = svdup_n_f32(0.0f);
+         svfloat32_t a3 = svdup_n_f32(0.0f);
++        svfloat32_t a4 = svdup_n_f32(0.0f);
++        svfloat32_t a5 = svdup_n_f32(0.0f);
++        svfloat32_t a6 = svdup_n_f32(0.0f);
++        svfloat32_t a7 = svdup_n_f32(0.0f);
+         const float *krow = kernel;
+         for (int jk = 0; jk < kh; ++jk) {
+             const float *row = base + (size_t)jk * stride + i;
+@@ -145,10 +149,18 @@
+                 a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + lanes), k0));
+                 a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svld1(pg, p + 2 * lanes), k0));
+                 a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svld1(pg, p + 3 * lanes), k0));
++                a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, svld1(pg, p + 4 * lanes), k0));
++                a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, svld1(pg, p + 5 * lanes), k0));
++                a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, svld1(pg, p + 6 * lanes), k0));
++                a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, svld1(pg, p + 7 * lanes), k0));
+                 a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svld1(pg, p + 1), k1));
+                 a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + lanes + 1), k1));
+                 a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svld1(pg, p + 2 * lanes + 1), k1));
+                 a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svld1(pg, p + 3 * lanes + 1), k1));
++                a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, svld1(pg, p + 4 * lanes + 1), k1));
++                a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, svld1(pg, p + 5 * lanes + 1), k1));
++                a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, svld1(pg, p + 6 * lanes + 1), k1));
++                a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, svld1(pg, p + 7 * lanes + 1), k1));
+             }
+             for (; ik < kw; ++ik) {
+                 const svfloat32_t k = svdup_n_f32(krow[ik]);
+@@ -157,6 +169,10 @@
+                 a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + lanes), k));
+                 a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svld1(pg, p + 2 * lanes), k));
+                 a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svld1(pg, p + 3 * lanes), k));
++                a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, svld1(pg, p + 4 * lanes), k));
++                a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, svld1(pg, p + 5 * lanes), k));
++                a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, svld1(pg, p + 6 * lanes), k));
++                a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, svld1(pg, p + 7 * lanes), k));
+             }
+             krow += kw;
+         }
+@@ -164,6 +180,10 @@
+         svst1(pg, dst + i + lanes, a1);
+         svst1(pg, dst + i + 2 * lanes, a2);
+         svst1(pg, dst + i + 3 * lanes, a3);
++        svst1(pg, dst + i + 4 * lanes, a4);
++        svst1(pg, dst + i + 5 * lanes, a5);
++        svst1(pg, dst + i + 6 * lanes, a6);
++        svst1(pg, dst + i + 7 * lanes, a7);
+     }
+     return i;
+ }

@@ -1,0 +1,7 @@
+{
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sve-correctness-20260908T013529Z",
+  "submitted": true,
+  "command": "dsub -n conv-sve-correctness -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sve-correctness-20260908T013529Z/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sve-correctness-20260908T013529Z/remote_job.sh",
+  "submit_attempted": true,
+  "job_id": "1485344"
+}
