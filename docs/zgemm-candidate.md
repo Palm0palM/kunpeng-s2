@@ -1,55 +1,42 @@
-# ZGEMM 候选 Z1-pack
+# ZGEMM：连续三行 A 打包已验证并晋级
 
-当前状态：**候选已编码，本机正确性通过，尚未在鲲鹏测量，未晋级。** 2026-09-08 创建。当前共享题解仍为 Z0；历史成绩不能替代当前环境基线复测。
+当前保留 **Z1 连续三行 A 微面板打包、MB=24**。当前测量记录名为 `Z1-control2`，源码与已晋级 `Z1-pack-pair1` 相同。仅改变 A 的打包及读取路径；保留 3×4/3M 微内核、累加顺序和输出缩放。官方 benchmark、runner、输入、容差与计时逻辑不变。
 
-## 单一假设与代码依据
+## 同分配晋级结果
 
-Z0 使用 3×4 NEON 三实乘（3M）微内核，MB=24。A 原来按行保存 `[real, imag, real+imag]`，内核每个 K 从相隔 `K×24` 字节的三行读取九个标量。Z1-pack 只改变 A 的微面板打包及对应读取：每三行按 K 连续存放 `[r0,r1,r2,i0,i1,i2,t0,t1,t2]`，配合向量 lane FMA。目标是减少 A 的加载指令、地址计算和独立访存流。MR、NR、MB、B 布局、线程任务划分、3M 累加顺序及输出缩放保持一致。
+鲲鹏作业 1485263 中，两版使用同一资源分配：38 线程、NUMA3、CPU114–151、GCC10.3.1、`-O3 -ffp-contract=off -fopenmp -mcpu=generic`，OpenMP close/cores，官方内置 `reference_zgemm`。每版三轮完整套件，每组内部仍为 `TEST_RUNS=3`；两版各 9/9 PASS。下表中位数来自三轮打印均值，合计为内部比较指标，不是官方分数。
 
-分配、尾行补零和非 NEON/尾行通用路径同步适配新布局；分配溢出检查使用 `ceil(M/3)×K×9`，以覆盖最多两行补零。总 A 容量只增加尾部补齐部分。
+| M×N×K | Z0-pair1 中位数 ms | Z1-pack-pair1 中位数 ms | 耗时降低 |
+|---|---:|---:|---:|
+|7427×7427×256|293.74|242.30|17.512%|
+|14848×14848×256|1167.43|962.50|17.554%|
+|37360×8192×512|3093.72|2534.12|18.088%|
+|合计|4554.89|3738.92|17.914%|
 
-硬件证据来自 `records/evidence/final-1484056/environment.txt`：aarch64、HiSilicon，608 个 L1D/L2 实例合计 19/456 MiB，折算约 32 KiB L1D 和 768 KiB L2/实例。K=512 时三行 A 为 36 KiB，MB24 的 A 为 288 KiB，单 B 微面板为 48 KiB。**本候选没有缩小这些工作集，也没有解决整个 B 被每个行块重新遍历的问题**；它检验的是加载路径是否限制内核，而非声称解决缓存容量瓶颈。
+最大三轮波动为 0.355%，工具比较允许晋级，已通过晋级流程更新源码。
 
-Apple clang17 本地发布配置汇编提供了实现证据：Z0 K 循环加载 A 用 3 条 `ld1r` 和 6 条 `ldr`；Z1 用 2 条 `ldp q` 和 1 条 `ldr d`，两者均保留 18 条向量 FMA。候选 K 循环未出现寄存器溢出到栈。GCC10 在目标服务器的指令选择仍待核实；Mac 汇编不是鲲鹏速度证据。
+## MB48 后续实验：正确但退化，不晋级
 
-## 源码与留存文件
+作业 1485352 在同一分配内顺序测量 MB24 对照 `Z1-control2` 与只改 MB24→48 的候选 `Z2-mb48-pair2`。两版各三轮、各 9/9 PASS，调度器及 wrapper 正常结束。
 
-- 候选：`.runs/zgemm/Z1-pack/source/zgemm.c`
-- 候选 SHA-256：`3a26f10b2080d057cace983db2fa26c375e654e219991e23e2e61eb58baefba9`
-- Z0 `zgemm/zgemm.c` SHA-256：`1bf7a5630cbb5c75c21ff3b1407829ab3d26f0ea007510f819ec4a41fb9d1690`
-- 创建命令、构建命令：`.runs/zgemm/Z1-pack/local/commands.txt`
-- 本机测试：`local/check-zgemm.c`、`local/build.log`、`local/check-1t.log`、`local/check-4t.log`
-- 本机汇编：`local/zgemm-native.s`、`local/zgemm-z0-native.s`
+| M×N×K | MB24 三轮 ms | MB48 三轮 ms | 中位数变化 |
+|---|---|---|---:|
+|7427×7427×256|243.21 / 242.76 / 242.09|234.92 / 236.00 / 235.33|耗时降低 3.061%|
+|14848×14848×256|962.34 / 963.83 / 962.70|929.12 / 924.63 / 919.38|耗时降低 3.955%|
+|37360×8192×512|2530.06 / 2535.16 / 2531.76|2712.08 / 2698.92 / 2702.26|耗时增加 6.734%|
 
-以上 `local/` 均位于 `.runs/zgemm/Z1-pack/` 下。`.runs/` 不纳入 Git，跨机器共享候选时须显式交换源文件和哈希。
+中位数合计由 3737.22 增至 3862.22 ms，耗时增加 **3.345%**；工具拒绝晋级。MB24 源码继续作为当前最佳，MB48 的源码与全部原始产物仍保存在本地。
 
-## 改动与测试记录
+## 正确性、历史与证据范围
 
-1. 阅读 AGENTS、README、BASELINES、PLAYBOOK、Z0 源码、硬件证据；工作分支为 `setup/agent-workflow`，已有大量协作者未跟踪文件，未覆盖他人文件。
-2. 执行下列命令创建历史 Z0 子快照，工具成功；由于尚无当前测量，不视为可晋级基线。
+两轮所有官方结果均通过 `1e-10` 容差，三组最大误差分别为 `3.05e-12`、`3.51e-12`、`6.04e-12`。Z1 和 MB48 在 Mac clang17 下另经 UBSan 检查，1/4 线程各 594 组 PASS；Mac 结果只用于正确性。
 
-   ```bash
-   python3 tools/experiment.py new zgemm Z1-pack --parent Z0 --strategy '仅重排A为3行K优先的连续微面板并用NEON向量lane读取9个分量，减少内核A的独立加载流和load指令；保留3x4形状、MB24及3M运算顺序'
-   ```
+最初 Z0 作业 1485181 与 Z1-pack 作业 1485198 各 9/9 PASS，但 NUMA4/NUMA3 环境不同，比较未允许晋级；该历史没有改写为成功。后续成功依据是单独的同分配作业 1485263。共享作业在同一分配内顺序运行两版，不是交错试验，也不是整台物理节点独占，不能完全排除时间漂移。候选源码和策略均在测量前冻结；正式候选记录在对照基线登记、晋级后创建，保留真实创建时间。
 
-3. 一次性修改候选内核：A packing、向量 lane 读取、尾部读取、大小检查。没有修改 benchmark、run.sh、工具或当前最佳。
-4. 从上层 `other-problems/tests/check-final.c` 派生仅含 ZGEMM 的本机检查到候选 `local/`，未修改原测试。保留 5 组原尺寸，增加 `(23,8,511)`、`(24,8,512)`、`(25,9,513)`、`(47,13,512)`、`(48,12,257)`、`(49,7,256)`。共 594 组，覆盖行/列主序、N/T/C、alpha=0、beta=0、K=0、padding、MR/MB 与 K 边界。
-5. 在 Mac ARM64 使用 Apple clang 17.0.0、OpenMP、`-O3 -ffp-contract=off` 与 UBSan 构建。构建退出 0，无输出；1 和 4 线程分别通过 594 组，最大 long-double 参考差均为 `3.076e-14`，低于 `1e-10`。Mac 的 long double 精度由平台实现决定；这是本机回归，不替代官方参考库校验。完整命令如下（仓库根目录执行）：
+本次 GitHub 只发布源码和测量摘要，不发布计算账号、内网地址、个人路径、连接命令或原始环境日志。完整成功、不可比较与退化实验的源码快照、命令、环境、逐用例日志和原始证据仍保存在本地 `records/evidence/zgemm-*`。以下摘要记录中的验证字段指向已完成的原件检查；它们不是原始日志副本。
 
-   ```bash
-   clang -O3 -ffp-contract=off -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib -lomp -fsanitize=undefined -fno-sanitize-recover=undefined .runs/zgemm/Z1-pack/source/zgemm.c .runs/zgemm/Z1-pack/local/check-zgemm.c -o .runs/zgemm/Z1-pack/local/check-zgemm
-   OMP_NUM_THREADS=1 .runs/zgemm/Z1-pack/local/check-zgemm
-   OMP_NUM_THREADS=4 .runs/zgemm/Z1-pack/local/check-zgemm
-   clang -O3 -ffp-contract=off -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -S .runs/zgemm/Z1-pack/source/zgemm.c -o .runs/zgemm/Z1-pack/local/zgemm-native.s
-   clang -O3 -ffp-contract=off -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -S zgemm/zgemm.c -o .runs/zgemm/Z1-pack/local/zgemm-z0-native.s
-   ```
+- [最初 Z0 摘要](../records/experiments/zgemm/Z0.json)、[最初 Z1-pack 摘要](../records/experiments/zgemm/Z1-pack.json)
+- [同分配 Z0 摘要](../records/experiments/zgemm/Z0-pair1.json)、[同分配 Z1 晋级摘要](../records/experiments/zgemm/Z1-pack-pair1.json)
+- [当前 MB24 对照摘要](../records/experiments/zgemm/Z1-control2.json)、[MB48 退化摘要](../records/experiments/zgemm/Z2-mb48-pair2.json)
 
-6. 只做正确性与汇编检查，没有跑 Mac 官方大尺寸性能，没有取得候选 GFLOPS、平台分数或排名。没有失败/退化性能样本可以登记；待测状态如实保留。
-
-## 统一排队后的待办
-
-由主协调 Agent 排队，其他题不得同时占用同一测量资源。先对不变 Z0 建立当前环境三轮完整基线并登记/晋级，再用完全相同节点、38 线程、NUMA/绑核、GCC/flags、参考库与 `TEST_RUNS` 测 Z1-pack 三轮完整套件。wrapper 三轮独立套件不等于 benchmark 内部 `TEST_RUNS`。
-
-候选路径已可交给 `python3 tools/cluster.py --config config/cluster.local.json submit .runs/zgemm/Z1-pack`；提交后保存 job ID，只查询该作业，再取回原始日志、状态、环境、源码哈希和退出码。检查三种官方尺寸每轮全部 PASS，不能只看退出码。使用 `experiment.py record` 登记实际环境/参考库，再 `compare zgemm Z0 Z1-pack`。只有同环境三轮结果支持且逐组没有不允许的退化才晋级。
-
-风险与下一步：目标 GCC 的寄存器分配、A 打包成本增加、B 带宽限制可能抵消加载收益。若性能退化或处于噪声内，保留 Z0 并记录结果；下一候选应再独立验证二维 cache blocking 等思路，不混在 Z1-pack 里。
+尚未实现或验证按 K 大小选择 MB 的后续假设；没有正式比赛平台提交。

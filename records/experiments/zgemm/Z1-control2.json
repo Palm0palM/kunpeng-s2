@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "problem": "zgemm",
-  "version": "Z0",
+  "version": "Z1-control2",
   "parent": null,
-  "strategy": "当前ZGEMM已验证源码的同环境三轮基线复测",
-  "created_at": "2026-09-08T00:10:06.098331+00:00",
+  "strategy": "保持已晋级Z1-pack-pair1源码不变，与MB48候选在同一个38核NUMA作业内各执行三轮官方用例，建立第二轮可比较控制基线；来源Z1-pack-pair1",
+  "created_at": "2026-09-08T01:34:18.211632+00:00",
   "settings": {
     "bench_repeats": 3,
     "environment": {
@@ -29,10 +29,10 @@
     "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
     "bench_zgemm.c": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
     "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
-    "zgemm.c": "1bf7a5630cbb5c75c21ff3b1407829ab3d26f0ea007510f819ec4a41fb9d1690"
+    "zgemm.c": "3a26f10b2080d057cace983db2fa26c375e654e219991e23e2e61eb58baefba9"
   },
   "status": "passed",
-  "recorded_at": "2026-09-08T00:46:36.485337+00:00",
+  "recorded_at": "2026-09-08T01:51:58.993819+00:00",
   "verified": true,
   "cases": [
     {
@@ -42,18 +42,18 @@
         256
       ],
       "times_ms": [
-        306.33,
-        293.47,
-        292.42
+        243.21,
+        242.76,
+        242.09
       ],
-      "median_ms": 293.47,
-      "min_ms": 292.42,
-      "max_ms": 306.33,
-      "spread_pct": 4.739837121341182,
+      "median_ms": 242.76,
+      "min_ms": 242.09,
+      "max_ms": 243.21,
+      "spread_pct": 0.46136101499423493,
       "gflops": [
-        368.7847,
-        384.9457,
-        386.3273
+        464.4905,
+        465.355,
+        466.6333
       ],
       "max_error": 3.05e-12
     },
@@ -64,18 +64,18 @@
         256
       ],
       "times_ms": [
-        1156.96,
-        1181.0,
-        1156.52
+        962.34,
+        963.83,
+        962.7
       ],
-      "median_ms": 1156.96,
-      "min_ms": 1156.52,
-      "max_ms": 1181.0,
-      "spread_pct": 2.115889918406861,
+      "median_ms": 962.7,
+      "min_ms": 962.34,
+      "max_ms": 963.83,
+      "spread_pct": 0.15477303417471788,
       "gflops": [
-        390.2548,
-        382.3104,
-        390.4032
+        469.1764,
+        468.4523,
+        469.0
       ],
       "max_error": 3.51e-12
     },
@@ -86,27 +86,27 @@
         512
       ],
       "times_ms": [
-        3072.34,
-        3119.29,
-        3068.66
+        2530.06,
+        2535.16,
+        2531.76
       ],
-      "median_ms": 3072.34,
-      "min_ms": 3068.66,
-      "max_ms": 3119.29,
-      "spread_pct": 1.6479295911259857,
+      "median_ms": 2531.76,
+      "min_ms": 2530.06,
+      "max_ms": 2535.16,
+      "spread_pct": 0.2014408948715482,
       "gflops": [
-        408.0262,
-        401.8839,
-        408.515
+        495.4792,
+        494.4832,
+        495.1462
       ],
       "max_error": 6.04e-12
     }
   ],
   "repeats": 3,
-  "total_median_ms": 4522.77,
+  "total_median_ms": 3737.2200000000003,
   "official_score": null,
   "ranking": null,
-  "job_id": "1485181",
+  "job_id": "1485352",
   "checks": {
     "scheduler": true,
     "fetched_log": true,
@@ -115,11 +115,11 @@
     "source_hashes": true,
     "machine": true
   },
-  "promoted_at": "2026-09-08T00:46:36.526092+00:00",
+  "promoted_at": "2026-09-08T01:51:59.031691+00:00",
   "machine": {
     "ARCH": "aarch64",
-    "NUMA_NODE": "4",
-    "ALLOWED_CPUS": "152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
     "OMP_NUM_THREADS": "38",
     "CPU_TARGET": "generic",
     "compiler_banners": [
@@ -127,7 +127,7 @@
       "gcc (GCC) 10.3.1"
     ]
   },
-  "reference": "official-internal-reference_zgemm",
-  "environment": "kunpeng-initial-numa4",
+  "reference": "官方 benchmark 内置 reference_zgemm；无外部 BLAS",
+  "environment": "kunpeng-pair2-numa3",
   "publication_note": "Public measurement summary. Full downloaded logs, scheduler output, commands and original evidence remain in the local experiment archive. Verification fields describe checks performed on those originals; this summary is not a downloaded log."
 }

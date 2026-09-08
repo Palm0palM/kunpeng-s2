@@ -8,8 +8,22 @@
   "settings": {
     "bench_repeats": 3,
     "environment": {
-      "TEST_RUNS": "3"
-    }
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
   },
   "source_hashes": {
     "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
@@ -17,8 +31,102 @@
     "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
     "zgemm.c": "3a26f10b2080d057cace983db2fa26c375e654e219991e23e2e61eb58baefba9"
   },
-  "status": "prepared",
-  "note": "A三行K连续打包；本机1/4线程各594组UBSan通过仅作正确性回归；源码sha256=3a26f10b2080d057cace983db2fa26c375e654e219991e23e2e61eb58baefba9。官方benchmark及runner与Z0逐字节一致；待Z0完成后同环境三轮完整官方套件，TEST_RUNS=3，未晋级。",
-  "updated_at": "2026-09-08T00:37:42.010012+00:00",
-  "verified": false
+  "status": "passed",
+  "recorded_at": "2026-09-08T00:57:14.319510+00:00",
+  "verified": true,
+  "cases": [
+    {
+      "dims": [
+        7427,
+        7427,
+        256
+      ],
+      "times_ms": [
+        251.82,
+        241.9,
+        242.73
+      ],
+      "median_ms": 242.73,
+      "min_ms": 241.9,
+      "max_ms": 251.82,
+      "spread_pct": 4.086845466155806,
+      "gflops": [
+        448.6059,
+        467.0078,
+        465.4047
+      ],
+      "max_error": 3.05e-12
+    },
+    {
+      "dims": [
+        14848,
+        14848,
+        256
+      ],
+      "times_ms": [
+        961.9,
+        962.21,
+        962.51
+      ],
+      "median_ms": 962.21,
+      "min_ms": 961.9,
+      "max_ms": 962.51,
+      "spread_pct": 0.06339572442606226,
+      "gflops": [
+        469.3919,
+        469.24,
+        469.0953
+      ],
+      "max_error": 3.51e-12
+    },
+    {
+      "dims": [
+        37360,
+        8192,
+        512
+      ],
+      "times_ms": [
+        2532.45,
+        2533.79,
+        2533.63
+      ],
+      "median_ms": 2533.63,
+      "min_ms": 2532.45,
+      "max_ms": 2533.79,
+      "spread_pct": 0.052888543315328024,
+      "gflops": [
+        495.0124,
+        494.7512,
+        494.7816
+      ],
+      "max_error": 6.04e-12
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 3738.57,
+  "official_score": null,
+  "ranking": null,
+  "job_id": "1485198",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "machine": {
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "reference": "official-internal-reference_zgemm",
+  "environment": "kunpeng-initial-numa3",
+  "publication_note": "Public measurement summary. Full downloaded logs, scheduler output, commands and original evidence remain in the local experiment archive. Verification fields describe checks performed on those originals; this summary is not a downloaded log."
 }
