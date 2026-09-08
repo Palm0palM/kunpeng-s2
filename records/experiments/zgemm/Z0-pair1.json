@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "problem": "zgemm",
-  "version": "Z0",
+  "version": "Z0-pair1",
   "parent": null,
-  "strategy": "当前ZGEMM已验证源码的同环境三轮基线复测",
-  "created_at": "2026-09-08T00:10:06.098331+00:00",
+  "strategy": "保持Z0源码不变，在单个38核NUMA作业内与冻结的Z1-pack各执行三轮完整官方用例，建立可比较基线；来源Z0，TEST_RUNS=3",
+  "created_at": "2026-09-08T01:15:37.478568+00:00",
   "settings": {
     "bench_repeats": 3,
     "environment": {
@@ -32,7 +32,7 @@
     "zgemm.c": "1bf7a5630cbb5c75c21ff3b1407829ab3d26f0ea007510f819ec4a41fb9d1690"
   },
   "status": "passed",
-  "recorded_at": "2026-09-08T00:46:36.485337+00:00",
+  "recorded_at": "2026-09-08T01:33:55.178632+00:00",
   "verified": true,
   "cases": [
     {
@@ -42,18 +42,18 @@
         256
       ],
       "times_ms": [
-        306.33,
-        293.47,
-        292.42
+        294.45,
+        293.53,
+        293.74
       ],
-      "median_ms": 293.47,
-      "min_ms": 292.42,
-      "max_ms": 306.33,
-      "spread_pct": 4.739837121341182,
+      "median_ms": 293.74,
+      "min_ms": 293.53,
+      "max_ms": 294.45,
+      "spread_pct": 0.3132021515626118,
       "gflops": [
-        368.7847,
-        384.9457,
-        386.3273
+        383.6573,
+        384.8573,
+        384.5851
       ],
       "max_error": 3.05e-12
     },
@@ -64,18 +64,18 @@
         256
       ],
       "times_ms": [
-        1156.96,
-        1181.0,
-        1156.52
+        1167.43,
+        1168.8,
+        1166.21
       ],
-      "median_ms": 1156.96,
-      "min_ms": 1156.52,
-      "max_ms": 1181.0,
-      "spread_pct": 2.115889918406861,
+      "median_ms": 1167.43,
+      "min_ms": 1166.21,
+      "max_ms": 1168.8,
+      "spread_pct": 0.22185484354521626,
       "gflops": [
-        390.2548,
-        382.3104,
-        390.4032
+        386.7544,
+        386.3024,
+        387.1578
       ],
       "max_error": 3.51e-12
     },
@@ -86,27 +86,27 @@
         512
       ],
       "times_ms": [
-        3072.34,
-        3119.29,
-        3068.66
+        3092.14,
+        3093.72,
+        3096.57
       ],
-      "median_ms": 3072.34,
-      "min_ms": 3068.66,
-      "max_ms": 3119.29,
-      "spread_pct": 1.6479295911259857,
+      "median_ms": 3093.72,
+      "min_ms": 3092.14,
+      "max_ms": 3096.57,
+      "spread_pct": 0.1431933077330945,
       "gflops": [
-        408.0262,
-        401.8839,
-        408.515
+        405.4123,
+        405.2063,
+        404.8324
       ],
       "max_error": 6.04e-12
     }
   ],
   "repeats": 3,
-  "total_median_ms": 4522.77,
+  "total_median_ms": 4554.889999999999,
   "official_score": null,
   "ranking": null,
-  "job_id": "1485181",
+  "job_id": "1485263",
   "checks": {
     "scheduler": true,
     "fetched_log": true,
@@ -115,11 +115,11 @@
     "source_hashes": true,
     "machine": true
   },
-  "promoted_at": "2026-09-08T00:46:36.526092+00:00",
+  "promoted_at": "2026-09-08T01:33:55.220475+00:00",
   "machine": {
     "ARCH": "aarch64",
-    "NUMA_NODE": "4",
-    "ALLOWED_CPUS": "152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
     "OMP_NUM_THREADS": "38",
     "CPU_TARGET": "generic",
     "compiler_banners": [
@@ -127,7 +127,7 @@
       "gcc (GCC) 10.3.1"
     ]
   },
-  "reference": "official-internal-reference_zgemm",
-  "environment": "kunpeng-initial-numa4",
+  "reference": "官方 benchmark 内置 reference_zgemm；无外部 BLAS",
+  "environment": "kunpeng-pair1-numa3",
   "publication_note": "Public measurement summary. Full downloaded logs, scheduler output, commands and original evidence remain in the local experiment archive. Verification fields describe checks performed on those originals; this summary is not a downloaded log."
 }

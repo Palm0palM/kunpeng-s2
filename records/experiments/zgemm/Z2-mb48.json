@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "problem": "zgemm",
+  "version": "Z2-mb48",
+  "parent": "Z1-pack-pair1",
+  "strategy": "仅将MB24改为MB48，保留三行A连续打包、3x4微内核和3M累加顺序；检验增加行复用能否降低B跨行块扫描开销，K512复用域理论约624KiB（不含C），仍需实测",
+  "created_at": "2026-09-08T01:34:18.169614+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
+    "bench_zgemm.c": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+    "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+    "zgemm.c": "8a9cc4791f6c16c4a8487e8c9a025eb89390d8ddafe54ae20a0efe36654401ec"
+  },
+  "status": "prepared",
+  "verified": false,
+  "environment": "local-correctness-only",
+  "publication_note": "Public measurement summary. Full downloaded logs, scheduler output, commands and original evidence remain in the local experiment archive. Verification fields describe checks performed on those originals; this summary is not a downloaded log."
+}

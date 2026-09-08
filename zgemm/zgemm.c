@@ -50,30 +50,30 @@ static inline void micro3(int k,const double *ap,const double *bp,double *re,dou
         const double *b=bp+(size_t)p*3*NR;
         float64x2_t br0=vld1q_f64(b+0),bi0=vld1q_f64(b+NR+0),bt0=vld1q_f64(b+2*NR+0);
         float64x2_t br2=vld1q_f64(b+2),bi2=vld1q_f64(b+NR+2),bt2=vld1q_f64(b+2*NR+2);
-        {const double *a=ap+((size_t)0*k+p)*3;
-            r0_0=vfmaq_n_f64(r0_0,br0,a[0]);
-            i0_0=vfmaq_n_f64(i0_0,bi0,a[1]);
-            t0_0=vfmaq_n_f64(t0_0,bt0,a[2]);
-            r0_2=vfmaq_n_f64(r0_2,br2,a[0]);
-            i0_2=vfmaq_n_f64(i0_2,bi2,a[1]);
-            t0_2=vfmaq_n_f64(t0_2,bt2,a[2]);
-        }
-        {const double *a=ap+((size_t)1*k+p)*3;
-            r1_0=vfmaq_n_f64(r1_0,br0,a[0]);
-            i1_0=vfmaq_n_f64(i1_0,bi0,a[1]);
-            t1_0=vfmaq_n_f64(t1_0,bt0,a[2]);
-            r1_2=vfmaq_n_f64(r1_2,br2,a[0]);
-            i1_2=vfmaq_n_f64(i1_2,bi2,a[1]);
-            t1_2=vfmaq_n_f64(t1_2,bt2,a[2]);
-        }
-        {const double *a=ap+((size_t)2*k+p)*3;
-            r2_0=vfmaq_n_f64(r2_0,br0,a[0]);
-            i2_0=vfmaq_n_f64(i2_0,bi0,a[1]);
-            t2_0=vfmaq_n_f64(t2_0,bt0,a[2]);
-            r2_2=vfmaq_n_f64(r2_2,br2,a[0]);
-            i2_2=vfmaq_n_f64(i2_2,bi2,a[1]);
-            t2_2=vfmaq_n_f64(t2_2,bt2,a[2]);
-        }
+        /* [r0,r1,r2,i0,i1,i2,t0,t1,t2] keeps the three rows in one
+         * sequential stream. Pair loads feed lane FMAs without padding. */
+        const double *a=ap+(size_t)p*3*MR;
+        float64x2_t ar01=vld1q_f64(a), ar2i0=vld1q_f64(a+2);
+        float64x2_t ai12=vld1q_f64(a+4), at01=vld1q_f64(a+6);
+        double at2=a[8];
+        r0_0=vfmaq_laneq_f64(r0_0,br0,ar01,0);
+        i0_0=vfmaq_laneq_f64(i0_0,bi0,ar2i0,1);
+        t0_0=vfmaq_laneq_f64(t0_0,bt0,at01,0);
+        r0_2=vfmaq_laneq_f64(r0_2,br2,ar01,0);
+        i0_2=vfmaq_laneq_f64(i0_2,bi2,ar2i0,1);
+        t0_2=vfmaq_laneq_f64(t0_2,bt2,at01,0);
+        r1_0=vfmaq_laneq_f64(r1_0,br0,ar01,1);
+        i1_0=vfmaq_laneq_f64(i1_0,bi0,ai12,0);
+        t1_0=vfmaq_laneq_f64(t1_0,bt0,at01,1);
+        r1_2=vfmaq_laneq_f64(r1_2,br2,ar01,1);
+        i1_2=vfmaq_laneq_f64(i1_2,bi2,ai12,0);
+        t1_2=vfmaq_laneq_f64(t1_2,bt2,at01,1);
+        r2_0=vfmaq_laneq_f64(r2_0,br0,ar2i0,0);
+        i2_0=vfmaq_laneq_f64(i2_0,bi0,ai12,1);
+        t2_0=vfmaq_n_f64(t2_0,bt0,at2);
+        r2_2=vfmaq_laneq_f64(r2_2,br2,ar2i0,0);
+        i2_2=vfmaq_laneq_f64(i2_2,bi2,ai12,1);
+        t2_2=vfmaq_n_f64(t2_2,bt2,at2);
     }
     vst1q_f64(re+0*NR+0,vsubq_f64(r0_0,i0_0));
     vst1q_f64(im+0*NR+0,vsubq_f64(vsubq_f64(t0_0,r0_0),i0_0));
@@ -90,7 +90,8 @@ static inline void micro3(int k,const double *ap,const double *bp,double *re,dou
 }
 #endif
 /* C = alpha * op(A) * op(B) + beta * C。
- * A 打包为 [实部,虚部,实部+虚部]；B 按 NR 列分面板、三分量分开存储。
+ * A 按 MR 行、K 顺序打包为 [MR个实部,MR个虚部,MR个实部+虚部]；
+ * B 按 NR 列分面板、三分量分开存储。
  * 3×4 NEON 微内核同时形成 RR、II 和 (R+I)(R+I) 三个实点积。
  * 最后恢复 real=RR-II、imag=combined-RR-II，减少复数乘法运算量。
  * FMA 与三乘法会改变舍入，已按官方绝对误差 1e-10 验证。
@@ -113,21 +114,25 @@ void cblas_zgemm(const enum CBLAS_ORDER order,const enum CBLAS_TRANSPOSE ta,
         return;
     }
     size_t panels=((size_t)n+NR-1)/NR;
-    if ((size_t)m > SIZE_MAX/(size_t)k/(3*sizeof(double)) ||
+    size_t rowpanels=((size_t)m+MR-1)/MR;
+    if (rowpanels > SIZE_MAX/(size_t)k/(3*MR*sizeof(double)) ||
         panels > SIZE_MAX/(size_t)k/(3*NR*sizeof(double))) {
         fallback(order,ta,tb,m,n,k,av,a,lda,b,ldb,bv,c,ldc); return;
     }
-    double *ap=malloc((size_t)m*k*3*sizeof(double));
+    double *ap=malloc(rowpanels*k*3*MR*sizeof(double));
     double *bp=malloc(panels*k*3*NR*sizeof(double));
     if(!ap || !bp) { free(ap);free(bp);fallback(order,ta,tb,m,n,k,av,a,lda,b,ldb,bv,c,ldc);return; }
 #pragma omp parallel
     {
 #pragma omp for schedule(static) nowait
-        for(int i=0;i<m;++i) for(int p=0;p<k;++p) {
-            zdouble v=elem(a,lda,order,ta,i,p);
-            ap[((size_t)i*k+p)*3]=creal(v);
-            ap[((size_t)i*k+p)*3+1]=cimag(v);
-            ap[((size_t)i*k+p)*3+2]=creal(v)+cimag(v);
+        for(size_t ib=0;ib<rowpanels;++ib) for(int p=0;p<k;++p) {
+            double *dst=ap+(ib*k+p)*3*MR;
+            for(int r=0;r<MR;++r) {
+                size_t row=ib*MR+r;
+                zdouble v=row<(size_t)m ? elem(a,lda,order,ta,(int)row,p) : 0.0;
+                dst[r]=creal(v); dst[MR+r]=cimag(v);
+                dst[2*MR+r]=creal(v)+cimag(v);
+            }
         }
 #pragma omp for schedule(static)
         for(size_t jb=0;jb<panels;++jb) for(int p=0;p<k;++p) {
@@ -147,18 +152,18 @@ void cblas_zgemm(const enum CBLAS_ORDER order,const enum CBLAS_TRANSPOSE ta,
             for(int i=ib;i<end;i+=MR) {
                 double re[MR*NR]={0},im[MR*NR]={0};
                 int rows=end-i<MR?end-i:MR;
-                const double *aa=ap+(size_t)i*k*3,*bb=bp+jb*k*3*NR;
+                const double *aa=ap+((size_t)i/MR)*k*3*MR,*bb=bp+jb*k*3*NR;
 #if defined(__aarch64__)
                 if(rows==MR)micro3(k,aa,bb,re,im);
                 else
 #endif
                 {
                     for(int p=0;p<k;++p)for(int r=0;r<rows;++r) {
-                        const double *a=aa+((size_t)r*k+p)*3,*b=bb+(size_t)p*3*NR;
+                        const double *a=aa+(size_t)p*3*MR+r,*b=bb+(size_t)p*3*NR;
 #pragma omp simd
                         for(int j=0;j<NR;++j) {
-                            re[r*NR+j]+=a[0]*b[j]-a[1]*b[NR+j];
-                            im[r*NR+j]+=a[0]*b[NR+j]+a[1]*b[j];
+                            re[r*NR+j]+=a[0]*b[j]-a[MR]*b[NR+j];
+                            im[r*NR+j]+=a[0]*b[NR+j]+a[MR]*b[j];
                         }
                     }
                 }
