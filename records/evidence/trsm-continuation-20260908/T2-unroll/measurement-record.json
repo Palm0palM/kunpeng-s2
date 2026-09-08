@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T2-unroll",
+  "parent": "T0-r2",
+  "strategy": "基于T0，仅对大工作集NEON update4x8的k点积循环显式2步展开，保持每个累加器依次累计k与k+1，单独处理奇数尾项；假设减少循环分支和地址计算并增加load/FMA调度机会，不改小工作集、分块、微核形状、预取、线程、精度、benchmark或runner",
+  "created_at": "2026-09-08T01:16:04.944261+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "bff1a285b4e454d26fecdc548409d424ae2fe18e042620319db026105149910c"
+  },
+  "status": "passed",
+  "pre_measurement_note": "父测量刷新为T0-r2（与T0源码逐字节相同），仅用于同分配对照；此调整在任何远程提交/测量前完成，原准备元数据另存。",
+  "recorded_at": "2026-09-08T01:24:33.040682+00:00",
+  "environment": "COMPUTE_NODE_1-gcc10.3.1-generic-38-openmp",
+  "reference": "OpenBLAS 0.3.28 static; USE_OPENMP ARMV8; SHA256=c1bb71567c95b7cdff011ecd65b1d10de9001d373a5e87ac6468d7b9755c0ed0; not official KML 25.2.0",
+  "verified": true,
+  "log_sha256": "44184e7646af0f5cbff08f176d9de1b5f9c3ed07c96c60315e92924d4268fa44",
+  "log": ".runs/trsm/T2-unroll/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        22.52,
+        22.61,
+        22.46
+      ],
+      "median_ms": 22.52,
+      "min_ms": 22.46,
+      "max_ms": 22.61,
+      "spread_pct": 0.6660746003552335,
+      "gflops": [
+        232.4496,
+        231.4827,
+        233.0977
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        255.22,
+        256.43,
+        253.73
+      ],
+      "median_ms": 255.22,
+      "min_ms": 253.73,
+      "max_ms": 256.43,
+      "spread_pct": 1.0579108220358973,
+      "gflops": [
+        394.5194,
+        392.6629,
+        396.8412
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        495.31,
+        495.14,
+        496.25
+      ],
+      "median_ms": 495.31,
+      "min_ms": 495.14,
+      "max_ms": 496.25,
+      "spread_pct": 0.22410207748682917,
+      "gflops": [
+        299.5844,
+        299.6849,
+        299.0141
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 773.05,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "6",
+    "ALLOWED_CPUS": "228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485273",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  }
+}

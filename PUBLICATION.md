@@ -9,3 +9,7 @@
 不得用脱敏日志冒充原件通过自动验证，也不得以公开日志的哈希不匹配为由改写源实验判定。需要复核时应使用本地原始证据，或在授权环境中重新运行实验。示例命令和记录中的 `CLUSTER_HOST`、`REDACTED_USER`、`LOCAL_USER_HOME`、`CLUSTER_USER_HOME`、`COMPUTE_NODE_1` 与 `LOGIN_NODE_1` 需要按实际授权环境配置，不能直接连接。
 
 核心源码、官方 benchmark、运行脚本与工具逻辑均保持原字节；测试中 4 处主机名 fixture 改为合成名称 `compute-node-1`，测试逻辑保持不变。此公开副本不包含实际认证配置、密码、令牌或私钥。
+
+## 本轮 TRSM 发布
+
+T1-panel-r2 的源码和完整测量结论来自本地已验证记录；GitHub 只保存公开脱敏副本。本轮按用户要求不追加计算哈希，已有原始哈希保留原始含义。`records/publication.json` 的 `trsm_update` 列出本轮公开文件；`files` 中仅保留此前未被本轮修改的公开文件校验记录。详见 [TRSM 证据说明](records/evidence/trsm-continuation-20260908/PUBLICATION-NOTES.md)。

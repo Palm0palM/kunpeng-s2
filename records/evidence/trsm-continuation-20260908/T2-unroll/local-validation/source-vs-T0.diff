@@ -1,0 +1,75 @@
+--- T0/source/trsm.c
++++ T2-unroll/source/trsm.c
+@@ -159,7 +159,71 @@
+     float64x2_t a3_2=vdupq_n_f64(0);
+     float64x2_t a3_4=vdupq_n_f64(0);
+     float64x2_t a3_6=vdupq_n_f64(0);
+-    for(int k=0;k<count;++k) {
++    /* Unroll two consecutive k values without changing accumulation order. */
++    int k=0;
++    for(;k+1<count;k+=2) {
++        {
++            float64x2_t b0=vld1q_f64(X+(size_t)k*ldb+0);
++            float64x2_t b2=vld1q_f64(X+(size_t)k*ldb+2);
++            float64x2_t b4=vld1q_f64(X+(size_t)k*ldb+4);
++            float64x2_t b6=vld1q_f64(X+(size_t)k*ldb+6);
++            { double l=L[(size_t)0*lda+k];
++                a0_0=vfmaq_n_f64(a0_0,b0,l);
++                a0_2=vfmaq_n_f64(a0_2,b2,l);
++                a0_4=vfmaq_n_f64(a0_4,b4,l);
++                a0_6=vfmaq_n_f64(a0_6,b6,l);
++            }
++            { double l=L[(size_t)1*lda+k];
++                a1_0=vfmaq_n_f64(a1_0,b0,l);
++                a1_2=vfmaq_n_f64(a1_2,b2,l);
++                a1_4=vfmaq_n_f64(a1_4,b4,l);
++                a1_6=vfmaq_n_f64(a1_6,b6,l);
++            }
++            { double l=L[(size_t)2*lda+k];
++                a2_0=vfmaq_n_f64(a2_0,b0,l);
++                a2_2=vfmaq_n_f64(a2_2,b2,l);
++                a2_4=vfmaq_n_f64(a2_4,b4,l);
++                a2_6=vfmaq_n_f64(a2_6,b6,l);
++            }
++            { double l=L[(size_t)3*lda+k];
++                a3_0=vfmaq_n_f64(a3_0,b0,l);
++                a3_2=vfmaq_n_f64(a3_2,b2,l);
++                a3_4=vfmaq_n_f64(a3_4,b4,l);
++                a3_6=vfmaq_n_f64(a3_6,b6,l);
++            }
++        }
++        {
++            float64x2_t b0=vld1q_f64(X+(size_t)(k+1)*ldb+0);
++            float64x2_t b2=vld1q_f64(X+(size_t)(k+1)*ldb+2);
++            float64x2_t b4=vld1q_f64(X+(size_t)(k+1)*ldb+4);
++            float64x2_t b6=vld1q_f64(X+(size_t)(k+1)*ldb+6);
++            { double l=L[(size_t)0*lda+k+1];
++                a0_0=vfmaq_n_f64(a0_0,b0,l);
++                a0_2=vfmaq_n_f64(a0_2,b2,l);
++                a0_4=vfmaq_n_f64(a0_4,b4,l);
++                a0_6=vfmaq_n_f64(a0_6,b6,l);
++            }
++            { double l=L[(size_t)1*lda+k+1];
++                a1_0=vfmaq_n_f64(a1_0,b0,l);
++                a1_2=vfmaq_n_f64(a1_2,b2,l);
++                a1_4=vfmaq_n_f64(a1_4,b4,l);
++                a1_6=vfmaq_n_f64(a1_6,b6,l);
++            }
++            { double l=L[(size_t)2*lda+k+1];
++                a2_0=vfmaq_n_f64(a2_0,b0,l);
++                a2_2=vfmaq_n_f64(a2_2,b2,l);
++                a2_4=vfmaq_n_f64(a2_4,b4,l);
++                a2_6=vfmaq_n_f64(a2_6,b6,l);
++            }
++            { double l=L[(size_t)3*lda+k+1];
++                a3_0=vfmaq_n_f64(a3_0,b0,l);
++                a3_2=vfmaq_n_f64(a3_2,b2,l);
++                a3_4=vfmaq_n_f64(a3_4,b4,l);
++                a3_6=vfmaq_n_f64(a3_6,b6,l);
++            }
++        }
++    }
++    if(k<count) {
+         float64x2_t b0=vld1q_f64(X+(size_t)k*ldb+0);
+         float64x2_t b2=vld1q_f64(X+(size_t)k*ldb+2);
+         float64x2_t b4=vld1q_f64(X+(size_t)k*ldb+4);

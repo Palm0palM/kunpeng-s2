@@ -1,0 +1,27 @@
+[
+  {
+    "version": "T0",
+    "command": "cd /CLUSTER_USER_HOME/kunpeng-experiments/kp-T0-ebc0b8b6de9f && sha256sum remote_job.sh source/run.sh source/bench_trsm.c source/trsm.c source/trsm_test /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a && readelf -p .comment source/trsm_test && ldd source/trsm_test",
+    "exit": 0
+  },
+  {
+    "version": "T1-panel",
+    "command": "cd /CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-panel-43f6594143c8 && sha256sum remote_job.sh source/run.sh source/bench_trsm.c source/trsm.c source/trsm_test /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a && readelf -p .comment source/trsm_test && ldd source/trsm_test",
+    "exit": 0
+  },
+  {
+    "version": "T0-r1",
+    "command": "cd /CLUSTER_USER_HOME/kunpeng-experiments/kp-T0-r1-992a82628919 && sha256sum remote_job.sh source/run.sh source/bench_trsm.c source/trsm.c source/trsm_test /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a && readelf -p .comment source/trsm_test && ldd source/trsm_test",
+    "exit": 0
+  },
+  {
+    "version": "T1-panel-r1",
+    "command": "cd /CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-panel-r1-eb8f886731c9 && sha256sum remote_job.sh source/run.sh source/bench_trsm.c source/trsm.c source/trsm_test /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a && readelf -p .comment source/trsm_test && ldd source/trsm_test",
+    "exit": 0
+  },
+  {
+    "version": "T1-colreuse",
+    "command": "cd /CLUSTER_USER_HOME/kunpeng-experiments/kp-T1-colreuse-72a2086e0d4e && sha256sum remote_job.sh source/run.sh source/bench_trsm.c source/trsm.c source/trsm_test /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a && readelf -p .comment source/trsm_test && ldd source/trsm_test",
+    "exit": 0
+  }
+]

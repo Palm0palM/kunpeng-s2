@@ -1,0 +1,37 @@
+{
+  "eligible": false,
+  "reasons": [
+    "提速 2.54% 未超过测量波动/最低1%门槛 3.59%",
+    "至少一组退步超过1%，需评估官方计分权重后再决定"
+  ],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 22.27,
+      "candidate_ms": 22.75,
+      "gain_pct": -2.155365963179167
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 256.19,
+      "candidate_ms": 256.1,
+      "gain_pct": 0.035130176821880243
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 502.78,
+      "candidate_ms": 482.56,
+      "gain_pct": 4.02163968336051
+    }
+  ],
+  "metric": "sum of per-case median ms; not official score"
+}

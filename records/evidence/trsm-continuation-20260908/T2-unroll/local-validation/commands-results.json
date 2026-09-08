@@ -1,0 +1,217 @@
+[
+  {
+    "name": "environment-uname",
+    "command": "uname -a",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:34.954606+00:00",
+    "end_utc": "2026-09-08T01:16:34.956936+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.002246917000000001,
+    "log": "environment-uname.log"
+  },
+  {
+    "name": "environment-macos",
+    "command": "sw_vers",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:34.957388+00:00",
+    "end_utc": "2026-09-08T01:16:34.963552+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.006155083999999998,
+    "log": "environment-macos.log"
+  },
+  {
+    "name": "environment-clang",
+    "command": "clang --version",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:34.963868+00:00",
+    "end_utc": "2026-09-08T01:16:35.041296+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.077412834,
+    "log": "environment-clang.log"
+  },
+  {
+    "name": "environment-libomp",
+    "command": "ls -l /opt/homebrew/opt/libomp /opt/homebrew/opt/libomp/lib/libomp.dylib",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:35.041662+00:00",
+    "end_utc": "2026-09-08T01:16:35.046185+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.004515874999999989,
+    "log": "environment-libomp.log"
+  },
+  {
+    "name": "build-check-final-ubsan",
+    "command": "clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-final.c /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/zgemm/zgemm.c /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/source/trsm.c -o /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-final-ubsan",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:35.046479+00:00",
+    "end_utc": "2026-09-08T01:16:35.663234+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.6166937920000001,
+    "log": "build-check-final-ubsan.log"
+  },
+  {
+    "name": "build-check-packed-ubsan",
+    "command": "clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-packed.c /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/source/trsm.c -o /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-packed-ubsan",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:35.663633+00:00",
+    "end_utc": "2026-09-08T01:16:35.923239+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.2595755420000001,
+    "log": "build-check-packed-ubsan.log"
+  },
+  {
+    "name": "build-trsm-fail-alloc-object",
+    "command": "clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -Dposix_memalign=trsm_test_alloc_fail -c /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/source/trsm.c -o /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/trsm-fail-alloc.o",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:35.923611+00:00",
+    "end_utc": "2026-09-08T01:16:36.131586+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.20794791599999995,
+    "log": "build-trsm-fail-alloc-object.log"
+  },
+  {
+    "name": "build-check-packed-fail-alloc",
+    "command": "clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -L/opt/homebrew/opt/libomp/lib -lomp /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-packed.c /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/fail-alloc.c /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/trsm-fail-alloc.o -o /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-packed-fail-alloc",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:36.132026+00:00",
+    "end_utc": "2026-09-08T01:16:36.204034+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.07199391700000013,
+    "log": "build-check-packed-fail-alloc.log"
+  },
+  {
+    "name": "build-check-final-fail-alloc",
+    "command": "clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-final.c /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/zgemm/zgemm.c /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/fail-alloc.c /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/trsm-fail-alloc.o -o /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-final-fail-alloc",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:36.204441+00:00",
+    "end_utc": "2026-09-08T01:16:36.421637+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.21716962499999992,
+    "log": "build-check-final-fail-alloc.log"
+  },
+  {
+    "name": "build-check-update-ubsan",
+    "command": "clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-update.c -o /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-update-ubsan",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {},
+    "start_utc": "2026-09-08T01:16:36.422062+00:00",
+    "end_utc": "2026-09-08T01:16:36.641023+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.21893533300000012,
+    "log": "build-check-update-ubsan.log"
+  },
+  {
+    "name": "check-final-t1",
+    "command": "OMP_NUM_THREADS=1 OMP_DYNAMIC=FALSE UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-final-ubsan",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "start_utc": "2026-09-08T01:16:36.641413+00:00",
+    "end_utc": "2026-09-08T01:16:36.930393+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.28894874999999987,
+    "log": "check-final-t1.log"
+  },
+  {
+    "name": "check-final-t4",
+    "command": "OMP_NUM_THREADS=4 OMP_DYNAMIC=FALSE UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-final-ubsan",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "start_utc": "2026-09-08T01:16:36.930987+00:00",
+    "end_utc": "2026-09-08T01:16:37.208528+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.27750883400000026,
+    "log": "check-final-t4.log"
+  },
+  {
+    "name": "check-packed-t1",
+    "command": "OMP_NUM_THREADS=1 OMP_DYNAMIC=FALSE UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-packed-ubsan",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "start_utc": "2026-09-08T01:16:37.209195+00:00",
+    "end_utc": "2026-09-08T01:16:38.730068+00:00",
+    "exit_code": 0,
+    "wall_seconds": 1.5207555840000002,
+    "log": "check-packed-t1.log"
+  },
+  {
+    "name": "check-packed-t4",
+    "command": "OMP_NUM_THREADS=4 OMP_DYNAMIC=FALSE UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-packed-ubsan",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "start_utc": "2026-09-08T01:16:38.730903+00:00",
+    "end_utc": "2026-09-08T01:16:40.100693+00:00",
+    "exit_code": 0,
+    "wall_seconds": 1.3696925419999997,
+    "log": "check-packed-t4.log"
+  },
+  {
+    "name": "check-packed-fail-alloc-t4",
+    "command": "OMP_NUM_THREADS=4 OMP_DYNAMIC=FALSE UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-packed-fail-alloc",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "start_utc": "2026-09-08T01:16:40.101569+00:00",
+    "end_utc": "2026-09-08T01:16:41.590667+00:00",
+    "exit_code": 0,
+    "wall_seconds": 1.4889979170000007,
+    "log": "check-packed-fail-alloc-t4.log"
+  },
+  {
+    "name": "check-final-fail-alloc-t4",
+    "command": "OMP_NUM_THREADS=4 OMP_DYNAMIC=FALSE UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-final-fail-alloc",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "start_utc": "2026-09-08T01:16:41.591538+00:00",
+    "end_utc": "2026-09-08T01:16:41.871025+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.2794601659999998,
+    "log": "check-final-fail-alloc-t4.log"
+  },
+  {
+    "name": "check-update-t4",
+    "command": "OMP_NUM_THREADS=4 OMP_DYNAMIC=FALSE UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T2-unroll/local/check-update-ubsan",
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2",
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "start_utc": "2026-09-08T01:16:41.875996+00:00",
+    "end_utc": "2026-09-08T01:16:41.899259+00:00",
+    "exit_code": 0,
+    "wall_seconds": 0.023244833000000575,
+    "log": "check-update-t4.log"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "state": "submitted",
+  "host": "CLUSTER_HOST",
+  "user": "REDACTED_USER",
+  "port": 22,
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-environment-314d8bc37cf1",
+  "job_id": "1485185",
+  "purpose": "TRSM reference environment probe; no benchmark",
+  "submit_command": "dsub -n trsm-environment-check -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-environment-314d8bc37cf1/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-environment-314d8bc37cf1/remote_job.sh",
+  "status_checked_at": "2026-09-08T00:42:23.062128+00:00",
+  "status_returncode": 0,
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1485185",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  }
+}

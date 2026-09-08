@@ -1,0 +1,4 @@
+Working directory: /LOCAL_USER_HOME/Downloads/conv/kunpeng-s2
+Command: python3 tools/experiment.py checkpoint trsm T2-unroll --note '基于T0，只显式2步展开大工作集NEON update4x8的k循环，保持每个累加器k顺序并处理奇数尾项；其余源码、benchmark、runner不变。trsm.c SHA256=bff1a285b4e454d26fecdc548409d424ae2fe18e042620319db026105149910c。本机Apple ARM64/macOS26.5/clang17.0.0/libomp22.1.8纯UBSan：原7组+扩展4组在1/4线程均PASS（22次）；分配失败版本4线程11组均PASS，其中7组走小工作集分配回退、4组走不分配临时面板的大工作集，不能称为共享面板失败回退；整算子最大误差3.886e-16、padding/L不变。新增直接微核55组覆盖0/1/偶数/奇数count与5种ldb，与有序标量fma逐位一致、padding/输入不变。全部6构建/7运行退出0，无UBSan诊断。完整命令/环境/日志/差异/哈希见local/REPORT.md、commands-results.json、*.log、source-hashes.json、validation-sha256.json。本机无BLAS参考，不是官方benchmark/KML复验；未远程访问或提交作业，鲲鹏性能与官方KML待测，不晋级。'
+已保存待测候选及策略: T2-unroll
+Exit code: 0

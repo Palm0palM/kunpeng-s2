@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T1-colreuse",
+  "parent": "T0",
+  "strategy": "derived_from T1-panel：基于已测已解右端项打包实现，仅将 solve_blocked 更新微块内部 i/j 循环顺序交换为 j/i，使同一已解 RHS 连续面板依次供同一 CT 块的多行更新复用；父版本仍为当前最佳 T0，其余代码、分块、线程、精度、benchmark 和 runner 均不变，检验面板复用局部性的单一假设",
+  "created_at": "2026-09-08T00:42:14.179078+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "e0cee4d518144cfbc83e25cfffc55e64cfabc1687ef79ac449720fa84ed76d9f"
+  },
+  "status": "prepared",
+  "note": "derived_from T1-panel；父版本T0保留当前最佳。相对已测T1-panel只交换solve_blocked更新微块i/j循环为j/i，官方benchmark、runner、其他源文件不变。trsm.c SHA256=e0cee4d518144cfbc83e25cfffc55e64cfabc1687ef79ac449720fa84ed76d9f。本机Apple ARM64 macOS26.5/Apple clang17.0.0/libomp22.1.8纯UBSan：check-final原7组及check-packed扩展4组在1/4线程均PASS；另4线程强制分配失败回退4组PASS；共22次正常TRSM和4次回退检查，最大误差分别2.776e-16和3.886e-16，B padding/L不变，无UBSan诊断，所有构建和运行退出0。未改Z0仅用于现成check-final依赖。本机已知解参考不调用BLAS，不是官方benchmark/KML复验。完整命令、退出码、环境、日志、差异与哈希在local/REPORT.md、commands-results.json、*.log、source-hashes.json、validation-sha256.json。未远程访问或提交作业；鲲鹏性能与官方KML仍待测，不晋级。",
+  "updated_at": "2026-09-08T00:43:55.013482+00:00",
+  "verified": false
+}

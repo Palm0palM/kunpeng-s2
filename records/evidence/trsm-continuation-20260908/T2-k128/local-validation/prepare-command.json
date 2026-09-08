@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python3",
+    "tools/experiment.py",
+    "new",
+    "trsm",
+    "T2-k128",
+    "--parent",
+    "T0",
+    "--strategy",
+    "仅将大工作集 solve_blocked 的 KB 从256改为128，减少每次4x8更新和对角求解的活动工作集；检验更小k块的缓存/地址转换收益是否超过新增barrier与B写回成本；CT=64、内核形状、小工作集路径、参考库、线程和benchmark不变"
+  ],
+  "exit": 0
+}

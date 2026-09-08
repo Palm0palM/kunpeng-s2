@@ -1,0 +1,11 @@
+--- T0/source/trsm.c
++++ T2-k128/source/trsm.c
+@@ -135,7 +135,7 @@
+ #if defined(__aarch64__)
+ #include <arm_neon.h>
+ #endif
+-enum { KB = 256, CT = 64 };
++enum { KB = 128, CT = 64 };
+ /* 分块前代：先求一个小对角块，再用矩阵乘更新下面的全部右端项。
+  * 每一步 omp for 的 barrier 保证依赖完成；线程只写自己负责的矩形。
+  * 更新改变浮点分组顺序，必须以官方 1e-12 容差验证。

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T2-unroll",
+  "parent": "T0-r2",
+  "strategy": "基于T0，仅对大工作集NEON update4x8的k点积循环显式2步展开，保持每个累加器依次累计k与k+1，单独处理奇数尾项；假设减少循环分支和地址计算并增加load/FMA调度机会，不改小工作集、分块、微核形状、预取、线程、精度、benchmark或runner",
+  "created_at": "2026-09-08T01:16:04.944261+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "6b66766196b2a6024fcbbeac45ff1b4189e19cc8ac8d75d001e4ddfea004abac"
+  },
+  "status": "planned",
+  "pre_measurement_note": "父测量刷新为T0-r2（与T0源码逐字节相同），仅用于同分配对照；此调整在任何远程提交/测量前完成，原准备元数据另存。"
+}
