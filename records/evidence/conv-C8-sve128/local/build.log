@@ -1,0 +1,6 @@
++ clang -O3 -g -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=all -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib -lomp -lm -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 check_conv_guard_extended.c ../source/conv2d.c -o check_conv_guard_extended
+../source/conv2d.c:109:1: warning: loop not vectorized: the optimizer was unable to perform the requested transformation; the transformation might be disabled or specified as part of an unsupported transformation ordering [-Wpass-failed=transform-warning]
+  109 | DEFINE_CONV_TILE(conv_tile_main, CONV_BLOCK)
+      | ^
+../source/conv2d.c:109:1: warning: loop not vectorized: the optimizer was unable to perform the requested transformation; the transformation might be disabled or specified as part of an unsupported transformation ordering [-Wpass-failed=transform-warning]
+2 warnings generated.

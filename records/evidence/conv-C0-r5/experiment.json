@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C0-r5",
+  "parent": null,
+  "strategy": "与显式SVE候选共享同一次38核单NUMA分配的原版基线；官方编译与校验不变",
+  "created_at": "2026-09-08T01:37:11.458196+00:00",
+  "settings": {
+    "bench_repeats": 3
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned"
+}

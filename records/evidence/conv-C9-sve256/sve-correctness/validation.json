@@ -1,0 +1,76 @@
+{
+  "version": "C9-sve256",
+  "parent": "C7-r1",
+  "implementation_template": "C8-sve128",
+  "template_sha256": "e5c7d2fecc2acaf5476ba7579d60be88e6f140f190fe47e7434018f92e4456f8",
+  "created_at": "2026-09-08T01:46:55.729552+00:00",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "3a583d6fa7d907c0238a9ae2ef87fee5b1e7f3fd130b6505f0e46a5e87883cd6",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "local_results": {
+    "guard-extended-1thread.log": {
+      "sha256": "3660b3148d92fea41ede46b4470331492e614335587b5632ae40e8b6933dc286",
+      "cases": 682,
+      "bitwise_equal": true,
+      "ubsan": true,
+      "guard_pages": true,
+      "exit_code": 0
+    },
+    "guard-extended-4thread.log": {
+      "sha256": "3660b3148d92fea41ede46b4470331492e614335587b5632ae40e8b6933dc286",
+      "cases": 682,
+      "bitwise_equal": true,
+      "ubsan": true,
+      "guard_pages": true,
+      "exit_code": 0
+    }
+  },
+  "diagnostic_job_id": "1485371",
+  "diagnostic_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1485371",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "remote_ubsan": false,
+  "remote_checks": {
+    "single_thread_guard_cases": 682,
+    "four_thread_guard_cases": 682,
+    "instrumented_dispatch_guard_cases": 682,
+    "bitwise_equal": true,
+    "sve_lanes": 16,
+    "block_outputs": 256,
+    "sve_helper_actual_entries": 2046,
+    "affinity": "38 CPUs, one NUMA node"
+  },
+  "assembly_observations": {
+    "hot_loop": ".L5 to bgt .L5",
+    "vector_spill": true,
+    "address": "x14 = sp + 672",
+    "reload": "ldr z31, [x14]",
+    "store": "str z23, [x14]",
+    "frequency": "One vector load and store in each two-kernel-element hot-loop iteration",
+    "vector_bytes_on_this_machine": 64,
+    "source": ".runs/conv/C9-sve256/sve-correctness/raw/conv2d-sve.s",
+    "fused_fp_instructions_found": false,
+    "performance_inference": null
+  },
+  "remote_artifacts_sha256": {
+    "remote_job.sh": "7b9de99876397285a66422b4f442dba44e47394a85f8daf4ff36ce05a9762939",
+    "check_sve_dispatch.c": "432bb83aaef674880ab8232bfef55a669a4c51991c536fab10627d1570579795",
+    "conv2d.c": "3a583d6fa7d907c0238a9ae2ef87fee5b1e7f3fd130b6505f0e46a5e87883cd6",
+    "probe.log": "d64c49fefc84b4e70a6cca4cc214add306e0bcc240ccff32966f42ea145e99ef",
+    "check_conv_guard": "2755a94496ba91ad5221355bd1b6b24b5ef58d50c9cdfbe316986e023f57107b",
+    "conv2d-sve.s": "c07f2adf5efac2d140ff0cfd04bd8e85df204a8fecdcf5b7e3b77ebe080f0c97",
+    "wrapper.stdout.log": "39d4a7525556b607a2e51d81db2b234c4397857ddaed5451fbfa987eeb1fcbaa",
+    "check_conv_guard.c": "0933292376c2175e0ecfeea27ea417b8550506cd38d954fbc2f05f24360a87c7",
+    "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "check_sve_dispatch": "c34e877b21b001a9a85727a31ce8220fb76a73eb906bfd49783227909f255983"
+  },
+  "performance_result": null,
+  "decision": "Correctness ready; root coordinator must choose common measured parent and run same-allocation official three-suite benchmark before comparison/promotion."
+}
