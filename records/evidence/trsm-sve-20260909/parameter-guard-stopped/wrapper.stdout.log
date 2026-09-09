@@ -1,0 +1,80 @@
+PASS 30 direct SVE microkernel count/stride combinations; bitwise ordered-FMA match and output padding preserved
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 10 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+SVE_KERNEL_ACTUAL_ENTRIES=2161
+PASS actual SVE dispatch preflight
+PASS 30 direct SVE microkernel count/stride combinations; bitwise ordered-FMA match and output padding preserved
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 10 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+SVE_KERNEL_ACTUAL_ENTRIES=2161
+PASS actual SVE dispatch preflight
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 10 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+PASS 30 direct SVE microkernel count/stride combinations; bitwise ordered-FMA match and output padding preserved
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 10 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+SVE_KERNEL_ACTUAL_ENTRIES=84992
+PASS actual SVE dispatch preflight
+PASS 30 direct SVE microkernel count/stride combinations; bitwise ordered-FMA match and output padding preserved
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 10 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+SVE_KERNEL_ACTUAL_ENTRIES=84992
+PASS actual SVE dispatch preflight
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 10 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM_PREFLIGHT_COMPLETE=1
+COHORT FAILED: RuntimeError('All members require TEST_RUNS=3')

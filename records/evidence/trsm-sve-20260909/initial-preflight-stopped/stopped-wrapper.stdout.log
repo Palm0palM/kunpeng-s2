@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-5eaa43533feb/./cohort_driver.py", line 156, in <module>
+    sys.exit(main())
+  File "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-5eaa43533feb/./cohort_driver.py", line 59, in main
+    probe = subprocess.run(['/bin/bash', './run-preflight.sh'], cwd=str(ROOT / 'preflight'),
+  File "/usr/lib64/python3.9/subprocess.py", line 507, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib64/python3.9/subprocess.py", line 1121, in communicate
+    stdout = self.stdout.read()
+KeyboardInterrupt

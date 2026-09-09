@@ -1,0 +1,79 @@
+--- T1-panel/source/trsm.c
++++ T3-svepanel/source/trsm.c
+@@ -3,6 +3,14 @@
+ #include <omp.h>
+ #if defined(__aarch64__)
+ #include <arm_neon.h>
++#endif
++#if defined(__linux__) && defined(__aarch64__) && defined(__GNUC__) && __GNUC__ >= 10 && !defined(__clang__)
++#include <arm_sve.h>
++#include <sys/auxv.h>
++#include <asm/hwcap.h>
++#define TRSM_CAN_DISPATCH_SVE 1
++#else
++#define TRSM_CAN_DISPATCH_SVE 0
+ #endif
+ enum { RHS = 8, ROWS = 4 };
+ /* L X = B，按 RHS 列独立分配线程；每线程把右端项打包为窄面板。
+@@ -76,11 +84,46 @@
+     vst1q_f64(s+3*RHS+6,s3_6);
+ }
+ #endif
++#if TRSM_CAN_DISPATCH_SVE
++/* Only call after HWCAP_SVE; vector length belongs to the calling thread. */
++__attribute__((target("arch=armv8-a+sve"), noinline))
++static int trsm_sve_has_eight_doubles(void)
++{
++    return svcntd()==RHS;
++}
++
++/* Eight lanes represent independent RHS columns. Keep each row's k order
++ * and fused multiply-add semantics identical to the original NEON kernel. */
++__attribute__((target("arch=armv8-a+sve"), noinline))
++static void panel_sums_sve(int start,int lda,const double *L,const double *x,double *s)
++{
++    const svbool_t pg=svptrue_b64();
++    svfloat64_t s0=svdup_n_f64(0.0);
++    svfloat64_t s1=svdup_n_f64(0.0);
++    svfloat64_t s2=svdup_n_f64(0.0);
++    svfloat64_t s3=svdup_n_f64(0.0);
++    for(int k=0;k<start;++k) {
++        const svfloat64_t b=svld1_f64(pg,x+(size_t)k*RHS);
++        s0=svmla_n_f64_x(pg,s0,b,L[(size_t)0*lda+k]);
++        s1=svmla_n_f64_x(pg,s1,b,L[(size_t)1*lda+k]);
++        s2=svmla_n_f64_x(pg,s2,b,L[(size_t)2*lda+k]);
++        s3=svmla_n_f64_x(pg,s3,b,L[(size_t)3*lda+k]);
++    }
++    svst1_f64(pg,s+0*RHS,s0);
++    svst1_f64(pg,s+1*RHS,s1);
++    svst1_f64(pg,s+2*RHS,s2);
++    svst1_f64(pg,s+3*RHS,s3);
++}
++#endif
+ static void solve_panel(int m,int n,const double *L,int lda,double *B,int ldb)
+ {
+     if(m<=0 || n<=0) return;
+ #pragma omp parallel
+     {
++#if TRSM_CAN_DISPATCH_SVE
++        const int use_sve=(getauxval(AT_HWCAP)&HWCAP_SVE)!=0
++                         && trsm_sve_has_eight_doubles();
++#endif
+         double *x=NULL;
+         if(posix_memalign((void**)&x,64,(size_t)m*RHS*sizeof(double))!=0) x=NULL;
+ #pragma omp for schedule(static)
+@@ -101,7 +144,13 @@
+                 int h=m-ii<ROWS?m-ii:ROWS;
+                 double sums[ROWS*RHS]={0};
+ #if defined(__aarch64__)
+-                if(h==ROWS)panel_sums(ii,lda,L+(size_t)ii*lda,x,sums);
++                if(h==ROWS) {
++#if TRSM_CAN_DISPATCH_SVE
++                    if(use_sve)panel_sums_sve(ii,lda,L+(size_t)ii*lda,x,sums);
++                    else
++#endif
++                    panel_sums(ii,lda,L+(size_t)ii*lda,x,sums);
++                }
+                 else
+ #endif
+                 {
