@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T1-control5",
+  "parent": null,
+  "strategy": "T1-panel-r2源码不变的同分配三轮对照；显式固定TEST_RUNS=3，前组仅完成SVE预检查后因计时参数不符被guard拒绝，零官方结果。",
+  "created_at": "2026-09-09T03:28:29.038163+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "TEST_RUNS": "3"
+    }
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "fea6ee11cce8785ac3f13f641f9feb195a829493a27a9c902000a743545dbf73"
+  },
+  "status": "failed",
+  "note": "显式TEST_RUNS=3、三轮完整套件；不改变任何源码。",
+  "updated_at": "2026-09-09T03:28:29.206479+00:00",
+  "verified": false,
+  "job_id": "1492070",
+  "failure": "Target SVE preflight passed, then driver failed before first BENCH_REPEAT because KBLAS_LIB was missing from inherited experiment settings. Zero official results. The no-hash retry explicitly records the reference library and TEST_RUNS=3.",
+  "official_benchmark_started": false,
+  "validation_policy": "No further hash computations or verification, per user request; historical fields are retained without revalidation.",
+  "failure_evidence": "records/evidence/trsm-sve-20260909/reference-setting-stopped",
+  "publication_note": "公开日志为脱敏副本；本地原始证据保留。既有字段的历史含义不变，本轮不计算或验证任何哈希。公开文件不应冒充未脱敏原件通过自动验证。"
+}

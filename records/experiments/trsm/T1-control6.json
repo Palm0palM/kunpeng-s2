@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T1-control6",
+  "parent": null,
+  "source_implementation_id": "T1-panel",
+  "source_from": "T1-panel-r2",
+  "strategy": "不计算或验证哈希的同源码重试；以T1-panel为对照，单独测量SVE小路径或大路径；显式OpenBLAS静态库、TEST_RUNS=3、三轮完整官方用例。",
+  "created_at": "2026-09-09T03:32:54.916102+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "status": "passed",
+  "verified": true,
+  "validation_policy": "user-requested-no-hash",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        21.89,
+        22.87,
+        21.89
+      ],
+      "median_ms": 21.89,
+      "min_ms": 21.89,
+      "max_ms": 22.87,
+      "spread_pct": 4.47693010507081,
+      "gflops": [
+        239.1676,
+        228.8497,
+        239.1129
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        254.87,
+        292.13,
+        253.1
+      ],
+      "median_ms": 254.87,
+      "min_ms": 253.1,
+      "max_ms": 292.13,
+      "spread_pct": 15.31368933181622,
+      "gflops": [
+        395.0719,
+        344.6731,
+        397.8259
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        480.22,
+        480.18,
+        479.95
+      ],
+      "median_ms": 480.18,
+      "min_ms": 479.95,
+      "max_ms": 480.22,
+      "spread_pct": 0.0562289141571991,
+      "gflops": [
+        308.9938,
+        309.0231,
+        309.1684
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 756.94,
+  "official_score": null,
+  "ranking": null,
+  "recorded_at": "2026-09-09T03:36:47.838640+00:00",
+  "environment": "COMPUTE_NODE_1-numa8-gcc10-generic38-openblas028-test3-job1492091",
+  "reference": "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; official KML unavailable in compute-node probe; not official KML revalidation",
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "8",
+    "ALLOWED_CPUS": "304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1492091",
+  "checks": {
+    "evidence_files_present": true,
+    "job_id": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_zero": true,
+    "three_complete_ordered_suites": true,
+    "precision_at_most_1e_12": true,
+    "machine_and_38_cpus": true,
+    "settings_38_threads": true,
+    "settings_three_suites": true,
+    "test_runs_documented": true,
+    "reference_library_documented": true,
+    "benchmark_matches_current_trsm_bytes": true,
+    "local_source_files_present": true
+  },
+  "hash_validation": "not performed: prohibited by user",
+  "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
+  "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
+  "run_dir": ".runs/trsm/T1-control6",
+  "nohash_evidence": ".runs/trsm/T1-control6/nohash-recorded-evidence",
+  "log": ".runs/trsm/T1-control6/nohash-recorded-evidence/benchmark.log",
+  "metric": "sum of per-case median ms; not official score",
+  "promoted_at": "2026-09-09T03:38:05.962579+00:00",
+  "promotion_validation_policy": "user-requested-no-hash",
+  "archived_evidence": "records/evidence/trsm-sve-20260909/T1-control6",
+  "archived_log": "records/evidence/trsm-sve-20260909/T1-control6/benchmark.log",
+  "publication_note": "公开日志为脱敏副本；本地原始证据保留。既有字段的历史含义不变，本轮不计算或验证任何哈希。公开文件不应冒充未脱敏原件通过自动验证。",
+  "published_log": "records/evidence/trsm-sve-20260909/T1-control6/benchmark.log"
+}

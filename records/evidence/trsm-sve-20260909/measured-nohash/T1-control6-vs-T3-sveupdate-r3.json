@@ -1,0 +1,38 @@
+{
+  "eligible": true,
+  "reasons": [],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 21.89,
+      "candidate_ms": 21.86,
+      "gain_pct": 0.13704888076747893
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 254.87,
+      "candidate_ms": 254.19,
+      "gain_pct": 0.26680268372111543
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 480.18,
+      "candidate_ms": 259.01,
+      "gain_pct": 46.059810904244245
+    }
+  ],
+  "total_gain_pct": 29.312759267577366,
+  "noise_threshold_pct": 15.31368933181622,
+  "validation_policy": "user-requested-no-hash",
+  "hash_validation": "not performed",
+  "metric": "sum of per-case median ms; not official score"
+}

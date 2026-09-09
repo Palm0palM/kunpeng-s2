@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T3-svepanel-r1",
+  "parent": "T1-control4",
+  "strategy": "与T3-svepanel实现相同的重试：只用SVE替换小路径4x8累加，其他条件不变；前组在独立预检查因软件long-double构造过慢被停止，未有官方成绩。",
+  "created_at": "2026-09-09T03:24:16.473791+00:00",
+  "settings": {
+    "bench_repeats": 3
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "c19ff63dd4256e2cc31ef6deef56afd61b509964e6362a2d783fe2c9f6dbf768"
+  },
+  "status": "failed",
+  "note": "预检查完成后在官方计时前停止；按用户新要求直接登记 no-hash 失败 JSON，未调用会计算哈希的 experiment.py record。",
+  "updated_at": "2026-09-09T03:32:57.872857+00:00",
+  "verified": false,
+  "recorded_at": "2026-09-09T03:32:57.872857+00:00",
+  "job_id": "1492058",
+  "failure": "1492058 的两候选 SVE 实机预检查全部 PASS，但 cohort 在官方计时前因 TEST_RUNS 未显式设置为 3 被参数检查拒绝；调度器 FAILED，退出码 125，零官方成绩。",
+  "environment": "COMPUTE_NODE_1-cpu342-379-single-numa-gcc10.3.1-generic-38-preflight-only-job1492058",
+  "reference": "TRSM preflight uses standalone known solutions and ordered scalar FMA; OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38 availability probe passed. Official KML module root/header/library unavailable. No official benchmark or KML revalidation occurred.",
+  "log": "records/evidence/trsm-sve-20260909/parameter-guard-stopped/wrapper.stdout.log",
+  "scheduler_status": "records/evidence/trsm-sve-20260909/parameter-guard-stopped/scheduler-status.txt",
+  "preflight_summary": "records/evidence/trsm-sve-20260909/parameter-guard-stopped/preflight-summary.json",
+  "official_benchmark_started": false,
+  "official_measurements": [],
+  "registration_method": "direct-json-no-hash-per-user-instruction",
+  "hash_policy": {
+    "calculation_performed": false,
+    "verification_performed": false,
+    "source_hashes": "Preserved from existing prepared record; not recomputed or checked against current/remote files"
+  },
+  "publication_note": "公开日志为脱敏副本；本地原始证据保留。既有字段的历史含义不变，本轮不计算或验证任何哈希。公开文件不应冒充未脱敏原件通过自动验证。"
+}
