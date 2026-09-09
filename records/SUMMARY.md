@@ -34,6 +34,18 @@
 | trsm | T1-panel | T0 | passed | 761.41 | 大工作集分块前代每个已解256x8右端项块共享打包为连续面板，使所有下方4x8更新复用连续读取，降低跨行大步长访存；其余算法与分块不变 |
 | trsm | T2-k128 | T0-r2 | passed | 784.74 | 仅将大工作集 solve_blocked 的 KB 从256改为128，减少每次4x8更新和对角求解的活动工作集；检验更小k块的缓存/地址转换收益是否超过新增barrier与B写回成本；CT=64、内核形状、小工作集路径、参考库、线程和benchmark不变 |
 | trsm | T2-unroll | T0-r2 | passed | 773.05 | 基于T0，仅对大工作集NEON update4x8的k点积循环显式2步展开，保持每个累加器依次累计k与k+1，单独处理奇数尾项；假设减少循环分支和地址计算并增加load/FMA调度机会，不改小工作集、分块、微核形状、预取、线程、精度、benchmark或runner |
+| trsm | T1-control3 | — | failed | — | T1-panel-r2晋级源码不变；为20260909的独立SVE小路径和大路径候选建立同一38核单NUMA分配内三轮完整官方用例对照。来源T1-panel-r2，不是新实现。 |
+| trsm | T1-control4 | — | failed | — | T1-panel-r2源码不变；1492036仅因预检查参考构造过慢在官方计时前停止，本记录作为新同分配三轮对照，不复用未完成成绩。 |
+| trsm | T1-control5 | — | failed | — | T1-panel-r2源码不变的同分配三轮对照；显式固定TEST_RUNS=3，前组仅完成SVE预检查后因计时参数不符被guard拒绝，零官方结果。 |
+| trsm | T1-control6 | — | passed | 756.94 | 不计算或验证哈希的同源码重试；以T1-panel为对照，单独测量SVE小路径或大路径；显式OpenBLAS静态库、TEST_RUNS=3、三轮完整官方用例。 |
+| trsm | T3-svepanel-r1 | T1-control4 | failed | — | 与T3-svepanel实现相同的重试：只用SVE替换小路径4x8累加，其他条件不变；前组在独立预检查因软件long-double构造过慢被停止，未有官方成绩。 |
+| trsm | T3-svepanel-r2 | T1-control5 | failed | — | 原T3-svepanel源码不变；显式统一TEST_RUNS=3后重试，小路径SVE单因素对照。上一组SVE预检查通过但没有官方计时。 |
+| trsm | T3-svepanel-r3 | T1-control6 | passed | 780.71 | 不计算或验证哈希的同源码重试；以T1-panel为对照，单独测量SVE小路径或大路径；显式OpenBLAS静态库、TEST_RUNS=3、三轮完整官方用例。 |
+| trsm | T3-svepanel | T1-control3 | failed | — | 仅将solve_panel的4x8累加微核在Linux HWCAP确认且SVE宽度恰为8个double时替换为SVE；保持每元素k累加顺序、面板布局、4行前代、回退、线程、精度与官方benchmark和run.sh不变。其余平台保留NEON/标量。 |
+| trsm | T3-sveupdate-r1 | T1-control4 | failed | — | 与T3-sveupdate实现相同的重试：只用SVE替换大路径4x8更新，其他条件不变；前组在独立预检查因软件long-double构造过慢被停止，未有官方成绩。 |
+| trsm | T3-sveupdate-r2 | T1-control5 | failed | — | 原T3-sveupdate源码不变；显式统一TEST_RUNS=3后重试，大路径SVE单因素对照。上一组SVE预检查通过但没有官方计时。 |
+| trsm | T3-sveupdate-r3 | T1-control6 | passed | 535.06 | 不计算或验证哈希的同源码重试；以T1-panel为对照，单独测量SVE小路径或大路径；显式OpenBLAS静态库、TEST_RUNS=3、三轮完整官方用例。 |
+| trsm | T3-sveupdate | T1-control3 | failed | — | 仅将solve_blocked的4x8更新微核在Linux HWCAP确认且SVE宽度恰为8个double时替换为SVE；保持256x8打包布局、k顺序、分块、C减法、分配失败步长回退、线程、精度与官方benchmark和run.sh不变。其余平台保留NEON/标量。 |
 | zgemm | Z0 | — | passed | 4522.77 | 当前ZGEMM已验证源码的同环境三轮基线复测 |
 | zgemm | Z0-pair1 | — | passed | 4554.89 | 保持Z0源码不变，在单个38核NUMA作业内与冻结的Z1-pack各执行三轮完整官方用例，建立可比较基线；来源Z0，TEST_RUNS=3 |
 | zgemm | Z1-control2 | — | passed | 3737.22 | 保持已晋级Z1-pack-pair1源码不变，与MB48候选在同一个38核NUMA作业内各执行三轮官方用例，建立第二轮可比较控制基线；来源Z1-pack-pair1 |
@@ -42,4 +54,4 @@
 | zgemm | Z2-mb48 | Z1-pack-pair1 | prepared | — | 仅将MB24改为MB48，保留三行A连续打包、3x4微内核和3M累加顺序；检验增加行复用能否降低B跨行块扫描开销，K512复用域理论约624KiB（不含C），仍需实测 |
 | zgemm | Z2-mb48-pair2 | Z1-control2 | passed | 3862.22 | 仅将MB24改为MB48，保留三行A连续打包、3x4微内核和3M累加顺序；检验增加行复用能否降低B跨行块扫描开销，K512复用域理论约624KiB（不含C），仍需实测 |
 
-TRSM 当前最佳为 T1-panel-r2；同分配三轮确认合计改善 2.40%，详见 [TRSM 晋级记录](../docs/trsm-continuation-20260908.md)。
+TRSM 当前最佳为 T3-sveupdate-r3；同分配三轮合计耗时降低29.31%，详见[2026-09-09 SVE记录](../docs/trsm-sve-20260909.md)。

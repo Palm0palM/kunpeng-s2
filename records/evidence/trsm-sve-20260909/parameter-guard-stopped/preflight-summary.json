@@ -1,0 +1,38 @@
+{
+  "job_id": "1492058",
+  "cohort_id": "trsm-cohort-c5c8ab4768a3",
+  "scheduler": {
+    "status": "FAILED",
+    "state": "FAILED",
+    "jobId": "1492058",
+    "jobExitCode": 125,
+    "systemExitCode": 10001
+  },
+  "preflight_complete": true,
+  "microkernel_invocations": 4,
+  "microkernel_combinations_per_invocation": 30,
+  "known_solution_suites": 6,
+  "known_solution_cases_per_suite": 10,
+  "no_op_boundaries_per_suite": 4,
+  "sve_kernel_actual_entries": [
+    2161,
+    2161,
+    84992,
+    84992
+  ],
+  "entry_order": [
+    "panel_threads1",
+    "panel_threads4",
+    "update_threads1",
+    "update_threads4"
+  ],
+  "official_rounds_started": 0,
+  "official_measurements": [],
+  "stop_reason": "All members require TEST_RUNS=3",
+  "hash_policy": {
+    "calculation_performed": false,
+    "verification_performed": false,
+    "existing_hash_values": "Historical metadata retained without revalidation"
+  },
+  "recorded_at": "2026-09-09T03:32:57.872857+00:00"
+}
