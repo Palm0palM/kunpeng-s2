@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C12-sveu1",
+  "parent": "C8-r1",
+  "strategy": "Use one kernel coefficient per iteration in the eight-vector SVE main block to reduce live input vectors and scheduling pressure; preserve strict order, eight accumulators, original tail, fallback and runner.",
+  "created_at": "2026-09-09T02:56:44.965316+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "2ed9db6bb9dacfb704b869029025a59a2528e7a4c72012f2134371e02ac3589d",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-09T03:03:53.874638+00:00",
+  "environment": "sep9-group1-gcc10-generic-38",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "2e797826034f505fa545f5e9def6de5bb4f5fdffe577a9ba485669722ac89e62",
+  "log": ".runs/conv/C12-sveu1/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        71.84,
+        72.28,
+        87.77
+      ],
+      "median_ms": 72.28,
+      "min_ms": 71.84,
+      "max_ms": 87.77,
+      "spread_pct": 22.03929164360818,
+      "gflops": [
+        1049.2218,
+        1042.804,
+        858.8206
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        89.36,
+        89.37,
+        90.13
+      ],
+      "median_ms": 89.37,
+      "min_ms": 89.36,
+      "max_ms": 90.13,
+      "spread_pct": 0.8615866621908873,
+      "gflops": [
+        931.4265,
+        931.3735,
+        923.4915
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        146.75,
+        147.3,
+        146.68
+      ],
+      "median_ms": 146.75,
+      "min_ms": 146.68,
+      "max_ms": 147.3,
+      "spread_pct": 0.4224872231686573,
+      "gflops": [
+        1097.6036,
+        1093.511,
+        1098.1029
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        340.63,
+        334.69,
+        334.88
+      ],
+      "median_ms": 334.88,
+      "min_ms": 334.69,
+      "max_ms": 340.63,
+      "spread_pct": 1.7737697085523165,
+      "gflops": [
+        1015.0933,
+        1033.1236,
+        1032.5168
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 643.28,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_2",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "1",
+    "ALLOWED_CPUS": "38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1491944",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -1.93% 未超过测量波动/最低1%门槛 22.04%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 69.89,
+        "candidate_ms": 72.28,
+        "gain_pct": -3.419659464873373
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 88.38,
+        "candidate_ms": 89.37,
+        "gain_pct": -1.1201629327902343
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 146.35,
+        "candidate_ms": 146.75,
+        "gain_pct": -0.2733173898189311
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 326.51,
+        "candidate_ms": 334.88,
+        "gain_pct": -2.5634743193164082
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "comparison_baseline": "C8-r2",
+  "decision_note": "One-coefficient loop regressed; retained as rejected experiment."
+}

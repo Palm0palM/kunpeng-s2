@@ -1,0 +1,30 @@
+--- C2/conv2d.c
++++ C12-sveu1/conv2d.c
+@@ -141,27 +141,6 @@
+         for (int jk = 0; jk < kh; ++jk) {
+             const float *row = base + (size_t)jk * stride + i;
+             int ik = 0;
+-            for (; ik < kw - 1; ik += 2) {
+-                const svfloat32_t k0 = svdup_n_f32(krow[ik]);
+-                const svfloat32_t k1 = svdup_n_f32(krow[ik + 1]);
+-                const float *p = row + ik;
+-                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svld1(pg, p), k0));
+-                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + lanes), k0));
+-                a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svld1(pg, p + 2 * lanes), k0));
+-                a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svld1(pg, p + 3 * lanes), k0));
+-                a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, svld1(pg, p + 4 * lanes), k0));
+-                a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, svld1(pg, p + 5 * lanes), k0));
+-                a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, svld1(pg, p + 6 * lanes), k0));
+-                a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, svld1(pg, p + 7 * lanes), k0));
+-                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svld1(pg, p + 1), k1));
+-                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + lanes + 1), k1));
+-                a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svld1(pg, p + 2 * lanes + 1), k1));
+-                a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svld1(pg, p + 3 * lanes + 1), k1));
+-                a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, svld1(pg, p + 4 * lanes + 1), k1));
+-                a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, svld1(pg, p + 5 * lanes + 1), k1));
+-                a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, svld1(pg, p + 6 * lanes + 1), k1));
+-                a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, svld1(pg, p + 7 * lanes + 1), k1));
+-            }
+             for (; ik < kw; ++ik) {
+                 const svfloat32_t k = svdup_n_f32(krow[ik]);
+                 const float *p = row + ik;

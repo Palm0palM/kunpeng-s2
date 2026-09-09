@@ -1,5 +1,5 @@
 {
-  "current_label": "C2",
+  "current_label": "C3",
   "notice": "C labels here count verified source improvements; experiment IDs and r suffixes also include rejected candidates and repeat measurements. Times are internal metrics, not official scores.",
   "versions": [
     {
@@ -36,8 +36,38 @@
           "total_median_ms": 629.9100000000001
         }
       ]
+    },
+    {
+      "label": "C3",
+      "experiment": "C13-exttail",
+      "parent_label": "C2",
+      "comparison_baseline": "C8-r3",
+      "kernel_sha256": "418191b0a5f8b5a97b219b2648df30132b935ae602e6a4c066cfadd8680554c8",
+      "total_median_ms": 590.36,
+      "time_reduction_pct": 6.486512173100367,
+      "strategy": "SVE main-loop overlapping-input reuse plus 4/2/1 SVE predicated tail; strict separate multiply and add",
+      "promoted_at": "2026-09-09T03:16:44.723831+00:00",
+      "official_score": null,
+      "repeat_measurements": [
+        {
+          "experiment": "C13-r1",
+          "total_median_ms": 590.17,
+          "comparison_baseline": "C8-r4",
+          "baseline_total_median_ms": 631.37
+        },
+        {
+          "experiment": "C13-r2",
+          "total_median_ms": 591.44,
+          "purpose": "same-allocation baseline for rejected four-coefficient candidate"
+        }
+      ],
+      "package_verification": {
+        "experiment": "C13-package",
+        "total_median_ms": 590.65,
+        "sha256": "2e8bb11e23733a8c7423d265e32a9ffcb4701084782515ac09ca601b79eed907"
+      }
     }
   ],
-  "current_measurement": "C8-r1",
-  "current_total_median_ms": 629.9100000000001
+  "current_measurement": "C13-exttail",
+  "current_total_median_ms": 590.36
 }

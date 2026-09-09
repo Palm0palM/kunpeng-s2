@@ -1,0 +1,20 @@
+{
+  "complete": true,
+  "server_sanitizer": false,
+  "local_ubsan": true,
+  "cases_per_run": 880,
+  "server_guard_runs": 5,
+  "local_guard_runs": 2,
+  "vector_lengths_bits": [
+    128,
+    256,
+    512
+  ],
+  "bitwise_reference": true,
+  "artifacts_sha256": {
+    "scheduler.log": "49a7cc15f472776c598aa7c97a46191be1487800c6f8ff20e1c7fcc5346d6c81",
+    "raw/probe.log": "3b3f7014a90428d6e9b5b392c16f94b6729c5d4f57629b02d69174c3bfbf0008",
+    "raw/exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "raw/conv2d.c": "d4a485bd3d472a1ca46710541d4d40c26a1ad663919f0929ae3972111b286cb8"
+  }
+}
