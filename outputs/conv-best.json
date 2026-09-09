@@ -1,16 +1,25 @@
 {
-  "label": "C2",
-  "experiment": "C8-r1",
-  "initial_promotion": "C8-sve128",
+  "label": "C3",
+  "experiment": "C13-exttail",
   "source_hashes": {
     "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
     "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
-    "conv2d.c": "e5c7d2fecc2acaf5476ba7579d60be88e6f140f190fe47e7434018f92e4456f8",
+    "conv2d.c": "418191b0a5f8b5a97b219b2648df30132b935ae602e6a4c066cfadd8680554c8",
     "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
   },
-  "package_sha256": "5d6ee98e6834b702bbca0580a322ffa478d28968d12e7c02e892e143bd2570f3",
-  "total_median_ms": 629.9100000000001,
-  "metric": "sum of four per-case medians across three independent suites, not official score",
+  "package_sha256": "2e8bb11e23733a8c7423d265e32a9ffcb4701084782515ac09ca601b79eed907",
+  "total_median_ms": 590.36,
+  "metric": "sum of four per-case medians across three independent suites; not official score",
+  "controlled_comparison": {
+    "baseline": "C8-r3",
+    "baseline_total_median_ms": 631.31,
+    "candidate_total_median_ms": 590.36,
+    "time_reduction_pct": 6.486512173100367,
+    "repeat_baseline": "C8-r4",
+    "repeat_baseline_total_median_ms": 631.37,
+    "repeat_candidate": "C13-r1",
+    "repeat_candidate_total_median_ms": 590.17
+  },
   "verification": {
     "scheduler": true,
     "fetched_log": true,
@@ -18,5 +27,17 @@
     "wrapper": true,
     "source_hashes": true,
     "machine": true
-  }
+  },
+  "zip_verification": {
+    "experiment": "C13-package",
+    "job_id": "1492041",
+    "total_median_ms": 590.65,
+    "suites": 3,
+    "cases_per_suite": 4,
+    "all_pass": true,
+    "max_error": 0,
+    "archive_verified_and_extracted_on_compute_node": true,
+    "same_source_as_promoted": true
+  },
+  "official_submission": false
 }

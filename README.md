@@ -18,6 +18,8 @@
 
 CONV 最新最佳版本、父子关系和耗时见 [晋级台账](records/conv-lineage.json) 与 [本轮逐版本记录](docs/CONV_ROUND_RECORDS.md)；本轮已确认显式 SVE 优化产生稳定提速。候选失败与退化也完整留档，[此前实验](docs/CONV_RESULTS.md) 保留作历史对照。提交包对应的源码校验见 [包清单](outputs/conv-best.json)，记录及公开导出方式见 [记录说明](docs/CONV_RECORDING.md)。
 
+2026-09-09 最新 CONV 为 **C3**：同资源交错复测耗时减少约 **6.5%**，最终 ZIP 超算三轮复验全部通过、最大误差为零。[下载提交包](outputs/conv-best.zip) · [完整报告](docs/CONV_SEP9.md) · [本轮逐版本记录](docs/CONV_SEP9_ROUND_RECORDS.md)。
+
 ## 先重测当前基线
 
 历史 C0/Z0/T0 仅作起点，必须先在当下机器完成三轮测量。第一次创建 C0 **不加 `--parent`**，保持源码不变：
@@ -51,7 +53,7 @@ python3 tools/experiment.py new conv C1-alice --parent C0 --strategy "调整分�
 
 只改 `.runs/conv/C1-alice/source/`，然后按基线相同流程对该目录执行 `submit`、`status`、`fetch`，完成三轮后登记与比较：
 
-本地正确性检查完成后，可执行 `python3 tools/experiment.py checkpoint conv C1-alice --note "校验结果与待测事项"` 保存待测候选；创建时记录 planned，准备完成记录 prepared，失败也保留。
+超算计算节点正确性检查完成后，可执行 `python3 tools/experiment.py checkpoint conv C1-alice --note "校验结果与待测事项"` 保存待测候选；创建时记录 planned，准备完成记录 prepared，失败也保留。
 
 ```bash
 python3 tools/experiment.py record conv C1-alice --log .runs/conv/C1-alice/benchmark.log --environment COMPUTE_NODE_1-gcc10-generic-38 --reference "官方内置参考" --repeats 3

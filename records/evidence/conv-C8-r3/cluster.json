@@ -1,0 +1,78 @@
+{
+  "state": "submitted",
+  "created_at": "2026-09-09T03:04:05.560673+00:00",
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-6b6ab6e2c0f1/member-0",
+  "host": "CLUSTER_HOST",
+  "user": "REDACTED_USER",
+  "port": 22,
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "e5c7d2fecc2acaf5476ba7579d60be88e6f140f190fe47e7434018f92e4456f8",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "job_id": "1491977",
+  "group": "kp-conv-group-6b6ab6e2c0f1",
+  "group_index": 0,
+  "measurement_order": [
+    "C8-r3",
+    "C11-r1",
+    "C13-exttail",
+    "C8-r4",
+    "C13-r1",
+    "C11-r2"
+  ],
+  "submission_started_at": "2026-09-09T03:04:08.561939+00:00",
+  "submit_command": "dsub -nl COMPUTE_NODE_1 -n kp-conv-group-6b6ab6e2c0f1 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-6b6ab6e2c0f1/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-6b6ab6e2c0f1/remote_job.sh",
+  "submitted_at": "2026-09-09T03:04:09.197626+00:00",
+  "status_checked_at": "2026-09-09T03:15:08.751924+00:00",
+  "status_returncode": 0,
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1491977",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "scheduler_adjustments": [
+    {
+      "command": "dmod -nl empty 1491977",
+      "accepted": false,
+      "reason": "Scheduler does not accept empty node preference",
+      "evidence": ".runs/conv/round2-node-adjustment.log"
+    },
+    {
+      "command": "dmod -nl COMPUTE_NODE_2 1491977",
+      "accepted": true,
+      "reason": "Historical node unavailable; move pending group to the node from first screening, with resources and benchmark settings unchanged",
+      "evidence": ".runs/conv/round2-node-adjustment2.log"
+    }
+  ],
+  "fetch_state": "complete",
+  "fetched_at": "2026-09-09T03:15:09.172039+00:00",
+  "artifacts_sha256": {
+    "benchmark.log": "fcb830afde350c581c4d6406dc1a00866fbec751519602f9263dd283f65c84a7",
+    "environment.log": "3d71e5396e9521759e72fe160d2753ab26332e6e9e3bdc3806eafd88feb23aa0",
+    "source-sha256.txt": "9dc71b763b422e67644275c38ecb757e7b58f54a780ab2493a54980bfccfaf1e",
+    "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  }
+}
