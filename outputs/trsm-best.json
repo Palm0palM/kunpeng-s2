@@ -1,13 +1,13 @@
 {
   "problem": "trsm",
-  "version": "T5-sve16rows",
-  "created_at": "2026-09-11T10:38:59.506619+00:00",
+  "version": "T7-diagpanel",
+  "created_at": "2026-09-11T11:06:43.606750+00:00",
   "archive": "trsm-best.zip",
-  "archive_bytes": 10046,
+  "archive_bytes": 10343,
   "files": [
     {
       "path": "trsm/README.md",
-      "bytes": 1880,
+      "bytes": 2069,
       "mode": "0o100644"
     },
     {
@@ -27,38 +27,38 @@
     },
     {
       "path": "trsm/trsm.c",
-      "bytes": 21890,
+      "bytes": 23287,
       "mode": "0o100644"
     }
   ],
   "source_matches_measured_local_snapshot_by_bytes": true,
   "source_validation": {
-    "job_id": "1509711",
+    "job_id": "1522032",
     "suites": 3,
     "test_runs": 3,
     "official_rows_passed": 9,
     "max_error": 1.11e-15,
     "case_median_ms": [
-      21.99,
-      255.8,
-      228.42
+      22.12,
+      254.11,
+      191.06
     ],
     "reference": "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation"
   },
   "package_validation": {
     "status": "passed",
-    "job_id": "1513942",
+    "job_id": "1524188",
     "extracted_on_compute_node": true,
     "suites": 3,
     "test_runs": 3,
     "official_rows_passed": 9,
     "max_error": 1.11e-15,
     "case_median_ms": [
-      22.68,
-      257.75,
-      228.5
+      22.34,
+      254.41,
+      190.72
     ],
-    "total_median_ms": 508.93,
+    "total_median_ms": 467.47,
     "scheduler_state": "SUCCEEDED",
     "job_exit_code": 0,
     "system_exit_code": 0,
@@ -70,6 +70,30 @@
   "local_compilation_or_tests": false,
   "contest_submission": false,
   "unvalidated_candidate_included": false,
-  "evidence": "records/evidence/trsm-finalpackage-20260911-r2",
-  "publication_source": "TRSM promoted best T5-sve16rows"
+  "evidence": "records/evidence/trsm-finalpackage-20260911-r4",
+  "kml_25_1_validation": {
+    "status": "passed",
+    "job_id": "1528027",
+    "extracted_on_compute_node": true,
+    "suites": 3,
+    "test_runs": 3,
+    "official_rows_passed": 9,
+    "max_error": 1.11e-15,
+    "case_median_ms": [
+      24.36,
+      291.2,
+      194.3
+    ],
+    "reference": "KML 25.1.0 GCC multi SME",
+    "compiler": "GCC 12.3.1 from existing HPCKit archive, privately extracted in compute job",
+    "actual_threads": 38,
+    "no_openblas_dependency": true,
+    "not_equivalent_to": "specified KML 25.2.0",
+    "setup_failure_jobs": [
+      "1525204",
+      "1525797"
+    ],
+    "evidence": "records/evidence/trsm-kml251-20260911"
+  },
+  "official_kml_target_version": "25.2.0"
 }

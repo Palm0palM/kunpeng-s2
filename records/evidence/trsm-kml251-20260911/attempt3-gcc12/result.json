@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        24.36,
+        23.84,
+        24.44
+      ],
+      "median_ms": 24.36,
+      "min_ms": 23.84,
+      "max_ms": 24.44,
+      "spread_pct": 2.463054187192124,
+      "gflops": [
+        214.8661,
+        219.587,
+        214.1425
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        291.2,
+        290.92,
+        292.77
+      ],
+      "median_ms": 291.2,
+      "min_ms": 290.92,
+      "max_ms": 292.77,
+      "spread_pct": 0.6353021978021861,
+      "gflops": [
+        345.7786,
+        346.1061,
+        343.9284
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        192.85,
+        195.36,
+        194.3
+      ],
+      "median_ms": 194.3,
+      "min_ms": 192.85,
+      "max_ms": 195.36,
+      "spread_pct": 1.291816778178085,
+      "gflops": [
+        769.4271,
+        759.5599,
+        763.6793
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 509.86,
+  "official_score": null,
+  "ranking": null,
+  "job_id": "1528027",
+  "source_version": "T7-diagpanel",
+  "package_extracted_and_tested": true,
+  "reference": "KML 25.1.0; not specified KML 25.2.0",
+  "recorded_at": "2026-09-11T11:20:05.737108+00:00",
+  "hash_validation": "not performed at user request"
+}

@@ -1,0 +1,498 @@
+PASS 30 direct SVE microkernel count/stride combinations; bitwise ordered-FMA match and output padding preserved
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+SVE_KERNEL_ACTUAL_ENTRIES=44160
+PASS actual SVE dispatch preflight
+PASS 30 direct SVE microkernel count/stride combinations; bitwise ordered-FMA match and output padding preserved
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+SVE_KERNEL_ACTUAL_ENTRIES=44160
+PASS actual SVE dispatch preflight
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4099 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4119 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4120 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4121 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4135 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4136 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4137 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4143 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4144 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4145 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4151 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4152 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4153 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4159 n=63 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4160 n=64 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4161 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 29 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+PASS 50 non-dyadic direct-blocked cases, long-double RHS, padding and L unchanged; max-error=1.110e-16
+PASS 50 non-dyadic direct-blocked cases, long-double RHS, padding and L unchanged; max-error=1.110e-16
+TRSM_PREFLIGHT_COMPLETE=1
+
+BENCH_REPEAT 1/3 BEGIN COHORT=trsm-nohash-2ee54a82efd6 MEMBER=T5-control10
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.46     233.0746     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       258.76     389.1213     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       227.55     652.1007     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-190432-9rGaoq
+
+BENCH_REPEAT 1/3 BEGIN COHORT=trsm-nohash-2ee54a82efd6 MEMBER=T7-sve24rows
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.22     235.5239     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       254.48     395.6782     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       227.96     650.9281     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-190440-ofmyo5
+
+BENCH_REPEAT 1/3 BEGIN COHORT=trsm-nohash-2ee54a82efd6 MEMBER=T7-diagpanel
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        21.99     238.0283     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       254.34     395.8832     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       192.39     771.2652     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-190447-2yROlg
+
+BENCH_REPEAT 2/3 BEGIN COHORT=trsm-nohash-2ee54a82efd6 MEMBER=T7-sve24rows
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        23.49     222.8742     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       255.49     394.1007     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       228.53     649.3064     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-190455-DgXljh
+
+BENCH_REPEAT 2/3 BEGIN COHORT=trsm-nohash-2ee54a82efd6 MEMBER=T7-diagpanel
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.69     230.6725     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       253.49     397.2214     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       191.06     776.6596     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-190503-9FBwYb
+
+BENCH_REPEAT 2/3 BEGIN COHORT=trsm-nohash-2ee54a82efd6 MEMBER=T5-control10
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.35     234.2106     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       259.64     387.8057     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       227.13     653.3107     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-190510-l6v3QE
+
+BENCH_REPEAT 3/3 BEGIN COHORT=trsm-nohash-2ee54a82efd6 MEMBER=T7-diagpanel
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.12     236.6044     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       254.11     396.2491     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       190.69     778.1453     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-190518-5NGe55
+
+BENCH_REPEAT 3/3 BEGIN COHORT=trsm-nohash-2ee54a82efd6 MEMBER=T5-control10
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        21.64     241.9250     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       254.05     396.3426     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       226.99     653.7224     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-190526-RftDC4
+
+BENCH_REPEAT 3/3 BEGIN COHORT=trsm-nohash-2ee54a82efd6 MEMBER=T7-sve24rows
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        25.89     202.1748     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       254.83     395.1341     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       229.18     647.4604     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-190533-IcNpy8
