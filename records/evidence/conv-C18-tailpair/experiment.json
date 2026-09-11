@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C18-tailpair",
+  "parent": "C13-r5",
+  "strategy": "主八向量内核保持C3不变；仅SVE尾部4/2完整向量采用两系数相邻输入复用并保留单系数与predicated尾部，减少尾部加载与循环开销",
+  "created_at": "2026-09-11T08:14:03.501009+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "418191b0a5f8b5a97b219b2648df30132b935ae602e6a4c066cfadd8680554c8",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C13-r3",
+  "comparison_design": "测量前将比较parent设为同分配控制C13-r5；其源码与原来源C13-r3完全相同，保留source_parent。"
+}

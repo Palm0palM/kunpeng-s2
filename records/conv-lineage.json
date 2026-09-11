@@ -1,5 +1,5 @@
 {
-  "current_label": "C3",
+  "current_label": "C4",
   "notice": "C labels here count verified source improvements; experiment IDs and r suffixes also include rejected candidates and repeat measurements. Times are internal metrics, not official scores.",
   "versions": [
     {
@@ -66,8 +66,39 @@
         "total_median_ms": 590.65,
         "sha256": "2e8bb11e23733a8c7423d265e32a9ffcb4701084782515ac09ca601b79eed907"
       }
+    },
+    {
+      "label": "C4",
+      "experiment": "C19-r2",
+      "source_experiment": "C19-sverow2",
+      "parent_label": "C3",
+      "comparison_baseline": "C13-r9",
+      "kernel_sha256": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+      "total_median_ms": 561.54,
+      "time_reduction_pct": 5.031372084763822,
+      "strategy": "Two output rows share SVE input loads with eight accumulators; per-output kernel order and separate multiply/add preserved",
+      "promoted_at": "2026-09-11T08:41:24.235826+00:00",
+      "official_score": null,
+      "repeat_measurements": [
+        {
+          "experiment": "C19-sverow2",
+          "total_median_ms": 562.12,
+          "note": "Opening C3 control noise failed gate; preserved and followed by confirmation"
+        },
+        {
+          "experiment": "C19-r1",
+          "total_median_ms": 562.32,
+          "comparison_baseline": "C13-r8",
+          "baseline_total_median_ms": 589.49
+        }
+      ],
+      "package_verification": {
+        "experiment": "C19-package",
+        "total_median_ms": 562.02,
+        "sha256": "d0887d526ea122ebe10d3aef8b5fe724b82ff4fdbef32e31f2628b68ea9d7206"
+      }
     }
   ],
-  "current_measurement": "C13-exttail",
-  "current_total_median_ms": 590.36
+  "current_measurement": "C19-r2",
+  "current_total_median_ms": 561.54
 }

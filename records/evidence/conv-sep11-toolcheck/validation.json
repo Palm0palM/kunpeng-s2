@@ -1,0 +1,38 @@
+{
+  "verified": true,
+  "job_id": "1507649",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1507649",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "wrapper_exit_code": 0,
+  "unit_tests": 68,
+  "unit_test_seconds": 10.442,
+  "source_files_checked_on_compute_node": 28,
+  "package_files_in_manifest": 29,
+  "published_tools_and_tests_match_tested_hashes": {
+    "tests/test_cluster.py": "3cee46d7d17cc99ed9fd8e8c3693548353e59fa78f1a1da591ce219c292ba3d3",
+    "tests/test_cluster_group.py": "a01adda4be80153faa5420ce62c8bde6b21aa4245460711bd55a7855b034b329",
+    "tests/test_experiment.py": "b930ceaf55bedea0e86ae8baefe78b404df62a61eecbc12fc001408026ea9eb1",
+    "tests/test_export_conv_records.py": "7b8cba195792d64cc1169c49365a13641e2457f1ff697077d9886745ac946146",
+    "tools/cluster.py": "17a12430f4cfe4f64c5eeecc2972b5de5776e2b0d6b92c1c2aa68627ae9d64c6",
+    "tools/cluster_group.py": "8f8fa652e51a49685e0789a8e632bb334b840403d0075dac748dfc2fbf18da55",
+    "tools/connect.py": "71c979c32b0eee498ef5b9d8103ffdcb67f26487e8ca2843e11960c3b687057f",
+    "tools/experiment.py": "5a3cf794de9ccf60d350b018f8a547a7ab3969edead396dd6351e37e21679662",
+    "tools/export_conv_records.py": "af2b1fe1edd59c414ffa1622749114449ae63782e9f76ec95322d53ab34cdcf7",
+    "tools/remote_job.sh": "cc7a15fc79998db6403c363b1939112a045cf1fbc507f32c5d98a19e10bd9711"
+  },
+  "artifacts": {
+    "environment.log": "938f80a723e133b80a0280c3358994bbac1365d52d98f0dc9adae674ddc7f547",
+    "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "remote_job.sh": "aa1ab17345dbfc51119737b8b842c038191b7340048adc41eb57b9acdca874fa",
+    "source-sha256.txt": "6b54f09332798a6b9201c0cca1bf5c9ce2c65ac1563ba0d9fbfd9cd0b719a25d",
+    "source-verification.log": "52d266595a4126f46bf945aa94dd8c7a97efcd003fc59622bde7c358379bc3e3",
+    "test.log": "38f38a082755e300e54aaeb67e341598abe516dc4ce39901401a87ecc8bd8365",
+    "wrapper.stdout.log": "561bc0f283d2a7fc4625a87d28225d361418a6b5ac1df1478185fc6bc9bbd901"
+  },
+  "note": "All unit tests ran on the scheduled Linux/AArch64 compute node. Local actions only prepared, transferred, and parsed evidence. FAILED lines in test stdout are intentional negative-test fixtures; all 68 unittest case results are ok."
+}

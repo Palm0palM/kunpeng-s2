@@ -18,7 +18,9 @@
 
 CONV 最新最佳版本、父子关系和耗时见 [晋级台账](records/conv-lineage.json) 与 [本轮逐版本记录](docs/CONV_ROUND_RECORDS.md)；本轮已确认显式 SVE 优化产生稳定提速。候选失败与退化也完整留档，[此前实验](docs/CONV_RESULTS.md) 保留作历史对照。提交包对应的源码校验见 [包清单](outputs/conv-best.json)，记录及公开导出方式见 [记录说明](docs/CONV_RECORDING.md)。
 
-2026-09-09 最新 CONV 为 **C3**：同资源交错复测耗时减少约 **6.5%**，最终 ZIP 超算三轮复验全部通过、最大误差为零。[下载提交包](outputs/conv-best.zip) · [完整报告](docs/CONV_SEP9.md) · [本轮逐版本记录](docs/CONV_SEP9_ROUND_RECORDS.md)。
+2026-09-11 最新 CONV 为 **C4**：相邻两输出行共享 SVE 输入加载，同资源对照从 **591.29 ms 降至 561.54 ms（减少 5.03%）**。最终 ZIP 在超算解压并完成三轮独立复验，12/12 用例通过、最大误差为零。
+
+**直接提交 [conv/result/C4/conv.zip](conv/result/C4/conv.zip)**，无需重新压缩。该目录只保留当前最佳提交包，附版本说明和 SHA-256；此前版本的测量与策略保留在记录中。[本轮完整报告](docs/CONV_SEP11.md) · [逐版本记录](docs/CONV_SEP11_ROUND_RECORDS.md) · [C3 历史报告](docs/CONV_SEP9.md)。以上耗时均为内部指标，正式平台分数待队友手动提交后反馈。
 
 ## 先重测当前基线
 

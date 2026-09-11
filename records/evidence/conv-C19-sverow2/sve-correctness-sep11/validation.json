@@ -1,0 +1,162 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C19-sverow2",
+  "job_id": "1507660",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1507660",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "3329dfd333e8a78e78e1307ea9b3a33cf42ee54a7b028798e46414d028d9b0b3",
+    "check_conv_guard.c": "802133dfc0e04ae1916050908af1a346554b94b7fe0922829ca96d1968193cb5",
+    "check_sve_dispatch.c": "67803110d1fd09937501f40a6800aa379b51210c93ff2955c594ce569585c31c",
+    "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+    "remote_job.sh": "bdac180ac4eead974bac6c8fd85314b1fa76ebe09518be197f1ccf926fe0d479"
+  },
+  "current_candidate_source_matches": true,
+  "accumulators_per_row": 4,
+  "total_rowpair_accumulators": 8,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "total_pair_accumulators": 8,
+      "full_cases": 4996,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "rowpair_entries": 48,
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "total_pair_accumulators": 8,
+      "full_cases": 4996,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "rowpair_entries": 48,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "total_pair_accumulators": 8,
+      "full_cases": 4996,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "rowpair_entries": 48,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "total_pair_accumulators": 8,
+      "full_cases": 4996,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "rowpair_entries": 48,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "total_pair_accumulators": 8,
+      "full_cases": 4996,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "rowpair_entries": 48,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "total_pair_accumulators": 8,
+      "full_cases": 4996,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "rowpair_entries": 48,
+      "passed": true
+    }
+  ],
+  "full_cases": 29976,
+  "dispatch_cases": 144,
+  "total_cases": 30120,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "rowpair_paired_loops": [
+      {
+        "description": "first input row",
+        "label": ".L243",
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "ext": 3,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "movprfx": 0,
+        "stack_accesses": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0
+      },
+      {
+        "description": "shared interior input row",
+        "label": ".L248",
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "ext": 3,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "movprfx": 3,
+        "stack_accesses": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0
+      },
+      {
+        "description": "last input row",
+        "label": ".L253",
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "ext": 3,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "movprfx": 0,
+        "stack_accesses": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0
+      }
+    ],
+    "rowpair_fma_count": 0,
+    "whole_source_fma_count": 0,
+    "note": "Shared interior input-row loop .L248 feeds eight accumulators across two output rows from five SVE input loads, with four kernel broadcasts. Three movprfx retain input vectors needed by both output rows. No vector spills or stack-derived accesses in the three paired-kernel loops. Scalar address/bookkeeping stack traffic exists outside those loops in a 368-byte frame. Assembly does not imply a measured speedup."
+  },
+  "evidence_directory": "raw"
+}
