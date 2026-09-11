@@ -54,6 +54,9 @@
 | zgemm | Z2-mb48 | Z1-pack-pair1 | prepared | — | 仅将MB24改为MB48，保留三行A连续打包、3x4微内核和3M累加顺序；检验增加行复用能否降低B跨行块扫描开销，K512复用域理论约624KiB（不含C），仍需实测 |
 | zgemm | Z2-mb48-pair2 | Z1-control2 | passed | 3862.22 | 仅将MB24改为MB48，保留三行A连续打包、3x4微内核和3M累加顺序；检验增加行复用能否降低B跨行块扫描开销，K512复用域理论约624KiB（不含C），仍需实测 |
 
-TRSM 当前最佳为 T3-sveupdate-r3；同分配三轮合计耗时降低29.31%，详见[2026-09-09 SVE记录](../docs/trsm-sve-20260909.md)。
+TRSM 2026-09-09 历史最佳为 T3-sveupdate-r3；同分配三轮合计耗时降低29.31%，详见[2026-09-09 SVE记录](../docs/trsm-sve-20260909.md)。
 
 CONV 2026-09-09 晋级 C3（C13-exttail）：同资源交错对照 631.31 → 590.36 ms，耗时减少 6.49%；最终 ZIP 三轮 12/12 PASS、最大误差 0。见 [完整报告](../docs/CONV_SEP9.md) 与 [本轮版本记录](../docs/CONV_SEP9_ROUND_RECORDS.md)。
+
+
+TRSM 2026-09-11 当前最佳：**T4-sve8rows**（parent T3-control7，来源原最佳 T3-sveupdate-r3）。三轮官方用例均通过，合计 545.31→526.19 ms，改善3.51%。[完整对照](../docs/trsm-sve8rows-20260911.md) · [提交压缩包](../outputs/trsm-best.zip)。参考仍为 OpenBLAS，非 KML 复验。

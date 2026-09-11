@@ -1,0 +1,98 @@
+{
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        22.39,
+        22.59,
+        22.77
+      ],
+      "median_ms": 22.59,
+      "min_ms": 22.39,
+      "max_ms": 22.77,
+      "spread_pct": 1.6821602478972952,
+      "gflops": [
+        233.8158,
+        231.7347,
+        229.8917
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        253.97,
+        259.59,
+        253.08
+      ],
+      "median_ms": 253.97,
+      "min_ms": 253.08,
+      "max_ms": 259.59,
+      "spread_pct": 2.5632948773477033,
+      "gflops": [
+        396.4723,
+        387.8898,
+        397.8596
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        244.39,
+        243.14,
+        243.71
+      ],
+      "median_ms": 243.71,
+      "min_ms": 243.14,
+      "max_ms": 244.39,
+      "spread_pct": 0.5129046817939354,
+      "gflops": [
+        607.1648,
+        610.2946,
+        608.8709
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 520.27,
+  "official_score": null,
+  "ranking": null,
+  "job_id": "1507701",
+  "source_version": "T4-sve8rows",
+  "package_extracted_and_tested": true,
+  "reference": "OpenBLAS 0.3.28 static; not official KML revalidation",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "recorded_at": "2026-09-11T08:38:04.712484+00:00",
+  "hash_validation": "not performed at user request"
+}
