@@ -1,13 +1,13 @@
 {
   "problem": "trsm",
-  "version": "T4-sve8rows",
-  "created_at": "2026-09-11T08:36:01.384571+00:00",
+  "version": "T5-sve16rows",
+  "created_at": "2026-09-11T10:38:59.506619+00:00",
   "archive": "trsm-best.zip",
-  "archive_bytes": 9963,
+  "archive_bytes": 10046,
   "files": [
     {
       "path": "trsm/README.md",
-      "bytes": 2401,
+      "bytes": 1880,
       "mode": "0o100644"
     },
     {
@@ -27,50 +27,49 @@
     },
     {
       "path": "trsm/trsm.c",
-      "bytes": 17476,
+      "bytes": 21890,
       "mode": "0o100644"
     }
   ],
   "source_matches_measured_local_snapshot_by_bytes": true,
   "source_validation": {
-    "job_id": "1507689",
-    "date": "2026-09-11",
+    "job_id": "1509711",
     "suites": 3,
     "test_runs": 3,
     "official_rows_passed": 9,
     "max_error": 1.11e-15,
     "case_median_ms": [
-      22.64,
-      259.17,
-      244.38
+      21.99,
+      255.8,
+      228.42
     ],
-    "reference": "OpenBLAS 0.3.28 static; not official KML revalidation"
+    "reference": "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation"
   },
   "package_validation": {
     "status": "passed",
-    "job_id": "1507701",
+    "job_id": "1513942",
     "extracted_on_compute_node": true,
     "suites": 3,
     "test_runs": 3,
     "official_rows_passed": 9,
     "max_error": 1.11e-15,
     "case_median_ms": [
-      22.59,
-      253.97,
-      243.71
+      22.68,
+      257.75,
+      228.5
     ],
-    "total_median_ms": 520.27,
+    "total_median_ms": 508.93,
     "scheduler_state": "SUCCEEDED",
     "job_exit_code": 0,
     "system_exit_code": 0,
     "wrapper_exit_code": 0,
     "reference": "OpenBLAS 0.3.28 static; not official KML revalidation"
   },
-  "official_kml_validation": "pending",
+  "official_kml_validation": "not completed",
   "hash_validation": "not performed at user request",
   "local_compilation_or_tests": false,
   "contest_submission": false,
   "unvalidated_candidate_included": false,
-  "evidence": "records/evidence/trsm-package-20260911",
-  "publication_source": "TRSM promoted best T4-sve8rows"
+  "evidence": "records/evidence/trsm-finalpackage-20260911-r2",
+  "publication_source": "TRSM promoted best T5-sve16rows"
 }

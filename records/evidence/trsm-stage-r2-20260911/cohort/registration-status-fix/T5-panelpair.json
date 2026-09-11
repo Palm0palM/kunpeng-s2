@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T5-panelpair",
+  "parent": "T4-control8",
+  "source_implementation_id": "T5-panelpair",
+  "source_from": "T4-sve8rows",
+  "strategy": "小工作集前代按两组相邻8列面板共同行块推进，使L行数据复用；面板数至少为实际线程数4倍时配对，保持原NEON累加顺序、大路径与失败回退。",
+  "created_at": "2026-09-11T10:10:52.697083+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "status": "submitted",
+  "verified": false,
+  "validation_policy": "User requested no hash computations or validation; preserve full source snapshots, logs, scheduler identity, correctness and repeated timing.",
+  "job_id": "1509711"
+}

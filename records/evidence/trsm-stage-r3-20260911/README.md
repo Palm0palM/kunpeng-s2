@@ -1,0 +1,7 @@
+# TRSM stage r3 evidence — 2026-09-11
+
+This public archive contains redacted copies of local original evidence for scheduler job 1512595. Each member directory contains its nohash-recorded-evidence snapshot, final record.json, and wrapper stdout. The two candidates also include preparation/strategy notes. cohort/ contains the measured configuration and submission metadata, raw shared logs, target preflight source and assembly, reference probe, scheduler state, no-hash workflow scripts, and comparison/registration outputs.
+
+Personal paths, account identifiers, internal addresses and node names were replaced for publication; unredacted originals remain local. These public copies are not original-byte evidence and must not be used to rerun promotion. No hashes were computed or verified. Remote source identity and transfer integrity were not validated. cluster.local.json, known_hosts, authentication/connection logs, credentials, payload archives, and binary artifacts are excluded. ARCHIVE.json maps each public copy to its local original source path without digests.
+
+The summary is in ../../../docs/trsm-stage-r3-20260911.md. Both candidates passed correctness but failed the promotion gate, so this stage retained T5-sve16rows. The 256 KiB value is a tuning budget, not a hardware cache-capacity claim. OpenBLAS validation is not official KML revalidation. No formal competition submission is represented by this archive.

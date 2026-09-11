@@ -1,0 +1,33 @@
+{
+  "state": "submitted",
+  "cohort_id": "trsm-package-1eba8baf9a36",
+  "job_id": "1513942",
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-package-1eba8baf9a36",
+  "source_version": "T5-sve16rows",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "created_at": "2026-09-11T10:38:59.543719+00:00",
+  "hash_validation": "not performed at user request",
+  "upload_command": "mkdir /CLUSTER_USER_HOME/kunpeng-experiments/trsm-package-1eba8baf9a36 && tar -xzf - -C /CLUSTER_USER_HOME/kunpeng-experiments/trsm-package-1eba8baf9a36",
+  "submit_command": "dsub -n trsm-package-1eba8baf9a36 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-package-1eba8baf9a36/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-package-1eba8baf9a36/remote_job.sh",
+  "submitted_at": "2026-09-11T10:39:20.316198+00:00"
+}

@@ -1,0 +1,40 @@
+{
+  "eligible": false,
+  "reasons": [
+    "total improvement 0.9439% does not exceed threshold 5.7646%"
+  ],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 22.93,
+      "candidate_ms": 16.48,
+      "gain_pct": 28.129088530309637
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 254.64,
+      "candidate_ms": 256.4,
+      "gain_pct": -0.6911718504555415
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 229.92,
+      "candidate_ms": 229.82,
+      "gain_pct": 0.043493389004868786
+    }
+  ],
+  "total_gain_pct": 0.9438609627775957,
+  "noise_threshold_pct": 5.764563106796112,
+  "validation_policy": "user-requested-no-hash",
+  "hash_validation": "not performed",
+  "metric": "sum of per-case median ms; not official score"
+}

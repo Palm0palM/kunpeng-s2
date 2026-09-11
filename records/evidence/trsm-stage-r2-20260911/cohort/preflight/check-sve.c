@@ -1,0 +1,67 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <omp.h>
+#include "../T5-sve16rows/source/trsm.c"
+#if !TRSM_CAN_DISPATCH_SVE
+#error This preflight must compile the actual Linux GCC SVE dispatch path.
+#endif
+static unsigned long sve_entries;
+void __cyg_profile_func_enter(void *, void *) __attribute__((no_instrument_function));
+void __cyg_profile_func_exit(void *, void *) __attribute__((no_instrument_function));
+void __cyg_profile_func_enter(void *fn, void *caller) {
+    (void)caller;
+    if(fn==(void *)update16x8_sve)
+        __atomic_fetch_add(&sve_entries,1,__ATOMIC_RELAXED);
+}
+void __cyg_profile_func_exit(void *fn,void *caller){(void)fn;(void)caller;}
+#define main known_solution_main
+#include "check-trsm.c"
+#undef main
+static int microcheck(void) {
+    int counts[]={0,1,2,3,7,63,128,255,256,257};
+    int strides[]={8,11,65};
+    int checked=0;
+    for(size_t t=0;t<sizeof(counts)/sizeof(counts[0]);++t)
+    for(size_t q=0;q<sizeof(strides)/sizeof(strides[0]);++q) {
+        int count=counts[t],lda=count+7,ldx=strides[q],ldc=ldx+5;
+        size_t nl=(size_t)16*lda,nx=(size_t)(count+1)*ldx,nc=(size_t)16*ldc;
+        double *l=malloc(nl*sizeof(double)),*x=malloc(nx*sizeof(double));
+        double *c=malloc(nc*sizeof(double)),*want=malloc(nc*sizeof(double));
+        
+        if(!l||!x||!c||!want)return 1;
+        for(size_t i=0;i<nl;++i)l[i]=((int)(i%37)-18)*0.03125;
+        for(size_t i=0;i<nx;++i)x[i]=((int)(i%53)-26)*0.021;
+        for(size_t i=0;i<nc;++i)c[i]=want[i]=((int)(i%23)-11)*0.17;
+        for(int r=0;r<16;++r)for(int j=0;j<8;++j) {
+            double acc=0;
+            for(int k=0;k<count;++k)acc=fma(l[(size_t)r*lda+k],x[(size_t)k*ldx+j],acc);
+            want[(size_t)r*ldc+j]-=acc;
+        }
+        update16x8_sve(count,l,lda,x,ldx,c,ldc);
+        int bad=memcmp(c,want,nc*sizeof(double));
+        free(l);free(x);free(c);free(want);
+        if(bad){printf("FAIL micro count=%d ldx=%d ldc=%d\n",count,ldx,ldc);return 1;}
+        ++checked;
+    }
+    printf("PASS %d direct SVE microkernel count/stride combinations; bitwise ordered-FMA match and output padding preserved\n",checked);
+    return 0;
+}
+int main(void) {
+    if((getauxval(AT_HWCAP)&HWCAP_SVE)==0){puts("PREFLIGHT_BLOCKED: SVE unavailable");return 2;}
+    int correct_width=1;
+#pragma omp parallel reduction(&:correct_width)
+    {
+        correct_width &= trsm_sve_has_eight_doubles();
+    }
+    if(!correct_width){puts("PREFLIGHT_BLOCKED: per-thread SVE width differs from 8 doubles");return 2;}
+    if(microcheck())return 1;
+    sve_entries=0;
+    if(known_solution_main())return 1;
+    printf("SVE_KERNEL_ACTUAL_ENTRIES=%lu\n",sve_entries);
+    if(!sve_entries){puts("FAIL: whole-operator test did not enter SVE kernel");return 1;}
+    puts("PASS actual SVE dispatch preflight");
+    return 0;
+}
