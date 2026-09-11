@@ -1,0 +1,208 @@
+{
+  "date": "2026-09-11",
+  "round": "sep11b",
+  "best_label": "C5",
+  "best_experiment": "C21-r2",
+  "status": "completed_verified_C5_publication_in_progress",
+  "performance_order": [
+    "C19-r3",
+    "C20-row2x6",
+    "C21-row3x4",
+    "C22-row2loads",
+    "C19-r4"
+  ],
+  "suites_per_version": 3,
+  "local_compilation_or_tests_run": false,
+  "diagnostic_checks_per_candidate_planned": 82248,
+  "experiments": [
+    {
+      "version": "C19-r3",
+      "parent": null,
+      "strategy": "Current verified C4 source, fresh opening control for the next optimization round",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "total_median_ms": 563.98,
+      "verified": true,
+      "decision_note": "Unchanged C4 control; no new source version"
+    },
+    {
+      "version": "C20-row2x6",
+      "parent": "C19-r3",
+      "strategy": "Expand the two-row SVE tile from four to six vectors per row, amortizing kernel traversal while preserving per-output accumulation order",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "fc2a4debb675a0990027085e94f280f9e174ccbb3a4ee73ee344dd7b81080623",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "total_median_ms": 555.9000000000001,
+      "verified": true,
+      "decision_note": "Not selected: opening-control gain fails noise gate; closing-control gain is marginal and slower than C21. Preserve evidence, no formal version."
+    },
+    {
+      "version": "C21-row3x4",
+      "parent": "C19-r3",
+      "strategy": "Share an input row across three output rows, four SVE vectors per row, preserving each output kernel row order",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "d5f40f40479dff5c10a300b28a392fffe2c3fa1978c2f2bd793600ca768836ac",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "total_median_ms": 502.45,
+      "verified": true,
+      "decision_note": "Strongest initial candidate; all cases improve against both C4 controls. Proceed to reversed-order fresh control repeat and independent final archive validation before promotion."
+    },
+    {
+      "version": "C22-row2loads",
+      "parent": "C19-r3",
+      "strategy": "In the shared two-output-row loop only, replace overlapping SVE ext windows with direct shifted loads to trade three loads for three ext plus three movprfx instructions",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "5c44d6a4884c7ebe10886680e6dfe6b285b7a2b307def88b65dfb2f2d1979f0f",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "total_median_ms": 522.48,
+      "verified": true,
+      "decision_note": "Improves against C4 but slower and noisier than C21; preserve evidence, no formal version."
+    },
+    {
+      "version": "C19-r4",
+      "parent": null,
+      "strategy": "Unchanged C4 closing control for the next matched-allocation comparison",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "total_median_ms": 561.9300000000001,
+      "verified": true,
+      "decision_note": "Unchanged C4 control; no new source version"
+    },
+    {
+      "version": "C19-r5",
+      "parent": null,
+      "strategy": "Fresh unchanged C4 closing control for reversed-order C21 confirmation",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "total_median_ms": 562.29,
+      "verified": true
+    },
+    {
+      "version": "C21-r1",
+      "parent": "C19-r5",
+      "strategy": "Unchanged C21 three-output-row source; reversed-order confirmation against fresh C4 control C19-r5",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "d5f40f40479dff5c10a300b28a392fffe2c3fa1978c2f2bd793600ca768836ac",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "total_median_ms": 502.31,
+      "verified": true,
+      "decision_note": "Median improvement repeated, but one case spread 16.29% exceeds 10.67% gain; no promotion. Preserve all samples and repeat with opening and closing C4 controls."
+    },
+    {
+      "version": "C19-r6",
+      "parent": null,
+      "strategy": "Unchanged C4 opening control for bracketed C21 confirmation after noisy reversed-order run",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "verified": true,
+      "total_median_ms": 561.72
+    },
+    {
+      "version": "C21-r2",
+      "parent": "C19-r7",
+      "strategy": "Unchanged C21 source; bracketed repeat after single-case timing outlier, primary comparison baseline C19-r7 declared before execution",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "d5f40f40479dff5c10a300b28a392fffe2c3fa1978c2f2bd793600ca768836ac",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "verified": true,
+      "total_median_ms": 502.20000000000005,
+      "decision_note": "Selected as formal C5 after bracketed same-allocation confirmation and independent exact ZIP verification; all four cases improve. Other candidates retained without active submission archives."
+    },
+    {
+      "version": "C19-r7",
+      "parent": null,
+      "strategy": "Unchanged C4 closing primary control for bracketed C21 confirmation after noisy reversed-order run",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "verified": true,
+      "total_median_ms": 561.6
+    },
+    {
+      "version": "C21-package",
+      "parent": "C21-row3x4",
+      "strategy": "Independent final ZIP identity, compute-node extraction, and three complete official suites for unchanged C21 source",
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "d5f40f40479dff5c10a300b28a392fffe2c3fa1978c2f2bd793600ca768836ac",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "status": "passed",
+      "verified": true,
+      "total_median_ms": 502.28999999999996,
+      "decision_note": "Exact final C5 archive passed independent compute-node SHA verification, extraction and three full suites; same source as confirmed C21-r2. Package run is not a new algorithm version."
+    }
+  ],
+  "diagnostic_checks_passed": 246744,
+  "diagnostic_jobs": {
+    "C20-row2x6": "1508799",
+    "C21-row3x4": "1509260",
+    "C22-row2loads": "1509951"
+  },
+  "performance_job": "1512250",
+  "confirmation_job": "1517692",
+  "first_confirmation_job": "1516233",
+  "first_confirmation_order": [
+    "C21-r1",
+    "C19-r5"
+  ],
+  "first_confirmation_result": "C21-r1 median improvement repeated but spread gate failed; original samples retained",
+  "confirmation_order": [
+    "C19-r6",
+    "C21-r2",
+    "C19-r7"
+  ],
+  "primary_confirmation_baseline": "C19-r7",
+  "package_job": "1519750",
+  "selected_source": "C21-row3x4",
+  "selected_measurement": "C21-r2",
+  "official_suites": 33,
+  "official_cases_passed": 132,
+  "all_official_max_error": 0,
+  "package_sha256": "62b048136fa55bc52d9a36c9326e17b6084e91867880cd02300d3ffd34e34046"
+}

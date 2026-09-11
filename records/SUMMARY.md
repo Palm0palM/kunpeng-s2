@@ -38,8 +38,19 @@
 | conv | C19-package | C19-r2 | passed | 562.02 | Independent verification of the exact final submission ZIP on a scheduled compute node; three full official suites |
 | conv | C19-r1 | C19-sverow2 | passed | 562.32 | 同一SVE双行候选重复三轮完整官方套件；与末尾C3控制共同确认稳定性，不构成新正式版本 |
 | conv | C19-r2 | C13-r9 | passed | 561.54 | Repeat unchanged SVE rowpair source against a fresh C3 control, before final package validation |
+| conv | C19-r3 | — | passed | 563.98 | Current verified C4 source, fresh opening control for the next optimization round |
+| conv | C19-r4 | — | passed | 561.93 | Unchanged C4 closing control for the next matched-allocation comparison |
+| conv | C19-r5 | — | passed | 562.29 | Fresh unchanged C4 closing control for reversed-order C21 confirmation |
+| conv | C19-r6 | — | passed | 561.72 | Unchanged C4 opening control for bracketed C21 confirmation after noisy reversed-order run |
+| conv | C19-r7 | — | passed | 561.60 | Unchanged C4 closing primary control for bracketed C21 confirmation after noisy reversed-order run |
 | conv | C19-sverow2 | C13-r7 | passed | 562.12 | 把两行各4个SVE向量合成8累加器，通过错开kernel行索引复用同一输入行；每个输出仍保持jk/ik累加顺序，减少相邻输出行的重复加载 |
 | conv | C2-b64 | C0-r1 | passed | 2685.67 | Increase output tile from 32 to 64 while preserving scalar accumulation order; reduce kernel reload and loop overhead; verify register-pressure tradeoff. |
+| conv | C20-row2x6 | C19-r3 | passed | 555.90 | Expand the two-row SVE tile from four to six vectors per row, amortizing kernel traversal while preserving per-output accumulation order |
+| conv | C21-package | C21-row3x4 | passed | 502.29 | Independent final ZIP identity, compute-node extraction, and three complete official suites for unchanged C21 source |
+| conv | C21-r1 | C19-r5 | passed | 502.31 | Unchanged C21 three-output-row source; reversed-order confirmation against fresh C4 control C19-r5 |
+| conv | C21-r2 | C19-r7 | passed | 502.20 | Unchanged C21 source; bracketed repeat after single-case timing outlier, primary comparison baseline C19-r7 declared before execution |
+| conv | C21-row3x4 | C19-r3 | passed | 502.45 | Share an input row across three output rows, four SVE vectors per row, preserving each output kernel row order |
+| conv | C22-row2loads | C19-r3 | passed | 522.48 | In the shared two-output-row loop only, replace overlapping SVE ext windows with direct shifted loads to trade three loads for three ext plus three movprfx instructions |
 | conv | C3-u1 | C0-r2 | passed | 1883.78 | Keep 32 output columns and switch kernel loop unroll from 2 to 1; test reduced temporary-register pressure without changing accumulation order. |
 | conv | C4-b24 | C0-r4 | passed | 1951.20 | 单因素假设：将 run.sh 的 CONV_BLOCK 默认值从 32 减到 24，降低同时存活的累加器与寄存器压力；保留双步展开、严格浮点、官方 benchmark 和全部评测条件。 父版本更新为本轮 C0-r3 复测，其源码与 C0-r2 完全一致。 |
 | conv | C5-b48 | C0-r4 | passed | 2422.02 | 单因素假设：将 run.sh 的 CONV_BLOCK 默认值从 32 增到 48，分摊卷积核加载与循环控制开销；保留双步展开、严格浮点、官方 benchmark 和全部评测条件。 父版本更新为本轮 C0-r3 复测，其源码与 C0-r2 完全一致。 |
