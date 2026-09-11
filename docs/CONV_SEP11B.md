@@ -107,6 +107,6 @@ C21-r2 相对主要基线减少 **10.58%** 总耗时，各项分别减少 **9.29
 
 ## 协作仓库状态
 
-本轮先修复两份合并请求的冲突并推送，保留当时 **CONV C4、ZGEMM Z1、TRSM T4** 的源码和提交包字节：[PR #10](https://github.com/Palm0palM/kunpeng-s2/pull/10)、[PR #6](https://github.com/Palm0palM/kunpeng-s2/pull/6)。处理时核验可合并，没有因此自动合入 main，也没有触发本机编译或测试。
+三题最佳提交入口集中在 [PR #6](https://github.com/Palm0palM/kunpeng-s2/pull/6)：**CONV C5、ZGEMM Z1、TRSM T5**。本分支同步了队友的最新 TRSM T5 主分支更新并整理版本目录；CONV 历史 [PR #10](https://github.com/Palm0palM/kunpeng-s2/pull/10) 的成果也保留。各题只保留当前最佳提交包，旧版测量、策略与包身份继续留在记录及 Git 历史中。
 
-**本轮 C5 的 GitHub 发布正在由主代理完成，尚未在此宣称已经推送。** 正式比赛提交仍由队友执行，再把反馈分数补入相应版本记录。
+正式比赛提交仍由队友执行，再把反馈分数补入相应版本记录。所有编译、测试与性能运行均在调度分配的超算计算节点执行，本机只编辑、传输、核对文件及整理 Git。

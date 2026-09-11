@@ -1,35 +1,35 @@
 {
   "schema_version": 1,
-  "purpose": "当前 T4 提交包及原样保留的历史脱敏测量证据",
-  "active_submission_version": "T4",
-  "implementation_experiment": "T4-sve8rows",
-  "source_ref": "777d6cc19798b2f92723163318e23eb9a9ab64ba",
-  "notice": "本清单 SHA-256 校验当前分发文件字节；历史远端哈希验证未执行的记录保持原义。MANIFEST.json 自身不递归列入。",
+  "purpose": "当前 T5 提交包及原样保留的历史脱敏测量证据",
+  "active_submission_version": "T5",
+  "implementation_experiment": "T5-sve16rows",
+  "source_ref": "857525f44bde287edc1bd12afad96843720abfd7",
+  "notice": "本清单 SHA-256 仅校验当前分发文件字节；历史远端哈希验证未执行的记录保持原义。MANIFEST.json 自身不递归列入。",
   "files": [
     {
       "path": "README.md",
-      "sha256": "e3d1ba28211c632044ea9cf4afa68ee63966a6dae7787b8057ba33ea1ae60cdd",
-      "bytes": 1699
+      "sha256": "27e27c398d504ee6d84e3f806a4cc58b98143a2505c2fa79971d22682991b757",
+      "bytes": 1746
     },
     {
-      "path": "T4/README.md",
-      "sha256": "87a5bfcf73cb46ece00fe1624125c7419a6e02d4ea9492cb79772ca36bcb4d81",
-      "bytes": 1781
+      "path": "T5/README.md",
+      "sha256": "67d9d415e5d4217e3b07bfb87d83cd5ee2df165d9fbef0b186e6c43f52bf5cd6",
+      "bytes": 1886
     },
     {
-      "path": "T4/SHA256SUMS",
-      "sha256": "7534d2aac92751bde84ffd3c369b8a2f87943d65cf290903894459b0602e9270",
+      "path": "T5/SHA256SUMS",
+      "sha256": "bdd202f2420c63a2fb7a69edadbc0dad8e682c67a05d30200994727286568daa",
       "bytes": 75
     },
     {
-      "path": "T4/metadata.json",
-      "sha256": "16e23057348c16700d8c3587ae687d79108d27f3f97d5b6888bdbb7f71c4488a",
-      "bytes": 3572
+      "path": "T5/metadata.json",
+      "sha256": "17f9c416ef63d4597ebf2155dfe5f744d2ed80936d0c4e2602d2718869f57485",
+      "bytes": 3709
     },
     {
-      "path": "T4/trsm.zip",
-      "sha256": "0c374b6e92a4bc67fae71b2afbfae0511ea7d6e5085553c2d128af6b0897fdd9",
-      "bytes": 9963
+      "path": "T5/trsm.zip",
+      "sha256": "e37f7c2da0d46aeb2f9ce7d88e605f996d0152aa74dca78893e0741c631f3d5b",
+      "bytes": 10046
     },
     {
       "path": "evidence/T0/benchmark.log",

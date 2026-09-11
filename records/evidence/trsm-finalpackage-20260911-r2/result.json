@@ -1,0 +1,98 @@
+{
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        23.14,
+        22.2,
+        22.68
+      ],
+      "median_ms": 22.68,
+      "min_ms": 22.2,
+      "max_ms": 23.14,
+      "spread_pct": 4.144620811287484,
+      "gflops": [
+        226.2537,
+        235.8291,
+        230.8192
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        256.11,
+        257.75,
+        259.41
+      ],
+      "median_ms": 257.75,
+      "min_ms": 256.11,
+      "max_ms": 259.41,
+      "spread_pct": 1.2803103782735252,
+      "gflops": [
+        393.1607,
+        390.6482,
+        388.157
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        228.32,
+        229.06,
+        228.5
+      ],
+      "median_ms": 228.5,
+      "min_ms": 228.32,
+      "max_ms": 229.06,
+      "spread_pct": 0.3238512035010981,
+      "gflops": [
+        649.9023,
+        647.8122,
+        649.3782
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 508.93,
+  "official_score": null,
+  "ranking": null,
+  "job_id": "1513942",
+  "source_version": "T5-sve16rows",
+  "package_extracted_and_tested": true,
+  "reference": "OpenBLAS 0.3.28 static; not official KML revalidation",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "recorded_at": "2026-09-11T10:40:21.150583+00:00",
+  "hash_validation": "not performed at user request"
+}

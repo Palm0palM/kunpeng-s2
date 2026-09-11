@@ -86,7 +86,13 @@
 | trsm | T3-sveupdate-r2 | T1-control5 | failed | — | 原T3-sveupdate源码不变；显式统一TEST_RUNS=3后重试，大路径SVE单因素对照。上一组SVE预检查通过但没有官方计时。 |
 | trsm | T3-sveupdate-r3 | T1-control6 | passed | 535.06 | 不计算或验证哈希的同源码重试；以T1-panel为对照，单独测量SVE小路径或大路径；显式OpenBLAS静态库、TEST_RUNS=3、三轮完整官方用例。 |
 | trsm | T3-sveupdate | T1-control3 | failed | — | 仅将solve_blocked的4x8更新微核在Linux HWCAP确认且SVE宽度恰为8个double时替换为SVE；保持256x8打包布局、k顺序、分块、C减法、分配失败步长回退、线程、精度与官方benchmark和run.sh不变。其余平台保留NEON/标量。 |
+| trsm | T4-control8 | — | passed | 518.01 | 已晋级 T4-sve8rows 源码原样复测，与16行SVE和双面板候选同分配交错三轮。 |
 | trsm | T4-sve8rows | T3-control7 | passed | 526.19 | 大工作集 SVE 更新从4行扩至8行，一次X加载供8条按k递增的累加链复用；保留4行尾块、NEON与分配失败回退。 |
+| trsm | T5-control9 | — | passed | 507.49 | 已晋级16行SVE源码原样同分配三轮复测，作为工作集受限2/4面板候选的对照。 |
+| trsm | T5-panelpair | T4-control8 | passed | 523.48 | 小工作集前代按两组相邻8列面板共同行块推进，使L行数据复用；面板数至少为实际线程数4倍时配对，保持原NEON累加顺序、大路径与失败回退。 |
+| trsm | T5-sve16rows | T4-control8 | passed | 506.21 | 大工作集完整行块从8x8扩为16x8 SVE更新，16条独立递增k累加链复用一次X加载；保留8/4行尾块、NEON和分配失败回退。 |
+| trsm | T6-pair2budget | T5-control9 | passed | 506.43 | 保留原小路径，只有2组面板加4行L的估算工作集不超过256KiB时启用分组；分组后的任务至少为实际线程数2倍，其余走原始路径。 |
+| trsm | T6-pair4budget | T5-control9 | passed | 502.70 | 保留原小路径，只有4组面板加4行L的估算工作集不超过256KiB时启用分组；分组后的任务至少为实际线程数2倍，其余走原始路径。 |
 | zgemm | Z0-pair1 | — | passed | 4554.89 | 保持Z0源码不变，在单个38核NUMA作业内与冻结的Z1-pack各执行三轮完整官方用例，建立可比较基线；来源Z0，TEST_RUNS=3 |
 | zgemm | Z0 | — | passed | 4522.77 | 当前ZGEMM已验证源码的同环境三轮基线复测 |
 | zgemm | Z1-control2 | — | passed | 3737.22 | 保持已晋级Z1-pack-pair1源码不变，与MB48候选在同一个38核NUMA作业内各执行三轮官方用例，建立第二轮可比较控制基线；来源Z1-pack-pair1 |

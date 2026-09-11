@@ -1,0 +1,91 @@
+{
+  "cohort_id": "trsm-nohash-9755b9e3a427",
+  "members": {
+    "T5-control9": {
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+          "TEST_RUNS": "3",
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      }
+    },
+    "T6-pair2budget": {
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+          "TEST_RUNS": "3",
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      }
+    },
+    "T6-pair4budget": {
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+          "TEST_RUNS": "3",
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      }
+    }
+  },
+  "round_order": [
+    [
+      "T5-control9",
+      "T6-pair2budget",
+      "T6-pair4budget"
+    ],
+    [
+      "T6-pair2budget",
+      "T6-pair4budget",
+      "T5-control9"
+    ],
+    [
+      "T6-pair4budget",
+      "T5-control9",
+      "T6-pair2budget"
+    ]
+  ]
+}
