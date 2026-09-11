@@ -54,8 +54,8 @@ def source_files(folder):
     files = {}
     for p in sorted(Path(folder).rglob('*')):
         relative = p.relative_to(folder)
-        # Published submission archives are separate from the measured source.
-        # Keep them out of new snapshots, source identity and promotion cleanup.
+        # Submission packages and their notes are not measured source. Exclude
+        # only the root result/ tree so snapshots and promotion leave it intact.
         if relative.parts[0] == 'result':
             continue
         if p.is_symlink():

@@ -1,0 +1,20 @@
+[
+  {
+    "command": "djob -ll 1492058",
+    "returncode": 0,
+    "retrieved_at": "2026-09-09T03:31:02.060076+00:00",
+    "label": "scheduler-status"
+  },
+  {
+    "command": "python3 -c 'import json; from pathlib import Path; p=Path('\"'\"'/CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-c5c8ab4768a3'\"'\"'); names=[\"wrapper.stdout.log\",\"preflight.log\"]; names += [str(f.relative_to(p)) for f in (p/\"preflight\").rglob(\"*\") if f.is_file() and not f.is_symlink() and f.suffix in {\".c\",\".h\",\".s\",\".sh\",\".log\",\".txt\",\".md\",\".json\",\".py\"}]; print(json.dumps(sorted(names)))'",
+    "returncode": 0,
+    "retrieved_at": "2026-09-09T03:31:02.646936+00:00",
+    "label": "text-inventory"
+  },
+  {
+    "command": "cd /CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-c5c8ab4768a3 && tar -czf - -- preflight.log preflight/check-sve.c preflight/check-trsm.c preflight/environment-probe.log preflight/environment-probe.sh preflight/fail-alloc.c preflight/kml-link-probe.c preflight/kml-probe.c preflight/openblas-probe.c preflight/run-preflight.sh preflight/trsm-panel.s preflight/trsm-update.s wrapper.stdout.log",
+    "returncode": 0,
+    "retrieved_at": "2026-09-09T03:31:03.120614+00:00",
+    "label": "text-download"
+  }
+]

@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C19-r1",
+  "parent": "C19-sverow2",
+  "strategy": "同一SVE双行候选重复三轮完整官方套件；与末尾C3控制共同确认稳定性，不构成新正式版本",
+  "created_at": "2026-09-11T08:31:34.049768+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-11T08:36:51.776101+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep11",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "140d76e1dee0eb21db09840f75b831ba70695ab550313e89feeca65bfbba3f92",
+  "log": ".runs/conv/C19-r1/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        63.15,
+        62.97,
+        62.93
+      ],
+      "median_ms": 62.97,
+      "min_ms": 62.93,
+      "max_ms": 63.15,
+      "spread_pct": 0.3493727171669031,
+      "gflops": [
+        1193.5075,
+        1196.9917,
+        1197.7176
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        77.14,
+        77.15,
+        76.87
+      ],
+      "median_ms": 77.14,
+      "min_ms": 76.87,
+      "max_ms": 77.15,
+      "spread_pct": 0.36297640653357677,
+      "gflops": [
+        1079.0251,
+        1078.9466,
+        1082.8265
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        132.91,
+        132.92,
+        132.93
+      ],
+      "median_ms": 132.92,
+      "min_ms": 132.91,
+      "max_ms": 132.93,
+      "spread_pct": 0.015046644598262288,
+      "gflops": [
+        1211.896,
+        1211.8533,
+        1211.7159
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        288.86,
+        289.29,
+        289.4
+      ],
+      "median_ms": 289.29,
+      "min_ms": 288.86,
+      "max_ms": 289.4,
+      "spread_pct": 0.18666390127552407,
+      "gflops": [
+        1197.0197,
+        1195.2261,
+        1194.7866
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 562.3199999999999,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1507686",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 66.15,
+        "candidate_ms": 62.97,
+        "gain_pct": 4.8072562358276745
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 81.4,
+        "candidate_ms": 77.14,
+        "gain_pct": 5.23341523341524
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 138.26,
+        "candidate_ms": 132.92,
+        "gain_pct": 3.8622884420656765
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 303.68,
+        "candidate_ms": 289.29,
+        "gain_pct": 4.738540569020016
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "comparison_baseline": "C13-r8",
+  "decision_note": "Repeat of unchanged rowpair source compared with the same-allocation closing C3 control; all cases improve and noise gate passes. A further fresh opening-control comparison is scheduled before promotion."
+}

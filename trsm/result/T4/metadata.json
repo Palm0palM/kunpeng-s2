@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "submission_version": "T4",
+  "implementation_experiment": "T4-sve8rows",
+  "source_ref": "777d6cc19798b2f92723163318e23eb9a9ab64ba",
+  "source_package": "../../../outputs/trsm-best.zip",
+  "source_metadata": "../../../outputs/trsm-best.json",
+  "strategy": "已晋级的八行 SVE 更新方案；本次仅将已复验的同一 ZIP 整理到版本目录，未更改源码或重新压缩。",
+  "recommended": true,
+  "ready_for_manual_submission": true,
+  "archive": {
+    "filename": "trsm.zip",
+    "sha256": "0c374b6e92a4bc67fae71b2afbfae0511ea7d6e5085553c2d128af6b0897fdd9",
+    "bytes": 9963,
+    "layout": "trsm/ 顶层目录，5 个已测文本源码/运行文件",
+    "members": {
+      "trsm/README.md": {
+        "sha256": "eea598bda2e3d02e7fa8acb2224ae1607227bee0acc4716e0ee5033d78875264",
+        "bytes": 2401,
+        "mode": "0o100644"
+      },
+      "trsm/bench_trsm.c": {
+        "sha256": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+        "bytes": 4799,
+        "mode": "0o100644"
+      },
+      "trsm/compat/kblas.h": {
+        "sha256": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+        "bytes": 615,
+        "mode": "0o100644"
+      },
+      "trsm/run.sh": {
+        "sha256": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+        "bytes": 2686,
+        "mode": "0o100755"
+      },
+      "trsm/trsm.c": {
+        "sha256": "58300a10e2b45c92bce62b916606c3ce0051da653dfe9d1c655d4c58e2dc690a",
+        "bytes": 17476,
+        "mode": "0o100644"
+      }
+    }
+  },
+  "source_validation": {
+    "job_id": "1507689",
+    "date": "2026-09-11",
+    "suites": 3,
+    "test_runs": 3,
+    "official_rows_passed": 9,
+    "max_error": 1.11e-15,
+    "case_median_ms": [
+      22.64,
+      259.17,
+      244.38
+    ],
+    "reference": "OpenBLAS 0.3.28 static; not official KML revalidation"
+  },
+  "package_validation": {
+    "status": "passed",
+    "job_id": "1507701",
+    "extracted_on_compute_node": true,
+    "suites": 3,
+    "test_runs": 3,
+    "official_rows_passed": 9,
+    "max_error": 1.11e-15,
+    "case_median_ms": [
+      22.59,
+      253.97,
+      243.71
+    ],
+    "total_median_ms": 520.27,
+    "scheduler_state": "SUCCEEDED",
+    "job_exit_code": 0,
+    "system_exit_code": 0,
+    "wrapper_exit_code": 0,
+    "reference": "OpenBLAS 0.3.28 static; not official KML revalidation"
+  },
+  "measurement_metric": "三项用例在三轮独立完整套件中的中位耗时之和；各次打印耗时为 TEST_RUNS=3 的平均值；不是官方分数",
+  "total_median_ms": 520.27,
+  "official_kml_validation": "pending",
+  "hash_validation": "not performed at user request",
+  "local_artifact_check": {
+    "performed": "只读 Git 对象和 ZIP 字节校验；未编译或执行题目",
+    "zip_identical_to_source_output": true,
+    "all_five_members_match_fixed_main_source": true,
+    "hash_scope": "本次本地分发文件身份值；不表示历史远端测试已进行哈希校验"
+  },
+  "source_matches_measured_local_snapshot_by_bytes": true,
+  "local_compilation_or_tests": false,
+  "contest_submission": false,
+  "unvalidated_candidate_included": false,
+  "evidence": "../../../records/evidence/trsm-package-20260911",
+  "competition": {
+    "submission_status": "not_submitted_by_agent",
+    "score": null,
+    "rank": null,
+    "submitted_at": null,
+    "submission_id": null,
+    "feedback": ""
+  },
+  "competition_feedback": {
+    "score": null,
+    "submitted_at": null,
+    "passed": null,
+    "notes": null
+  }
+}

@@ -1,0 +1,42 @@
+2026-09-11T08:36:18Z
+COMPUTE_NODE_1
+Linux COMPUTE_NODE_1 5.10.0-285.5.v2403.ky10p.aarch64 #1 SMP Mon May 11 10:51:36 CST 2026 aarch64 aarch64 aarch64 GNU/Linux
+Cpus_allowed_list:	114-151
+/usr/share/Modules/modulefiles:
+dot
+module-git
+module-info
+modules
+null
+use.own
+No Modulefiles Currently Loaded.
+OFFICIAL_MODULE_ROOT_MISSING=/home/HPC/HPCKit/latest/modulefiles
+/usr/bin/gcc
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+kml-probe.c:1:10: fatal error: kblas.h: No such file or directory
+    1 | #include <kblas.h>
+      |          ^~~~~~~~~
+compilation terminated.
+OFFICIAL_HEADER_AND_LINK_EXIT=1
+/usr/bin/ld: cannot find -lkblas
+collect2: error: ld returned 1 exit status
+OFFICIAL_LIBRARY_LINK_EXIT=1
+  File: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a
+  Size: 1958444   	Blocks: 3840       IO Block: 1048576 regular file
+Device: 0,60	Inode: 36028962424400384  Links: 1
+Access: (0640/-rw-r-----)  Uid: REDACTED
+Access: 2026-09-07 22:03:14.065488560 +0800
+Modify: 2026-09-07 22:03:14.073425000 +0800
+Change: 2026-09-07 22:03:14.073425000 +0800
+ Birth: -
+OPENBLAS_PROBE_COMPILE_EXIT=0
+OPENBLAS_CONFIG=OpenBLAS 0.3.28 NO_LAPACK NO_LAPACKE NO_AFFINITY USE_OPENMP ARMV8 MAX_THREADS=38
+OPENBLAS_PARALLEL=2
+OPENBLAS_THREADS=38
+OPENBLAS_PROBE_EXIT=0
+2026-09-11T08:36:19Z
+ENVIRONMENT_PROBE_END

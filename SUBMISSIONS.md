@@ -1,25 +1,15 @@
-# 三题最佳提交包
+# 三题当前最佳提交包
 
-每题只提供当前最佳版本，直接上传对应 ZIP，无需重新压缩。ZIP 内保留原题目目录、已测源码、官方 benchmark 与运行脚本；版本说明和测试记录放在包外。
+下载对应 ZIP 原样提交，不要重新压缩版本目录。当前提交清单只保留每题已验证的最佳版本；历史候选、退化策略和原始测量字段继续保留在 records/ 与 Git 历史中。
 
-| 题目 | 版本 | 提交包 | 版本与测试说明 | 超算耗时合计 ms | 正确性 |
-| --- | --- | --- | --- | ---: | --- |
-| CONV | C2 | [conv.zip](conv/result/C2/conv.zip) | [C2 说明](conv/result/C2/README.md) | 629.91 | 3 轮完整套件，12/12 PASS |
-| ZGEMM | Z1 | [zgemm.zip](zgemm/result/Z1/zgemm.zip) | [Z1 说明](zgemm/result/Z1/README.md) | 3737.22 | 3 轮完整套件，9/9 PASS |
-| TRSM | T1 | [trsm.zip](trsm/result/T1/trsm.zip) | [T1 说明](trsm/result/T1/README.md) | 758.31 | 3 轮完整套件，9/9 PASS |
+| 题目 | 当前版本与实验 | 可直接提交的包 | 说明与反馈 |
+| --- | --- | --- | --- |
+| CONV | C4 / C19-r2（来源 C19-sverow2） | [conv.zip](conv/result/C4/conv.zip) | [版本说明](conv/result/C4/README.md) · [元数据](conv/result/C4/metadata.json) |
+| ZGEMM | Z1 / Z1-control2（来源 Z1-pack） | [zgemm.zip](zgemm/result/Z1/zgemm.zip) | [版本说明](zgemm/result/Z1/README.md) · [元数据](zgemm/result/Z1/metadata.json) |
+| TRSM | T4 / T4-sve8rows | [trsm.zip](trsm/result/T4/trsm.zip) | [版本说明](trsm/result/T4/README.md) · [元数据](trsm/result/T4/metadata.json) |
 
-耗时合计是各用例在三轮独立套件中的中位数之和，仅作内部性能记录，不能当作官方分数，也不能跨题比较。CONV/ZGEMM 使用官方 benchmark 内置参考；TRSM 的超算验证使用 OpenBLAS 0.3.28，官方 KML 环境尚未复验，具体库用途和验证限制见 T1 说明。
+CONV C4 的最终 ZIP 三轮复验 12/12 PASS、最大误差 0；ZGEMM Z1 保留已验证的原包；TRSM T4 复用 main 已发布的原包，其参考库为 OpenBLAS，官方 KML 复验仍待完成。TRSM 原记录明确未执行远端哈希验证，本次仅核对 Git 对象与复制后的本地包身份，不改变历史验证结论。
 
-各包有 `metadata.json` 保存正式版本与实验 ID 的映射、策略、逐次耗时、源码哈希和 ZIP 哈希，并有独立 ZIP 校验文件。打包时逐文件核对已测快照，打包没有修改算子或测试配置，也没有重新测出新分数。
+上述包的运行证据、逐版本速度与优化策略见各版本说明。耗时是内部比较指标，不是官方分数或排名。正式比赛平台由队友手动提交，三题的分数、提交时间与平台通过状态均待实际反馈，不填估算值。
 
-历史版本、未晋级及退化候选仍保留在实验记录中；本次 `result/` 目录只含上述三个最佳 ZIP。
-
-## 手动提交反馈
-
-请反馈“题目 + 版本 + 分数 + 平台记录编号/提交时间”，例如 `CONV C2，分数 …，记录编号 …`，AI 会把真实成绩补回相应版本和本表。
-
-| 题目 / 版本 | 官方分数 | 提交时间 | 平台记录编号 | 备注 |
-| --- | --- | --- | --- | --- |
-| CONV C2 | 待反馈 | 待反馈 | 待反馈 | 待手动提交 |
-| ZGEMM Z1 | 待反馈 | 待反馈 | 待反馈 | 待手动提交 |
-| TRSM T1 | 待反馈 | 待反馈 | 待反馈 | 待手动提交 |
+提交后请提供题目、版本、平台分数、提交时间、是否通过以及错误信息，补入对应 metadata.json：CONV/TRSM 使用 competition_feedback，ZGEMM 使用原有 official_score、submission_date、platform_feedback 字段。

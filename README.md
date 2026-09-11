@@ -4,7 +4,9 @@
 
 `conv/`、`zgemm/`、`trsm/` 保存当前晋级版本。现有版本的验证范围与环境见 [基线说明](docs/BASELINES.md)，不要把历史测试直接当作当前排行榜成绩。
 
-**手动提交入口：[三题最佳提交包与分数反馈](SUBMISSIONS.md)。** 每题只保留当前最佳 ZIP，位置为 `题目/result/版本/题目.zip`；解压源码与对应实测快照一致。版本说明、耗时、文件校验值和待反馈分数字段放在 ZIP 旁边。
+TRSM 最新提交包：**T4-sve8rows**，同分配三轮较 T3 合计改善 **3.51%**；最终 ZIP 已在计算节点解压复跑三轮，9/9 PASS。[下载压缩包](outputs/trsm-best.zip) · [包级验证](docs/trsm-package-20260911.md) · [优化对照](docs/trsm-sve8rows-20260911.md)。参考为 OpenBLAS，官方 KML 复验仍待完成。
+
+**提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C4、ZGEMM Z1、TRSM T4；各题 result 目录保留版本说明、校验值与平台反馈字段。
 
 ## 先把环境跑通
 
@@ -19,6 +21,10 @@
 本地工作分支为 `setup/agent-workflow`；`origin` 保留上游仓库，`personal` 指向当前账号的仓库。个人仓库用于保存协作镜像，项目成果通过 Pull Request 提交到项目仓库。
 
 CONV 最新最佳版本、父子关系和耗时见 [晋级台账](records/conv-lineage.json) 与 [本轮逐版本记录](docs/CONV_ROUND_RECORDS.md)；本轮已确认显式 SVE 优化产生稳定提速。候选失败与退化也完整留档，[此前实验](docs/CONV_RESULTS.md) 保留作历史对照。提交包对应的源码校验见 [包清单](outputs/conv-best.json)，记录及公开导出方式见 [记录说明](docs/CONV_RECORDING.md)。
+
+2026-09-11 最新 CONV 为 **C4**：相邻两输出行共享 SVE 输入加载，同资源对照从 **591.29 ms 降至 561.54 ms（减少 5.03%）**。最终 ZIP 在超算解压并完成三轮独立复验，12/12 用例通过、最大误差为零。
+
+**直接提交 [conv/result/C4/conv.zip](conv/result/C4/conv.zip)**，无需重新压缩。该目录只保留当前最佳提交包，附版本说明和 SHA-256；此前版本的测量与策略保留在记录中。[本轮完整报告](docs/CONV_SEP11.md) · [逐版本记录](docs/CONV_SEP11_ROUND_RECORDS.md) · [C3 历史报告](docs/CONV_SEP9.md)。以上耗时均为内部指标，正式平台分数待队友手动提交后反馈。
 
 ## 先重测当前基线
 
@@ -53,7 +59,7 @@ python3 tools/experiment.py new conv C1-alice --parent C0 --strategy "调整分�
 
 只改 `.runs/conv/C1-alice/source/`，然后按基线相同流程对该目录执行 `submit`、`status`、`fetch`，完成三轮后登记与比较：
 
-本地正确性检查完成后，可执行 `python3 tools/experiment.py checkpoint conv C1-alice --note "校验结果与待测事项"` 保存待测候选；创建时记录 planned，准备完成记录 prepared，失败也保留。
+超算计算节点正确性检查完成后，可执行 `python3 tools/experiment.py checkpoint conv C1-alice --note "校验结果与待测事项"` 保存待测候选；创建时记录 planned，准备完成记录 prepared，失败也保留。
 
 ```bash
 python3 tools/experiment.py record conv C1-alice --log .runs/conv/C1-alice/benchmark.log --environment COMPUTE_NODE_1-gcc10-generic-38 --reference "官方内置参考" --repeats 3

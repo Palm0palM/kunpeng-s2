@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C16-pipe12",
+  "job_id": "1507584",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1507584",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "b05121db0df3e34b131cfc8361eb8dfeb03568403b27466f5eadc5e6e044fe65",
+    "check_conv_guard.c": "b82ec6f3bc445ad28ca9b0d22c0ef005ef87dbf8769b7e68806e1fdc9015c223",
+    "check_sve_dispatch.c": "6adebfeae03eca0836bab48bad75f97d701c14e4df5df4a7cb1ef44d1549778f",
+    "conv2d.c": "ee37338cf458adda46e03fe77af061d98d525b9a0d6f189445d9552cecb8e811",
+    "remote_job.sh": "3313d76b501b8f4acd0704f65b4b6e4aa8a12be9f485a9d7cd246f0ce059470c"
+  },
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs": 48,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs": 48,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs": 96,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs": 96,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs": 192,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs": 192,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    }
+  ],
+  "full_cases": 19608,
+  "dispatch_cases": 144,
+  "total_cases": 19752,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "hot_loop_label": ".L41",
+    "hot_loop_instructions": 80,
+    "hot_loop_fmul": 24,
+    "hot_loop_fadd": 24,
+    "hot_loop_ext": 11,
+    "hot_loop_stack_accesses": 0,
+    "prefix_movprfx_count": 0,
+    "prefix_fma_count": 0,
+    "note": "Hot paired-kernel loop has no stack accesses and no movprfx/FMA. Unlike C15, the odd-kernel cleanup path reloads seven scalar address offsets from stack per cleanup element (second cleanup copy also has seven); no vector accumulator spill observed. Prefix frame 432 bytes, including callee-saved d8-d11 saves/restores. This is uninstrumented generic-target GCC assembly."
+  },
+  "evidence_directory": "raw"
+}

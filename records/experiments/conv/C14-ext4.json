@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C14-ext4",
+  "parent": "C13-r2",
+  "strategy": "Exploratory extension of C13-exttail: reuse eight loaded SVE vectors across four adjacent kernel coefficients instead of two; eleven input vector loads plus twenty-one extracts per four coefficients, versus eighteen loads/fourteen extracts for pairwise reuse. Preserve exact accumulation sequence, bounds, tail and official runner.",
+  "created_at": "2026-09-09T03:07:32.584674+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "ec758f3ba2ac122af26f16a41cd04a0241d5f6bc3f25e37015680c5765a105e6",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C8-r1",
+  "derived_from": "C13-exttail",
+  "parent_note": "Compare four-coefficient extension with exact C13 combination baseline in next allocation",
+  "recorded_at": "2026-09-09T03:20:35.664445+00:00",
+  "environment": "sep9-group3-gcc10-generic-38",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "bef0fae1350e15b13bb482e6dcb7ebc4061d838240b51005626844e62fd2c3e6",
+  "log": ".runs/conv/C14-ext4/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        83.32,
+        83.35,
+        84.21
+      ],
+      "median_ms": 83.35,
+      "min_ms": 83.32,
+      "max_ms": 84.21,
+      "spread_pct": 1.0677864427114585,
+      "gflops": [
+        904.619,
+        904.3273,
+        895.1063
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        98.42,
+        97.93,
+        98.25
+      ],
+      "median_ms": 98.25,
+      "min_ms": 97.93,
+      "max_ms": 98.42,
+      "spread_pct": 0.49872773536895154,
+      "gflops": [
+        845.7057,
+        849.9305,
+        847.2182
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        175.57,
+        175.73,
+        177.89
+      ],
+      "median_ms": 175.73,
+      "min_ms": 175.57,
+      "max_ms": 177.89,
+      "spread_pct": 1.3202071359471879,
+      "gflops": [
+        917.4517,
+        916.602,
+        905.4581
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        382.14,
+        381.82,
+        389.41
+      ],
+      "median_ms": 382.14,
+      "min_ms": 381.82,
+      "max_ms": 389.41,
+      "spread_pct": 1.9861830742659843,
+      "gflops": [
+        904.8294,
+        905.584,
+        887.9277
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 739.47,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "9",
+    "ALLOWED_CPUS": "342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1492029",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -25.03% 未超过测量波动/最低1%门槛 6.84%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 67.74,
+        "candidate_ms": 83.35,
+        "gain_pct": -23.043991733097137
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 82.26,
+        "candidate_ms": 98.25,
+        "gain_pct": -19.438366156090435
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 137.9,
+        "candidate_ms": 175.73,
+        "gain_pct": -27.43292240754168
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 303.54,
+        "candidate_ms": 382.14,
+        "gain_pct": -25.89444554259734
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Four-coefficient input reuse regressed by 25.03% in the same allocation; all four cases slower, rejected. Keep C3 pairwise reuse plus SVE tail."
+}

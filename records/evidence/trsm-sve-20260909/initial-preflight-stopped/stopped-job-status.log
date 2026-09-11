@@ -1,0 +1,95 @@
+Basic Details:
+    jobId                               	1492036                                           	
+    name                                	trsm-cohort-5eaa43533feb                          	
+    state                               	FAILED                                            	
+    user                                	REDACTED_USER                                       	
+    queue                               	q_kunpeng                                         	
+    account                             	CLUSTER_ACCOUNT                                            	
+    cmd                                 	/bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-5eaa43533feb/remote_job.sh	
+    submitNode                          	LOGIN_NODE_2                                           	
+    createTime                          	2026/09/09 11:19:10                               	
+    startTime                           	2026/09/09 11:19:14                               	
+    lastModifiedTime                    	-                                                 	
+    endTime                             	2026/09/09 11:23:37                               	
+    currentOperation                    	EMPTY                                             	
+    jobRequeueMaxCnt                    	0                                                 	
+    jobRequeueCurrentCnt                	0                                                 	
+    mpiType                             	DEFAULT                                           	
+    interactionMode                     	DEFAULT                                           	
+    assistJob                           	DEFAULT                                           	
+    x11ForwardEnabled                   	false                                             	
+    description                         	-                                                 	
+    transferType                        	LOCAL                                             	
+    forwardTime                         	-                                                 	
+    recallTime                          	-                                                 	
+    autoResize                          	false                                             	
+Scheduling Details:
+    exclusive                           	false                                             	
+    priority                            	1                                                 	
+    adminPriority                       	-1                                                	
+    expectSchedTime                     	-                                                 	
+    startTimeEstimated                  	-                                                 	
+    reserveRes                          	-                                                 	
+    backfillRes                         	-                                                 	
+    backfilledRes                       	-                                                 	
+Resource Details:
+    reqJobLicense                       	-
+    allocJobLicense                     	-
+    resGroup[0]:
+        replica                         	1                                                 	
+        labels                          	queue_q_kunpeng aarch64                           	
+        preferNodes                     	-                                                 	
+        reqNodeSelectPolicy             	-                                                 	
+        effNodeSelectPolicy             	SEQUENCE                                          	
+        reqCPU                          	38                                                	
+        reqMem                          	24576                                             	
+        reqGPU                          	gpu:0
+        reqNPU                          	0
+        allocCPU                        	38                                                	
+        allocMem                        	24576                                             	
+        allocGPU                        	gpu:0
+        allocNPU                        	0
+        reqTaskLicense                  	-
+        allocTaskLicense                	-
+        reqAffinity                     	numa[count=1, distribution=pack]                  	
+    allocAffinity                       	
+        execNode             resGroup resIndex hwThreads        gpuIds           npuIds          
+        COMPUTE_NODE_1              0        0/1      342-379          -                -               
+Runtime Details:
+    execNodes                           	COMPUTE_NODE_1                                           	
+    execNodeCnt                         	1                                                 	
+    execPath                            	/CLUSTER_USER_HOME                           	
+    resizeCmd                           	-                                                 	
+    timeout                             	1800                                              	
+    stderrRedirectPath                  	-                                                 	
+    stderrRedirectType                  	append                                            	
+    stdoutRedirectPath                  	/CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-5eaa43533feb/wrapper.stdout.log	
+    stdoutRedirectType                  	append                                            	
+    totalUtime                          	257                                               	
+    totalStime                          	4                                                 	
+    totalMaxMemSwp                      	303                                               	
+    totalMaxMem                         	303                                               	
+    hostPreHookRunTime                  	0                                                 	
+    preHookRunTime                      	0                                                 	
+    jobWallclockDuration                	262                                               	
+    postHookRunTime                     	0                                                 	
+    hostPostHookRunTime                 	0                                                 	
+    jobSstoppedTime                     	0                                                 	
+    coreHours                           	9956                                              	
+    jobExitCode                         	130                                               	
+    systemExitCode                      	10003                                             	
+    exitMessage                         	Job was terminated by REDACTED_USER                 	
+    stderrRedirectOutputPath            	-                                                 	
+    stdoutRedirectOutputPath            	/CLUSTER_USER_HOME/kunpeng-experiments/trsm-cohort-5eaa43533feb/wrapper.stdout.log	
+    nodeUsages                          	
+        execNode             resGroup resIndex utime    stime    wallclockDuration    sstoppedTime     cpuUtil          gpuUtil          npuUtil          memResource                     
+        COMPUTE_NODE_1              0        0/1      257      4        262                  0                99/102           -                -                0/0/0/0/303/303/195/0           
+    nodePids                            	
+        execNode             pids    
+        COMPUTE_NODE_1              -       
+    traceMessages                       	2026/09/09 11:19:10    :    [JOB_ADD] Job 1492036 is submitted by REDACTED_USER, job state is PENDING.	
+                                        	2026/09/09 11:19:14    :    [JOB_START] Job 1492036 start message has been sent.	
+                                        	2026/09/09 11:19:14    :    [JOB_START_ACK] Job 1492036 start message has been received by agent COMPUTE_NODE_1.	
+                                        	2026/09/09 11:19:14    :    [JOB_EXECUTION] Job 1492036 state is from PENDING to RUNNING, execution path: /CLUSTER_USER_HOME.	
+                                        	2026/09/09 11:23:37    :    [JOB_CTRL] REDACTED_USER terminate job 1492036 for the 1st time, reason: TRSM owner: stop slow preflight before official timing; preserve source and rerun with exact dyadic reference.	
+                                        	2026/09/09 11:23:37    :    [JOB_FINISH] Job 1492036 state is from RUNNING to FAILED, reason: job terminated by user.	

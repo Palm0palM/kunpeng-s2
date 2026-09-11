@@ -1,0 +1,2495 @@
+	.arch armv8-a
+	.file	"conv2d.c"
+	.text
+	.align	2
+	.p2align 4,,11
+	.arch armv8-a+sve
+	.type	conv_sve_tail, %function
+conv_sve_tail:
+.LFB8:
+	.cfi_startproc
+	stp	x29, x30, [sp, -176]!
+	.cfi_def_cfa_offset 176
+	.cfi_offset 29, -176
+	.cfi_offset 30, -168
+	mov	x18, x0
+	mov	x14, x1
+	mov	x29, sp
+	stp	x19, x20, [sp, 16]
+	mov	w8, w3
+	mov	w0, w4
+	stp	x21, x22, [sp, 32]
+	.cfi_offset 19, -160
+	.cfi_offset 20, -152
+	.cfi_offset 21, -144
+	.cfi_offset 22, -136
+	mov	x20, x5
+	mov	w21, w6
+	stp	x23, x24, [sp, 48]
+	stp	x25, x26, [sp, 64]
+	stp	x27, x28, [sp, 80]
+	.cfi_offset 23, -128
+	.cfi_offset 24, -120
+	.cfi_offset 25, -112
+	.cfi_offset 26, -104
+	.cfi_offset 27, -96
+	.cfi_offset 28, -88
+	cntb	x28
+	str	x2, [sp, 104]
+	cmp	w6, w28
+	blt	.L27
+	cntw	x26
+	cnth	x25
+	sbfiz	x1, x26, 2, 32
+	sbfiz	x2, x25, 2, 32
+	cntw	x24, all, mul #3
+	stp	x1, x2, [sp, 136]
+	add	x1, x5, x1
+	ptrue	p0.b, all
+	sbfiz	x30, x24, 2, 32
+	str	x1, [sp, 120]
+	add	x1, x5, x2
+	str	x1, [sp, 112]
+	add	x1, x30, 4
+	sub	w22, w4, #2
+	str	x1, [sp, 152]
+	add	x1, x5, x30
+	and	w22, w22, -2
+	str	x1, [sp, 128]
+	sbfiz	x1, x28, 2, 32
+	mov	x23, x18
+	sxtw	x26, w26
+	sxtw	x25, w25
+	sxtw	x24, w24
+	add	w22, w22, 2
+	sub	w9, w4, #1
+	sxtw	x19, w28
+	lsl	x11, x14, 2
+	sbfiz	x17, x4, 2, 32
+	stp	x18, x14, [sp, 160]
+	mov	x18, x1
+	mov	x27, 0
+	mov	w13, 0
+	.p2align 3,,7
+.L3:
+	cmp	w8, 0
+	ble	.L43
+	ldr	x1, [sp, 104]
+	mov	z3.s, #0
+	add	x5, x30, x23
+	mov	z19.d, z3.d
+	mov	w12, 0
+	mov	z6.d, z3.d
+	add	x2, x1, 4
+	mov	z5.d, z3.d
+	ldr	x1, [sp, 136]
+	add	x7, x1, x23
+	ldr	x1, [sp, 144]
+	add	x6, x1, x23
+	ldr	x1, [sp, 152]
+	add	x4, x1, x23
+	mov	x1, x23
+	.p2align 3,,7
+.L8:
+	sub	x15, x2, #4
+	cmp	w9, 0
+	ble	.L28
+	mov	x3, 0
+	.p2align 3,,7
+.L5:
+	lsl	x10, x3, 2
+	ld1w	z4.s, p0/z, [x1, x3, lsl 2]
+	add	x14, x15, x10
+	ld1rw	z16.s, p0/z, [x14]
+	fmul	z18.s, z4.s, z16.s
+	ld1w	z1.s, p0/z, [x7, x3, lsl 2]
+	fadd	z5.s, z5.s, z18.s
+	fmul	z18.s, z1.s, z16.s
+	ld1w	z0.s, p0/z, [x6, x3, lsl 2]
+	ld1w	z2.s, p0/z, [x5, x3, lsl 2]
+	ld1w	z17.s, p0/z, [x4, x3, lsl 2]
+	ext	z4.b, z4.b, z1.b, #4
+	fadd	z6.s, z6.s, z18.s
+	ext	z1.b, z1.b, z0.b, #4
+	fmul	z18.s, z0.s, z16.s
+	add	x10, x10, x2
+	ext	z0.b, z0.b, z2.b, #4
+	ld1rw	z7.s, p0/z, [x10]
+	add	x3, x3, 2
+	fmul	z4.s, z4.s, z7.s
+	fmul	z0.s, z0.s, z7.s
+	fadd	z5.s, z5.s, z4.s
+	fmul	z1.s, z1.s, z7.s
+	fadd	z4.s, z19.s, z18.s
+	fmul	z2.s, z2.s, z16.s
+	fadd	z19.s, z4.s, z0.s
+	fadd	z3.s, z3.s, z2.s
+	fmul	z0.s, z17.s, z7.s
+	fadd	z6.s, z6.s, z1.s
+	fadd	z3.s, z3.s, z0.s
+	cmp	w9, w3
+	bgt	.L5
+	mov	w3, w22
+.L4:
+	cmp	w0, w3
+	ble	.L6
+	sxtw	x10, w3
+	sbfiz	x14, x3, 2, 32
+	add	x16, x26, x10
+	ld1w	z2.s, p0/z, [x1, x16, lsl 2]
+	add	x16, x15, x14
+	add	w3, w3, 1
+	ld1rw	z0.s, p0/z, [x16]
+	add	x16, x1, x14
+	fmul	z2.s, z2.s, z0.s
+	ld1w	z1.s, p0/z, [x16]
+	fmul	z1.s, z1.s, z0.s
+	add	x16, x25, x10
+	fadd	z6.s, z6.s, z2.s
+	add	x10, x24, x10
+	fadd	z5.s, z5.s, z1.s
+	ld1w	z2.s, p0/z, [x1, x16, lsl 2]
+	ld1w	z1.s, p0/z, [x1, x10, lsl 2]
+	fmul	z2.s, z2.s, z0.s
+	fmul	z0.s, z1.s, z0.s
+	fadd	z19.s, z19.s, z2.s
+	fadd	z3.s, z3.s, z0.s
+	cmp	w0, w3
+	ble	.L6
+	sxtw	x3, w3
+	add	x14, x14, 4
+	add	x10, x26, x3
+	add	x15, x15, x14
+	ld1w	z1.s, p0/z, [x1, x10, lsl 2]
+	ld1rw	z0.s, p0/z, [x15]
+	add	x14, x1, x14
+	fmul	z1.s, z1.s, z0.s
+	ld1w	z2.s, p0/z, [x14]
+	fmul	z2.s, z2.s, z0.s
+	add	x10, x25, x3
+	fadd	z5.s, z5.s, z2.s
+	add	x3, x24, x3
+	fadd	z6.s, z6.s, z1.s
+	ld1w	z2.s, p0/z, [x1, x10, lsl 2]
+	ld1w	z1.s, p0/z, [x1, x3, lsl 2]
+	fmul	z2.s, z2.s, z0.s
+	fmul	z0.s, z1.s, z0.s
+	fadd	z19.s, z19.s, z2.s
+	fadd	z3.s, z3.s, z0.s
+.L6:
+	add	w12, w12, 1
+	add	x1, x1, x11
+	add	x2, x2, x17
+	add	x7, x7, x11
+	add	x6, x6, x11
+	add	x5, x5, x11
+	add	x4, x4, x11
+	cmp	w8, w12
+	bne	.L8
+.L10:
+	st1w	z5.s, p0, [x20, x27, lsl 2]
+	ldp	x2, x1, [sp, 112]
+	st1w	z6.s, p0, [x1, x27, lsl 2]
+	add	w13, w13, w28
+	st1w	z19.s, p0, [x2, x27, lsl 2]
+	ldr	x2, [sp, 128]
+	sub	w1, w21, w13
+	st1w	z3.s, p0, [x2, x27, lsl 2]
+	add	x23, x23, x18
+	add	x27, x27, x19
+	cmp	w1, w28
+	bge	.L3
+	ldp	x18, x14, [sp, 160]
+.L2:
+	cnth	x23
+	cmp	w1, w23
+	blt	.L11
+	cntw	x30
+	sub	w17, w0, #2
+	sbfiz	x24, x30, 2, 32
+	and	w17, w17, -2
+	add	x19, x18, x13, sxtw 2
+	str	x18, [sp, 112]
+	ldr	x18, [sp, 104]
+	ptrue	p0.b, all
+	sxtw	x30, w30
+	add	x28, x24, 4
+	add	x27, x20, x24
+	add	w17, w17, 2
+	sub	w6, w0, #1
+	sxtw	x26, w23
+	sbfiz	x25, x23, 2, 32
+	sxtw	x22, w13
+	lsl	x10, x14, 2
+	sbfiz	x15, x0, 2, 32
+	.p2align 3,,7
+.L12:
+	mov	z1.s, #0
+	mov	z3.d, z1.d
+	cmp	w8, 0
+	ble	.L19
+	add	x2, x18, 4
+	add	x5, x24, x19
+	add	x4, x28, x19
+	mov	x1, x19
+	mov	w9, 0
+	mov	z1.s, #0
+	mov	z3.d, z1.d
+	.p2align 3,,7
+.L17:
+	sub	x12, x2, #4
+	cmp	w6, 0
+	ble	.L29
+	mov	x3, 0
+	.p2align 3,,7
+.L14:
+	lsl	x7, x3, 2
+	ld1w	z2.s, p0/z, [x1, x3, lsl 2]
+	ld1w	z0.s, p0/z, [x5, x3, lsl 2]
+	add	x11, x12, x7
+	ld1w	z5.s, p0/z, [x4, x3, lsl 2]
+	ld1rw	z7.s, p0/z, [x11]
+	add	x3, x3, 2
+	fmul	z4.s, z2.s, z7.s
+	ext	z2.b, z2.b, z0.b, #4
+	fmul	z0.s, z0.s, z7.s
+	add	x7, x7, x2
+	fadd	z1.s, z1.s, z0.s
+	ld1rw	z6.s, p0/z, [x7]
+	fadd	z3.s, z3.s, z4.s
+	fmul	z2.s, z2.s, z6.s
+	fmul	z0.s, z5.s, z6.s
+	fadd	z3.s, z3.s, z2.s
+	fadd	z1.s, z1.s, z0.s
+	cmp	w6, w3
+	bgt	.L14
+	mov	w3, w17
+.L13:
+	cmp	w0, w3
+	ble	.L15
+	sbfiz	x7, x3, 2, 32
+	add	w11, w3, 1
+	add	x16, x12, x7
+	add	x3, x30, x3, sxtw
+	ld1rw	z4.s, p0/z, [x16]
+	ld1w	z2.s, p0/z, [x1, x3, lsl 2]
+	add	x16, x1, x7
+	fmul	z2.s, z2.s, z4.s
+	ld1w	z0.s, p0/z, [x16]
+	fadd	z1.s, z1.s, z2.s
+	fmul	z0.s, z0.s, z4.s
+	fadd	z3.s, z3.s, z0.s
+	cmp	w0, w11
+	ble	.L15
+	add	x7, x7, 4
+	add	x11, x30, x11, sxtw
+	add	x12, x12, x7
+	ld1w	z0.s, p0/z, [x1, x11, lsl 2]
+	ld1rw	z4.s, p0/z, [x12]
+	add	x7, x1, x7
+	fmul	z0.s, z0.s, z4.s
+	ld1w	z2.s, p0/z, [x7]
+	fadd	z1.s, z1.s, z0.s
+	fmul	z2.s, z2.s, z4.s
+	fadd	z3.s, z3.s, z2.s
+.L15:
+	add	w9, w9, 1
+	add	x1, x1, x10
+	add	x2, x2, x15
+	add	x5, x5, x10
+	add	x4, x4, x10
+	cmp	w8, w9
+	bne	.L17
+.L19:
+	add	w13, w13, w23
+	st1w	z3.s, p0, [x20, x22, lsl 2]
+	sub	w1, w21, w13
+	st1w	z1.s, p0, [x27, x22, lsl 2]
+	add	x19, x19, x25
+	add	x22, x22, x26
+	cmp	w1, w23
+	bge	.L12
+	ldr	x18, [sp, 112]
+.L11:
+	sbfiz	x7, x0, 2, 32
+	ptrue	p2.b, all
+	cntw	x11
+	cmp	w21, w13
+	ble	.L1
+	ldr	x12, [sp, 104]
+	.p2align 3,,7
+.L25:
+	sub	w9, w21, w13
+	cmp	w9, w11
+	sxtw	x10, w13
+	csel	w9, w9, w11, le
+	mov	x6, x10
+	sxtw	x1, w9
+	whilelo	p1.s, xzr, x1
+	mov	p0.b, p1.b
+	cmp	w8, 0
+	ble	.L30
+	mov	x3, x12
+	mov	w5, 0
+	mov	z1.s, #0
+	.p2align 3,,7
+.L24:
+	cmp	w0, 0
+	ble	.L22
+	add	x4, x18, x6, lsl 2
+	mov	x1, 0
+	.p2align 3,,7
+.L23:
+	add	x2, x3, x1, lsl 2
+	ld1w	z0.s, p1/z, [x4, x1, lsl 2]
+	add	x1, x1, 1
+	ld1rw	z2.s, p2/z, [x2]
+	fmul	z0.s, p0/m, z0.s, z2.s
+	fadd	z1.s, p0/m, z1.s, z0.s
+	cmp	w0, w1
+	bgt	.L23
+.L22:
+	add	w5, w5, 1
+	add	x3, x3, x7
+	add	x6, x6, x14
+	cmp	w8, w5
+	bne	.L24
+	add	w13, w13, w9
+	st1w	z1.s, p1, [x20, x10, lsl 2]
+	cmp	w21, w13
+	bgt	.L25
+.L1:
+	ldp	x19, x20, [sp, 16]
+	ldp	x21, x22, [sp, 32]
+	ldp	x23, x24, [sp, 48]
+	ldp	x25, x26, [sp, 64]
+	ldp	x27, x28, [sp, 80]
+	ldp	x29, x30, [sp], 176
+	.cfi_remember_state
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 27
+	.cfi_restore 28
+	.cfi_restore 25
+	.cfi_restore 26
+	.cfi_restore 23
+	.cfi_restore 24
+	.cfi_restore 21
+	.cfi_restore 22
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	ret
+	.p2align 2,,3
+.L29:
+	.cfi_restore_state
+	mov	w3, 0
+	b	.L13
+	.p2align 2,,3
+.L28:
+	mov	w3, 0
+	b	.L4
+.L30:
+	mov	z1.s, #0
+	add	w13, w13, w9
+	st1w	z1.s, p1, [x20, x10, lsl 2]
+	cmp	w21, w13
+	bgt	.L25
+	b	.L1
+.L43:
+	mov	z3.s, #0
+	mov	z19.d, z3.d
+	mov	z6.d, z3.d
+	mov	z5.d, z3.d
+	b	.L10
+.L27:
+	mov	w1, w6
+	mov	w13, 0
+	b	.L2
+	.cfi_endproc
+.LFE8:
+	.size	conv_sve_tail, .-conv_sve_tail
+	.align	2
+	.p2align 4,,11
+	.type	conv_sve_prefix, %function
+conv_sve_prefix:
+.LFB9:
+	.cfi_startproc
+	stp	x29, x30, [sp, -240]!
+	.cfi_def_cfa_offset 240
+	.cfi_offset 29, -240
+	.cfi_offset 30, -232
+	mov	x30, x0
+	mov	x29, sp
+	stp	x19, x20, [sp, 16]
+	.cfi_offset 19, -224
+	.cfi_offset 20, -216
+	mov	w19, w3
+	str	w6, [sp, 116]
+	str	x5, [sp, 120]
+	str	x2, [sp, 200]
+	stp	x0, x1, [sp, 224]
+	cntb	x0, all, mul #2
+	cmp	w6, w0
+	blt	.L55
+	stp	x27, x28, [sp, 80]
+	.cfi_offset 28, -152
+	.cfi_offset 27, -160
+	cntw	x28
+	cnth	x0, all, mul #3
+	ptrue	p0.b, all
+	sbfiz	x28, x28, 2, 32
+	cnth	x27
+	sbfiz	x2, x0, 2, 32
+	sbfiz	x27, x27, 2, 32
+	add	x0, x5, x28
+	stp	x25, x26, [sp, 64]
+	.cfi_offset 26, -168
+	.cfi_offset 25, -176
+	cntw	x26, all, mul #3
+	sbfiz	x26, x26, 2, 32
+	cntb	x25
+	str	x0, [sp, 144]
+	add	x0, x5, x27
+	sbfiz	x25, x25, 2, 32
+	stp	x23, x24, [sp, 48]
+	.cfi_offset 24, -184
+	.cfi_offset 23, -192
+	cntw	x24, all, mul #5
+	str	x0, [sp, 152]
+	add	x0, x5, x26
+	sbfiz	x24, x24, 2, 32
+	str	x0, [sp, 160]
+	add	x0, x5, x25
+	cntw	x23, all, mul #7
+	str	x0, [sp, 168]
+	add	x0, x5, x24
+	sbfiz	x23, x23, 2, 32
+	str	x0, [sp, 176]
+	add	x0, x5, x2
+	str	x0, [sp, 184]
+	add	x0, x23, 4
+	str	x0, [sp, 216]
+	add	x0, x5, x23
+	stp	x21, x22, [sp, 32]
+	.cfi_offset 22, -200
+	.cfi_offset 21, -208
+	sub	w22, w4, #2
+	str	x0, [sp, 192]
+	cntb	x0, all, mul #2
+	sxtw	x0, w0
+	and	w22, w22, -2
+	add	w22, w22, 2
+	sub	w13, w4, #1
+	sbfiz	x20, x4, 2, 32
+	lsl	x14, x1, 2
+	str	x0, [sp, 128]
+	cntb	x0, all, mul #2
+	sbfiz	x0, x0, 2, 32
+	mov	x3, 0
+	str	wzr, [sp, 112]
+	str	x0, [sp, 136]
+	str	x2, [sp, 208]
+	.p2align 3,,7
+.L46:
+	cmp	w19, 0
+	ble	.L62
+	ldp	x0, x12, [sp, 200]
+	mov	z16.s, #0
+	add	x11, x28, x30
+	mov	z26.d, z16.d
+	ldr	x1, [sp, 216]
+	mov	z25.d, z16.d
+	add	x10, x27, x30
+	mov	z24.d, z16.d
+	add	x9, x26, x30
+	add	x8, x25, x30
+	add	x2, x1, x30
+	add	x7, x24, x30
+	add	x5, x23, x30
+	add	x0, x0, 4
+	add	x6, x12, x30
+	mov	x1, x30
+	str	x3, [sp, 104]
+	mov	x3, x12
+	mov	w17, 0
+	mov	z22.d, z16.d
+	mov	z21.d, z16.d
+	mov	z20.d, z16.d
+	mov	z19.d, z16.d
+	.p2align 3,,7
+.L51:
+	sub	x12, x0, #4
+	cmp	w13, 0
+	ble	.L56
+	mov	x15, 0
+	.p2align 3,,7
+.L48:
+	lsl	x16, x15, 2
+	ld1w	z6.s, p0/z, [x11, x15, lsl 2]
+	ld1w	z18.s, p0/z, [x1, x15, lsl 2]
+	add	x18, x12, x16
+	add	x16, x16, x0
+	ld1rw	z0.s, p0/z, [x18]
+	ld1rw	z17.s, p0/z, [x16]
+	fmul	z27.s, z18.s, z0.s
+	ext	z18.b, z18.b, z6.b, #4
+	fmul	z18.s, z18.s, z17.s
+	ld1w	z5.s, p0/z, [x10, x15, lsl 2]
+	ld1w	z4.s, p0/z, [x9, x15, lsl 2]
+	fadd	z19.s, z19.s, z27.s
+	fmul	z27.s, z6.s, z0.s
+	fadd	z19.s, z19.s, z18.s
+	ext	z6.b, z6.b, z5.b, #4
+	fmul	z18.s, z5.s, z0.s
+	fmul	z6.s, z6.s, z17.s
+	ext	z5.b, z5.b, z4.b, #4
+	fmul	z5.s, z5.s, z17.s
+	ld1w	z3.s, p0/z, [x8, x15, lsl 2]
+	ld1w	z2.s, p0/z, [x7, x15, lsl 2]
+	ld1w	z1.s, p0/z, [x6, x15, lsl 2]
+	ld1w	z7.s, p0/z, [x5, x15, lsl 2]
+	ld1w	z23.s, p0/z, [x2, x15, lsl 2]
+	fadd	z20.s, z20.s, z27.s
+	fadd	z21.s, z21.s, z18.s
+	fadd	z20.s, z20.s, z6.s
+	fadd	z21.s, z21.s, z5.s
+	fmul	z6.s, z4.s, z0.s
+	fmul	z5.s, z3.s, z0.s
+	ext	z4.b, z4.b, z3.b, #4
+	add	x15, x15, 2
+	fmul	z4.s, z4.s, z17.s
+	ext	z3.b, z3.b, z2.b, #4
+	fmul	z3.s, z3.s, z17.s
+	fadd	z22.s, z22.s, z6.s
+	fadd	z24.s, z24.s, z5.s
+	fadd	z22.s, z22.s, z4.s
+	fadd	z24.s, z24.s, z3.s
+	fmul	z4.s, z2.s, z0.s
+	fmul	z3.s, z1.s, z0.s
+	ext	z2.b, z2.b, z1.b, #4
+	fadd	z25.s, z25.s, z4.s
+	ext	z1.b, z1.b, z7.b, #4
+	fmul	z2.s, z2.s, z17.s
+	fadd	z26.s, z26.s, z3.s
+	fmul	z7.s, z7.s, z0.s
+	fmul	z1.s, z1.s, z17.s
+	fadd	z16.s, z16.s, z7.s
+	fmul	z23.s, z23.s, z17.s
+	fadd	z25.s, z25.s, z2.s
+	fadd	z26.s, z26.s, z1.s
+	fadd	z16.s, z16.s, z23.s
+	cmp	w13, w15
+	bgt	.L48
+	mov	w16, w22
+.L47:
+	cmp	w4, w16
+	ble	.L49
+	sbfiz	x18, x16, 2, 32
+	add	w16, w16, 1
+	add	x15, x1, x18
+	ld1w	z2.s, p0/z, [x15]
+	add	x21, x15, x28
+	ld1w	z3.s, p0/z, [x21]
+	add	x21, x12, x18
+	ld1rw	z0.s, p0/z, [x21]
+	add	x21, x15, x27
+	fmul	z3.s, z3.s, z0.s
+	ld1w	z1.s, p0/z, [x21]
+	add	x21, x15, x26
+	fmul	z1.s, z1.s, z0.s
+	fadd	z20.s, z20.s, z3.s
+	ld1w	z3.s, p0/z, [x21]
+	add	x21, x15, x25
+	fmul	z3.s, z3.s, z0.s
+	fadd	z21.s, z21.s, z1.s
+	ld1w	z1.s, p0/z, [x21]
+	add	x21, x15, x24
+	fmul	z1.s, z1.s, z0.s
+	fadd	z22.s, z22.s, z3.s
+	fadd	z24.s, z24.s, z1.s
+	ld1w	z3.s, p0/z, [x21]
+	add	x21, x15, x3
+	ld1w	z1.s, p0/z, [x21]
+	fmul	z1.s, z1.s, z0.s
+	fmul	z3.s, z3.s, z0.s
+	fmul	z2.s, z2.s, z0.s
+	add	x15, x15, x23
+	fadd	z26.s, z26.s, z1.s
+	fadd	z25.s, z25.s, z3.s
+	ld1w	z1.s, p0/z, [x15]
+	fadd	z19.s, z19.s, z2.s
+	fmul	z0.s, z1.s, z0.s
+	fadd	z16.s, z16.s, z0.s
+	cmp	w16, w4
+	bge	.L49
+	add	x18, x18, 4
+	add	x15, x1, x18
+	add	x12, x12, x18
+	ld1rw	z0.s, p0/z, [x12]
+	add	x12, x15, x27
+	add	x16, x15, x28
+	ld1w	z1.s, p0/z, [x12]
+	ld1w	z2.s, p0/z, [x16]
+	add	x12, x15, x26
+	fmul	z2.s, z2.s, z0.s
+	fmul	z1.s, z1.s, z0.s
+	fadd	z20.s, z20.s, z2.s
+	ld1w	z2.s, p0/z, [x12]
+	add	x12, x15, x25
+	fmul	z2.s, z2.s, z0.s
+	fadd	z21.s, z21.s, z1.s
+	ld1w	z1.s, p0/z, [x12]
+	add	x12, x15, x24
+	fmul	z1.s, z1.s, z0.s
+	fadd	z22.s, z22.s, z2.s
+	fadd	z24.s, z24.s, z1.s
+	ld1w	z2.s, p0/z, [x12]
+	add	x12, x15, x3
+	fmul	z2.s, z2.s, z0.s
+	ld1w	z1.s, p0/z, [x12]
+	fmul	z1.s, z1.s, z0.s
+	add	x12, x15, x23
+	fadd	z25.s, z25.s, z2.s
+	fadd	z26.s, z26.s, z1.s
+	ld1w	z2.s, p0/z, [x12]
+	ld1w	z1.s, p0/z, [x15]
+	fmul	z2.s, z2.s, z0.s
+	fmul	z0.s, z1.s, z0.s
+	fadd	z16.s, z16.s, z2.s
+	fadd	z19.s, z19.s, z0.s
+.L49:
+	add	w17, w17, 1
+	add	x1, x1, x14
+	add	x0, x0, x20
+	add	x11, x11, x14
+	add	x10, x10, x14
+	add	x9, x9, x14
+	add	x8, x8, x14
+	add	x7, x7, x14
+	add	x6, x6, x14
+	add	x5, x5, x14
+	add	x2, x2, x14
+	cmp	w19, w17
+	bne	.L51
+	ldr	x3, [sp, 104]
+.L53:
+	ldr	x0, [sp, 120]
+	st1w	z19.s, p0, [x0, x3, lsl 2]
+	ldr	x1, [sp, 144]
+	st1w	z20.s, p0, [x1, x3, lsl 2]
+	ldp	w0, w1, [sp, 112]
+	incb	x0, all, mul #2
+	str	w0, [sp, 112]
+	sub	w6, w1, w0
+	ldr	x0, [sp, 152]
+	st1w	z21.s, p0, [x0, x3, lsl 2]
+	ldr	x0, [sp, 136]
+	add	x30, x30, x0
+	ldr	x0, [sp, 160]
+	st1w	z22.s, p0, [x0, x3, lsl 2]
+	ldr	x0, [sp, 168]
+	st1w	z24.s, p0, [x0, x3, lsl 2]
+	ldr	x0, [sp, 176]
+	st1w	z25.s, p0, [x0, x3, lsl 2]
+	ldr	x0, [sp, 184]
+	st1w	z26.s, p0, [x0, x3, lsl 2]
+	ldr	x0, [sp, 192]
+	st1w	z16.s, p0, [x0, x3, lsl 2]
+	ldr	x0, [sp, 128]
+	add	x3, x3, x0
+	cntb	x0, all, mul #2
+	cmp	w6, w0
+	bge	.L46
+	ldp	x21, x22, [sp, 32]
+	.cfi_restore 22
+	.cfi_restore 21
+	ldp	x23, x24, [sp, 48]
+	.cfi_restore 24
+	.cfi_restore 23
+	ldp	x25, x26, [sp, 64]
+	.cfi_restore 26
+	.cfi_restore 25
+	ldp	x27, x28, [sp, 80]
+	.cfi_restore 28
+	.cfi_restore 27
+.L45:
+	ldp	w1, w0, [sp, 112]
+	cmp	w0, w1
+	bgt	.L63
+	ldr	w0, [sp, 116]
+	ldp	x19, x20, [sp, 16]
+	ldp	x29, x30, [sp], 240
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	ret
+	.p2align 2,,3
+.L56:
+	.cfi_def_cfa_offset 240
+	.cfi_offset 19, -224
+	.cfi_offset 20, -216
+	.cfi_offset 21, -208
+	.cfi_offset 22, -200
+	.cfi_offset 23, -192
+	.cfi_offset 24, -184
+	.cfi_offset 25, -176
+	.cfi_offset 26, -168
+	.cfi_offset 27, -160
+	.cfi_offset 28, -152
+	.cfi_offset 29, -240
+	.cfi_offset 30, -232
+	mov	w16, 0
+	b	.L47
+.L62:
+	mov	z16.s, #0
+	mov	z26.d, z16.d
+	mov	z25.d, z16.d
+	mov	z24.d, z16.d
+	mov	z22.d, z16.d
+	mov	z21.d, z16.d
+	mov	z20.d, z16.d
+	mov	z19.d, z16.d
+	b	.L53
+.L63:
+	.cfi_restore 21
+	.cfi_restore 22
+	.cfi_restore 23
+	.cfi_restore 24
+	.cfi_restore 25
+	.cfi_restore 26
+	.cfi_restore 27
+	.cfi_restore 28
+	sbfiz	x0, x1, 2, 32
+	mov	w3, w19
+	ldr	x1, [sp, 120]
+	ldr	x2, [sp, 200]
+	add	x5, x1, x0
+	ldr	x1, [sp, 224]
+	add	x0, x1, x0
+	ldr	x1, [sp, 232]
+	bl	conv_sve_tail
+	ldr	w0, [sp, 116]
+	ldp	x19, x20, [sp, 16]
+	ldp	x29, x30, [sp], 240
+	.cfi_remember_state
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	ret
+.L55:
+	.cfi_restore_state
+	ldr	w6, [sp, 116]
+	str	wzr, [sp, 112]
+	b	.L45
+	.cfi_endproc
+.LFE9:
+	.size	conv_sve_prefix, .-conv_sve_prefix
+	.align	2
+	.p2align 4,,11
+	.arch armv8-a
+	.type	conv2d._omp_fn.0, %function
+conv2d._omp_fn.0:
+.LFB11:
+	.cfi_startproc
+	stp	x29, x30, [sp, -368]!
+	.cfi_def_cfa_offset 368
+	.cfi_offset 29, -368
+	.cfi_offset 30, -360
+	mov	x29, sp
+	stp	x21, x22, [sp, 32]
+	.cfi_offset 21, -336
+	.cfi_offset 22, -328
+	mov	x21, x0
+	stp	x19, x20, [sp, 16]
+	stp	x25, x26, [sp, 64]
+	.cfi_offset 19, -352
+	.cfi_offset 20, -344
+	.cfi_offset 25, -304
+	.cfi_offset 26, -296
+	bl	omp_get_num_threads
+	mov	w19, w0
+	bl	omp_get_thread_num
+	ldr	w1, [x21, 40]
+	sdiv	w2, w1, w19
+	msub	w1, w2, w19, w1
+	cmp	w0, w1
+	blt	.L65
+.L148:
+	madd	w25, w2, w0, w1
+	add	w0, w2, w25
+	str	w0, [sp, 176]
+	cmp	w25, w0
+	bge	.L64
+	ldr	w4, [x21, 36]
+	mov	w2, -2147483647
+	stp	x23, x24, [sp, 48]
+	.cfi_offset 24, -312
+	.cfi_offset 23, -320
+	sxtw	x0, w25
+	sub	w19, w4, #1
+	cmp	w19, w2
+	sub	w24, w4, #3
+	sub	w1, w4, #2
+	ldr	w6, [x21, 44]
+	cset	w22, gt
+	cmp	w24, 2
+	cset	w2, gt
+	lsr	w3, w1, 1
+	and	w22, w22, w2
+	str	w1, [sp, 224]
+	ldp	x20, x2, [x21]
+	add	w8, w3, 1
+	ldr	x5, [x21, 16]
+	sbfiz	x3, x6, 2, 32
+	ldr	x1, [x21, 24]
+	lsr	w7, w8, 1
+	madd	x5, x3, x0, x5
+	and	w9, w8, -2
+	stp	x27, x28, [sp, 80]
+	.cfi_offset 28, -280
+	.cfi_offset 27, -288
+	lsl	w23, w8, 1
+	mul	x28, x1, x0
+	ldr	w0, [x21, 48]
+	mov	w26, w4
+	str	x3, [sp, 200]
+	mov	x11, x28
+	ldr	w3, [x21, 32]
+	mov	x28, x2
+	str	w0, [sp, 172]
+	lsl	x0, x7, 4
+	mov	w27, w3
+	sbfiz	x21, x4, 2, 32
+	str	w25, [sp, 168]
+	mov	w25, w24
+	mov	w24, w22
+	mov	x22, x1
+	str	x0, [sp, 208]
+	lsl	w0, w9, 1
+	str	w9, [sp, 180]
+	str	w0, [sp, 192]
+	lsl	x0, x1, 2
+	str	x0, [sp, 184]
+	str	w8, [sp, 196]
+	stp	d8, d9, [sp, 96]
+	.cfi_offset 73, -264
+	.cfi_offset 72, -272
+	stp	d10, d11, [sp, 112]
+	.cfi_offset 75, -248
+	.cfi_offset 74, -256
+	stp	d12, d13, [sp, 128]
+	.cfi_offset 77, -232
+	.cfi_offset 76, -240
+	stp	d14, d15, [sp, 144]
+	.cfi_offset 79, -216
+	.cfi_offset 78, -224
+.L74:
+	add	x0, x20, x11, lsl 2
+	str	x0, [sp, 160]
+	ldr	w0, [sp, 172]
+	cbnz	w0, .L67
+	mov	w2, w6
+	mov	w3, 0
+.L68:
+	cmp	w2, 31
+	ble	.L131
+	sxtw	x12, w3
+	add	x30, x5, x3, sxtw 2
+	add	x18, sp, 240
+.L130:
+	stp	xzr, xzr, [sp, 240]
+	stp	xzr, xzr, [sp, 256]
+	stp	xzr, xzr, [sp, 272]
+	stp	xzr, xzr, [sp, 288]
+	stp	xzr, xzr, [sp, 304]
+	stp	xzr, xzr, [sp, 320]
+	stp	xzr, xzr, [sp, 336]
+	stp	xzr, xzr, [sp, 352]
+	cmp	w27, 0
+	ble	.L146
+	movi	v0.4s, 0
+	add	x8, x11, x12
+	add	x4, x28, 4
+	mov	x2, x28
+	mov	w0, 0
+	mov	w7, 0
+	mov	w13, 0
+	mov	w10, 0
+	mov	v8.16b, v0.16b
+	mov	w14, 0
+	mov	v10.16b, v0.16b
+	mov	w15, 0
+	mov	v12.16b, v0.16b
+	mov	w16, 0
+	mov	v3.16b, v0.16b
+	mov	w17, 0
+	mov	v2.16b, v0.16b
+	mov	w9, 0
+	mov	v6.16b, v0.16b
+	mov	v1.16b, v0.16b
+	.p2align 3,,7
+.L138:
+	cmp	w19, 0
+	ble	.L168
+	cbz	w24, .L169
+	mov	x7, x2
+	add	x0, x20, x8, lsl 2
+	mov	w1, 0
+.L134:
+	ldr	q30, [x0, 16]
+	add	w10, w1, 6
+	ldr	q19, [x0, 32]
+	add	w1, w1, 4
+	ld1r	{v9.4s}, [x7]
+	add	x0, x0, 16
+	ldr	q31, [x0, -16]
+	fmul	v30.4s, v30.4s, v9.4s
+	ldr	s5, [x7, 12]
+	fmul	v19.4s, v19.4s, v9.4s
+	ldp	s7, s4, [x7, 4]
+	add	x7, x7, 16
+	ldr	q29, [x0, 32]
+	ldr	q27, [x0, 64]
+	ldr	q26, [x0, 80]
+	dup	v7.4s, v7.s[0]
+	fmul	v31.4s, v31.4s, v9.4s
+	fadd	v6.4s, v30.4s, v6.4s
+	fadd	v19.4s, v19.4s, v2.4s
+	fmul	v29.4s, v29.4s, v9.4s
+	fmul	v27.4s, v27.4s, v9.4s
+	fmul	v26.4s, v26.4s, v9.4s
+	ldr	q18, [x0, -12]
+	ldr	q17, [x0, 4]
+	ldr	q16, [x0, 20]
+	ldr	q15, [x0, 36]
+	ldr	q28, [x0, 48]
+	ldr	q14, [x0, 52]
+	ldr	q13, [x0, 68]
+	ldr	q11, [x0, 84]
+	ldr	q30, [x0, 96]
+	ldr	q2, [x0, 100]
+	dup	v4.4s, v4.s[0]
+	fadd	v1.4s, v31.4s, v1.4s
+	fmul	v28.4s, v28.4s, v9.4s
+	fadd	v3.4s, v29.4s, v3.4s
+	fadd	v10.4s, v27.4s, v10.4s
+	fadd	v8.4s, v26.4s, v8.4s
+	fmul	v30.4s, v30.4s, v9.4s
+	fmul	v18.4s, v18.4s, v7.4s
+	fmul	v17.4s, v17.4s, v7.4s
+	fmul	v16.4s, v16.4s, v7.4s
+	fmul	v15.4s, v15.4s, v7.4s
+	fmul	v14.4s, v14.4s, v7.4s
+	fmul	v13.4s, v13.4s, v7.4s
+	fmul	v11.4s, v11.4s, v7.4s
+	fmul	v2.4s, v2.4s, v7.4s
+	ldr	q7, [x0, 24]
+	fadd	v12.4s, v28.4s, v12.4s
+	fadd	v30.4s, v30.4s, v0.4s
+	fmul	v9.4s, v7.4s, v4.4s
+	fadd	v18.4s, v1.4s, v18.4s
+	fadd	v17.4s, v6.4s, v17.4s
+	fadd	v15.4s, v3.4s, v15.4s
+	fadd	v13.4s, v10.4s, v13.4s
+	fadd	v11.4s, v8.4s, v11.4s
+	ldr	q1, [x0, -8]
+	ldr	q25, [x0, -4]
+	ldr	q6, [x0, 8]
+	ldr	q24, [x0, 12]
+	ldr	q23, [x0, 28]
+	ldr	q3, [x0, 40]
+	ldr	q22, [x0, 44]
+	ldr	q21, [x0, 60]
+	ldr	q20, [x0, 76]
+	ldr	q31, [x0, 92]
+	ldr	q0, [x0, 104]
+	ldr	q7, [x0, 56]
+	ldr	q10, [x0, 72]
+	ldr	q8, [x0, 88]
+	dup	v5.4s, v5.s[0]
+	fmul	v7.4s, v7.4s, v4.4s
+	fadd	v16.4s, v19.4s, v16.4s
+	fadd	v14.4s, v12.4s, v14.4s
+	fmul	v19.4s, v8.4s, v4.4s
+	fmul	v12.4s, v10.4s, v4.4s
+	fadd	v2.4s, v30.4s, v2.4s
+	fmul	v1.4s, v1.4s, v4.4s
+	fmul	v6.4s, v6.4s, v4.4s
+	fmul	v3.4s, v3.4s, v4.4s
+	fmul	v4.4s, v0.4s, v4.4s
+	ldr	q0, [x0, 108]
+	fadd	v10.4s, v14.4s, v7.4s
+	fadd	v8.4s, v13.4s, v12.4s
+	fadd	v4.4s, v2.4s, v4.4s
+	fmul	v25.4s, v25.4s, v5.4s
+	fmul	v24.4s, v24.4s, v5.4s
+	fmul	v23.4s, v23.4s, v5.4s
+	fmul	v22.4s, v22.4s, v5.4s
+	fmul	v21.4s, v21.4s, v5.4s
+	fmul	v20.4s, v20.4s, v5.4s
+	fmul	v31.4s, v31.4s, v5.4s
+	fadd	v1.4s, v18.4s, v1.4s
+	fadd	v6.4s, v17.4s, v6.4s
+	fadd	v9.4s, v16.4s, v9.4s
+	fadd	v3.4s, v15.4s, v3.4s
+	fadd	v7.4s, v11.4s, v19.4s
+	fmul	v0.4s, v0.4s, v5.4s
+	fadd	v12.4s, v10.4s, v21.4s
+	fadd	v1.4s, v1.4s, v25.4s
+	fadd	v10.4s, v8.4s, v20.4s
+	fadd	v6.4s, v6.4s, v24.4s
+	fadd	v3.4s, v3.4s, v22.4s
+	fadd	v2.4s, v9.4s, v23.4s
+	fadd	v8.4s, v7.4s, v31.4s
+	fadd	v0.4s, v4.4s, v0.4s
+	cmp	w25, w10
+	bgt	.L134
+.L133:
+	mov	v20.16b, v1.16b
+	sxtw	x1, w1
+	mov	v21.16b, v6.16b
+	add	x0, x1, x8
+	mov	v22.16b, v2.16b
+	mov	v23.16b, v3.16b
+	add	x0, x20, x0, lsl 2
+	mov	v24.16b, v8.16b
+	.p2align 3,,7
+.L135:
+	ldr	s5, [x2, x1, lsl 2]
+	ldp	q1, q6, [x0]
+	dup	v5.4s, v5.s[0]
+	ldr	s4, [x4, x1, lsl 2]
+	ldr	q2, [x0, 32]
+	add	x1, x1, 2
+	ldr	q3, [x0, 48]
+	ldr	q14, [x0, 64]
+	ldr	q11, [x0, 80]
+	ldp	q8, q7, [x0, 96]
+	add	x0, x0, 8
+	dup	v4.4s, v4.s[0]
+	fmul	v1.4s, v1.4s, v5.4s
+	fmul	v9.4s, v8.4s, v5.4s
+	fmul	v6.4s, v6.4s, v5.4s
+	fmul	v2.4s, v2.4s, v5.4s
+	fmul	v3.4s, v3.4s, v5.4s
+	fmul	v14.4s, v14.4s, v5.4s
+	fmul	v11.4s, v11.4s, v5.4s
+	fmul	v5.4s, v7.4s, v5.4s
+	ldr	q8, [x0, -4]
+	ldr	q19, [x0, 12]
+	ldr	q18, [x0, 28]
+	ldr	q17, [x0, 44]
+	ldr	q13, [x0, 60]
+	ldr	q16, [x0, 76]
+	ldr	q7, [x0, 92]
+	ldr	q15, [x0, 108]
+	fadd	v1.4s, v1.4s, v20.4s
+	fadd	v14.4s, v14.4s, v12.4s
+	fadd	v11.4s, v11.4s, v10.4s
+	fadd	v5.4s, v5.4s, v0.4s
+	fmul	v20.4s, v8.4s, v4.4s
+	fadd	v6.4s, v6.4s, v21.4s
+	fmul	v19.4s, v19.4s, v4.4s
+	fadd	v2.4s, v2.4s, v22.4s
+	fmul	v18.4s, v18.4s, v4.4s
+	fadd	v3.4s, v3.4s, v23.4s
+	fmul	v17.4s, v17.4s, v4.4s
+	fmul	v12.4s, v13.4s, v4.4s
+	fmul	v10.4s, v16.4s, v4.4s
+	fmul	v0.4s, v15.4s, v4.4s
+	fadd	v8.4s, v9.4s, v24.4s
+	fmul	v7.4s, v7.4s, v4.4s
+	fadd	v21.4s, v6.4s, v19.4s
+	fadd	v22.4s, v2.4s, v18.4s
+	fadd	v23.4s, v3.4s, v17.4s
+	fadd	v12.4s, v14.4s, v12.4s
+	fadd	v10.4s, v11.4s, v10.4s
+	fadd	v0.4s, v5.4s, v0.4s
+	fadd	v20.4s, v1.4s, v20.4s
+	fadd	v24.4s, v8.4s, v7.4s
+	cmp	w19, w1
+	bgt	.L135
+	mov	v1.16b, v20.16b
+	mov	w0, 1
+	mov	v6.16b, v21.16b
+	mov	w1, w23
+	mov	v2.16b, v22.16b
+	mov	w7, w0
+	mov	v3.16b, v23.16b
+	mov	w13, w0
+	mov	v8.16b, v24.16b
+	mov	w10, w0
+	mov	w14, w0
+	mov	w15, w0
+	mov	w16, w0
+	mov	w17, w0
+.L132:
+	cmp	w26, w1
+	ble	.L136
+	add	w0, w1, 1
+	cmp	w19, w0
+	ble	.L170
+	sxtw	x0, w1
+	add	x13, x2, x1, sxtw 2
+	add	x10, x0, x8
+	add	w14, w1, 3
+	lsl	x10, x10, 2
+	ldr	s5, [x2, x0, lsl 2]
+	add	x7, x20, x10
+	add	x15, x10, 4
+	add	x0, x20, x15
+	ldr	s4, [x13, 4]
+	dup	v5.4s, v5.s[0]
+	ldr	q7, [x20, x10]
+	add	w10, w1, 2
+	ldp	q24, q23, [x7, 16]
+	ldp	q22, q16, [x7, 48]
+	ldp	q15, q13, [x7, 80]
+	ldr	q9, [x7, 112]
+	dup	v4.4s, v4.s[0]
+	fmul	v24.4s, v24.4s, v5.4s
+	fmul	v23.4s, v23.4s, v5.4s
+	fmul	v22.4s, v22.4s, v5.4s
+	fmul	v16.4s, v16.4s, v5.4s
+	fmul	v15.4s, v15.4s, v5.4s
+	fmul	v13.4s, v13.4s, v5.4s
+	fmul	v9.4s, v9.4s, v5.4s
+	fmul	v5.4s, v7.4s, v5.4s
+	ldr	q17, [x20, x15]
+	ldp	q21, q20, [x0, 16]
+	ldp	q19, q18, [x0, 48]
+	ldp	q14, q11, [x0, 80]
+	ldr	q7, [x0, 112]
+	fadd	v5.4s, v5.4s, v1.4s
+	fadd	v6.4s, v24.4s, v6.4s
+	fadd	v2.4s, v23.4s, v2.4s
+	fadd	v3.4s, v22.4s, v3.4s
+	fadd	v12.4s, v16.4s, v12.4s
+	fadd	v10.4s, v15.4s, v10.4s
+	fadd	v8.4s, v13.4s, v8.4s
+	fadd	v0.4s, v9.4s, v0.4s
+	fmul	v21.4s, v21.4s, v4.4s
+	fmul	v20.4s, v20.4s, v4.4s
+	fmul	v19.4s, v19.4s, v4.4s
+	fmul	v18.4s, v18.4s, v4.4s
+	fmul	v14.4s, v14.4s, v4.4s
+	fmul	v11.4s, v11.4s, v4.4s
+	fmul	v7.4s, v7.4s, v4.4s
+	fmul	v1.4s, v17.4s, v4.4s
+	fadd	v6.4s, v6.4s, v21.4s
+	fadd	v2.4s, v2.4s, v20.4s
+	fadd	v3.4s, v3.4s, v19.4s
+	fadd	v12.4s, v12.4s, v18.4s
+	fadd	v10.4s, v10.4s, v14.4s
+	fadd	v8.4s, v8.4s, v11.4s
+	fadd	v0.4s, v0.4s, v7.4s
+	fadd	v1.4s, v5.4s, v1.4s
+	cmp	w19, w14
+	bgt	.L241
+.L137:
+	sxtw	x0, w10
+	add	w7, w10, 1
+	add	x1, x0, x8
+	sbfiz	x10, x10, 2, 32
+	lsl	x1, x1, 2
+	ldr	s4, [x2, x0, lsl 2]
+	add	x0, x20, x1
+	dup	v4.4s, v4.s[0]
+	ldr	q5, [x20, x1]
+	ldp	q16, q15, [x0, 16]
+	ldp	q14, q13, [x0, 48]
+	ldp	q11, q9, [x0, 80]
+	ldr	q7, [x0, 112]
+	fmul	v16.4s, v16.4s, v4.4s
+	fmul	v15.4s, v15.4s, v4.4s
+	fmul	v14.4s, v14.4s, v4.4s
+	fmul	v13.4s, v13.4s, v4.4s
+	fmul	v11.4s, v11.4s, v4.4s
+	fmul	v9.4s, v9.4s, v4.4s
+	fmul	v7.4s, v7.4s, v4.4s
+	fmul	v4.4s, v5.4s, v4.4s
+	fadd	v6.4s, v6.4s, v16.4s
+	fadd	v2.4s, v2.4s, v15.4s
+	fadd	v3.4s, v3.4s, v14.4s
+	fadd	v12.4s, v12.4s, v13.4s
+	fadd	v10.4s, v10.4s, v11.4s
+	fadd	v8.4s, v8.4s, v9.4s
+	fadd	v0.4s, v0.4s, v7.4s
+	fadd	v1.4s, v1.4s, v4.4s
+	cmp	w26, w7
+	ble	.L171
+	add	x15, x8, x7, sxtw
+	add	x10, x2, x10
+	mov	w0, 1
+	mov	w7, w0
+	lsl	x15, x15, 2
+	mov	w13, w0
+	add	x1, x20, x15
+	ldr	s4, [x10, 4]
+	mov	w14, w0
+	mov	w16, w0
+	ldr	q5, [x20, x15]
+	mov	w17, w0
+	dup	v4.4s, v4.s[0]
+	mov	w15, w0
+	ldp	q16, q15, [x1, 16]
+	mov	w10, w0
+	ldp	q14, q13, [x1, 48]
+	ldp	q11, q9, [x1, 80]
+	ldr	q7, [x1, 112]
+	fmul	v16.4s, v16.4s, v4.4s
+	fmul	v15.4s, v15.4s, v4.4s
+	fmul	v14.4s, v14.4s, v4.4s
+	fmul	v13.4s, v13.4s, v4.4s
+	fmul	v11.4s, v11.4s, v4.4s
+	fmul	v9.4s, v9.4s, v4.4s
+	fmul	v7.4s, v7.4s, v4.4s
+	fmul	v4.4s, v5.4s, v4.4s
+	fadd	v6.4s, v6.4s, v16.4s
+	fadd	v2.4s, v2.4s, v15.4s
+	fadd	v3.4s, v3.4s, v14.4s
+	fadd	v12.4s, v12.4s, v13.4s
+	fadd	v10.4s, v10.4s, v11.4s
+	fadd	v8.4s, v8.4s, v9.4s
+	fadd	v0.4s, v0.4s, v7.4s
+	fadd	v1.4s, v1.4s, v4.4s
+.L136:
+	add	w9, w9, 1
+	add	x2, x2, x21
+	add	x8, x8, x22
+	add	x4, x4, x21
+	cmp	w27, w9
+	bne	.L138
+	cbz	w17, .L139
+	str	q1, [sp, 240]
+.L139:
+	cbz	w16, .L140
+	str	q6, [sp, 256]
+.L140:
+	cbz	w15, .L141
+	str	q2, [sp, 272]
+.L141:
+	cbz	w14, .L142
+	str	q3, [sp, 288]
+.L142:
+	cbz	w10, .L143
+	str	q12, [sp, 304]
+.L143:
+	cbz	w13, .L144
+	str	q10, [sp, 320]
+.L144:
+	cbz	w7, .L145
+	str	q8, [sp, 336]
+.L145:
+	cbz	w0, .L146
+	str	q0, [sp, 352]
+.L146:
+	add	w3, w3, 32
+	ldp	x0, x1, [x18]
+	stp	x0, x1, [x30]
+	sub	w2, w6, w3
+	ldp	x0, x1, [x18, 16]
+	stp	x0, x1, [x30, 16]
+	add	x12, x12, 32
+	ldp	x0, x1, [x18, 32]
+	stp	x0, x1, [x30, 32]
+	add	x30, x30, 128
+	ldp	x0, x1, [x18, 48]
+	stp	x0, x1, [x30, -80]
+	ldp	x0, x1, [x18, 64]
+	stp	x0, x1, [x30, -64]
+	ldp	x0, x1, [x18, 80]
+	stp	x0, x1, [x30, -48]
+	ldp	x0, x1, [x18, 96]
+	stp	x0, x1, [x30, -32]
+	ldp	x0, x1, [x18, 112]
+	stp	x0, x1, [x30, -16]
+	cmp	w2, 31
+	bgt	.L130
+.L131:
+	cmp	w2, 15
+	ble	.L117
+	sxtw	x7, w3
+	add	x4, x5, x3, sxtw 2
+	add	x18, sp, 240
+.L116:
+	stp	xzr, xzr, [sp, 240]
+	stp	xzr, xzr, [sp, 256]
+	stp	xzr, xzr, [sp, 272]
+	stp	xzr, xzr, [sp, 288]
+	cmp	w27, 0
+	ble	.L128
+	movi	v0.4s, 0
+	add	x10, x11, x7
+	add	x8, x28, 4
+	mov	x2, x28
+	mov	w0, 0
+	mov	w12, 0
+	mov	w14, 0
+	mov	w9, 0
+	mov	v13.16b, v0.16b
+	mov	w13, 0
+	mov	v5.16b, v0.16b
+	mov	v7.16b, v0.16b
+	.p2align 3,,7
+.L124:
+	cmp	w19, 0
+	ble	.L164
+	cbz	w24, .L165
+	mov	x9, x2
+	add	x0, x20, x10, lsl 2
+	mov	w1, 0
+.L120:
+	ldr	q4, [x0]
+	add	w12, w1, 6
+	ldp	s9, s8, [x9, 4]
+	add	w1, w1, 4
+	ldr	q2, [x0, 16]
+	add	x0, x0, 16
+	ldr	q3, [x0, 16]
+	ldr	q1, [x0, 32]
+	dup	v9.4s, v9.s[0]
+	ld1r	{v10.4s}, [x9]
+	ldr	q15, [x0, -12]
+	add	x9, x9, 16
+	fmul	v4.4s, v4.4s, v10.4s
+	ldr	s6, [x9, -4]
+	fmul	v2.4s, v2.4s, v10.4s
+	fmul	v1.4s, v1.4s, v10.4s
+	fmul	v3.4s, v3.4s, v10.4s
+	ldr	q14, [x0, 4]
+	ldr	q11, [x0, 20]
+	ldr	q10, [x0, 36]
+	fadd	v7.4s, v4.4s, v7.4s
+	fadd	v5.4s, v2.4s, v5.4s
+	dup	v4.4s, v8.s[0]
+	fmul	v2.4s, v10.4s, v9.4s
+	fmul	v8.4s, v11.4s, v9.4s
+	fadd	v3.4s, v3.4s, v13.4s
+	fadd	v0.4s, v1.4s, v0.4s
+	fmul	v15.4s, v15.4s, v9.4s
+	fmul	v14.4s, v14.4s, v9.4s
+	ldr	q12, [x0, -8]
+	ldr	q11, [x0, 8]
+	ldr	q10, [x0, 24]
+	ldr	q9, [x0, 40]
+	dup	v1.4s, v6.s[0]
+	fmul	v12.4s, v12.4s, v4.4s
+	fadd	v3.4s, v3.4s, v8.4s
+	fadd	v0.4s, v0.4s, v2.4s
+	fmul	v11.4s, v11.4s, v4.4s
+	fmul	v10.4s, v10.4s, v4.4s
+	fmul	v9.4s, v9.4s, v4.4s
+	fadd	v7.4s, v7.4s, v15.4s
+	fadd	v5.4s, v5.4s, v14.4s
+	ldr	q8, [x0, -4]
+	ldr	q6, [x0, 12]
+	ldr	q4, [x0, 28]
+	ldr	q2, [x0, 44]
+	fmul	v8.4s, v8.4s, v1.4s
+	fmul	v6.4s, v6.4s, v1.4s
+	fmul	v4.4s, v4.4s, v1.4s
+	fadd	v7.4s, v7.4s, v12.4s
+	fadd	v5.4s, v5.4s, v11.4s
+	fadd	v3.4s, v3.4s, v10.4s
+	fadd	v0.4s, v0.4s, v9.4s
+	fmul	v1.4s, v2.4s, v1.4s
+	fadd	v7.4s, v7.4s, v8.4s
+	fadd	v5.4s, v5.4s, v6.4s
+	fadd	v13.4s, v3.4s, v4.4s
+	fadd	v0.4s, v0.4s, v1.4s
+	cmp	w25, w12
+	bgt	.L120
+.L119:
+	sxtw	x1, w1
+	add	x0, x1, x10
+	add	x0, x20, x0, lsl 2
+	.p2align 3,,7
+.L121:
+	ldr	s2, [x2, x1, lsl 2]
+	add	x0, x0, 8
+	ldr	q8, [x0, -8]
+	dup	v2.4s, v2.s[0]
+	ldr	s1, [x8, x1, lsl 2]
+	ldr	q6, [x0, 8]
+	add	x1, x1, 2
+	ldr	q4, [x0, 24]
+	ldr	q3, [x0, 40]
+	dup	v1.4s, v1.s[0]
+	fmul	v8.4s, v8.4s, v2.4s
+	fmul	v6.4s, v6.4s, v2.4s
+	fmul	v4.4s, v4.4s, v2.4s
+	fmul	v2.4s, v3.4s, v2.4s
+	ldr	q12, [x0, -4]
+	ldr	q11, [x0, 12]
+	ldr	q10, [x0, 28]
+	ldr	q9, [x0, 44]
+	fadd	v7.4s, v8.4s, v7.4s
+	fadd	v5.4s, v6.4s, v5.4s
+	fmul	v8.4s, v12.4s, v1.4s
+	fmul	v6.4s, v11.4s, v1.4s
+	fadd	v3.4s, v4.4s, v13.4s
+	fadd	v0.4s, v2.4s, v0.4s
+	fmul	v4.4s, v10.4s, v1.4s
+	fmul	v1.4s, v9.4s, v1.4s
+	fadd	v7.4s, v7.4s, v8.4s
+	fadd	v5.4s, v5.4s, v6.4s
+	fadd	v13.4s, v3.4s, v4.4s
+	fadd	v0.4s, v0.4s, v1.4s
+	cmp	w19, w1
+	bgt	.L121
+	mov	w0, 1
+	mov	w1, w23
+	mov	w12, w0
+	mov	w14, w0
+	mov	w9, w0
+.L118:
+	cmp	w26, w1
+	ble	.L122
+	add	w0, w1, 1
+	cmp	w19, w0
+	ble	.L166
+	sxtw	x9, w1
+	add	x14, x2, x1, sxtw 2
+	add	x0, x9, x10
+	add	w12, w1, 3
+	lsl	x0, x0, 2
+	ldr	s2, [x2, x9, lsl 2]
+	add	x15, x20, x0
+	add	x16, x0, 4
+	add	x9, x20, x16
+	ldr	s1, [x14, 4]
+	dup	v2.4s, v2.s[0]
+	ldr	q3, [x20, x0]
+	add	w0, w1, 2
+	ldp	q8, q6, [x15, 16]
+	ldr	q4, [x15, 48]
+	dup	v1.4s, v1.s[0]
+	fmul	v8.4s, v8.4s, v2.4s
+	fmul	v6.4s, v6.4s, v2.4s
+	fmul	v4.4s, v4.4s, v2.4s
+	fmul	v2.4s, v3.4s, v2.4s
+	ldr	q9, [x20, x16]
+	ldr	q11, [x9, 16]
+	ldr	q3, [x9, 32]
+	ldr	q10, [x9, 48]
+	fmul	v11.4s, v11.4s, v1.4s
+	fadd	v5.4s, v8.4s, v5.4s
+	fadd	v0.4s, v4.4s, v0.4s
+	fmul	v8.4s, v3.4s, v1.4s
+	fadd	v7.4s, v2.4s, v7.4s
+	fadd	v3.4s, v6.4s, v13.4s
+	fmul	v6.4s, v10.4s, v1.4s
+	fmul	v1.4s, v9.4s, v1.4s
+	fadd	v5.4s, v5.4s, v11.4s
+	fadd	v13.4s, v3.4s, v8.4s
+	fadd	v0.4s, v0.4s, v6.4s
+	fadd	v7.4s, v7.4s, v1.4s
+	cmp	w19, w12
+	bgt	.L242
+.L123:
+	sxtw	x12, w0
+	add	w9, w0, 1
+	add	x1, x12, x10
+	sbfiz	x0, x0, 2, 32
+	lsl	x1, x1, 2
+	ldr	s1, [x2, x12, lsl 2]
+	add	x12, x20, x1
+	dup	v1.4s, v1.s[0]
+	ldr	q2, [x20, x1]
+	ldp	q6, q4, [x12, 16]
+	ldr	q3, [x12, 48]
+	fmul	v6.4s, v6.4s, v1.4s
+	fmul	v4.4s, v4.4s, v1.4s
+	fmul	v3.4s, v3.4s, v1.4s
+	fmul	v1.4s, v2.4s, v1.4s
+	fadd	v5.4s, v5.4s, v6.4s
+	fadd	v13.4s, v13.4s, v4.4s
+	fadd	v0.4s, v0.4s, v3.4s
+	fadd	v7.4s, v7.4s, v1.4s
+	cmp	w26, w9
+	ble	.L167
+	add	x1, x2, x0
+	add	x9, x10, x9, sxtw
+	mov	w0, 1
+	mov	w12, w0
+	lsl	x9, x9, 2
+	mov	w14, w0
+	add	x15, x20, x9
+	ldr	s1, [x1, 4]
+	ldr	q2, [x20, x9]
+	mov	w9, w0
+	dup	v1.4s, v1.s[0]
+	ldp	q6, q4, [x15, 16]
+	ldr	q3, [x15, 48]
+	fmul	v6.4s, v6.4s, v1.4s
+	fmul	v4.4s, v4.4s, v1.4s
+	fmul	v3.4s, v3.4s, v1.4s
+	fmul	v1.4s, v2.4s, v1.4s
+	fadd	v5.4s, v5.4s, v6.4s
+	fadd	v13.4s, v13.4s, v4.4s
+	fadd	v0.4s, v0.4s, v3.4s
+	fadd	v7.4s, v7.4s, v1.4s
+.L122:
+	add	w13, w13, 1
+	add	x2, x2, x21
+	add	x10, x10, x22
+	add	x8, x8, x21
+	cmp	w27, w13
+	bne	.L124
+	cbz	w9, .L125
+	str	q7, [sp, 240]
+.L125:
+	cbz	w14, .L126
+	str	q5, [sp, 256]
+.L126:
+	cbz	w12, .L127
+	str	q13, [sp, 272]
+.L127:
+	cbz	w0, .L128
+	str	q0, [sp, 288]
+.L128:
+	add	w3, w3, 16
+	ldp	x0, x1, [x18]
+	stp	x0, x1, [x4]
+	sub	w2, w6, w3
+	ldp	x0, x1, [x18, 16]
+	stp	x0, x1, [x4, 16]
+	add	x7, x7, 16
+	ldp	x0, x1, [x18, 32]
+	stp	x0, x1, [x4, 32]
+	add	x4, x4, 64
+	ldp	x0, x1, [x18, 48]
+	stp	x0, x1, [x4, -16]
+	cmp	w2, 15
+	bgt	.L116
+.L117:
+	cmp	w2, 7
+	bgt	.L70
+.L105:
+	cmp	w2, 3
+	bgt	.L71
+.L95:
+	cmp	w2, 1
+	bgt	.L72
+.L85:
+	cmp	w3, w6
+	blt	.L73
+.L83:
+	ldr	x1, [sp, 200]
+	add	x11, x11, x22
+	ldr	w0, [sp, 168]
+	add	x5, x5, x1
+	ldr	w1, [sp, 176]
+	add	w0, w0, 1
+	str	w0, [sp, 168]
+	cmp	w1, w0
+	bne	.L74
+	ldp	x23, x24, [sp, 48]
+	.cfi_restore 24
+	.cfi_restore 23
+	ldp	x27, x28, [sp, 80]
+	.cfi_restore 28
+	.cfi_restore 27
+	ldp	d8, d9, [sp, 96]
+	.cfi_restore 73
+	.cfi_restore 72
+	ldp	d10, d11, [sp, 112]
+	.cfi_restore 75
+	.cfi_restore 74
+	ldp	d12, d13, [sp, 128]
+	.cfi_restore 77
+	.cfi_restore 76
+	ldp	d14, d15, [sp, 144]
+	.cfi_restore 79
+	.cfi_restore 78
+.L64:
+	ldp	x19, x20, [sp, 16]
+	ldp	x21, x22, [sp, 32]
+	ldp	x25, x26, [sp, 64]
+	ldp	x29, x30, [sp], 368
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 25
+	.cfi_restore 26
+	.cfi_restore 21
+	.cfi_restore 22
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	ret
+.L171:
+	.cfi_def_cfa_offset 368
+	.cfi_offset 19, -352
+	.cfi_offset 20, -344
+	.cfi_offset 21, -336
+	.cfi_offset 22, -328
+	.cfi_offset 23, -320
+	.cfi_offset 24, -312
+	.cfi_offset 25, -304
+	.cfi_offset 26, -296
+	.cfi_offset 27, -288
+	.cfi_offset 28, -280
+	.cfi_offset 29, -368
+	.cfi_offset 30, -360
+	.cfi_offset 72, -272
+	.cfi_offset 73, -264
+	.cfi_offset 74, -256
+	.cfi_offset 75, -248
+	.cfi_offset 76, -240
+	.cfi_offset 77, -232
+	.cfi_offset 78, -224
+	.cfi_offset 79, -216
+	mov	w0, 1
+	mov	w7, w0
+	mov	w13, w0
+	mov	w10, w0
+	mov	w14, w0
+	mov	w15, w0
+	mov	w16, w0
+	mov	w17, w0
+	b	.L136
+.L167:
+	mov	w0, 1
+	mov	w12, w0
+	mov	w14, w0
+	mov	w9, w0
+	b	.L122
+.L164:
+	mov	w1, 0
+	b	.L118
+.L168:
+	mov	w1, 0
+	b	.L132
+.L169:
+	mov	w1, 0
+	b	.L133
+.L165:
+	mov	w1, 0
+	b	.L119
+.L166:
+	mov	w0, w1
+	b	.L123
+.L170:
+	mov	w10, w1
+	b	.L137
+.L67:
+	ldr	x0, [sp, 160]
+	mov	w3, w27
+	mov	x2, x28
+	mov	w4, w26
+	mov	x1, x22
+	str	x5, [sp, 216]
+	str	w6, [sp, 228]
+	str	x11, [sp, 232]
+	bl	conv_sve_prefix
+	ldr	w6, [sp, 228]
+	mov	w3, w0
+	ldr	x5, [sp, 216]
+	sub	w2, w6, w0
+	ldr	x11, [sp, 232]
+	b	.L68
+.L73:
+	sbfiz	x1, x3, 2, 32
+	sxtw	x2, w3
+	add	x7, x5, x1
+	cmp	w27, 0
+	ble	.L149
+	ldr	x0, [sp, 160]
+	add	x2, x2, x11
+	movi	v0.2s, #0
+	mov	x3, x28
+	add	x2, x20, x2, lsl 2
+	add	x1, x0, x1
+	mov	w4, 0
+	ldr	x9, [sp, 184]
+	b	.L82
+.L76:
+	cmp	w26, w0
+	bgt	.L243
+.L80:
+	add	w4, w4, 1
+	add	x3, x3, x21
+	add	x1, x1, x9
+	add	x2, x2, x9
+	cmp	w27, w4
+	beq	.L75
+.L82:
+	mov	w0, 0
+	cmp	w19, 0
+	ble	.L76
+	ldr	w0, [sp, 224]
+	cmp	w0, 1
+	bls	.L151
+	mov	x0, 0
+.L78:
+	ldr	q1, [x3, x0]
+	ldr	q2, [x2, x0]
+	add	x0, x0, 16
+	ldr	x8, [sp, 208]
+	fmul	v2.4s, v2.4s, v1.4s
+	dup	s1, v2.s[0]
+	dup	s3, v2.s[1]
+	dup	s4, v2.s[2]
+	dup	s2, v2.s[3]
+	fadd	s0, s0, s1
+	fadd	s0, s3, s0
+	fadd	s0, s0, s4
+	fadd	s0, s0, s2
+	cmp	x8, x0
+	bne	.L78
+	ldr	w0, [sp, 180]
+	ldr	w8, [sp, 196]
+	cmp	w0, w8
+	beq	.L79
+	ldr	w0, [sp, 192]
+.L77:
+	sxtw	x8, w0
+	sbfiz	x0, x0, 2, 32
+	add	x10, x1, x0
+	add	x0, x3, x0
+	ldr	s2, [x3, x8, lsl 2]
+	ldr	s4, [x1, x8, lsl 2]
+	ldr	s1, [x0, 4]
+	ldr	s3, [x10, 4]
+	fmul	s2, s2, s4
+	fmul	s1, s1, s3
+	fadd	s0, s2, s0
+	fadd	s0, s1, s0
+.L79:
+	mov	w0, w23
+	cmp	w26, w0
+	ble	.L80
+.L243:
+	sxtw	x8, w0
+	add	w10, w0, 1
+	sbfiz	x0, x0, 2, 32
+	ldr	s1, [x1, x8, lsl 2]
+	ldr	s2, [x3, x8, lsl 2]
+	fmul	s1, s1, s2
+	fadd	s0, s0, s1
+	cmp	w26, w10
+	ble	.L80
+	add	x0, x0, 4
+	add	w4, w4, 1
+	add	x2, x2, x9
+	ldr	s1, [x3, x0]
+	add	x3, x3, x21
+	ldr	s2, [x1, x0]
+	add	x1, x1, x9
+	fmul	s1, s1, s2
+	fadd	s0, s0, s1
+	cmp	w27, w4
+	bne	.L82
+.L75:
+	str	s0, [x7]
+	b	.L83
+.L72:
+	sxtw	x4, w3
+	mov	x0, 0
+	cmp	w27, 0
+	ble	.L93
+	movi	v0.2s, 0
+	add	x7, x4, x11
+	add	x8, x28, 4
+	mov	x2, x28
+	mov	w10, 0
+	mov	w9, 0
+.L92:
+	cmp	w19, 0
+	ble	.L152
+	cbz	w24, .L153
+	mov	x10, x2
+	add	x1, x20, x7, lsl 2
+	mov	w0, 0
+.L88:
+	ld1r	{v3.2s}, [x10]
+	add	w12, w0, 6
+	ldr	d1, [x1]
+	add	w0, w0, 4
+	ldr	d2, [x1, 4]
+	add	x1, x1, 16
+	ldr	d6, [x1, -8]
+	fmul	v1.2s, v1.2s, v3.2s
+	ldr	d5, [x1, -4]
+	ldp	s4, s3, [x10, 4]
+	add	x10, x10, 16
+	fadd	v0.2s, v1.2s, v0.2s
+	fmul	v4.2s, v2.2s, v4.s[0]
+	fmul	v3.2s, v6.2s, v3.s[0]
+	ldr	s2, [x10, -4]
+	fadd	v0.2s, v0.2s, v4.2s
+	fmul	v1.2s, v5.2s, v2.s[0]
+	fadd	v0.2s, v0.2s, v3.2s
+	fadd	v0.2s, v0.2s, v1.2s
+	cmp	w25, w12
+	bgt	.L88
+.L87:
+	sxtw	x0, w0
+	add	x1, x7, x0
+	add	x1, x20, x1, lsl 2
+.L89:
+	ldr	s1, [x2, x0, lsl 2]
+	add	x1, x1, 8
+	ldr	d4, [x1, -8]
+	ldr	d3, [x1, -4]
+	ldr	s2, [x8, x0, lsl 2]
+	add	x0, x0, 2
+	fmul	v1.2s, v4.2s, v1.s[0]
+	fmul	v2.2s, v3.2s, v2.s[0]
+	fadd	v0.2s, v1.2s, v0.2s
+	fadd	v0.2s, v0.2s, v2.2s
+	cmp	w19, w0
+	bgt	.L89
+	mov	w1, w23
+	mov	w10, 1
+.L86:
+	cmp	w26, w1
+	ble	.L90
+	add	w0, w1, 1
+	cmp	w19, w0
+	ble	.L154
+	sxtw	x10, w1
+	add	x12, x2, x1, sxtw 2
+	add	x0, x10, x7
+	add	w13, w1, 3
+	lsl	x0, x0, 2
+	ldr	s1, [x2, x10, lsl 2]
+	add	x10, x20, x0
+	ldr	s2, [x12, 4]
+	ldr	d4, [x20, x0]
+	add	w0, w1, 2
+	ldr	d3, [x10, 4]
+	fmul	v1.2s, v4.2s, v1.s[0]
+	fmul	v2.2s, v3.2s, v2.s[0]
+	fadd	v0.2s, v1.2s, v0.2s
+	fadd	v0.2s, v0.2s, v2.2s
+	cmp	w19, w13
+	bgt	.L244
+.L91:
+	sxtw	x10, w0
+	add	w1, w0, 1
+	add	x12, x10, x7
+	sbfiz	x0, x0, 2, 32
+	lsl	x12, x12, 2
+	ldr	s1, [x2, x10, lsl 2]
+	mov	w10, 1
+	ldr	d2, [x20, x12]
+	fmul	v1.2s, v2.2s, v1.s[0]
+	fadd	v0.2s, v0.2s, v1.2s
+	cmp	w26, w1
+	ble	.L90
+	add	x1, x7, x1, sxtw
+	add	x0, x2, x0
+	lsl	x1, x1, 2
+	ldr	s1, [x0, 4]
+	ldr	d2, [x20, x1]
+	fmul	v1.2s, v2.2s, v1.s[0]
+	fadd	v0.2s, v0.2s, v1.2s
+.L90:
+	add	w9, w9, 1
+	add	x2, x2, x21
+	add	x7, x7, x22
+	add	x8, x8, x21
+	cmp	w27, w9
+	bne	.L92
+	fmov	x0, d0
+	cmp	w10, 0
+	csel	x0, xzr, x0, eq
+.L93:
+	lsl	x4, x4, 2
+	add	w3, w3, 2
+	str	x0, [x5, x4]
+	b	.L85
+.L153:
+	mov	w0, 0
+	b	.L87
+.L152:
+	mov	w1, 0
+	b	.L86
+.L71:
+	sxtw	x4, w3
+	mov	x0, 0
+	mov	x1, 0
+	cmp	w27, 0
+	ble	.L103
+	movi	v0.4s, 0
+	add	x9, x4, x11
+	add	x10, x28, 4
+	mov	x8, x28
+	mov	w15, 0
+	mov	w13, 0
+.L102:
+	cmp	w19, 0
+	ble	.L156
+	cbz	w24, .L157
+	mov	x12, x8
+	add	x7, x20, x9, lsl 2
+	mov	w2, 0
+.L98:
+	ldr	q1, [x7]
+	add	w14, w2, 6
+	ld1r	{v3.4s}, [x12]
+	add	w2, w2, 4
+	ldr	q2, [x7, 4]
+	add	x12, x12, 16
+	fmul	v1.4s, v1.4s, v3.4s
+	ldr	s3, [x12, -12]
+	ldr	q5, [x7, 8]
+	add	x7, x7, 16
+	fmul	v3.4s, v2.4s, v3.s[0]
+	ldr	s2, [x12, -8]
+	fadd	v0.4s, v1.4s, v0.4s
+	ldr	s1, [x12, -4]
+	ldr	q4, [x7, -4]
+	fmul	v2.4s, v5.4s, v2.s[0]
+	fadd	v0.4s, v0.4s, v3.4s
+	fmul	v1.4s, v4.4s, v1.s[0]
+	fadd	v0.4s, v0.4s, v2.4s
+	fadd	v0.4s, v0.4s, v1.4s
+	cmp	w25, w14
+	bgt	.L98
+.L97:
+	sxtw	x2, w2
+	add	x7, x2, x9
+	add	x7, x20, x7, lsl 2
+.L99:
+	ldr	q2, [x7]
+	add	x7, x7, 8
+	ldr	s1, [x8, x2, lsl 2]
+	ldr	q3, [x7, -4]
+	fmul	v1.4s, v2.4s, v1.s[0]
+	ldr	s2, [x10, x2, lsl 2]
+	add	x2, x2, 2
+	fmul	v2.4s, v3.4s, v2.s[0]
+	fadd	v0.4s, v1.4s, v0.4s
+	fadd	v0.4s, v0.4s, v2.4s
+	cmp	w19, w2
+	bgt	.L99
+	mov	w7, w23
+	mov	w15, 1
+.L96:
+	cmp	w26, w7
+	ble	.L100
+	add	w2, w7, 1
+	cmp	w19, w2
+	ble	.L158
+	sxtw	x12, w7
+	add	x14, x8, x7, sxtw 2
+	add	x2, x12, x9
+	add	w15, w7, 3
+	lsl	x2, x2, 2
+	ldr	s1, [x8, x12, lsl 2]
+	add	x12, x20, x2
+	ldr	s2, [x14, 4]
+	ldr	q4, [x20, x2]
+	add	w2, w7, 2
+	ldr	q3, [x12, 4]
+	fmul	v1.4s, v4.4s, v1.s[0]
+	fmul	v2.4s, v3.4s, v2.s[0]
+	fadd	v0.4s, v1.4s, v0.4s
+	fadd	v0.4s, v0.4s, v2.4s
+	cmp	w19, w15
+	bgt	.L245
+.L101:
+	sxtw	x14, w2
+	add	w7, w2, 1
+	add	x12, x14, x9
+	sbfiz	x2, x2, 2, 32
+	mov	w15, 1
+	lsl	x12, x12, 2
+	ldr	s1, [x8, x14, lsl 2]
+	ldr	q2, [x20, x12]
+	fmul	v1.4s, v2.4s, v1.s[0]
+	fadd	v0.4s, v0.4s, v1.4s
+	cmp	w26, w7
+	ble	.L100
+	add	x7, x9, x7, sxtw
+	add	x2, x8, x2
+	lsl	x7, x7, 2
+	ldr	s1, [x2, 4]
+	ldr	q2, [x20, x7]
+	fmul	v1.4s, v2.4s, v1.s[0]
+	fadd	v0.4s, v0.4s, v1.4s
+.L100:
+	add	w13, w13, 1
+	add	x8, x8, x21
+	add	x9, x9, x22
+	add	x10, x10, x21
+	cmp	w27, w13
+	bne	.L102
+	cbz	w15, .L103
+	fmov	x0, d0
+	fmov	x1, v0.d[1]
+.L103:
+	add	x4, x5, x4, lsl 2
+	add	w3, w3, 4
+	sub	w2, w6, w3
+	stp	x0, x1, [x4]
+	b	.L95
+.L70:
+	stp	xzr, xzr, [sp, 240]
+	sxtw	x4, w3
+	stp	xzr, xzr, [sp, 256]
+	cmp	w27, 0
+	ble	.L114
+	movi	v0.4s, 0
+	add	x7, x4, x11
+	add	x8, x28, 4
+	mov	x2, x28
+	mov	w1, 0
+	mov	w0, 0
+	mov	w9, 0
+	mov	v2.16b, v0.16b
+.L112:
+	cmp	w19, 0
+	ble	.L160
+	cbz	w24, .L161
+	mov	x10, x2
+	add	x1, x20, x7, lsl 2
+	mov	w0, 0
+.L108:
+	ldr	q3, [x1]
+	add	w12, w0, 6
+	ldp	s6, s5, [x10, 4]
+	add	w0, w0, 4
+	ldr	q1, [x1, 16]
+	add	x1, x1, 16
+	dup	v6.4s, v6.s[0]
+	ld1r	{v7.4s}, [x10]
+	ldr	q8, [x1, -12]
+	add	x10, x10, 16
+	fmul	v3.4s, v3.4s, v7.4s
+	ldr	s4, [x10, -4]
+	fmul	v1.4s, v1.4s, v7.4s
+	ldr	q7, [x1, 4]
+	fadd	v2.4s, v3.4s, v2.4s
+	fadd	v0.4s, v1.4s, v0.4s
+	dup	v3.4s, v5.s[0]
+	fmul	v8.4s, v8.4s, v6.4s
+	fmul	v7.4s, v7.4s, v6.4s
+	ldr	q6, [x1, -8]
+	ldr	q5, [x1, 8]
+	dup	v1.4s, v4.s[0]
+	fmul	v6.4s, v6.4s, v3.4s
+	fmul	v5.4s, v5.4s, v3.4s
+	fadd	v2.4s, v2.4s, v8.4s
+	fadd	v0.4s, v0.4s, v7.4s
+	ldr	q4, [x1, -4]
+	ldr	q3, [x1, 12]
+	fmul	v4.4s, v4.4s, v1.4s
+	fadd	v2.4s, v2.4s, v6.4s
+	fadd	v0.4s, v0.4s, v5.4s
+	fmul	v1.4s, v3.4s, v1.4s
+	fadd	v2.4s, v2.4s, v4.4s
+	fadd	v0.4s, v0.4s, v1.4s
+	cmp	w25, w12
+	bgt	.L108
+.L107:
+	sxtw	x0, w0
+	add	x1, x7, x0
+	add	x1, x20, x1, lsl 2
+.L109:
+	ldr	s5, [x2, x0, lsl 2]
+	add	x1, x1, 8
+	ldr	q3, [x1, -8]
+	dup	v5.4s, v5.s[0]
+	ldr	s4, [x8, x0, lsl 2]
+	ldr	q1, [x1, 8]
+	add	x0, x0, 2
+	dup	v4.4s, v4.s[0]
+	fmul	v3.4s, v3.4s, v5.4s
+	fmul	v1.4s, v1.4s, v5.4s
+	ldr	q6, [x1, -4]
+	ldr	q5, [x1, 12]
+	fadd	v2.4s, v3.4s, v2.4s
+	fadd	v0.4s, v1.4s, v0.4s
+	fmul	v3.4s, v6.4s, v4.4s
+	fmul	v1.4s, v5.4s, v4.4s
+	fadd	v2.4s, v2.4s, v3.4s
+	fadd	v0.4s, v0.4s, v1.4s
+	cmp	w19, w0
+	bgt	.L109
+	mov	w1, 1
+	mov	w10, w23
+	mov	w0, w1
+.L106:
+	cmp	w26, w10
+	ble	.L110
+	add	w0, w10, 1
+	cmp	w19, w0
+	ble	.L162
+	sxtw	x1, w10
+	add	x12, x2, x10, sxtw 2
+	add	x0, x1, x7
+	add	w13, w10, 3
+	lsl	x0, x0, 2
+	ldr	s5, [x2, x1, lsl 2]
+	add	x14, x20, x0
+	add	x1, x0, 4
+	ldr	s4, [x12, 4]
+	dup	v5.4s, v5.s[0]
+	ldr	q1, [x20, x0]
+	add	w0, w10, 2
+	ldr	q3, [x14, 16]
+	add	x14, x20, x1
+	fmul	v1.4s, v1.4s, v5.4s
+	dup	v4.4s, v4.s[0]
+	fmul	v3.4s, v3.4s, v5.4s
+	ldr	q5, [x20, x1]
+	ldr	q6, [x14, 16]
+	fadd	v1.4s, v1.4s, v2.4s
+	fadd	v0.4s, v3.4s, v0.4s
+	fmul	v2.4s, v5.4s, v4.4s
+	fmul	v3.4s, v6.4s, v4.4s
+	fadd	v2.4s, v1.4s, v2.4s
+	fadd	v0.4s, v0.4s, v3.4s
+	cmp	w19, w13
+	bgt	.L246
+.L111:
+	sxtw	x12, w0
+	add	w1, w0, 1
+	add	x10, x12, x7
+	sbfiz	x0, x0, 2, 32
+	lsl	x10, x10, 2
+	ldr	s1, [x2, x12, lsl 2]
+	add	x12, x20, x10
+	dup	v1.4s, v1.s[0]
+	ldr	q4, [x20, x10]
+	ldr	q3, [x12, 16]
+	fmul	v4.4s, v4.4s, v1.4s
+	fmul	v1.4s, v3.4s, v1.4s
+	fadd	v2.4s, v2.4s, v4.4s
+	fadd	v0.4s, v0.4s, v1.4s
+	cmp	w26, w1
+	ble	.L163
+	add	x10, x7, x1, sxtw
+	add	x0, x2, x0
+	mov	w1, 1
+	lsl	x10, x10, 2
+	add	x12, x20, x10
+	ldr	s1, [x0, 4]
+	mov	w0, w1
+	ldr	q4, [x20, x10]
+	dup	v1.4s, v1.s[0]
+	ldr	q3, [x12, 16]
+	fmul	v4.4s, v4.4s, v1.4s
+	fmul	v1.4s, v3.4s, v1.4s
+	fadd	v2.4s, v2.4s, v4.4s
+	fadd	v0.4s, v0.4s, v1.4s
+.L110:
+	add	w9, w9, 1
+	add	x2, x2, x21
+	add	x7, x7, x22
+	add	x8, x8, x21
+	cmp	w27, w9
+	bne	.L112
+	cbz	w0, .L113
+	str	q2, [sp, 240]
+.L113:
+	cbz	w1, .L114
+	str	q0, [sp, 256]
+.L114:
+	add	x4, x5, x4, lsl 2
+	ldp	x0, x1, [sp, 240]
+	add	w3, w3, 8
+	stp	x0, x1, [x4]
+	sub	w2, w6, w3
+	ldp	x0, x1, [sp, 256]
+	stp	x0, x1, [x4, 16]
+	b	.L105
+.L156:
+	mov	w7, 0
+	b	.L96
+.L160:
+	mov	w10, 0
+	b	.L106
+.L163:
+	mov	w1, 1
+	mov	w0, w1
+	b	.L110
+.L161:
+	mov	w0, 0
+	b	.L107
+.L154:
+	mov	w0, w1
+	b	.L91
+.L157:
+	mov	w2, 0
+	b	.L97
+.L65:
+	.cfi_restore 23
+	.cfi_restore 24
+	.cfi_restore 27
+	.cfi_restore 28
+	.cfi_restore 72
+	.cfi_restore 73
+	.cfi_restore 74
+	.cfi_restore 75
+	.cfi_restore 76
+	.cfi_restore 77
+	.cfi_restore 78
+	.cfi_restore 79
+	add	w2, w2, 1
+	mov	w1, 0
+	b	.L148
+.L162:
+	.cfi_offset 23, -320
+	.cfi_offset 24, -312
+	.cfi_offset 27, -288
+	.cfi_offset 28, -280
+	.cfi_offset 72, -272
+	.cfi_offset 73, -264
+	.cfi_offset 74, -256
+	.cfi_offset 75, -248
+	.cfi_offset 76, -240
+	.cfi_offset 77, -232
+	.cfi_offset 78, -224
+	.cfi_offset 79, -216
+	mov	w0, w10
+	b	.L111
+.L158:
+	mov	w2, w7
+	b	.L101
+.L151:
+	mov	w0, 0
+	b	.L77
+.L149:
+	movi	v0.2s, #0
+	str	s0, [x7]
+	b	.L83
+.L246:
+	add	x1, x7, x0, sxtw
+	add	w0, w10, 4
+	ldp	s5, s4, [x12, 8]
+	lsl	x12, x1, 2
+	add	x1, x20, x1, lsl 2
+	add	x10, x12, 4
+	add	x13, x20, x10
+	dup	v5.4s, v5.s[0]
+	ldr	q1, [x20, x12]
+	ldr	q3, [x1, 16]
+	dup	v4.4s, v4.s[0]
+	fmul	v1.4s, v1.4s, v5.4s
+	fmul	v3.4s, v3.4s, v5.4s
+	ldr	q5, [x20, x10]
+	ldr	q6, [x13, 16]
+	fadd	v1.4s, v1.4s, v2.4s
+	fadd	v0.4s, v3.4s, v0.4s
+	fmul	v2.4s, v5.4s, v4.4s
+	fmul	v3.4s, v6.4s, v4.4s
+	fadd	v2.4s, v2.4s, v1.4s
+	fadd	v0.4s, v3.4s, v0.4s
+	b	.L111
+.L245:
+	add	x12, x9, x2, sxtw
+	add	w2, w7, 4
+	ldp	s1, s2, [x14, 8]
+	lsl	x7, x12, 2
+	add	x12, x20, x7
+	ldr	q4, [x20, x7]
+	ldr	q3, [x12, 4]
+	fmul	v1.4s, v4.4s, v1.s[0]
+	fmul	v2.4s, v3.4s, v2.s[0]
+	fadd	v0.4s, v1.4s, v0.4s
+	fadd	v0.4s, v2.4s, v0.4s
+	b	.L101
+.L244:
+	add	x10, x7, x0, sxtw
+	add	w0, w1, 4
+	ldp	s1, s2, [x12, 8]
+	lsl	x1, x10, 2
+	add	x10, x20, x1
+	ldr	d4, [x20, x1]
+	ldr	d3, [x10, 4]
+	fmul	v1.2s, v4.2s, v1.s[0]
+	fmul	v2.2s, v3.2s, v2.s[0]
+	fadd	v0.2s, v1.2s, v0.2s
+	fadd	v0.2s, v2.2s, v0.2s
+	b	.L91
+.L242:
+	add	x9, x10, x0, sxtw
+	add	w0, w1, 4
+	ldp	s2, s1, [x14, 8]
+	add	x1, x20, x9, lsl 2
+	lsl	x14, x9, 2
+	add	x12, x14, 4
+	dup	v2.4s, v2.s[0]
+	add	x9, x20, x12
+	ldr	q3, [x20, x14]
+	ldp	q8, q6, [x1, 16]
+	ldr	q4, [x1, 48]
+	dup	v1.4s, v1.s[0]
+	fmul	v8.4s, v8.4s, v2.4s
+	fmul	v6.4s, v6.4s, v2.4s
+	fmul	v4.4s, v4.4s, v2.4s
+	fmul	v2.4s, v3.4s, v2.4s
+	ldr	q9, [x20, x12]
+	ldp	q11, q3, [x9, 16]
+	ldr	q10, [x9, 48]
+	fadd	v5.4s, v8.4s, v5.4s
+	fmul	v11.4s, v11.4s, v1.4s
+	fmul	v8.4s, v3.4s, v1.4s
+	fadd	v0.4s, v4.4s, v0.4s
+	fadd	v3.4s, v6.4s, v13.4s
+	fadd	v7.4s, v2.4s, v7.4s
+	fmul	v6.4s, v10.4s, v1.4s
+	fmul	v1.4s, v9.4s, v1.4s
+	fadd	v5.4s, v11.4s, v5.4s
+	fadd	v13.4s, v8.4s, v3.4s
+	fadd	v0.4s, v6.4s, v0.4s
+	fadd	v7.4s, v1.4s, v7.4s
+	b	.L123
+.L241:
+	add	x0, x8, x10, sxtw
+	add	w10, w1, 4
+	ldp	s5, s4, [x13, 8]
+	lsl	x13, x0, 2
+	add	x0, x20, x0, lsl 2
+	add	x7, x13, 4
+	add	x1, x20, x7
+	dup	v5.4s, v5.s[0]
+	ldr	q9, [x20, x13]
+	ldp	q24, q23, [x0, 16]
+	ldp	q22, q16, [x0, 48]
+	ldp	q14, q11, [x0, 80]
+	ldr	q7, [x0, 112]
+	dup	v4.4s, v4.s[0]
+	fmul	v24.4s, v24.4s, v5.4s
+	fmul	v23.4s, v23.4s, v5.4s
+	fmul	v22.4s, v22.4s, v5.4s
+	fmul	v16.4s, v16.4s, v5.4s
+	fmul	v14.4s, v14.4s, v5.4s
+	fmul	v11.4s, v11.4s, v5.4s
+	fmul	v7.4s, v7.4s, v5.4s
+	fmul	v5.4s, v9.4s, v5.4s
+	ldr	q17, [x20, x7]
+	ldp	q21, q20, [x1, 16]
+	ldp	q19, q18, [x1, 48]
+	ldp	q15, q13, [x1, 80]
+	ldr	q9, [x1, 112]
+	fmul	v21.4s, v21.4s, v4.4s
+	fmul	v20.4s, v20.4s, v4.4s
+	fmul	v19.4s, v19.4s, v4.4s
+	fmul	v18.4s, v18.4s, v4.4s
+	fmul	v15.4s, v15.4s, v4.4s
+	fmul	v13.4s, v13.4s, v4.4s
+	fmul	v9.4s, v9.4s, v4.4s
+	fadd	v6.4s, v24.4s, v6.4s
+	fadd	v2.4s, v23.4s, v2.4s
+	fadd	v3.4s, v22.4s, v3.4s
+	fadd	v12.4s, v16.4s, v12.4s
+	fadd	v10.4s, v14.4s, v10.4s
+	fadd	v8.4s, v11.4s, v8.4s
+	fadd	v0.4s, v7.4s, v0.4s
+	fadd	v1.4s, v5.4s, v1.4s
+	fmul	v4.4s, v17.4s, v4.4s
+	fadd	v6.4s, v21.4s, v6.4s
+	fadd	v2.4s, v20.4s, v2.4s
+	fadd	v3.4s, v19.4s, v3.4s
+	fadd	v12.4s, v18.4s, v12.4s
+	fadd	v10.4s, v15.4s, v10.4s
+	fadd	v8.4s, v13.4s, v8.4s
+	fadd	v0.4s, v9.4s, v0.4s
+	fadd	v1.4s, v4.4s, v1.4s
+	b	.L137
+	.cfi_endproc
+.LFE11:
+	.size	conv2d._omp_fn.0, .-conv2d._omp_fn.0
+	.align	2
+	.p2align 4,,11
+	.global	conv2d
+	.type	conv2d, %function
+conv2d:
+.LFB10:
+	.cfi_startproc
+	cmp	w4, 0
+	ccmp	w5, 0, 4, gt
+	ble	.L250
+	stp	x29, x30, [sp, -144]!
+	.cfi_def_cfa_offset 144
+	.cfi_offset 29, -144
+	.cfi_offset 30, -136
+	cmp	w4, w1
+	mov	x29, sp
+	stp	x19, x20, [sp, 16]
+	.cfi_offset 19, -128
+	.cfi_offset 20, -120
+	mov	w20, w4
+	mov	w19, w5
+	stp	x21, x22, [sp, 32]
+	.cfi_offset 21, -112
+	.cfi_offset 22, -104
+	sxtw	x22, w2
+	ccmp	w5, w22, 0, le
+	ble	.L253
+	ldp	x19, x20, [sp, 16]
+	ldp	x21, x22, [sp, 32]
+	ldp	x29, x30, [sp], 144
+	.cfi_remember_state
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 21
+	.cfi_restore 22
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	ret
+	.p2align 2,,3
+.L253:
+	.cfi_restore_state
+	sub	w21, w1, w4
+	stp	x23, x24, [sp, 48]
+	.cfi_offset 24, -88
+	.cfi_offset 23, -96
+	mov	x23, x6
+	mov	x24, x3
+	str	x25, [sp, 64]
+	.cfi_offset 25, -80
+	mov	x25, x0
+	mov	x0, 16
+	bl	getauxval
+	ubfx	w4, w0, 22, 1
+	sub	w5, w22, w19
+	add	x1, sp, 88
+	add	w5, w5, 1
+	add	w21, w21, 1
+	mov	w3, 0
+	mov	w2, 0
+	adrp	x0, conv2d._omp_fn.0
+	add	x0, x0, :lo12:conv2d._omp_fn.0
+	stp	x25, x24, [sp, 88]
+	stp	x23, x22, [sp, 104]
+	stp	w20, w19, [sp, 120]
+	stp	w21, w5, [sp, 128]
+	str	w4, [sp, 136]
+	bl	GOMP_parallel
+	ldp	x19, x20, [sp, 16]
+	ldp	x21, x22, [sp, 32]
+	ldp	x23, x24, [sp, 48]
+	.cfi_restore 24
+	.cfi_restore 23
+	ldr	x25, [sp, 64]
+	.cfi_restore 25
+	ldp	x29, x30, [sp], 144
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 21
+	.cfi_restore 22
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	ret
+	.p2align 2,,3
+.L250:
+	ret
+	.cfi_endproc
+.LFE10:
+	.size	conv2d, .-conv2d
+	.ident	"GCC: (GNU) 10.3.1"
+	.section	.note.GNU-stack,"",@progbits

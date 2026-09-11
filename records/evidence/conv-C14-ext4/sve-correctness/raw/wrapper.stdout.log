@@ -1,0 +1,57 @@
++ date -u
+Wed Sep  9 03:07:20 UTC 2026
++ python3 -
+ALLOWED_CPUS=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37
+NUMA_NODE=node0
++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++ sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh
+ec758f3ba2ac122af26f16a41cd04a0241d5f6bc3f25e37015680c5765a105e6  conv2d.c
+02a17fff42e7364d6a630c2c9acb0bed6e1b7b99418e1cc8da2f2cdfc6fc446f  check_conv_guard.c
+a218a69e30439ec6147a97eba011b239442687bfe153a31850d82c3df1927542  check_sve_dispatch.c
+259f5a479431d290927113d3bc4ccb5dc006a34d7c47096527966fb00273b083  remote_job.sh
++ export OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp check_conv_guard.c conv2d.c -o check_conv_guard
++ OMP_NUM_THREADS=1
++ ./check_conv_guard
+PASS: 880 convolution cases, guarded input/output; bitwise equal to scalar reference
++ OMP_NUM_THREADS=4
++ ./check_conv_guard
+PASS: 880 convolution cases, guarded input/output; bitwise equal to scalar reference
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
++ for bytes in 16 32 64
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 16
+SVE_LANES=4 BLOCK_OUTPUTS=32
+PASS: 880 convolution cases, guarded input/output; bitwise equal to scalar reference
+SVE_HELPER_ACTUAL_ENTRIES=2640
++ for bytes in 16 32 64
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 32
+SVE_LANES=8 BLOCK_OUTPUTS=64
+PASS: 880 convolution cases, guarded input/output; bitwise equal to scalar reference
+SVE_HELPER_ACTUAL_ENTRIES=2640
++ for bytes in 16 32 64
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 64
+SVE_LANES=16 BLOCK_OUTPUTS=128
+PASS: 880 convolution cases, guarded input/output; bitwise equal to scalar reference
+SVE_HELPER_ACTUAL_ENTRIES=2640
++ gcc -O3 -std=c11 -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -S conv2d.c -o conv2d-sve.s
++ printf 'PROBE_COMPLETE=1\n'
+PROBE_COMPLETE=1
++ finish
++ local code=0 log_code=0
++ trap - EXIT
++ exec
++ wait 459428
++ ((  code == 0 && log_code != 0  ))
++ printf '%s\n' 0
++ exit 0

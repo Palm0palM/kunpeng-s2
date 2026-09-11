@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T3-svepanel",
+  "parent": "T1-control3",
+  "strategy": "仅将solve_panel的4x8累加微核在Linux HWCAP确认且SVE宽度恰为8个double时替换为SVE；保持每元素k累加顺序、面板布局、4行前代、回退、线程、精度与官方benchmark和run.sh不变。其余平台保留NEON/标量。",
+  "created_at": "2026-09-09T03:05:17.553376+00:00",
+  "settings": {
+    "bench_repeats": 3
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "c19ff63dd4256e2cc31ef6deef56afd61b509964e6362a2d783fe2c9f6dbf768"
+  },
+  "status": "failed",
+  "recorded_at": "2026-09-09T03:27:24.533123+00:00",
+  "environment": "COMPUTE_NODE_1-numa9-gcc10-generic38-preflight-1492036",
+  "reference": "OpenBLAS 0.3.28 static MAX_THREADS=38; KML unavailable; preflight only",
+  "verified": false,
+  "failure": "Own job1492036 stopped before official timing: software long-double known-solution construction was too slow. Zero official results; not a kernel correctness failure. Same-source retry uses exact dyadic known solutions. See records/evidence/trsm-sve-20260909/initial-preflight-stopped/.",
+  "job_id": "1492036",
+  "publication_note": "公开日志为脱敏副本；本地原始证据保留。既有字段的历史含义不变，本轮不计算或验证任何哈希。公开文件不应冒充未脱敏原件通过自动验证。"
+}

@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C13-exttail",
+  "parent": "C8-r3",
+  "strategy": "Combine independently validated SVE input-vector reuse with SVE 4/2/1 predicated tail, hypothesizing that the load reduction and tail speedup are complementary. Keep eight-vector main block and strict reference accumulation.",
+  "created_at": "2026-09-09T03:02:36.030214+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "418191b0a5f8b5a97b219b2648df30132b935ae602e6a4c066cfadd8680554c8",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-09T03:15:38.230258+00:00",
+  "environment": "sep9-group2-gcc10-generic-38",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "a439938b8eb91c3f115e4d4e34a345d5ac8d024332f44656dd7754270d05e871",
+  "log": ".runs/conv/C13-exttail/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        66.15,
+        66.34,
+        66.17
+      ],
+      "median_ms": 66.17,
+      "min_ms": 66.15,
+      "max_ms": 66.34,
+      "spread_pct": 0.28713918694271984,
+      "gflops": [
+        1139.4446,
+        1136.1648,
+        1139.0533
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        81.72,
+        81.26,
+        81.08
+      ],
+      "median_ms": 81.26,
+      "min_ms": 81.08,
+      "max_ms": 81.72,
+      "spread_pct": 0.787595372877185,
+      "gflops": [
+        1018.5497,
+        1024.3341,
+        1026.5937
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        137.87,
+        138.02,
+        137.87
+      ],
+      "median_ms": 137.87,
+      "min_ms": 137.87,
+      "max_ms": 138.02,
+      "spread_pct": 0.10879814317836053,
+      "gflops": [
+        1168.3409,
+        1166.9971,
+        1168.2951
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        305.06,
+        303.7,
+        305.19
+      ],
+      "median_ms": 305.06,
+      "min_ms": 303.7,
+      "max_ms": 305.19,
+      "spread_pct": 0.48842850586770115,
+      "gflops": [
+        1133.4615,
+        1138.55,
+        1132.9567
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 590.36,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_2",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1491977",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 69.13,
+        "candidate_ms": 66.17,
+        "gain_pct": 4.281787935773172
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 88.86,
+        "candidate_ms": 81.26,
+        "gain_pct": 8.552779653387345
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 146.77,
+        "candidate_ms": 137.87,
+        "gain_pct": 6.063909518293933
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 326.55,
+        "candidate_ms": 305.06,
+        "gain_pct": 6.580921757770635
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "comparison_baseline": "C8-r3",
+  "source_parent": "C8-r1",
+  "parent_note": "C8-r3 is the unchanged C2 source, measured in the same allocation; reparented to the verified comparison baseline before promotion, no source or measured results changed.",
+  "promoted_at": "2026-09-09T03:16:44.723831+00:00"
+}

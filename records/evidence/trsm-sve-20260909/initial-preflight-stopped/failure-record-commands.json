@@ -1,0 +1,59 @@
+[
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "tools/experiment.py",
+      "record",
+      "trsm",
+      "T1-control3",
+      "--failure",
+      "Own job1492036 stopped before official timing: software long-double known-solution construction was too slow. Zero official results; not a kernel correctness failure. Same-source retry uses exact dyadic known solutions. See records/evidence/trsm-sve-20260909/initial-preflight-stopped/.",
+      "--environment",
+      "COMPUTE_NODE_1-numa9-gcc10-generic38-preflight-1492036",
+      "--reference",
+      "OpenBLAS 0.3.28 static MAX_THREADS=38; KML unavailable; preflight only",
+      "--repeats",
+      "3"
+    ],
+    "exit_code": 0,
+    "output": "已记录失败: Own job1492036 stopped before official timing: software long-double known-solution construction was too slow. Zero official results; not a kernel correctness failure. Same-source retry uses exact dyadic known solutions. See records/evidence/trsm-sve-20260909/initial-preflight-stopped/.\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "tools/experiment.py",
+      "record",
+      "trsm",
+      "T3-svepanel",
+      "--failure",
+      "Own job1492036 stopped before official timing: software long-double known-solution construction was too slow. Zero official results; not a kernel correctness failure. Same-source retry uses exact dyadic known solutions. See records/evidence/trsm-sve-20260909/initial-preflight-stopped/.",
+      "--environment",
+      "COMPUTE_NODE_1-numa9-gcc10-generic38-preflight-1492036",
+      "--reference",
+      "OpenBLAS 0.3.28 static MAX_THREADS=38; KML unavailable; preflight only",
+      "--repeats",
+      "3"
+    ],
+    "exit_code": 0,
+    "output": "已记录失败: Own job1492036 stopped before official timing: software long-double known-solution construction was too slow. Zero official results; not a kernel correctness failure. Same-source retry uses exact dyadic known solutions. See records/evidence/trsm-sve-20260909/initial-preflight-stopped/.\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "tools/experiment.py",
+      "record",
+      "trsm",
+      "T3-sveupdate",
+      "--failure",
+      "Own job1492036 stopped before official timing: software long-double known-solution construction was too slow. Zero official results; not a kernel correctness failure. Same-source retry uses exact dyadic known solutions. See records/evidence/trsm-sve-20260909/initial-preflight-stopped/.",
+      "--environment",
+      "COMPUTE_NODE_1-numa9-gcc10-generic38-preflight-1492036",
+      "--reference",
+      "OpenBLAS 0.3.28 static MAX_THREADS=38; KML unavailable; preflight only",
+      "--repeats",
+      "3"
+    ],
+    "exit_code": 0,
+    "output": "已记录失败: Own job1492036 stopped before official timing: software long-double known-solution construction was too slow. Zero official results; not a kernel correctness failure. Same-source retry uses exact dyadic known solutions. See records/evidence/trsm-sve-20260909/initial-preflight-stopped/.\n"
+  }
+]

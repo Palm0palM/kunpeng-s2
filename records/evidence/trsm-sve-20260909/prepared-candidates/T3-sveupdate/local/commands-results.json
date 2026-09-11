@@ -1,0 +1,200 @@
+[
+  {
+    "name": "environment-uname",
+    "argv": [
+      "uname",
+      "-sm"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {},
+    "returncode": 0,
+    "log": "environment-uname.log"
+  },
+  {
+    "name": "environment-clang",
+    "argv": [
+      "clang",
+      "--version"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {},
+    "returncode": 0,
+    "log": "environment-clang.log"
+  },
+  {
+    "name": "environment-macos",
+    "argv": [
+      "sw_vers"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {},
+    "returncode": 0,
+    "log": "environment-macos.log"
+  },
+  {
+    "name": "build-check-update",
+    "argv": [
+      "clang",
+      "-O2",
+      "-std=c11",
+      "-D_POSIX_C_SOURCE=200112L",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=undefined",
+      "-Xpreprocessor",
+      "-fopenmp",
+      "-I/opt/homebrew/opt/libomp/include",
+      "check-update.c",
+      "-L/opt/homebrew/opt/libomp/lib",
+      "-lomp",
+      "-lm",
+      "-o",
+      "check-update-ubsan"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {},
+    "returncode": 0,
+    "log": "build-check-update.log"
+  },
+  {
+    "name": "build-check-trsm",
+    "argv": [
+      "clang",
+      "-O2",
+      "-std=c11",
+      "-D_POSIX_C_SOURCE=200112L",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=undefined",
+      "-Xpreprocessor",
+      "-fopenmp",
+      "-I/opt/homebrew/opt/libomp/include",
+      "check-trsm.c",
+      "../source/trsm.c",
+      "-L/opt/homebrew/opt/libomp/lib",
+      "-lomp",
+      "-lm",
+      "-o",
+      "check-trsm-ubsan"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {},
+    "returncode": 0,
+    "log": "build-check-trsm.log"
+  },
+  {
+    "name": "build-fail-alloc-object",
+    "argv": [
+      "clang",
+      "-O2",
+      "-std=c11",
+      "-D_POSIX_C_SOURCE=200112L",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=undefined",
+      "-Xpreprocessor",
+      "-fopenmp",
+      "-I/opt/homebrew/opt/libomp/include",
+      "-Dposix_memalign=trsm_test_alloc_fail",
+      "-c",
+      "../source/trsm.c",
+      "-o",
+      "trsm-fail-alloc.o"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {},
+    "returncode": 0,
+    "log": "build-fail-alloc-object.log"
+  },
+  {
+    "name": "build-check-fail-alloc",
+    "argv": [
+      "clang",
+      "-O2",
+      "-std=c11",
+      "-D_POSIX_C_SOURCE=200112L",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=undefined",
+      "-Xpreprocessor",
+      "-fopenmp",
+      "-I/opt/homebrew/opt/libomp/include",
+      "check-trsm.c",
+      "fail-alloc.c",
+      "trsm-fail-alloc.o",
+      "-L/opt/homebrew/opt/libomp/lib",
+      "-lomp",
+      "-lm",
+      "-o",
+      "check-trsm-fail-alloc-ubsan"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {},
+    "returncode": 0,
+    "log": "build-check-fail-alloc.log"
+  },
+  {
+    "name": "check-update",
+    "argv": [
+      "./check-update-ubsan"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+      "OMP_NUM_THREADS": "4"
+    },
+    "returncode": 0,
+    "log": "check-update.log"
+  },
+  {
+    "name": "check-trsm-t1",
+    "argv": [
+      "./check-trsm-ubsan"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+      "OMP_NUM_THREADS": "1"
+    },
+    "returncode": 0,
+    "log": "check-trsm-t1.log"
+  },
+  {
+    "name": "check-trsm-t4",
+    "argv": [
+      "./check-trsm-ubsan"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+      "OMP_NUM_THREADS": "4"
+    },
+    "returncode": 0,
+    "log": "check-trsm-t4.log"
+  },
+  {
+    "name": "check-trsm-fail-alloc-t4",
+    "argv": [
+      "./check-trsm-fail-alloc-ubsan"
+    ],
+    "cwd": "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T3-sveupdate/local",
+    "environment_overrides": {
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+      "OMP_NUM_THREADS": "4"
+    },
+    "returncode": 0,
+    "log": "check-trsm-fail-alloc-t4.log"
+  }
+]

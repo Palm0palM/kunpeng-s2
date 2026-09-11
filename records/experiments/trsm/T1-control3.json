@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T1-control3",
+  "parent": null,
+  "strategy": "T1-panel-r2晋级源码不变；为20260909的独立SVE小路径和大路径候选建立同一38核单NUMA分配内三轮完整官方用例对照。来源T1-panel-r2，不是新实现。",
+  "created_at": "2026-09-09T03:05:17.504497+00:00",
+  "settings": {
+    "bench_repeats": 3
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "fea6ee11cce8785ac3f13f641f9feb195a829493a27a9c902000a743545dbf73"
+  },
+  "status": "failed",
+  "recorded_at": "2026-09-09T03:27:24.492197+00:00",
+  "environment": "COMPUTE_NODE_1-numa9-gcc10-generic38-preflight-1492036",
+  "reference": "OpenBLAS 0.3.28 static MAX_THREADS=38; KML unavailable; preflight only",
+  "verified": false,
+  "failure": "Own job1492036 stopped before official timing: software long-double known-solution construction was too slow. Zero official results; not a kernel correctness failure. Same-source retry uses exact dyadic known solutions. See records/evidence/trsm-sve-20260909/initial-preflight-stopped/.",
+  "job_id": "1492036",
+  "publication_note": "公开日志为脱敏副本；本地原始证据保留。既有字段的历史含义不变，本轮不计算或验证任何哈希。公开文件不应冒充未脱敏原件通过自动验证。"
+}

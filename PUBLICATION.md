@@ -15,3 +15,7 @@
 ## 本轮 TRSM 发布
 
 T1-panel-r2 的源码和完整测量结论来自本地已验证记录；GitHub 只保存公开脱敏副本。本轮按用户要求不追加计算哈希，已有原始哈希保留原始含义。`records/publication.json` 的 `trsm_update` 列出本轮公开文件；`files` 中仅保留此前未被本轮修改的公开文件校验记录。详见 [TRSM 证据说明](records/evidence/trsm-continuation-20260908/PUBLICATION-NOTES.md)。
+
+## 2026-09-09 TRSM SVE 发布
+
+当前 TRSM 更新至 T3-sveupdate-r3。源码、测量和脱敏证据的范围见 [本轮发布说明](PUBLICATION-TRSM-SVE.md)；本轮按用户要求完全不计算或验证哈希，文件列表见 `records/trsm-sve-publication.json`。此前快照的校验记录仍仅适用于其历史快照。
