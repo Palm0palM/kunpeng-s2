@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T7-sve24rows",
+  "parent": "T5-control10",
+  "source_implementation_id": "T7-sve24rows",
+  "source_from": "T5-sve16rows",
+  "strategy": "大工作集更新新增24x8 SVE核复用X载入；保留16/8/4/标量尾块、分派及回退；其他算法和分块不变。",
+  "created_at": "2026-09-11T11:00:34.569677+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "status": "passed",
+  "verified": true,
+  "validation_policy": "user-requested-no-hash",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        22.22,
+        23.49,
+        25.89
+      ],
+      "median_ms": 23.49,
+      "min_ms": 22.22,
+      "max_ms": 25.89,
+      "spread_pct": 15.623669646658161,
+      "gflops": [
+        235.5239,
+        222.8742,
+        202.1748
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        254.48,
+        255.49,
+        254.83
+      ],
+      "median_ms": 254.83,
+      "min_ms": 254.48,
+      "max_ms": 255.49,
+      "spread_pct": 0.39634265981243155,
+      "gflops": [
+        395.6782,
+        394.1007,
+        395.1341
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        227.96,
+        228.53,
+        229.18
+      ],
+      "median_ms": 228.53,
+      "min_ms": 227.96,
+      "max_ms": 229.18,
+      "spread_pct": 0.5338467597251997,
+      "gflops": [
+        650.9281,
+        649.3064,
+        647.4604
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 506.85,
+  "official_score": null,
+  "ranking": null,
+  "recorded_at": "2026-09-11T11:06:00.573707+00:00",
+  "environment": "COMPUTE_NODE_1-numa2-compiler-recorded-generic38-openblas028-test3-job1522032",
+  "reference": "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation",
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1522032",
+  "checks": {
+    "evidence_files_present": true,
+    "job_id": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_zero": true,
+    "three_complete_ordered_suites": true,
+    "precision_at_most_1e_12": true,
+    "machine_and_38_cpus": true,
+    "settings_38_threads": true,
+    "settings_three_suites": true,
+    "test_runs_documented": true,
+    "reference_library_documented": true,
+    "benchmark_matches_current_trsm_bytes": true,
+    "local_source_files_present": true,
+    "record_snapshot_matches_live_bytes": true
+  },
+  "hash_validation": "not performed: prohibited by user",
+  "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
+  "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
+  "run_dir": ".runs/trsm/T7-sve24rows",
+  "nohash_evidence": ".runs/trsm/T7-sve24rows/nohash-recorded-evidence",
+  "log": ".runs/trsm/T7-sve24rows/nohash-recorded-evidence/benchmark.log",
+  "metric": "sum of per-case median ms; not official score"
+}

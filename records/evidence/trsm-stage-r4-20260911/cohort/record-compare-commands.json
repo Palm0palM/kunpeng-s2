@@ -1,0 +1,66 @@
+[
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "record",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T5-control10",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-compiler-recorded-generic38-openblas028-test3-job1522032",
+      "--reference",
+      "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation"
+    ],
+    "exit_code": 0,
+    "output": "{\n  \"version\": \"T5-control10\",\n  \"status\": \"passed\",\n  \"verified\": true,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"total_median_ms\": 508.24,\n  \"failures\": [],\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "record",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T7-sve24rows",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-compiler-recorded-generic38-openblas028-test3-job1522032",
+      "--reference",
+      "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation"
+    ],
+    "exit_code": 0,
+    "output": "{\n  \"version\": \"T7-sve24rows\",\n  \"status\": \"passed\",\n  \"verified\": true,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"total_median_ms\": 506.85,\n  \"failures\": [],\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "record",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T7-diagpanel",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-compiler-recorded-generic38-openblas028-test3-job1522032",
+      "--reference",
+      "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation"
+    ],
+    "exit_code": 0,
+    "output": "{\n  \"version\": \"T7-diagpanel\",\n  \"status\": \"passed\",\n  \"verified\": true,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"total_median_ms\": 467.29,\n  \"failures\": [],\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "compare",
+      "T5-control10",
+      "T7-sve24rows"
+    ],
+    "exit_code": 2,
+    "output": "{\n  \"eligible\": false,\n  \"reasons\": [\n    \"total improvement 0.2735% does not exceed threshold 15.6237%\",\n    \"at least one official case regresses by more than 1%\"\n  ],\n  \"cases\": [\n    {\n      \"dims\": [\n        512,\n        19968\n      ],\n      \"base_ms\": 22.35,\n      \"candidate_ms\": 23.49,\n      \"gain_pct\": -5.100671140939584\n    },\n    {\n      \"dims\": [\n        2432,\n        17024\n      ],\n      \"base_ms\": 258.76,\n      \"candidate_ms\": 254.83,\n      \"gain_pct\": 1.5187818828257762\n    },\n    {\n      \"dims\": [\n        17024,\n        512\n      ],\n      \"base_ms\": 227.13,\n      \"candidate_ms\": 228.53,\n      \"gain_pct\": -0.616387091093209\n    }\n  ],\n  \"total_gain_pct\": 0.2734928380292748,\n  \"noise_threshold_pct\": 15.623669646658161,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"hash_validation\": \"not performed\",\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "compare",
+      "T5-control10",
+      "T7-diagpanel"
+    ],
+    "exit_code": 0,
+    "output": "{\n  \"eligible\": true,\n  \"reasons\": [],\n  \"cases\": [\n    {\n      \"dims\": [\n        512,\n        19968\n      ],\n      \"base_ms\": 22.35,\n      \"candidate_ms\": 22.12,\n      \"gain_pct\": 1.029082774049219\n    },\n    {\n      \"dims\": [\n        2432,\n        17024\n      ],\n      \"base_ms\": 258.76,\n      \"candidate_ms\": 254.11,\n      \"gain_pct\": 1.797031998763324\n    },\n    {\n      \"dims\": [\n        17024,\n        512\n      ],\n      \"base_ms\": 227.13,\n      \"candidate_ms\": 191.06,\n      \"gain_pct\": 15.880773125522825\n    }\n  ],\n  \"total_gain_pct\": 8.057217062804972,\n  \"noise_threshold_pct\": 3.668903803131992,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"hash_validation\": \"not performed\",\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  }
+]

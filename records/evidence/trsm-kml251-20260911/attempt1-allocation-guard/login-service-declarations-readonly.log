@@ -1,0 +1,32 @@
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-79-/* Assume C declarations for C++ */
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-80-#endif /* __cplusplus */
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-81-
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-82-/* Set the number of threads on runtime. */
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h:83:void BlasSetNumThreads(int numThreads);
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-84-
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-85-/* Set the number of local threads on runtime. */
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h:86:void BlasSetNumThreadsLocal(int numThreadsLocal);
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-87-
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-88-/* Get the number of threads on runtime. */
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h:89:int BlasGetNumThreads(void);
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-90-
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-91-/* Get the number of local threads on runtime. */
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h:92:int BlasGetNumThreadsLocal(void);
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-93-
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-94-/* Get the number of physical processors (cores). */
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-95-int BlasGetNumProcs(void);
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-96-
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-97-/*  KML_BLAS is compiled for sequential use  */
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-98-#define BLAS_SEQUENTIAL 0
+--
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-156-    char componentAppendInfo[VERSION_STRUCT_LEN];
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-157-    char softwareName[VERSION_STRUCT_LEN];
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-158-    char softwareVersion[VERSION_STRUCT_LEN];
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-159-} KBLASVersion;
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h:160:int KBLASGetVersion(KBLASVersion *ver);
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-161-
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-162-float cblas_sdsdot(const BLASINT n, const float alpha, const float *x, const BLASINT incX, const float *y,
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-163-    const BLASINT incY);
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-164-double cblas_dsdot(const BLASINT n, const float *x, const BLASINT incX, const float *y, const BLASINT incY);
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-165-float cblas_sdot(const BLASINT n, const float *x, const BLASINT incX, const float *y, const BLASINT incY);
+/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h-166-double cblas_ddot(const BLASINT n, const double *x, const BLASINT incX, const double *y, const BLASINT incY);

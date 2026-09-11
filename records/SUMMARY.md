@@ -62,4 +62,7 @@ CONV 2026-09-09 晋级 C3（C13-exttail）：同资源交错对照 631.31 → 59
 TRSM 2026-09-11 较早晋级：**T4-sve8rows**（parent T3-control7，来源原最佳 T3-sveupdate-r3）。三轮官方用例均通过，合计 545.31→526.19 ms，改善3.51%。[完整对照](../docs/trsm-sve8rows-20260911.md) · [提交压缩包](../outputs/trsm-best.zip)。参考仍为 OpenBLAS，非 KML 复验。
 
 
-TRSM 当前最佳：**T5-sve16rows**（parent T4-control8）。同分配三轮合计518.01→506.21ms，减少2.28%，大用例减少5.52%；3份面板候选未晋级并保留全部结果。最终ZIP作业1513942解压三轮9/9 PASS；OpenBLAS参考，非KML复验。[交付](../docs/trsm-final-20260911-r2.md)。
+TRSM 较早晋级：**T5-sve16rows**（parent T4-control8）。同分配三轮合计518.01→506.21ms，减少2.28%，大用例减少5.52%；3份面板候选未晋级并保留全部结果。最终ZIP作业1513942解压三轮9/9 PASS；OpenBLAS参考，非KML复验。[交付](../docs/trsm-final-20260911-r2.md)。
+
+
+TRSM 当前最佳：**T7-diagpanel**（parent T5-control10）：同分配三轮合计508.24→467.29 ms，减少8.06%；大用例减少15.88%。24行SVE未晋级。最终ZIP作业1524188解压三轮9/9 PASS；参考库区别与KML独立验证见[交付记录](../docs/trsm-final-20260911-r4.md)。

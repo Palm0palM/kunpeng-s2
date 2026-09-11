@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T7-diagpanel",
+  "parent": "T5-control10",
+  "source_implementation_id": "T7-diagpanel",
+  "source_from": "T5-sve16rows",
+  "strategy": "大工作集对角块直接在共享紧凑面板内复用4x8前代，留下已解X并移除独立打包阶段；更新核及分块不变。",
+  "created_at": "2026-09-11T11:00:34.569848+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "status": "passed",
+  "verified": true,
+  "validation_policy": "user-requested-no-hash",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        21.99,
+        22.69,
+        22.12
+      ],
+      "median_ms": 22.12,
+      "min_ms": 21.99,
+      "max_ms": 22.69,
+      "spread_pct": 3.1645569620253293,
+      "gflops": [
+        238.0283,
+        230.6725,
+        236.6044
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        254.34,
+        253.49,
+        254.11
+      ],
+      "median_ms": 254.11,
+      "min_ms": 253.49,
+      "max_ms": 254.34,
+      "spread_pct": 0.3345008067372375,
+      "gflops": [
+        395.8832,
+        397.2214,
+        396.2491
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        192.39,
+        191.06,
+        190.69
+      ],
+      "median_ms": 191.06,
+      "min_ms": 190.69,
+      "max_ms": 192.39,
+      "spread_pct": 0.8897728462263104,
+      "gflops": [
+        771.2652,
+        776.6596,
+        778.1453
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 467.29,
+  "official_score": null,
+  "ranking": null,
+  "recorded_at": "2026-09-11T11:06:00.608556+00:00",
+  "environment": "COMPUTE_NODE_1-numa2-compiler-recorded-generic38-openblas028-test3-job1522032",
+  "reference": "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation",
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1522032",
+  "checks": {
+    "evidence_files_present": true,
+    "job_id": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_zero": true,
+    "three_complete_ordered_suites": true,
+    "precision_at_most_1e_12": true,
+    "machine_and_38_cpus": true,
+    "settings_38_threads": true,
+    "settings_three_suites": true,
+    "test_runs_documented": true,
+    "reference_library_documented": true,
+    "benchmark_matches_current_trsm_bytes": true,
+    "local_source_files_present": true,
+    "record_snapshot_matches_live_bytes": true
+  },
+  "hash_validation": "not performed: prohibited by user",
+  "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
+  "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
+  "run_dir": ".runs/trsm/T7-diagpanel",
+  "nohash_evidence": ".runs/trsm/T7-diagpanel/nohash-recorded-evidence",
+  "log": ".runs/trsm/T7-diagpanel/nohash-recorded-evidence/benchmark.log",
+  "metric": "sum of per-case median ms; not official score",
+  "promoted_at": "2026-09-11T11:06:43.553613+00:00",
+  "promotion_validation_policy": "user-requested-no-hash",
+  "archived_evidence": "records/evidence/trsm-stage-r4-20260911/T7-diagpanel",
+  "archived_log": "records/evidence/trsm-stage-r4-20260911/T7-diagpanel/nohash-recorded-evidence/benchmark.log",
+  "publication_note": "Redacted public derivative; originals retained locally. Not original-byte evidence and not for rerunning promotion."
+}

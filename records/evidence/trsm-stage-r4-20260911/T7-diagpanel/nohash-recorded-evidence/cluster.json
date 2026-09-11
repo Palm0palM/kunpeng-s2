@@ -1,0 +1,50 @@
+{
+  "state": "submitted",
+  "created_at": "2026-09-11T11:01:20.596658+00:00",
+  "host": "CLUSTER_HOST",
+  "user": "REDACTED_USER",
+  "port": 22,
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-nohash-2ee54a82efd6/T7-diagpanel",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "job_id": "1522032",
+  "cohort_id": "trsm-nohash-2ee54a82efd6",
+  "validation_policy": "no hash computations or checks, as explicitly requested by user",
+  "cohort_round_order": [
+    [
+      "T5-control10",
+      "T7-sve24rows",
+      "T7-diagpanel"
+    ],
+    [
+      "T7-sve24rows",
+      "T7-diagpanel",
+      "T5-control10"
+    ],
+    [
+      "T7-diagpanel",
+      "T5-control10",
+      "T7-sve24rows"
+    ]
+  ],
+  "submitted_at": "2026-09-11T11:01:26.582212+00:00"
+}

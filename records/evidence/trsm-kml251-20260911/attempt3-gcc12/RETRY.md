@@ -1,0 +1,1 @@
+原作业1525797在链接阶段失败：KML25.1的多线程库需要OMP_5.0.1运行时符号，系统GCC10/libgomp不满足。新作业从超算现成HPCKit归档解压GCC12.3.1到本作业私有目录，PATH/LIBRARY_PATH/LD_LIBRARY_PATH仅在本任务设置，不做系统安装。同一T7最终ZIP、官方runner/bench和38线程限制保持不变。此KML25.1+GCC12复验与OpenBLAS+GCC10优化对照分别记录。

@@ -1,0 +1,77 @@
+KML251_LOGIN_VISIBLE=1
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/bishenglib/libkml_rt.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/bishenglib/libkml_rt.so -> libkml_rt.so.25.1.0
+d /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kblas -> 
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kblas/serial-locking -> 
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kblas/serial-nolocking -> 
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kblas/multi -> 
+d /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kvml -> 
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kvml/serial -> 
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kvml/omp -> 
+d /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kspblas -> 
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kspblas/serial -> 
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kspblas/omp -> 
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kml -> 
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/libkml_rt.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/libkml_rt.so -> libkml_rt.so.25.1.0
+#%Module1.0#############################################################################
+##
+##  Huawei Kunpeng Math library
+##
+## Copyright 2024 Huawei Technologies Co. Ltd. All rights reserved.
+
+########################################################################################
+# Module description
+########################################################################################
+
+proc ModulesHelp { } {
+    puts stderr " "
+    puts stderr "This module loads the Huawei Kunpeng Math library."
+}
+
+module-whatis "Huawei Kunpeng Math library"
+module-whatis "Description: This module loads the Huawei Kunpeng Math library."
+########################################################################################
+# Main section
+########################################################################################
+# 获取modulefile路径(含文件名)
+set modulefilepathname "${ModulesCurrentModulefile}"
+# 获取modulefile绝对路径(含文件名)
+set modulefilepathname "[file normalize "$modulefilepathname"]"
+# 获取modulefiles绝对路径
+set modulefilepath "[file dirname "$modulefilepathname"]"
+# 获取bisheng或gcc版本kml安装路径
+set kml_path "[file dirname "$modulefilepath"]"
+
+set libdir "neon"
+set implementer [exec sh -c "cat /proc/cpuinfo | grep 'CPU implementer' | awk 'NR==1{printf \$4}'"]
+set part [exec sh -c "cat /proc/cpuinfo | grep 'CPU part' | awk 'NR==1{printf \$4}'"]
+set cputype "${implementer}-${part}"
+
+# 根据 CPU 类型设置 libdir
+if {[string equal $cputype "0x48-0xd01"]} {
+    set libdir "neon"
+} elseif {[string equal $cputype "0x48-0xd02"]} {
+    set libdir "sve"
+} elseif {[string equal $cputype "0x48-0xd03"]} {
+    set libdir "sve"
+} elseif {[string equal $cputype "0x48-0xd06"]} {
+    set libdir "sve"
+} elseif {[string equal $cputype "0x48-0xd22"]} {
+    set libdir "sve512"
+} else {
+    set libdir "neon"
+}
+
+# 环境变量依赖检查安装
+if { ![ is-loaded ./kspblas/serial ] && ![ is-loaded ./kspblas/omp ] }    { module load ./kspblas/omp }
+if { ![ is-loaded ./kvml/serial ] && ![ is-loaded ./kvml/omp ] }    { module load ./kvml/serial }
+if { ![ is-loaded ./kblas/multi ] &&
+     ![ is-loaded ./kblas/serial-locking ] && ![ is-loaded ./kblas/serial-nolocking ] } {
+        module load ./kblas/multi
+}
+
+# 设置环境变量
+prepend-path    LD_LIBRARY_PATH ${kml_path}/lib:${kml_path}/lib/noarch:${kml_path}/lib/${libdir}
+prepend-path    CPATH ${kml_path}/include
+prepend-path    INCLUDE ${kml_path}/include

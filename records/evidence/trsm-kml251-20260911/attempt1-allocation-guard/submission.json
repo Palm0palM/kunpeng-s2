@@ -1,0 +1,13 @@
+{
+  "state": "submitted",
+  "cohort_id": "trsm-kml251-1a707257d78f",
+  "job_id": "1525204",
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-1a707257d78f",
+  "source_version": "T7-diagpanel",
+  "created_at": "2026-09-11T11:09:44.988578+00:00",
+  "reference": "KML 25.1.0; not specified KML 25.2.0",
+  "hash_validation": "not performed at user request",
+  "upload_command": "mkdir /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-1a707257d78f && tar -xzf - -C /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-1a707257d78f",
+  "submit_command": "dsub -n trsm-kml251-1a707257d78f -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-1a707257d78f/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-1a707257d78f/remote_job.sh",
+  "submitted_at": "2026-09-11T11:09:52.325546+00:00"
+}
