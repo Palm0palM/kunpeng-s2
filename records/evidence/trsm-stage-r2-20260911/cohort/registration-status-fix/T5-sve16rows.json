@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T5-sve16rows",
+  "parent": "T4-control8",
+  "source_implementation_id": "T5-sve16rows",
+  "source_from": "T4-sve8rows",
+  "strategy": "大工作集完整行块从8x8扩为16x8 SVE更新，16条独立递增k累加链复用一次X加载；保留8/4行尾块、NEON和分配失败回退。",
+  "created_at": "2026-09-11T10:08:41.064026+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "status": "submitted",
+  "verified": false,
+  "validation_policy": "User requested no hash computations or validation; preserve full source snapshots, logs, scheduler identity, correctness and repeated timing.",
+  "job_id": "1509711"
+}

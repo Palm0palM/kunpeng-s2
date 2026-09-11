@@ -1,0 +1,66 @@
+[
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "record",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T5-control9",
+      "--environment",
+      "COMPUTE_NODE_1-numa3-compiler-recorded-generic38-openblas028-test3-job1512595",
+      "--reference",
+      "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation"
+    ],
+    "exit_code": 0,
+    "output": "{\n  \"version\": \"T5-control9\",\n  \"status\": \"passed\",\n  \"verified\": true,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"total_median_ms\": 507.49,\n  \"failures\": [],\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "record",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T6-pair2budget",
+      "--environment",
+      "COMPUTE_NODE_1-numa3-compiler-recorded-generic38-openblas028-test3-job1512595",
+      "--reference",
+      "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation"
+    ],
+    "exit_code": 0,
+    "output": "{\n  \"version\": \"T6-pair2budget\",\n  \"status\": \"passed\",\n  \"verified\": true,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"total_median_ms\": 506.43000000000006,\n  \"failures\": [],\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "record",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/T6-pair4budget",
+      "--environment",
+      "COMPUTE_NODE_1-numa3-compiler-recorded-generic38-openblas028-test3-job1512595",
+      "--reference",
+      "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation"
+    ],
+    "exit_code": 0,
+    "output": "{\n  \"version\": \"T6-pair4budget\",\n  \"status\": \"passed\",\n  \"verified\": true,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"total_median_ms\": 502.7,\n  \"failures\": [],\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "compare",
+      "T5-control9",
+      "T6-pair2budget"
+    ],
+    "exit_code": 2,
+    "output": "{\n  \"eligible\": false,\n  \"reasons\": [\n    \"total improvement 0.2089% does not exceed threshold 3.8572%\",\n    \"at least one official case regresses by more than 1%\"\n  ],\n  \"cases\": [\n    {\n      \"dims\": [\n        512,\n        19968\n      ],\n      \"base_ms\": 22.93,\n      \"candidate_ms\": 17.37,\n      \"gain_pct\": 24.247710423026597\n    },\n    {\n      \"dims\": [\n        2432,\n        17024\n      ],\n      \"base_ms\": 254.64,\n      \"candidate_ms\": 260.1,\n      \"gain_pct\": -2.1442035815268756\n    },\n    {\n      \"dims\": [\n        17024,\n        512\n      ],\n      \"base_ms\": 229.92,\n      \"candidate_ms\": 228.96,\n      \"gain_pct\": 0.4175365344467552\n    }\n  ],\n  \"total_gain_pct\": 0.2088711107607924,\n  \"noise_threshold_pct\": 3.8572251007484266,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"hash_validation\": \"not performed\",\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  },
+  {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "/LOCAL_USER_HOME/Downloads/conv/kunpeng-s2/.runs/trsm/nohash-tools/records.py",
+      "compare",
+      "T5-control9",
+      "T6-pair4budget"
+    ],
+    "exit_code": 2,
+    "output": "{\n  \"eligible\": false,\n  \"reasons\": [\n    \"total improvement 0.9439% does not exceed threshold 5.7646%\"\n  ],\n  \"cases\": [\n    {\n      \"dims\": [\n        512,\n        19968\n      ],\n      \"base_ms\": 22.93,\n      \"candidate_ms\": 16.48,\n      \"gain_pct\": 28.129088530309637\n    },\n    {\n      \"dims\": [\n        2432,\n        17024\n      ],\n      \"base_ms\": 254.64,\n      \"candidate_ms\": 256.4,\n      \"gain_pct\": -0.6911718504555415\n    },\n    {\n      \"dims\": [\n        17024,\n        512\n      ],\n      \"base_ms\": 229.92,\n      \"candidate_ms\": 229.82,\n      \"gain_pct\": 0.043493389004868786\n    }\n  ],\n  \"total_gain_pct\": 0.9438609627775957,\n  \"noise_threshold_pct\": 5.764563106796112,\n  \"validation_policy\": \"user-requested-no-hash\",\n  \"hash_validation\": \"not performed\",\n  \"metric\": \"sum of per-case median ms; not official score\"\n}\n"
+  }
+]
