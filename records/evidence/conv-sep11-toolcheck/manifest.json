@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-09-11T08:34:00.807277+00:00",
+  "scope": "CONV Sep 11 tooling validation; job 1507649; 68 unit tests on an allocated Linux/AArch64 compute node",
+  "notice": "Public files are redacted copies, not raw originals. Original SHA values in validation/source manifests retain their original meaning; verify these exported bytes only with public_sha256 below. No configuration, SSH transport/authentication material, or binaries are exported.",
+  "files": [
+    {
+      "path": "validation.json",
+      "source": ".runs/conv/sep11-toolcheck/validation.json",
+      "original_sha256": "79a95877dea6ef00a278811639cc73608a6075527d39845d67d969972924196e",
+      "public_sha256": "79a95877dea6ef00a278811639cc73608a6075527d39845d67d969972924196e",
+      "original_bytes": 2296,
+      "public_bytes": 2296,
+      "redacted": false
+    },
+    {
+      "path": "source-hashes.json",
+      "source": ".runs/conv/sep11-toolcheck/source-hashes.json",
+      "original_sha256": "eab5c0b7dafe0742aa9cf69baea5fdef0316088cabfb7eabefffa73fdfef6fba",
+      "public_sha256": "eab5c0b7dafe0742aa9cf69baea5fdef0316088cabfb7eabefffa73fdfef6fba",
+      "original_bytes": 2901,
+      "public_bytes": 2901,
+      "redacted": false
+    },
+    {
+      "path": "scheduler.log",
+      "source": ".runs/conv/sep11-toolcheck/scheduler.log",
+      "original_sha256": "b814a3253c194855c27dcd1a0b899076644cfc1cedc39a64a4b5410dc76385fa",
+      "public_sha256": "3f4f0e211531122edfd9399a5765565250cac3a029c1069c74f6e6b84038d696",
+      "original_bytes": 8447,
+      "public_bytes": 8460,
+      "redacted": true
+    },
+    {
+      "path": "raw/exit-code.txt",
+      "source": ".runs/conv/sep11-toolcheck/raw/exit-code.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "original_bytes": 2,
+      "public_bytes": 2,
+      "redacted": false
+    },
+    {
+      "path": "raw/environment.log",
+      "source": ".runs/conv/sep11-toolcheck/raw/environment.log",
+      "original_sha256": "938f80a723e133b80a0280c3358994bbac1365d52d98f0dc9adae674ddc7f547",
+      "public_sha256": "63d71054386ce34e4c90ec4b28acf7e6602f8abb7148c99e9cf5dcba3b6142e5",
+      "original_bytes": 240,
+      "public_bytes": 247,
+      "redacted": true
+    },
+    {
+      "path": "raw/source-sha256.txt",
+      "source": ".runs/conv/sep11-toolcheck/raw/source-sha256.txt",
+      "original_sha256": "6b54f09332798a6b9201c0cca1bf5c9ce2c65ac1563ba0d9fbfd9cd0b719a25d",
+      "public_sha256": "6b54f09332798a6b9201c0cca1bf5c9ce2c65ac1563ba0d9fbfd9cd0b719a25d",
+      "original_bytes": 2611,
+      "public_bytes": 2611,
+      "redacted": false
+    },
+    {
+      "path": "raw/source-verification.log",
+      "source": ".runs/conv/sep11-toolcheck/raw/source-verification.log",
+      "original_sha256": "52d266595a4126f46bf945aa94dd8c7a97efcd003fc59622bde7c358379bc3e3",
+      "public_sha256": "52d266595a4126f46bf945aa94dd8c7a97efcd003fc59622bde7c358379bc3e3",
+      "original_bytes": 875,
+      "public_bytes": 875,
+      "redacted": false
+    },
+    {
+      "path": "raw/test.log",
+      "source": ".runs/conv/sep11-toolcheck/raw/test.log",
+      "original_sha256": "38f38a082755e300e54aaeb67e341598abe516dc4ce39901401a87ecc8bd8365",
+      "public_sha256": "4544afc63c2b86eebe5a00daa9c151b48d416874be0b1ced81cd1d8d4b058d31",
+      "original_bytes": 7687,
+      "public_bytes": 7699,
+      "redacted": true
+    },
+    {
+      "path": "raw/wrapper.stdout.log",
+      "source": ".runs/conv/sep11-toolcheck/raw/wrapper.stdout.log",
+      "original_sha256": "561bc0f283d2a7fc4625a87d28225d361418a6b5ac1df1478185fc6bc9bbd901",
+      "public_sha256": "561bc0f283d2a7fc4625a87d28225d361418a6b5ac1df1478185fc6bc9bbd901",
+      "original_bytes": 21,
+      "public_bytes": 21,
+      "redacted": false
+    },
+    {
+      "path": "raw/remote_job.sh",
+      "source": ".runs/conv/sep11-toolcheck/raw/remote_job.sh",
+      "original_sha256": "aa1ab17345dbfc51119737b8b842c038191b7340048adc41eb57b9acdca874fa",
+      "public_sha256": "aa1ab17345dbfc51119737b8b842c038191b7340048adc41eb57b9acdca874fa",
+      "original_bytes": 1345,
+      "public_bytes": 1345,
+      "redacted": false
+    }
+  ],
+  "privacy_checks": {
+    "private_ipv4": false,
+    "personal_home_paths": false,
+    "internal_node_names": false,
+    "credential_patterns": false,
+    "configuration_or_ssh_files_exported": false,
+    "utf8_text_only": true,
+    "redactor": "raw workspace tools/export_conv_records.py:Redactor; config values read only into memory"
+  }
+}
