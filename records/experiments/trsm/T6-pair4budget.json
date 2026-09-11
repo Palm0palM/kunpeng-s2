@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T6-pair4budget",
+  "parent": "T5-control9",
+  "source_implementation_id": "T6-pair4budget",
+  "source_from": "T5-sve16rows",
+  "strategy": "保留原小路径，只有4组面板加4行L的估算工作集不超过256KiB时启用分组；分组后的任务至少为实际线程数2倍，其余走原始路径。",
+  "created_at": "2026-09-11T10:35:33.130003+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "status": "passed",
+  "verified": true,
+  "validation_policy": "user-requested-no-hash",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        16.48,
+        17.39,
+        16.44
+      ],
+      "median_ms": 16.48,
+      "min_ms": 16.44,
+      "max_ms": 17.39,
+      "spread_pct": 5.764563106796112,
+      "gflops": [
+        317.6367,
+        301.0064,
+        318.3112
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        256.4,
+        257.35,
+        256.38
+      ],
+      "median_ms": 256.4,
+      "min_ms": 256.38,
+      "max_ms": 257.35,
+      "spread_pct": 0.37831513260531485,
+      "gflops": [
+        392.7067,
+        391.2556,
+        392.7373
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        230.36,
+        229.24,
+        229.82
+      ],
+      "median_ms": 229.82,
+      "min_ms": 229.24,
+      "max_ms": 230.36,
+      "spread_pct": 0.4873379166304084,
+      "gflops": [
+        644.1612,
+        647.3041,
+        645.6536
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 502.7,
+  "official_score": null,
+  "ranking": null,
+  "recorded_at": "2026-09-11T10:38:36.895581+00:00",
+  "environment": "COMPUTE_NODE_1-numa3-compiler-recorded-generic38-openblas028-test3-job1512595",
+  "reference": "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation",
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1512595",
+  "checks": {
+    "evidence_files_present": true,
+    "job_id": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_zero": true,
+    "three_complete_ordered_suites": true,
+    "precision_at_most_1e_12": true,
+    "machine_and_38_cpus": true,
+    "settings_38_threads": true,
+    "settings_three_suites": true,
+    "test_runs_documented": true,
+    "reference_library_documented": true,
+    "benchmark_matches_current_trsm_bytes": true,
+    "local_source_files_present": true,
+    "record_snapshot_matches_live_bytes": true
+  },
+  "hash_validation": "not performed: prohibited by user",
+  "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
+  "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
+  "run_dir": ".runs/trsm/T6-pair4budget",
+  "nohash_evidence": ".runs/trsm/T6-pair4budget/nohash-recorded-evidence",
+  "log": ".runs/trsm/T6-pair4budget/nohash-recorded-evidence/benchmark.log",
+  "metric": "sum of per-case median ms; not official score",
+  "archived_evidence": "records/evidence/trsm-stage-r3-20260911/T6-pair4budget",
+  "archived_log": "records/evidence/trsm-stage-r3-20260911/T6-pair4budget/nohash-recorded-evidence/benchmark.log",
+  "publication_note": "Public evidence is a redacted derivative; unredacted originals retained locally. Do not use public copies as original-byte evidence or to rerun promotion."
+}

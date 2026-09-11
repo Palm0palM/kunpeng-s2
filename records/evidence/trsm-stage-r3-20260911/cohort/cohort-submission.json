@@ -1,0 +1,12 @@
+{
+  "state": "submitted",
+  "cohort_id": "trsm-nohash-9755b9e3a427",
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-nohash-9755b9e3a427",
+  "created_at": "2026-09-11T10:35:33.170434+00:00",
+  "job_id": "1512595",
+  "validation_policy": "no hash computations or checks, as explicitly requested by user",
+  "upload_command": "mkdir -p /CLUSTER_USER_HOME/kunpeng-experiments && mkdir /CLUSTER_USER_HOME/kunpeng-experiments/trsm-nohash-9755b9e3a427 && tar -xzf - -C /CLUSTER_USER_HOME/kunpeng-experiments/trsm-nohash-9755b9e3a427",
+  "submit_command": "dsub -n trsm-nohash-9755b9e3a427 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-nohash-9755b9e3a427/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-nohash-9755b9e3a427/remote_job.sh",
+  "submission_started_at": "2026-09-11T10:35:46.234217+00:00",
+  "submitted_at": "2026-09-11T10:35:46.771230+00:00"
+}

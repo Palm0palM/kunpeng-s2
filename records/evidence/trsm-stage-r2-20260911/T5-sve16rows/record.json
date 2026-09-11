@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T5-sve16rows",
+  "parent": "T4-control8",
+  "source_implementation_id": "T5-sve16rows",
+  "source_from": "T4-sve8rows",
+  "strategy": "大工作集完整行块从8x8扩为16x8 SVE更新，16条独立递增k累加链复用一次X加载；保留8/4行尾块、NEON和分配失败回退。",
+  "created_at": "2026-09-11T10:08:41.064026+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "status": "passed",
+  "verified": true,
+  "validation_policy": "user-requested-no-hash",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        21.96,
+        21.99,
+        22.11
+      ],
+      "median_ms": 21.99,
+      "min_ms": 21.96,
+      "max_ms": 22.11,
+      "spread_pct": 0.6821282401091341,
+      "gflops": [
+        238.3562,
+        237.9995,
+        236.7744
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        252.35,
+        255.8,
+        256.16
+      ],
+      "median_ms": 255.8,
+      "min_ms": 252.35,
+      "max_ms": 256.16,
+      "spread_pct": 1.4894448788115835,
+      "gflops": [
+        399.0113,
+        393.6372,
+        393.0787
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        227.26,
+        228.42,
+        228.45
+      ],
+      "median_ms": 228.42,
+      "min_ms": 227.26,
+      "max_ms": 228.45,
+      "spread_pct": 0.5209701427195507,
+      "gflops": [
+        652.93,
+        649.6204,
+        649.5201
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 506.21000000000004,
+  "official_score": null,
+  "ranking": null,
+  "recorded_at": "2026-09-11T10:31:55.298873+00:00",
+  "environment": "COMPUTE_NODE_1-numa2-compiler-recorded-generic38-openblas028-test3-job1509711",
+  "reference": "OpenBLAS 0.3.28 static USE_OPENMP ARMV8 MAX_THREADS=38; OFFICIAL_HEADER_AND_LINK_EXIT=1; this benchmark used OpenBLAS, not official KML revalidation",
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) 10.3.1",
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1509711",
+  "checks": {
+    "evidence_files_present": true,
+    "job_id": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_zero": true,
+    "three_complete_ordered_suites": true,
+    "precision_at_most_1e_12": true,
+    "machine_and_38_cpus": true,
+    "settings_38_threads": true,
+    "settings_three_suites": true,
+    "test_runs_documented": true,
+    "reference_library_documented": true,
+    "benchmark_matches_current_trsm_bytes": true,
+    "local_source_files_present": true,
+    "record_snapshot_matches_live_bytes": true
+  },
+  "hash_validation": "not performed: prohibited by user",
+  "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
+  "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
+  "run_dir": ".runs/trsm/T5-sve16rows",
+  "nohash_evidence": ".runs/trsm/T5-sve16rows/nohash-recorded-evidence",
+  "log": ".runs/trsm/T5-sve16rows/nohash-recorded-evidence/benchmark.log",
+  "metric": "sum of per-case median ms; not official score",
+  "promoted_at": "2026-09-11T10:33:21.275239+00:00",
+  "promotion_validation_policy": "user-requested-no-hash"
+}

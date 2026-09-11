@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T4-control8",
+  "parent": null,
+  "source_implementation_id": "T4-sve8rows",
+  "source_from": "T4-sve8rows",
+  "strategy": "已晋级 T4-sve8rows 源码原样复测，与16行SVE和双面板候选同分配交错三轮。",
+  "created_at": "2026-09-11T10:08:41.061985+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "status": "submitted",
+  "verified": false,
+  "validation_policy": "User requested no hash computations or validation; preserve full source snapshots, logs, scheduler identity, correctness and repeated timing.",
+  "job_id": "1509711"
+}
