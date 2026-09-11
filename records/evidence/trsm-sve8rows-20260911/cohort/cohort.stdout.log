@@ -1,0 +1,189 @@
+PASS 30 direct SVE microkernel count/stride combinations; bitwise ordered-FMA match and output padding preserved
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 13 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+SVE_KERNEL_ACTUAL_ENTRIES=54016
+PASS actual SVE dispatch preflight
+PASS 30 direct SVE microkernel count/stride combinations; bitwise ordered-FMA match and output padding preserved
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 13 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+SVE_KERNEL_ACTUAL_ENTRIES=54016
+PASS actual SVE dispatch preflight
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 13 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM m=1 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=3 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=5 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=65 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=257 n=1 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4095 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=7 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4096 n=8 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4097 n=9 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4100 n=15 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4103 n=17 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM m=4355 n=65 PASS known-solution max-error=0.000e+00; padding and L unchanged
+TRSM 13 known-solution cases and 4 no-op boundaries PASS; max-error=0.000e+00
+TRSM_PREFLIGHT_COMPLETE=1
+
+BENCH_REPEAT 1/3 BEGIN COHORT=trsm-nohash-54fc855e6179 MEMBER=T3-control7
+Compiler: gcc (GCC) 10.3.1
+CPUs=114-151 NUMA=3 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.46     233.0273     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       260.76     386.1401     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       262.70     564.8460     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-163307-hNQncR
+
+BENCH_REPEAT 1/3 BEGIN COHORT=trsm-nohash-54fc855e6179 MEMBER=T4-sve8rows
+Compiler: gcc (GCC) 10.3.1
+CPUs=114-151 NUMA=3 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.56     231.9982     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       256.21     392.9932     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       243.54     609.2958     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-163314-lJwYVK
+
+BENCH_REPEAT 2/3 BEGIN COHORT=trsm-nohash-54fc855e6179 MEMBER=T4-sve8rows
+Compiler: gcc (GCC) 10.3.1
+CPUs=114-151 NUMA=3 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.75     230.0579     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       259.79     387.5776     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       244.38     607.1843     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-163323-lzI0P6
+
+BENCH_REPEAT 2/3 BEGIN COHORT=trsm-nohash-54fc855e6179 MEMBER=T3-control7
+Compiler: gcc (GCC) 10.3.1
+CPUs=114-151 NUMA=3 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.98     227.7935     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       260.02     387.2342     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       264.21     561.6259     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-163330-d8ymdL
+
+BENCH_REPEAT 3/3 BEGIN COHORT=trsm-nohash-54fc855e6179 MEMBER=T3-control7
+Compiler: gcc (GCC) 10.3.1
+CPUs=114-151 NUMA=3 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.59     231.7043     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       257.03     391.7521     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       262.49     565.2985     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-163338-ejIGWd
+
+BENCH_REPEAT 3/3 BEGIN COHORT=trsm-nohash-54fc855e6179 MEMBER=T4-sve8rows
+Compiler: gcc (GCC) 10.3.1
+CPUs=114-151 NUMA=3 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.64     231.1750     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       259.17     388.5073     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       247.76     598.9064     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-163346-DrHra4

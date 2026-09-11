@@ -1,0 +1,186 @@
+BENCH_JOB_BEGIN 2026-09-11T08:33:06Z
+HOST=COMPUTE_NODE_1
+ARCH=aarch64
+NUMA_NODE=3
+ALLOWED_CPUS=114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151
+OMP_NUM_THREADS=38
+CPU_TARGET=generic
+UTC=2026-09-11T08:32:39Z
+Linux-5.10.0-285.5.v2403.ky10p.aarch64-aarch64-with-glibc2.34
+
+COMMAND ['lscpu']
+Architecture:                       aarch64
+CPU op-mode(s):                     64-bit
+Byte Order:                         Little Endian
+CPU(s):                             608
+On-line CPU(s) list:                0-607
+Vendor ID:                          HiSilicon
+Model:                              0
+Thread(s) per core:                 1
+Core(s) per socket:                 304
+Socket(s):                          2
+Stepping:                           0x0
+Frequency boost:                    enabled
+CPU max MHz:                        2000.0000
+CPU min MHz:                        1200.0000
+BogoMIPS:                           200.00
+Flags:                              fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm ssbs sb paca pacg dcpodp sve2 sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh ecv afp rpres sme smef64f64 smei8i32 smef16f32 smeb16f32 smef32f32 smefa64 wfxt
+L1d cache:                          19 MiB (608 instances)
+L1i cache:                          19 MiB (608 instances)
+L2 cache:                           456 MiB (608 instances)
+NUMA node(s):                       32
+NUMA node0 CPU(s):                  0-37
+NUMA node1 CPU(s):                  38-75
+NUMA node2 CPU(s):                  76-113
+NUMA node3 CPU(s):                  114-151
+NUMA node4 CPU(s):                  152-189
+NUMA node5 CPU(s):                  190-227
+NUMA node6 CPU(s):                  228-265
+NUMA node7 CPU(s):                  266-303
+NUMA node8 CPU(s):                  304-341
+NUMA node9 CPU(s):                  342-379
+NUMA node10 CPU(s):                 380-417
+NUMA node11 CPU(s):                 418-455
+NUMA node12 CPU(s):                 456-493
+NUMA node13 CPU(s):                 494-531
+NUMA node14 CPU(s):                 532-569
+NUMA node15 CPU(s):                 570-607
+NUMA node16 CPU(s):                 
+NUMA node17 CPU(s):                 
+NUMA node18 CPU(s):                 
+NUMA node19 CPU(s):                 
+NUMA node20 CPU(s):                 
+NUMA node21 CPU(s):                 
+NUMA node22 CPU(s):                 
+NUMA node23 CPU(s):                 
+NUMA node24 CPU(s):                 
+NUMA node25 CPU(s):                 
+NUMA node26 CPU(s):                 
+NUMA node27 CPU(s):                 
+NUMA node28 CPU(s):                 
+NUMA node29 CPU(s):                 
+NUMA node30 CPU(s):                 
+NUMA node31 CPU(s):                 
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Not affected
+Vulnerability Spec rstack overflow: Not affected
+Vulnerability Spec store bypass:    Not affected
+Vulnerability Spectre v1:           Mitigation; __user pointer sanitization
+Vulnerability Spectre v2:           Mitigation; CSV2, but not BHB
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
+
+COMMAND ['numactl', '--show']
+policy: default
+preferred node: current
+physcpubind: 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 
+cpubind: 3 
+nodebind: 3 
+membind: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+preferred: 
+
+COMMAND ['gcc', '--version']
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+COMMAND ['/bin/bash', '-l', '-c', 'if type module >/dev/null 2>&1; then module list 2>&1; fi']
+No Modulefiles Currently Loaded.
+{
+  "bench_repeats": 3,
+  "environment": {
+    "CPU_TARGET": "generic",
+    "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_NUM_THREADS": "38",
+    "OMP_PLACES": "cores",
+    "OMP_PROC_BIND": "close",
+    "TEST_RUNS": "3"
+  },
+  "numa_policy": "38 allowed CPUs within one NUMA node",
+  "scheduler_resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "queue": "q_kunpeng",
+    "walltime_seconds": 1800
+  }
+}
+COHORT_ID=trsm-nohash-54fc855e6179
+VALIDATION_POLICY=no_hash_at_user_request
+REFERENCE_LIBRARY=/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a
+
+BENCH_REPEAT 1/3 BEGIN COHORT=trsm-nohash-54fc855e6179 MEMBER=T4-sve8rows
+Compiler: gcc (GCC) 10.3.1
+CPUs=114-151 NUMA=3 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.56     231.9982     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       256.21     392.9932     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       243.54     609.2958     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-163314-lJwYVK
+BENCH_REPEAT 1/3 END
+
+BENCH_REPEAT 2/3 BEGIN COHORT=trsm-nohash-54fc855e6179 MEMBER=T4-sve8rows
+Compiler: gcc (GCC) 10.3.1
+CPUs=114-151 NUMA=3 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.75     230.0579     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       259.79     387.5776     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       244.38     607.1843     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-163323-lzI0P6
+BENCH_REPEAT 2/3 END
+
+BENCH_REPEAT 3/3 BEGIN COHORT=trsm-nohash-54fc855e6179 MEMBER=T4-sve8rows
+Compiler: gcc (GCC) 10.3.1
+CPUs=114-151 NUMA=3 threads=38
+Reference BLAS override: /CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.64     231.1750     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       259.17     388.5073     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       247.76     598.9064     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260911-163346-DrHra4
+BENCH_REPEAT 3/3 END
+BENCH_JOB_END 2026-09-11T08:33:54Z

@@ -248,41 +248,6 @@ static void update4x8_sve(int count,const double *L,int lda,const double *X,int 
     svst1_f64(pg,C+(size_t)2*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)2*ldc),a2));
     svst1_f64(pg,C+(size_t)3*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)3*ldc),a3));
 }
-
-/* Eight independent rows reuse each X vector; each row keeps the original
- * increasing-k FMA chain. Four-row and scalar tails use the existing code. */
-__attribute__((target("arch=armv8-a+sve"), noinline))
-static void update8x8_sve(int count,const double *L,int lda,const double *X,int ldx,double *C,int ldc)
-{
-    svbool_t pg=svptrue_b64();
-    svfloat64_t a0=svdup_n_f64(0);
-    svfloat64_t a1=svdup_n_f64(0);
-    svfloat64_t a2=svdup_n_f64(0);
-    svfloat64_t a3=svdup_n_f64(0);
-    svfloat64_t a4=svdup_n_f64(0);
-    svfloat64_t a5=svdup_n_f64(0);
-    svfloat64_t a6=svdup_n_f64(0);
-    svfloat64_t a7=svdup_n_f64(0);
-    for(int k=0;k<count;++k) {
-        svfloat64_t x=svld1_f64(pg,X+(size_t)k*ldx);
-        a0=svmla_n_f64_x(pg,a0,x,L[(size_t)0*lda+k]);
-        a1=svmla_n_f64_x(pg,a1,x,L[(size_t)1*lda+k]);
-        a2=svmla_n_f64_x(pg,a2,x,L[(size_t)2*lda+k]);
-        a3=svmla_n_f64_x(pg,a3,x,L[(size_t)3*lda+k]);
-        a4=svmla_n_f64_x(pg,a4,x,L[(size_t)4*lda+k]);
-        a5=svmla_n_f64_x(pg,a5,x,L[(size_t)5*lda+k]);
-        a6=svmla_n_f64_x(pg,a6,x,L[(size_t)6*lda+k]);
-        a7=svmla_n_f64_x(pg,a7,x,L[(size_t)7*lda+k]);
-    }
-    svst1_f64(pg,C+(size_t)0*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)0*ldc),a0));
-    svst1_f64(pg,C+(size_t)1*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)1*ldc),a1));
-    svst1_f64(pg,C+(size_t)2*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)2*ldc),a2));
-    svst1_f64(pg,C+(size_t)3*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)3*ldc),a3));
-    svst1_f64(pg,C+(size_t)4*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)4*ldc),a4));
-    svst1_f64(pg,C+(size_t)5*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)5*ldc),a5));
-    svst1_f64(pg,C+(size_t)6*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)6*ldc),a6));
-    svst1_f64(pg,C+(size_t)7*ldc,svsub_f64_x(pg,svld1_f64(pg,C+(size_t)7*ldc),a7));
-}
 #endif
 static void solve_blocked(int m,int n,const double *L,int lda,double *B,int ldb)
 {
@@ -339,33 +304,7 @@ static void solve_blocked(int m,int n,const double *L,int lda,double *B,int ldb)
 #pragma omp for collapse(2) schedule(static)
             for(int ib=end;ib<m;ib+=CT)for(int jb=0;jb<n;jb+=CT) {
                 int ie=m-ib<CT?m:ib+CT,je=n-jb<CT?n:jb+CT;
-                int first_row=ib;
-#if TRSM_CAN_DISPATCH_SVE
-                if(use_sve) {
-                    for(;first_row+8<=ie;first_row+=8) {
-                        for(int j=jb;j<je;j+=8) {
-                            int cols=je-j<8?je-j:8;
-                            const double *xp=packed?packed+(size_t)(j/RHS)*KB*RHS:B+(size_t)kk*ldb+j;
-                            int xstride=packed?RHS:ldb;
-                            if(cols==8) {
-                                update8x8_sve(end-kk,L+(size_t)first_row*lda+kk,lda,xp,xstride,B+(size_t)first_row*ldb+j,ldb);
-                            } else {
-                                for(int r=0;r<8;++r) {
-                                    double sum[8]={0};
-                                    for(int k=kk;k<end;++k) {
-                                        double a=L[(size_t)(first_row+r)*lda+k];
-#pragma omp simd
-                                        for(int c=0;c<cols;++c)sum[c]+=a*xp[(size_t)(k-kk)*xstride+c];
-                                    }
-#pragma omp simd
-                                    for(int c=0;c<cols;++c)B[(size_t)(first_row+r)*ldb+j+c]-=sum[c];
-                                }
-                            }
-                        }
-                    }
-                }
-#endif
-                for(int i=first_row;i<ie;i+=4)for(int j=jb;j<je;j+=8) {
+                for(int i=ib;i<ie;i+=4)for(int j=jb;j<je;j+=8) {
                     int rows=ie-i<4?ie-i:4,cols=je-j<8?je-j:8;
                     const double *xp=packed?packed+(size_t)(j/RHS)*KB*RHS:B+(size_t)kk*ldb+j;
                     int xstride=packed?RHS:ldb;

@@ -4,6 +4,8 @@
 
 `conv/`、`zgemm/`、`trsm/` 保存当前晋级版本。现有版本的验证范围与环境见 [基线说明](docs/BASELINES.md)，不要把历史测试直接当作当前排行榜成绩。
 
+TRSM 最新提交包：**T4-sve8rows**，同分配三轮较 T3 合计改善 **3.51%**；最终 ZIP 已在计算节点解压复跑三轮，9/9 PASS。[下载压缩包](outputs/trsm-best.zip) · [包级验证](docs/trsm-package-20260911.md) · [优化对照](docs/trsm-sve8rows-20260911.md)。参考为 OpenBLAS，官方 KML 复验仍待完成。
+
 ## 先把环境跑通
 
 1. 安装 Python 3，并确保本机可以使用 Git、SSH。本机配置位于 `config/cluster.local.json`；服务器主机密钥已按用户确认更新到 `config/known_hosts.local`。不要把密码、私钥、令牌写进仓库。

@@ -1,39 +1,31 @@
-# TRSM 优化提交包
+# TRSM 优化提交包 — T4-sve8rows
 
-在已申请的鲲鹏计算资源内运行 `bash run.sh`，自动编译并执行三组官方测试。默认使用题目指定的 KML/kblas 参考库；需要 Linux、GCC/OpenMP、numactl。
+本包为当前已晋级的 TRSM 实现，解压后进入 `trsm/`。只在调度分配的鲲鹏计算节点执行，分配不超过 38 核且位于单个 NUMA 节点。
 
-默认 38 线程、单 NUMA，自动使用当前调度分配中的第一个 NUMA 节点。可设置 `OMP_NUM_THREADS`（1–38）、`NUMA_NODE`、`CC`、`TEST_RUNS`。不要在登录节点运行大尺寸测试。
+## 运行
 
-## 实现说明
-
-`l_trsm` 求解行主序、非单位对角的下三角方程 `L X = B`；B 原地变成 X，L 保持不变。
-
-- 三角矩阵工作集较小时，使用 4 行 × 8 列的窄面板前代，打包右端项并复用已解数据。
-- 工作集估计超过 64 MiB 时，使用 256 行对角块前代和 64×64 输出块更新；更新内核为 4×8 NEON FMA。
-- 64 MiB 是通用算法选择阈值，不是对硬件缓存大小的承诺；没有对公开测试尺寸作等值分支。
-- 支持任意尾部与 lda/ldb 填充。内存不足时窄面板路径回退通用前代。
-- 不同线程只写各自的列或输出矩形。分块路径通过屏障保持前代依赖。
-- FMA 和分块会改变舍入，以官方绝对误差 `1e-12` 检查。
-- 优化算子本身不调用 BLAS 库；参考库仅用于官方 benchmark 生成输入和复制矩阵。
-
-## 参考库
-
-默认 `-lkblas`，优先加载官方 HPCkit modules。
-
-若测试环境未安装 KML，可显式指定兼容的参考 BLAS，例如：
+官方 KML 环境中清除参考库覆盖，并显式使用此前测量的重复数与线程设置：
 
 ```bash
-KBLAS_LIB=/absolute/path/to/libopenblas.a bash run.sh
+unset KBLAS_LIB
+export OMP_NUM_THREADS=38 OMP_DYNAMIC=FALSE CPU_TARGET=generic TEST_RUNS=3
+bash run.sh
 ```
 
-此时 `compat/kblas.h` 只提供 benchmark 所需的标准 CBLAS 声明，脚本明确打印参考库差异。交付时的鲲鹏验证使用 OpenBLAS 0.3.28 静态参考库，不能视作已在官方 KML 25.2.0 环境复验。
+脚本自动识别分配的 NUMA，使用 close/cores 绑定，默认链接官方 `-lkblas`。需要 Linux、GCC/OpenMP、numactl 和 KML；官方模块路径可用时加载对应模块。三组官方尺寸均由未修改的 benchmark 执行，容差仍为 `1e-12`，日志保存于 `results/`。
 
-## 验证与文件
+`run.sh` 的 TEST_RUNS 默认值仍是 1；上面的命令显式设为 3，与既有测量一致。三轮独立复测应在相同分配中连续执行上面的 `bash run.sh` 三次。
 
-`bench_trsm.c` 与官方 ZIP 中的测试程序逐字节一致。`run.sh` 执行：
+## 实现
 
-- 512 × 19968
-- 2432 × 17024
-- 17024 × 512
+小工作集使用 4×8 NEON 窄面板前代。大工作集采用 256 行对角块、64×64 输出块，打包已解右端项，使用 8×8 SVE 更新，4 行尾块使用 4×8 SVE。Linux GCC 支持该路径、CPU 提供 SVE 且当前线程向量长度为 8 个 double 时才启用 SVE，否则使用 NEON。保留尾部处理和分配失败回退。算子本身不调用 BLAS。
 
-脚本检查真实 PASS/FAIL 文本并保存独立 `results/run-*` 日志。实测成绩及 ZIP 校验和见随交付提供的结果报告。此包未自动上传 OBS。
+## 验证范围
+
+2026-09-11 作业 1507689：该源码与 runner 在同一计算节点、38 线程、单 NUMA、GCC 10.3.1 下完成三轮完整官方用例，每组 TEST_RUNS=3，9/9 PASS，最大误差 1.11e-15。三组耗时中位数为 22.64、259.17、244.38 ms；合计 526.19 ms，比同轮 T3 对照减少 3.51%，大用例减少 6.97%。合计不是官方分数。预检覆盖 8 行 SVE 微核、已知解、尾部、padding、L 不变性、分配失败及强制 NEON 回退。
+
+该测量使用 OpenBLAS 0.3.28 静态参考库，**不是官方 KML 25.2.0 复验**。兼容头仅供显式 KBLAS_LIB 覆盖使用，包内不附带任何 BLAS 二进制。
+
+本包包含已晋级的 T4-sve8rows、未改动的官方 benchmark、runner 和可选兼容头。最终 ZIP 的计算节点解压复跑状态和日志见仓库 `outputs/trsm-best.json` 及 `docs/trsm-package-20260911.md`。未执行比赛平台提交。
+
+完整对照证据见 GitHub 仓库 `docs/trsm-sve8rows-20260911.md` 与 `records/evidence/trsm-sve8rows-20260911/`。按用户要求未另行计算或验证哈希。
