@@ -1,0 +1,63 @@
+{
+  "state": "submitted",
+  "created_at": "2026-09-12T07:19:47.566411+00:00",
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-7e7a9b4c2165/member-0",
+  "host": "CLUSTER_HOST",
+  "user": "REDACTED_USER",
+  "port": 22,
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "job_id": "1579274",
+  "group": "kp-conv-group-7e7a9b4c2165",
+  "group_index": 0,
+  "measurement_order": [
+    "C26-r2",
+    "C28-row4x6u1",
+    "C29-row4lane4",
+    "C30-colchunks",
+    "C26-r3"
+  ],
+  "submission_started_at": "2026-09-12T07:19:53.514791+00:00",
+  "submit_command": "dsub -n kp-conv-group-7e7a9b4c2165 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-7e7a9b4c2165/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-7e7a9b4c2165/remote_job.sh",
+  "submitted_at": "2026-09-12T07:19:54.448114+00:00",
+  "status_checked_at": "2026-09-12T07:28:57.288551+00:00",
+  "status_returncode": 0,
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579274",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "fetch_state": "complete",
+  "fetched_at": "2026-09-12T07:28:59.506527+00:00",
+  "artifacts_sha256": {
+    "benchmark.log": "9d5a780c4fffbee7dbb7c1ae61be26259b2f7574767d41c031740d18d8ef35c2",
+    "environment.log": "3b4bd5d5cd90ddfc3d6097822dc9b75eeb9fdb70707f44c9812b62111ef7fc0b",
+    "source-sha256.txt": "e290dd24423be9a22535e1644e857a4d7e05e182695c286eba5c17eff9cbf8d3",
+    "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  }
+}

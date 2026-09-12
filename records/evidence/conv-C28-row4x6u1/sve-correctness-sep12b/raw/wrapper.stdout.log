@@ -1,0 +1,152 @@
++ python3 -
+ALLOWED_CPUS=114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151
+NUMA_NODE=node3
++ source candidate.env
+++ EXPECTED_ACC=6
+++ CHECK_ROWTRIPLE=1
+++ CHECK_ROWQUAD=1
++ [[ 6 == 4 ]]
++ [[ 6 == 6 ]]
++ [[ 1 == 0 ]]
++ [[ 1 == 1 ]]
++ [[ 1 == 0 ]]
++ [[ 1 == 1 ]]
++ date -u
+Sat Sep 12 02:53:33 UTC 2026
++ hostname
+COMPUTE_NODE_1
++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++ sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env
++ cat source-sha256.txt
+26b129d89092b06f8224578e07425bce92b8145284ec3d0f57865382c2999dac  conv2d.c
+e184d64677614d515e4b13183c89865c76c7b1e750a52017992d551021a3344d  check_conv_guard.c
+58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1  check_sve_dispatch.c
+c81124bb754a67064344c3bff27e328bee50a8e999acc4d4a1c1b45fcc75a104  remote_job.sh
+2937e113e15926bbd46633f68c7e722ea6540dddd4c559531ad05e91772d10e5  candidate.env
++ export OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ flags=(-O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp "-DEXPECTED_ACC=$EXPECTED_ACC" "-DCHECK_ROWTRIPLE=$CHECK_ROWTRIPLE" "-DCHECK_ROWQUAD=$CHECK_ROWQUAD")
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=6 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 check_conv_guard.c conv2d.c -o check_conv_guard
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee guard-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=24 THREADS=1
+PASS: 18052 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for threads in 1 4
++ tee guard-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=24 THREADS=4
+PASS: 18052 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee guard-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=48 THREADS=1
+PASS: 18052 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for threads in 1 4
++ tee guard-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=48 THREADS=4
+PASS: 18052 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee guard-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=96 THREADS=1
+PASS: 18052 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for threads in 1 4
++ tee guard-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=96 THREADS=4
+PASS: 18052 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=6 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee dispatch-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 16 smoke
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=24 THREADS=1
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ for threads in 1 4
++ tee dispatch-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 16 smoke
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=24 THREADS=4
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee dispatch-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 32 smoke
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=48 THREADS=1
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ for threads in 1 4
++ tee dispatch-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 32 smoke
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=48 THREADS=4
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee dispatch-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 64 smoke
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=96 THREADS=1
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ for threads in 1 4
++ tee dispatch-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 64 smoke
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=96 THREADS=4
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=6 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -S conv2d.c -o conv2d-sve.s
++ wait 2212606
++ printf 'SANITIZER_STATUS=NOT_RUN; this job uses guard pages and bitwise reference checks\n'
+SANITIZER_STATUS=NOT_RUN; this job uses guard pages and bitwise reference checks
++ printf 'PROBE_COMPLETE=1\n'
+PROBE_COMPLETE=1
++ finish
++ local code=0 log_code=0
++ trap - EXIT
++ exec
++ ((  code == 0 && log_code != 0  ))
++ printf '%s\n' 0
++ exit 0

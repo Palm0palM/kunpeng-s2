@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C26-r3",
+  "parent": null,
+  "strategy": "Unchanged formal C6 control for the Sep12b same-allocation three-candidate comparison",
+  "created_at": "2026-09-12T07:04:24.512329+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-12T07:29:01.557565+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12b",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "7e23779c084daecc58c00d4f23a7b54156f2dd82690c72fd6ed6efbce151ff75",
+  "log": ".runs/conv/C26-r3/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.46,
+        52.46,
+        51.42
+      ],
+      "median_ms": 51.46,
+      "min_ms": 51.42,
+      "max_ms": 52.46,
+      "spread_pct": 2.020987174504468,
+      "gflops": [
+        1464.7256,
+        1436.8929,
+        1465.9899
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        61.83,
+        61.86,
+        61.9
+      ],
+      "median_ms": 61.86,
+      "min_ms": 61.83,
+      "max_ms": 61.9,
+      "spread_pct": 0.11315874555447832,
+      "gflops": [
+        1346.1615,
+        1345.5065,
+        1344.6145
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        107.33,
+        107.26,
+        107.34
+      ],
+      "median_ms": 107.33,
+      "min_ms": 107.26,
+      "max_ms": 107.34,
+      "spread_pct": 0.0745364762880819,
+      "gflops": [
+        1500.7446,
+        1501.6582,
+        1500.6289
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        231.69,
+        231.66,
+        234.53
+      ],
+      "median_ms": 231.69,
+      "min_ms": 231.66,
+      "max_ms": 234.53,
+      "spread_pct": 1.2387241572791248,
+      "gflops": [
+        1492.3892,
+        1492.5803,
+        1474.3448
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 452.34,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1579274",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "decision_note": "Unchanged C6 control; not a new algorithm version."
+}
