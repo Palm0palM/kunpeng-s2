@@ -1,0 +1,154 @@
+{
+  "event": "cycles:u",
+  "frequency_hz": 99,
+  "total_record_samples": 38266,
+  "quad_samples": 2666,
+  "quad_event_period_share_pct": 6.75,
+  "total_lost_samples": 0,
+  "quad_symbol_address": "0x0000000000404b14",
+  "elf_build_id": "f7498c9ff38f39543bf6bcee8cb8dab599a0b1f5",
+  "main_shared_loop": {
+    "start": "0x4055f8",
+    "end": "0x405768",
+    "instructions": 93,
+    "fmul": 32,
+    "fadd": 32,
+    "rounded_local_period_pct": 92.9
+  },
+  "loops": [
+    {
+      "start": "0x404ee8",
+      "end": "0x404f64",
+      "instructions": 32,
+      "fmul": 8,
+      "fadd": 8,
+      "rounded_local_period_pct": 0.47
+    },
+    {
+      "start": "0x404f98",
+      "end": "0x404fd8",
+      "instructions": 17,
+      "fmul": 4,
+      "fadd": 4,
+      "rounded_local_period_pct": 0.0
+    },
+    {
+      "start": "0x405018",
+      "end": "0x4050f0",
+      "instructions": 55,
+      "fmul": 16,
+      "fadd": 16,
+      "rounded_local_period_pct": 0.65
+    },
+    {
+      "start": "0x405250",
+      "end": "0x405378",
+      "instructions": 75,
+      "fmul": 24,
+      "fadd": 24,
+      "rounded_local_period_pct": 1.32
+    },
+    {
+      "start": "0x4055f8",
+      "end": "0x405768",
+      "instructions": 93,
+      "fmul": 32,
+      "fadd": 32,
+      "rounded_local_period_pct": 92.9
+    },
+    {
+      "start": "0x405960",
+      "end": "0x405a88",
+      "instructions": 75,
+      "fmul": 24,
+      "fadd": 24,
+      "rounded_local_period_pct": 0.75
+    },
+    {
+      "start": "0x405c30",
+      "end": "0x405d08",
+      "instructions": 55,
+      "fmul": 16,
+      "fadd": 16,
+      "rounded_local_period_pct": 0.6
+    },
+    {
+      "start": "0x405e50",
+      "end": "0x405ecc",
+      "instructions": 32,
+      "fmul": 8,
+      "fadd": 8,
+      "rounded_local_period_pct": 0.56
+    }
+  ],
+  "rounded_annotation_percent_sum": 100.11,
+  "top_instruction_ips": [
+    {
+      "rounded_local_period_pct": 25.25,
+      "address": "0x405604",
+      "instruction": "ld1rw   {z8.s}, p0/z, [x7]"
+    },
+    {
+      "rounded_local_period_pct": 8.84,
+      "address": "0x4055f8",
+      "instruction": "lsl     x1, x0, #2"
+    },
+    {
+      "rounded_local_period_pct": 7.54,
+      "address": "0x405728",
+      "instruction": "fadd    z18.s, z18.s, z17.s"
+    },
+    {
+      "rounded_local_period_pct": 7.21,
+      "address": "0x405628",
+      "instruction": "ld1w    {z4.s}, p0/z, [x11, x0, lsl #2]"
+    },
+    {
+      "rounded_local_period_pct": 6.24,
+      "address": "0x405664",
+      "instruction": "ld1w    {z30.s}, p0/z, [x12, x0, lsl #2]"
+    },
+    {
+      "rounded_local_period_pct": 5.42,
+      "address": "0x4056ec",
+      "instruction": "fmul    z6.s, z6.s, z8.s"
+    },
+    {
+      "rounded_local_period_pct": 3.75,
+      "address": "0x405678",
+      "instruction": "fmul    z11.s, z30.s, z9.s"
+    },
+    {
+      "rounded_local_period_pct": 3.71,
+      "address": "0x405668",
+      "instruction": "ld1w    {z28.s}, p0/z, [x9, x0, lsl #2]"
+    },
+    {
+      "rounded_local_period_pct": 2.6,
+      "address": "0x405614",
+      "instruction": "fmul    z10.s, z6.s, z8.s"
+    },
+    {
+      "rounded_local_period_pct": 2.55,
+      "address": "0x4056b4",
+      "instruction": "fmul    z11.s, z31.s, z9.s"
+    },
+    {
+      "rounded_local_period_pct": 2.44,
+      "address": "0x405618",
+      "instruction": "ld1w    {z5.s}, p0/z, [x13, x0, lsl #2]"
+    },
+    {
+      "rounded_local_period_pct": 2.21,
+      "address": "0x405700",
+      "instruction": "add     x1, x4, x2"
+    }
+  ],
+  "scope": "The symbol-filtered stream combines validation, warmup and timed conv calls from original official case4. Local percentages are sampled cycle periods within quad, not whole-program CPI or per-instruction latency.",
+  "limitations": [
+    "Reported percent rows are rounded; their total is100.11, so loop92.90 is approximate.",
+    "Low-frequency cycles sampling has IP skid and instruction attribution bias; the25.25% LD1RW IP does not establish cache-miss cost or a broadcast bottleneck.",
+    "No instructions/cache-miss/stall event was collected. No operator CPI or hardware-cause claim.",
+    "The benchmark time recorded under perf is diagnostic only and cannot be used for promotion."
+  ]
+}

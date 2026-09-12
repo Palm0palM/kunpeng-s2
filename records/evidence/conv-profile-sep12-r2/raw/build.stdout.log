@@ -1,0 +1,75 @@
+++ set -euo pipefail
++++ dirname CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/remote_job.sh
+++ cd CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z
+++ COMPILER=gcc
+++ case "$COMPILER" in
+++ COMPILER_MODULE=gcc/compiler12.3.1/gccmodule
+++ DEFAULT_CC=gcc
+++ MODULE_ROOT=CLUSTER_USER_HOME/HPCKit/latest/modulefiles
+++ type module
+++ [[ -d CLUSTER_USER_HOME/HPCKit/latest/modulefiles ]]
++++ uname -s
+++ [[ Linux == Linux ]]
+++ printf 'Compiler modules unavailable at %s; using compiler from PATH.\n' CLUSTER_USER_HOME/HPCKit/latest/modulefiles
+Compiler modules unavailable at CLUSTER_USER_HOME/HPCKit/latest/modulefiles; using compiler from PATH.
+++ CC=gcc
+++ CONV_BLOCK=32
+++ CONV_KERNEL_UNROLL=2
+++ [[ 32 =~ ^[1-9][0-9]{0,5}$ ]]
+++ case "$CONV_KERNEL_UNROLL" in
+++ THREADS=38
+++ [[ 38 =~ ^[1-9][0-9]{0,5}$ ]]
+++ ((  THREADS > 38  ))
+++ ARCH_FLAGS=()
+++ case "$(uname -m)" in
++++ uname -m
+++ ARCH_FLAGS=("-mcpu=${CPU_TARGET:-generic}")
+++ RUN_PREFIX=()
++++ uname -s
+++ [[ Linux == Linux ]]
+++ command -v numactl
+++ [[ -z 3 ]]
+++ [[ 3 =~ ^[0-9]+$ ]]
++++ awk -v node=3 '$1 == "node" && $2 == node && $3 == "cpus:" {print NF - 3}'
++++ numactl --hardware
+++ node_cpus=38
+++ [[ 38 =~ ^[1-9][0-9]*$ ]]
+++ ((  THREADS <= node_cpus  ))
+++ RUN_PREFIX=(numactl -N "$NUMA_NODE")
+++ OMP_FLAGS=(-fopenmp)
+++ LINK_FLAGS=(-lm)
++++ uname -s
+++ [[ Linux == Darwin ]]
+++ export OMP_NUM_THREADS=38
+++ OMP_NUM_THREADS=38
+++ export OMP_DYNAMIC=FALSE
+++ OMP_DYNAMIC=FALSE
+++ export OMP_PROC_BIND=close
+++ OMP_PROC_BIND=close
+++ export OMP_PLACES=cores
+++ OMP_PLACES=cores
+++ mkdir -p results
+++++ date +%Y%m%d-%H%M%S
++++ mktemp -d CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/results/run-20260912-181226-XXXXXX
+++ RUN_DIR=CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/results/run-20260912-181226-UpXbHH
+++ tee CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/results/run-20260912-181226-UpXbHH/environment.log
+++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++++ hostname
+++ printf 'Host=%s CPU target=%s\n' COMPUTE_NODE_1 generic
+++ printf 'Block=%s Unroll=%s Threads=%s Bind=%s Places=%s Node=%s\n' 32 2 38 close cores 3
+Host=COMPUTE_NODE_1 CPU target=generic
+Block=32 Unroll=2 Threads=38 Bind=close Places=cores Node=3
+++ tee CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/results/run-20260912-181226-UpXbHH/build.log
+++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 bench_conv.c conv2d.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/results/run-20260912-181226-UpXbHH/conv2d_test -lm
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~

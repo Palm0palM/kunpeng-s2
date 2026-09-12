@@ -1,0 +1,795 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C40-row6x3u1",
+  "job_id": "1579597",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579597",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "compiler_version": "10.3.1",
+  "source_hashes_verified": true,
+  "source_manifest_remote_matches": true,
+  "source_hashes": {
+    "conv2d.c": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+    "check_conv_guard.c": "1f41b037f0835f7d475fe4d8bba97752fd501aaad4a745237ea0cfb61768d9dd",
+    "check_sve_dispatch.c": "ee8990cb61c4afae0fcf9fc0f0ca17fb6d76efc7bd0a2d26bf93204f3b90effd",
+    "remote_job.sh": "a46dae04fdbb0515785751242f2fe7950fa8383b8bb86ceed07aeb1320d411c1",
+    "candidate.env": "b70d0ecb13ac88d3fbbe7350db3538adad8289c4f9c2dfa53aa0c85f5707389a"
+  },
+  "source_manifest": {
+    "conv2d.c": {
+      "bytes": 96652,
+      "sha256": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7"
+    },
+    "check_conv_guard.c": {
+      "bytes": 8081,
+      "sha256": "1f41b037f0835f7d475fe4d8bba97752fd501aaad4a745237ea0cfb61768d9dd"
+    },
+    "check_sve_dispatch.c": {
+      "bytes": 6655,
+      "sha256": "ee8990cb61c4afae0fcf9fc0f0ca17fb6d76efc7bd0a2d26bf93204f3b90effd"
+    },
+    "remote_job.sh": {
+      "bytes": 4484,
+      "sha256": "a46dae04fdbb0515785751242f2fe7950fa8383b8bb86ceed07aeb1320d411c1"
+    },
+    "candidate.env": {
+      "bytes": 148,
+      "sha256": "b70d0ecb13ac88d3fbbe7350db3538adad8289c4f9c2dfa53aa0c85f5707389a"
+    }
+  },
+  "extra_manual_hash_audit": false,
+  "source_hash_verification_scope": "Existing automated transport manifest compared with returned source-sha256.txt; no repeated manual byte-hash audit.",
+  "allocation": {
+    "cpus": [
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113
+    ],
+    "numa_node": "node2"
+  },
+  "build_commands": [
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "check_conv_guard.c",
+      "conv2d.c",
+      "-o",
+      "check_conv_guard"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-finstrument-functions",
+      "check_sve_dispatch.c",
+      "-o",
+      "check_sve_dispatch"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-S",
+      "conv2d.c",
+      "-o",
+      "conv2d-sve.s"
+    ]
+  ],
+  "rows_per_group": 6,
+  "accumulators_per_row": 3,
+  "total_accumulators": 18,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 12,
+      "full_cases": 3560,
+      "dispatch_cases": 432,
+      "direct_cases": 360,
+      "helper_entries": {
+        "prefix": 3834,
+        "tail": 3834,
+        "rowpair": 360,
+        "rowtriple": 774,
+        "rowquad": 702
+      },
+      "passed": true,
+      "dispatch_entries": 432,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 900,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 12,
+      "full_cases": 3560,
+      "dispatch_cases": 432,
+      "direct_cases": 360,
+      "helper_entries": {
+        "prefix": 3834,
+        "tail": 3834,
+        "rowpair": 360,
+        "rowtriple": 774,
+        "rowquad": 702
+      },
+      "passed": true,
+      "dispatch_entries": 432,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 900,
+      "direct_worker_mask": 15
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 24,
+      "full_cases": 3560,
+      "dispatch_cases": 432,
+      "direct_cases": 360,
+      "helper_entries": {
+        "prefix": 3834,
+        "tail": 3834,
+        "rowpair": 360,
+        "rowtriple": 774,
+        "rowquad": 702
+      },
+      "passed": true,
+      "dispatch_entries": 432,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 900,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 24,
+      "full_cases": 3560,
+      "dispatch_cases": 432,
+      "direct_cases": 360,
+      "helper_entries": {
+        "prefix": 3834,
+        "tail": 3834,
+        "rowpair": 360,
+        "rowtriple": 774,
+        "rowquad": 702
+      },
+      "passed": true,
+      "dispatch_entries": 432,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 900,
+      "direct_worker_mask": 15
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 48,
+      "full_cases": 3560,
+      "dispatch_cases": 432,
+      "direct_cases": 360,
+      "helper_entries": {
+        "prefix": 3834,
+        "tail": 3834,
+        "rowpair": 360,
+        "rowtriple": 774,
+        "rowquad": 702
+      },
+      "passed": true,
+      "dispatch_entries": 432,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 900,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 48,
+      "full_cases": 3560,
+      "dispatch_cases": 432,
+      "direct_cases": 360,
+      "helper_entries": {
+        "prefix": 3834,
+        "tail": 3834,
+        "rowpair": 360,
+        "rowtriple": 774,
+        "rowquad": 702
+      },
+      "passed": true,
+      "dispatch_entries": 432,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 900,
+      "direct_worker_mask": 15
+    }
+  ],
+  "full_cases": 21360,
+  "dispatch_cases": 2592,
+  "direct_cases": 2160,
+  "total_cases": 26112,
+  "expected_checks": {
+    "full_per_configuration": 3560,
+    "dispatch_per_configuration": 432,
+    "direct_per_configuration": 360,
+    "configurations": 6,
+    "total": 26112
+  },
+  "assembly": {
+    "review_complete": true,
+    "production_uninstrumented": true,
+    "all_stages_and_transitions_reviewed": true,
+    "whole_helper_stack_reviewed": true,
+    "abi_saves_distinguished": true,
+    "compiler_version": "10.3.1",
+    "helper": "conv_sve_rowsix",
+    "whole_source_fma_count": 0,
+    "evidence": "raw/conv2d-sve.s, uninstrumented production translation unit; actual one-based assembly line ranges, inspected without compiling or executing locally.",
+    "helper_line_start": 5705,
+    "helper_line_end": 6645,
+    "stages": [
+      {
+        "stage": "input_0",
+        "label": ".L395",
+        "line_start": 5909,
+        "line_end": 5922,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1273..1290: t=0, output0 uses kernel row0, three vectors; x20 is kernel base.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 14,
+        "observed_fmul": 3,
+        "observed_fadd": 3,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 1
+      },
+      {
+        "stage": "input_1",
+        "label": ".L397",
+        "line_start": 5933,
+        "line_end": 5955,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1294..1316: t=1, outputs0..1 use kernel rows1,0; x14=kernel+kw and x20=kernel.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 23,
+        "observed_fmul": 6,
+        "observed_fadd": 6,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 2
+      },
+      {
+        "stage": "input_2",
+        "label": ".L399",
+        "line_start": 5967,
+        "line_end": 5997,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1320..1347: t=2, outputs0..2 use kernel rows2,1,0; x6 loaded from sp472 is kernel+2*kw.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 31,
+        "observed_fmul": 9,
+        "observed_fadd": 9,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 3
+      },
+      {
+        "stage": "input_3",
+        "label": ".L401",
+        "line_start": 6008,
+        "line_end": 6046,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1351..1383: t=3, outputs0..3 use kernel rows3,2,1,0; x6/x7 loaded from sp480/sp488 supply the first two coefficient rows.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 39,
+        "observed_fmul": 12,
+        "observed_fadd": 12,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 4
+      },
+      {
+        "stage": "input_4",
+        "label": ".L403",
+        "line_start": 6058,
+        "line_end": 6104,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1387..1423: t=4, outputs0..4 use kernel rows4,3,2,1,0; x6/x7/x8 from sp496/sp504/sp512 supply rows4,3,2.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 47,
+        "observed_fmul": 15,
+        "observed_fadd": 15,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 5
+      },
+      {
+        "stage": "shared",
+        "label": ".L405",
+        "line_start": 6129,
+        "line_end": 6183,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1427..1469: t=5..kh-1, outputs0..5 use kernel row t-r for output r. The surrounding .L406 sets x11=x3-lanes*4 and resets ik. Initially x4/x5/x6/x7/x8/x10 address kernel rows5/4/3/2/1/0. .L404 advances each by kw*4 and input pointers by stride*4; w16 increments from5 to kh. The reviewed inner loop increments ik by1 and updates all18 accumulators once.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 55,
+        "observed_fmul": 18,
+        "observed_fadd": 18,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 6
+      },
+      {
+        "stage": "trailing_0",
+        "label": ".L408",
+        "line_start": 6207,
+        "line_end": 6253,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1474..1510: input t=kh, outputs1..5 use kernel rows kh-1 through kh-5. x13/x15/x17/x22/x4 are those five coefficient-row bases.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 47,
+        "observed_fmul": 15,
+        "observed_fadd": 15,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 5
+      },
+      {
+        "stage": "trailing_1",
+        "label": ".L410",
+        "line_start": 6261,
+        "line_end": 6299,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1515..1546: input t=kh+1, outputs2..5 use kernel rows kh-1 through kh-4; x13/x15/x17/x22 supply the four bases.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 39,
+        "observed_fmul": 12,
+        "observed_fadd": 12,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 4
+      },
+      {
+        "stage": "trailing_2",
+        "label": ".L412",
+        "line_start": 6305,
+        "line_end": 6335,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1551..1577: input t=kh+2, outputs3..5 use kernel rows kh-1 through kh-3; x13/x15/x17 supply the three bases.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 31,
+        "observed_fmul": 9,
+        "observed_fadd": 9,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 3
+      },
+      {
+        "stage": "trailing_3",
+        "label": ".L414",
+        "line_start": 6341,
+        "line_end": 6363,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1582..1603: input t=kh+3, outputs4..5 use kernel rows kh-1,kh-2; x13/x15 supply the two bases.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 23,
+        "observed_fmul": 6,
+        "observed_fadd": 6,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 2
+      },
+      {
+        "stage": "trailing_4",
+        "label": ".L416",
+        "line_start": 6369,
+        "line_end": 6382,
+        "kernel_columns_per_iteration": 1,
+        "source_mapping": "Source lines1608..1625: input t=kh+4, output5 uses kernel row kh-1 from x13, three vectors.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Actual selected loop has no stack access, no Z/Q reload or spill store, and no indirect stack-vector reference. Its LD1W/LD1RW bases trace to input/kernel pointers. All accumulator values remain in vector registers.",
+        "observed_instructions": 14,
+        "observed_fmul": 3,
+        "observed_fadd": 3,
+        "observed_input_ld1w": 3,
+        "observed_kernel_ld1rw": 1
+      }
+    ],
+    "transition_spill_review": "Reviewed the full helper lines5705..6645, including preparation5708..5907, transitions5923..5931/5956..5965/5998..6006/6047..6056/6105..6127, t-loop backedge6184..6205, trailing transitions6254..6259/6300..6303/6336..6339/6364..6367, output stores and tile backedge6383..6479, returns6480..6507, zero-kw initialization6508..6538, horizontal fallback6539..6594, defensive kh<=5 fallback6595..6627 and narrow-width path6628..6642. No Z/Q spill or vector reload occurs in those ranges. Scalar addresses and counters are saved/reloaded, including x27/x18 at sp248/sp256 around the shared t loop; these are not accumulator spills. All18 ST1W occur at6391..6434 and trace through caller output pointers saved at sp280..320, with tile and vector offsets. All33 LD1W and36 LD1RW in the full helper occur within the11 listed stages and trace to caller input/kernel pointers. The only register directly formed from sp is frame pointer x29=sp+16 (besides sp adjustments); it is not used as a vector-memory base. Pointers loaded from stack slots are saved caller-array addresses, not addresses of local vector slots. No addvl/addpl scalable-frame allocation is present.",
+    "stack_frame_description": "Actual entry5708 subtracts528 bytes; exits6499/6586/6618 restore528. Fixed528B frame, no scalable VL extension. x29/x30 and x19..x28 are ordinary scalar callee saves or address state. Only FP-width stack operations in the entire helper are STR d8,[sp,112] at5836 and matching LDR d8,[sp,112] at6483, with CFI register72 save/restore: this is the low64-bit ABI callee save, not a Z/Q accumulator spill. Stack arguments at sp528..552 refer above the newly allocated frame. No Z/Q stack transfer, direct or indirect, was found.",
+    "accumulator_register_mapping": {
+      "row0": [
+        "z22",
+        "z21",
+        "z16"
+      ],
+      "row1": [
+        "z19",
+        "z20",
+        "z7"
+      ],
+      "row2": [
+        "z23",
+        "z24",
+        "z17"
+      ],
+      "row3": [
+        "z25",
+        "z26",
+        "z18"
+      ],
+      "row4": [
+        "z27",
+        "z28",
+        "z5"
+      ],
+      "row5": [
+        "z29",
+        "z30",
+        "z6"
+      ]
+    },
+    "main_loop_notes": "Actual .L405 is55 instructions per one kernel column:18 FMUL,18 independent FADD,3 input LD1W,6 coefficient LD1RW,7 ADD,1 LSL,1 CMP and1 BGT. It retains three input vectors z2/z1/z0 while loading coefficients progressively, commonly reusing z3 and finally z4; coefficient rows are not all simultaneously retained. Arithmetic updates remain on each output accumulator in its kernel-row/column order. No EXT/MOVPRFX or vector stack traffic in the loop. These are instruction/scheduling observations, not throughput or performance predictions.",
+    "whole_source_fma_scan_scope": "Observed0 matches across the actual full assembly for fmla/fmls/fmad/fmsb/fnmla/fnmls/fnmad/fnmsb/fmadd/fmsub/fnmadd/fnmsub/fmlal/fmlal2/fmlsl/fmlsl2/fmmla.",
+    "performance_result": "Unmeasured; this review does not assert correctness-log acceptance, speed, or promotion.",
+    "derived_stage_counts": [
+      {
+        "stage": "input_0",
+        "line_start": 5909,
+        "line_end": 5922,
+        "instructions": 14,
+        "fmul": 3,
+        "fadd": 3,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 1,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "input_1",
+        "line_start": 5933,
+        "line_end": 5955,
+        "instructions": 23,
+        "fmul": 6,
+        "fadd": 6,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 2,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "input_2",
+        "line_start": 5967,
+        "line_end": 5997,
+        "instructions": 31,
+        "fmul": 9,
+        "fadd": 9,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 3,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "input_3",
+        "line_start": 6008,
+        "line_end": 6046,
+        "instructions": 39,
+        "fmul": 12,
+        "fadd": 12,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 4,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "input_4",
+        "line_start": 6058,
+        "line_end": 6104,
+        "instructions": 47,
+        "fmul": 15,
+        "fadd": 15,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 5,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "shared",
+        "line_start": 6129,
+        "line_end": 6183,
+        "instructions": 55,
+        "fmul": 18,
+        "fadd": 18,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 6,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "trailing_0",
+        "line_start": 6207,
+        "line_end": 6253,
+        "instructions": 47,
+        "fmul": 15,
+        "fadd": 15,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 5,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "trailing_1",
+        "line_start": 6261,
+        "line_end": 6299,
+        "instructions": 39,
+        "fmul": 12,
+        "fadd": 12,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 4,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "trailing_2",
+        "line_start": 6305,
+        "line_end": 6335,
+        "instructions": 31,
+        "fmul": 9,
+        "fadd": 9,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 3,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "trailing_3",
+        "line_start": 6341,
+        "line_end": 6363,
+        "instructions": 23,
+        "fmul": 6,
+        "fadd": 6,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 2,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "stage": "trailing_4",
+        "line_start": 6369,
+        "line_end": 6382,
+        "instructions": 14,
+        "fmul": 3,
+        "fadd": 3,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 1,
+        "ext": 0,
+        "movprfx": 0,
+        "kernel_columns_per_iteration": 1,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      }
+    ],
+    "stage_count": 11,
+    "fma_count": 0,
+    "transitions_reviewed": true
+  },
+  "hardware_metadata": {
+    "log": "raw/hardware-metadata.log",
+    "collection_exit_code": 0,
+    "files": [
+      {
+        "path": "/proc/sys/abi/sve_default_vector_length",
+        "value": "64",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index0/level",
+        "value": "1",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index0/type",
+        "value": "Data",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index0/size",
+        "value": "32K",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index0/coherency_line_size",
+        "value": "64",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index0/number_of_sets",
+        "value": "64",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index0/ways_of_associativity",
+        "value": "8",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index1/level",
+        "value": "1",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index1/type",
+        "value": "Instruction",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index1/size",
+        "value": "32K",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index1/coherency_line_size",
+        "value": "64",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index1/number_of_sets",
+        "value": "128",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index1/ways_of_associativity",
+        "value": "4",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index2/level",
+        "value": "2",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index2/type",
+        "value": "Unified",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index2/size",
+        "value": "768K",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index2/coherency_line_size",
+        "value": "64",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index2/number_of_sets",
+        "value": "1024",
+        "read_status": "ok"
+      },
+      {
+        "path": "/sys/devices/system/cpu/cpu76/cache/index2/ways_of_associativity",
+        "value": "12",
+        "read_status": "ok"
+      }
+    ],
+    "correctness_gate": false,
+    "raw_values_only": true,
+    "note": "Optional read-only lscpu, default SVE length and first allocated CPU cache geometry. Missing reads are retained; model-name-based geometry is not inferred."
+  },
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "evidence_directory": "raw",
+  "issues": [],
+  "spill_is_correctness_failure": false,
+  "note": "Strict bitwise/readonly/guard checks and all actual-entry/worker evidence passed. Assembly spills are recorded observations; no speed or promotion conclusion."
+}

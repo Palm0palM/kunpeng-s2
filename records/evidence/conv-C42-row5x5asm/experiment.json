@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C42-row5x5asm",
+  "parent": "C41-row5x5u1",
+  "strategy": "Replace only the five quint shared-middle input scopes with explicit five separate FMUL/FADD pairs using +&w accumulators, one =&w scratch and a memory compiler barrier; preserve the C41 five-row five-vector shape, all other stages and strict FP; prepared only",
+  "created_at": "2026-09-12T09:30:52.484605+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "ca50684addef168079d4f960df721f5af195b20b3b021ff0eb7c47ec42692a95",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C41-row5x5u1",
+  "helper": "conv_sve_rowquint",
+  "rows_per_group": 5,
+  "vectors_per_row": 5,
+  "accumulators": 25,
+  "kernel_columns_per_iteration": 1,
+  "asm_scope": "Only five input-vector scopes in shared interior t=4..kh-1",
+  "asm_constraints": "Five +&w read/write accumulators, one =&w scratch, six w inputs and memory compiler barrier",
+  "comparison_role": "Same-shape explicit-scheduling candidate against pure-C C41; neither source has yet been measured",
+  "execution_priority": "Prepared reserve; root/checks owns any future remote validation/submission",
+  "diagnostic_status": "failed",
+  "diagnostic_job_id": "1579627",
+  "diagnostic_cases_executed": 0,
+  "decision_note": "GCC10.3.1 rejected %Z at first production compile; zero numerical cases, no production assembly. Frozen failed diagnostic preserved. Explicitly excluded from reduced G performance cohort; no speed result or promotion."
+}

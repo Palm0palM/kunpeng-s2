@@ -1,0 +1,33 @@
+{
+  "status": "inconclusive",
+  "reason": "Insufficient attributable quad samples, unparsed sample count, or incomplete disassembly.",
+  "complete": false,
+  "profile_is_benchmark": false,
+  "source_version": "C26-r1",
+  "formal_version": "C6",
+  "event": "cycles:u",
+  "frequency_hz": 99,
+  "case": [
+    6390,
+    4256,
+    81,
+    81,
+    1
+  ],
+  "scope": "All conv invocations in this official case, including validation/warmup/timed call; sampled IPs filtered to quad, not whole-process CPI.",
+  "benchmark_passes": 1,
+  "benchmark_failures": 0,
+  "benchmark_numeric_pass": true,
+  "tool_exit_codes": {
+    "record": 0,
+    "report-all": 0,
+    "report-quad": 0,
+    "annotate": 0,
+    "objdump": 0
+  },
+  "quad_samples": null,
+  "sample_threshold_for_region_review": 1000,
+  "sampling_warnings": [],
+  "undecoded_instruction_present": false,
+  "manual_review_required": true
+}

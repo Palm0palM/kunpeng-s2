@@ -1,0 +1,12 @@
+{
+  "complete": false,
+  "status": "prepared",
+  "submission_authorized": false,
+  "source_version": "C26-r1",
+  "profile_is_benchmark": false,
+  "parent_attempt": "conv-profile-sep12-r1",
+  "parent_job": "1579456",
+  "change": "Only remove the -C CPU selector from the actual perf record command and its command log. Allocation/NUMA/OMP binding, official case, compiler flags and analysis unchanged.",
+  "evidence_for_preparation": "C38 diagnostic1579469 task-only perf record /bin/true succeeded with exit0;5 samples only establish support, not operator metrics.",
+  "submission_gate": "Wait for explicit root GO after F performance ends; do not submit automatically."
+}
