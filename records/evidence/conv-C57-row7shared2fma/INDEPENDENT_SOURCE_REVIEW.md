@@ -1,0 +1,3 @@
+# Root independent source review
+
+Read the full three-hunk source diff and author static review. Exactly 63 shared statements change to explicit fused intrinsics: 21 for each main column and 21 for the original remainder. Addend, predicate, row coefficient, input vector and order stay matched. Independently reversing those 63 exact expressions recovers every parent C52 byte; the other three files compare equal. This is a real rounding change and has no numerical result yet. Official fixed-reference 1e-5 feasibility must be measured independently; no old Y qualification or FMA0/bitwise gate is inherited.

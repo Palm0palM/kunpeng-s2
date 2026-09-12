@@ -1,0 +1,95 @@
+Basic Details:
+    jobId                               	1583276                                           	
+    name                                	conv-sep13ag-C57-row7shared2fma                   	
+    state                               	FAILED                                            	
+    user                                	REDACTED_USER                                       	
+    queue                               	q_kunpeng                                         	
+    account                             	common                                            	
+    cmd                                 	/bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep13ag-C57-row7shared2fma-20260912T195556818408Z/remote_job.sh	
+    submitNode                          	LOGIN_NODE_1                                           	
+    createTime                          	2026/09/13 03:55:57                               	
+    startTime                           	2026/09/13 03:56:00                               	
+    lastModifiedTime                    	-                                                 	
+    endTime                             	2026/09/13 03:58:43                               	
+    currentOperation                    	EMPTY                                             	
+    jobRequeueMaxCnt                    	0                                                 	
+    jobRequeueCurrentCnt                	0                                                 	
+    mpiType                             	DEFAULT                                           	
+    interactionMode                     	DEFAULT                                           	
+    assistJob                           	DEFAULT                                           	
+    x11ForwardEnabled                   	false                                             	
+    description                         	-                                                 	
+    transferType                        	LOCAL                                             	
+    forwardTime                         	-                                                 	
+    recallTime                          	-                                                 	
+    autoResize                          	false                                             	
+Scheduling Details:
+    exclusive                           	false                                             	
+    priority                            	1                                                 	
+    adminPriority                       	-1                                                	
+    expectSchedTime                     	-                                                 	
+    startTimeEstimated                  	-                                                 	
+    reserveRes                          	-                                                 	
+    backfillRes                         	-                                                 	
+    backfilledRes                       	-                                                 	
+Resource Details:
+    reqJobLicense                       	-
+    allocJobLicense                     	-
+    resGroup[0]:
+        minReplica                      	1                                                 	
+        replica                         	1                                                 	
+        labels                          	queue_q_kunpeng aarch64                           	
+        preferNodes                     	-                                                 	
+        reqNodeSelectPolicy             	-                                                 	
+        effNodeSelectPolicy             	SEQUENCE                                          	
+        reqCPU                          	38                                                	
+        reqMem                          	24576                                             	
+        reqGPU                          	gpu:0
+        reqNPU                          	0
+        allocCPU                        	38                                                	
+        allocMem                        	24576                                             	
+        allocGPU                        	gpu:0
+        allocNPU                        	0
+        reqTaskLicense                  	-
+        allocTaskLicense                	-
+        reqAffinity                     	numa[count=1, distribution=pack]                  	
+    allocAffinity                       	
+        execNode             resGroup resIndex hwThreads        gpuIds           npuIds          
+        COMPUTE_NODE_3              0        0/1      0-37             -                -               
+Runtime Details:
+    execNodes                           	COMPUTE_NODE_3                                           	
+    execNodeCnt                         	1                                                 	
+    execPath                            	CLUSTER_USER_HOME                           	
+    resizeCmd                           	-                                                 	
+    timeout                             	1800                                              	
+    stderrRedirectPath                  	-                                                 	
+    stderrRedirectType                  	append                                            	
+    stdoutRedirectPath                  	CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep13ag-C57-row7shared2fma-20260912T195556818408Z/wrapper.stdout.log	
+    stdoutRedirectType                  	append                                            	
+    totalUtime                          	2744                                              	
+    totalStime                          	4                                                 	
+    totalMaxMemSwp                      	0                                                 	
+    totalMaxMem                         	0                                                 	
+    hostPreHookRunTime                  	0                                                 	
+    preHookRunTime                      	0                                                 	
+    jobWallclockDuration                	90                                                	
+    postHookRunTime                     	0                                                 	
+    hostPostHookRunTime                 	0                                                 	
+    jobSstoppedTime                     	0                                                 	
+    coreHours                           	3420                                              	
+    jobExitCode                         	1                                                 	
+    systemExitCode                      	10001                                             	
+    exitMessage                         	Job command execution failed, errCode: 1          	
+    stderrRedirectOutputPath            	-                                                 	
+    stdoutRedirectOutputPath            	CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep13ag-C57-row7shared2fma-20260912T195556818408Z/wrapper.stdout.log	
+    nodeUsages                          	
+        execNode             resGroup resIndex utime    stime    wallclockDuration    sstoppedTime     cpuUtil          gpuUtil          npuUtil          memResource                     
+        COMPUTE_NODE_3              0        0/1      2744     4        90                   0                3059/3464        -                -                0/0/0/0/414/414/137/0           
+    nodePids                            	
+        execNode             pids    
+        COMPUTE_NODE_3              -       
+    traceMessages                       	2026/09/13 03:55:57    :    [JOB_ADD] Job 1583276 is submitted by REDACTED_USER, job state is PENDING.	
+                                        	2026/09/13 03:56:00    :    [JOB_START] Job 1583276 start message has been sent.	
+                                        	2026/09/13 03:56:00    :    [JOB_START_ACK] Job 1583276 start message has been received by agent COMPUTE_NODE_3.	
+                                        	2026/09/13 03:56:00    :    [JOB_EXECUTION] Job 1583276 state is from PENDING to RUNNING, execution path: CLUSTER_USER_HOME	
+                                        	2026/09/13 03:58:43    :    [JOB_FINISH] Job 1583276 state is from RUNNING to FAILED, reason: job failed.	
