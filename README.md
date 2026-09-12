@@ -4,7 +4,7 @@
 
 `conv/`、`zgemm/`、`trsm/` 保存当前晋级版本。现有版本的验证范围与环境见 [基线说明](docs/BASELINES.md)，不要把历史测试直接当作当前排行榜成绩。
 
-TRSM 最新提交包：**T7-diagpanel**，同分配三轮较 T5 合计耗时减少 **8.06%**，大用例减少 **15.88%**；最终 ZIP 超算解压三轮 9/9 PASS。[下载压缩包](outputs/trsm-best.zip) · [最终交付与 KML 状态](docs/trsm-final-20260911-r4.md)。另完成 KML 25.1 + GCC12 三轮 9/9 PASS；官方 KML 25.2.0 复验仍待完成。
+TRSM 最新提交包：**T8-svepanel16**，KML25.1/GCC12 同分配三轮较 T7 合计耗时减少 **11.99%**；最终 ZIP 超算解压三轮 **9/9 PASS**。[下载压缩包](outputs/trsm-best.zip) · [最终交付与 KML 状态](docs/trsm-final-20260912-r5.md)。已验证真实 KML25.1；指定官方 KML25.2.0 复验仍未完成。
 
 ## 先把环境跑通
 

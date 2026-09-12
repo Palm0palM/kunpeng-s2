@@ -1,0 +1,6 @@
+MODE=smoke THREADS=38 NARROW_VL=0 EXPECT_SVE16=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0
+CASE_PASS m=33 n=313 sve16_entries=0 expected=0
+CASE_PASS m=257 n=313 sve16_entries=0 expected=0
+PASS whole_cases=4 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
