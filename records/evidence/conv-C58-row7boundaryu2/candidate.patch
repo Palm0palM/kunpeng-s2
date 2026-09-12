@@ -1,0 +1,98 @@
+--- C52-T-frozen/source/conv2d.c
++++ C58-row7boundaryu2/source/conv2d.c
+@@ -1277,6 +1277,7 @@
+         {
+             const float *row = base + i;
+             const float *ka = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 /* One source-level input window; GCC may reschedule. */
+@@ -1299,6 +1300,7 @@
+             const float *row = base + (size_t)1 * stride + i;
+             const float *ka = kernel + ((size_t)1) * (size_t)kw;
+             const float *kb = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1326,6 +1328,7 @@
+             const float *ka = kernel + ((size_t)2) * (size_t)kw;
+             const float *kb = kernel + ((size_t)1) * (size_t)kw;
+             const float *kc = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1358,6 +1361,7 @@
+             const float *kb = kernel + ((size_t)2) * (size_t)kw;
+             const float *kc = kernel + ((size_t)1) * (size_t)kw;
+             const float *kd = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1395,6 +1399,7 @@
+             const float *kc = kernel + ((size_t)2) * (size_t)kw;
+             const float *kd = kernel + ((size_t)1) * (size_t)kw;
+             const float *ke = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1437,6 +1442,7 @@
+             const float *kd = kernel + ((size_t)2) * (size_t)kw;
+             const float *ke = kernel + ((size_t)1) * (size_t)kw;
+             const float *kf = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1620,6 +1626,7 @@
+             const float *ke = kernel + ((size_t)kh - 4) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 5) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 6) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+                 const svfloat32_t ck = svdup_n_f32(kc[ik]);
+@@ -1665,6 +1672,7 @@
+             const float *ke = kernel + ((size_t)kh - 3) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 4) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 5) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ck = svdup_n_f32(kc[ik]);
+                 const svfloat32_t dk = svdup_n_f32(kd[ik]);
+@@ -1705,6 +1713,7 @@
+             const float *ke = kernel + ((size_t)kh - 2) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 3) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 4) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t dk = svdup_n_f32(kd[ik]);
+                 const svfloat32_t ek = svdup_n_f32(ke[ik]);
+@@ -1740,6 +1749,7 @@
+             const float *ke = kernel + ((size_t)kh - 1) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 2) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 3) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ek = svdup_n_f32(ke[ik]);
+                 const svfloat32_t fk = svdup_n_f32(kf[ik]);
+@@ -1770,6 +1780,7 @@
+             const float *row = base + ((size_t)kh + 4) * stride + i;
+             const float *kf = kernel + ((size_t)kh - 1) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 2) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t fk = svdup_n_f32(kf[ik]);
+                 const svfloat32_t gk = svdup_n_f32(kg[ik]);
+@@ -1795,6 +1806,7 @@
+         {
+             const float *row = base + ((size_t)kh + 5) * stride + i;
+             const float *kg = kernel + ((size_t)kh - 1) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t gk = svdup_n_f32(kg[ik]);
+                 /* One source-level input window; GCC may reschedule. */

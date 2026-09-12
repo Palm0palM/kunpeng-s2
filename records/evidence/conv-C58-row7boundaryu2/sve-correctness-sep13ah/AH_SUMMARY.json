@@ -1,0 +1,692 @@
+{
+  "created_at": "2026-09-12T20:12:39.288696+00:00",
+  "candidate": "C58-row7boundaryu2",
+  "job_id": "1583350",
+  "scope": "Original-job lifecycle and numerical log summary only; not acceptance, freeze or assembly review.",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1583350",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "wrapper_exit": 0,
+  "stage_count": 19,
+  "stages": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "sve_lanes": 4,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 1,
+          "expected_mask": 1
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 1,
+          "expected_mask": 1
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl16-t1.log",
+      "dispatch_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl16-t1.log"
+    },
+    {
+      "sve_bytes": 16,
+      "sve_lanes": 4,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 15,
+          "expected_mask": 15
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl16-t4.log",
+      "dispatch_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl16-t4.log"
+    },
+    {
+      "sve_bytes": 32,
+      "sve_lanes": 8,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 1,
+          "expected_mask": 1
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 1,
+          "expected_mask": 1
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl32-t1.log",
+      "dispatch_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl32-t1.log"
+    },
+    {
+      "sve_bytes": 32,
+      "sve_lanes": 8,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 15,
+          "expected_mask": 15
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl32-t4.log",
+      "dispatch_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl32-t4.log"
+    },
+    {
+      "sve_bytes": 64,
+      "sve_lanes": 16,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 1,
+          "expected_mask": 1
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 1,
+          "expected_mask": 1
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl64-t1.log",
+      "dispatch_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl64-t1.log"
+    },
+    {
+      "sve_bytes": 64,
+      "sve_lanes": 16,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 15,
+          "expected_mask": 15
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl64-t4.log",
+      "dispatch_log": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl64-t4.log"
+    }
+  ],
+  "total_cases": 44328,
+  "full_cases": 34464,
+  "dispatch_cases": 7272,
+  "direct_cases": 2592,
+  "actual_compile_argv": [
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "check_conv_guard.c",
+      "conv2d.c",
+      "-o",
+      "check_conv_guard"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-finstrument-functions",
+      "check_sve_dispatch.c",
+      "-o",
+      "check_sve_dispatch"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-S",
+      "conv2d.c",
+      "-o",
+      "conv2d-sve.s"
+    ]
+  ],
+  "compiler_version": "10.3.1",
+  "omp": {
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PROC_BIND": "close",
+    "OMP_PLACES": "cores"
+  },
+  "scheduler_resources": {
+    "reqCPU": 38,
+    "reqMem": 24576,
+    "allocCPU": 38,
+    "allocMem": 24576,
+    "timeout": 1800,
+    "jobExitCode": 0,
+    "systemExitCode": 0,
+    "reqAffinity": "numa[count=1, distribution=pack]"
+  },
+  "requested_resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "walltime_seconds": 1800
+  },
+  "allowed_cpus": [
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151
+  ],
+  "numa_node": "node3",
+  "source_files": [
+    {
+      "name": "candidate.env",
+      "bytes": 205,
+      "sha256": "1d4e60cff8b53cfd662af3ee48e16fbb1f21f9b9de6fd396aa7747e945582972",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "check_conv_guard.c",
+      "bytes": 8698,
+      "sha256": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "check_sve_dispatch.c",
+      "bytes": 7454,
+      "sha256": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "conv2d.c",
+      "bytes": 108874,
+      "sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "remote_job.sh",
+      "bytes": 3941,
+      "sha256": "437843ec63b427d6800dd18390736ebd382ec81dbe6730d5a5c3985a68d9ba46",
+      "all_manifests_and_transport_bytes_equal": true
+    }
+  ],
+  "source_sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+  "raw_files": [
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/build-assembly.log",
+      "bytes": 0
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/build-dispatch.log",
+      "bytes": 0
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/build-guard.log",
+      "bytes": 0
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/candidate.env",
+      "bytes": 205
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/check_conv_guard.c",
+      "bytes": 8698
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/check_sve_dispatch.c",
+      "bytes": 7454
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/compiler-version.txt",
+      "bytes": 7
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/conv2d-sve.s",
+      "bytes": 182426
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/conv2d.c",
+      "bytes": 108874
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl16-t1.log",
+      "bytes": 603
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl16-t4.log",
+      "bytes": 607
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl32-t1.log",
+      "bytes": 603
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl32-t4.log",
+      "bytes": 607
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl64-t1.log",
+      "bytes": 604
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/dispatch-vl64-t4.log",
+      "bytes": 608
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/exit-code.txt",
+      "bytes": 2
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl16-t1.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl16-t4.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl32-t1.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl32-t4.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl64-t1.log",
+      "bytes": 260
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/guard-vl64-t4.log",
+      "bytes": 260
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/probe.log",
+      "bytes": 16441
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/remote_job.sh",
+      "bytes": 3941
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/source-sha256.txt",
+      "bytes": 407
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/stage-exits.txt",
+      "bytes": 513
+    },
+    {
+      "path": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/wrapper.stdout.log",
+      "bytes": 16518
+    }
+  ],
+  "assembly_file": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/raw/conv2d-sve.s",
+  "assembly_bytes": 182426,
+  "assembly_sha256": "337724743825be9e4b51c86d0041726cf42e19c20f584647b14911c789e442b5",
+  "build_log_bytes": {
+    "build-guard.log": 0,
+    "build-dispatch.log": 0,
+    "build-assembly.log": 0
+  },
+  "outer_events": [
+    {
+      "argv": [
+        "python3",
+        ".runs/conv/sep13ah-checks/driver.py",
+        "C58-row7boundaryu2",
+        "config/conv-sep12.local.json",
+        "status"
+      ],
+      "job_id": "1583350",
+      "action": "status",
+      "started_at": "2026-09-12T20:09:55.754927+00:00",
+      "ended_at": "2026-09-12T20:09:56.126813+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-status-001.stdout.txt",
+      "stderr_file": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-status-001.stderr.txt",
+      "exit_file": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-status-001.exit.txt"
+    },
+    {
+      "argv": [
+        "python3",
+        ".runs/conv/sep13ah-checks/driver.py",
+        "C58-row7boundaryu2",
+        "config/conv-sep12.local.json",
+        "fetch"
+      ],
+      "job_id": "1583350",
+      "action": "fetch",
+      "started_at": "2026-09-12T20:10:21.871646+00:00",
+      "ended_at": "2026-09-12T20:10:22.385575+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-fetch.stdout.txt",
+      "stderr_file": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-fetch.stderr.txt",
+      "exit_file": ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-fetch.exit.txt"
+    }
+  ],
+  "outer_evidence_files": [
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-fetch.exit.txt",
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-fetch.json",
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-fetch.stderr.txt",
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-fetch.stdout.txt",
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-status-001.exit.txt",
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-status-001.json",
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-status-001.stderr.txt",
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/ah-status-001.stdout.txt",
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/AH_SUMMARY.json",
+    ".runs/conv/sep13ah-checks/C58-row7boundaryu2/AH_SUMMARY.md"
+  ],
+  "root_submit_origin": "Root reported its sole submit chunk c0100c/exit0 and original job1583350; this agent did not recreate submit output or submit.",
+  "root_submit_files": [
+    ".runs/conv/sep13ah-root-submit.command.json",
+    ".runs/conv/sep13ah-root-submit.exit.txt",
+    ".runs/conv/sep13ah-root-submit.stderr.txt",
+    ".runs/conv/sep13ah-root-submit.stdout.txt"
+  ],
+  "status_call_count": 1,
+  "status_wait_note": "First status already terminal; no repeat poll or sleep was needed.",
+  "numerical_logs_complete": true,
+  "issues": [],
+  "accept_executed": false,
+  "freeze_executed": false,
+  "assembly_review_performed": false,
+  "performance_measured": false,
+  "source_tools_records_or_best_modified": false,
+  "new_job_submitted_by_lifecycle_agent": false,
+  "reset_card_used": false,
+  "coverage_note": "Counts are actual full/dispatch/direct suite outputs. Legacy helpers are suite totals; no extra sanitizer, official runner or new matrix was run. Actual pragma lowering/stack/FMA0 review belongs to the separate reviewer."
+}

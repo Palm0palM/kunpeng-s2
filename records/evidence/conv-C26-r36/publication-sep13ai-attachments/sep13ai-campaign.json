@@ -1,0 +1,338 @@
+{
+  "round": "sep13ai",
+  "status": "performance_complete",
+  "measurement_order": [
+    "C26-r36",
+    "C58-row7boundaryu2",
+    "C26-r37"
+  ],
+  "candidate_versions": [
+    "C58-row7boundaryu2"
+  ],
+  "reference_only_versions": [],
+  "opening_control": "C26-r36",
+  "primary_baseline": "C26-r37",
+  "source_parent_reference": null,
+  "suites_per_member": 3,
+  "expected_benchmark_cases": 36,
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "expected_compiler_banners": [
+    "gcc (GCC) 10.3.1"
+  ],
+  "record_environment": "kunpeng-gcc10-generic-38-sep13ai",
+  "record_reference": "官方内置参考",
+  "best_label": "C6",
+  "source_parents": {
+    "C58-row7boundaryu2": "C52-row7x3shared2"
+  },
+  "candidate_source_hashes": {
+    "C58-row7boundaryu2": {
+      "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+      "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+      "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+    }
+  },
+  "diagnostic_jobs": {
+    "C58-row7boundaryu2": "1583350"
+  },
+  "diagnostic_evidence_directories": {
+    "C58-row7boundaryu2": ".runs/conv/C58-row7boundaryu2/sve-correctness-sep13ah"
+  },
+  "diagnostic_source_versions": {
+    "C58-row7boundaryu2": "C58-row7boundaryu2"
+  },
+  "diagnostic_expected_checks": {
+    "C58-row7boundaryu2": 44328
+  },
+  "recent_evidence_sha256": {
+    ".runs/conv/sep13af-campaign.json": "0c6d3986a5a54f416ebb354e4b3c5cc7b28d25c326313ace0ed4b575a9a88f05",
+    ".runs/conv/C57-row7shared2fma/AG_FAILURE_ASSOCIATION.json": "35a0e22924c37fb4333cd375866d522e03039c60954aa65133ab43e16d324cb5",
+    "records/experiments/conv/C57-row7shared2fma.json": "6b73da2de0b7242a4de8db446dbcb14db784bc55f962d80bf4f770c297a7eb78"
+  },
+  "auxiliary_comparisons": {},
+  "confirmation_only": false,
+  "failed_confirmation_retry_allowed": false,
+  "selection_rule": "All36 AI samples: C58 must pass both same-job C6 controls. Total gain strictly exceeds max(1%, all compared case spreads); every case gain >= -1%. Keep slow samples. Initial eligibility only; root decides separately.",
+  "attribution_rule": "C58 is new boundary-unroll source from original C52. No parent reference measured; do not claim same-job parent attribution. AF initial false, AG numerical failure and all earlier decisions remain untouched; no failed confirmation retry.",
+  "local_compilation_or_tests_run": false,
+  "official_score": null,
+  "automatic_confirmation": false,
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "submitted": true,
+  "submit_attempted": true,
+  "creation_experiment_sha256": {
+    "C26-r36": "3c7e7552f74da122cc4583ad19993511ca361d26111106ebbad087a331cb1880",
+    "C58-row7boundaryu2": "03fe37c96f0221877c9c002d17b08d598d5f5eb4736d89431285d23e096ccace",
+    "C26-r37": "92e1953dbbc2f67a54f279b5d08d6ba03e5a6914aaaf7883da5d87cd99e1a0eb"
+  },
+  "performance_job": "1583408",
+  "performance_group": "kp-conv-group-ef76fcadf3dd",
+  "results": [
+    {
+      "version": "C26-r36",
+      "total_median_ms": 452.40999999999997,
+      "cases_ms": [
+        51.43,
+        61.9,
+        107.37,
+        231.71
+      ],
+      "all_samples_ms": [
+        [
+          51.43,
+          51.44,
+          51.42
+        ],
+        [
+          61.9,
+          61.76,
+          61.93
+        ],
+        [
+          107.37,
+          107.39,
+          107.31
+        ],
+        [
+          231.71,
+          231.66,
+          231.92
+        ]
+      ],
+      "case_spreads_pct": [
+        0.0388878086719736,
+        0.2746365105008105,
+        0.0745087082052699,
+        0.11220922705105127
+      ],
+      "max_spread_pct": 0.2746365105008105,
+      "gain_pct": 0.0022103355289293525,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 control; not a new candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    },
+    {
+      "version": "C58-row7boundaryu2",
+      "total_median_ms": 437.56,
+      "cases_ms": [
+        51.83,
+        58.4,
+        104.18,
+        223.15
+      ],
+      "all_samples_ms": [
+        [
+          51.83,
+          51.75,
+          51.83
+        ],
+        [
+          58.41,
+          58.4,
+          58.39
+        ],
+        [
+          104.15,
+          104.18,
+          104.18
+        ],
+        [
+          223.29,
+          223.15,
+          223.13
+        ]
+      ],
+      "case_spreads_pct": [
+        0.15435076210688461,
+        0.03424657534245894,
+        0.028796314071799903,
+        0.07170064978713717
+      ],
+      "max_spread_pct": 0.15435076210688461,
+      "gain_pct": 3.2845585959948576,
+      "reference_only": false,
+      "qualified_for_confirmation": true,
+      "decision_note": "Initial C58 candidate qualifies versus both same-job C6 controls; return to root for an independent next-step decision. No automatic confirmation, promotion or ZIP.",
+      "comparison": {
+        "baseline": "C26-r37",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.43,
+            "candidate_ms": 51.83,
+            "gain_pct": -0.7777561734396239
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.91,
+            "candidate_ms": 58.4,
+            "gain_pct": 5.669520271361652
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.38,
+            "candidate_ms": 104.18,
+            "gain_pct": 2.980070776680936
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.7,
+            "candidate_ms": 223.15,
+            "gain_pct": 3.690116529995677
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.284558595994863,
+        "threshold_pct": 1.0
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r36",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.43,
+            "candidate_ms": 51.83,
+            "gain_pct": -0.7777561734396239
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.9,
+            "candidate_ms": 58.4,
+            "gain_pct": 5.654281098546042
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.37,
+            "candidate_ms": 104.18,
+            "gain_pct": 2.9710347396851984
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.71,
+            "candidate_ms": 223.15,
+            "gain_pct": 3.6942730136808954
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.2824208129793697,
+        "threshold_pct": 1.0
+      }
+    },
+    {
+      "version": "C26-r37",
+      "total_median_ms": 452.41999999999996,
+      "cases_ms": [
+        51.43,
+        61.91,
+        107.38,
+        231.7
+      ],
+      "all_samples_ms": [
+        [
+          51.45,
+          51.39,
+          51.43
+        ],
+        [
+          61.94,
+          61.86,
+          61.91
+        ],
+        [
+          107.38,
+          107.35,
+          107.4
+        ],
+        [
+          231.7,
+          231.76,
+          231.65
+        ]
+      ],
+      "case_spreads_pct": [
+        0.11666342601594842,
+        0.12921983524470732,
+        0.04656360588565037,
+        0.04747518342683868
+      ],
+      "max_spread_pct": 0.12921983524470732,
+      "gain_pct": 0.0,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 control; not a new candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    }
+  ],
+  "final_selection": null,
+  "confirmation_pending": [
+    "C58-row7boundaryu2"
+  ],
+  "prior_decisions_unchanged": true
+}
