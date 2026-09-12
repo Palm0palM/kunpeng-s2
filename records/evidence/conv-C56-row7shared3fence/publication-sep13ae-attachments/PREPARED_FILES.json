@@ -1,0 +1,81 @@
+{
+  "status": "prepared_only",
+  "generated_at": "2026-09-12T19:21:24.178295+00:00",
+  "candidate": "C56-row7shared3fence",
+  "source_parent": "C55-row7x3shared3",
+  "files": {
+    "driver.py": {
+      "bytes": 19970,
+      "sha256": "9da53a71ddf0258d378f387cd59afaa3df8f5ef76c6f5572d4ded4401d29ff88"
+    },
+    "accept_returned.py": {
+      "bytes": 28822,
+      "sha256": "cf75ab3c04baa70ef06d9e3df626a7b2ad41fb28fea1183b75df9d34e26529d3"
+    },
+    "freeze_returned.py": {
+      "bytes": 19198,
+      "sha256": "2233acea93aebedf85ac6c0f3005a080020b197199f1f63014f8b6718ba75456"
+    },
+    "INTERFACE.md": {
+      "bytes": 11362,
+      "sha256": "be59da4a268c451dd76223909facdb8212128d766bf6a3d8a150bbeb1f3c5a17"
+    },
+    "README.md": {
+      "bytes": 1378,
+      "sha256": "5fa68f8e3d99d0b4368ddfd23a9bec8475d42f543cc55d986902d6c100ea9bc7"
+    },
+    "STATIC_REVIEW.md": {
+      "bytes": 2614,
+      "sha256": "560ca6c3041f1d2424e61d248533f63d270c48f397ef81f20f307925c04e74ae"
+    },
+    "PREPARATION_COMMANDS.md": {
+      "bytes": 2180,
+      "sha256": "5069c8c45fae0a20eec8b706aae3ed00f6138eb6429dc39352d2194347472ed9"
+    },
+    "preparation-failure-1.json": {
+      "bytes": 713,
+      "sha256": "0332a7212c25b216296a8d3d690e4c1b1053303bdffe307ecf4df9cd6642e23c"
+    },
+    "C56-row7shared3fence/source/conv2d.c": {
+      "bytes": 112355,
+      "sha256": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c"
+    },
+    "C56-row7shared3fence/source/check_conv_guard.c": {
+      "bytes": 8698,
+      "sha256": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5"
+    },
+    "C56-row7shared3fence/source/check_sve_dispatch.c": {
+      "bytes": 7454,
+      "sha256": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d"
+    },
+    "C56-row7shared3fence/source/candidate.env": {
+      "bytes": 207,
+      "sha256": "ac725bd0f173565500cc006fa1d89ef02c4fdca51b2e415650fc975b799c87b7"
+    },
+    "C56-row7shared3fence/source/remote_job.sh": {
+      "bytes": 3943,
+      "sha256": "3ac920b75a16e15eafeafb5bc42da4b3cab4b5943297f08c459430e5cff5d2de"
+    },
+    "C56-row7shared3fence/source-hashes.json": {
+      "bytes": 445,
+      "sha256": "7a21ba4e38da34b5452771f1fbf93e1a1340467596892453a847944af0c1168c"
+    },
+    "C56-row7shared3fence/source-manifest.json": {
+      "bytes": 641,
+      "sha256": "95e11e7ea5f7e7c8a9fe25fa505bff4bdb8cfb3a555585d2c95a6afccaae9dc9"
+    },
+    "C56-row7shared3fence/prepared.json": {
+      "bytes": 5188,
+      "sha256": "993b1ba5a09d47f787a1bfcb3d20bdc3f73fd8f96770783d76f09b20388910cb"
+    },
+    "AC-to-AE.patch": {
+      "bytes": 77830,
+      "sha256": "97ae1d8c882d10b9270881a60869a5e43f483ca656851ba1cb01649064050db7"
+    }
+  },
+  "excludes": "This inventory itself and future root reviews/lifecycle outputs.",
+  "local_operator_execution": false,
+  "new_tool_import_or_execution": false,
+  "compute_authorized": false,
+  "prior_preparation_failure_preserved": "preparation-failure-1.json"
+}

@@ -1,0 +1,1153 @@
+{
+  "schema": "ae-shared3-fence-paths-v1",
+  "candidate": "C56-row7shared3fence",
+  "job_id": "1583102",
+  "source_sha256": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c",
+  "compiler_version": "10.3.1",
+  "assembly_sha256": "357025e3e88d302ea981193ba1b2e43e4715aba37bc474250654aa0fcbce20fa",
+  "helper_review_complete": true,
+  "review_complete": true,
+  "dispatch_pending": false,
+  "dispatch_review_pending": false,
+  "dispatch_reviewed": true,
+  "production_uninstrumented": true,
+  "whole_helper_stack_reviewed": true,
+  "all_stages_and_transitions_reviewed": true,
+  "abi_saves_distinguished": true,
+  "shared_triple_and_remainder_reviewed": true,
+  "column_fences_reviewed": true,
+  "whole_source_fma_count": 0,
+  "shape": {
+    "rows_per_group": 7,
+    "vectors_per_row": 3,
+    "accumulators": 21
+  },
+  "shared_unroll": {
+    "main_columns": 3,
+    "remainder_source_columns": 1,
+    "remainder_max_columns": 2,
+    "other_stage_columns": 1
+  },
+  "whole_machine_code_identical_claimed": false,
+  "production_object_disassembly_available": false,
+  "parent_codegen_comparison": {
+    "candidate": "C55-row7x3shared3",
+    "job_id": "1582860",
+    "source_sha256": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
+    "assembly_sha256": "0843c7259fdcb63d78d37965de48c229f81a505f59df81eb579fd792452aa39c",
+    "shared_work_and_schedule_review": "Original frozen AC .L4076403..6592 has189 instructions/3cols,9LD1W21LD1RW63FMUL63FADD and5LDRZ5STRZ. AE6349..6539 has190/3 with identical arithmetic/load counts and5/5 Z traffic. Per-column counts63 AC versus63+1/3 AE; equal6cols378 versus380. The+1 is a net schedule/address/register-layout difference, not an emitted hardware fence. AC interleaves column1 load6409 and column2 load6416 before completing column0; AE completes all21 FADDs at each boundary before next loads. Both retain one LSL, indexed/address ADD work and three rolling coefficient +12 updates; outer pointer stepping remains substantial. Both u1 loops have63 instructions/work1. All12 other bodies retain14/23/31/39/47/55 mirrored. Full helper1391 instructions/1555 lines versus1492/1656 AC; static instruction differences are not timing ratios.",
+    "stack_and_spill_review": "AC frame880+5VL, whole30LDRZ45STRZ including5 zero-init stores; AE848+5VL, whole5LDRZ5STRZ with0 zero-init stores. Shared main per3cols remains5/5; reduction is outside the main, where AC carries five accumulator slots through prefix, remainder entry/exit, trailing and output. AE confines slots to five second-column sums reloaded during third-column computation. Fixed frame reduces32B while five scalable slots and D8..15 low64-bit ABI saves remain. No Q/predicate stack in either actual rowseven helper. Reduced surrounding traffic and tighter scheduling are observations, not correctness failure or measured speedup.",
+    "parent_shared_instructions": 189,
+    "parent_shared_columns": 3,
+    "candidate_shared_instructions": 190,
+    "candidate_shared_columns": 3,
+    "parent_fixed_stack_bytes": 880,
+    "candidate_fixed_stack_bytes": 848,
+    "parent_scalable_stack_vl": 5,
+    "candidate_scalable_stack_vl": 5,
+    "parent_vector_spill_loads": 30,
+    "parent_vector_spill_stores": 45,
+    "candidate_vector_spill_loads": 5,
+    "candidate_vector_spill_stores": 5
+  },
+  "helpers": [
+    {
+      "symbol": "conv_sve_rowseven",
+      "line_start": 5705,
+      "line_end": 7259,
+      "whole_helper_static_instructions": 1391,
+      "stack_frame_description": "Prologue5708 ADDVL sp,-5 and5710 SUB sp,848 allocates848+5VL bytes, 928/1008/1168 for VL16/32/64. Fixed area0..847 contains outgoing arguments, scalar pointer/counter caches and callee saves; five vector slots start848+nVL. ADDVL incoming-argument aliases at5712/5719/5729/5735/5741 plus offsets848..880 address originalSP+0..32. Normal7084/7086, width-tail7197/7199, kh<7 fallback7234/7236 restore both components.",
+      "spill_notes": "All1555 helper text lines were read, including all13 stages/14 actual arithmetic regions, every transition, output21 stores, kw<=0, kh<7 and narrow/tail paths. Exact total is5 LDRZ and5 STRZ, all within shared triple. No zero-init stack stores, Q or predicate stack access. This is a comprehensive static instruction count, not a dynamic runtime spill count.",
+      "vector_spill_loads": 5,
+      "vector_spill_stores": 5,
+      "fixed_frame_bytes": 848,
+      "scalable_vector_slots": 5,
+      "frame_bytes_by_sve_bytes": {
+        "16": 928,
+        "32": 1008,
+        "64": 1168
+      },
+      "vector_stack_zero_initialization_stores": 0,
+      "q_stack_loads": 0,
+      "q_stack_stores": 0,
+      "predicate_stack_loads": 0,
+      "predicate_stack_stores": 0,
+      "abi_saves": [
+        {
+          "registers": [
+            "d8",
+            "d9"
+          ],
+          "store_line": 5776,
+          "load_line": 7049,
+          "stack_offset": 112
+        },
+        {
+          "registers": [
+            "d10",
+            "d11"
+          ],
+          "store_line": 5782,
+          "load_line": 7052,
+          "stack_offset": 128
+        },
+        {
+          "registers": [
+            "d12",
+            "d13"
+          ],
+          "store_line": 5787,
+          "load_line": 7055,
+          "stack_offset": 144
+        },
+        {
+          "registers": [
+            "d14",
+            "d15"
+          ],
+          "store_line": 5796,
+          "load_line": 7058,
+          "stack_offset": 160
+        }
+      ],
+      "transition_spill_review": "The12 nonshared stages and all stage entry/exit code contain no vector stack traffic. Prefix starts/extends a..f; .L394 zeroes g. Shared returns all21 live sums without stack reload; trailing stages successively finish b..g in the same registers. Output6918..6963 stores21 final vectors directly, without reloads. kw<=0 .L4257115..7133 zeroes a..f in registers and .L394 zeroes g; all arithmetic is skipped, no uninitialized slot is read. No call occurs in the SVE arithmetic/t loop.",
+      "tail_and_fallback_review": "kh<=6 guard5745..5746 branches .L3917202, calls rowquad7214 and tail-calls rowtriple7239 with base+4*stride and dst4..6. Only actually saved x19/x20/x27/x28/frame registers are restored there; D and x21..26 were not touched. Width guard5757..5758 uses3*lanes; .L4557254..7256 sets i0 and remainingow without entering D saves. Full body restores D7049..7058 before .L393. Positive width tail .L4567134 calls rowquad7164 for rows0..3 at base+i, then restores full frame and tail-calls rowtriple7201 for rows4..6 at base+4*stride+i. No-tail path restores and RET7088.",
+      "arithmetic_and_load_review": "Whole .s has0 fused multiply-add/subtract opcodes; actual compiler10.3.1, uninstrumented strict -S command at probe395. All14 arithmetic regions total210 ordinary FMUL and210 FADD; all63 shared main FADDs map to21 exact carried chains. Every column loads three input windows and seven coefficient broadcasts; nonshared stages use1..6 then6..1 coefficient broadcasts and3 input windows. No LD1RQW/indexed FMUL/EXT/MOVPRFX/packed extraction is present in this helper. Fixed accumulator map and21 output stores were matched to a..g and vector0/1/2.",
+      "shared_index_reset_review": "At .L3946310..6331 each horizontal tile reloads the original seven-row kernel/input pointer cache, initializes g0/g1/g2 and t6. Each .L410 rebuilds x8/x11/x10/x9 and the current ka/kb offsets; main rolling x2/x3/x4 and ik are reinitialized at6341..6347. The .L408 updates ten cached coefficient addresses by4*kw at6615..6624 and eight input addresses by4*stride at6626..6633. kh7 executes one shared t; kh8 executes two. Tile backedge7048 returns to .L423, reinitializes a..f through the prefix stages and reaches .L394 again; it never carries a completed tile sum into the next.",
+      "input_kernel_bounds_review": "For full tiles ow-i>=3*lanes, the final input lane i+ik+3*lanes-1 is at most ow+kw-2 for ik<kw. Triple guard kw-ik>=3 permits exactly columnsik..ik+2; u1 tests ik<kw. Shared t starts6 and stopskh, so coefficient row t-r for r0..6 lies0..kh-1; trailing input kh..kh+5 covers final row6 window without an extra row load. kw1/2 skip +1/+2 loads guarded by .L426; kw3/4/5 run1 main with residues0/1/2, kw6/7/8 run2 main with residues0/1/2, and15/81 repeat boundedly. Outer final kernel/input pointer updates may form terminal addresses, but branch6635 prevents a further load when t==kh. Three rolling kernel pointers similarly advance12 at main end without an extra dereference past its guard. Every next tile restores original kernel origins and updated input origins.",
+      "scalar_address_stack_review": "Read all fixed and indirect stack accesses, not just bare [sp]. SP-derived aliases include x14=sp+800 for kernel pointer cache, x2=sp+576/x3=sp+608 for shared pointer loads, x0=sp+520 for output pointer arguments, and x12/x0=sp+848 only for five Z slots. Scalar caches/counters remain below848; highest fixed source-stride slot840 occupies840..847. x19..x28, x29/x30 saves/restore paths were matched. Tail calls write the outgoing stack width into originalSP+0 via sp+5VL+848 before releasing the frame. These address/counter/GPR accesses are distinguished from the5/5 Z transfers and four low64-bit D-pair ABI saves.",
+      "stages": [
+        {
+          "stage": "input_0",
+          "line_start": 6029,
+          "line_end": 6043,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1276..1296: input row 0, output rows [0], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 14,
+            "fmul": 3,
+            "fmul_ordinary": 3,
+            "fmul_indexed": 0,
+            "fadd": 3,
+            "ld1w": 3,
+            "ld1rw": 1,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 14,
+            "fmul": 3,
+            "fmul_ordinary": 3,
+            "fmul_indexed": 0,
+            "fadd": 3,
+            "ld1w": 3,
+            "ld1rw": 1,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "input_1",
+          "line_start": 6055,
+          "line_end": 6078,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1297..1322: input row 1, output rows [0, 1], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 23,
+            "fmul": 6,
+            "fmul_ordinary": 6,
+            "fmul_indexed": 0,
+            "fadd": 6,
+            "ld1w": 3,
+            "ld1rw": 2,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 23,
+            "fmul": 6,
+            "fmul_ordinary": 6,
+            "fmul_indexed": 0,
+            "fadd": 6,
+            "ld1w": 3,
+            "ld1rw": 2,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "input_2",
+          "line_start": 6091,
+          "line_end": 6122,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1323..1353: input row 2, output rows [0, 1, 2], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 31,
+            "fmul": 9,
+            "fmul_ordinary": 9,
+            "fmul_indexed": 0,
+            "fadd": 9,
+            "ld1w": 3,
+            "ld1rw": 3,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 31,
+            "fmul": 9,
+            "fmul_ordinary": 9,
+            "fmul_indexed": 0,
+            "fadd": 9,
+            "ld1w": 3,
+            "ld1rw": 3,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "input_3",
+          "line_start": 6136,
+          "line_end": 6175,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1354..1389: input row 3, output rows [0, 1, 2, 3], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 39,
+            "fmul": 12,
+            "fmul_ordinary": 12,
+            "fmul_indexed": 0,
+            "fadd": 12,
+            "ld1w": 3,
+            "ld1rw": 4,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 39,
+            "fmul": 12,
+            "fmul_ordinary": 12,
+            "fmul_indexed": 0,
+            "fadd": 12,
+            "ld1w": 3,
+            "ld1rw": 4,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "input_4",
+          "line_start": 6190,
+          "line_end": 6237,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1390..1430: input row 4, output rows [0, 1, 2, 3, 4], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 47,
+            "fmul": 15,
+            "fmul_ordinary": 15,
+            "fmul_indexed": 0,
+            "fadd": 15,
+            "ld1w": 3,
+            "ld1rw": 5,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 47,
+            "fmul": 15,
+            "fmul_ordinary": 15,
+            "fmul_indexed": 0,
+            "fadd": 15,
+            "ld1w": 3,
+            "ld1rw": 5,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "input_5",
+          "line_start": 6253,
+          "line_end": 6308,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1431..1476: input row 5, output rows [0, 1, 2, 3, 4, 5], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 55,
+            "fmul": 18,
+            "fmul_ordinary": 18,
+            "fmul_indexed": 0,
+            "fadd": 18,
+            "ld1w": 3,
+            "ld1rw": 6,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 55,
+            "fmul": 18,
+            "fmul_ordinary": 18,
+            "fmul_indexed": 0,
+            "fadd": 18,
+            "ld1w": 3,
+            "ld1rw": 6,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "shared",
+          "source_mapping": "C56 source1477..1684: input t=6..kh-1; output r0..6 uses coefficient row t-r. Actual .L4106333 starts each t; .L4076349..6539 implements three columns; .L4096546..6609 implements direct u1 remainder. All source asm constraints are input-only and leave these arithmetic statements unchanged.",
+          "control_flow_notes": "6330..6331 initializes t=6. 6343..6344 skips triple for kw<=2 via .L4267112 w0=0. Otherwise x1=0 at6347; main adds3 to x1 and computes remaining kw-x1 at6532..6534, branches only while remaining>2 at6538..6539. 6541..6542 tests remainder; .L409 advances one column at6584 and compares at6608..6609. .L4086611..6635 increments t, row pointers and kernel-row pointers then repeats until t==kh.",
+          "accumulator_order_review": "Manually traced all21 a0..g2 chains through all63 FMUL/FADD pairs, register renames, five stores/reloads and final return to the same entry registers. The full exact FADD table and independent text register-provenance walk are in helper-text-counts.json and this main block. Per chain order is column ik,ik+1,ik+2, then the next main or u1 column. No fused or indexed arithmetic, reassociation or repeated/missing accumulator was observed.",
+          "triple_to_remainder_review": "After6531 all21 sums are back in the fixed live register map. 6532 records next ik in w0 while6533 advances x1. Equal kw goes directly to .L408; nonempty remainder converts w0 to x0 and enters .L409. No vector store/reload occurs on this edge or the u1 exit. For kw1/2, .L426 supplies ik0 without touching uninitialized vector slots.",
+          "transition_spill_review": "Only6464/6465/6467/6468/6469 STRZ and6500/6502/6516/6520/6527 LDRZ occur in the whole helper. Five completed second-column accumulators b2,c2,d2,f2,g2 are stored and reloaded during column2. No state is spilled at shared entry, triple exit, remainder entry/exit or t-loop transition. These static counts are5/5 per executed main iteration, not zero-spill evidence.",
+          "t_and_tile_reset_review": "At .L3946310..6331 each horizontal tile reloads the original seven-row kernel/input pointer cache, initializes g0/g1/g2 and t6. Each .L410 rebuilds x8/x11/x10/x9 and the current ka/kb offsets; main rolling x2/x3/x4 and ik are reinitialized at6341..6347. The .L408 updates ten cached coefficient addresses by4*kw at6615..6624 and eight input addresses by4*stride at6626..6633. kh7 executes one shared t; kh8 executes two. Tile backedge7048 returns to .L423, reinitializes a..f through the prefix stages and reaches .L394 again; it never carries a completed tile sum into the next.",
+          "column_fence_review": {
+            "source_contract": {
+              "source_fences_per_main_iteration": 3,
+              "input_accumulators_per_fence": 21,
+              "output_operands": 0,
+              "memory_clobber": true,
+              "empty_template": true
+            },
+            "actual_schedule_review": "GCC10.3.1 accepted the exact C56 source (actual probe395 strict -S command and build-assembly stage0). Three groups of21 FADDs complete in emitted dependency order before the next column LD1W/LD1RW. No #APP/#NO_APP, instruction or PC separately identifies the empty template. schedule_tightened means the observed emitted cross-column separation versus AC; it does not mean CPU completion before later loads or a hardware memory barrier.",
+            "cross_column_motion_review": "Column0 input loads6351/6355/6371 and seven coefficient loads are followed by its last FADD6406. Column1 first coefficient load6408 and input6412 therefore occur afterwards. Column1 ends at6463; column2 first input6470 follows all21 results and five boundary STRZ. Original AC already loads column1 at6409 and column2 at6416 while column0 chains continue much later. This actual difference supports tightened cross-column scheduling, while independent operations within each column remain interleaved.",
+            "loop_boundary_review": "Column2 last FADD6531 precedes only scalar updates6532..6538 and the backedge6539. The next main iteration first load6351 is therefore after all21 previous column2 definitions in emitted order. If the main ends, first u1 input6548 also follows them. No next-iteration input/coefficient preload was found at the tail. This third observed boundary is recorded independently, without claiming every boundary differs from AC.",
+            "spill_relocation_review": "The main still has5Z loads5Z stores, now concentrated after the second column and within the third: slots0..4 hold b2,c2,d2,f2,g2. Unlike AC, all carried values are in registers at main entry/exit, u1 and stage/tile transitions. Full helper Z traffic drops from30/45 to5/5 and zero-init stores from5 to0, but the5 scalable slots remain allocated; spills were not eliminated.",
+            "schedule_tightened": true,
+            "boundaries": [
+              {
+                "column_index": 0,
+                "all_accumulators_ready_before_next_column_loads": true,
+                "mapping_status": "not_separately_identifiable",
+                "actual_evidence": "All21 column0 FADD definitions occur at6357..6406 (full per-chain table). Last d2 FADD6406 precedes next-column coefficient LD1RW6408 and input LD1W6412. Scalar ADD6407 is permitted address setup. No emitted fence instruction/PC/APP marker is assigned."
+              },
+              {
+                "column_index": 1,
+                "all_accumulators_ready_before_next_column_loads": true,
+                "mapping_status": "not_separately_identifiable",
+                "actual_evidence": "All21 column1 FADD definitions occur at6421..6463; final a2 FADD6463 precedes five STRZ6464..6469 and first column2 LD1W6470 (first coefficient6472). Five results are temporarily spilled after being defined; their exact slots/reloads are reviewed. No distinct fence instruction/PC/APP marker."
+              },
+              {
+                "column_index": 2,
+                "all_accumulators_ready_before_next_column_loads": true,
+                "mapping_status": "not_separately_identifiable",
+                "actual_evidence": "All21 column2 FADD definitions occur at6478..6531; final d2 FADD6531 precedes scalar updates and BGT6539. Backedge reaches the next iteration LD1W6351 only after that sequence; exit reaches remainder LD1W6548 only after the same completed sums. No earlier next-iteration preload or emitted fence instruction identified."
+              }
+            ]
+          },
+          "blocks": [
+            {
+              "block_id": "shared_triple_L407",
+              "role": "triple_main",
+              "region_kind": "loop",
+              "kernel_columns_per_iteration": 3,
+              "ranges": [
+                {
+                  "line_start": 6349,
+                  "line_end": 6539
+                }
+              ],
+              "source_mapping": "Source1489..1643, columns ik,ik+1,ik+2 with all21 results per column and three empty input-only asm contracts. Actual contiguous main loop has9LD1W21LD1RW63FMUL63FADD, work3.",
+              "spill_notes": "Five STRZ after column1: slot0 b2 line6469; slot1 c2 line6464; slot2 d2 line6465; slot3 f2 line6467; slot4 g2 line6468. Corresponding LDRZ at6516/6520/6527/6500/6502, all SP+848+nVL. Recovered results are updated in column2 and remain live at exit.",
+              "vector_spill_loads": 5,
+              "vector_spill_stores": 5,
+              "entry_exit_notes": "Entry6343..6347 requires kw>=3 and ik0; loop receives21 live sums. 6532..6539 advances ik by3, increments three rolling coefficient pointers by12 and repeats only when kw-ik>=3. Last legal main reads through ik+2; terminal rolling-pointer advances are not dereferenced unless another full iteration passes the branch.",
+              "column_order_review": "All21 exact chains below consume the previous same-output sum once per column. Final register map equals entry: a18/29/31,b8/15/22,c11/13/12,d0/14/1,e23/24/30,f25/26/9,g7/16/10. Five slot transfers preserve b2/c2/d2/f2/g2; MOV6466 preserves e2 into z30. No operand chain crosses output rows.",
+              "control_flow_evidence": "One actual .L407 loop6349..6539 and one range, not a forced multi-block interpretation. LSL6350 remains, with19 scalar ADDs total including address/stack/loop work; seven coefficient broadcasts and three input windows are taken independently per column.",
+              "derived_counts": {
+                "instructions": 190,
+                "fmul": 63,
+                "fmul_ordinary": 63,
+                "fmul_indexed": 0,
+                "fadd": 63,
+                "ld1w": 9,
+                "ld1rw": 21,
+                "ld1rqw": 0,
+                "dup": 0,
+                "indexed_mov": 0,
+                "ext": 0,
+                "movprfx": 0
+              },
+              "derived_counts_per_kernel_column": {
+                "instructions": 63.333333333333336,
+                "fmul": 21.0,
+                "fmul_ordinary": 21.0,
+                "fmul_indexed": 0.0,
+                "fadd": 21.0,
+                "ld1w": 3.0,
+                "ld1rw": 7.0,
+                "ld1rqw": 0.0,
+                "dup": 0.0,
+                "indexed_mov": 0.0,
+                "ext": 0.0,
+                "movprfx": 0.0
+              },
+              "accumulator_chains": [
+                {
+                  "accumulator": "a0",
+                  "entry_and_exit_register": "z18",
+                  "fadd_lines_in_column_order": [
+                    6357,
+                    6421,
+                    6507
+                  ],
+                  "instructions": [
+                    "fadd\tz18.s, z18.s, z2.s",
+                    "fadd\tz13.s, z18.s, z13.s",
+                    "fadd\tz18.s, z13.s, z18.s"
+                  ]
+                },
+                {
+                  "accumulator": "a1",
+                  "entry_and_exit_register": "z29",
+                  "fadd_lines_in_column_order": [
+                    6391,
+                    6436,
+                    6483
+                  ],
+                  "instructions": [
+                    "fadd\tz21.s, z29.s, z21.s",
+                    "fadd\tz15.s, z21.s, z15.s",
+                    "fadd\tz29.s, z15.s, z29.s"
+                  ]
+                },
+                {
+                  "accumulator": "a2",
+                  "entry_and_exit_register": "z31",
+                  "fadd_lines_in_column_order": [
+                    6393,
+                    6463,
+                    6530
+                  ],
+                  "instructions": [
+                    "fadd\tz17.s, z31.s, z17.s",
+                    "fadd\tz31.s, z17.s, z8.s",
+                    "fadd\tz31.s, z31.s, z17.s"
+                  ]
+                },
+                {
+                  "accumulator": "b0",
+                  "entry_and_exit_register": "z8",
+                  "fadd_lines_in_column_order": [
+                    6382,
+                    6422,
+                    6523
+                  ],
+                  "instructions": [
+                    "fadd\tz10.s, z8.s, z5.s",
+                    "fadd\tz12.s, z10.s, z12.s",
+                    "fadd\tz8.s, z12.s, z8.s"
+                  ]
+                },
+                {
+                  "accumulator": "b1",
+                  "entry_and_exit_register": "z15",
+                  "fadd_lines_in_column_order": [
+                    6399,
+                    6440,
+                    6485
+                  ],
+                  "instructions": [
+                    "fadd\tz20.s, z15.s, z20.s",
+                    "fadd\tz20.s, z20.s, z21.s",
+                    "fadd\tz15.s, z20.s, z1.s"
+                  ]
+                },
+                {
+                  "accumulator": "b2",
+                  "entry_and_exit_register": "z22",
+                  "fadd_lines_in_column_order": [
+                    6396,
+                    6458,
+                    6519
+                  ],
+                  "instructions": [
+                    "fadd\tz4.s, z22.s, z4.s",
+                    "fadd\tz4.s, z4.s, z29.s",
+                    "fadd\tz22.s, z2.s, z4.s"
+                  ]
+                },
+                {
+                  "accumulator": "c0",
+                  "entry_and_exit_register": "z11",
+                  "fadd_lines_in_column_order": [
+                    6397,
+                    6424,
+                    6478
+                  ],
+                  "instructions": [
+                    "fadd\tz9.s, z11.s, z9.s",
+                    "fadd\tz11.s, z9.s, z11.s",
+                    "fadd\tz11.s, z11.s, z1.s"
+                  ]
+                },
+                {
+                  "accumulator": "c1",
+                  "entry_and_exit_register": "z13",
+                  "fadd_lines_in_column_order": [
+                    6402,
+                    6435,
+                    6518
+                  ],
+                  "instructions": [
+                    "fadd\tz22.s, z13.s, z22.s",
+                    "fadd\tz22.s, z22.s, z7.s",
+                    "fadd\tz13.s, z22.s, z13.s"
+                  ]
+                },
+                {
+                  "accumulator": "c2",
+                  "entry_and_exit_register": "z12",
+                  "fadd_lines_in_column_order": [
+                    6405,
+                    6459,
+                    6525
+                  ],
+                  "instructions": [
+                    "fadd\tz5.s, z12.s, z5.s",
+                    "fadd\tz5.s, z5.s, z28.s",
+                    "fadd\tz12.s, z2.s, z5.s"
+                  ]
+                },
+                {
+                  "accumulator": "d0",
+                  "entry_and_exit_register": "z0",
+                  "fadd_lines_in_column_order": [
+                    6390,
+                    6427,
+                    6508
+                  ],
+                  "instructions": [
+                    "fadd\tz0.s, z0.s, z20.s",
+                    "fadd\tz10.s, z0.s, z10.s",
+                    "fadd\tz0.s, z10.s, z0.s"
+                  ]
+                },
+                {
+                  "accumulator": "d1",
+                  "entry_and_exit_register": "z14",
+                  "fadd_lines_in_column_order": [
+                    6404,
+                    6444,
+                    6528
+                  ],
+                  "instructions": [
+                    "fadd\tz19.s, z14.s, z19.s",
+                    "fadd\tz19.s, z19.s, z21.s",
+                    "fadd\tz14.s, z19.s, z14.s"
+                  ]
+                },
+                {
+                  "accumulator": "d2",
+                  "entry_and_exit_register": "z1",
+                  "fadd_lines_in_column_order": [
+                    6406,
+                    6462,
+                    6531
+                  ],
+                  "instructions": [
+                    "fadd\tz1.s, z1.s, z27.s",
+                    "fadd\tz7.s, z1.s, z0.s",
+                    "fadd\tz1.s, z2.s, z1.s"
+                  ]
+                },
+                {
+                  "accumulator": "e0",
+                  "entry_and_exit_register": "z23",
+                  "fadd_lines_in_column_order": [
+                    6362,
+                    6428,
+                    6490
+                  ],
+                  "instructions": [
+                    "fadd\tz23.s, z23.s, z3.s",
+                    "fadd\tz9.s, z23.s, z9.s",
+                    "fadd\tz23.s, z9.s, z23.s"
+                  ]
+                },
+                {
+                  "accumulator": "e1",
+                  "entry_and_exit_register": "z24",
+                  "fadd_lines_in_column_order": [
+                    6363,
+                    6439,
+                    6497
+                  ],
+                  "instructions": [
+                    "fadd\tz24.s, z24.s, z2.s",
+                    "fadd\tz24.s, z24.s, z7.s",
+                    "fadd\tz24.s, z24.s, z9.s"
+                  ]
+                },
+                {
+                  "accumulator": "e2",
+                  "entry_and_exit_register": "z30",
+                  "fadd_lines_in_column_order": [
+                    6395,
+                    6452,
+                    6499
+                  ],
+                  "instructions": [
+                    "fadd\tz6.s, z30.s, z6.s",
+                    "fadd\tz6.s, z6.s, z7.s",
+                    "fadd\tz30.s, z30.s, z6.s"
+                  ]
+                },
+                {
+                  "accumulator": "f0",
+                  "entry_and_exit_register": "z25",
+                  "fadd_lines_in_column_order": [
+                    6372,
+                    6461,
+                    6511
+                  ],
+                  "instructions": [
+                    "fadd\tz25.s, z25.s, z4.s",
+                    "fadd\tz14.s, z25.s, z14.s",
+                    "fadd\tz25.s, z14.s, z25.s"
+                  ]
+                },
+                {
+                  "accumulator": "f1",
+                  "entry_and_exit_register": "z26",
+                  "fadd_lines_in_column_order": [
+                    6368,
+                    6445,
+                    6491
+                  ],
+                  "instructions": [
+                    "fadd\tz26.s, z26.s, z3.s",
+                    "fadd\tz26.s, z26.s, z7.s",
+                    "fadd\tz26.s, z26.s, z1.s"
+                  ]
+                },
+                {
+                  "accumulator": "f2",
+                  "entry_and_exit_register": "z9",
+                  "fadd_lines_in_column_order": [
+                    6375,
+                    6454,
+                    6501
+                  ],
+                  "instructions": [
+                    "fadd\tz2.s, z9.s, z2.s",
+                    "fadd\tz2.s, z2.s, z30.s",
+                    "fadd\tz9.s, z6.s, z2.s"
+                  ]
+                },
+                {
+                  "accumulator": "g0",
+                  "entry_and_exit_register": "z7",
+                  "fadd_lines_in_column_order": [
+                    6379,
+                    6432,
+                    6526
+                  ],
+                  "instructions": [
+                    "fadd\tz7.s, z7.s, z9.s",
+                    "fadd\tz27.s, z7.s, z27.s",
+                    "fadd\tz7.s, z27.s, z7.s"
+                  ]
+                },
+                {
+                  "accumulator": "g1",
+                  "entry_and_exit_register": "z16",
+                  "fadd_lines_in_column_order": [
+                    6376,
+                    6446,
+                    6529
+                  ],
+                  "instructions": [
+                    "fadd\tz16.s, z16.s, z5.s",
+                    "fadd\tz21.s, z16.s, z0.s",
+                    "fadd\tz16.s, z21.s, z16.s"
+                  ]
+                },
+                {
+                  "accumulator": "g2",
+                  "entry_and_exit_register": "z10",
+                  "fadd_lines_in_column_order": [
+                    6381,
+                    6457,
+                    6515
+                  ],
+                  "instructions": [
+                    "fadd\tz3.s, z10.s, z3.s",
+                    "fadd\tz3.s, z3.s, z23.s",
+                    "fadd\tz10.s, z2.s, z3.s"
+                  ]
+                }
+              ],
+              "input_load_lines_by_column_and_vector": [
+                [
+                  6351,
+                  6355,
+                  6371
+                ],
+                [
+                  6412,
+                  6429,
+                  6447
+                ],
+                [
+                  6470,
+                  6474,
+                  6493
+                ]
+              ],
+              "kernel_load_lines_by_column_and_output_row": [
+                [
+                  6353,
+                  6374,
+                  6383,
+                  6384,
+                  6358,
+                  6364,
+                  6369
+                ],
+                [
+                  6408,
+                  6414,
+                  6415,
+                  6423,
+                  6410,
+                  6413,
+                  6430
+                ],
+                [
+                  6475,
+                  6476,
+                  6472,
+                  6503,
+                  6480,
+                  6484,
+                  6496
+                ]
+              ]
+            },
+            {
+              "block_id": "shared_u1_L409",
+              "role": "u1_remainder",
+              "region_kind": "loop",
+              "kernel_columns_per_iteration": 1,
+              "ranges": [
+                {
+                  "line_start": 6546,
+                  "line_end": 6609
+                }
+              ],
+              "source_mapping": "Source1644..1684 original u1 remainder, one kernel column with3LD1W7LD1RW21FMUL21FADD. Actual loop remains one contiguous range.",
+              "spill_notes": "No Z/Q/predicate stack access inside or on entry/exit. All21 sums use their fixed live registers; the two-column remainder is two successive executions of this loop, not an invented straight-line block.",
+              "vector_spill_loads": 0,
+              "vector_spill_stores": 0,
+              "entry_exit_notes": "6541..6542 skips when ik==kw. Otherwise6543 reloads only the scalar kb origin and6544 sign-extends next ik. x0 advances1 at6584 and BGT6609 continues until kw. 7112..7113 supplies ik0 for kw<=2.",
+              "column_order_review": "Each of the21 FADDs updates the same fixed carried register as main exit; the next u1 iteration reuses it. The final two-column residue therefore preserves ik then ik+1 order. No arithmetic is reassociated across main/remainder or t.",
+              "control_flow_evidence": "Real .L409 label6546 and compare/backedge6608..6609. All nonempty positive residues run this same block; there is no additional remainder arithmetic region.",
+              "derived_counts": {
+                "instructions": 63,
+                "fmul": 21,
+                "fmul_ordinary": 21,
+                "fmul_indexed": 0,
+                "fadd": 21,
+                "ld1w": 3,
+                "ld1rw": 7,
+                "ld1rqw": 0,
+                "dup": 0,
+                "indexed_mov": 0,
+                "ext": 0,
+                "movprfx": 0
+              },
+              "derived_counts_per_kernel_column": {
+                "instructions": 63,
+                "fmul": 21,
+                "fmul_ordinary": 21,
+                "fmul_indexed": 0,
+                "fadd": 21,
+                "ld1w": 3,
+                "ld1rw": 7,
+                "ld1rqw": 0,
+                "dup": 0,
+                "indexed_mov": 0,
+                "ext": 0,
+                "movprfx": 0
+              }
+            }
+          ],
+          "remainder_paths": [
+            {
+              "path_id": "remainder_0",
+              "remainder_columns": 0,
+              "path_condition": "Positive kw divisible by3: main leaves ik=kw and6541..6542 skips .L409.",
+              "execution_order_review": "No u1 block executes; the equality branch prevents any extra input/coefficient read. The defensive kw<=0 route also skips all shared arithmetic.",
+              "sequence": []
+            },
+            {
+              "path_id": "remainder_1",
+              "remainder_columns": 1,
+              "path_condition": "Positive kw mod3=1: kw<=2 arrives through .L426 with ik0; larger kw arrives after main with ik=3*floor(kw/3).",
+              "execution_order_review": "1 sequential executions of .L409 advance source column by1 at6584, consume carried sums and stop at kw; no vector transition spill.",
+              "sequence": [
+                {
+                  "block_id": "shared_u1_L409",
+                  "executions": 1
+                }
+              ]
+            },
+            {
+              "path_id": "remainder_2",
+              "remainder_columns": 2,
+              "path_condition": "Positive kw mod3=2: kw<=2 arrives through .L426 with ik0; larger kw arrives after main with ik=3*floor(kw/3).",
+              "execution_order_review": "2 sequential executions of .L409 advance source column by1 at6584, consume carried sums and stop at kw; no vector transition spill.",
+              "sequence": [
+                {
+                  "block_id": "shared_u1_L409",
+                  "executions": 2
+                }
+              ]
+            }
+          ],
+          "actual_arithmetic_region_count": 2
+        },
+        {
+          "stage": "trailing_0",
+          "line_start": 6650,
+          "line_end": 6705,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1685..1730: input row kh+0, output rows [1, 2, 3, 4, 5, 6], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 55,
+            "fmul": 18,
+            "fmul_ordinary": 18,
+            "fmul_indexed": 0,
+            "fadd": 18,
+            "ld1w": 3,
+            "ld1rw": 6,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 55,
+            "fmul": 18,
+            "fmul_ordinary": 18,
+            "fmul_indexed": 0,
+            "fadd": 18,
+            "ld1w": 3,
+            "ld1rw": 6,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "trailing_1",
+          "line_start": 6716,
+          "line_end": 6763,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1731..1771: input row kh+1, output rows [2, 3, 4, 5, 6], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 47,
+            "fmul": 15,
+            "fmul_ordinary": 15,
+            "fmul_indexed": 0,
+            "fadd": 15,
+            "ld1w": 3,
+            "ld1rw": 5,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 47,
+            "fmul": 15,
+            "fmul_ordinary": 15,
+            "fmul_indexed": 0,
+            "fadd": 15,
+            "ld1w": 3,
+            "ld1rw": 5,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "trailing_2",
+          "line_start": 6773,
+          "line_end": 6812,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1772..1807: input row kh+2, output rows [3, 4, 5, 6], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 39,
+            "fmul": 12,
+            "fmul_ordinary": 12,
+            "fmul_indexed": 0,
+            "fadd": 12,
+            "ld1w": 3,
+            "ld1rw": 4,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 39,
+            "fmul": 12,
+            "fmul_ordinary": 12,
+            "fmul_indexed": 0,
+            "fadd": 12,
+            "ld1w": 3,
+            "ld1rw": 4,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "trailing_3",
+          "line_start": 6822,
+          "line_end": 6853,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1808..1838: input row kh+3, output rows [4, 5, 6], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 31,
+            "fmul": 9,
+            "fmul_ordinary": 9,
+            "fmul_indexed": 0,
+            "fadd": 9,
+            "ld1w": 3,
+            "ld1rw": 3,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 31,
+            "fmul": 9,
+            "fmul_ordinary": 9,
+            "fmul_indexed": 0,
+            "fadd": 9,
+            "ld1w": 3,
+            "ld1rw": 3,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "trailing_4",
+          "line_start": 6861,
+          "line_end": 6884,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1839..1864: input row kh+4, output rows [5, 6], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 23,
+            "fmul": 6,
+            "fmul_ordinary": 6,
+            "fmul_indexed": 0,
+            "fadd": 6,
+            "ld1w": 3,
+            "ld1rw": 2,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 23,
+            "fmul": 6,
+            "fmul_ordinary": 6,
+            "fmul_indexed": 0,
+            "fadd": 6,
+            "ld1w": 3,
+            "ld1rw": 2,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        },
+        {
+          "stage": "trailing_5",
+          "line_start": 6892,
+          "line_end": 6906,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "C56 source1865..1885: input row kh+5, output rows [6], three vectors each. Scalar ik resets0 and advances1 to kw; each output uses its matching kernel row in increasing row/column order, separate FMUL then FADD.",
+          "spill_notes": "No Z/Q/predicate stack traffic in this entire loop or its stage transition. Accumulators remain in the reviewed fixed live map; scalar pointer cache traffic and low64-bit D ABI saves are separate.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "derived_counts": {
+            "instructions": 14,
+            "fmul": 3,
+            "fmul_ordinary": 3,
+            "fmul_indexed": 0,
+            "fadd": 3,
+            "ld1w": 3,
+            "ld1rw": 1,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "derived_counts_per_kernel_column": {
+            "instructions": 14,
+            "fmul": 3,
+            "fmul_ordinary": 3,
+            "fmul_indexed": 0,
+            "fadd": 3,
+            "ld1w": 3,
+            "ld1rw": 1,
+            "ld1rqw": 0,
+            "dup": 0,
+            "indexed_mov": 0,
+            "ext": 0,
+            "movprfx": 0
+          }
+        }
+      ],
+      "actual_arithmetic_region_count": 14
+    }
+  ],
+  "arithmetic_region_counts": {
+    "conv_sve_rowseven": 14
+  },
+  "review_scope": "Complete actual helper/fence review by O, read and assessed by root; root complete dispatch exact-text comparison against reviewed AC. All corresponding fragments retained; no whole machine-code equality claim.",
+  "dispatch_functions": [
+    {
+      "symbol": "conv2d._omp_fn.2",
+      "line_start": 662,
+      "line_end": 2269,
+      "control_flow_notes": "Applicable by exact complete AE to AC function text equality: Previously reviewed AA control flow, proven applicable here by exact complete actual function text equality: OpenMP output-row partition; optional prefix then 32/16/8/4/2/1 output tiles with preserved ky/kx progression and last-column branches. Actual whole function text exactly equals frozen T, with labels/directives included; this is only this function, not whole machine-code identity. Current AC full function text exactly equals the reviewed AA function, including every branch, call, label and instruction; only containing-file line positions differ.",
+      "stack_notes": "368-byte fixed frame, GPR saves and scalar fields. Four D8-D15 ABI save/restore pairs at sp96..144. Fourteen static STR Q tile-buffer writes at sp240..352; x18=sp+240 and LDP X pairs copy tile buffers to output. These are legacy non-SVE tile buffers, so no global zero-vector-stack claim.",
+      "entire_function_read": false,
+      "review_method": "Exact complete current label-to-size function text compared against AC, which had exact complete AA equality and inherited its fully reviewed control flow. No normalization or omitted text.",
+      "entire_actual_function_compared": true,
+      "manual_reread_current_function_claimed": false,
+      "actual_whole_function_text_identical_to_AC": true,
+      "AC_job_id": "1582860"
+    },
+    {
+      "symbol": "conv2d._omp_fn.1",
+      "line_start": 7264,
+      "line_end": 7443,
+      "control_flow_notes": "Applicable by exact complete AE to AC function text equality: Previously reviewed AA control flow, proven applicable here by exact complete actual function text equality: Static OpenMP partition of four-output-row groups; w21 remaining rows selects rowquad for>=4,rowtriple3,rowpair2,prefix1. Per-group input/output advance and all alternate exits reviewed. Whole function text differs from T; no raw identity claim. Current AC full function text exactly equals the reviewed AA function, including every branch, call, label and instruction; only containing-file line positions differ.",
+      "stack_notes": "160-byte frame, GPR ABI saves, scalar control and outgoing rowquad/triple argument slots. No D/Q/Z/predicate stack transfers in actual entire function, including indirect pointers and exits.",
+      "entire_function_read": false,
+      "review_method": "Exact complete current label-to-size function text compared against AC, which had exact complete AA equality and inherited its fully reviewed control flow. No normalization or omitted text.",
+      "entire_actual_function_compared": true,
+      "manual_reread_current_function_claimed": false,
+      "actual_whole_function_text_identical_to_AC": true,
+      "AC_job_id": "1582860"
+    },
+    {
+      "symbol": "conv2d._omp_fn.0",
+      "line_start": 7447,
+      "line_end": 7763,
+      "control_flow_notes": "Applicable by exact complete AE to AC function text equality: Previously reviewed AA control flow, proven applicable here by exact complete actual function text equality: OpenMP static partition of seven-row groups; full group calls rowseven. Remainders6=rowquad+rowpair,5=rowquad+prefix,4=rowquad,3=rowtriple,2=rowpair,1=prefix. Input/output group strides and saved arguments restored after each helper; empty partition and normal alternate exits reviewed. Current AC full function text exactly equals the reviewed AA function, including every branch, call, label and instruction; only containing-file line positions differ.",
+      "stack_notes": "240-byte frame. GPR/scalar saves and outgoing args at sp0..32 for rowseven, preserved pointers at sp192 etc. No D/Q/Z/predicate stack transfers in actual entire function.",
+      "entire_function_read": false,
+      "review_method": "Exact complete current label-to-size function text compared against AC, which had exact complete AA equality and inherited its fully reviewed control flow. No normalization or omitted text.",
+      "entire_actual_function_compared": true,
+      "manual_reread_current_function_claimed": false,
+      "actual_whole_function_text_identical_to_AC": true,
+      "AC_job_id": "1582860"
+    },
+    {
+      "symbol": "conv2d",
+      "line_start": 7768,
+      "line_end": 7939,
+      "control_flow_notes": "Applicable by exact complete AE to AC function text equality: Previously reviewed AA public entry, proven applicable here by exact complete actual function text equality: Rejects nonpositive kernel dimensions or kernel larger than input. Reads HWCAP_SVE: when SVE and kh>=7 and oh>=7 dispatches seven-row worker; otherwise available SVE uses four-row worker, non-SVE uses legacy worker. Exactly one selected GOMP_parallel per valid call; ceil group counts and all returns inspected. This is code review, not executed invalid/non-SVE diagnostics. Current AC full function text exactly equals the reviewed AA function, including every branch, call, label and instruction; only containing-file line positions differ.",
+      "stack_notes": "160-byte public frame with GPR ABI saves and packed OpenMP argument area; early invalid dimensions before frame or restored exit. No D/Q/Z/predicate stack transfers in actual entire function.",
+      "entire_function_read": false,
+      "review_method": "Exact complete current label-to-size function text compared against AC, which had exact complete AA equality and inherited its fully reviewed control flow. No normalization or omitted text.",
+      "entire_actual_function_compared": true,
+      "manual_reread_current_function_claimed": false,
+      "actual_whole_function_text_identical_to_AC": true,
+      "AC_job_id": "1582860"
+    }
+  ]
+}

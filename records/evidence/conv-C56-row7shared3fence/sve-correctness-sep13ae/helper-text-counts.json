@@ -1,0 +1,1105 @@
+{
+  "scope": "Lightweight actual assembly text counts plus manual-line accumulator provenance; no operator execution or AE tool import.",
+  "assembly_sha256": "357025e3e88d302ea981193ba1b2e43e4715aba37bc474250654aa0fcbce20fa",
+  "helper_bounds": [
+    5705,
+    7259
+  ],
+  "helper_text_lines": 1555,
+  "helper_instructions": 1391,
+  "opcodes": {
+    "addvl": 11,
+    "sub": 14,
+    "stp": 14,
+    "add": 289,
+    "ldr": 155,
+    "str": 129,
+    "mov": 83,
+    "cmp": 23,
+    "ble": 5,
+    "cntw": 4,
+    "blt": 1,
+    "ldrsw": 1,
+    "sxtw": 5,
+    "lsl": 18,
+    "sbfiz": 4,
+    "mul": 2,
+    "smull": 2,
+    "cnth": 1,
+    "ptrue": 1,
+    "neg": 1,
+    "madd": 1,
+    "ld1w": 48,
+    "ld1rw": 70,
+    "fmul": 210,
+    "fadd": 210,
+    "bgt": 15,
+    "ldp": 41,
+    "bne": 1,
+    "incw": 1,
+    "st1w": 21,
+    "bge": 1,
+    "ret": 1,
+    "b": 5,
+    "bl": 2,
+    "uxtw": 1
+  },
+  "whole_source_fma_lines": [],
+  "helper_z_stack_accesses": [
+    {
+      "line": 6464,
+      "opcode": "str",
+      "operands": "z5, [x12, #1, mul vl]"
+    },
+    {
+      "line": 6465,
+      "opcode": "str",
+      "operands": "z7, [x12, #2, mul vl]"
+    },
+    {
+      "line": 6467,
+      "opcode": "str",
+      "operands": "z2, [x12, #3, mul vl]"
+    },
+    {
+      "line": 6468,
+      "opcode": "str",
+      "operands": "z3, [x12, #4, mul vl]"
+    },
+    {
+      "line": 6469,
+      "opcode": "str",
+      "operands": "z4, [x12]"
+    },
+    {
+      "line": 6500,
+      "opcode": "ldr",
+      "operands": "z6, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6502,
+      "opcode": "ldr",
+      "operands": "z2, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6516,
+      "opcode": "ldr",
+      "operands": "z2, [x0]"
+    },
+    {
+      "line": 6520,
+      "opcode": "ldr",
+      "operands": "z2, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6527,
+      "opcode": "ldr",
+      "operands": "z2, [x0, #2, mul vl]"
+    }
+  ],
+  "helper_q_predicate_memory_accesses": [],
+  "helper_abi_d_accesses": [
+    {
+      "line": 5776,
+      "opcode": "stp",
+      "operands": "d8, d9, [sp, 112]"
+    },
+    {
+      "line": 5782,
+      "opcode": "stp",
+      "operands": "d10, d11, [sp, 128]"
+    },
+    {
+      "line": 5787,
+      "opcode": "stp",
+      "operands": "d12, d13, [sp, 144]"
+    },
+    {
+      "line": 5796,
+      "opcode": "stp",
+      "operands": "d14, d15, [sp, 160]"
+    },
+    {
+      "line": 7049,
+      "opcode": "ldp",
+      "operands": "d8, d9, [sp, 112]"
+    },
+    {
+      "line": 7052,
+      "opcode": "ldp",
+      "operands": "d10, d11, [sp, 128]"
+    },
+    {
+      "line": 7055,
+      "opcode": "ldp",
+      "operands": "d12, d13, [sp, 144]"
+    },
+    {
+      "line": 7058,
+      "opcode": "ldp",
+      "operands": "d14, d15, [sp, 160]"
+    }
+  ],
+  "empty_asm_marker_lines": [],
+  "stage_ranges": [
+    {
+      "stage": "input_0",
+      "line_start": 6029,
+      "line_end": 6043,
+      "counts": {
+        "instructions": 14,
+        "fmul": 3,
+        "fmul_ordinary": 3,
+        "fmul_indexed": 0,
+        "fadd": 3,
+        "ld1w": 3,
+        "ld1rw": 1,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "input_1",
+      "line_start": 6055,
+      "line_end": 6078,
+      "counts": {
+        "instructions": 23,
+        "fmul": 6,
+        "fmul_ordinary": 6,
+        "fmul_indexed": 0,
+        "fadd": 6,
+        "ld1w": 3,
+        "ld1rw": 2,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "input_2",
+      "line_start": 6091,
+      "line_end": 6122,
+      "counts": {
+        "instructions": 31,
+        "fmul": 9,
+        "fmul_ordinary": 9,
+        "fmul_indexed": 0,
+        "fadd": 9,
+        "ld1w": 3,
+        "ld1rw": 3,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "input_3",
+      "line_start": 6136,
+      "line_end": 6175,
+      "counts": {
+        "instructions": 39,
+        "fmul": 12,
+        "fmul_ordinary": 12,
+        "fmul_indexed": 0,
+        "fadd": 12,
+        "ld1w": 3,
+        "ld1rw": 4,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "input_4",
+      "line_start": 6190,
+      "line_end": 6237,
+      "counts": {
+        "instructions": 47,
+        "fmul": 15,
+        "fmul_ordinary": 15,
+        "fmul_indexed": 0,
+        "fadd": 15,
+        "ld1w": 3,
+        "ld1rw": 5,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "input_5",
+      "line_start": 6253,
+      "line_end": 6308,
+      "counts": {
+        "instructions": 55,
+        "fmul": 18,
+        "fmul_ordinary": 18,
+        "fmul_indexed": 0,
+        "fadd": 18,
+        "ld1w": 3,
+        "ld1rw": 6,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "trailing_0",
+      "line_start": 6650,
+      "line_end": 6705,
+      "counts": {
+        "instructions": 55,
+        "fmul": 18,
+        "fmul_ordinary": 18,
+        "fmul_indexed": 0,
+        "fadd": 18,
+        "ld1w": 3,
+        "ld1rw": 6,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "trailing_1",
+      "line_start": 6716,
+      "line_end": 6763,
+      "counts": {
+        "instructions": 47,
+        "fmul": 15,
+        "fmul_ordinary": 15,
+        "fmul_indexed": 0,
+        "fadd": 15,
+        "ld1w": 3,
+        "ld1rw": 5,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "trailing_2",
+      "line_start": 6773,
+      "line_end": 6812,
+      "counts": {
+        "instructions": 39,
+        "fmul": 12,
+        "fmul_ordinary": 12,
+        "fmul_indexed": 0,
+        "fadd": 12,
+        "ld1w": 3,
+        "ld1rw": 4,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "trailing_3",
+      "line_start": 6822,
+      "line_end": 6853,
+      "counts": {
+        "instructions": 31,
+        "fmul": 9,
+        "fmul_ordinary": 9,
+        "fmul_indexed": 0,
+        "fadd": 9,
+        "ld1w": 3,
+        "ld1rw": 3,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "trailing_4",
+      "line_start": 6861,
+      "line_end": 6884,
+      "counts": {
+        "instructions": 23,
+        "fmul": 6,
+        "fmul_ordinary": 6,
+        "fmul_indexed": 0,
+        "fadd": 6,
+        "ld1w": 3,
+        "ld1rw": 2,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    },
+    {
+      "stage": "trailing_5",
+      "line_start": 6892,
+      "line_end": 6906,
+      "counts": {
+        "instructions": 14,
+        "fmul": 3,
+        "fmul_ordinary": 3,
+        "fmul_indexed": 0,
+        "fadd": 3,
+        "ld1w": 3,
+        "ld1rw": 1,
+        "ld1rqw": 0,
+        "dup": 0,
+        "indexed_mov": 0,
+        "ext": 0,
+        "movprfx": 0
+      }
+    }
+  ],
+  "shared_counts": {
+    "instructions": 190,
+    "fmul": 63,
+    "fmul_ordinary": 63,
+    "fmul_indexed": 0,
+    "fadd": 63,
+    "ld1w": 9,
+    "ld1rw": 21,
+    "ld1rqw": 0,
+    "dup": 0,
+    "indexed_mov": 0,
+    "ext": 0,
+    "movprfx": 0
+  },
+  "remainder_counts": {
+    "instructions": 63,
+    "fmul": 21,
+    "fmul_ordinary": 21,
+    "fmul_indexed": 0,
+    "fadd": 21,
+    "ld1w": 3,
+    "ld1rw": 7,
+    "ld1rqw": 0,
+    "dup": 0,
+    "indexed_mov": 0,
+    "ext": 0,
+    "movprfx": 0
+  },
+  "shared_accumulator_chains": [
+    {
+      "accumulator": "a0",
+      "entry_and_exit_register": "z18",
+      "fadd_lines_in_column_order": [
+        6357,
+        6421,
+        6507
+      ],
+      "instructions": [
+        "fadd\tz18.s, z18.s, z2.s",
+        "fadd\tz13.s, z18.s, z13.s",
+        "fadd\tz18.s, z13.s, z18.s"
+      ]
+    },
+    {
+      "accumulator": "a1",
+      "entry_and_exit_register": "z29",
+      "fadd_lines_in_column_order": [
+        6391,
+        6436,
+        6483
+      ],
+      "instructions": [
+        "fadd\tz21.s, z29.s, z21.s",
+        "fadd\tz15.s, z21.s, z15.s",
+        "fadd\tz29.s, z15.s, z29.s"
+      ]
+    },
+    {
+      "accumulator": "a2",
+      "entry_and_exit_register": "z31",
+      "fadd_lines_in_column_order": [
+        6393,
+        6463,
+        6530
+      ],
+      "instructions": [
+        "fadd\tz17.s, z31.s, z17.s",
+        "fadd\tz31.s, z17.s, z8.s",
+        "fadd\tz31.s, z31.s, z17.s"
+      ]
+    },
+    {
+      "accumulator": "b0",
+      "entry_and_exit_register": "z8",
+      "fadd_lines_in_column_order": [
+        6382,
+        6422,
+        6523
+      ],
+      "instructions": [
+        "fadd\tz10.s, z8.s, z5.s",
+        "fadd\tz12.s, z10.s, z12.s",
+        "fadd\tz8.s, z12.s, z8.s"
+      ]
+    },
+    {
+      "accumulator": "b1",
+      "entry_and_exit_register": "z15",
+      "fadd_lines_in_column_order": [
+        6399,
+        6440,
+        6485
+      ],
+      "instructions": [
+        "fadd\tz20.s, z15.s, z20.s",
+        "fadd\tz20.s, z20.s, z21.s",
+        "fadd\tz15.s, z20.s, z1.s"
+      ]
+    },
+    {
+      "accumulator": "b2",
+      "entry_and_exit_register": "z22",
+      "fadd_lines_in_column_order": [
+        6396,
+        6458,
+        6519
+      ],
+      "instructions": [
+        "fadd\tz4.s, z22.s, z4.s",
+        "fadd\tz4.s, z4.s, z29.s",
+        "fadd\tz22.s, z2.s, z4.s"
+      ]
+    },
+    {
+      "accumulator": "c0",
+      "entry_and_exit_register": "z11",
+      "fadd_lines_in_column_order": [
+        6397,
+        6424,
+        6478
+      ],
+      "instructions": [
+        "fadd\tz9.s, z11.s, z9.s",
+        "fadd\tz11.s, z9.s, z11.s",
+        "fadd\tz11.s, z11.s, z1.s"
+      ]
+    },
+    {
+      "accumulator": "c1",
+      "entry_and_exit_register": "z13",
+      "fadd_lines_in_column_order": [
+        6402,
+        6435,
+        6518
+      ],
+      "instructions": [
+        "fadd\tz22.s, z13.s, z22.s",
+        "fadd\tz22.s, z22.s, z7.s",
+        "fadd\tz13.s, z22.s, z13.s"
+      ]
+    },
+    {
+      "accumulator": "c2",
+      "entry_and_exit_register": "z12",
+      "fadd_lines_in_column_order": [
+        6405,
+        6459,
+        6525
+      ],
+      "instructions": [
+        "fadd\tz5.s, z12.s, z5.s",
+        "fadd\tz5.s, z5.s, z28.s",
+        "fadd\tz12.s, z2.s, z5.s"
+      ]
+    },
+    {
+      "accumulator": "d0",
+      "entry_and_exit_register": "z0",
+      "fadd_lines_in_column_order": [
+        6390,
+        6427,
+        6508
+      ],
+      "instructions": [
+        "fadd\tz0.s, z0.s, z20.s",
+        "fadd\tz10.s, z0.s, z10.s",
+        "fadd\tz0.s, z10.s, z0.s"
+      ]
+    },
+    {
+      "accumulator": "d1",
+      "entry_and_exit_register": "z14",
+      "fadd_lines_in_column_order": [
+        6404,
+        6444,
+        6528
+      ],
+      "instructions": [
+        "fadd\tz19.s, z14.s, z19.s",
+        "fadd\tz19.s, z19.s, z21.s",
+        "fadd\tz14.s, z19.s, z14.s"
+      ]
+    },
+    {
+      "accumulator": "d2",
+      "entry_and_exit_register": "z1",
+      "fadd_lines_in_column_order": [
+        6406,
+        6462,
+        6531
+      ],
+      "instructions": [
+        "fadd\tz1.s, z1.s, z27.s",
+        "fadd\tz7.s, z1.s, z0.s",
+        "fadd\tz1.s, z2.s, z1.s"
+      ]
+    },
+    {
+      "accumulator": "e0",
+      "entry_and_exit_register": "z23",
+      "fadd_lines_in_column_order": [
+        6362,
+        6428,
+        6490
+      ],
+      "instructions": [
+        "fadd\tz23.s, z23.s, z3.s",
+        "fadd\tz9.s, z23.s, z9.s",
+        "fadd\tz23.s, z9.s, z23.s"
+      ]
+    },
+    {
+      "accumulator": "e1",
+      "entry_and_exit_register": "z24",
+      "fadd_lines_in_column_order": [
+        6363,
+        6439,
+        6497
+      ],
+      "instructions": [
+        "fadd\tz24.s, z24.s, z2.s",
+        "fadd\tz24.s, z24.s, z7.s",
+        "fadd\tz24.s, z24.s, z9.s"
+      ]
+    },
+    {
+      "accumulator": "e2",
+      "entry_and_exit_register": "z30",
+      "fadd_lines_in_column_order": [
+        6395,
+        6452,
+        6499
+      ],
+      "instructions": [
+        "fadd\tz6.s, z30.s, z6.s",
+        "fadd\tz6.s, z6.s, z7.s",
+        "fadd\tz30.s, z30.s, z6.s"
+      ]
+    },
+    {
+      "accumulator": "f0",
+      "entry_and_exit_register": "z25",
+      "fadd_lines_in_column_order": [
+        6372,
+        6461,
+        6511
+      ],
+      "instructions": [
+        "fadd\tz25.s, z25.s, z4.s",
+        "fadd\tz14.s, z25.s, z14.s",
+        "fadd\tz25.s, z14.s, z25.s"
+      ]
+    },
+    {
+      "accumulator": "f1",
+      "entry_and_exit_register": "z26",
+      "fadd_lines_in_column_order": [
+        6368,
+        6445,
+        6491
+      ],
+      "instructions": [
+        "fadd\tz26.s, z26.s, z3.s",
+        "fadd\tz26.s, z26.s, z7.s",
+        "fadd\tz26.s, z26.s, z1.s"
+      ]
+    },
+    {
+      "accumulator": "f2",
+      "entry_and_exit_register": "z9",
+      "fadd_lines_in_column_order": [
+        6375,
+        6454,
+        6501
+      ],
+      "instructions": [
+        "fadd\tz2.s, z9.s, z2.s",
+        "fadd\tz2.s, z2.s, z30.s",
+        "fadd\tz9.s, z6.s, z2.s"
+      ]
+    },
+    {
+      "accumulator": "g0",
+      "entry_and_exit_register": "z7",
+      "fadd_lines_in_column_order": [
+        6379,
+        6432,
+        6526
+      ],
+      "instructions": [
+        "fadd\tz7.s, z7.s, z9.s",
+        "fadd\tz27.s, z7.s, z27.s",
+        "fadd\tz7.s, z27.s, z7.s"
+      ]
+    },
+    {
+      "accumulator": "g1",
+      "entry_and_exit_register": "z16",
+      "fadd_lines_in_column_order": [
+        6376,
+        6446,
+        6529
+      ],
+      "instructions": [
+        "fadd\tz16.s, z16.s, z5.s",
+        "fadd\tz21.s, z16.s, z0.s",
+        "fadd\tz16.s, z21.s, z16.s"
+      ]
+    },
+    {
+      "accumulator": "g2",
+      "entry_and_exit_register": "z10",
+      "fadd_lines_in_column_order": [
+        6381,
+        6457,
+        6515
+      ],
+      "instructions": [
+        "fadd\tz3.s, z10.s, z3.s",
+        "fadd\tz3.s, z3.s, z23.s",
+        "fadd\tz10.s, z2.s, z3.s"
+      ]
+    }
+  ],
+  "manual_chain_set_and_register_provenance_match_actual_text": true,
+  "parent_helper_instructions": 1492,
+  "parent_shared_counts": {
+    "instructions": 189,
+    "fmul": 63,
+    "fmul_ordinary": 63,
+    "fmul_indexed": 0,
+    "fadd": 63,
+    "ld1w": 9,
+    "ld1rw": 21,
+    "ld1rqw": 0,
+    "dup": 0,
+    "indexed_mov": 0,
+    "ext": 0,
+    "movprfx": 0
+  },
+  "parent_remainder_counts": {
+    "instructions": 63,
+    "fmul": 21,
+    "fmul_ordinary": 21,
+    "fmul_indexed": 0,
+    "fadd": 21,
+    "ld1w": 3,
+    "ld1rw": 7,
+    "ld1rqw": 0,
+    "dup": 0,
+    "indexed_mov": 0,
+    "ext": 0,
+    "movprfx": 0
+  },
+  "parent_z_stack_accesses": [
+    {
+      "line": 6052,
+      "opcode": "str",
+      "operands": "z4, [x0]"
+    },
+    {
+      "line": 6064,
+      "opcode": "ldr",
+      "operands": "z6, [x1]"
+    },
+    {
+      "line": 6091,
+      "opcode": "str",
+      "operands": "z6, [x0]"
+    },
+    {
+      "line": 6137,
+      "opcode": "str",
+      "operands": "z7, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6139,
+      "opcode": "str",
+      "operands": "z8, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6140,
+      "opcode": "str",
+      "operands": "z6, [x0]"
+    },
+    {
+      "line": 6153,
+      "opcode": "ldr",
+      "operands": "z8, [x1, #1, mul vl]"
+    },
+    {
+      "line": 6155,
+      "opcode": "ldr",
+      "operands": "z14, [x1, #3, mul vl]"
+    },
+    {
+      "line": 6198,
+      "opcode": "str",
+      "operands": "z8, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6200,
+      "opcode": "str",
+      "operands": "z13, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6201,
+      "opcode": "str",
+      "operands": "z14, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6202,
+      "opcode": "str",
+      "operands": "z15, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6203,
+      "opcode": "str",
+      "operands": "z7, [x0]"
+    },
+    {
+      "line": 6216,
+      "opcode": "ldr",
+      "operands": "z15, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6218,
+      "opcode": "ldr",
+      "operands": "z16, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6219,
+      "opcode": "ldr",
+      "operands": "z17, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6220,
+      "opcode": "ldr",
+      "operands": "z18, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6272,
+      "opcode": "str",
+      "operands": "z15, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6274,
+      "opcode": "str",
+      "operands": "z16, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6275,
+      "opcode": "str",
+      "operands": "z17, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6276,
+      "opcode": "str",
+      "operands": "z18, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6277,
+      "opcode": "str",
+      "operands": "z8, [x0]"
+    },
+    {
+      "line": 6290,
+      "opcode": "ldr",
+      "operands": "z18, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6292,
+      "opcode": "ldr",
+      "operands": "z19, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6293,
+      "opcode": "ldr",
+      "operands": "z20, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6294,
+      "opcode": "ldr",
+      "operands": "z21, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6355,
+      "opcode": "str",
+      "operands": "z18, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6356,
+      "opcode": "str",
+      "operands": "z19, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6357,
+      "opcode": "str",
+      "operands": "z20, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6358,
+      "opcode": "str",
+      "operands": "z21, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6359,
+      "opcode": "str",
+      "operands": "z17, [x0]"
+    },
+    {
+      "line": 6432,
+      "opcode": "ldr",
+      "operands": "z27, [x12]"
+    },
+    {
+      "line": 6444,
+      "opcode": "str",
+      "operands": "z22, [x18]"
+    },
+    {
+      "line": 6550,
+      "opcode": "ldr",
+      "operands": "z25, [x18, #1, mul vl]"
+    },
+    {
+      "line": 6554,
+      "opcode": "ldr",
+      "operands": "z25, [x18, #2, mul vl]"
+    },
+    {
+      "line": 6557,
+      "opcode": "ldr",
+      "operands": "z25, [x18, #3, mul vl]"
+    },
+    {
+      "line": 6560,
+      "opcode": "ldr",
+      "operands": "z25, [x18, #4, mul vl]"
+    },
+    {
+      "line": 6579,
+      "opcode": "str",
+      "operands": "z5, [x18, #2, mul vl]"
+    },
+    {
+      "line": 6584,
+      "opcode": "str",
+      "operands": "z7, [x18, #1, mul vl]"
+    },
+    {
+      "line": 6585,
+      "opcode": "str",
+      "operands": "z5, [x18, #3, mul vl]"
+    },
+    {
+      "line": 6586,
+      "opcode": "str",
+      "operands": "z1, [x18, #4, mul vl]"
+    },
+    {
+      "line": 6601,
+      "opcode": "ldr",
+      "operands": "z20, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6602,
+      "opcode": "ldr",
+      "operands": "z21, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6603,
+      "opcode": "ldr",
+      "operands": "z22, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6604,
+      "opcode": "ldr",
+      "operands": "z24, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6605,
+      "opcode": "ldr",
+      "operands": "z19, [x0]"
+    },
+    {
+      "line": 6672,
+      "opcode": "str",
+      "operands": "z20, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6673,
+      "opcode": "str",
+      "operands": "z21, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6674,
+      "opcode": "str",
+      "operands": "z22, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6675,
+      "opcode": "str",
+      "operands": "z24, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6676,
+      "opcode": "str",
+      "operands": "z19, [x0]"
+    },
+    {
+      "line": 6714,
+      "opcode": "ldr",
+      "operands": "z20, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6716,
+      "opcode": "ldr",
+      "operands": "z21, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6717,
+      "opcode": "ldr",
+      "operands": "z22, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6718,
+      "opcode": "ldr",
+      "operands": "z24, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6781,
+      "opcode": "str",
+      "operands": "z20, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6783,
+      "opcode": "str",
+      "operands": "z21, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6784,
+      "opcode": "str",
+      "operands": "z22, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6785,
+      "opcode": "str",
+      "operands": "z24, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6848,
+      "opcode": "str",
+      "operands": "z21, [x0, #3, mul vl]"
+    },
+    {
+      "line": 6850,
+      "opcode": "str",
+      "operands": "z19, [x0, #1, mul vl]"
+    },
+    {
+      "line": 6851,
+      "opcode": "str",
+      "operands": "z20, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6852,
+      "opcode": "str",
+      "operands": "z22, [x0, #4, mul vl]"
+    },
+    {
+      "line": 6903,
+      "opcode": "str",
+      "operands": "z20, [x0, #2, mul vl]"
+    },
+    {
+      "line": 6905,
+      "opcode": "str",
+      "operands": "z21, [x0, #4, mul vl]"
+    },
+    {
+      "line": 7025,
+      "opcode": "ldr",
+      "operands": "z0, [x12, #1, mul vl]"
+    },
+    {
+      "line": 7031,
+      "opcode": "ldr",
+      "operands": "z0, [x12, #2, mul vl]"
+    },
+    {
+      "line": 7042,
+      "opcode": "ldr",
+      "operands": "z0, [x12]"
+    },
+    {
+      "line": 7051,
+      "opcode": "ldr",
+      "operands": "z0, [x12, #3, mul vl]"
+    },
+    {
+      "line": 7054,
+      "opcode": "ldr",
+      "operands": "z0, [x12, #4, mul vl]"
+    },
+    {
+      "line": 7220,
+      "opcode": "str",
+      "operands": "z2, [x0, #4, mul vl]"
+    },
+    {
+      "line": 7221,
+      "opcode": "str",
+      "operands": "z2, [x0, #2, mul vl]"
+    },
+    {
+      "line": 7223,
+      "opcode": "str",
+      "operands": "z2, [x0, #3, mul vl]"
+    },
+    {
+      "line": 7224,
+      "opcode": "str",
+      "operands": "z2, [x0, #1, mul vl]"
+    },
+    {
+      "line": 7231,
+      "opcode": "str",
+      "operands": "z2, [x0]"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "created_at": "2026-09-12T19:50:05.016733+00:00",
+  "round": "sep13af",
+  "job_id": "1583230",
+  "group": "kp-conv-group-01b8f067516e",
+  "origin": "Root reported its sole submit tool result chunk cae803 exit0 and saved the following original files. Lifecycle agent did not recreate raw stdout or submit a job.",
+  "root_tool_chunk": "cae803",
+  "root_submit_files": [
+    ".runs/conv/sep13af-root-submit.command.json",
+    ".runs/conv/sep13af-root-submit.exit.txt",
+    ".runs/conv/sep13af-root-submit.stderr.txt",
+    ".runs/conv/sep13af-root-submit.stdout.txt"
+  ],
+  "root_submit_exit": 0,
+  "root_submit_stderr_bytes": 0,
+  "tools_before_lifecycle": {
+    "sep13af-submit-performance.py": {
+      "bytes": 33682,
+      "sha256": "d87ed45554fb6330e321fef949640112f3f13b419bfb0848aac1c4f5b5062f82"
+    },
+    "sep13af-record-group.py": {
+      "bytes": 9561,
+      "sha256": "23e75e26f624d451d4c6ea872dc46d0f1d48f6eddb9365fec48be0a8ab0353df"
+    },
+    "sep13af-compare.py": {
+      "bytes": 6476,
+      "sha256": "8fbee442fd18ee4ef541410c2fb38c5061abbfdf2ac5593ab2b95d7109e3db6e"
+    }
+  },
+  "reset_card_used": false
+}

@@ -1,0 +1,53 @@
+--- a/.runs/conv/C55-row7x3shared3/source/conv2d.c
++++ b/.runs/conv/C56-row7shared3fence/source/conv2d.c
+@@ -1528,6 +1528,16 @@
+                         g2 = svadd_f32_x(pg, g2, svmul_f32_x(pg, v, gk));
+                     }
+                 }
++                __asm__ __volatile__(""
++                    :
++                    : "w"(a0), "w"(a1), "w"(a2),
++                      "w"(b0), "w"(b1), "w"(b2),
++                      "w"(c0), "w"(c1), "w"(c2),
++                      "w"(d0), "w"(d1), "w"(d2),
++                      "w"(e0), "w"(e1), "w"(e2),
++                      "w"(f0), "w"(f1), "w"(f2),
++                      "w"(g0), "w"(g1), "w"(g2)
++                    : "memory");
+                 {
+                     const int column = ik + 1;
+                     const svfloat32_t ak = svdup_n_f32(ka[column]);
+@@ -1569,6 +1579,16 @@
+                         g2 = svadd_f32_x(pg, g2, svmul_f32_x(pg, v, gk));
+                     }
+                 }
++                __asm__ __volatile__(""
++                    :
++                    : "w"(a0), "w"(a1), "w"(a2),
++                      "w"(b0), "w"(b1), "w"(b2),
++                      "w"(c0), "w"(c1), "w"(c2),
++                      "w"(d0), "w"(d1), "w"(d2),
++                      "w"(e0), "w"(e1), "w"(e2),
++                      "w"(f0), "w"(f1), "w"(f2),
++                      "w"(g0), "w"(g1), "w"(g2)
++                    : "memory");
+                 {
+                     const int column = ik + 2;
+                     const svfloat32_t ak = svdup_n_f32(ka[column]);
+@@ -1610,6 +1630,16 @@
+                         g2 = svadd_f32_x(pg, g2, svmul_f32_x(pg, v, gk));
+                     }
+                 }
++                __asm__ __volatile__(""
++                    :
++                    : "w"(a0), "w"(a1), "w"(a2),
++                      "w"(b0), "w"(b1), "w"(b2),
++                      "w"(c0), "w"(c1), "w"(c2),
++                      "w"(d0), "w"(d1), "w"(d2),
++                      "w"(e0), "w"(e1), "w"(e2),
++                      "w"(f0), "w"(f1), "w"(f2),
++                      "w"(g0), "w"(g1), "w"(g2)
++                    : "memory");
+             }
+             for (; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);

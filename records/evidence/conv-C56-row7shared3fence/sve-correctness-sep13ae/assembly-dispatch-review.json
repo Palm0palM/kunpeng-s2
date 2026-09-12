@@ -1,0 +1,66 @@
+{
+  "candidate": "C56-row7shared3fence",
+  "job_id": "1583102",
+  "source_sha256": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c",
+  "assembly_sha256": "357025e3e88d302ea981193ba1b2e43e4715aba37bc474250654aa0fcbce20fa",
+  "compiler_version": "10.3.1",
+  "scope": "AE dispatch exact full text comparison only; independent helper review remains separate",
+  "review_complete": false,
+  "dispatch_reviewed": true,
+  "whole_source_fma_count": 0,
+  "dispatch_functions": [
+    {
+      "symbol": "conv2d._omp_fn.2",
+      "line_start": 662,
+      "line_end": 2269,
+      "control_flow_notes": "Applicable by exact complete AE to AC function text equality: Previously reviewed AA control flow, proven applicable here by exact complete actual function text equality: OpenMP output-row partition; optional prefix then 32/16/8/4/2/1 output tiles with preserved ky/kx progression and last-column branches. Actual whole function text exactly equals frozen T, with labels/directives included; this is only this function, not whole machine-code identity. Current AC full function text exactly equals the reviewed AA function, including every branch, call, label and instruction; only containing-file line positions differ.",
+      "stack_notes": "368-byte fixed frame, GPR saves and scalar fields. Four D8-D15 ABI save/restore pairs at sp96..144. Fourteen static STR Q tile-buffer writes at sp240..352; x18=sp+240 and LDP X pairs copy tile buffers to output. These are legacy non-SVE tile buffers, so no global zero-vector-stack claim.",
+      "entire_function_read": false,
+      "review_method": "Exact complete current label-to-size function text compared against AC, which had exact complete AA equality and inherited its fully reviewed control flow. No normalization or omitted text.",
+      "entire_actual_function_compared": true,
+      "manual_reread_current_function_claimed": false,
+      "actual_whole_function_text_identical_to_AC": true,
+      "AC_job_id": "1582860"
+    },
+    {
+      "symbol": "conv2d._omp_fn.1",
+      "line_start": 7264,
+      "line_end": 7443,
+      "control_flow_notes": "Applicable by exact complete AE to AC function text equality: Previously reviewed AA control flow, proven applicable here by exact complete actual function text equality: Static OpenMP partition of four-output-row groups; w21 remaining rows selects rowquad for>=4,rowtriple3,rowpair2,prefix1. Per-group input/output advance and all alternate exits reviewed. Whole function text differs from T; no raw identity claim. Current AC full function text exactly equals the reviewed AA function, including every branch, call, label and instruction; only containing-file line positions differ.",
+      "stack_notes": "160-byte frame, GPR ABI saves, scalar control and outgoing rowquad/triple argument slots. No D/Q/Z/predicate stack transfers in actual entire function, including indirect pointers and exits.",
+      "entire_function_read": false,
+      "review_method": "Exact complete current label-to-size function text compared against AC, which had exact complete AA equality and inherited its fully reviewed control flow. No normalization or omitted text.",
+      "entire_actual_function_compared": true,
+      "manual_reread_current_function_claimed": false,
+      "actual_whole_function_text_identical_to_AC": true,
+      "AC_job_id": "1582860"
+    },
+    {
+      "symbol": "conv2d._omp_fn.0",
+      "line_start": 7447,
+      "line_end": 7763,
+      "control_flow_notes": "Applicable by exact complete AE to AC function text equality: Previously reviewed AA control flow, proven applicable here by exact complete actual function text equality: OpenMP static partition of seven-row groups; full group calls rowseven. Remainders6=rowquad+rowpair,5=rowquad+prefix,4=rowquad,3=rowtriple,2=rowpair,1=prefix. Input/output group strides and saved arguments restored after each helper; empty partition and normal alternate exits reviewed. Current AC full function text exactly equals the reviewed AA function, including every branch, call, label and instruction; only containing-file line positions differ.",
+      "stack_notes": "240-byte frame. GPR/scalar saves and outgoing args at sp0..32 for rowseven, preserved pointers at sp192 etc. No D/Q/Z/predicate stack transfers in actual entire function.",
+      "entire_function_read": false,
+      "review_method": "Exact complete current label-to-size function text compared against AC, which had exact complete AA equality and inherited its fully reviewed control flow. No normalization or omitted text.",
+      "entire_actual_function_compared": true,
+      "manual_reread_current_function_claimed": false,
+      "actual_whole_function_text_identical_to_AC": true,
+      "AC_job_id": "1582860"
+    },
+    {
+      "symbol": "conv2d",
+      "line_start": 7768,
+      "line_end": 7939,
+      "control_flow_notes": "Applicable by exact complete AE to AC function text equality: Previously reviewed AA public entry, proven applicable here by exact complete actual function text equality: Rejects nonpositive kernel dimensions or kernel larger than input. Reads HWCAP_SVE: when SVE and kh>=7 and oh>=7 dispatches seven-row worker; otherwise available SVE uses four-row worker, non-SVE uses legacy worker. Exactly one selected GOMP_parallel per valid call; ceil group counts and all returns inspected. This is code review, not executed invalid/non-SVE diagnostics. Current AC full function text exactly equals the reviewed AA function, including every branch, call, label and instruction; only containing-file line positions differ.",
+      "stack_notes": "160-byte public frame with GPR ABI saves and packed OpenMP argument area; early invalid dimensions before frame or restored exit. No D/Q/Z/predicate stack transfers in actual entire function.",
+      "entire_function_read": false,
+      "review_method": "Exact complete current label-to-size function text compared against AC, which had exact complete AA equality and inherited its fully reviewed control flow. No normalization or omitted text.",
+      "entire_actual_function_compared": true,
+      "manual_reread_current_function_claimed": false,
+      "actual_whole_function_text_identical_to_AC": true,
+      "AC_job_id": "1582860"
+    }
+  ],
+  "performance_measured": false
+}

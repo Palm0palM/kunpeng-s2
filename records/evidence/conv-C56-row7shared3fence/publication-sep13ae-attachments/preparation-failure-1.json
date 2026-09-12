@@ -1,0 +1,13 @@
+{
+  "phase": "read_only_before_first_transport_copy",
+  "tool_output_chunk": "7b0724",
+  "exit_code": 1,
+  "output_verbatim": "Traceback (most recent call last):\n  File \"<stdin>\", line 10, in <module>\nKeyError: 'source_parent'\n",
+  "operation": "Lightweight Python read of the candidate standard record; no AE tool imported or executed.",
+  "failed_expression": "record['version']==version and record['source_parent']==parent",
+  "transport_copy_created": false,
+  "manifest_created": false,
+  "tool_source_hash_placeholder_changed": false,
+  "operator_executed": false,
+  "raw_output_origin": "Exact text returned by exec_command; this metadata is a preparation failure record, not a diagnostic raw log."
+}
