@@ -1,0 +1,5 @@
+# T22-unrollreg preparation
+
+Source prepared only, not compiled or measured. Intended parent is current T19-control13. Source origin T21-unrollfence, mechanism control T20-wideunroll2. In r19 job1582129, T21 reduced MOVPRFX from 8 to 1 per two-k iteration yet large-case performance regressed 3.29% relative to T20. Reduced load-scheduling freedom is a hypothesis, not an established cause.
+
+Retain the two empty volatile asm statements and all 16 read/write vector accumulator constraints from T21; remove only their memory clobbers, plus correct the adjacent comment. This permits ordinary loads to be scheduled across the empty constraints while keeping compiler data dependencies for the accumulator values. The empty template leaves the read/write values unchanged at runtime. No arithmetic, pointer, loop bound, FMA order, layout, dispatch or fallback modifications. Four support files remain byte-identical. No local task code or hashes. Compiler acceptance, actual scheduling and speed require target validation.

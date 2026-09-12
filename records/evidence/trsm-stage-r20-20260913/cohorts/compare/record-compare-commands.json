@@ -1,0 +1,85 @@
+{
+  "executed_argv": [
+    [
+      "python3",
+      ".runs/trsm/optimization-20260913-r20-compare/job_control.py",
+      "prepare"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260913-r20-compare/job_control.py",
+      "submit"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260913-r20-compare/job_control.py",
+      "collect"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T19-control13-repeat-r20",
+      "--environment",
+      "COMPUTE_NODE-numa2-gcc1231-generic38-kml251-test3-warmup1-job1582239",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+      "--repeat-existing"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T20-wideunroll2-repeat-r20",
+      "--environment",
+      "COMPUTE_NODE-numa2-gcc1231-generic38-kml251-test3-warmup1-job1582239",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+      "--repeat-existing"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T22-unrollreg",
+      "--environment",
+      "COMPUTE_NODE-numa2-gcc1231-generic38-kml251-test3-warmup1-job1582239",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T19-control13",
+      "T20-wideunroll2"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T19-control13",
+      "T22-unrollreg"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T20-wideunroll2",
+      "T22-unrollreg"
+    ]
+  ],
+  "exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    2
+  ],
+  "job_id": "1582239",
+  "no_hash_operations": true
+}

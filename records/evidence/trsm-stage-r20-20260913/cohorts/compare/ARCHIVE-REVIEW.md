@@ -1,0 +1,3 @@
+# r20 archive review
+
+Reviewed adaptation from the executed r19 archive. It retains all three r20 members, current T22 preparation and full actual wide diagnostics, plus both exact full prior records associated with archived r19 job1582129. Requires latest T19/T20/T22 records and both parent comparisons plus the mechanism comparison. Source inputs, submitted snapshot, commands and results remain separated. New destination only; no overwriting archive, no local task execution or hashes. Original privacy exclusions/redaction/material scan and required-evidence checks unchanged. Archiving is copying, not measurement validation or promotion. AST parsed, not executed before real results.
