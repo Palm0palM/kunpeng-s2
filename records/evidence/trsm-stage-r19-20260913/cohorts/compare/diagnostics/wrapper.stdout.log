@@ -1,0 +1,675 @@
+{"allowed_cpu_count": 38, "allowed_cpus": [76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113], "guard_pass": true, "host": "COMPUTE_NODE", "numa_nodes": ["node2"], "scheduler_job_id": "1582129"}
+gcc (gcc for openEuler 3.0.2) 12.3.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+SOURCE_INSTRUMENTATION_PASS copies=1 insertions=1 original_untouched=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=1 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=0 lda=3 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=0 lda=3 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=0 lda=11 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=0 lda=11 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=1 lda=4 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=1 lda=4 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=1 lda=12 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=1 lda=12 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=2 lda=5 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=2 lda=5 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=2 lda=13 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=2 lda=13 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=7 lda=10 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=7 lda=10 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=7 lda=18 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=7 lda=18 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=31 lda=34 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=31 lda=34 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=31 lda=42 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=31 lda=42 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=255 lda=258 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=255 lda=258 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=255 lda=266 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=255 lda=266 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=256 lda=259 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=256 lda=259 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=256 lda=267 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=256 lda=267 layout=packed calls=1
+PASS micro_cases=28 ordered_FMA_bitwise=1 L_X_guards_unchanged=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=1 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=31 threads=1 calls=0 expected=0 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=32 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=33 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7712 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=63 threads=1 calls=7712 expected=7712 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=64 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=65 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15456 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=95 threads=1 calls=15456 expected=15456 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=96 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=127 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=128 threads=1 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=1 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=12 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=4 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=31 threads=4 calls=0 expected=0 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=32 threads=4 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=33 threads=4 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7712 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=63 threads=4 calls=7712 expected=7712 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=64 threads=4 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=65 threads=4 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15456 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=95 threads=4 calls=15456 expected=15456 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=96 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=127 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=128 threads=4 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=4 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=12 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=38 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=38 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=4 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=136 expected_panel_stride=8
+CASE_PASS m=4111 n=129 threads=4 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.0343289669564369e-16 padding_L_unchanged=1 shared_fail=1
+SHARED_ALLOC_PASS calls=1 injected=1
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=4 hwcap_sve=0 min_vl=64 max_vl=64 expected_wide=0
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=4 calls=0 expected=0 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+NARROW_VL_PASS requested=16 actual=16
+DISPATCH workers=4 hwcap_sve=1 min_vl=16 max_vl=16 expected_wide=0
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=4 calls=0 expected=0 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TRSM_WIDE32_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=28 SHARED_FAIL_CASES=1 NO_SVE_CASES=1 NARROW_VL_CASES=1
+{"allowed_cpu_count": 38, "allowed_cpus": [76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113], "guard_pass": true, "host": "COMPUTE_NODE", "numa_nodes": ["node2"], "scheduler_job_id": "1582129"}
+gcc (gcc for openEuler 3.0.2) 12.3.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+SOURCE_INSTRUMENTATION_PASS copies=1 insertions=1 original_untouched=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=1 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=0 lda=3 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=0 lda=3 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=0 lda=11 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=0 lda=11 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=1 lda=4 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=1 lda=4 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=1 lda=12 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=1 lda=12 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=2 lda=5 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=2 lda=5 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=2 lda=13 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=2 lda=13 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=7 lda=10 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=7 lda=10 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=7 lda=18 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=7 lda=18 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=31 lda=34 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=31 lda=34 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=31 lda=42 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=31 lda=42 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=255 lda=258 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=255 lda=258 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=255 lda=266 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=255 lda=266 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=256 lda=259 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=256 lda=259 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=256 lda=267 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=256 lda=267 layout=packed calls=1
+PASS micro_cases=28 ordered_FMA_bitwise=1 L_X_guards_unchanged=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=1 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=31 threads=1 calls=0 expected=0 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=32 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=33 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7712 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=63 threads=1 calls=7712 expected=7712 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=64 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=65 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15456 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=95 threads=1 calls=15456 expected=15456 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=96 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=127 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=128 threads=1 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=1 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=12 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=4 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=31 threads=4 calls=0 expected=0 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=32 threads=4 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=33 threads=4 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7712 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=63 threads=4 calls=7712 expected=7712 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=64 threads=4 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=65 threads=4 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15456 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=95 threads=4 calls=15456 expected=15456 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=96 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=127 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=128 threads=4 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=4 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=12 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=38 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=38 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=4 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=136 expected_panel_stride=8
+CASE_PASS m=4111 n=129 threads=4 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.0343289669564369e-16 padding_L_unchanged=1 shared_fail=1
+SHARED_ALLOC_PASS calls=1 injected=1
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=4 hwcap_sve=0 min_vl=64 max_vl=64 expected_wide=0
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=4 calls=0 expected=0 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+NARROW_VL_PASS requested=16 actual=16
+DISPATCH workers=4 hwcap_sve=1 min_vl=16 max_vl=16 expected_wide=0
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=4 calls=0 expected=0 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TRSM_WIDE32_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=28 SHARED_FAIL_CASES=1 NO_SVE_CASES=1 NARROW_VL_CASES=1
+{"allowed_cpu_count": 38, "allowed_cpus": [76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113], "guard_pass": true, "host": "COMPUTE_NODE", "numa_nodes": ["node2"], "scheduler_job_id": "1582129"}
+gcc (gcc for openEuler 3.0.2) 12.3.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+SOURCE_INSTRUMENTATION_PASS copies=1 insertions=1 original_untouched=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=1 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=0 lda=3 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=0 lda=3 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=0 lda=11 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=0 lda=11 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=1 lda=4 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=1 lda=4 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=1 lda=12 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=1 lda=12 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=2 lda=5 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=2 lda=5 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=2 lda=13 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=2 lda=13 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=7 lda=10 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=7 lda=10 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=7 lda=18 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=7 lda=18 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=31 lda=34 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=31 lda=34 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=31 lda=42 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=31 lda=42 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=255 lda=258 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=255 lda=258 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=255 lda=266 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=255 lda=266 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=256 lda=259 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=256 lda=259 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=256 lda=267 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=256 lda=267 layout=packed calls=1
+PASS micro_cases=28 ordered_FMA_bitwise=1 L_X_guards_unchanged=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=1 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=31 threads=1 calls=0 expected=0 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=32 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=33 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7712 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=63 threads=1 calls=7712 expected=7712 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=64 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=65 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15456 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=95 threads=1 calls=15456 expected=15456 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=96 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=127 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=128 threads=1 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=1 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=12 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=4 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=31 threads=4 calls=0 expected=0 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=32 threads=4 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=33 threads=4 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7712 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=63 threads=4 calls=7712 expected=7712 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=64 threads=4 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=65 threads=4 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15456 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=95 threads=4 calls=15456 expected=15456 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=96 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=127 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=128 threads=4 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=4 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=12 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=38 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=38 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=4 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=136 expected_panel_stride=8
+CASE_PASS m=4111 n=129 threads=4 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.0343289669564369e-16 padding_L_unchanged=1 shared_fail=1
+SHARED_ALLOC_PASS calls=1 injected=1
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=4 hwcap_sve=0 min_vl=64 max_vl=64 expected_wide=0
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=4 calls=0 expected=0 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TILE_CONFIG_PASS KB=256 CT=64
+NARROW_VL_PASS requested=16 actual=16
+DISPATCH workers=4 hwcap_sve=1 min_vl=16 max_vl=16 expected_wide=0
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=4 calls=0 expected=0 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TRSM_WIDE32_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=28 SHARED_FAIL_CASES=1 NO_SVE_CASES=1 NARROW_VL_CASES=1
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        14.82     353.3135     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       125.65     801.3805     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       181.08     819.4313     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010645-Qf37OI
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        15.23     343.6684     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       120.11     838.3305     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       175.09     847.5046     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010653-6yEzlQ
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        13.22     396.0423     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       119.89     839.8641     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       179.72     825.6605     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010702-bGIJZd
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        15.17     345.0451     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       122.78     820.1075     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       180.75     820.9544     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010711-my3udC
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        14.06     372.3528     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       120.15     838.0129     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       174.89     848.4315     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010720-7y3sqp
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        15.11     346.4547     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       119.96     839.3374     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       180.86     820.4306     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010729-Jv4Upf
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        14.64     357.4927     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       118.22     851.7003     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       174.38     850.9483     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010738-sQSTFv
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        14.61     358.2010     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       119.84     840.1812     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       179.46     826.8583     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010747-agN199
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        14.30     366.1412     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       121.78     826.8418     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       180.40     822.5447     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010756-hFk1G1
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        14.73     355.2897     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       120.16     837.9480     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       180.12     823.8332     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010805-AGc8ux
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        14.55     359.8170     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       121.03     831.9552     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       180.26     823.1628     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010814-tB4WYu
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        13.47     388.5502     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       119.66     841.4434     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       174.34     851.1484     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-010823-i2o01x

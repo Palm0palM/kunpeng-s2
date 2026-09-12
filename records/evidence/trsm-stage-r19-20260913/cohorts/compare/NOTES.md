@@ -1,0 +1,3 @@
+# r19 T21 compiler lifetime experiment
+
+A/B are unchanged T19/T20 repeats following r18 job1582004, C is new T21. T21 inserts two empty eight-accumulator read/write vector constraints with memory clobbers between the two k steps, to test whether GCC emits fewer moves than the eight MOVPRFX observed per T20 pair. Useful load overlap may also shrink, so no speed claim precedes measurement. Official warmup ABC and formal ABC/BCA/CAB, full CT64 wide checks for all three, unchanged promotion gates and all samples retained. KML25.1/GCC12 is not specified KML25.2 revalidation. No local task execution or hashes.
