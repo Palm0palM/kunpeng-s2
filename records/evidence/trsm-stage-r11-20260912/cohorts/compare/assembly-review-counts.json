@@ -1,0 +1,27 @@
+{
+  "job_id": "1579600",
+  "source": "diagnostics/preflight-wide32-results/T13-sve4x32-repeat-r11/trsm-wide4x32.s",
+  "function_lines": [
+    456,
+    623
+  ],
+  "loop_lines": [
+    489,
+    522
+  ],
+  "instruction_counts": {
+    "ldr": 3,
+    "ptrue": 1,
+    "ld1rd": 1,
+    "add": 4,
+    "ld1d": 4,
+    "mov": 3,
+    "fmla": 16,
+    "cmp": 1,
+    "bne": 1
+  },
+  "hot_instructions": 34,
+  "stack_access_or_call": false,
+  "actual_assembly_text_review_only": true,
+  "no_hash_operations": true
+}

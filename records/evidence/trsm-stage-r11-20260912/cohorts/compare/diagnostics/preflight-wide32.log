@@ -1,0 +1,130 @@
+{"allowed_cpu_count": 38, "allowed_cpus": [76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113], "guard_pass": true, "host": "COMPUTE_NODE_1", "numa_nodes": ["node2"], "scheduler_job_id": "1579600"}
+gcc (gcc for openEuler 3.0.2) 12.3.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+SOURCE_INSTRUMENTATION_PASS copies=1 insertions=1 original_untouched=1
+DISPATCH workers=1 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=0 lda=3 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=0 lda=3 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=0 lda=11 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=0 lda=11 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=1 lda=4 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=1 lda=4 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=1 lda=12 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=1 lda=12 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=2 lda=5 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=2 lda=5 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=2 lda=13 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=2 lda=13 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=7 lda=10 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=7 lda=10 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=7 lda=18 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=7 lda=18 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=31 lda=34 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=31 lda=34 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=31 lda=42 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=31 lda=42 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=255 lda=258 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=255 lda=258 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=255 lda=266 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=255 lda=266 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=47 expected_panel_stride=8
+MICRO_PASS count=256 lda=259 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=256 lda=259 layout=packed calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=49 expected_panel_stride=8
+MICRO_PASS count=256 lda=267 layout=strided calls=1
+ARGUMENTS_PASS calls=1 bad=0 expected_ldx=8 expected_panel_stride=2048
+MICRO_PASS count=256 lda=267 layout=packed calls=1
+PASS micro_cases=28 ordered_FMA_bitwise=1 L_X_guards_unchanged=1
+DISPATCH workers=1 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=31 threads=1 calls=0 expected=0 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=32 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=33 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7712 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=63 threads=1 calls=7712 expected=7712 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=64 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=65 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15456 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=95 threads=1 calls=15456 expected=15456 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=96 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=9 padding_L_unchanged=1 actual_entry_counts=1
+DISPATCH workers=4 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=31 threads=4 calls=0 expected=0 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=32 threads=4 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=33 threads=4 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7712 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=63 threads=4 calls=7712 expected=7712 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=64 threads=4 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=65 threads=4 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15456 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=95 threads=4 calls=15456 expected=15456 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=96 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=9 padding_L_unchanged=1 actual_entry_counts=1
+DISPATCH workers=38 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=38 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+DISPATCH workers=4 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=104 expected_panel_stride=8
+CASE_PASS m=4111 n=97 threads=4 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.0343289669564369e-16 padding_L_unchanged=1 shared_fail=1
+SHARED_ALLOC_PASS calls=1 injected=1
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+DISPATCH workers=4 hwcap_sve=0 min_vl=64 max_vl=64 expected_wide=0
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=4 calls=0 expected=0 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+NARROW_VL_PASS requested=16 actual=16
+DISPATCH workers=4 hwcap_sve=1 min_vl=16 max_vl=16 expected_wide=0
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=4 calls=0 expected=0 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
+TRSM_WIDE32_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=22 SHARED_FAIL_CASES=1 NO_SVE_CASES=1 NARROW_VL_CASES=1
