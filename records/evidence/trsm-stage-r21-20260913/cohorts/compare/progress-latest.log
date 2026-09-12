@@ -1,0 +1,33 @@
+preflight-panel8x16-results/T19-control13-repeat-r21/summary.tsv 0	3
+budget-shared-fail-t4	0	2
+wide-normal-t1	0	15
+wide-normal-t4	0	14
+wide-normal-t38	0	16
+wide-no-sve-t4	0	15
+wide-narrow-vl-t4	0	15
+wide-shared-fail-t4	0	14
+wide-x-fail-t4	0	15
+wide-all-fail-t4	0	15
+verify-results	0	1
+
+preflight-panel8x16-results/T23-smallunroll2/summary.tsv 0	2
+budget-shared-fail-t4	0	2
+wide-normal-t1	0	14
+wide-normal-t4	0	15
+wide-normal-t38	0	16
+wide-no-sve-t4	0	15
+wide-narrow-vl-t4	0	14
+wide-shared-fail-t4	0	15
+wide-x-fail-t4	0	14
+wide-all-fail-t4	0	15
+verify-results	0	1
+
+COHORT_TAIL 
+ARGUMENTS_PASS m=1040 n=32 calls=0 bad=0 expected_panel_stride=8320
+ALLOC_PASS m=1040 n=33 small=1 wide_path=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=532480 x_success=0 x_fail=4 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=4 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1040 n=33 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=1 wrapper_expected=1
+ARGUMENTS_PASS m=1040 n=33 calls=0 bad=0 expected_panel_stride=8320
+ALLOCATION_SUMMARY_PASS cases=12 budget_cases=0 shared_injection_cases=0
+PASS whole_cases=12 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+TRSM_PANEL8X16_PREFLIGHT_COMPLETE=1 MICRO_CASES=46 WHOLE_CASES=615 NOOP_CASES=96 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=14 WIDE_MICRO_CASES=18 SHARED_FAIL_CASES=89 ALLOCATION_CASES=615 BUDGET_CASES=32 BUDGET_SHARED_INJECTIONS=3 ARGUMENT_CHECKED_CASES=633 ARGUMENT_OBSERVATIONS=6388 WRAPPER_CALLS=55
+

@@ -1,0 +1,59 @@
+{
+  "status": "reviewed_not_promoted",
+  "job_id": "1582392",
+  "formal_pass_count": 18,
+  "warmup_pass_count": 6,
+  "baseline_version": "T19-control13",
+  "best_implementation": "T19-panel8x16budget",
+  "comparisons": {
+    "T23-smallunroll2": {
+      "eligible": false,
+      "reasons": [
+        "total improvement -3.2500% does not exceed threshold 4.4414%",
+        "at least one official case regresses by more than 1%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 14.41,
+          "candidate_ms": 14.4,
+          "gain_pct": 0.06939625260235799
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 119.57,
+          "candidate_ms": 128.33,
+          "gain_pct": -7.326252404449293
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 180.48,
+          "candidate_ms": 181.95,
+          "gain_pct": -0.8144946808510631
+        }
+      ],
+      "total_gain_pct": -3.250015900273494,
+      "noise_threshold_pct": 4.441360166550997,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "medians_ms": {
+    "T19-control13": 314.46,
+    "T23-smallunroll2": 324.68
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false,
+  "root_reviewed_at": "2026-09-12T17:50:10.525310+00:00",
+  "decision": "T23 middle regresses 7.3263%, total regresses 3.2500%; retain T19 implementation and ZIP. No historical pooling or sample exclusion."
+}

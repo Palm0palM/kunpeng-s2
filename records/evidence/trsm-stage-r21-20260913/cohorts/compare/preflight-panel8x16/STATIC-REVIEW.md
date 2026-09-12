@@ -1,0 +1,11 @@
+# T19 dedicated preflight: root static review
+
+READY for compute-node execution; no target test has run yet. Root inspected the six frozen inputs after the author completed them. This review document was added after that input freeze; it is not a runtime result.
+
+The guard precedes compiler inspection, hook-copy generation, all five test builds and original-source assembly. It requires allocated Linux aarch64, numeric job ID, exactly38 CPUs and one NUMA; the cohort separately compares that guard ID to its confirmed job. The test-only allocator wraps candidate allocation sites while fixture memory stays outside the macro. Worker bases are separately recorded before the same worker's hook reads them, and all global fixture state is stable during each joined call.
+
+The independently derived path distinguishes budget-contained, over-budget, no-SVE, narrow-VL, shared-only and X/all failures. Each actual allocation/byte/level/success/failure, each worker X call, wrapper/old/packed/new kernel count and two-panel argument relation is checked. The 1047x33 case in wide-normal-t38 covers new-kernel execution followed by NEON4+scalar3 row tails and a one-column tail; earlier1041x9 and4095x9 did not enter the new kernel.
+
+Direct new-kernel reference performs ordered scalar fma from zero, subtract and divide independently for both panels. Whole-buffer/L comparisons protect prefixes and outside rows. All615 whole cases retain long-double-derived RHS, finite1e-12 checks and padding/L immutability. The final contract is46 direct (14 old+14 packed+18 new),615 whole,96 no-op,89 shared-failure markers,32 budget/3 budget shared injections,27 test processes and633 argument cases. No official benchmark/timing or precision is changed.
+
+Runner/strict parser order agrees on37 steps. Remote finalize parses36 completed steps before its own final row; the read-only collector later requires all37. It reparses all original rows, compares all three JSON objects and completion, checks exact one-hook relation to the supplied frozen source and separate uninstrumented assembly. Import has no candidate execution; only explicit finalize writes results. Python AST passed; bash syntax was already checked by the author. Local work was text/AST review only, with no candidate compilation, test execution, assembly generation or digests.

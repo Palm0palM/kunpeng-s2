@@ -1,0 +1,7 @@
+# T23 target validation plan
+
+Use a fresh single-NUMA 38-CPU allocation, 24 GiB, 1800 seconds, actual KML25.1/GCC12. Compare unchanged T19-control13 with new T23; T23 changes only the small-path history loop, so a T20 mechanism member is not needed for this specific hypothesis. Preserve the current baseline's full prior from job1582239.
+
+Run the complete existing T19-specific preflight-panel8x16 module for both members, not wide32-only historical checks. The exact module is under optimization-20260912-r16-compare/preflight-panel8x16; its check-panel.c direct wide micro starts are 0/1/7/8/9/15/16/255/256 with padding1/7 (18 cases). It also retains 28 old/packed direct cases, 615 whole, 96 no-op, 32 budget groups and 27 processes, including all failure/VL/padding/row-column-tail/argument and allocation observations. Verify actual raw results and parser scope, not merely completion counters. Its instrument hook uses the unchanged function signature.
+
+Generate uninstrumented target assembly and inspect the history loop for load overlap, FMAs, moves and hot stack accesses. One official warmup AB and formal AB/BA/AB, three complete suites per member, TEST_RUNS=3, retain all 18 formal/6 warmup rows. Original promotion gate, no pooled samples. The large path is byte-identical to T19; if it changes later, add the corresponding fresh validation. All compilation/tests run on allocated compute nodes; no local task execution or hashes.

@@ -1,0 +1,53 @@
+T19-control13-repeat-r21/benchmark.log      1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-014750-DuMPqM
+BENCH_REPEAT 2/3 END
+
+BENCH_REPEAT 3/3 BEGIN COHORT=trsm-kml251-6b3de88e03f5 MEMBER=T19-control13-repeat-r21
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        14.41     363.1678     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       119.57     842.1158     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       180.32     822.9142     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-014759-wG99Jj
+BENCH_REPEAT 3/3 END
+
+T23-smallunroll2/benchmark.log 23-smallunroll2
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        14.40     363.5520     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       128.33     784.6217     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       181.95     815.5148     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-014741-HUYCHp
+BENCH_REPEAT 2/3 END
+
+BENCH_REPEAT 3/3 BEGIN COHORT=trsm-kml251-6b3de88e03f5 MEMBER=T23-smallunroll2
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS: official kblas
+
