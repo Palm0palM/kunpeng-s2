@@ -1,0 +1,45 @@
+{
+  "T19-control13-repeat-r22": {
+    "function_assembly_lines": 318,
+    "history_loop_label": ".L168",
+    "k_steps": 1,
+    "instructions": 37,
+    "opcodes": {
+      "ldr": 8,
+      "mov": 8,
+      "ld1d": 2,
+      "fmla": 16,
+      "add": 1,
+      "cmp": 1,
+      "bne": 1
+    },
+    "hot_stack_references": [],
+    "function_stack_references": [
+      "\tstp\td8, d9, [sp, -32]!",
+      "\tstp\td10, d11, [sp, 16]",
+      "\tldp\td10, d11, [sp, 16]",
+      "\tldp\td8, d9, [sp], 32"
+    ]
+  },
+  "T24-smallbroadcast": {
+    "function_assembly_lines": 357,
+    "history_loop_label": ".L168",
+    "k_steps": 1,
+    "instructions": 37,
+    "opcodes": {
+      "add": 9,
+      "ld1d": 2,
+      "ld1rd": 8,
+      "fmla": 16,
+      "cmp": 1,
+      "bne": 1
+    },
+    "hot_stack_references": [],
+    "function_stack_references": [
+      "\tstp\td8, d9, [sp, -32]!",
+      "\tstp\td10, d11, [sp, 16]",
+      "\tldp\td10, d11, [sp, 16]",
+      "\tldp\td8, d9, [sp], 32"
+    ]
+  }
+}

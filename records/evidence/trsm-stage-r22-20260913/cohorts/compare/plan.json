@@ -1,0 +1,53 @@
+{
+  "phase": "interleaved-T19-vs-small8x16-broadcast",
+  "reference": "KML25.1/GCC12; not specified KML25.2.0",
+  "members": [
+    {
+      "run_name": "T19-control13-repeat-r22",
+      "version": "T19-control13",
+      "parent": null,
+      "source_from": "T19-control13",
+      "source_implementation_id": "T19-panel8x16budget",
+      "strategy": "Unchanged promoted T19 implementation, freshly measured as a parent-null KML25.1/GCC12 baseline for subsequent independent candidates.",
+      "repeat_existing": true,
+      "prior_job_id": "1582392"
+    },
+    {
+      "run_name": "T24-smallbroadcast",
+      "version": "T24-smallbroadcast",
+      "parent": "T19-control13",
+      "source_from": "T24-smallbroadcast",
+      "source_implementation_id": "T24-smallbroadcast",
+      "strategy": "Replace only the eight historical scalar coefficient loads/broadcasts in single-step solve8x16_panel_sve with explicit LD1RD and corresponding vector FMA operands. Preserve original increasing-k16accumulator chains, all indices/final solve, allocation/dispatch/fallback and complete T19 large path."
+    }
+  ],
+  "measurement_protocol": {
+    "warmup_order": [
+      "T19-control13-repeat-r22",
+      "T24-smallbroadcast"
+    ],
+    "warmup_suites_per_member": 1,
+    "formal_round_order": [
+      [
+        "T19-control13-repeat-r22",
+        "T24-smallbroadcast"
+      ],
+      [
+        "T24-smallbroadcast",
+        "T19-control13-repeat-r22"
+      ],
+      [
+        "T19-control13-repeat-r22",
+        "T24-smallbroadcast"
+      ]
+    ],
+    "formal_suites_per_member": 3,
+    "TEST_RUNS": 3,
+    "formal_case_count": 18,
+    "warmup_case_count": 6,
+    "sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  },
+  "preflight_policy": "Both members run the full dedicated panel8x16 module: 46 direct microkernel, 615 whole, 96 no-op, 32 budget groups, 27 processes, 633 argument cases; actual observations audited from raw logs. No historical preflight substitution for the changed small kernel.",
+  "hash_operations": false,
+  "local_task_tests": false
+}
