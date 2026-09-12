@@ -1,0 +1,67 @@
+{
+  "T19-control13-repeat-r21": {
+    "function_assembly_lines": 318,
+    "history_loop_label": ".L168",
+    "k_steps": 1,
+    "instructions": 37,
+    "opcodes": {
+      "ldr": 8,
+      "mov": 8,
+      "ld1d": 2,
+      "fmla": 16,
+      "add": 1,
+      "cmp": 1,
+      "bne": 1
+    },
+    "hot_stack_references": [],
+    "function_stack_references": [
+      "\tstp\td8, d9, [sp, -32]!",
+      "\tstp\td10, d11, [sp, 16]",
+      "\tldp\td10, d11, [sp, 16]",
+      "\tldp\td8, d9, [sp], 32"
+    ],
+    "final_collected_assembly_equals_preview": true
+  },
+  "T23-smallunroll2": {
+    "function_assembly_lines": 504,
+    "history_loop_label": ".L168",
+    "k_steps": 2,
+    "instructions": 81,
+    "opcodes": {
+      "ldr": 15,
+      "mov": 15,
+      "ld1d": 4,
+      "add": 3,
+      "fmla": 24,
+      "fmad": 8,
+      "movprfx": 8,
+      "ptrue": 1,
+      "ld1rd": 1,
+      "cmp": 1,
+      "bgt": 1
+    },
+    "hot_stack_references": [],
+    "function_stack_references": [
+      "\tstp\tx29, x30, [sp, -112]!",
+      "\tstp\td8, d9, [sp, 48]",
+      "\tstp\td10, d11, [sp, 64]",
+      "\tstp\td12, d13, [sp, 80]",
+      "\tstp\td14, d15, [sp, 96]",
+      "\tstp\tx19, x20, [sp, 16]",
+      "\tstp\tx21, x22, [sp, 32]",
+      "\tldp\tx19, x20, [sp, 16]",
+      "\tldp\tx21, x22, [sp, 32]",
+      "\tldp\td10, d11, [sp, 64]",
+      "\tldp\td8, d9, [sp, 48]",
+      "\tldp\td12, d13, [sp, 80]",
+      "\tldp\td14, d15, [sp, 96]",
+      "\tldp\tx29, x30, [sp], 112"
+    ],
+    "final_collected_assembly_equals_preview": true
+  },
+  "job_id": "1582392",
+  "source": "original uninstrumented source assembly on allocated compute node",
+  "conclusion": "Two-step T23 adds eight MOVPRFX and increases instructions per two history steps from 74 to 81; both loops have no stack references. Candidate regresses; no claim that a single instruction type explains all timing.",
+  "binary_identity_verified": false,
+  "hash_operations": false
+}

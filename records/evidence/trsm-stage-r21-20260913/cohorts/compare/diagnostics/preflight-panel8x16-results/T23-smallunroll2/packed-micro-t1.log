@@ -1,0 +1,3 @@
+SOURCE_FEATURES_PASS panel16=1 packedL16=1 has_budget=1 history_budget_bytes=4194304 panel8x16=1
+MODE=packed-micro THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+PASS packed_micro_cases=14 ordered_FMA_bitwise=1 prefix_padding_L_unchanged=1 history_unchanged=1
