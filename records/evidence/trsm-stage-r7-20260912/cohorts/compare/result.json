@@ -1,0 +1,56 @@
+{
+  "status": "complete_no_promotion",
+  "job_id": "1579401",
+  "formal_pass_count": 18,
+  "warmup_pass_count": 6,
+  "baseline_version": "T8-control12",
+  "best_implementation": "T8-svepanel16",
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "total improvement -6.6554% does not exceed threshold 3.8384%",
+      "at least one official case regresses by more than 1%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          512,
+          19968
+        ],
+        "base_ms": 18.7,
+        "candidate_ms": 14.85,
+        "gain_pct": 20.588235294117645
+      },
+      {
+        "dims": [
+          2432,
+          17024
+        ],
+        "base_ms": 236.12,
+        "candidate_ms": 269.82,
+        "gain_pct": -14.27240386244282
+      },
+      {
+        "dims": [
+          17024,
+          512
+        ],
+        "base_ms": 193.39,
+        "candidate_ms": 193.37,
+        "gain_pct": 0.010341796370020069
+      }
+    ],
+    "total_gain_pct": -6.655362441712599,
+    "noise_threshold_pct": 3.83838383838384,
+    "validation_policy": "user-requested-no-hash",
+    "hash_validation": "not performed",
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "medians_ms": {
+    "T8-control12": 448.21,
+    "T10-lhistbarrier": 478.04
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "package_action": "Keep already tested T8 ZIP; source unchanged",
+  "next_direction": "New 8x16 SVE large update; existing X packing reused; only preparation"
+}
