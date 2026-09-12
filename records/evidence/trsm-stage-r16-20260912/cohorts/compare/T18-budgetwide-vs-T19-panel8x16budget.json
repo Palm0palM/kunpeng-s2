@@ -1,0 +1,40 @@
+{
+  "eligible": false,
+  "reasons": [
+    "at least one official case regresses by more than 1%"
+  ],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 14.21,
+      "candidate_ms": 14.56,
+      "gain_pct": -2.4630541871921157
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 232.66,
+      "candidate_ms": 118.82,
+      "gain_pct": 48.92976876128256
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 180.23,
+      "candidate_ms": 179.82,
+      "gain_pct": 0.22748709981689877
+    }
+  ],
+  "total_gain_pct": 26.668227581362686,
+  "noise_threshold_pct": 15.482054890921882,
+  "validation_policy": "user-requested-no-hash",
+  "hash_validation": "not performed",
+  "metric": "sum of per-case median ms; not official score"
+}

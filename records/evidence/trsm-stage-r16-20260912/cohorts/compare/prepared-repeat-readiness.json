@@ -1,0 +1,58 @@
+{
+  "status": "prepared_payload_matches_local_inputs",
+  "job_id": "1579861",
+  "cohort_id": "trsm-kml251-e42ae792e299",
+  "checked_at": "2026-09-12T15:55:07.054093+00:00",
+  "members": {
+    "T8-control12-repeat-r16": {
+      "README.md": true,
+      "trsm.c": true,
+      "bench_trsm.c": true,
+      "run.sh": true,
+      "compat/kblas.h": true
+    },
+    "T18-budgetwide-repeat-r16": {
+      "README.md": true,
+      "trsm.c": true,
+      "bench_trsm.c": true,
+      "run.sh": true,
+      "compat/kblas.h": true
+    },
+    "T19-panel8x16budget": {
+      "README.md": true,
+      "trsm.c": true,
+      "bench_trsm.c": true,
+      "run.sh": true,
+      "compat/kblas.h": true
+    }
+  },
+  "control_input_bytes_match": {
+    "cohort-config.json": true,
+    "cohort_driver.py": true,
+    "remote_job.sh": true,
+    "preflight_audit.py": true,
+    "preflight/check-panel.c": true,
+    "preflight/run.sh": true,
+    "preflight/README.md": true,
+    "preflight/guard.py": true,
+    "preflight-wide32/check-wide32.c": true,
+    "preflight-wide32/run.sh": true,
+    "preflight-wide32/README.md": true,
+    "preflight-wide32/guard.py": true,
+    "preflight-panel8x16/STATIC-REVIEW.md": true,
+    "preflight-panel8x16/check-panel.c": true,
+    "preflight-panel8x16/run.sh": true,
+    "preflight-panel8x16/README.md": true,
+    "preflight-panel8x16/audit_panel8x16.py": true,
+    "preflight-panel8x16/PLAN.md": true,
+    "preflight-panel8x16/guard.py": true,
+    "reference/target-environment.sh": true,
+    "reference/required-symbols.c": true,
+    "reference/probe.sh": true,
+    "reference/audit-dependencies.py": true
+  },
+  "remote_bytes_checked": false,
+  "hash_operations": false,
+  "local_task_execution": false,
+  "scope": "Lightweight local snapshot association only; no remote correctness or transport claim."
+}

@@ -1,0 +1,8 @@
+SOURCE_FEATURES_PASS panel16=1 packedL16=0 has_budget=0 history_budget_bytes=0
+MODE=boundary THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+ALLOC_PASS m=4095 n=9 small=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=1 x_bytes=262080 x_success=1 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=1 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=4095 n=9 sve16_entries=510 expected=510 old_entries=510 packed_entries=0 packed_expected=0
+ALLOC_PASS m=4097 n=9 small=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=0 x_bytes=0 x_success=0 x_fail=0 kb_calls=1 kb_bytes=32768 kb_success=1 kb_fail=0 total=1 injected=0 history_level=-1 x_level=-1 kb_level=0 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=4097 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+ALLOCATION_SUMMARY_PASS cases=2 budget_cases=0 shared_injection_cases=0
+PASS whole_cases=2 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=3.8857805861880479e-16
