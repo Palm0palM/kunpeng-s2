@@ -1,0 +1,52 @@
+{
+  "T19-control13-repeat-r22": {
+    "function_assembly_lines": 318,
+    "history_loop_label": ".L168",
+    "k_steps": 1,
+    "instructions": 37,
+    "opcodes": {
+      "ldr": 8,
+      "mov": 8,
+      "ld1d": 2,
+      "fmla": 16,
+      "add": 1,
+      "cmp": 1,
+      "bne": 1
+    },
+    "hot_stack_references": [],
+    "function_stack_references": [
+      "\tstp\td8, d9, [sp, -32]!",
+      "\tstp\td10, d11, [sp, 16]",
+      "\tldp\td10, d11, [sp, 16]",
+      "\tldp\td8, d9, [sp], 32"
+    ],
+    "final_collected_assembly_equals_preview": true
+  },
+  "T24-smallbroadcast": {
+    "function_assembly_lines": 357,
+    "history_loop_label": ".L168",
+    "k_steps": 1,
+    "instructions": 37,
+    "opcodes": {
+      "add": 9,
+      "ld1d": 2,
+      "ld1rd": 8,
+      "fmla": 16,
+      "cmp": 1,
+      "bne": 1
+    },
+    "hot_stack_references": [],
+    "function_stack_references": [
+      "\tstp\td8, d9, [sp, -32]!",
+      "\tstp\td10, d11, [sp, 16]",
+      "\tldp\td10, d11, [sp, 16]",
+      "\tldp\td8, d9, [sp], 32"
+    ],
+    "final_collected_assembly_equals_preview": true
+  },
+  "job_id": "1582526",
+  "source": "original uninstrumented source assembly on allocated compute node",
+  "conclusion": "Both hot loops have37instructions/16FMLA and no stack references. T24 replaces8scalarLDR+8MOV with8LD1RD+8addressADD; no meaningful measured gain. Unmodified small official case is not evidence of benefit from changed kernel.",
+  "binary_identity_verified": false,
+  "hash_operations": false
+}

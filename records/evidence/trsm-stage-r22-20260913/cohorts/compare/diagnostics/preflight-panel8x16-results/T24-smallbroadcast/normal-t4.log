@@ -1,0 +1,244 @@
+SOURCE_FEATURES_PASS panel16=1 packedL16=1 has_budget=1 history_budget_bytes=4194304 panel8x16=1
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+ALLOC_PASS m=1 n=1 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=256 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=1 n=1 calls=0 bad=0 expected_panel_stride=8
+ALLOC_PASS m=1 n=7 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=256 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=1 n=7 calls=0 bad=0 expected_panel_stride=8
+ALLOC_PASS m=1 n=8 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=256 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=1 n=8 calls=0 bad=0 expected_panel_stride=8
+ALLOC_PASS m=1 n=9 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=256 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=1 n=9 calls=0 bad=0 expected_panel_stride=8
+ALLOC_PASS m=1 n=17 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=256 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=1 n=17 calls=0 bad=0 expected_panel_stride=8
+ALLOC_PASS m=3 n=1 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=768 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=3 n=1 calls=0 bad=0 expected_panel_stride=24
+ALLOC_PASS m=3 n=7 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=768 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=3 n=7 calls=0 bad=0 expected_panel_stride=24
+ALLOC_PASS m=3 n=8 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=768 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=3 n=8 calls=0 bad=0 expected_panel_stride=24
+ALLOC_PASS m=3 n=9 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=768 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=3 n=9 calls=0 bad=0 expected_panel_stride=24
+ALLOC_PASS m=3 n=17 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=768 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=3 n=17 calls=0 bad=0 expected_panel_stride=24
+ALLOC_PASS m=4 n=1 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1024 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=4 n=1 calls=0 bad=0 expected_panel_stride=32
+ALLOC_PASS m=4 n=7 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1024 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=4 n=7 calls=0 bad=0 expected_panel_stride=32
+ALLOC_PASS m=4 n=8 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1024 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=4 n=8 calls=0 bad=0 expected_panel_stride=32
+ALLOC_PASS m=4 n=9 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1024 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=4 n=9 calls=0 bad=0 expected_panel_stride=32
+ALLOC_PASS m=4 n=17 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1024 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=4 n=17 calls=0 bad=0 expected_panel_stride=32
+ALLOC_PASS m=5 n=1 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=5 n=1 calls=0 bad=0 expected_panel_stride=40
+ALLOC_PASS m=5 n=7 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=5 n=7 calls=0 bad=0 expected_panel_stride=40
+ALLOC_PASS m=5 n=8 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=5 n=8 calls=0 bad=0 expected_panel_stride=40
+ALLOC_PASS m=5 n=9 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=5 n=9 calls=0 bad=0 expected_panel_stride=40
+ALLOC_PASS m=5 n=17 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=1280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=5 n=17 calls=0 bad=0 expected_panel_stride=40
+ALLOC_PASS m=15 n=1 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=3840 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=15 n=1 calls=0 bad=0 expected_panel_stride=120
+ALLOC_PASS m=15 n=7 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=3840 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=15 n=7 calls=0 bad=0 expected_panel_stride=120
+ALLOC_PASS m=15 n=8 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=3840 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=15 n=8 calls=0 bad=0 expected_panel_stride=120
+ALLOC_PASS m=15 n=9 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=3840 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=15 n=9 calls=0 bad=0 expected_panel_stride=120
+ALLOC_PASS m=15 n=17 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=3840 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=15 n=17 calls=0 bad=0 expected_panel_stride=120
+ALLOC_PASS m=16 n=1 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4096 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=16 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=16 n=1 calls=0 bad=0 expected_panel_stride=128
+ALLOC_PASS m=16 n=7 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4096 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=16 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=16 n=7 calls=0 bad=0 expected_panel_stride=128
+ALLOC_PASS m=16 n=8 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4096 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=16 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=16 n=8 calls=0 bad=0 expected_panel_stride=128
+ALLOC_PASS m=16 n=9 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4096 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=16 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=16 n=9 calls=0 bad=0 expected_panel_stride=128
+ALLOC_PASS m=16 n=17 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4096 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=16 n=17 calls=0 bad=0 expected_panel_stride=128
+ALLOC_PASS m=17 n=1 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4352 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=17 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=17 n=1 calls=0 bad=0 expected_panel_stride=136
+ALLOC_PASS m=17 n=7 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4352 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=17 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=17 n=7 calls=0 bad=0 expected_panel_stride=136
+ALLOC_PASS m=17 n=8 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4352 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=17 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=17 n=8 calls=0 bad=0 expected_panel_stride=136
+ALLOC_PASS m=17 n=9 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4352 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=17 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=17 n=9 calls=0 bad=0 expected_panel_stride=136
+ALLOC_PASS m=17 n=17 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=4352 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=17 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=17 n=17 calls=0 bad=0 expected_panel_stride=136
+ALLOC_PASS m=31 n=1 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=7936 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=31 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=31 n=1 calls=0 bad=0 expected_panel_stride=248
+ALLOC_PASS m=31 n=7 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=7936 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=31 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=31 n=7 calls=0 bad=0 expected_panel_stride=248
+ALLOC_PASS m=31 n=8 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=7936 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=31 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=31 n=8 calls=0 bad=0 expected_panel_stride=248
+ALLOC_PASS m=31 n=9 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=7936 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=31 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=31 n=9 calls=0 bad=0 expected_panel_stride=248
+ALLOC_PASS m=31 n=17 small=1 wide_path=0 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=7936 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=31 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=31 n=17 calls=0 bad=0 expected_panel_stride=248
+ALLOC_PASS m=32 n=1 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8192 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=32 n=1 calls=0 bad=0 expected_panel_stride=256
+ALLOC_PASS m=32 n=7 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8192 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=32 n=7 calls=0 bad=0 expected_panel_stride=256
+ALLOC_PASS m=32 n=8 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8192 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=32 n=8 calls=0 bad=0 expected_panel_stride=256
+ALLOC_PASS m=32 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8192 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=32 n=9 calls=0 bad=0 expected_panel_stride=256
+ALLOC_PASS m=32 n=17 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8192 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=32 n=17 calls=0 bad=0 expected_panel_stride=256
+ALLOC_PASS m=33 n=1 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8448 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=33 n=1 calls=0 bad=0 expected_panel_stride=264
+ALLOC_PASS m=33 n=7 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8448 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=33 n=7 calls=0 bad=0 expected_panel_stride=264
+ALLOC_PASS m=33 n=8 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8448 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=33 n=8 calls=0 bad=0 expected_panel_stride=264
+ALLOC_PASS m=33 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8448 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=33 n=9 calls=0 bad=0 expected_panel_stride=264
+ALLOC_PASS m=33 n=17 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=2048 history_success=1 history_fail=0 x_calls=4 x_bytes=8448 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=33 n=17 calls=0 bad=0 expected_panel_stride=264
+ALLOC_PASS m=63 n=1 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=6144 history_success=1 history_fail=0 x_calls=4 x_bytes=16128 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=63 n=1 calls=0 bad=0 expected_panel_stride=504
+ALLOC_PASS m=63 n=7 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=6144 history_success=1 history_fail=0 x_calls=4 x_bytes=16128 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=63 n=7 calls=0 bad=0 expected_panel_stride=504
+ALLOC_PASS m=63 n=8 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=6144 history_success=1 history_fail=0 x_calls=4 x_bytes=16128 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=63 n=8 calls=0 bad=0 expected_panel_stride=504
+ALLOC_PASS m=63 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=6144 history_success=1 history_fail=0 x_calls=4 x_bytes=16128 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=2 packed_entries=4 packed_expected=4 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=63 n=9 calls=0 bad=0 expected_panel_stride=504
+ALLOC_PASS m=63 n=17 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=6144 history_success=1 history_fail=0 x_calls=4 x_bytes=16128 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=3 packed_entries=6 packed_expected=6 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=63 n=17 calls=0 bad=0 expected_panel_stride=504
+ALLOC_PASS m=64 n=1 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16384 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=64 n=1 calls=0 bad=0 expected_panel_stride=512
+ALLOC_PASS m=64 n=7 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16384 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=64 n=7 calls=0 bad=0 expected_panel_stride=512
+ALLOC_PASS m=64 n=8 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16384 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=64 n=8 calls=0 bad=0 expected_panel_stride=512
+ALLOC_PASS m=64 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16384 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=64 n=9 calls=0 bad=0 expected_panel_stride=512
+ALLOC_PASS m=64 n=17 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16384 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=64 n=17 calls=0 bad=0 expected_panel_stride=512
+ALLOC_PASS m=65 n=1 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16640 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=65 n=1 calls=0 bad=0 expected_panel_stride=520
+ALLOC_PASS m=65 n=7 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16640 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=65 n=7 calls=0 bad=0 expected_panel_stride=520
+ALLOC_PASS m=65 n=8 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16640 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=65 n=8 calls=0 bad=0 expected_panel_stride=520
+ALLOC_PASS m=65 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16640 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=65 n=9 calls=0 bad=0 expected_panel_stride=520
+ALLOC_PASS m=65 n=17 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=12288 history_success=1 history_fail=0 x_calls=4 x_bytes=16640 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=65 n=17 calls=0 bad=0 expected_panel_stride=520
+ALLOC_PASS m=255 n=1 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=215040 history_success=1 history_fail=0 x_calls=4 x_bytes=65280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=255 n=1 calls=0 bad=0 expected_panel_stride=2040
+ALLOC_PASS m=255 n=7 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=215040 history_success=1 history_fail=0 x_calls=4 x_bytes=65280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=255 n=7 calls=0 bad=0 expected_panel_stride=2040
+ALLOC_PASS m=255 n=8 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=215040 history_success=1 history_fail=0 x_calls=4 x_bytes=65280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=255 n=8 calls=0 bad=0 expected_panel_stride=2040
+ALLOC_PASS m=255 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=215040 history_success=1 history_fail=0 x_calls=4 x_bytes=65280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=2 packed_entries=28 packed_expected=28 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=255 n=9 calls=0 bad=0 expected_panel_stride=2040
+ALLOC_PASS m=255 n=17 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=215040 history_success=1 history_fail=0 x_calls=4 x_bytes=65280 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=3 packed_entries=42 packed_expected=42 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=255 n=17 calls=0 bad=0 expected_panel_stride=2040
+ALLOC_PASS m=256 n=1 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65536 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=256 n=1 calls=0 bad=0 expected_panel_stride=2048
+ALLOC_PASS m=256 n=7 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65536 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=256 n=7 calls=0 bad=0 expected_panel_stride=2048
+ALLOC_PASS m=256 n=8 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65536 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=256 n=8 calls=0 bad=0 expected_panel_stride=2048
+ALLOC_PASS m=256 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65536 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=256 n=9 calls=0 bad=0 expected_panel_stride=2048
+ALLOC_PASS m=256 n=17 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65536 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=256 n=17 calls=0 bad=0 expected_panel_stride=2048
+ALLOC_PASS m=257 n=1 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65792 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=257 n=1 calls=0 bad=0 expected_panel_stride=2056
+ALLOC_PASS m=257 n=7 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65792 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=257 n=7 calls=0 bad=0 expected_panel_stride=2056
+ALLOC_PASS m=257 n=8 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65792 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=257 n=8 calls=0 bad=0 expected_panel_stride=2056
+ALLOC_PASS m=257 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65792 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=257 n=9 calls=0 bad=0 expected_panel_stride=2056
+ALLOC_PASS m=257 n=17 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=245760 history_success=1 history_fail=0 x_calls=4 x_bytes=65792 x_success=4 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=257 n=17 calls=0 bad=0 expected_panel_stride=2056
+ALLOCATION_SUMMARY_PASS cases=80 budget_cases=0 shared_injection_cases=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16

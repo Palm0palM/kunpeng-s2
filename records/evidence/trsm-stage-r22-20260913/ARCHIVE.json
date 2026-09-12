@@ -1,0 +1,1807 @@
+{
+  "schema_version": 1,
+  "stage": "r22-20260913",
+  "problem": "trsm",
+  "created_at": "2026-09-12T18:07:54.362035+00:00",
+  "states": {
+    "compare": {
+      "submission": {
+        "state": "collected",
+        "cohort_id": "trsm-kml251-f478c9adbe2b",
+        "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f478c9adbe2b",
+        "created_at": "2026-09-12T17:57:07.326484+00:00",
+        "job_id": "1582526",
+        "phase": "interleaved-T19-vs-small8x16-broadcast",
+        "validation_policy": "No hash computation or validation at explicit user request",
+        "upload_command": "mkdir /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f478c9adbe2b && tar -xzf - -C /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f478c9adbe2b",
+        "submit_command": "dsub -n trsm-kml251-f478c9adbe2b -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f478c9adbe2b/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f478c9adbe2b/remote_job.sh",
+        "submission_started_at": "2026-09-12T17:57:22.670209+00:00",
+        "submitted_at": "2026-09-12T17:57:23.184781+00:00",
+        "identity_marker_sent_at": "2026-09-12T17:57:23.548210+00:00",
+        "collected_at": "2026-09-12T18:06:38.196886+00:00"
+      },
+      "result": {
+        "status": "reviewed_not_promoted",
+        "job_id": "1582526",
+        "formal_pass_count": 18,
+        "warmup_pass_count": 6,
+        "baseline_version": "T19-control13",
+        "best_implementation": "T19-panel8x16budget",
+        "comparisons": {
+          "T24-smallbroadcast": {
+            "eligible": false,
+            "reasons": [
+              "total improvement 0.2871% does not exceed threshold 10.6111%"
+            ],
+            "cases": [
+              {
+                "dims": [
+                  512,
+                  19968
+                ],
+                "base_ms": 14.89,
+                "candidate_ms": 14.14,
+                "gain_pct": 5.0369375419744795
+              },
+              {
+                "dims": [
+                  2432,
+                  17024
+                ],
+                "base_ms": 121.4,
+                "candidate_ms": 120.92,
+                "gain_pct": 0.3953871499176309
+              },
+              {
+                "dims": [
+                  17024,
+                  512
+                ],
+                "base_ms": 180.68,
+                "candidate_ms": 181.0,
+                "gain_pct": -0.17710870046490657
+              }
+            ],
+            "total_gain_pct": 0.28709341578068115,
+            "noise_threshold_pct": 10.61114842175957,
+            "validation_policy": "user-requested-no-hash",
+            "hash_validation": "not performed",
+            "metric": "sum of per-case median ms; not official score"
+          }
+        },
+        "medians_ms": {
+          "T19-control13": 316.97,
+          "T24-smallbroadcast": 316.06
+        },
+        "reference": "KML25.1/GCC12; not specified KML25.2",
+        "promoted": false,
+        "root_reviewed_at": "2026-09-12T18:07:54.053529+00:00",
+        "decision": "Total gain0.28709% below10.61115%noise; changed middle kernel gain0.39539%. Keep all samples including T19small15.98/middle127.95. Unmodified small path gain is not attributable to new kernel. Retain T19 and exact-tested ZIP."
+      }
+    }
+  },
+  "repeat_prior_association_valid": true,
+  "repeat_prior_associations": {
+    "T19-control13": {
+      "valid": true,
+      "prior_job_id": "1582392",
+      "prior_public_record": "records/evidence/trsm-stage-r21-20260913/records/latest/T19-control13.json"
+    }
+  },
+  "historical_T19_validation_job": "1579861",
+  "fresh_small_path_preflight": true,
+  "historical_samples_pooled": false,
+  "archive_creation_validates_measurements": false,
+  "public_redacted_derivative": true,
+  "hash_operations": false,
+  "local_task_execution": false,
+  "remote_source_identity_claim": false,
+  "transport_integrity_claim": false,
+  "missing_required_evidence": [],
+  "excluded_files": [
+    ".runs/trsm/optimization-20260913-r22-compare/cluster.local.json",
+    ".runs/trsm/optimization-20260913-r22-compare/diagnostics.tar.gz",
+    ".runs/trsm/optimization-20260913-r22-compare/doctor.log",
+    ".runs/trsm/optimization-20260913-r22-compare/payload.tar.gz"
+  ],
+  "files": [
+    {
+      "path": "cohorts/compare/ROOT-CONTROLLER-REVIEW.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/ROOT-CONTROLLER-REVIEW.md",
+      "role": "local_record_or_input",
+      "public_bytes": 921
+    },
+    {
+      "path": "cohorts/compare/ROOT-RESULT-REVIEW.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/ROOT-RESULT-REVIEW.md",
+      "role": "local_record_or_input",
+      "public_bytes": 1570
+    },
+    {
+      "path": "cohorts/compare/T19-control13-repeat-r22-record.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/T19-control13-repeat-r22-record.log",
+      "role": "local_record_or_input",
+      "public_bytes": 258
+    },
+    {
+      "path": "cohorts/compare/T19-control13-vs-T24-smallbroadcast.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/T19-control13-vs-T24-smallbroadcast.json",
+      "role": "local_record_or_input",
+      "public_bytes": 831
+    },
+    {
+      "path": "cohorts/compare/T24-smallbroadcast-record.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/T24-smallbroadcast-record.log",
+      "role": "local_record_or_input",
+      "public_bytes": 263
+    },
+    {
+      "path": "cohorts/compare/actual-run-audit.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/actual-run-audit.json",
+      "role": "local_record_or_input",
+      "public_bytes": 480787
+    },
+    {
+      "path": "cohorts/compare/assembly-preview-review.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/assembly-preview-review.json",
+      "role": "local_record_or_input",
+      "public_bytes": 979
+    },
+    {
+      "path": "cohorts/compare/assembly-review.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/assembly-review.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1499
+    },
+    {
+      "path": "cohorts/compare/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/cohort-config.json",
+      "role": "local_record_or_input",
+      "public_bytes": 2631
+    },
+    {
+      "path": "cohorts/compare/cohort-submission.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/cohort-submission.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1087
+    },
+    {
+      "path": "cohorts/compare/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/cohort_driver.py",
+      "role": "local_record_or_input",
+      "public_bytes": 15690
+    },
+    {
+      "path": "cohorts/compare/collect.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/collect.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8482
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/benchmark.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/benchmark.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12214
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/environment.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/environment.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 8746
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/exit-code.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 2
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3570
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/runtime-settings.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 2519
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020501-e0r8qX/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020501-e0r8qX/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020501-e0r8qX/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020501-e0r8qX/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020501-e0r8qX/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020501-e0r8qX/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020501-e0r8qX/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020501-e0r8qX/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020519-xsiUqi/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020519-xsiUqi/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020519-xsiUqi/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020519-xsiUqi/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020519-xsiUqi/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020519-xsiUqi/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020519-xsiUqi/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020519-xsiUqi/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020546-knWKbJ/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020546-knWKbJ/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020546-knWKbJ/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020546-knWKbJ/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020546-knWKbJ/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020546-knWKbJ/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020546-knWKbJ/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020546-knWKbJ/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020554-DJ4EwA/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020554-DJ4EwA/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020554-DJ4EwA/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020554-DJ4EwA/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020554-DJ4EwA/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020554-DJ4EwA/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020554-DJ4EwA/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/source/results/run-20260913-020554-DJ4EwA/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/warmup/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/warmup/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 5198
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/warmup-linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/warmup-linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1204
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/warmup.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/warmup.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 9931
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r22/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T19-control13-repeat-r22/wrapper.stdout.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12214
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/benchmark.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/benchmark.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12196
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/environment.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/environment.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 8746
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/exit-code.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 2
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3552
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/runtime-settings.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 2519
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020510-d4uNaU/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020510-d4uNaU/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020510-d4uNaU/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020510-d4uNaU/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020510-d4uNaU/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020510-d4uNaU/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020510-d4uNaU/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020510-d4uNaU/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020528-yWeoze/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020528-yWeoze/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020528-yWeoze/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020528-yWeoze/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020528-yWeoze/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020528-yWeoze/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020528-yWeoze/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020528-yWeoze/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020537-Lmgk7Y/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020537-Lmgk7Y/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020537-Lmgk7Y/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020537-Lmgk7Y/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020537-Lmgk7Y/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020537-Lmgk7Y/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020537-Lmgk7Y/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020537-Lmgk7Y/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020604-Jnxe9f/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020604-Jnxe9f/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020604-Jnxe9f/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020604-Jnxe9f/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020604-Jnxe9f/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020604-Jnxe9f/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020604-Jnxe9f/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/source/results/run-20260913-020604-Jnxe9f/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/warmup/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/warmup/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 5191
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/warmup-linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/warmup-linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1198
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/warmup.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/warmup.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 9925
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T24-smallbroadcast/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/T24-smallbroadcast/wrapper.stdout.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12196
+    },
+    {
+      "path": "cohorts/compare/diagnostics/assigned-job-id.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/assigned-job-id.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 8
+    },
+    {
+      "path": "cohorts/compare/diagnostics/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/cohort-config.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 2631
+    },
+    {
+      "path": "cohorts/compare/diagnostics/cohort-exit-code.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/cohort-exit-code.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 2
+    },
+    {
+      "path": "cohorts/compare/diagnostics/compiler-environment.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/compiler-environment.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 381
+    },
+    {
+      "path": "cohorts/compare/diagnostics/environment.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/environment.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6096
+    },
+    {
+      "path": "cohorts/compare/diagnostics/omp-runtime-symbol.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/omp-runtime-symbol.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 205
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/assembly.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/assembly.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/boundary-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/boundary-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1442
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-narrow-vl-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3068
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-no-sve-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3053
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-shared-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3341
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-summary.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 24892
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3101
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-t38.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-t38.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1493
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3104
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-x-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/budget-x-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3068
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-fail-alloc.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-fail-alloc.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-fail-shared.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-fail-shared.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-fail-x.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-fail-x.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-no-sve.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-normal.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/build-normal.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/commands.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/commands.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 8400
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/compiler.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/compiler.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 239
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/completion.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/completion.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 298
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/fail-alloc-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/fail-alloc-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 42996
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/guard.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/guard.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/guard.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/guard.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/instrument-source.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/instrument-source.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 59
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/instrumented-trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/instrumented-trsm.c",
+      "role": "collected_result_or_log",
+      "public_bytes": 73126
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/micro-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/micro-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 255
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/narrow-vl-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 42996
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/no-sve-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 42876
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/normal-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 43025
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/normal-t38.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 2533
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/normal-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 43060
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/packed-micro-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/packed-micro-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 269
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/panel8x16-summary.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/panel8x16-summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 153137
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/shared-fail-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/shared-fail-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 25054
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/shared-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 25069
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 6537
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/summary.tsv",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/summary.tsv",
+      "role": "collected_result_or_log",
+      "public_bytes": 708
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/trsm-panel8x16.s",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/trsm-panel8x16.s",
+      "role": "collected_result_or_log",
+      "public_bytes": 132338
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/verify-results.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/verify-results.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 298
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-all-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-all-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6904
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-micro-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-micro-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1628
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-narrow-vl-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6904
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-no-sve-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6874
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-normal-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-normal-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6994
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-normal-t38.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-normal-t38.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 7610
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-normal-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-normal-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 7000
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-shared-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 7480
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-x-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T19-control13-repeat-r22/wide-x-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6904
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/assembly.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/assembly.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/boundary-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/boundary-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1442
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-narrow-vl-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3068
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-no-sve-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3053
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-shared-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3341
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-summary.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 24892
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3101
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-t38.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-t38.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1493
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3104
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-x-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/budget-x-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3068
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-fail-alloc.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-fail-alloc.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-fail-shared.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-fail-shared.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-fail-x.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-fail-x.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-no-sve.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-normal.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/build-normal.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/commands.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/commands.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 8142
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/compiler.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/compiler.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 239
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/completion.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/completion.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 298
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/fail-alloc-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/fail-alloc-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 42996
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/guard.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/guard.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/guard.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/guard.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/instrument-source.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/instrument-source.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 59
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/instrumented-trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/instrumented-trsm.c",
+      "role": "collected_result_or_log",
+      "public_bytes": 74790
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/micro-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/micro-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 255
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/narrow-vl-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 42996
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/no-sve-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 42876
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/normal-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 43025
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/normal-t38.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 2533
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/normal-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 43060
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/packed-micro-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/packed-micro-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 269
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/panel8x16-summary.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/panel8x16-summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 153137
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/shared-fail-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/shared-fail-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 25054
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/shared-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 25069
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 6537
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/summary.tsv",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/summary.tsv",
+      "role": "collected_result_or_log",
+      "public_bytes": 708
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/trsm-panel8x16.s",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/trsm-panel8x16.s",
+      "role": "collected_result_or_log",
+      "public_bytes": 133616
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/verify-results.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/verify-results.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 298
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-all-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-all-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6904
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-micro-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-micro-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1628
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-narrow-vl-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6904
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-no-sve-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6874
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-normal-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-normal-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6994
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-normal-t38.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-normal-t38.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 7610
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-normal-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-normal-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 7000
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-shared-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 7480
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-x-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16-results/T24-smallbroadcast/wide-x-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6904
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-panel8x16.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/preflight-panel8x16.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 698014
+    },
+    {
+      "path": "cohorts/compare/diagnostics/reference-results/probe-ldd.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/reference-results/probe-ldd.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 664
+    },
+    {
+      "path": "cohorts/compare/diagnostics/reference-results/probe.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/reference-results/probe.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 22455
+    },
+    {
+      "path": "cohorts/compare/diagnostics/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/diagnostics/wrapper.stdout.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 706198
+    },
+    {
+      "path": "cohorts/compare/finish-attempt.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/finish-attempt.json",
+      "role": "local_record_or_input",
+      "public_bytes": 67
+    },
+    {
+      "path": "cohorts/compare/finish-complete.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/finish-complete.json",
+      "role": "local_record_or_input",
+      "public_bytes": 242
+    },
+    {
+      "path": "cohorts/compare/finish.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/finish.log",
+      "role": "local_record_or_input",
+      "public_bytes": 1352
+    },
+    {
+      "path": "cohorts/compare/finish_records.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/finish_records.py",
+      "role": "local_record_or_input",
+      "public_bytes": 12270
+    },
+    {
+      "path": "cohorts/compare/job-marker.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/job-marker.log",
+      "role": "local_record_or_input",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/job_control.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/job_control.py",
+      "role": "local_record_or_input",
+      "public_bytes": 20262
+    },
+    {
+      "path": "cohorts/compare/latest-status.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/latest-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8389
+    },
+    {
+      "path": "cohorts/compare/plan.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/plan.json",
+      "role": "local_record_or_input",
+      "public_bytes": 2074
+    },
+    {
+      "path": "cohorts/compare/preflight-panel8x16/PLAN.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/preflight-panel8x16/PLAN.md",
+      "role": "local_record_or_input",
+      "public_bytes": 4085
+    },
+    {
+      "path": "cohorts/compare/preflight-panel8x16/README.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/preflight-panel8x16/README.md",
+      "role": "local_record_or_input",
+      "public_bytes": 5696
+    },
+    {
+      "path": "cohorts/compare/preflight-panel8x16/STATIC-REVIEW.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/preflight-panel8x16/STATIC-REVIEW.md",
+      "role": "local_record_or_input",
+      "public_bytes": 2335
+    },
+    {
+      "path": "cohorts/compare/preflight-panel8x16/audit_panel8x16.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/preflight-panel8x16/audit_panel8x16.py",
+      "role": "local_record_or_input",
+      "public_bytes": 20121
+    },
+    {
+      "path": "cohorts/compare/preflight-panel8x16/check-panel.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/preflight-panel8x16/check-panel.c",
+      "role": "local_record_or_input",
+      "public_bytes": 30730
+    },
+    {
+      "path": "cohorts/compare/preflight-panel8x16/guard.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/preflight-panel8x16/guard.py",
+      "role": "local_record_or_input",
+      "public_bytes": 1450
+    },
+    {
+      "path": "cohorts/compare/preflight-panel8x16/run.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/preflight-panel8x16/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 6259
+    },
+    {
+      "path": "cohorts/compare/prepare.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/prepare.log",
+      "role": "local_record_or_input",
+      "public_bytes": 140
+    },
+    {
+      "path": "cohorts/compare/progress-latest.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/progress-latest.log",
+      "role": "local_record_or_input",
+      "public_bytes": 782
+    },
+    {
+      "path": "cohorts/compare/record-compare-commands.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/record-compare-commands.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1421
+    },
+    {
+      "path": "cohorts/compare/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/reference/audit-dependencies.py",
+      "role": "local_record_or_input",
+      "public_bytes": 1015
+    },
+    {
+      "path": "cohorts/compare/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/reference/probe.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2397
+    },
+    {
+      "path": "cohorts/compare/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/reference/required-symbols.c",
+      "role": "local_record_or_input",
+      "public_bytes": 1755
+    },
+    {
+      "path": "cohorts/compare/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/reference/target-environment.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2653
+    },
+    {
+      "path": "cohorts/compare/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/remote_job.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 1407
+    },
+    {
+      "path": "cohorts/compare/result.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/result.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1702
+    },
+    {
+      "path": "cohorts/compare/scheduler-status.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "cohorts/compare/static-readiness.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/static-readiness.json",
+      "role": "local_record_or_input",
+      "public_bytes": 208
+    },
+    {
+      "path": "cohorts/compare/submit-attempt.txt",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/submit-attempt.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 33
+    },
+    {
+      "path": "cohorts/compare/submit-controller.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/submit-controller.log",
+      "role": "local_record_or_input",
+      "public_bytes": 22
+    },
+    {
+      "path": "cohorts/compare/submit.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/submit.log",
+      "role": "local_record_or_input",
+      "public_bytes": 35
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r22/source/README.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T19-control13-repeat-r22/source/README.md",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r22/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T19-control13-repeat-r22/source/bench_trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r22/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T19-control13-repeat-r22/source/compat/kblas.h",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r22/source/run.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T19-control13-repeat-r22/source/run.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r22/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T19-control13-repeat-r22/source/trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 73077
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T24-smallbroadcast/source/README.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T24-smallbroadcast/source/README.md",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T24-smallbroadcast/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T24-smallbroadcast/source/bench_trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T24-smallbroadcast/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T24-smallbroadcast/source/compat/kblas.h",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T24-smallbroadcast/source/run.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T24-smallbroadcast/source/run.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T24-smallbroadcast/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/T24-smallbroadcast/source/trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 74741
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/cohort-config.json",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2631
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/cohort_driver.py",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 15690
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-panel8x16/PLAN.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/preflight-panel8x16/PLAN.md",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 4085
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-panel8x16/README.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/preflight-panel8x16/README.md",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 5696
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-panel8x16/STATIC-REVIEW.md",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/preflight-panel8x16/STATIC-REVIEW.md",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2335
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-panel8x16/audit_panel8x16.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/preflight-panel8x16/audit_panel8x16.py",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 20121
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-panel8x16/check-panel.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/preflight-panel8x16/check-panel.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 30730
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-panel8x16/guard.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/preflight-panel8x16/guard.py",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 1450
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-panel8x16/run.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/preflight-panel8x16/run.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 6259
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/reference/audit-dependencies.py",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 1015
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/reference/probe.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2397
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/reference/required-symbols.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 1755
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/reference/target-environment.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2653
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/payload/remote_job.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 1407
+    },
+    {
+      "path": "cohorts/compare/target-assembly-preview-T19-control13-repeat-r22.s",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/target-assembly-preview-T19-control13-repeat-r22.s",
+      "role": "local_record_or_input",
+      "public_bytes": 132338
+    },
+    {
+      "path": "cohorts/compare/target-assembly-preview-T24-smallbroadcast.s",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/target-assembly-preview-T24-smallbroadcast.s",
+      "role": "local_record_or_input",
+      "public_bytes": 133616
+    },
+    {
+      "path": "cohorts/compare/upload.log",
+      "source": ".runs/trsm/optimization-20260913-r22-compare/upload.log",
+      "role": "local_record_or_input",
+      "public_bytes": 0
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/benchmark.log",
+      "source": ".runs/trsm/T19-control13-repeat-r22/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12214
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/cluster.json",
+      "source": ".runs/trsm/T19-control13-repeat-r22/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3104
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/environment.log",
+      "source": ".runs/trsm/T19-control13-repeat-r22/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/exit-code.txt",
+      "source": ".runs/trsm/T19-control13-repeat-r22/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/experiment.json",
+      "source": ".runs/trsm/T19-control13-repeat-r22/experiment.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1356
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/linkage.log",
+      "source": ".runs/trsm/T19-control13-repeat-r22/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3570
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12214
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3104
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3570
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T19-control13-repeat-r22/nohash-recorded-evidence/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 73077
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/prior-record.json",
+      "source": ".runs/trsm/T19-control13-repeat-r22/prior-record.json",
+      "role": "local_record_or_input",
+      "public_bytes": 8778
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/runtime-settings.json",
+      "source": ".runs/trsm/T19-control13-repeat-r22/runtime-settings.json",
+      "role": "local_record_or_input",
+      "public_bytes": 2519
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/scheduler-status.txt",
+      "source": ".runs/trsm/T19-control13-repeat-r22/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/source/README.md",
+      "source": ".runs/trsm/T19-control13-repeat-r22/source/README.md",
+      "role": "local_record_or_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/source/bench_trsm.c",
+      "source": ".runs/trsm/T19-control13-repeat-r22/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/source/compat/kblas.h",
+      "source": ".runs/trsm/T19-control13-repeat-r22/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/source/run.sh",
+      "source": ".runs/trsm/T19-control13-repeat-r22/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/source/trsm.c",
+      "source": ".runs/trsm/T19-control13-repeat-r22/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 73077
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/warmup/summary.json",
+      "source": ".runs/trsm/T19-control13-repeat-r22/warmup/summary.json",
+      "role": "local_record_or_input",
+      "public_bytes": 5198
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/warmup-linkage.log",
+      "source": ".runs/trsm/T19-control13-repeat-r22/warmup-linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 1204
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/warmup.log",
+      "source": ".runs/trsm/T19-control13-repeat-r22/warmup.log",
+      "role": "local_record_or_input",
+      "public_bytes": 9931
+    },
+    {
+      "path": "members/T19-control13-repeat-r22/wrapper.stdout.log",
+      "source": ".runs/trsm/T19-control13-repeat-r22/wrapper.stdout.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12214
+    },
+    {
+      "path": "members/T24-smallbroadcast/PREPARATION.md",
+      "source": ".runs/trsm/T24-smallbroadcast/PREPARATION.md",
+      "role": "local_record_or_input",
+      "public_bytes": 1617
+    },
+    {
+      "path": "members/T24-smallbroadcast/STATIC-REVIEW.md",
+      "source": ".runs/trsm/T24-smallbroadcast/STATIC-REVIEW.md",
+      "role": "local_record_or_input",
+      "public_bytes": 897
+    },
+    {
+      "path": "members/T24-smallbroadcast/VALIDATION-PLAN.md",
+      "source": ".runs/trsm/T24-smallbroadcast/VALIDATION-PLAN.md",
+      "role": "local_record_or_input",
+      "public_bytes": 872
+    },
+    {
+      "path": "members/T24-smallbroadcast/benchmark.log",
+      "source": ".runs/trsm/T24-smallbroadcast/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12196
+    },
+    {
+      "path": "members/T24-smallbroadcast/cluster.json",
+      "source": ".runs/trsm/T24-smallbroadcast/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3103
+    },
+    {
+      "path": "members/T24-smallbroadcast/environment.log",
+      "source": ".runs/trsm/T24-smallbroadcast/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T24-smallbroadcast/exit-code.txt",
+      "source": ".runs/trsm/T24-smallbroadcast/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T24-smallbroadcast/experiment.json",
+      "source": ".runs/trsm/T24-smallbroadcast/experiment.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1246
+    },
+    {
+      "path": "members/T24-smallbroadcast/linkage.log",
+      "source": ".runs/trsm/T24-smallbroadcast/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3552
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12196
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3103
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3552
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T24-smallbroadcast/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T24-smallbroadcast/nohash-recorded-evidence/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 74741
+    },
+    {
+      "path": "members/T24-smallbroadcast/runtime-settings.json",
+      "source": ".runs/trsm/T24-smallbroadcast/runtime-settings.json",
+      "role": "local_record_or_input",
+      "public_bytes": 2519
+    },
+    {
+      "path": "members/T24-smallbroadcast/scheduler-status.txt",
+      "source": ".runs/trsm/T24-smallbroadcast/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T24-smallbroadcast/source/README.md",
+      "source": ".runs/trsm/T24-smallbroadcast/source/README.md",
+      "role": "local_record_or_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "members/T24-smallbroadcast/source/bench_trsm.c",
+      "source": ".runs/trsm/T24-smallbroadcast/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T24-smallbroadcast/source/compat/kblas.h",
+      "source": ".runs/trsm/T24-smallbroadcast/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T24-smallbroadcast/source/run.sh",
+      "source": ".runs/trsm/T24-smallbroadcast/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T24-smallbroadcast/source/trsm.c",
+      "source": ".runs/trsm/T24-smallbroadcast/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 74741
+    },
+    {
+      "path": "members/T24-smallbroadcast/warmup/summary.json",
+      "source": ".runs/trsm/T24-smallbroadcast/warmup/summary.json",
+      "role": "local_record_or_input",
+      "public_bytes": 5191
+    },
+    {
+      "path": "members/T24-smallbroadcast/warmup-linkage.log",
+      "source": ".runs/trsm/T24-smallbroadcast/warmup-linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 1198
+    },
+    {
+      "path": "members/T24-smallbroadcast/warmup.log",
+      "source": ".runs/trsm/T24-smallbroadcast/warmup.log",
+      "role": "local_record_or_input",
+      "public_bytes": 9925
+    },
+    {
+      "path": "members/T24-smallbroadcast/wrapper.stdout.log",
+      "source": ".runs/trsm/T24-smallbroadcast/wrapper.stdout.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12196
+    },
+    {
+      "path": "records/latest/T19-control13.json",
+      "source": "records/experiments/trsm/T19-control13.json",
+      "role": "local_record_or_input",
+      "public_bytes": 9153
+    },
+    {
+      "path": "records/latest/T24-smallbroadcast.json",
+      "source": "records/experiments/trsm/T24-smallbroadcast.json",
+      "role": "local_record_or_input",
+      "public_bytes": 6772
+    },
+    {
+      "path": "tools/archive-r22.py",
+      "source": ".runs/trsm/archive-r22.py",
+      "role": "local_record_or_input",
+      "public_bytes": 9558
+    },
+    {
+      "path": "tools/records-kml-NOTES.md",
+      "source": ".runs/trsm/nohash-tools/records-kml-NOTES.md",
+      "role": "local_record_or_input",
+      "public_bytes": 9637
+    },
+    {
+      "path": "tools/records-kml.py",
+      "source": ".runs/trsm/nohash-tools/records-kml.py",
+      "role": "local_record_or_input",
+      "public_bytes": 38549
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "status": "reviewed_not_promoted",
+  "job_id": "1582526",
+  "formal_pass_count": 18,
+  "warmup_pass_count": 6,
+  "baseline_version": "T19-control13",
+  "best_implementation": "T19-panel8x16budget",
+  "comparisons": {
+    "T24-smallbroadcast": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 0.2871% does not exceed threshold 10.6111%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 14.89,
+          "candidate_ms": 14.14,
+          "gain_pct": 5.0369375419744795
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 121.4,
+          "candidate_ms": 120.92,
+          "gain_pct": 0.3953871499176309
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 180.68,
+          "candidate_ms": 181.0,
+          "gain_pct": -0.17710870046490657
+        }
+      ],
+      "total_gain_pct": 0.28709341578068115,
+      "noise_threshold_pct": 10.61114842175957,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "medians_ms": {
+    "T19-control13": 316.97,
+    "T24-smallbroadcast": 316.06
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false,
+  "root_reviewed_at": "2026-09-12T18:07:54.053529+00:00",
+  "decision": "Total gain0.28709% below10.61115%noise; changed middle kernel gain0.39539%. Keep all samples including T19small15.98/middle127.95. Unmodified small path gain is not attributable to new kernel. Retain T19 and exact-tested ZIP."
+}
