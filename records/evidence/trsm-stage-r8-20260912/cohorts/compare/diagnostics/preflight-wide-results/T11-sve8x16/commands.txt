@@ -1,0 +1,14 @@
+python3 /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide/guard.py 
+gcc --version 
+gcc -O3 -fno-fast-math -ffp-contract=off -fopenmp -mcpu=generic -finstrument-functions -DTRSM_SOURCE=\"/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/T11-sve8x16/source/trsm.c\" /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide/check-wide.c -lm -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-normal 
+gcc -O3 -fno-fast-math -ffp-contract=off -fopenmp -mcpu=generic -finstrument-functions -DTRSM_SOURCE=\"/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/T11-sve8x16/source/trsm.c\" -DTEST_NO_SVE /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide/check-wide.c -lm -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-no-sve 
+gcc -O3 -fno-fast-math -ffp-contract=off -fopenmp -mcpu=generic -finstrument-functions -DTRSM_SOURCE=\"/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/T11-sve8x16/source/trsm.c\" -DTEST_SHARED_ALLOC_FAIL /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide/check-wide.c -lm -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-fail-shared 
+gcc -O3 -fno-fast-math -ffp-contract=off -fopenmp -mcpu=generic -S /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/T11-sve8x16/source/trsm.c -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/trsm-wide8x16.s 
+env OMP_NUM_THREADS=1 /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-normal micro 
+env OMP_NUM_THREADS=1 /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-normal full 
+env OMP_NUM_THREADS=4 /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-normal full 
+env OMP_NUM_THREADS=38 /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-normal smoke 
+env OMP_NUM_THREADS=4 /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-fail-shared smoke 
+env OMP_NUM_THREADS=4 /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-no-sve smoke 
+env OMP_NUM_THREADS=4 /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16/check-normal --narrow-vl smoke 
+python3 - /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-92ddf5fc3998/preflight-wide-results/T11-sve8x16 
