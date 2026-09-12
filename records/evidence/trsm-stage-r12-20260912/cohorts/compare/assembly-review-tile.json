@@ -1,0 +1,467 @@
+{
+  "schema": "trsm-r12-assembly-tile-review-v1",
+  "reviewed_at": "2026-09-12T10:56:13.798529+00:00",
+  "job_id": "1579645",
+  "review_method": "read_only_log_and_assembly_text_analysis",
+  "local_task_compilation_or_execution": false,
+  "ssh": false,
+  "hash_operations": false,
+  "scheduler_succeeded": true,
+  "cohort_exit_code": 0,
+  "formal_case_count": 36,
+  "warmup_case_count": 12,
+  "formal_round_order": [
+    [
+      "T8-control12-repeat-r12",
+      "T13-sve4x32-repeat-r12",
+      "T15-svetile128",
+      "T16-svetile32"
+    ],
+    [
+      "T13-sve4x32-repeat-r12",
+      "T15-svetile128",
+      "T16-svetile32",
+      "T8-control12-repeat-r12"
+    ],
+    [
+      "T15-svetile128",
+      "T16-svetile32",
+      "T8-control12-repeat-r12",
+      "T13-sve4x32-repeat-r12"
+    ]
+  ],
+  "formal_members": [
+    {
+      "run_name": "T8-control12-repeat-r12",
+      "version": "T8-control12",
+      "CT": null,
+      "formal_cases": 9,
+      "warmup_cases": 3,
+      "warmup_excluded": true,
+      "formal_rounds": [
+        1,
+        2,
+        3
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "times_ms": [
+            19.01,
+            18.53,
+            19.53
+          ],
+          "median_ms": 19.01,
+          "spread_pct": 5.260389268805891,
+          "max_error": 1.67e-16
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "times_ms": [
+            221.21,
+            231.14,
+            224.62
+          ],
+          "median_ms": 224.62,
+          "spread_pct": 4.420799572611512,
+          "max_error": 2.22e-16
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "times_ms": [
+            195.95,
+            194.97,
+            194.89
+          ],
+          "median_ms": 194.97,
+          "spread_pct": 0.5436733856490754,
+          "max_error": 1.11e-15
+        }
+      ],
+      "total_median_ms": 438.6,
+      "record_verified": true
+    },
+    {
+      "run_name": "T13-sve4x32-repeat-r12",
+      "version": "T13-sve4x32",
+      "CT": 64,
+      "formal_cases": 9,
+      "warmup_cases": 3,
+      "warmup_excluded": true,
+      "formal_rounds": [
+        1,
+        2,
+        3
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "times_ms": [
+            18.69,
+            18.73,
+            18.99
+          ],
+          "median_ms": 18.73,
+          "spread_pct": 1.6017084890549766,
+          "max_error": 1.67e-16
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "times_ms": [
+            223.17,
+            216.15,
+            218.87
+          ],
+          "median_ms": 218.87,
+          "spread_pct": 3.20738337826106,
+          "max_error": 2.22e-16
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "times_ms": [
+            181.03,
+            180.95,
+            181.13
+          ],
+          "median_ms": 181.03,
+          "spread_pct": 0.09943103353035786,
+          "max_error": 1.11e-15
+        }
+      ],
+      "total_median_ms": 418.63,
+      "record_verified": true
+    },
+    {
+      "run_name": "T15-svetile128",
+      "version": "T15-svetile128",
+      "CT": 128,
+      "formal_cases": 9,
+      "warmup_cases": 3,
+      "warmup_excluded": true,
+      "formal_rounds": [
+        1,
+        2,
+        3
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "times_ms": [
+            18.71,
+            19.05,
+            18.84
+          ],
+          "median_ms": 18.84,
+          "spread_pct": 1.8046709129511669,
+          "max_error": 1.67e-16
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "times_ms": [
+            225.26,
+            222.88,
+            215.51
+          ],
+          "median_ms": 222.88,
+          "spread_pct": 4.374551328068916,
+          "max_error": 2.22e-16
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "times_ms": [
+            189.62,
+            190.92,
+            189.52
+          ],
+          "median_ms": 189.62,
+          "spread_pct": 0.7383187427486432,
+          "max_error": 1.11e-15
+        }
+      ],
+      "total_median_ms": 431.34000000000003,
+      "record_verified": true
+    },
+    {
+      "run_name": "T16-svetile32",
+      "version": "T16-svetile32",
+      "CT": 32,
+      "formal_cases": 9,
+      "warmup_cases": 3,
+      "warmup_excluded": true,
+      "formal_rounds": [
+        1,
+        2,
+        3
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "times_ms": [
+            18.73,
+            18.67,
+            18.96
+          ],
+          "median_ms": 18.73,
+          "spread_pct": 1.5483182060864877,
+          "max_error": 1.67e-16
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "times_ms": [
+            213.19,
+            218.22,
+            227.67
+          ],
+          "median_ms": 218.22,
+          "spread_pct": 6.63550545321235,
+          "max_error": 2.22e-16
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "times_ms": [
+            183.96,
+            185.05,
+            188.28
+          ],
+          "median_ms": 185.05,
+          "spread_pct": 2.3345041880572777,
+          "max_error": 1.11e-15
+        }
+      ],
+      "total_median_ms": 422.0,
+      "record_verified": true
+    }
+  ],
+  "wide_preflights": [
+    {
+      "run_name": "T13-sve4x32-repeat-r12",
+      "expected_CT": 64,
+      "summary": {
+        "schema": "trsm-wide32-preflight-v1",
+        "complete": true,
+        "expected_CT": 64,
+        "KB": 256,
+        "tile_config_processes": 7,
+        "micro_cases": 28,
+        "whole_cases": 28,
+        "shared_fail_cases": 1,
+        "no_sve_cases": 1,
+        "narrow_vl_cases": 1,
+        "argument_checked_cases": 56,
+        "argument_observations": 463420,
+        "kernel_argument_mismatches": 0,
+        "test_copy_instrumented": true,
+        "original_candidate_modified": false
+      },
+      "actual_tile_config_processes": 7,
+      "assembly_path": ".runs/trsm/optimization-20260912-r12-compare/diagnostics/preflight-wide32-results/T13-sve4x32-repeat-r12/trsm-wide4x32.s",
+      "assembly_from_original_source_command": true,
+      "assembly_instrumented": false,
+      "function": "update4x32_sve",
+      "function_start_line": 456,
+      "function_end_line": 623,
+      "function_instruction_count": 157,
+      "function_body_text_equal_to_T13": true,
+      "hot_loop_label": ".L25",
+      "hot_loop_label_line": 488,
+      "hot_loop_first_instruction_line": 489,
+      "hot_loop_backedge_line": 522,
+      "hot_loop_instruction_count": 34,
+      "hot_loop_opcode_counts": {
+        "ldr": 3,
+        "ptrue": 1,
+        "ld1rd": 1,
+        "add": 4,
+        "ld1d": 4,
+        "mov": 3,
+        "fmla": 16,
+        "cmp": 1,
+        "bne": 1
+      },
+      "call_instructions": [],
+      "stack_instructions": [],
+      "frozen_source_only_CT_diff_from_T13": true
+    },
+    {
+      "run_name": "T15-svetile128",
+      "expected_CT": 128,
+      "summary": {
+        "schema": "trsm-wide32-preflight-v1",
+        "complete": true,
+        "expected_CT": 128,
+        "KB": 256,
+        "tile_config_processes": 7,
+        "micro_cases": 28,
+        "whole_cases": 28,
+        "shared_fail_cases": 1,
+        "no_sve_cases": 1,
+        "narrow_vl_cases": 1,
+        "argument_checked_cases": 56,
+        "argument_observations": 463420,
+        "kernel_argument_mismatches": 0,
+        "test_copy_instrumented": true,
+        "original_candidate_modified": false
+      },
+      "actual_tile_config_processes": 7,
+      "assembly_path": ".runs/trsm/optimization-20260912-r12-compare/diagnostics/preflight-wide32-results/T15-svetile128/trsm-wide4x32.s",
+      "assembly_from_original_source_command": true,
+      "assembly_instrumented": false,
+      "function": "update4x32_sve",
+      "function_start_line": 456,
+      "function_end_line": 623,
+      "function_instruction_count": 157,
+      "function_body_text_equal_to_T13": true,
+      "hot_loop_label": ".L25",
+      "hot_loop_label_line": 488,
+      "hot_loop_first_instruction_line": 489,
+      "hot_loop_backedge_line": 522,
+      "hot_loop_instruction_count": 34,
+      "hot_loop_opcode_counts": {
+        "ldr": 3,
+        "ptrue": 1,
+        "ld1rd": 1,
+        "add": 4,
+        "ld1d": 4,
+        "mov": 3,
+        "fmla": 16,
+        "cmp": 1,
+        "bne": 1
+      },
+      "call_instructions": [],
+      "stack_instructions": [],
+      "frozen_source_only_CT_diff_from_T13": true
+    },
+    {
+      "run_name": "T16-svetile32",
+      "expected_CT": 32,
+      "summary": {
+        "schema": "trsm-wide32-preflight-v1",
+        "complete": true,
+        "expected_CT": 32,
+        "KB": 256,
+        "tile_config_processes": 7,
+        "micro_cases": 28,
+        "whole_cases": 28,
+        "shared_fail_cases": 1,
+        "no_sve_cases": 1,
+        "narrow_vl_cases": 1,
+        "argument_checked_cases": 56,
+        "argument_observations": 463420,
+        "kernel_argument_mismatches": 0,
+        "test_copy_instrumented": true,
+        "original_candidate_modified": false
+      },
+      "actual_tile_config_processes": 7,
+      "assembly_path": ".runs/trsm/optimization-20260912-r12-compare/diagnostics/preflight-wide32-results/T16-svetile32/trsm-wide4x32.s",
+      "assembly_from_original_source_command": true,
+      "assembly_instrumented": false,
+      "function": "update4x32_sve",
+      "function_start_line": 456,
+      "function_end_line": 623,
+      "function_instruction_count": 157,
+      "function_body_text_equal_to_T13": true,
+      "hot_loop_label": ".L25",
+      "hot_loop_label_line": 488,
+      "hot_loop_first_instruction_line": 489,
+      "hot_loop_backedge_line": 522,
+      "hot_loop_instruction_count": 34,
+      "hot_loop_opcode_counts": {
+        "ldr": 3,
+        "ptrue": 1,
+        "ld1rd": 1,
+        "add": 4,
+        "ld1d": 4,
+        "mov": 3,
+        "fmla": 16,
+        "cmp": 1,
+        "bne": 1
+      },
+      "call_instructions": [],
+      "stack_instructions": [],
+      "frozen_source_only_CT_diff_from_T13": true
+    }
+  ],
+  "comparisons": {
+    "T13-sve4x32": {
+      "total_gain_pct": 4.553123575011406,
+      "noise_threshold_pct": 5.260389268805891,
+      "eligible": false
+    },
+    "T15-svetile128": {
+      "total_gain_pct": 1.655266757865935,
+      "noise_threshold_pct": 5.260389268805891,
+      "eligible": false
+    },
+    "T16-svetile32": {
+      "total_gain_pct": 3.7847697218422303,
+      "noise_threshold_pct": 6.63550545321235,
+      "eligible": false
+    }
+  },
+  "retained_best": "T8-control12",
+  "retained_implementation": "T8-svepanel16",
+  "large_case_fastest": "T13-sve4x32",
+  "total_fastest": "T13-sve4x32",
+  "medium_case_fastest": "T16-svetile32",
+  "interpretation": "CT changes the large-path row/column task tiling and possible reuse; the identical leaf microkernel assembly does not predict total performance. All three candidates fail their predeclared noise gate.",
+  "reference": "Actual KML25.1 / GCC12.3.1; not specified official KML25.2",
+  "blocking_findings": [],
+  "independent_log_review": {
+    "blocking_findings": [],
+    "formal_case_count": 36,
+    "warmup_case_count": 12,
+    "official_and_warmup_max_error": 1.11e-15,
+    "per_wide_candidate": {
+      "micro_cases": 28,
+      "whole_cases": 28,
+      "argument_checked_cases": 56,
+      "tile_config_processes": 7,
+      "completed_steps_exit_zero": 15,
+      "argument_observations": 463420,
+      "shared_failure_injections": 1,
+      "shared_failure_wide_entries": 30912,
+      "no_sve_wide_entries": 0,
+      "narrow_vl_wide_entries": 0,
+      "actual_narrow_vl_bytes": 16,
+      "whole_max_error": 3.885780586188048e-16,
+      "whole_max_residual": 8.034328967208903e-16
+    },
+    "method": "Independent read-only statistics from existing original logs; no candidate execution"
+  }
+}
