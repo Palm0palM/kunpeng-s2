@@ -1,0 +1,42 @@
+{
+  "cohort_id": "trsm-kml251-d3fe2d277603",
+  "members": {
+    "T8-control12": {
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic",
+          "TEST_RUNS": "3",
+          "KBLAS_LIB": "",
+          "CC": "gcc"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      },
+      "version": "T8-control12",
+      "repeat_existing": false
+    }
+  },
+  "round_order": [
+    [
+      "T8-control12"
+    ],
+    [
+      "T8-control12"
+    ],
+    [
+      "T8-control12"
+    ]
+  ]
+}

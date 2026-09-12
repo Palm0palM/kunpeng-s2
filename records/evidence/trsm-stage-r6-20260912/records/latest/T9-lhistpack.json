@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T9-lhistpack",
+  "parent": "T8-control12",
+  "source_from": "T9-lhistpack",
+  "source_implementation_id": "T9-lhistpack",
+  "strategy": "以T8为来源，小路径共享打包16行块历史L系数为k-major连续布局，减少历史循环的地址运算与分散行访问；打包分配同步均计时，块内前代及大路径不变。",
+  "created_at": "2026-09-12T08:25:30.084331+00:00",
+  "status": "passed",
+  "verified": true,
+  "validation_policy": "user-requested-no-hash",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc",
+      "KML251_ROOT": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0",
+      "KML251_ARCH": "sme",
+      "KML251_LIBDIR": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi",
+      "COMPILER_ROOT": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux",
+      "GOMP_LIBRARY": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1.0.0",
+      "CPATH": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include",
+      "LIBRARY_PATH": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib",
+      "LD_LIBRARY_PATH": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib:/opt/stars:",
+      "COMPILER_VERSION": "gcc (gcc for openEuler 3.0.2) 12.3.1"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        13.37,
+        14.53,
+        14.36
+      ],
+      "median_ms": 14.36,
+      "min_ms": 13.37,
+      "max_ms": 14.53,
+      "spread_pct": 8.077994428969362,
+      "gflops": [
+        391.5852,
+        360.3475,
+        364.5953
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        267.33,
+        249.42,
+        269.09
+      ],
+      "median_ms": 267.33,
+      "min_ms": 249.42,
+      "max_ms": 269.09,
+      "spread_pct": 7.357947106572397,
+      "gflops": [
+        376.6467,
+        403.706,
+        374.1876
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        192.79,
+        192.41,
+        195.95
+      ],
+      "median_ms": 192.79,
+      "min_ms": 192.41,
+      "max_ms": 195.95,
+      "spread_pct": 1.8361948233829515,
+      "gflops": [
+        769.6654,
+        771.1828,
+        757.2623
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 474.48,
+  "official_score": null,
+  "ranking": null,
+  "recorded_at": "2026-09-12T08:34:37.684337+00:00",
+  "environment": "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-job1579365",
+  "reference": "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1",
+      "gcc (gcc for openEuler 3.0.2) 12.3.1"
+    ]
+  },
+  "job_id": "1579365",
+  "checks": {
+    "evidence_files_present": true,
+    "job_id": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_zero": true,
+    "three_complete_ordered_suites": true,
+    "precision_at_most_1e_12": true,
+    "machine_and_38_cpus": true,
+    "settings_38_threads": true,
+    "settings_three_suites": true,
+    "test_runs_exactly_three": true,
+    "fixed_thread_binding_settings": true,
+    "real_kml251_and_private_gcc1231_documented": true,
+    "runtime_environment_matches_settings": true,
+    "three_suites_link_true_kml251_and_private_gomp": true,
+    "runner_compiler_reference_and_binding_match": true,
+    "benchmark_matches_current_trsm_bytes": true,
+    "runner_matches_current_trsm_bytes": true,
+    "local_source_files_present": true,
+    "record_snapshot_matches_live_bytes": true
+  },
+  "kml_evidence_schema": "trsm-kml251-gcc1231-linkage-v1",
+  "intended_reference_version": "KML 25.1.0",
+  "actual_reference_version": "KML 25.1.0",
+  "actual_compiler_version": "GCC 12.3.1",
+  "official_kml252_revalidated": false,
+  "hash_validation": "not performed: prohibited by user",
+  "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
+  "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
+  "run_dir": ".runs/trsm/T9-lhistpack",
+  "nohash_evidence": ".runs/trsm/T9-lhistpack/nohash-recorded-evidence",
+  "log": ".runs/trsm/T9-lhistpack/nohash-recorded-evidence/benchmark.log",
+  "metric": "sum of per-case median ms; not official score"
+}

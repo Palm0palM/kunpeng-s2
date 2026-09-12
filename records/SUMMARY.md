@@ -70,3 +70,8 @@ TRSM 当前最佳：**T7-diagpanel**（parent T5-control10）：同分配三轮�
 ## TRSM 2026-09-12：T8-svepanel16
 
 KML25.1/GCC12 作业1576028，同分配三轮27/27官方结果PASS。T8-svepanel16逐用例中位数合计508.56→447.59ms，耗时降低11.99%，超过7.67%波动门槛，已晋级；T8-paneloutline未晋级。KML25.1不等同指定25.2.0复验。[本轮记录](../docs/trsm-stage-r5-20260912.md)。
+
+
+## TRSM 2026-09-12 第六轮：保留T8
+
+作业1579365同分配三轮27/27官方结果PASS；T8/T9-neondirect/T9-lhistpack中位数合计452.02/506.81/474.48ms。两个候选均退化未晋级，保留已验证T8提交包；测量基线为T8-control12，原样初测与同分配repeat均留证。KML25.1非指定25.2.0复验。[完整记录](../docs/trsm-stage-r6-20260912.md)。
