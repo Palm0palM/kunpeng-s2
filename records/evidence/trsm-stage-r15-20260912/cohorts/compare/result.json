@@ -1,0 +1,57 @@
+{
+  "status": "reviewed_no_promotion",
+  "job_id": "1579788",
+  "formal_pass_count": 18,
+  "warmup_pass_count": 6,
+  "baseline_version": "T8-control12",
+  "best_implementation": "T8-svepanel16",
+  "comparisons": {
+    "T18-budgetwide": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 3.6802% does not exceed threshold 11.8609%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 18.79,
+          "candidate_ms": 14.67,
+          "gain_pct": 21.926556679084616
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 237.16,
+          "candidate_ms": 237.83,
+          "gain_pct": -0.28250969809412035
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 194.02,
+          "candidate_ms": 180.91,
+          "gain_pct": 6.757035357179679
+        }
+      ],
+      "total_gain_pct": 3.6802453496899923,
+      "noise_threshold_pct": 11.860940695296526,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "medians_ms": {
+    "T8-control12": 449.97,
+    "T18-budgetwide": 433.40999999999997
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false,
+  "decision": "Retain all samples and original T8 package. Explore small-path block shape after checking historical coverage; do not promote or package T18 from this round."
+}
