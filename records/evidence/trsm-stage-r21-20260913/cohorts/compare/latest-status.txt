@@ -1,0 +1,96 @@
+Basic Details:
+    jobId                               	1582392                                           	
+    name                                	trsm-kml251-6b3de88e03f5                          	
+    state                               	SUCCEEDED                                         	
+    user                                	REDACTED_USER                                       	
+    queue                               	q_kunpeng                                         	
+    account                             	CLUSTER_ACCOUNT                                            	
+    cmd                                 	/bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-6b3de88e03f5/remote_job.sh	
+    submitNode                          	LOGIN_NODE                                           	
+    createTime                          	2026/09/13 01:39:22                               	
+    startTime                           	2026/09/13 01:39:26                               	
+    lastModifiedTime                    	-                                                 	
+    endTime                             	2026/09/13 01:48:17                               	
+    currentOperation                    	EMPTY                                             	
+    jobRequeueMaxCnt                    	0                                                 	
+    jobRequeueCurrentCnt                	0                                                 	
+    mpiType                             	DEFAULT                                           	
+    interactionMode                     	DEFAULT                                           	
+    assistJob                           	DEFAULT                                           	
+    x11ForwardEnabled                   	false                                             	
+    description                         	-                                                 	
+    transferType                        	LOCAL                                             	
+    forwardTime                         	-                                                 	
+    recallTime                          	-                                                 	
+    autoResize                          	false                                             	
+Scheduling Details:
+    exclusive                           	false                                             	
+    priority                            	1                                                 	
+    adminPriority                       	-1                                                	
+    expectSchedTime                     	-                                                 	
+    startTimeEstimated                  	-                                                 	
+    reserveRes                          	-                                                 	
+    backfillRes                         	-                                                 	
+    backfilledRes                       	-                                                 	
+Resource Details:
+    reqJobLicense                       	-
+    allocJobLicense                     	-
+    resGroup[0]:
+        minReplica                      	1                                                 	
+        replica                         	1                                                 	
+        labels                          	queue_q_kunpeng aarch64                           	
+        preferNodes                     	-                                                 	
+        reqNodeSelectPolicy             	-                                                 	
+        effNodeSelectPolicy             	SEQUENCE                                          	
+        reqCPU                          	38                                                	
+        reqMem                          	24576                                             	
+        reqGPU                          	gpu:0
+        reqNPU                          	0
+        allocCPU                        	38                                                	
+        allocMem                        	24576                                             	
+        allocGPU                        	gpu:0
+        allocNPU                        	0
+        reqTaskLicense                  	-
+        allocTaskLicense                	-
+        reqAffinity                     	numa[count=1, distribution=pack]                  	
+    allocAffinity                       	
+        execNode             resGroup resIndex hwThreads        gpuIds           npuIds          
+        COMPUTE_NODE              0        0/1      76-113           -                -               
+Runtime Details:
+    execNodes                           	COMPUTE_NODE                                           	
+    execNodeCnt                         	1                                                 	
+    execPath                            	/CLUSTER_USER_HOME                           	
+    resizeCmd                           	-                                                 	
+    timeout                             	1800                                              	
+    stderrRedirectPath                  	-                                                 	
+    stderrRedirectType                  	append                                            	
+    stdoutRedirectPath                  	/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-6b3de88e03f5/wrapper.stdout.log	
+    stdoutRedirectType                  	append                                            	
+    totalUtime                          	1009                                              	
+    totalStime                          	57                                                	
+    totalMaxMemSwp                      	268                                               	
+    totalMaxMem                         	268                                               	
+    hostPreHookRunTime                  	0                                                 	
+    preHookRunTime                      	0                                                 	
+    jobWallclockDuration                	529                                               	
+    postHookRunTime                     	0                                                 	
+    hostPostHookRunTime                 	0                                                 	
+    jobSstoppedTime                     	0                                                 	
+    coreHours                           	20102                                             	
+    jobExitCode                         	0                                                 	
+    systemExitCode                      	0                                                 	
+    exitMessage                         	Job execution succeeded                           	
+    stderrRedirectOutputPath            	-                                                 	
+    stdoutRedirectOutputPath            	/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-6b3de88e03f5/wrapper.stdout.log	
+    nodeUsages                          	
+        execNode             resGroup resIndex utime    stime    wallclockDuration    sstoppedTime     cpuUtil          gpuUtil          npuUtil          memResource                     
+        COMPUTE_NODE              0        0/1      1009     57       529                  0                201/929          -                -                0/5/0/0/2764/2764/66/0          
+    nodePids                            	
+        execNode             pids    
+        COMPUTE_NODE              -       
+    traceMessages                       	2026/09/13 01:39:22    :    [JOB_ADD] Job 1582392 is submitted by REDACTED_USER, job state is PENDING.	
+                                        	2026/09/13 01:39:26    :    [JOB_START] Job 1582392 start message has been sent.	
+                                        	2026/09/13 01:39:26    :    [JOB_START_ACK] Job 1582392 start message has been received by agent COMPUTE_NODE.	
+                                        	2026/09/13 01:39:26    :    [JOB_EXECUTION] Job 1582392 state is from PENDING to RUNNING, execution path: /CLUSTER_USER_HOME.	
+                                        	2026/09/13 01:48:17    :    [JOB_FINISH] Job 1582392 state is from RUNNING to SUCCEEDED.	
+
