@@ -1,0 +1,2082 @@
+{
+  "schema_version": 1,
+  "stage": "r20-20260913",
+  "problem": "trsm",
+  "created_at": "2026-09-12T17:27:14.755566+00:00",
+  "states": {
+    "compare": {
+      "submission": {
+        "state": "collected",
+        "cohort_id": "trsm-kml251-16bc955d4e1a",
+        "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-16bc955d4e1a",
+        "created_at": "2026-09-12T17:19:41.707298+00:00",
+        "job_id": "1582239",
+        "phase": "interleaved-T19-T20-T22-unroll-register-only",
+        "validation_policy": "No hash computation or validation at explicit user request",
+        "upload_command": "mkdir /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-16bc955d4e1a && tar -xzf - -C /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-16bc955d4e1a",
+        "submit_command": "dsub -n trsm-kml251-16bc955d4e1a -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-16bc955d4e1a/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-16bc955d4e1a/remote_job.sh",
+        "submission_started_at": "2026-09-12T17:20:01.028348+00:00",
+        "submitted_at": "2026-09-12T17:20:01.498999+00:00",
+        "identity_marker_sent_at": "2026-09-12T17:20:01.869447+00:00",
+        "collected_at": "2026-09-12T17:24:30.685241+00:00"
+      },
+      "result": {
+        "status": "reviewed_not_promoted",
+        "job_id": "1582239",
+        "formal_pass_count": 27,
+        "warmup_pass_count": 9,
+        "baseline_version": "T19-control13",
+        "best_implementation": "T19-panel8x16budget",
+        "comparisons": {
+          "T20-wideunroll2": {
+            "eligible": false,
+            "reasons": [
+              "total improvement 2.1242% does not exceed threshold 12.4162%"
+            ],
+            "cases": [
+              {
+                "dims": [
+                  512,
+                  19968
+                ],
+                "base_ms": 14.6,
+                "candidate_ms": 14.57,
+                "gain_pct": 0.20547945205479015
+              },
+              {
+                "dims": [
+                  2432,
+                  17024
+                ],
+                "base_ms": 120.26,
+                "candidate_ms": 120.53,
+                "gain_pct": -0.2245135539664028
+              },
+              {
+                "dims": [
+                  17024,
+                  512
+                ],
+                "base_ms": 181.49,
+                "candidate_ms": 174.53,
+                "gain_pct": 3.834922034271865
+              }
+            ],
+            "total_gain_pct": 2.124229492650554,
+            "noise_threshold_pct": 12.416203518019818,
+            "validation_policy": "user-requested-no-hash",
+            "hash_validation": "not performed",
+            "metric": "sum of per-case median ms; not official score"
+          },
+          "T22-unrollreg": {
+            "eligible": false,
+            "reasons": [
+              "total improvement -2.1021% does not exceed threshold 7.6670%",
+              "at least one official case regresses by more than 1%"
+            ],
+            "cases": [
+              {
+                "dims": [
+                  512,
+                  19968
+                ],
+                "base_ms": 14.6,
+                "candidate_ms": 14.67,
+                "gain_pct": -0.47945205479452246
+              },
+              {
+                "dims": [
+                  2432,
+                  17024
+                ],
+                "base_ms": 120.26,
+                "candidate_ms": 120.25,
+                "gain_pct": 0.008315316813574851
+              },
+              {
+                "dims": [
+                  17024,
+                  512
+                ],
+                "base_ms": 181.49,
+                "candidate_ms": 188.08,
+                "gain_pct": -3.631054052564881
+              }
+            ],
+            "total_gain_pct": -2.1021021021020947,
+            "noise_threshold_pct": 7.666950233942996,
+            "validation_policy": "user-requested-no-hash",
+            "hash_validation": "not performed",
+            "metric": "sum of per-case median ms; not official score"
+          }
+        },
+        "mechanism_comparisons": {
+          "T20-wideunroll2-vs-T22-unrollreg": {
+            "base": "T20-wideunroll2",
+            "candidate": "T22-unrollreg",
+            "promotion_authorization": false,
+            "result": {
+              "eligible": false,
+              "reasons": [
+                "total improvement -4.3181% does not exceed threshold 12.4162%",
+                "at least one official case regresses by more than 1%"
+              ],
+              "cases": [
+                {
+                  "dims": [
+                    512,
+                    19968
+                  ],
+                  "base_ms": 14.57,
+                  "candidate_ms": 14.67,
+                  "gain_pct": -0.6863417982155089
+                },
+                {
+                  "dims": [
+                    2432,
+                    17024
+                  ],
+                  "base_ms": 120.53,
+                  "candidate_ms": 120.25,
+                  "gain_pct": 0.23230730938355687
+                },
+                {
+                  "dims": [
+                    17024,
+                    512
+                  ],
+                  "base_ms": 174.53,
+                  "candidate_ms": 188.08,
+                  "gain_pct": -7.763708245000867
+                }
+              ],
+              "total_gain_pct": -4.318057035816944,
+              "noise_threshold_pct": 12.416203518019818,
+              "validation_policy": "user-requested-no-hash",
+              "hash_validation": "not performed",
+              "metric": "sum of per-case median ms; not official score"
+            }
+          }
+        },
+        "medians_ms": {
+          "T19-control13": 316.35,
+          "T20-wideunroll2": 309.63,
+          "T22-unrollreg": 323.0
+        },
+        "reference": "KML25.1/GCC12; not specified KML25.2",
+        "promoted": false,
+        "root_review": "ROOT-RESULT-REVIEW.md",
+        "reason": "T20 total gain 2.12423% below 12.41620% gate; T22 total regression 2.10210% and large regression 3.63105%",
+        "next_step": "Retain failed constraint variants; investigate the T19 small-path history loop with a separate candidate"
+      }
+    }
+  },
+  "repeat_prior_association_valid": true,
+  "repeat_prior_associations": {
+    "T19-control13": {
+      "valid": true,
+      "prior_job_id": "1582129",
+      "prior_public_record": "records/evidence/trsm-stage-r19-20260913/records/latest/T19-control13.json"
+    },
+    "T20-wideunroll2": {
+      "valid": true,
+      "prior_job_id": "1582129",
+      "prior_public_record": "records/evidence/trsm-stage-r19-20260913/records/latest/T20-wideunroll2.json"
+    }
+  },
+  "historical_T19_validation_job": "1579861",
+  "fresh_small_path_preflight": false,
+  "historical_samples_pooled": false,
+  "archive_creation_validates_measurements": false,
+  "public_redacted_derivative": true,
+  "hash_operations": false,
+  "local_task_execution": false,
+  "remote_source_identity_claim": false,
+  "transport_integrity_claim": false,
+  "missing_required_evidence": [],
+  "excluded_files": [
+    ".runs/trsm/optimization-20260913-r20-compare/cluster.local.json",
+    ".runs/trsm/optimization-20260913-r20-compare/diagnostics.tar.gz",
+    ".runs/trsm/optimization-20260913-r20-compare/payload.tar.gz"
+  ],
+  "files": [
+    {
+      "path": "cohorts/compare/ARCHIVE-REVIEW.md",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/ARCHIVE-REVIEW.md",
+      "role": "local_record_or_input",
+      "public_bytes": 692
+    },
+    {
+      "path": "cohorts/compare/NOTES.md",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/NOTES.md",
+      "role": "local_record_or_input",
+      "public_bytes": 504
+    },
+    {
+      "path": "cohorts/compare/ROOT-CONTROLLER-REVIEW.md",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/ROOT-CONTROLLER-REVIEW.md",
+      "role": "local_record_or_input",
+      "public_bytes": 1310
+    },
+    {
+      "path": "cohorts/compare/ROOT-RESULT-REVIEW.md",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/ROOT-RESULT-REVIEW.md",
+      "role": "local_record_or_input",
+      "public_bytes": 2661
+    },
+    {
+      "path": "cohorts/compare/T19-control13-repeat-r20-record.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/T19-control13-repeat-r20-record.log",
+      "role": "local_record_or_input",
+      "public_bytes": 258
+    },
+    {
+      "path": "cohorts/compare/T19-control13-vs-T20-wideunroll2.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/T19-control13-vs-T20-wideunroll2.json",
+      "role": "local_record_or_input",
+      "public_bytes": 830
+    },
+    {
+      "path": "cohorts/compare/T19-control13-vs-T22-unrollreg.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/T19-control13-vs-T22-unrollreg.json",
+      "role": "local_record_or_input",
+      "public_bytes": 894
+    },
+    {
+      "path": "cohorts/compare/T20-wideunroll2-repeat-r20-record.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/T20-wideunroll2-repeat-r20-record.log",
+      "role": "local_record_or_input",
+      "public_bytes": 260
+    },
+    {
+      "path": "cohorts/compare/T20-wideunroll2-vs-T22-unrollreg.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/T20-wideunroll2-vs-T22-unrollreg.json",
+      "role": "local_record_or_input",
+      "public_bytes": 894
+    },
+    {
+      "path": "cohorts/compare/T22-unrollreg-record.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/T22-unrollreg-record.log",
+      "role": "local_record_or_input",
+      "public_bytes": 257
+    },
+    {
+      "path": "cohorts/compare/actual-run-audit.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/actual-run-audit.json",
+      "role": "local_record_or_input",
+      "public_bytes": 5325
+    },
+    {
+      "path": "cohorts/compare/assembly-review.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/assembly-review.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1438
+    },
+    {
+      "path": "cohorts/compare/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/cohort-config.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3482
+    },
+    {
+      "path": "cohorts/compare/cohort-submission.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/cohort-submission.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1093
+    },
+    {
+      "path": "cohorts/compare/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/cohort_driver.py",
+      "role": "local_record_or_input",
+      "public_bytes": 15432
+    },
+    {
+      "path": "cohorts/compare/collect.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/collect.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8482
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/benchmark.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/benchmark.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12214
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/environment.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/environment.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 8746
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/exit-code.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 2
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3570
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/runtime-settings.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 2519
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012155-7fbgfv/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012155-7fbgfv/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012155-7fbgfv/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012155-7fbgfv/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012155-7fbgfv/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012155-7fbgfv/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012155-7fbgfv/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012155-7fbgfv/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012222-8YBak3/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012222-8YBak3/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012222-8YBak3/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012222-8YBak3/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012222-8YBak3/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012222-8YBak3/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012222-8YBak3/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012222-8YBak3/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012312-pENOEC/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012312-pENOEC/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012312-pENOEC/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012312-pENOEC/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012312-pENOEC/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012312-pENOEC/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012312-pENOEC/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012312-pENOEC/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012332-4nO8Fo/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012332-4nO8Fo/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012332-4nO8Fo/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012332-4nO8Fo/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012332-4nO8Fo/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012332-4nO8Fo/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012332-4nO8Fo/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/source/results/run-20260913-012332-4nO8Fo/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/warmup/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/warmup/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 5193
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/warmup-linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/warmup-linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1204
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/warmup.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/warmup.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 9931
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T19-control13-repeat-r20/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T19-control13-repeat-r20/wrapper.stdout.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12214
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/benchmark.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/benchmark.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12220
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/environment.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/environment.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 8746
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/exit-code.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 2
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3576
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/runtime-settings.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 2519
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012204-rIt8Xu/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012204-rIt8Xu/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012204-rIt8Xu/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012204-rIt8Xu/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012204-rIt8Xu/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012204-rIt8Xu/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012204-rIt8Xu/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012204-rIt8Xu/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012231-OdoueC/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012231-OdoueC/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012231-OdoueC/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012231-OdoueC/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012231-OdoueC/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012231-OdoueC/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012231-OdoueC/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012231-OdoueC/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012251-8WpV0V/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012251-8WpV0V/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012251-8WpV0V/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012251-8WpV0V/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012251-8WpV0V/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012251-8WpV0V/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012251-8WpV0V/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012251-8WpV0V/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012341-3tSLLq/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012341-3tSLLq/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012341-3tSLLq/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012341-3tSLLq/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012341-3tSLLq/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012341-3tSLLq/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012341-3tSLLq/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/source/results/run-20260913-012341-3tSLLq/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/warmup/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/warmup/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 5196
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/warmup-linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/warmup-linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1206
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/warmup.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/warmup.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 9933
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T20-wideunroll2-repeat-r20/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T20-wideunroll2-repeat-r20/wrapper.stdout.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12220
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/benchmark.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/benchmark.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12181
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/environment.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/environment.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 8746
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/exit-code.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 2
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3537
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/runtime-settings.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 2519
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012213-xWQgFB/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012213-xWQgFB/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012213-xWQgFB/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012213-xWQgFB/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012213-xWQgFB/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012213-xWQgFB/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012213-xWQgFB/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012213-xWQgFB/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012242-gV5egP/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012242-gV5egP/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012242-gV5egP/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012242-gV5egP/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012242-gV5egP/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012242-gV5egP/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012242-gV5egP/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012242-gV5egP/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012300-gGd8xo/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012300-gGd8xo/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012300-gGd8xo/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012300-gGd8xo/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012300-gGd8xo/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012300-gGd8xo/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012300-gGd8xo/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012300-gGd8xo/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012322-4ZZsfy/case-0.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012322-4ZZsfy/case-0.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012322-4ZZsfy/case-1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012322-4ZZsfy/case-1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012322-4ZZsfy/case-2.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012322-4ZZsfy/case-2.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 281
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/source/results/run-20260913-012322-4ZZsfy/summary.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/source/results/run-20260913-012322-4ZZsfy/summary.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1023
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/warmup/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/warmup/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 5183
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/warmup-linkage.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/warmup-linkage.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 1193
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/warmup.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/warmup.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 9920
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T22-unrollreg/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/T22-unrollreg/wrapper.stdout.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 12181
+    },
+    {
+      "path": "cohorts/compare/diagnostics/assigned-job-id.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/assigned-job-id.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 8
+    },
+    {
+      "path": "cohorts/compare/diagnostics/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/cohort-config.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 3482
+    },
+    {
+      "path": "cohorts/compare/diagnostics/cohort-exit-code.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/cohort-exit-code.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 2
+    },
+    {
+      "path": "cohorts/compare/diagnostics/compiler-environment.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/compiler-environment.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 381
+    },
+    {
+      "path": "cohorts/compare/diagnostics/environment.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/environment.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 6096
+    },
+    {
+      "path": "cohorts/compare/diagnostics/omp-runtime-symbol.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/omp-runtime-symbol.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 205
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/assembly.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/assembly.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/build-fail-shared.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/build-fail-shared.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/build-no-sve.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/build-normal.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/build-normal.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/commands.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/commands.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 3437
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/compiler.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/compiler.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 239
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/completion.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/completion.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 116
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/guard.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/guard.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/guard.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/guard.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/instrument-source.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/instrument-source.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 71
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/instrumented-trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/instrumented-trsm.c",
+      "role": "collected_result_or_log",
+      "public_bytes": 73125
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/micro-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/micro-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3502
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/narrow-vl-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 509
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/no-sve-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 471
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/normal-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3086
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/normal-t38.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 485
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/normal-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3086
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/shared-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 520
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 416
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/summary.tsv",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/summary.tsv",
+      "role": "collected_result_or_log",
+      "public_bytes": 271
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/trsm-wide4x32.s",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/trsm-wide4x32.s",
+      "role": "collected_result_or_log",
+      "public_bytes": 132338
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/verify-results.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T19-control13-repeat-r20/verify-results.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 116
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/assembly.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/assembly.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/build-fail-shared.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/build-fail-shared.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/build-no-sve.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/build-normal.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/build-normal.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/commands.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/commands.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 3473
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/compiler.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/compiler.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 239
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/completion.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/completion.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 116
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/guard.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/guard.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/guard.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/guard.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/instrument-source.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/instrument-source.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 71
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/instrumented-trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/instrumented-trsm.c",
+      "role": "collected_result_or_log",
+      "public_bytes": 75933
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/micro-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/micro-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3502
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/narrow-vl-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 509
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/no-sve-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 471
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/normal-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3086
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/normal-t38.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 485
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/normal-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3086
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/shared-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 520
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 416
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/summary.tsv",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/summary.tsv",
+      "role": "collected_result_or_log",
+      "public_bytes": 271
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/trsm-wide4x32.s",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/trsm-wide4x32.s",
+      "role": "collected_result_or_log",
+      "public_bytes": 136230
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/verify-results.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T20-wideunroll2-repeat-r20/verify-results.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 116
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/assembly.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/assembly.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/build-fail-shared.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/build-fail-shared.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/build-no-sve.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/build-normal.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/build-normal.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/commands.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/commands.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 3239
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/compiler.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/compiler.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 239
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/completion.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/completion.txt",
+      "role": "collected_result_or_log",
+      "public_bytes": 116
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/guard.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/guard.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/guard.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/guard.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 310
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/instrument-source.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/instrument-source.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 71
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/instrumented-trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/instrumented-trsm.c",
+      "role": "collected_result_or_log",
+      "public_bytes": 76434
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/micro-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/micro-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3502
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/narrow-vl-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 509
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/no-sve-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 471
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/normal-t1.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3086
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/normal-t38.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 485
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/normal-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 3086
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/shared-fail-t4.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 520
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/summary.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/summary.json",
+      "role": "collected_result_or_log",
+      "public_bytes": 416
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/summary.tsv",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/summary.tsv",
+      "role": "collected_result_or_log",
+      "public_bytes": 271
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/trsm-wide4x32.s",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/trsm-wide4x32.s",
+      "role": "collected_result_or_log",
+      "public_bytes": 135660
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T22-unrollreg/verify-results.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32-results/T22-unrollreg/verify-results.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 116
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/preflight-wide32.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 37185
+    },
+    {
+      "path": "cohorts/compare/diagnostics/reference-results/probe-ldd.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/reference-results/probe-ldd.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 664
+    },
+    {
+      "path": "cohorts/compare/diagnostics/reference-results/probe.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/reference-results/probe.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 22455
+    },
+    {
+      "path": "cohorts/compare/diagnostics/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/diagnostics/wrapper.stdout.log",
+      "role": "collected_result_or_log",
+      "public_bytes": 49461
+    },
+    {
+      "path": "cohorts/compare/finish-attempt.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/finish-attempt.json",
+      "role": "local_record_or_input",
+      "public_bytes": 67
+    },
+    {
+      "path": "cohorts/compare/finish-complete.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/finish-complete.json",
+      "role": "local_record_or_input",
+      "public_bytes": 260
+    },
+    {
+      "path": "cohorts/compare/finish_records.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/finish_records.py",
+      "role": "local_record_or_input",
+      "public_bytes": 13306
+    },
+    {
+      "path": "cohorts/compare/job-marker.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/job-marker.log",
+      "role": "local_record_or_input",
+      "public_bytes": 0
+    },
+    {
+      "path": "cohorts/compare/job_control.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/job_control.py",
+      "role": "local_record_or_input",
+      "public_bytes": 20318
+    },
+    {
+      "path": "cohorts/compare/plan.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/plan.json",
+      "role": "local_record_or_input",
+      "public_bytes": 2948
+    },
+    {
+      "path": "cohorts/compare/preflight-wide32/README.md",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/preflight-wide32/README.md",
+      "role": "local_record_or_input",
+      "public_bytes": 8310
+    },
+    {
+      "path": "cohorts/compare/preflight-wide32/check-wide32.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/preflight-wide32/check-wide32.c",
+      "role": "local_record_or_input",
+      "public_bytes": 17298
+    },
+    {
+      "path": "cohorts/compare/preflight-wide32/guard.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/preflight-wide32/guard.py",
+      "role": "local_record_or_input",
+      "public_bytes": 1404
+    },
+    {
+      "path": "cohorts/compare/preflight-wide32/run.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/preflight-wide32/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 13294
+    },
+    {
+      "path": "cohorts/compare/preflight_audit.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/preflight_audit.py",
+      "role": "local_record_or_input",
+      "public_bytes": 7711
+    },
+    {
+      "path": "cohorts/compare/record-compare-commands.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/record-compare-commands.json",
+      "role": "local_record_or_input",
+      "public_bytes": 2128
+    },
+    {
+      "path": "cohorts/compare/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/reference/audit-dependencies.py",
+      "role": "local_record_or_input",
+      "public_bytes": 1015
+    },
+    {
+      "path": "cohorts/compare/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/reference/probe.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2397
+    },
+    {
+      "path": "cohorts/compare/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/reference/required-symbols.c",
+      "role": "local_record_or_input",
+      "public_bytes": 1755
+    },
+    {
+      "path": "cohorts/compare/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/reference/target-environment.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2653
+    },
+    {
+      "path": "cohorts/compare/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/remote_job.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 1407
+    },
+    {
+      "path": "cohorts/compare/result.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/result.json",
+      "role": "local_record_or_input",
+      "public_bytes": 4125
+    },
+    {
+      "path": "cohorts/compare/scheduler-status.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "cohorts/compare/static-readiness.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/static-readiness.json",
+      "role": "local_record_or_input",
+      "public_bytes": 438
+    },
+    {
+      "path": "cohorts/compare/status-latest.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/status-latest.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8389
+    },
+    {
+      "path": "cohorts/compare/submit-attempt.txt",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/submit-attempt.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 33
+    },
+    {
+      "path": "cohorts/compare/submit.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/submit.log",
+      "role": "local_record_or_input",
+      "public_bytes": 35
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r20/source/README.md",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T19-control13-repeat-r20/source/README.md",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r20/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T19-control13-repeat-r20/source/bench_trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r20/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T19-control13-repeat-r20/source/compat/kblas.h",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r20/source/run.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T19-control13-repeat-r20/source/run.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T19-control13-repeat-r20/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T19-control13-repeat-r20/source/trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 73077
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T20-wideunroll2-repeat-r20/source/README.md",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T20-wideunroll2-repeat-r20/source/README.md",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T20-wideunroll2-repeat-r20/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T20-wideunroll2-repeat-r20/source/bench_trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T20-wideunroll2-repeat-r20/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T20-wideunroll2-repeat-r20/source/compat/kblas.h",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T20-wideunroll2-repeat-r20/source/run.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T20-wideunroll2-repeat-r20/source/run.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T20-wideunroll2-repeat-r20/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T20-wideunroll2-repeat-r20/source/trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 75885
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T22-unrollreg/source/README.md",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T22-unrollreg/source/README.md",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T22-unrollreg/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T22-unrollreg/source/bench_trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T22-unrollreg/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T22-unrollreg/source/compat/kblas.h",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T22-unrollreg/source/run.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T22-unrollreg/source/run.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T22-unrollreg/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/T22-unrollreg/source/trsm.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 76386
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/cohort-config.json",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 3482
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/cohort_driver.py",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 15432
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-wide32/README.md",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/preflight-wide32/README.md",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 8310
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-wide32/check-wide32.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/preflight-wide32/check-wide32.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 17298
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-wide32/guard.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/preflight-wide32/guard.py",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 1404
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-wide32/run.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/preflight-wide32/run.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 13294
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight_audit.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/preflight_audit.py",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 7711
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/reference/audit-dependencies.py",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 1015
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/reference/probe.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2397
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/reference/required-symbols.c",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 1755
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/reference/target-environment.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 2653
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/payload/remote_job.sh",
+      "role": "local_frozen_upload_input",
+      "public_bytes": 1407
+    },
+    {
+      "path": "cohorts/compare/upload.log",
+      "source": ".runs/trsm/optimization-20260913-r20-compare/upload.log",
+      "role": "local_record_or_input",
+      "public_bytes": 0
+    },
+    {
+      "path": "historical-candidate-preparation/T20-wideunroll2/PREPARATION.md",
+      "source": ".runs/trsm/T20-wideunroll2/PREPARATION.md",
+      "role": "local_record_or_input",
+      "public_bytes": 1031
+    },
+    {
+      "path": "historical-candidate-preparation/T20-wideunroll2/STATIC-REVIEW.md",
+      "source": ".runs/trsm/T20-wideunroll2/STATIC-REVIEW.md",
+      "role": "local_record_or_input",
+      "public_bytes": 1145
+    },
+    {
+      "path": "historical-candidate-preparation/T20-wideunroll2/VALIDATION-PLAN.md",
+      "source": ".runs/trsm/T20-wideunroll2/VALIDATION-PLAN.md",
+      "role": "local_record_or_input",
+      "public_bytes": 1174
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/benchmark.log",
+      "source": ".runs/trsm/T19-control13-repeat-r20/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12214
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/cluster.json",
+      "source": ".runs/trsm/T19-control13-repeat-r20/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3104
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/environment.log",
+      "source": ".runs/trsm/T19-control13-repeat-r20/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/exit-code.txt",
+      "source": ".runs/trsm/T19-control13-repeat-r20/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/experiment.json",
+      "source": ".runs/trsm/T19-control13-repeat-r20/experiment.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1356
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/linkage.log",
+      "source": ".runs/trsm/T19-control13-repeat-r20/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3570
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12214
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3104
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3570
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T19-control13-repeat-r20/nohash-recorded-evidence/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 73077
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/prior-record.json",
+      "source": ".runs/trsm/T19-control13-repeat-r20/prior-record.json",
+      "role": "local_record_or_input",
+      "public_bytes": 8024
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/runtime-settings.json",
+      "source": ".runs/trsm/T19-control13-repeat-r20/runtime-settings.json",
+      "role": "local_record_or_input",
+      "public_bytes": 2519
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/scheduler-status.txt",
+      "source": ".runs/trsm/T19-control13-repeat-r20/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/source/README.md",
+      "source": ".runs/trsm/T19-control13-repeat-r20/source/README.md",
+      "role": "local_record_or_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/source/bench_trsm.c",
+      "source": ".runs/trsm/T19-control13-repeat-r20/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/source/compat/kblas.h",
+      "source": ".runs/trsm/T19-control13-repeat-r20/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/source/run.sh",
+      "source": ".runs/trsm/T19-control13-repeat-r20/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/source/trsm.c",
+      "source": ".runs/trsm/T19-control13-repeat-r20/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 73077
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/warmup/summary.json",
+      "source": ".runs/trsm/T19-control13-repeat-r20/warmup/summary.json",
+      "role": "local_record_or_input",
+      "public_bytes": 5193
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/warmup-linkage.log",
+      "source": ".runs/trsm/T19-control13-repeat-r20/warmup-linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 1204
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/warmup.log",
+      "source": ".runs/trsm/T19-control13-repeat-r20/warmup.log",
+      "role": "local_record_or_input",
+      "public_bytes": 9931
+    },
+    {
+      "path": "members/T19-control13-repeat-r20/wrapper.stdout.log",
+      "source": ".runs/trsm/T19-control13-repeat-r20/wrapper.stdout.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12214
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/benchmark.log",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12220
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/cluster.json",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3108
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/environment.log",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/exit-code.txt",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/experiment.json",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/experiment.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1354
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/linkage.log",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3576
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12220
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3108
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3576
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/nohash-recorded-evidence/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 75885
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/prior-record.json",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/prior-record.json",
+      "role": "local_record_or_input",
+      "public_bytes": 7554
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/runtime-settings.json",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/runtime-settings.json",
+      "role": "local_record_or_input",
+      "public_bytes": 2519
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/scheduler-status.txt",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/source/README.md",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/source/README.md",
+      "role": "local_record_or_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/source/bench_trsm.c",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/source/compat/kblas.h",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/source/run.sh",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/source/trsm.c",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 75885
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/warmup/summary.json",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/warmup/summary.json",
+      "role": "local_record_or_input",
+      "public_bytes": 5196
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/warmup-linkage.log",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/warmup-linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 1206
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/warmup.log",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/warmup.log",
+      "role": "local_record_or_input",
+      "public_bytes": 9933
+    },
+    {
+      "path": "members/T20-wideunroll2-repeat-r20/wrapper.stdout.log",
+      "source": ".runs/trsm/T20-wideunroll2-repeat-r20/wrapper.stdout.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12220
+    },
+    {
+      "path": "members/T22-unrollreg/PREPARATION.md",
+      "source": ".runs/trsm/T22-unrollreg/PREPARATION.md",
+      "role": "local_record_or_input",
+      "public_bytes": 1021
+    },
+    {
+      "path": "members/T22-unrollreg/STATIC-REVIEW.md",
+      "source": ".runs/trsm/T22-unrollreg/STATIC-REVIEW.md",
+      "role": "local_record_or_input",
+      "public_bytes": 956
+    },
+    {
+      "path": "members/T22-unrollreg/VALIDATION-PLAN.md",
+      "source": ".runs/trsm/T22-unrollreg/VALIDATION-PLAN.md",
+      "role": "local_record_or_input",
+      "public_bytes": 1274
+    },
+    {
+      "path": "members/T22-unrollreg/benchmark.log",
+      "source": ".runs/trsm/T22-unrollreg/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12181
+    },
+    {
+      "path": "members/T22-unrollreg/cluster.json",
+      "source": ".runs/trsm/T22-unrollreg/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3093
+    },
+    {
+      "path": "members/T22-unrollreg/environment.log",
+      "source": ".runs/trsm/T22-unrollreg/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T22-unrollreg/exit-code.txt",
+      "source": ".runs/trsm/T22-unrollreg/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T22-unrollreg/experiment.json",
+      "source": ".runs/trsm/T22-unrollreg/experiment.json",
+      "role": "local_record_or_input",
+      "public_bytes": 1174
+    },
+    {
+      "path": "members/T22-unrollreg/linkage.log",
+      "source": ".runs/trsm/T22-unrollreg/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3537
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/benchmark.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12181
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/cluster.json",
+      "role": "local_record_or_input",
+      "public_bytes": 3093
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/environment.log",
+      "role": "local_record_or_input",
+      "public_bytes": 8746
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/exit-code.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 2
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 3537
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T22-unrollreg/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T22-unrollreg/nohash-recorded-evidence/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 76386
+    },
+    {
+      "path": "members/T22-unrollreg/runtime-settings.json",
+      "source": ".runs/trsm/T22-unrollreg/runtime-settings.json",
+      "role": "local_record_or_input",
+      "public_bytes": 2519
+    },
+    {
+      "path": "members/T22-unrollreg/scheduler-status.txt",
+      "source": ".runs/trsm/T22-unrollreg/scheduler-status.txt",
+      "role": "local_record_or_input",
+      "public_bytes": 8388
+    },
+    {
+      "path": "members/T22-unrollreg/source/README.md",
+      "source": ".runs/trsm/T22-unrollreg/source/README.md",
+      "role": "local_record_or_input",
+      "public_bytes": 3047
+    },
+    {
+      "path": "members/T22-unrollreg/source/bench_trsm.c",
+      "source": ".runs/trsm/T22-unrollreg/source/bench_trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 4799
+    },
+    {
+      "path": "members/T22-unrollreg/source/compat/kblas.h",
+      "source": ".runs/trsm/T22-unrollreg/source/compat/kblas.h",
+      "role": "local_record_or_input",
+      "public_bytes": 615
+    },
+    {
+      "path": "members/T22-unrollreg/source/run.sh",
+      "source": ".runs/trsm/T22-unrollreg/source/run.sh",
+      "role": "local_record_or_input",
+      "public_bytes": 2704
+    },
+    {
+      "path": "members/T22-unrollreg/source/trsm.c",
+      "source": ".runs/trsm/T22-unrollreg/source/trsm.c",
+      "role": "local_record_or_input",
+      "public_bytes": 76386
+    },
+    {
+      "path": "members/T22-unrollreg/warmup/summary.json",
+      "source": ".runs/trsm/T22-unrollreg/warmup/summary.json",
+      "role": "local_record_or_input",
+      "public_bytes": 5183
+    },
+    {
+      "path": "members/T22-unrollreg/warmup-linkage.log",
+      "source": ".runs/trsm/T22-unrollreg/warmup-linkage.log",
+      "role": "local_record_or_input",
+      "public_bytes": 1193
+    },
+    {
+      "path": "members/T22-unrollreg/warmup.log",
+      "source": ".runs/trsm/T22-unrollreg/warmup.log",
+      "role": "local_record_or_input",
+      "public_bytes": 9920
+    },
+    {
+      "path": "members/T22-unrollreg/wrapper.stdout.log",
+      "source": ".runs/trsm/T22-unrollreg/wrapper.stdout.log",
+      "role": "local_record_or_input",
+      "public_bytes": 12181
+    },
+    {
+      "path": "records/latest/T19-control13.json",
+      "source": "records/experiments/trsm/T19-control13.json",
+      "role": "local_record_or_input",
+      "public_bytes": 8403
+    },
+    {
+      "path": "records/latest/T20-wideunroll2.json",
+      "source": "records/experiments/trsm/T20-wideunroll2.json",
+      "role": "local_record_or_input",
+      "public_bytes": 7880
+    },
+    {
+      "path": "records/latest/T22-unrollreg.json",
+      "source": "records/experiments/trsm/T22-unrollreg.json",
+      "role": "local_record_or_input",
+      "public_bytes": 6682
+    },
+    {
+      "path": "tools/archive-r20.py",
+      "source": ".runs/trsm/archive-r20.py",
+      "role": "local_record_or_input",
+      "public_bytes": 9918
+    },
+    {
+      "path": "tools/records-kml-NOTES.md",
+      "source": ".runs/trsm/nohash-tools/records-kml-NOTES.md",
+      "role": "local_record_or_input",
+      "public_bytes": 9637
+    },
+    {
+      "path": "tools/records-kml.py",
+      "source": ".runs/trsm/nohash-tools/records-kml.py",
+      "role": "local_record_or_input",
+      "public_bytes": 38549
+    }
+  ]
+}

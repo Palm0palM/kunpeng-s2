@@ -1,0 +1,84 @@
+{
+  "phase": "interleaved-T19-T20-T22-unroll-register-only",
+  "reference": "KML25.1/GCC12; not specified KML25.2.0",
+  "members": [
+    {
+      "version": "T19-control13",
+      "parent": null,
+      "source_from": "T19-control13",
+      "source_implementation_id": "T19-panel8x16budget",
+      "strategy": "Unchanged promoted T19 implementation, freshly measured as a parent-null KML25.1/GCC12 baseline for subsequent independent candidates.",
+      "run_name": "T19-control13-repeat-r20",
+      "repeat_existing": true,
+      "prior_job_id": "1582129"
+    },
+    {
+      "version": "T20-wideunroll2",
+      "parent": "T19-control13",
+      "source_from": "T20-wideunroll2",
+      "source_implementation_id": "T20-wideunroll2",
+      "strategy": "Unroll only the existing large-path SVE 4x32 update k loop by two while preserving each increasing-k accumulator chain and a scalar-count tail. Keep the complete T19 small path, layout, dispatch, KB256/CT64 and fallback behavior unchanged.",
+      "run_name": "T20-wideunroll2-repeat-r20",
+      "repeat_existing": true,
+      "prior_job_id": "1582129"
+    },
+    {
+      "run_name": "T22-unrollreg",
+      "version": "T22-unrollreg",
+      "parent": "T19-control13",
+      "source_from": "T22-unrollreg",
+      "source_implementation_id": "T22-unrollreg",
+      "strategy": "Retain T20 two-step SVE 4x32 update plus two empty read/write accumulator constraint statements, omitting T21 memory clobbers to allow load scheduling across them. Preserve all arithmetic order, small paths, layout, KB256/CT64 and fallbacks."
+    }
+  ],
+  "measurement_protocol": {
+    "warmup_order": [
+      "T19-control13-repeat-r20",
+      "T20-wideunroll2-repeat-r20",
+      "T22-unrollreg"
+    ],
+    "warmup_suites_per_member": 1,
+    "formal_round_order": [
+      [
+        "T19-control13-repeat-r20",
+        "T20-wideunroll2-repeat-r20",
+        "T22-unrollreg"
+      ],
+      [
+        "T20-wideunroll2-repeat-r20",
+        "T22-unrollreg",
+        "T19-control13-repeat-r20"
+      ],
+      [
+        "T22-unrollreg",
+        "T19-control13-repeat-r20",
+        "T20-wideunroll2-repeat-r20"
+      ]
+    ],
+    "formal_suites_per_member": 3,
+    "TEST_RUNS": 3,
+    "formal_case_count": 27,
+    "warmup_case_count": 9,
+    "sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  },
+  "preflight_policy": "All three members run complete CT64 wide32 checks: 28 direct, 28 whole, 56 argument cases, 7 processes each. Unchanged small-path source is associated with original T19 job1579861; no fresh small-path full-preflight claim.",
+  "hash_operations": false,
+  "local_task_tests": false,
+  "promotion_comparisons": [
+    [
+      "T19-control13",
+      "T20-wideunroll2"
+    ],
+    [
+      "T19-control13",
+      "T22-unrollreg"
+    ]
+  ],
+  "mechanism_comparisons": [
+    {
+      "base": "T20-wideunroll2",
+      "candidate": "T22-unrollreg",
+      "promotion_authorization": false
+    }
+  ]
+}
