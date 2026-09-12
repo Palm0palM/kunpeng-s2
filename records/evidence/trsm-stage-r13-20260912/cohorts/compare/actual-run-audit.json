@@ -1,0 +1,39 @@
+{
+  "job_id": "1579673",
+  "cohort_exit": 0,
+  "measured_official_pass_count": 27,
+  "warmup_official_pass_count": 9,
+  "members": {
+    "T8-control12-repeat-r13": {
+      "warmup_cases_pass": 3,
+      "measured_cases_pass": 9,
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=14 WHOLE_CASES=406 NOOP_CASES=28 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=0 SHARED_FAIL_CASES=0",
+      "source_features": {
+        "panel16": true,
+        "packedL16": false
+      },
+      "warmup_excluded_from_comparison": true
+    },
+    "T10-lhistbarrier-repeat-r13": {
+      "warmup_cases_pass": 3,
+      "measured_cases_pass": 9,
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=486 NOOP_CASES=36 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=14 SHARED_FAIL_CASES=80",
+      "source_features": {
+        "panel16": true,
+        "packedL16": true
+      },
+      "warmup_excluded_from_comparison": true
+    },
+    "T14-lhistcyclic": {
+      "warmup_cases_pass": 3,
+      "measured_cases_pass": 9,
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=486 NOOP_CASES=36 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=14 SHARED_FAIL_CASES=80",
+      "source_features": {
+        "panel16": true,
+        "packedL16": true
+      },
+      "warmup_excluded_from_comparison": true
+    }
+  },
+  "hash_operations": false
+}

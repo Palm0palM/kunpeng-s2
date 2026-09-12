@@ -1,0 +1,1619 @@
+{"allowed_cpu_count": 38, "allowed_cpus": [76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113], "guard_pass": true, "host": "COMPUTE_NODE_1", "numa_nodes": ["node2"], "scheduler_job_id": "1579673"}
+gcc (gcc for openEuler 3.0.2) 12.3.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+MODE=micro THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+PASS micro_cases=14 ordered_FMA_bitwise=1 prefix_padding_L_unchanged=1 history_unchanged=1
+MODE=full THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=9 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=30 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=45 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=9 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=30 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=45 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=smoke THREADS=38 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=313 sve16_entries=80 expected=80 old_entries=80 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=313 sve16_entries=640 expected=640 old_entries=640 packed_entries=0 packed_expected=0
+PASS whole_cases=4 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=boundary THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+CASE_PASS m=4095 n=9 sve16_entries=510 expected=510 old_entries=510 packed_entries=0 packed_expected=0
+CASE_PASS m=4097 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=2 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=3.8857805861880479e-16
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=full THREADS=4 NARROW_VL=1 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=14 WHOLE_CASES=406 NOOP_CASES=28 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=0 SHARED_FAIL_CASES=0
+{"allowed_cpu_count": 38, "allowed_cpus": [76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113], "guard_pass": true, "host": "COMPUTE_NODE_1", "numa_nodes": ["node2"], "scheduler_job_id": "1579673"}
+gcc (gcc for openEuler 3.0.2) 12.3.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+MODE=micro THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+PASS micro_cases=14 ordered_FMA_bitwise=1 prefix_padding_L_unchanged=1 history_unchanged=1
+MODE=packed-micro THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+PASS packed_micro_cases=14 ordered_FMA_bitwise=1 prefix_padding_L_unchanged=1 history_unchanged=1
+MODE=full THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=2 packed_entries=4 packed_expected=4
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=3 packed_entries=6 packed_expected=6
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=2 packed_entries=28 packed_expected=28
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=3 packed_entries=42 packed_expected=42
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=2 packed_entries=4 packed_expected=4
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=3 packed_entries=6 packed_expected=6
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=2 packed_entries=28 packed_expected=28
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=3 packed_entries=42 packed_expected=42
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=smoke THREADS=38 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=313 sve16_entries=80 expected=80 old_entries=40 packed_entries=40 packed_expected=40
+CASE_PASS m=257 n=313 sve16_entries=640 expected=640 old_entries=40 packed_entries=600 packed_expected=600
+PASS whole_cases=4 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=boundary THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+CASE_PASS m=4095 n=9 sve16_entries=510 expected=510 old_entries=2 packed_entries=508 packed_expected=508
+CASE_PASS m=4097 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=2 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=3.8857805861880479e-16
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=full THREADS=4 NARROW_VL=1 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=shared-fail THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=9 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=30 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=45 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+PASS whole_cases=40 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=shared-fail THREADS=4 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=9 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=30 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=45 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+PASS whole_cases=40 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=486 NOOP_CASES=36 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=14 SHARED_FAIL_CASES=80
+{"allowed_cpu_count": 38, "allowed_cpus": [76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113], "guard_pass": true, "host": "COMPUTE_NODE_1", "numa_nodes": ["node2"], "scheduler_job_id": "1579673"}
+gcc (gcc for openEuler 3.0.2) 12.3.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+MODE=micro THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+PASS micro_cases=14 ordered_FMA_bitwise=1 prefix_padding_L_unchanged=1 history_unchanged=1
+MODE=packed-micro THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+PASS packed_micro_cases=14 ordered_FMA_bitwise=1 prefix_padding_L_unchanged=1 history_unchanged=1
+MODE=full THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=2 packed_entries=4 packed_expected=4
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=3 packed_entries=6 packed_expected=6
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=2 packed_entries=28 packed_expected=28
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=3 packed_entries=42 packed_expected=42
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=1 expected=1 old_entries=1 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=1 packed_entries=1 packed_expected=1
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=2 packed_entries=2 packed_expected=2
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=3 packed_entries=3 packed_expected=3
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=1 packed_entries=2 packed_expected=2
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=2 packed_entries=4 packed_expected=4
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=3 packed_entries=6 packed_expected=6
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=1 packed_entries=3 packed_expected=3
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=2 packed_entries=6 packed_expected=6
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=3 packed_entries=9 packed_expected=9
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=1 packed_entries=14 packed_expected=14
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=2 packed_entries=28 packed_expected=28
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=3 packed_entries=42 packed_expected=42
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=1 packed_entries=15 packed_expected=15
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=2 packed_entries=30 packed_expected=30
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=3 packed_entries=45 packed_expected=45
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=smoke THREADS=38 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=313 sve16_entries=80 expected=80 old_entries=40 packed_entries=40 packed_expected=40
+CASE_PASS m=257 n=313 sve16_entries=640 expected=640 old_entries=40 packed_entries=600 packed_expected=600
+PASS whole_cases=4 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=boundary THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+CASE_PASS m=4095 n=9 sve16_entries=510 expected=510 old_entries=2 packed_entries=508 packed_expected=508
+CASE_PASS m=4097 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=2 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=3.8857805861880479e-16
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=full THREADS=4 NARROW_VL=0 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=full THREADS=4 NARROW_VL=1 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=1 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=1 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=3 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=5 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=15 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=16 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=17 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=31 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=32 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=33 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=63 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=64 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=65 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=255 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=256 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=1 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=7 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=8 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=257 n=17 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=80 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=shared-fail THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=9 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=30 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=45 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=1 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=7 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=8 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=9 calls=2 injected=1 shared_first=1 later_X_success=1
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=17 calls=2 injected=1 shared_first=1 later_X_success=1
+PASS whole_cases=40 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+MODE=shared-fail THREADS=4 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+CASE_PASS m=32 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=32 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=32 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=32 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=32 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=32 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=1 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=7 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=8 sve16_entries=2 expected=2 old_entries=2 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=9 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=33 n=17 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=33 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=1 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=7 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=8 sve16_entries=3 expected=3 old_entries=3 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=9 sve16_entries=6 expected=6 old_entries=6 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=63 n=17 sve16_entries=9 expected=9 old_entries=9 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=63 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=64 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=64 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=1 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=7 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=8 sve16_entries=4 expected=4 old_entries=4 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=9 sve16_entries=8 expected=8 old_entries=8 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=65 n=17 sve16_entries=12 expected=12 old_entries=12 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=65 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=1 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=7 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=8 sve16_entries=15 expected=15 old_entries=15 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=9 sve16_entries=30 expected=30 old_entries=30 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=255 n=17 sve16_entries=45 expected=45 old_entries=45 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=255 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=256 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=256 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=1 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=1 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=7 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=7 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=8 sve16_entries=16 expected=16 old_entries=16 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=8 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=9 sve16_entries=32 expected=32 old_entries=32 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=9 calls=5 injected=1 shared_first=1 later_X_success=4
+CASE_PASS m=257 n=17 sve16_entries=48 expected=48 old_entries=48 packed_entries=0 packed_expected=0
+SHARED_ALLOC_PASS m=257 n=17 calls=5 injected=1 shared_first=1 later_X_success=4
+PASS whole_cases=40 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
+TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=486 NOOP_CASES=36 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=14 SHARED_FAIL_CASES=80

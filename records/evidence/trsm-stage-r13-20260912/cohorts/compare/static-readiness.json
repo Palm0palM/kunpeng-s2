@@ -1,0 +1,88 @@
+{
+  "status": "static_preparation_only",
+  "checked_at": "2026-09-12T11:00:10.907866+00:00",
+  "checks": [
+    {
+      "kind": "python_ast",
+      "path": "cohort_driver.py",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "finish_records.py",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "job_control.py",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "preflight/guard.py",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "reference/audit-dependencies.py",
+      "passed": true
+    },
+    {
+      "kind": "bash_syntax",
+      "path": "preflight/run.sh",
+      "passed": true
+    },
+    {
+      "kind": "inline_python_ast",
+      "path": "preflight/run.sh",
+      "block": 1,
+      "passed": true
+    },
+    {
+      "kind": "bash_syntax",
+      "path": "reference/probe.sh",
+      "passed": true
+    },
+    {
+      "kind": "inline_python_ast",
+      "path": "reference/probe.sh",
+      "block": 1,
+      "passed": true
+    },
+    {
+      "kind": "bash_syntax",
+      "path": "reference/target-environment.sh",
+      "passed": true
+    },
+    {
+      "kind": "inline_python_ast",
+      "path": "reference/target-environment.sh",
+      "block": 1,
+      "passed": true
+    },
+    {
+      "kind": "bash_syntax",
+      "path": "remote_job.sh",
+      "passed": true
+    }
+  ],
+  "record_identity_fields_preserved": true,
+  "source_feature_counts_declared": true,
+  "r7_preflight_copied_unchanged": true,
+  "r12_reference_and_remote_guard_copied_unchanged": true,
+  "copied_private_config_verified_by_bytes": true,
+  "T14_diff_from_T10": "Only shared packed_history production schedule(static) -> schedule(static,1)",
+  "resources": {
+    "cpus": 38,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "memory_mb": 24576,
+    "walltime_seconds": 1800
+  },
+  "prepared_payload": false,
+  "created_new_experiment_runs": false,
+  "controller_executed": false,
+  "compile_or_task_test_run": false,
+  "ssh_run": false,
+  "hash_operations": false
+}

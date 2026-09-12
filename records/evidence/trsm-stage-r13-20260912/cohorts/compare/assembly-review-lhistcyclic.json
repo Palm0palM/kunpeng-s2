@@ -1,0 +1,636 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-09-12T11:13:44.923002+00:00",
+  "job_id": "1579673",
+  "method": "Independent parsing of collected logs and target-generated assembly, plus frozen source text inspection; no task code executed.",
+  "local_task_execution": false,
+  "ssh_used": false,
+  "hash_operations": false,
+  "reference_scope": "Observed KML 25.1.0 and GCC 12.3.1; not specified KML 25.2.0 revalidation.",
+  "members": {
+    "T8-control12-repeat-r13": {
+      "job_id": "1579673",
+      "source_features": {
+        "panel16": true,
+        "packedL16": false
+      },
+      "frozen_source": "payload/T8-control12-repeat-r13/source/trsm.c",
+      "raw_formal_log": "diagnostics/T8-control12-repeat-r13/benchmark.log",
+      "raw_warmup_log": "diagnostics/T8-control12-repeat-r13/warmup.log",
+      "formal_pass_count": 9,
+      "formal_suites": 3,
+      "warmup_pass_count": 3,
+      "preflight_root": "diagnostics/preflight-results/T8-control12-repeat-r13",
+      "preflight_summary": {
+        "micro": 14,
+        "whole": 406,
+        "noop": 28,
+        "old_micro": 14,
+        "packed_micro": 0,
+        "shared_alloc_fail": 0
+      },
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=14 WHOLE_CASES=406 NOOP_CASES=28 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=0 SHARED_FAIL_CASES=0",
+      "preflight_step_count": 14,
+      "all_preflight_step_exit_codes_zero": true,
+      "guard": {
+        "job_id": "1579673",
+        "allowed_cpu_count": 38,
+        "allowed_cpus": [
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113
+        ],
+        "numa_node": 2
+      },
+      "kml251_and_private_gomp_in_formal_and_warmup_linkage": true,
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "samples_ms": [
+            19.02,
+            18.69,
+            18.71
+          ],
+          "median_ms": 18.71
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "samples_ms": [
+            244.88,
+            235.62,
+            231.26
+          ],
+          "median_ms": 235.62
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "samples_ms": [
+            195.6,
+            194.81,
+            202.55
+          ],
+          "median_ms": 195.6
+        }
+      ],
+      "sum_per_case_median_ms": 449.93
+    },
+    "T10-lhistbarrier-repeat-r13": {
+      "job_id": "1579673",
+      "source_features": {
+        "panel16": true,
+        "packedL16": true
+      },
+      "frozen_source": "payload/T10-lhistbarrier-repeat-r13/source/trsm.c",
+      "raw_formal_log": "diagnostics/T10-lhistbarrier-repeat-r13/benchmark.log",
+      "raw_warmup_log": "diagnostics/T10-lhistbarrier-repeat-r13/warmup.log",
+      "formal_pass_count": 9,
+      "formal_suites": 3,
+      "warmup_pass_count": 3,
+      "preflight_root": "diagnostics/preflight-results/T10-lhistbarrier-repeat-r13",
+      "preflight_summary": {
+        "micro": 28,
+        "whole": 486,
+        "noop": 36,
+        "old_micro": 14,
+        "packed_micro": 14,
+        "shared_alloc_fail": 80
+      },
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=486 NOOP_CASES=36 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=14 SHARED_FAIL_CASES=80",
+      "preflight_step_count": 18,
+      "all_preflight_step_exit_codes_zero": true,
+      "guard": {
+        "job_id": "1579673",
+        "allowed_cpu_count": 38,
+        "allowed_cpus": [
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113
+        ],
+        "numa_node": 2
+      },
+      "kml251_and_private_gomp_in_formal_and_warmup_linkage": true,
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "samples_ms": [
+            14.71,
+            14.36,
+            14.48
+          ],
+          "median_ms": 14.48
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "samples_ms": [
+            254.99,
+            261.95,
+            272.24
+          ],
+          "median_ms": 261.95
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "samples_ms": [
+            192.93,
+            193.32,
+            193.73
+          ],
+          "median_ms": 193.32
+        }
+      ],
+      "sum_per_case_median_ms": 469.75
+    },
+    "T14-lhistcyclic": {
+      "job_id": "1579673",
+      "source_features": {
+        "panel16": true,
+        "packedL16": true
+      },
+      "frozen_source": "payload/T14-lhistcyclic/source/trsm.c",
+      "raw_formal_log": "diagnostics/T14-lhistcyclic/benchmark.log",
+      "raw_warmup_log": "diagnostics/T14-lhistcyclic/warmup.log",
+      "formal_pass_count": 9,
+      "formal_suites": 3,
+      "warmup_pass_count": 3,
+      "preflight_root": "diagnostics/preflight-results/T14-lhistcyclic",
+      "preflight_summary": {
+        "micro": 28,
+        "whole": 486,
+        "noop": 36,
+        "old_micro": 14,
+        "packed_micro": 14,
+        "shared_alloc_fail": 80
+      },
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=486 NOOP_CASES=36 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=14 SHARED_FAIL_CASES=80",
+      "preflight_step_count": 18,
+      "all_preflight_step_exit_codes_zero": true,
+      "guard": {
+        "job_id": "1579673",
+        "allowed_cpu_count": 38,
+        "allowed_cpus": [
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113
+        ],
+        "numa_node": 2
+      },
+      "kml251_and_private_gomp_in_formal_and_warmup_linkage": true,
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "samples_ms": [
+            14.92,
+            15.7,
+            14.99
+          ],
+          "median_ms": 14.99
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "samples_ms": [
+            262.19,
+            247.44,
+            267.39
+          ],
+          "median_ms": 262.19
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "samples_ms": [
+            194.46,
+            196.83,
+            193.13
+          ],
+          "median_ms": 194.46
+        }
+      ],
+      "sum_per_case_median_ms": 471.64
+    }
+  },
+  "assembly": {
+    "T10-lhistbarrier-repeat-r13": {
+      "path": "diagnostics/preflight-results/T10-lhistbarrier-repeat-r13/trsm-panel16.s",
+      "compiler_ident": ".ident\t\"GCC: (gcc for openEuler 3.0.2) 12.3.1\"",
+      "generated_from_original_source_without_test_instrumentation": true,
+      "command_file": "diagnostics/preflight-results/T10-lhistbarrier-repeat-r13/commands.txt",
+      "command_line": 7,
+      "function": "solve16x8_panel_packedL_sve",
+      "function_lines": [
+        1032,
+        1552
+      ],
+      "history_loop_label": ".L31",
+      "history_loop_instruction_lines": [
+        1080,
+        1116
+      ],
+      "history_loop_instruction_count": 37,
+      "history_loop_opcodes": {
+        "ld1rd": 16,
+        "ld1d": 1,
+        "fmla": 16,
+        "add": 2,
+        "cmp": 1,
+        "bne": 1
+      },
+      "history_loop_stack_accesses": 0,
+      "history_loop_calls": 0,
+      "history_loop_stores": 0,
+      "entry_frame_bytes": 112,
+      "function_calls": [],
+      "function_stack_memory_instructions": [
+        {
+          "line": 1035,
+          "opcode": "stp",
+          "operands": "x29, x30, [sp, -112]!"
+        },
+        {
+          "line": 1040,
+          "opcode": "stp",
+          "operands": "x19, x20, [sp, 16]"
+        },
+        {
+          "line": 1041,
+          "opcode": "str",
+          "operands": "x21, [sp, 32]"
+        },
+        {
+          "line": 1042,
+          "opcode": "stp",
+          "operands": "d8, d9, [sp, 48]"
+        },
+        {
+          "line": 1043,
+          "opcode": "stp",
+          "operands": "d10, d11, [sp, 64]"
+        },
+        {
+          "line": 1044,
+          "opcode": "stp",
+          "operands": "d12, d13, [sp, 80]"
+        },
+        {
+          "line": 1045,
+          "opcode": "stp",
+          "operands": "d14, d15, [sp, 96]"
+        },
+        {
+          "line": 1490,
+          "opcode": "ldp",
+          "operands": "x19, x20, [sp, 16]"
+        },
+        {
+          "line": 1494,
+          "opcode": "ldr",
+          "operands": "x21, [sp, 32]"
+        },
+        {
+          "line": 1498,
+          "opcode": "ldp",
+          "operands": "d10, d11, [sp, 64]"
+        },
+        {
+          "line": 1502,
+          "opcode": "ldp",
+          "operands": "d12, d13, [sp, 80]"
+        },
+        {
+          "line": 1506,
+          "opcode": "ldp",
+          "operands": "d8, d9, [sp, 48]"
+        },
+        {
+          "line": 1510,
+          "opcode": "ldp",
+          "operands": "d14, d15, [sp, 96]"
+        },
+        {
+          "line": 1513,
+          "opcode": "ldp",
+          "operands": "x29, x30, [sp], 112"
+        }
+      ],
+      "scope": "No hot history-loop spill; entry/return ABI saves exist. This does not assert the entire OpenMP worker has no stack use."
+    },
+    "T14-lhistcyclic": {
+      "path": "diagnostics/preflight-results/T14-lhistcyclic/trsm-panel16.s",
+      "compiler_ident": ".ident\t\"GCC: (gcc for openEuler 3.0.2) 12.3.1\"",
+      "generated_from_original_source_without_test_instrumentation": true,
+      "command_file": "diagnostics/preflight-results/T14-lhistcyclic/commands.txt",
+      "command_line": 7,
+      "function": "solve16x8_panel_packedL_sve",
+      "function_lines": [
+        1032,
+        1552
+      ],
+      "history_loop_label": ".L31",
+      "history_loop_instruction_lines": [
+        1080,
+        1116
+      ],
+      "history_loop_instruction_count": 37,
+      "history_loop_opcodes": {
+        "ld1rd": 16,
+        "ld1d": 1,
+        "fmla": 16,
+        "add": 2,
+        "cmp": 1,
+        "bne": 1
+      },
+      "history_loop_stack_accesses": 0,
+      "history_loop_calls": 0,
+      "history_loop_stores": 0,
+      "entry_frame_bytes": 112,
+      "function_calls": [],
+      "function_stack_memory_instructions": [
+        {
+          "line": 1035,
+          "opcode": "stp",
+          "operands": "x29, x30, [sp, -112]!"
+        },
+        {
+          "line": 1040,
+          "opcode": "stp",
+          "operands": "x19, x20, [sp, 16]"
+        },
+        {
+          "line": 1041,
+          "opcode": "str",
+          "operands": "x21, [sp, 32]"
+        },
+        {
+          "line": 1042,
+          "opcode": "stp",
+          "operands": "d8, d9, [sp, 48]"
+        },
+        {
+          "line": 1043,
+          "opcode": "stp",
+          "operands": "d10, d11, [sp, 64]"
+        },
+        {
+          "line": 1044,
+          "opcode": "stp",
+          "operands": "d12, d13, [sp, 80]"
+        },
+        {
+          "line": 1045,
+          "opcode": "stp",
+          "operands": "d14, d15, [sp, 96]"
+        },
+        {
+          "line": 1490,
+          "opcode": "ldp",
+          "operands": "x19, x20, [sp, 16]"
+        },
+        {
+          "line": 1494,
+          "opcode": "ldr",
+          "operands": "x21, [sp, 32]"
+        },
+        {
+          "line": 1498,
+          "opcode": "ldp",
+          "operands": "d10, d11, [sp, 64]"
+        },
+        {
+          "line": 1502,
+          "opcode": "ldp",
+          "operands": "d12, d13, [sp, 80]"
+        },
+        {
+          "line": 1506,
+          "opcode": "ldp",
+          "operands": "d8, d9, [sp, 48]"
+        },
+        {
+          "line": 1510,
+          "opcode": "ldp",
+          "operands": "d14, d15, [sp, 96]"
+        },
+        {
+          "line": 1513,
+          "opcode": "ldp",
+          "operands": "x29, x30, [sp], 112"
+        }
+      ],
+      "scope": "No hot history-loop spill; entry/return ABI saves exist. This does not assert the entire OpenMP worker has no stack use."
+    }
+  },
+  "issues": [],
+  "packedL_function_text_identical_between_T10_T14": true,
+  "frozen_T14_vs_T10_source_change": {
+    "only_change": "shared packed_history producer pragma schedule(static) -> schedule(static,1)",
+    "T14_source_lines": [
+      587,
+      602
+    ],
+    "direct_text_comparison": true,
+    "hash_used": false
+  },
+  "producer_schedule": {
+    "T14": {
+      "assembly_member": "T14-lhistcyclic",
+      "num_threads_register": "w20 / sign-extended x30",
+      "thread_id_plus_one_register": "w23 / x24",
+      "start_lines": [
+        1595,
+        1598
+      ],
+      "outer_loop_label": ".L94",
+      "increment_lines": [
+        1715,
+        1717,
+        1719
+      ],
+      "block_recurrence": "b = tid + 1; b += omp_get_num_threads()",
+      "row_start_recurrence": "start = 16*b; start += 16*omp_get_num_threads()",
+      "barrier_line": 1729,
+      "inner_copy_lines": [
+        1677,
+        1712
+      ],
+      "inner_copy": "16 scalar ldr d0 + 16 scalar str d0 per history k; 2 pointer add + cmp + bne, 36 instructions",
+      "outer_loop_stack_parameter_load_lines": [
+        1714,
+        1720
+      ]
+    },
+    "T10": {
+      "assembly_member": "T10-lhistbarrier-repeat-r13",
+      "partition_lines": [
+        1596,
+        1610
+      ],
+      "partition": "N=full_blocks-1; q=N/nthreads, r=N%nthreads; contiguous static ranges with first r threads receiving q+1 blocks",
+      "remainder_branch_lines": [
+        2450,
+        2453
+      ],
+      "first_block_adjustment_lines": [
+        2333,
+        2339
+      ],
+      "outer_loop_label": ".L95",
+      "increment_lines": [
+        2438,
+        2439
+      ],
+      "block_recurrence": "b += 1 within the assigned contiguous range",
+      "barrier_line": 1612,
+      "inner_copy_lines": [
+        2401,
+        2436
+      ]
+    },
+    "consumer_static_unchanged": {
+      "T14_partition_lines": [
+        1749,
+        1766
+      ],
+      "T10_partition_lines": [
+        1629,
+        1645
+      ],
+      "source_line": 602
+    },
+    "interpretation_limit": "Generated thread assignment and retained barrier are confirmed; no per-thread timeline, waiting time, cache traffic, or speedup is inferred."
+  },
+  "formal_pass_count": 27,
+  "warmup_pass_count": 9,
+  "scheduler_state": "SUCCEEDED",
+  "cohort_exit_code": 0,
+  "conclusion": "Packed history hot loop remains free of stack spills; cyclic producer mapping is present. T14 did not improve the observed medium-case median or total over T10 and neither candidate beats T8. This report does not authorize promotion."
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T14-lhistcyclic",
+  "parent": "T8-control12",
+  "source_from": "T14-lhistcyclic",
+  "source_implementation_id": "T14-lhistcyclic",
+  "strategy": "From unpromoted T10-lhistbarrier, change only the shared packed_history production loop from schedule(static) to schedule(static,1). Preserve packed layout, arithmetic, compiler barriers, consumer scheduling, allocation/fallback, OpenMP barriers and the T8 large path. Compare with unchanged T10 to isolate production scheduling; promotion remains against current T8 baseline.",
+  "created_at": "2026-09-12T11:04:37.066422+00:00",
+  "status": "prepared",
+  "verified": false,
+  "validation_policy": "No hash computation or validation at explicit user request",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  }
+}

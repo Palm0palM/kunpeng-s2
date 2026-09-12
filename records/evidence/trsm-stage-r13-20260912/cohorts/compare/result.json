@@ -1,0 +1,145 @@
+{
+  "status": "complete_no_promotion",
+  "job_id": "1579673",
+  "formal_pass_count": 27,
+  "warmup_pass_count": 9,
+  "baseline_version": "T8-control12",
+  "best_implementation": "T8-svepanel16",
+  "comparisons": {
+    "T10-lhistbarrier": {
+      "eligible": false,
+      "reasons": [
+        "total improvement -4.4051% does not exceed threshold 6.5852%",
+        "at least one official case regresses by more than 1%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 18.71,
+          "candidate_ms": 14.48,
+          "gain_pct": 22.60823089257082
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 235.62,
+          "candidate_ms": 261.95,
+          "gain_pct": -11.174772939478816
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 195.6,
+          "candidate_ms": 193.32,
+          "gain_pct": 1.1656441717791417
+        }
+      ],
+      "total_gain_pct": -4.405129686840174,
+      "noise_threshold_pct": 6.5852261882038565,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    },
+    "T14-lhistcyclic": {
+      "eligible": false,
+      "reasons": [
+        "total improvement -4.8252% does not exceed threshold 7.6090%",
+        "at least one official case regresses by more than 1%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 18.71,
+          "candidate_ms": 14.99,
+          "gain_pct": 19.88241582041689
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 235.62,
+          "candidate_ms": 262.19,
+          "gain_pct": -11.276631864867156
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 195.6,
+          "candidate_ms": 194.46,
+          "gain_pct": 0.5828220858895636
+        }
+      ],
+      "total_gain_pct": -4.825195030338048,
+      "noise_threshold_pct": 7.6089858499561345,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "mechanism_comparison": {
+    "base": "T10-lhistbarrier",
+    "candidate": "T14-lhistcyclic",
+    "promotion_authorization": false,
+    "result": {
+      "eligible": false,
+      "reasons": [
+        "total improvement -0.4023% does not exceed threshold 7.6090%",
+        "at least one official case regresses by more than 1%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 14.48,
+          "candidate_ms": 14.99,
+          "gain_pct": -3.5220994475138108
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 261.95,
+          "candidate_ms": 262.19,
+          "gain_pct": -0.09162053827066581
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 193.32,
+          "candidate_ms": 194.46,
+          "gain_pct": -0.5896958410924968
+        }
+      ],
+      "total_gain_pct": -0.40234167110164687,
+      "noise_threshold_pct": 7.6089858499561345,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "medians_ms": {
+    "T8-control12": 449.93,
+    "T10-lhistbarrier": 469.75,
+    "T14-lhistcyclic": 471.64
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false
+}
