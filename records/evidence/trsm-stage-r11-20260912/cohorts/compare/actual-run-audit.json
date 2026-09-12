@@ -1,0 +1,36 @@
+{
+  "job_id": "1579600",
+  "cohort_exit": 0,
+  "measured_official_pass_count": 18,
+  "warmup_official_pass_count": 6,
+  "members": {
+    "T8-control12-repeat-r11": {
+      "warmup_cases_pass": 3,
+      "measured_cases_pass": 9,
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=14 WHOLE_CASES=406 NOOP_CASES=28 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=0 SHARED_FAIL_CASES=0",
+      "warmup_excluded_from_comparison": true
+    },
+    "T13-sve4x32-repeat-r11": {
+      "warmup_cases_pass": 3,
+      "measured_cases_pass": 9,
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=14 WHOLE_CASES=406 NOOP_CASES=28 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=0 SHARED_FAIL_CASES=0",
+      "warmup_excluded_from_comparison": true
+    }
+  },
+  "hash_operations": false,
+  "wide_preflight_completion": "TRSM_WIDE32_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=22 SHARED_FAIL_CASES=1 NO_SVE_CASES=1 NARROW_VL_CASES=1",
+  "wide_preflight_summary": {
+    "schema": "trsm-wide32-preflight-v1",
+    "complete": true,
+    "micro_cases": 28,
+    "whole_cases": 22,
+    "shared_fail_cases": 1,
+    "no_sve_cases": 1,
+    "narrow_vl_cases": 1,
+    "argument_checked_cases": 50,
+    "argument_observations": 277948,
+    "kernel_argument_mismatches": 0,
+    "test_copy_instrumented": true,
+    "original_candidate_modified": false
+  }
+}
