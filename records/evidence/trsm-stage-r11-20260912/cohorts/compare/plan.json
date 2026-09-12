@@ -1,0 +1,24 @@
+{
+  "phase": "interleaved-wide4x32-repeat-after-r10",
+  "reference": "Huawei KML 25.1.0 with private GCC 12.3.1; not specified official KML 25.2.0",
+  "members": [
+    {
+      "run_name": "T8-control12-repeat-r11",
+      "version": "T8-control12",
+      "parent": null,
+      "source_from": "T8-control12",
+      "source_implementation_id": "T8-svepanel16",
+      "repeat_existing": true,
+      "strategy": "已晋级T8-svepanel16原样三轮复测，建立本轮KML25.1/GCC12基线；后续以同版本新run和候选同分配交错比较。"
+    },
+    {
+      "run_name": "T13-sve4x32-repeat-r11",
+      "version": "T13-sve4x32",
+      "parent": "T8-control12",
+      "source_from": "T13-sve4x32",
+      "source_implementation_id": "T13-sve4x32",
+      "strategy": "From T8, use a 4-row x 32-column SVE update for complete 32-column regions of the large path. Reuse four L coefficients across four RHS vectors, preserving increasing-k FMA, one final C subtraction, KB256/CT64, packing, scheduling, tails and fallback. More X input bytes are an explicit tradeoff; test actual performance against T8.",
+      "repeat_existing": true
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "status": "complete_no_promotion",
+  "job_id": "1579585",
+  "formal_pass_count": 18,
+  "warmup_pass_count": 6,
+  "baseline_version": "T8-control12",
+  "best_implementation": "T8-svepanel16",
+  "comparisons": {
+    "T13-sve4x32": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 2.6235% does not exceed threshold 7.5507%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 18.68,
+          "candidate_ms": 18.82,
+          "gain_pct": -0.7494646680942215
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 233.09,
+          "candidate_ms": 233.82,
+          "gain_pct": -0.31318374876656646
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 193.44,
+          "candidate_ms": 180.89,
+          "gain_pct": 6.487799834574035
+        }
+      ],
+      "total_gain_pct": 2.623481053884698,
+      "noise_threshold_pct": 7.550731477111842,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "medians_ms": {
+    "T8-control12": 445.21000000000004,
+    "T13-sve4x32": 433.53
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false
+}

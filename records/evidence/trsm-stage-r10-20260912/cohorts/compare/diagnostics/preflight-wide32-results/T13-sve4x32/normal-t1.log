@@ -1,0 +1,21 @@
+DISPATCH workers=1 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=0 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=31 threads=1 calls=0 expected=0 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=32 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7696 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4100 n=33 threads=1 calls=7696 expected=7696 max_error=3.3306690738754696e-16 max_residual=7.2873025123941424e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=7712 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=63 threads=1 calls=7712 expected=7712 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=64 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15424 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4105 n=65 threads=1 calls=15424 expected=15424 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=15456 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=95 threads=1 calls=15456 expected=15456 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=96 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+ARGUMENTS_PASS calls=23184 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=97 threads=1 calls=23184 expected=23184 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=9 padding_L_unchanged=1 actual_entry_counts=1
