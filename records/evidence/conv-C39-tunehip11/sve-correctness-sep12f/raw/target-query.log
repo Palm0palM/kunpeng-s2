@@ -1,0 +1,61 @@
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -mtune=hip11 -Q --help=target -c -x c /dev/null -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/target-query.o
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -mtune=hip11 -Q --help=target -c -x c /dev/null -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/target-query.o+ printf '\n'
+
++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -mtune=hip11 -Q --help=target -c -x c /dev/null -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/target-query.o
+The following options are target specific:
+  -mabi=                      		lp64
+  -march=                     		armv8-a
+  -mbig-endian                		[disabled]
+  -mbionic                    		[disabled]
+  -mbranch-protection=        		
+  -mcmlt-arith                		[disabled]
+  -mcmodel=                   		small
+  -mcpu=                      		generic
+  -mfix-cortex-a53-835769     		[enabled]
+  -mfix-cortex-a53-843419     		[enabled]
+  -mgeneral-regs-only         		[disabled]
+  -mglibc                     		[enabled]
+  -mharden-sls=               		
+  -mlarge-data-threshold=     		65536
+  -mlittle-endian             		[enabled]
+  -mlow-precision-div         		[disabled]
+  -mlow-precision-recip-sqrt  		[disabled]
+  -mlow-precision-sqrt        		[disabled]
+  -mmusl                      		[disabled]
+  -momit-leaf-frame-pointer   		[enabled]
+  -moutline-atomics           		[enabled]
+  -moverride=<string>         		
+  -mpc-relative-literal-loads 		[enabled]
+  -msign-return-address=      		none
+  -msimdmath-64               		[disabled]
+  -mstack-protector-guard-offset= 	
+  -mstack-protector-guard-reg= 		
+  -mstack-protector-guard=    		global
+  -mstrict-align              		[disabled]
+  -msve-vector-bits=<number>  		scalable
+  -mtls-dialect=              		desc
+  -mtls-size=                 		24
+  -mtrack-speculation         		[disabled]
+  -mtune=                     		hip11
+  -muclibc                    		[disabled]
+  -mverbose-cost-dump         		[disabled]
+
+  Known AArch64 ABIs (for use with the -mabi= option):
+    ilp32 lp64
+
+  Supported AArch64 return address signing scope (for use with -msign-return-address= option):
+    all non-leaf none
+
+  The code model option names for -mcmodel:
+    large medium small tiny
+
+  Valid arguments to -mstack-protector-guard=:
+    global sysreg
+
+  The possible SVE vector lengths:
+    1024 128 2048 256 512 scalable
+
+  The possible TLS dialects:
+    desc trad
+

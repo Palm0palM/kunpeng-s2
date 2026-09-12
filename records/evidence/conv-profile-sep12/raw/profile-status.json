@@ -1,0 +1,18 @@
+{
+  "status": "failed",
+  "reason": "Unexpected exit 1 during allocation; inspect original logs.",
+  "complete": false,
+  "profile_is_benchmark": false,
+  "source_version": "C26-r1",
+  "formal_version": "C6",
+  "event": "cycles:u",
+  "frequency_hz": 99,
+  "case": [
+    6390,
+    4256,
+    81,
+    81,
+    1
+  ],
+  "scope": "All conv invocations in this official case, including validation/warmup/timed call; sampled IPs filtered to quad, not whole-process CPI."
+}

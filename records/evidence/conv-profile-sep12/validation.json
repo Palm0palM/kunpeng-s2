@@ -1,0 +1,20 @@
+{
+  "status": "failed",
+  "complete": false,
+  "job_id": "1579436",
+  "scheduler": {
+    "status": "FAILED",
+    "state": "FAILED",
+    "jobId": "1579436",
+    "jobExitCode": 1,
+    "systemExitCode": 10001
+  },
+  "exit_code": 1,
+  "profile_is_benchmark": false,
+  "operator_executed": false,
+  "compiler_executed": false,
+  "reason": "Allocation parser attempted int(\"\") for an empty NUMA cpulist before any build or operator execution.",
+  "evidence_directory": "raw",
+  "source_manifest_verified": false,
+  "retry_directory": "../conv-profile-sep12-r1"
+}

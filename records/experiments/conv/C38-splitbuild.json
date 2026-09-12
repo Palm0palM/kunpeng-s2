@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C38-splitbuild",
+  "parent": "C26-r11",
+  "strategy": "Attribution-only reference: split the existing CONV compile/link driver invocation into unchanged-flag benchmark and kernel objects plus link; no algorithm or tuning flag change, never promote this control",
+  "created_at": "2026-09-12T08:57:24.664548+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "run.sh": "2de9841c726a9633133ee06a60be89a331773a7328b2f53a1a208b938940a7a9"
+  },
+  "status": "passed",
+  "source_parent": "C26-row4loads",
+  "build_layout": "Separate benchmark/kernel objects under the original RUN_DIR, then link in original source order; no LTO",
+  "kernel_tune_flag": null,
+  "benchmark_extra_flags": [],
+  "experiment_role": "attribution-only build reference",
+  "promotion_allowed": false,
+  "promotion_note": "Reference only; do not promote or include in submission packages even if split-build timings differ.",
+  "comparison_baseline": "C26-r11",
+  "reference_only": true,
+  "recorded_at": "2026-09-12T10:11:31.444312+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12f",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "c0cadd816f26c3c4647f429460f667b3abacded0bbb5c7c38e4b065b33ddf236",
+  "log": ".runs/conv/C38-splitbuild/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.4,
+        51.47,
+        51.4
+      ],
+      "median_ms": 51.4,
+      "min_ms": 51.4,
+      "max_ms": 51.47,
+      "spread_pct": 0.13618677042801614,
+      "gflops": [
+        1466.4576,
+        1464.4993,
+        1466.4333
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        61.92,
+        61.91,
+        62.01
+      ],
+      "median_ms": 61.92,
+      "min_ms": 61.91,
+      "max_ms": 62.01,
+      "spread_pct": 0.1614987080103382,
+      "gflops": [
+        1344.2475,
+        1344.4532,
+        1342.3303
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        107.3,
+        107.31,
+        107.38
+      ],
+      "median_ms": 107.31,
+      "min_ms": 107.3,
+      "max_ms": 107.38,
+      "spread_pct": 0.07455036809244087,
+      "gflops": [
+        1501.1026,
+        1500.9933,
+        1500.0168
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        231.8,
+        231.62,
+        231.71
+      ],
+      "median_ms": 231.71,
+      "min_ms": 231.62,
+      "max_ms": 231.8,
+      "spread_pct": 0.07768331103534885,
+      "gflops": [
+        1491.6938,
+        1492.8391,
+        1492.2407
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 452.34000000000003,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1579528",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 0.02% 未超过测量波动/最低1%门槛 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.43,
+        "candidate_ms": 51.4,
+        "gain_pct": 0.05833171300797421
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.97,
+        "candidate_ms": 61.92,
+        "gain_pct": 0.0806842020332373
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.32,
+        "candidate_ms": 107.31,
+        "gain_pct": 0.00931792769287263
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.69,
+        "candidate_ms": 231.71,
+        "gain_pct": -0.008632224092541859
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r10",
+    "eligible": false,
+    "reasons": [
+      "提速 0.02% 未超过测量波动/最低1%门槛 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.4,
+        "candidate_ms": 51.4,
+        "gain_pct": 0.0
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.95,
+        "candidate_ms": 61.92,
+        "gain_pct": 0.048426150121067206
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.34,
+        "candidate_ms": 107.31,
+        "gain_pct": 0.027948574622695302
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.73,
+        "candidate_ms": 231.71,
+        "gain_pct": 0.008630734043922587
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Reference-only split-build C38; retain its comparison but never promote from this round.",
+  "qualified_for_confirmation": false
+}

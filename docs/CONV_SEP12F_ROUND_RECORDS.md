@@ -1,0 +1,11 @@
+# CONV 版本与测量记录
+
+所有耗时均为内部比较指标，不是官方分数。空白表示尚无测量；未完成、失败与退化实验也保留。每版完整策略、环境、原始测量字段与结论见 JSON，所有公开证据经过脱敏。
+
+| 版本 | 父版本 | 状态 | 优化策略 | 各用例中位数 ms（按记录顺序） | 总中位数 ms | 可晋级 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [C26-r10](../records/experiments/conv/C26-r10.json) |  | passed | Unchanged C6 matched control | 4096×6144×39×39: 51.40; 6144×4096×41×41: 61.95; 4256×6390×55×55: 107.34; 6390×4256×81×81: 231.73 | 452.42 | 基线复测 | Unchanged C6 control; not a new algorithm version. |
+| [C37-row4u1](../records/experiments/conv/C37-row4u1.json) | C26-r11 | passed | Use one coefficient per iteration only in the four-row shared middle loop, keeping four vectors per row and strict per-output summation; test reduced live coefficient/input state without changing tile shape. | 4096×6144×39×39: 52.82; 6144×4096×41×41: 62.54; 4256×6390×55×55: 109.32; 6390×4256×81×81: 234.87 | 459.55 | 否 | Does not meet predeclared comparison gate; preserve actual samples without promotion. |
+| [C38-splitbuild](../records/experiments/conv/C38-splitbuild.json) | C26-r11 | passed | Attribution-only reference: split the existing CONV compile/link driver invocation into unchanged-flag benchmark and kernel objects plus link; no algorithm or tuning flag change, never promote this control | 4096×6144×39×39: 51.40; 6144×4096×41×41: 61.92; 4256×6390×55×55: 107.31; 6390×4256×81×81: 231.71 | 452.34 | 否 | Reference-only split-build C38; retain its comparison but never promote from this round. |
+| [C39-tunehip11](../records/experiments/conv/C39-tunehip11.json) | C26-r11 | passed | Use the C38 split-build layout and append -mtune=hip11 only when compiling conv2d.o; keep benchmark object flags, strict FP, ISA default, resource binding and official validation unchanged | 4096×6144×39×39: 52.25; 6144×4096×41×41: 62.76; 4256×6390×55×55: 109.08; 6390×4256×81×81: 235.66 | 459.75 | 否 | Tuning is not confirmed against the predeclared split-build reference; preserve all measurements without promotion. |
+| [C26-r11](../records/experiments/conv/C26-r11.json) |  | passed | Unchanged C6 matched control | 4096×6144×39×39: 51.43; 6144×4096×41×41: 61.97; 4256×6390×55×55: 107.32; 6390×4256×81×81: 231.69 | 452.41 | 基线复测 | Unchanged C6 control; not a new algorithm version. |

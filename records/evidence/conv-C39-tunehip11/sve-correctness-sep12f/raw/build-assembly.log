@@ -1,0 +1,5 @@
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -mtune=hip11 -S conv2d.c -o conv2d-sve.s
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -mtune=hip11 -S conv2d.c -o conv2d-sve.s+ printf '\n'
+
++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -mtune=hip11 -S conv2d.c -o conv2d-sve.s
