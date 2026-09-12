@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T8-control12",
+  "parent": null,
+  "source_from": "T8-svepanel16",
+  "source_implementation_id": "T8-svepanel16",
+  "strategy": "已晋级T8-svepanel16原样三轮复测，建立本轮KML25.1/GCC12基线；后续以同版本新run和候选同分配交错比较。",
+  "created_at": "2026-09-12T06:57:42.239623+00:00",
+  "status": "passed",
+  "verified": true,
+  "validation_policy": "user-requested-no-hash",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc",
+      "KML251_ROOT": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0",
+      "KML251_ARCH": "sme",
+      "KML251_LIBDIR": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi",
+      "COMPILER_ROOT": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux",
+      "GOMP_LIBRARY": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1.0.0",
+      "CPATH": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include",
+      "LIBRARY_PATH": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib",
+      "LD_LIBRARY_PATH": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib:/opt/stars:",
+      "COMPILER_VERSION": "gcc (gcc for openEuler 3.0.2) 12.3.1"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        19.02,
+        18.69,
+        18.71
+      ],
+      "median_ms": 18.71,
+      "min_ms": 18.69,
+      "max_ms": 19.02,
+      "spread_pct": 1.7637626937466504,
+      "gflops": [
+        275.22,
+        280.0251,
+        279.7527
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        244.88,
+        235.62,
+        231.26
+      ],
+      "median_ms": 235.62,
+      "min_ms": 231.26,
+      "max_ms": 244.88,
+      "spread_pct": 5.780494015788135,
+      "gflops": [
+        411.1796,
+        427.334,
+        435.3905
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        195.6,
+        194.81,
+        202.55
+      ],
+      "median_ms": 195.6,
+      "min_ms": 194.81,
+      "max_ms": 202.55,
+      "spread_pct": 3.9570552147239315,
+      "gflops": [
+        758.632,
+        761.7029,
+        732.5918
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 449.93,
+  "official_score": null,
+  "ranking": null,
+  "recorded_at": "2026-09-12T11:10:02.903122+00:00",
+  "environment": "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579673",
+  "reference": "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1",
+      "gcc (gcc for openEuler 3.0.2) 12.3.1"
+    ]
+  },
+  "job_id": "1579673",
+  "checks": {
+    "evidence_files_present": true,
+    "job_id": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_zero": true,
+    "three_complete_ordered_suites": true,
+    "precision_at_most_1e_12": true,
+    "machine_and_38_cpus": true,
+    "settings_38_threads": true,
+    "settings_three_suites": true,
+    "test_runs_exactly_three": true,
+    "fixed_thread_binding_settings": true,
+    "real_kml251_and_private_gcc1231_documented": true,
+    "runtime_environment_matches_settings": true,
+    "three_suites_link_true_kml251_and_private_gomp": true,
+    "runner_compiler_reference_and_binding_match": true,
+    "benchmark_matches_current_trsm_bytes": true,
+    "runner_matches_current_trsm_bytes": true,
+    "local_source_files_present": true,
+    "record_snapshot_matches_live_bytes": true,
+    "repeat_existing_preconditions_still_valid": true
+  },
+  "kml_evidence_schema": "trsm-kml251-gcc1231-linkage-v1",
+  "intended_reference_version": "KML 25.1.0",
+  "actual_reference_version": "KML 25.1.0",
+  "actual_compiler_version": "GCC 12.3.1",
+  "official_kml252_revalidated": false,
+  "hash_validation": "not performed: prohibited by user",
+  "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
+  "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
+  "run_dir": ".runs/trsm/T8-control12-repeat-r13",
+  "nohash_evidence": ".runs/trsm/T8-control12-repeat-r13/nohash-recorded-evidence",
+  "log": ".runs/trsm/T8-control12-repeat-r13/nohash-recorded-evidence/benchmark.log",
+  "metric": "sum of per-case median ms; not official score",
+  "promotion_validation_policy": "user-requested-no-hash",
+  "promoted_at": "2026-09-12T08:25:29.941998+00:00",
+  "repeat_existing": true,
+  "repeat_requested_at": "2026-09-12T11:04:37.062501+00:00",
+  "previous_runs": [
+    {
+      "record_file": ".runs/trsm/T8-control12-repeat-r6/prior-record.json",
+      "run_dir": ".runs/trsm/T8-control12",
+      "nohash_evidence": ".runs/trsm/T8-control12/nohash-recorded-evidence",
+      "recorded_at": "2026-09-12T08:25:15.564062+00:00",
+      "job_id": "1579357",
+      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
+    },
+    {
+      "record_file": ".runs/trsm/T8-control12-repeat-r7/prior-record.json",
+      "run_dir": ".runs/trsm/T8-control12-repeat-r6",
+      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r6/nohash-recorded-evidence",
+      "recorded_at": "2026-09-12T08:34:37.584779+00:00",
+      "job_id": "1579365",
+      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
+    },
+    {
+      "record_file": ".runs/trsm/T8-control12-repeat-r8/prior-record.json",
+      "run_dir": ".runs/trsm/T8-control12-repeat-r7",
+      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r7/nohash-recorded-evidence",
+      "recorded_at": "2026-09-12T08:57:55.248661+00:00",
+      "job_id": "1579401",
+      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
+    },
+    {
+      "record_file": ".runs/trsm/T8-control12-repeat-r9/prior-record.json",
+      "run_dir": ".runs/trsm/T8-control12-repeat-r8",
+      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r8/nohash-recorded-evidence",
+      "recorded_at": "2026-09-12T09:26:34.031494+00:00",
+      "job_id": "1579444",
+      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
+    },
+    {
+      "record_file": ".runs/trsm/T8-control12-repeat-r10/prior-record.json",
+      "run_dir": ".runs/trsm/T8-control12-repeat-r9",
+      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r9/nohash-recorded-evidence",
+      "recorded_at": "2026-09-12T09:53:06.467317+00:00",
+      "job_id": "1579479",
+      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
+    },
+    {
+      "record_file": ".runs/trsm/T8-control12-repeat-r11/prior-record.json",
+      "run_dir": ".runs/trsm/T8-control12-repeat-r10",
+      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r10/nohash-recorded-evidence",
+      "recorded_at": "2026-09-12T10:18:10.945697+00:00",
+      "job_id": "1579585",
+      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
+    },
+    {
+      "record_file": ".runs/trsm/T8-control12-repeat-r12/prior-record.json",
+      "run_dir": ".runs/trsm/T8-control12-repeat-r11",
+      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r11/nohash-recorded-evidence",
+      "recorded_at": "2026-09-12T10:30:12.026474+00:00",
+      "job_id": "1579600",
+      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
+    },
+    {
+      "record_file": ".runs/trsm/T8-control12-repeat-r13/prior-record.json",
+      "run_dir": ".runs/trsm/T8-control12-repeat-r12",
+      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r12/nohash-recorded-evidence",
+      "recorded_at": "2026-09-12T10:51:59.711015+00:00",
+      "job_id": "1579645",
+      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
+    }
+  ]
+}

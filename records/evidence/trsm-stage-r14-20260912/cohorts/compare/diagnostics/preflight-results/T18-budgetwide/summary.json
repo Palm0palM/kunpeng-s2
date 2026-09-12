@@ -1,0 +1,183 @@
+{
+  "schema": "trsm-r14-preflight-v1",
+  "complete": true,
+  "source_features": {
+    "has_panel16": true,
+    "has_packed_history": true,
+    "has_history_budget": true,
+    "history_budget_bytes": 4194304
+  },
+  "micro_cases": 28,
+  "old_micro_cases": 14,
+  "packed_micro_cases": 14,
+  "whole_cases": 518,
+  "noop_cases": 64,
+  "shared_fail_cases": 83,
+  "allocation_checked_cases": 518,
+  "budget_cases": 32,
+  "budget_shared_injections": 3,
+  "process_count": 18,
+  "max_error": 3.885780586188048e-16,
+  "processes": [
+    {
+      "label": "normal-t1",
+      "threads": 1,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "normal-t4",
+      "threads": 4,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "normal-t38",
+      "threads": 38,
+      "whole_cases": 4,
+      "noop_cases": 4,
+      "allocation_checked_cases": 4,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "boundary-t1",
+      "threads": 1,
+      "whole_cases": 2,
+      "noop_cases": 4,
+      "allocation_checked_cases": 2,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 3.885780586188048e-16
+    },
+    {
+      "label": "no-sve-t4",
+      "threads": 4,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "fail-alloc-t4",
+      "threads": 4,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "narrow-vl-t4",
+      "threads": 4,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "shared-fail-t1",
+      "threads": 1,
+      "whole_cases": 40,
+      "noop_cases": 4,
+      "allocation_checked_cases": 40,
+      "budget_cases": 0,
+      "shared_fail_cases": 40,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "shared-fail-t4",
+      "threads": 4,
+      "whole_cases": 40,
+      "noop_cases": 4,
+      "allocation_checked_cases": 40,
+      "budget_cases": 0,
+      "shared_fail_cases": 40,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-t1",
+      "threads": 1,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-t38",
+      "threads": 38,
+      "whole_cases": 2,
+      "noop_cases": 4,
+      "allocation_checked_cases": 2,
+      "budget_cases": 2,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-x-fail-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-no-sve-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-narrow-vl-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-shared-fail-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 3,
+      "max_error": 1.1102230246251565e-16
+    }
+  ]
+}

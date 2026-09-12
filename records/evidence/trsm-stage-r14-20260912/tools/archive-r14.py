@@ -1,0 +1,437 @@
+#!/usr/bin/env python3
+"""Create one public, redacted r14 evidence archive; never run tests or digests.
+
+Run only after collecting the desired finished/failed evidence. This script
+does not download, validate, record, promote, package, or publish experiments.
+The destination is exclusive, and every original file remains untouched.
+"""
+from datetime import datetime, timezone
+import json
+import os
+from pathlib import Path
+import re
+
+
+ROOT = Path(__file__).resolve().parents[2]
+RUNS = ROOT / '.runs/trsm'
+DEST = ROOT / 'records/evidence/trsm-stage-r14-20260912'
+COHORTS = {
+    'compare': RUNS / 'optimization-20260912-r14-compare',
+}
+VERSION_BY_MEMBER = {
+    'T8-control12-repeat-r14': 'T8-control12',
+    'T10-lhistbarrier-repeat-r14': 'T10-lhistbarrier',
+    'T17-lhistbudget4': 'T17-lhistbudget4',
+    'T18-budgetwide': 'T18-budgetwide',
+}
+MEMBERS = tuple(VERSION_BY_MEMBER)
+# Separate prior records both refer to their own r13 run in job 1579673.
+REPEAT_ORIGINS = {
+    'T8-control12-repeat-r14': {
+        'run': 'T8-control12-repeat-r13',
+        'archive': 'trsm-stage-r13-20260912',
+        'job_id': '1579673',
+    },
+    'T10-lhistbarrier-repeat-r14': {
+        'run': 'T10-lhistbarrier-repeat-r13',
+        'archive': 'trsm-stage-r13-20260912',
+        'job_id': '1579673',
+    },
+}
+SOURCE_FILES = ('trsm.c', 'bench_trsm.c', 'run.sh', 'compat/kblas.h', 'README.md')
+PREFLIGHT_FILES = ('guard.py', 'run.sh', 'check-panel.c', 'README.md')
+WIDE_PREFLIGHT_FILES = ('guard.py', 'run.sh', 'check-wide32.c', 'README.md')
+NEW_CANDIDATES = ('T17-lhistbudget4', 'T18-budgetwide')
+CANDIDATE_DOCUMENTS = ('PREPARATION.md', 'VALIDATION-PLAN.md', 'STATIC-REVIEW.md')
+COMPARISON_FILES = (
+    'T8-control12-vs-T10-lhistbarrier.json',
+    'T8-control12-vs-T17-lhistbudget4.json',
+    'T8-control12-vs-T18-budgetwide.json',
+    'T10-lhistbarrier-vs-T17-lhistbudget4.json',
+    'T17-lhistbudget4-vs-T18-budgetwide.json',
+)
+TEXT_SUFFIXES = {'.c', '.h', '.py', '.sh', '.md', '.json', '.txt', '.log', '.tsv', '.s'}
+COHORT_FILES = {
+    'cohort_driver.py', 'remote_job.sh', 'job_control.py', 'preflight_audit.py', 'plan.json', 'actual-run-audit.json',
+    'cohort-config.json', 'cohort-submission.json', 'assigned-job-id.txt',
+    'PREPARATION.md', 'README.md', 'NOTES.md',
+    'prepare.log', 'submit.log', 'upload.log', 'job-marker.log', 'scheduler-status.txt',
+    'latest-status.txt', 'pending-details.txt', 'collect.log', 'result.json',
+    'scheduler-pending-during-preflight.txt', 'latest-wrapper-tail.log', 'scheduler-json-query.txt',
+    'collect-before-scheduler-terminal.log', 'scheduler-finalization-NOTES.md',
+    'scheduler-done-query.txt', 'scheduler-steps-query.txt', 'djob-help.txt',
+    'failure.json', 'preflight.log', 'preflight-wide32.log', 'STATIC-CONTROLLER-REVIEW.md', 'RESULT-REVIEW.md', 'finish_records.py', 'environment.log', 'wrapper.stdout.log',
+    'warmup.log', 'warmup-linkage.log',
+    'cohort.stdout.log', 'cohort-exit-code.txt', 'compiler-environment.log',
+    'omp-runtime-symbol.log', 'record-compare-commands.json', 'static-readiness.json',
+    'prepared-repeat-readiness.json', 'continuation-state.json',
+}
+MEMBER_FILES = {
+    'experiment.json', 'cluster.json', 'record.json', 'prior-record.json',
+    'repeat-attempt.json', 'PREPARATION.md', 'STATIC-REVIEW.md', 'VALIDATION-PLAN.md', 'README.md', 'NOTES.md',
+    'benchmark.log', 'environment.log', 'wrapper.stdout.log', 'scheduler-status.txt',
+    'latest-status.txt', 'exit-code.txt', 'linkage.log', 'runtime-settings.json',
+    'result.json', 'failure.json', 'record.log', 'compare.json',
+    'warmup.log', 'warmup-linkage.log',
+}
+FORBIDDEN = re.compile(
+    r'cluster\.local|known[_-]?hosts|ssh[-_]?config|keychain|reconnect|askpass|auth|doctor|'
+    r'credential|password|private[-_]?key|session[-_]?reuse|ssh[-_]?sep|'
+    r'(?:sha(?:1|256|512)|checksum|digest)', re.I)
+PRIVATE_MATERIAL = re.compile(
+    r'-----BEGIN [A-Z ]*PRIVATE KEY-----|\bgh[pousr]_[A-Za-z0-9]{25,}|'
+    r'\bgithub_pat_[A-Za-z0-9_]{25,}')
+
+
+def read_object(path):
+    if not path.is_file() or path.is_symlink():
+        return None
+    try:
+        value = json.loads(path.read_text())
+    except (OSError, UnicodeError, ValueError):
+        return None
+    return value if isinstance(value, dict) else None
+
+
+def main():
+    if DEST.exists() or DEST.is_symlink():
+        raise SystemExit('Archive destination already exists; preserve it and do not rerun in place.')
+    planned = {}
+    omitted = []
+    missing = []
+
+    def add(source, relative, required=False):
+        source, relative = Path(source), Path(relative)
+        relsource = source.relative_to(ROOT)
+        if source.is_symlink() or any(p in ('.git', '.ssh', '__pycache__', 'compiler-private') for p in relsource.parts):
+            omitted.append({'source': str(relsource), 'reason': 'symlink or excluded directory'})
+            return
+        if FORBIDDEN.search(str(relsource)) or source.suffix.lower() not in TEXT_SUFFIXES:
+            omitted.append({'source': str(relsource), 'reason': 'private, digest, binary, or non-text name'})
+            return
+        if not source.is_file():
+            if required:
+                missing.append(str(relsource))
+            return
+        if relative.is_absolute() or '..' in relative.parts:
+            raise RuntimeError('Invalid archive-relative destination')
+        if relative in planned and planned[relative] != source:
+            raise RuntimeError('Conflicting source for ' + str(relative))
+        planned[relative] = source
+
+    def tree(source, relative):
+        source, relative = Path(source), Path(relative)
+        if not source.is_dir() or source.is_symlink():
+            return
+        for directory, dirs, files in os.walk(source, followlinks=False):
+            dirs[:] = sorted(d for d in dirs if d not in ('.git', '.ssh', '__pycache__', 'compiler-private')
+                             and not FORBIDDEN.search(d) and not (Path(directory) / d).is_symlink())
+            for name in sorted(files):
+                path = Path(directory) / name
+                add(path, relative / path.relative_to(source))
+
+    def assembly_reviews(folder, relative):
+        # Reviews may be written beside a cohort/member or within diagnostics.
+        # Route every discovered path through the same public-evidence filters.
+        for path in sorted(Path(folder).glob('*')):
+            if re.search(r'(?:assembly.*review|review.*assembly)', path.name, re.I):
+                if path.is_dir():
+                    tree(path, Path(relative) / path.name)
+                else:
+                    add(path, Path(relative) / path.name)
+
+    for label, folder in COHORTS.items():
+        prefix = Path('cohorts') / label
+        for name in sorted(COHORT_FILES):
+            add(folder / name, prefix / name, required=name in ('plan.json', 'cohort-config.json', 'cohort-submission.json',
+                                 'prepared-repeat-readiness.json', 'STATIC-CONTROLLER-REVIEW.md',
+                                 'preflight_audit.py'))
+        # Comparison/registration outputs have member-derived names.
+        for pattern in ('*-vs-*.json', '*-record.log', '*-compare.log', '*-promote.log', '*NOTES*.md', '*failure*.json', '*failure*.log'):
+            for path in sorted(folder.glob(pattern)):
+                add(path, prefix / path.name)
+        for name in ('preflight', 'preflight-wide32', 'reference', 'warmup',
+                     'preflight-results', 'preflight-wide32-results', 'reference-results',
+                     'diagnostics', 'failed-diagnostics', 'failure-diagnostics', 'raw-failure'):
+            tree(folder / name, prefix / name)
+        assembly_reviews(folder, prefix)
+        # Preserve the exact submitted source/control snapshots separately from live preparation.
+        payload = folder / 'payload'
+        for name in ('cohort_driver.py', 'remote_job.sh', 'cohort-config.json', 'preflight_audit.py'):
+            add(payload / name, prefix / 'submitted-payload' / name, required=True)
+        for name in ('preflight', 'preflight-wide32', 'reference'):
+            tree(payload / name, prefix / 'submitted-payload' / name)
+        for name in PREFLIGHT_FILES:
+            add(folder / 'preflight' / name, prefix / 'preflight' / name, required=True)
+            add(payload / 'preflight' / name,
+                prefix / 'submitted-payload/preflight' / name, required=True)
+        add(folder / 'preflight/STATIC-REVIEW.md', prefix / 'preflight/STATIC-REVIEW.md', required=True)
+        for name in WIDE_PREFLIGHT_FILES:
+            add(folder / 'preflight-wide32' / name, prefix / 'preflight-wide32' / name, required=True)
+            add(payload / 'preflight-wide32' / name,
+                prefix / 'submitted-payload/preflight-wide32' / name, required=True)
+        for name in COMPARISON_FILES:
+            add(folder / name, prefix / name, required=True)
+        # These are expected successful-collection locations. Other actually
+        # retrieved partial/failed result trees above remain preserved as-is.
+        for member in MEMBERS:
+            result_prefix = Path('diagnostics/preflight-results') / member
+            for name in ('summary.json', 'budget-summary.json', 'completion.txt',
+                         'summary.tsv', 'commands.txt', 'guard.json', 'trsm-panel16.s'):
+                add(folder / result_prefix / name, prefix / result_prefix / name, required=True)
+        wide_result_prefix = Path('diagnostics/preflight-wide32-results/T18-budgetwide')
+        for name in ('summary.json', 'completion.txt', 'summary.tsv', 'commands.txt',
+                     'guard.json', 'instrumented-trsm.c', 'trsm-wide4x32.s'):
+            add(folder / wide_result_prefix / name, prefix / wide_result_prefix / name, required=True)
+        for member in MEMBERS:
+            for name in SOURCE_FILES:
+                add(payload / member / 'source' / name,
+                    prefix / 'submitted-payload' / member / 'source' / name, required=True)
+
+    candidate_preparation_origins = []
+    for member in MEMBERS:
+        folder = RUNS / member
+        prefix = Path('members') / member
+        for name in sorted(MEMBER_FILES):
+            add(folder / name, prefix / name,
+                required=member in NEW_CANDIDATES and name in CANDIDATE_DOCUMENTS)
+        for name in SOURCE_FILES:
+            add(folder / 'source' / name, prefix / 'source' / name, required=True)
+        for name in ('nohash-recorded-evidence', 'warmup', 'diagnostics', 'failed-diagnostics', 'failure-diagnostics', 'raw-failure'):
+            tree(folder / name, prefix / name)
+        for path in sorted(folder.glob('*NOTES*.md')):
+            add(path, prefix / path.name)
+        assembly_reviews(folder, prefix)
+        if member == 'T10-lhistbarrier-repeat-r14':
+            # Original r7 candidate preparation is historical static material.
+            # Never substitute a new repeat document for this explicit origin.
+            for name in ('PREPARATION.md', 'VALIDATION-PLAN.md', 'STATIC-REVIEW.md'):
+                preparation = RUNS / 'T10-lhistbarrier' / name
+                destination = prefix / 'candidate-preparation' / name
+                required = name == 'PREPARATION.md'
+                if not required and (not preparation.is_file() or preparation.is_symlink()):
+                    continue
+                add(preparation, destination, required=required)
+                candidate_preparation_origins.append({
+                    'run': member, 'version': VERSION_BY_MEMBER[member],
+                    'document': str(destination), 'source': str(preparation.relative_to(ROOT)),
+                    'historical_candidate_run': 'T10-lhistbarrier',
+                    'historical_public_archive': '../trsm-stage-r7-20260912/',
+                    'note': 'Original r7 candidate preparation/static plan only; not evidence of this repeat run passing a gate.',
+                })
+        elif member in NEW_CANDIDATES:
+            for name in CANDIDATE_DOCUMENTS:
+                candidate_preparation_origins.append({
+                    'run': member, 'version': VERSION_BY_MEMBER[member],
+                    'document': str(prefix / name),
+                    'source': str((folder / name).relative_to(ROOT)),
+                    'note': 'Existing candidate preparation, validation plan or static review; not an r14 runtime result.',
+                })
+    previous_records = {}
+    for member in REPEAT_ORIGINS:
+        prior = RUNS / member / 'prior-record.json'
+        add(prior, Path('members') / member / 'prior-record.json', required=True)
+        previous_records[member] = read_object(prior)
+    for version in VERSION_BY_MEMBER.values():
+        add(ROOT / 'records/experiments/trsm' / (version + '.json'), Path('records/latest') / (version + '.json'), required=True)
+    add(RUNS / 'nohash-tools/records-kml.py', 'tools/records-kml.py', required=True)
+    add(RUNS / 'nohash-tools/records-kml-NOTES.md', 'tools/records-kml-NOTES.md', required=True)
+    add(Path(__file__).resolve(), 'tools/archive-r14.py', required=True)
+
+    # Associate each prior record with its own r13 repeat run and public record.
+    # The r13 archive separately preserves older T8/r12 and T10/r7 histories.
+    prior_record_origins = []
+    for member, origin in REPEAT_ORIGINS.items():
+        prior_run = origin['run']
+        history_name = origin['archive']
+        history_archive = ROOT / 'records/evidence' / history_name
+        expected_history_job = origin['job_id']
+        public_prefix = '../' + history_name + '/'
+        version = VERSION_BY_MEMBER[member]
+        previous = previous_records[member] or {}
+        history_cluster = read_object(history_archive / 'members' / prior_run / 'cluster.json') or {}
+        history_record = read_object(history_archive / 'records/latest' / (version + '.json')) or {}
+        history_job = str(history_cluster.get('job_id') or '')
+        public_record_job = str(history_record.get('job_id') or '')
+        prior_job = str(previous.get('job_id') or '')
+        job_id_match = history_job == public_record_job == prior_job == expected_history_job
+        version_match = previous.get('version') == history_record.get('version') == version
+        prior_record_origins.append({
+            'run': member, 'version': version,
+            'record': 'members/' + member + '/prior-record.json',
+            'prior_run': prior_run,
+            'prior_public_archive': public_prefix,
+            'prior_public_record': public_prefix + 'records/latest/' + version + '.json',
+            'prior_run_cluster': public_prefix + 'members/' + prior_run + '/cluster.json',
+            'initial_baseline_archive': '../trsm-stage-r6-20260912/',
+            'initial_baseline_run': '../trsm-stage-r6-20260912/members/T8-control12/',
+            'expected_prior_job_id': expected_history_job,
+            'prior_run_job_id': history_job or None,
+            'public_record_job_id': public_record_job or None,
+            'record_job_id': prior_job or None,
+            'job_id_match': job_id_match, 'version_match': version_match,
+            'note': 'Job ID/version association only. Each repeat uses its own historical run and public archive; this is not a byte identity claim. Different jobs are not merged into the r14 comparison.',
+        })
+        if not job_id_match or not version_match:
+            missing.append(member + ' prior-record.json matching its public ' + history_name
+                           + ' record and job ' + expected_history_job + '; inspect the referenced archive')
+
+    # Discover current account names only from the already selected public evidence;
+    # never read private config, SSH state, authentication files, or the Keychain.
+    replacements = {
+        '/LOCAL_USER_HOME': '/LOCAL_USER_HOME', '/CLUSTER_USER_HOME': '/CLUSTER_USER_HOME',
+        '/CLUSTER_USER_HOME': '/CLUSTER_USER_HOME', 'LOCAL_HOST_1': 'LOCAL_HOST_1',
+        'LOCAL_USER': 'LOCAL_USER', 'REDACTED_USER': 'REDACTED_USER', 'CLUSTER_HOST': 'CLUSTER_HOST',
+        'COMPUTE_NODE_1': 'COMPUTE_NODE_1', 'LOGIN_NODE_4': 'LOGIN_NODE_4', 'LOGIN_NODE_3': 'LOGIN_NODE_3',
+        'LOGIN_NODE_5': 'LOGIN_NODE_5', 'LOGIN_NODE_1': 'LOGIN_NODE_1', 'LOGIN_NODE_2': 'LOGIN_NODE_2',
+    }
+    accounts = {'CLUSTER_ACCOUNT'}
+    texts = {}
+    for relative, source in sorted(planned.items()):
+        data = source.read_bytes()
+        if b'\0' in data:
+            omitted.append({'source': str(source.relative_to(ROOT)), 'reason': 'NUL-containing non-text file'})
+            continue
+        text = data.decode('utf-8', errors='replace')
+        if PRIVATE_MATERIAL.search(text):
+            raise RuntimeError('Credential-like material in selected evidence; refusing archive: ' + str(source.relative_to(ROOT)))
+        texts[relative] = (source, len(data), text)
+        if source.name == 'cluster.json':
+            obj = read_object(source) or {}
+            user = obj.get('user')
+            host = obj.get('host')
+            if isinstance(user, str) and re.fullmatch(r'[A-Za-z_][A-Za-z0-9_.-]{2,}', user):
+                replacements[user] = 'REDACTED_USER'
+            if isinstance(host, str) and host:
+                replacements[host] = 'CLUSTER_HOST'
+        if source.suffix.lower() in ('.log', '.txt', '.json'):
+            accounts.update(re.findall(r'(?mi)^\s*account\s+([A-Za-z_][A-Za-z0-9_.-]*)\s*$', text))
+            accounts.update(re.findall(r'"account"\s*:\s*"([A-Za-z_][A-Za-z0-9_.-]*)"', text))
+
+    def redact(text):
+        for old, new in sorted(replacements.items(), key=lambda item: (-len(item[0]), item[0])):
+            text = text.replace(old, new)
+        for account in sorted(accounts, key=len, reverse=True):
+            text = text.replace(account, 'CLUSTER_ACCOUNT')
+        text = re.sub(r'/LOCAL_USER_HOME/\s\"\'<>:]+', '/LOCAL_USER_HOME', text)
+        text = re.sub(r'/CLUSTER_USER_HOME/\s\"\'<>:]+', '/CLUSTER_USER_HOME', text)
+        text = re.sub(r'/CLUSTER_USER_HOME:/|\b))[^/\s\"\'<>:]+', '/CLUSTER_USER_HOME', text)
+        text = re.sub(r'/(?:private/)?var/folders/[^\s\"\'<>]+', '/LOCAL_TEMP_PATH', text)
+        text = re.sub(r'\blogin\d+\b', 'LOGIN_NODE_REDACTED', text)
+        text = re.sub(r'\bcn\d+\b', 'COMPUTE_NODE_REDACTED', text)
+File owner/group identifiers redacted for publication.
+        return text
+
+    DEST.mkdir()  # Exclusive protection; do not remove or reuse on partial failure.
+    inventory = []
+    for relative, (source, source_size, original) in sorted(texts.items()):
+        destination = DEST / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        # Never place an unredacted original into the public destination, even
+        # transiently. A partial failure keeps only already-redacted copies.
+        public = redact(original)
+        with destination.open('x', encoding='utf-8') as output:
+            output.write(public)
+        if 'submitted-payload' in relative.parts:
+            role = 'prepared_upload_snapshot'
+        elif 'candidate-preparation' in relative.parts:
+            role = 'historical_candidate_preparation'
+        elif relative.name == 'instrumented-trsm.c':
+            role = 'collected_preflight_instrumented_source_not_benchmark'
+        elif 'diagnostics' in relative.parts or any(part.endswith('-results') for part in relative.parts):
+            role = 'collected_result_or_log_not_revalidated_by_archive'
+        elif 'source' in relative.parts:
+            role = 'run_local_source_snapshot'
+        elif relative.name in ('preflight_audit.py', 'cohort_driver.py', 'remote_job.sh',
+                               'job_control.py', 'finish_records.py') or any(
+                part in ('preflight', 'preflight-wide32', 'reference') for part in relative.parts):
+            role = 'current_local_preparation_or_audit_tool'
+        else:
+            role = 'local_evidence_record_or_preparation'
+        inventory.append({'path': str(relative), 'source': redact(str(source.relative_to(ROOT))),
+                          'provenance_role': role,
+                          'source_bytes': source_size, 'public_bytes': destination.stat().st_size,
+                          'text_changed_by_redaction': public != original,
+                          'utf8_decode_policy': 'Replace invalid UTF-8 bytes in public copy only',
+                          'source_snapshot': 'source' in relative.parts})
+
+    # Report existing record claims by matching run job IDs, not by version alone.
+    states = []
+    for member in MEMBERS:
+        folder = RUNS / member
+        cluster = read_object(folder / 'cluster.json') or {}
+        job = str(cluster.get('job_id', ''))
+        version = VERSION_BY_MEMBER[member]
+        current = read_object(ROOT / 'records/experiments/trsm' / (version + '.json'))
+        candidates = [read_object(folder / 'record.json'), read_object(folder / 'repeat-attempt.json'), previous_records.get(member), current]
+        matched = next((r for r in candidates if r and str(r.get('job_id', '')) == job and job), None)
+        present = [name for name in ('benchmark.log', 'environment.log', 'scheduler-status.txt', 'exit-code.txt', 'linkage.log')
+                   if (folder / name).is_file()]
+        states.append({'run': member, 'job_id': job or None, 'run_state': cluster.get('state'),
+                       'matching_record_status': matched.get('status') if matched else None,
+                       'matching_record_reports_verified': matched.get('verified') is True if matched else False,
+                       'recorded_at': matched.get('recorded_at') if matched else None,
+                       'raw_member_evidence_present': present,
+                       'note': 'Existing local record claim only; archive creation does not revalidate measurements, source identity, or transport.'})
+    document = {
+        'schema_version': 1, 'problem': 'trsm', 'stage': 'r14-20260912',
+        'created_at': datetime.now(timezone.utc).isoformat(),
+        'publication_scope': 'Redacted public derivative; unredacted originals retained in local .runs/trsm directories.',
+        'validation_policy': 'No hash computation or verification; no local compilation or tests; no promotion or contest submission by this script.',
+        'reference_scope': 'KML 25.1.0 with private GCC 12.3.1; this archive does not establish the specified KML 25.2.0 revalidation.',
+        'verified_by_archive_creation': False,
+        'remote_source_identity_verified': False,
+        'transport_integrity_verified': False,
+        'public_copies_are_original_byte_evidence': False,
+        'missing_optional_or_expected_evidence': missing,
+        'omitted_files': omitted,
+        'runs': states,
+        'files': inventory,
+        'SOURCE': [item for item in inventory if item['source_snapshot']],
+        'file_count_excluding_generated_readme_and_manifest': len(inventory),
+        'failure_policy': 'Only existing failed/partial logs are copied; missing logs and unverified runs are never filled with synthetic results.',
+        'repeat_policy': 'T8 and T10 each retain their own r13 prior record and corresponding repeat run, both from job 1579673. The r13 archive preserves their different earlier histories; no historical samples are merged into r14.',
+        'preparation_policy': 'static-readiness.json, prepared-repeat-readiness.json, STATIC-CONTROLLER-REVIEW, preflight STATIC-REVIEW and candidate documents are preparation evidence only; they do not establish r14 runtime or promotion success.',
+        'submitted_helper_policy': 'Current preflight_audit.py and its frozen submitted-payload copy are both required and kept separately. The frozen copy is never replaced by the current helper when missing.',
+        'preflight_evidence_policy': 'All four members retain their own actual general allocation/budget logs and both JSON summaries. Only T18 is scheduled for the separate r12-derived wide32 module; its instrumented source is a preflight artifact, not benchmark source.',
+        'comparison_evidence': {
+            'promotion_parent': 'T8-control12',
+            'baseline_comparison_files': ['cohorts/compare/' + name for name in COMPARISON_FILES[:3]],
+            'mechanism_comparison_files': ['cohorts/compare/' + name for name in COMPARISON_FILES[3:]],
+            'mechanism_summary_field': 'cohorts/compare/result.json:mechanism_comparisons',
+            'mechanism_comparison_authorizes_promotion': False,
+            'note': 'References to expected actual outputs only; absent outputs remain missing and are never generated by this archive.',
+        },
+        'prior_record_origins': prior_record_origins,
+        'candidate_preparation_origins': candidate_preparation_origins,
+        'warmup_policy': 'Warmup logs, linkage and warmup/summary.json are retained separately from timed run results; archive creation does not treat warmup as an additional measured round.',
+    }
+    (DEST / 'ARCHIVE.json').write_text(redact(json.dumps(document, ensure_ascii=False, indent=2)) + '\n')
+    (DEST / 'README.md').write_text('''# TRSM r14 公开实验归档
+
+此目录是脱敏公开派生副本，未脱敏原件保留于本地 .runs/trsm。个人路径、账号、内网地址和节点名已替换；公开副本不能用作原始字节身份依据或重新晋级输入。归档没有运行编译、测试、benchmark、登记、晋级或提交比赛，没有计算或验证哈希；归档本身不证明本轮已经完成或通过。
+
+cohorts/compare 保存 r14 四成员计划、控制器、finish_records.py、preflight_audit.py、提交及收集元数据、参考探针与实际原日志。submitted-payload 独立保存 prepare 时的四成员五源码、cohort_driver.py、remote_job.sh、cohort-config.json、preflight_audit.py 与 preflight/preflight-wide32/reference 全部冻结文本。当前 preflight_audit.py 和冻结副本都为所需证据；缺失冻结文件不能用当前文件补写。清单 source 和 provenance_role 区分当前准备/审计工具、prepare 上传快照、成员源文件、取回结果及插桩预检源码；该区分不额外宣称传输或远端脚本身份验证。
+
+四个 members 分别为 T8-control12-repeat-r14、T10-lhistbarrier-repeat-r14、T17-lhistbudget4、T18-budgetwide。T17/T18 各自 PREPARATION.md、VALIDATION-PLAN.md、STATIC-REVIEW.md 及五个 source 文件全部为所需材料。T10 的原准备资料明确从 .runs/trsm/T10-lhistbarrier 收录到本轮 member/candidate-preparation，继续标注原 r7 静态来源，不能当作 r14 通过的证据。
+
+通用 preflight 四输入 guard.py、run.sh、check-panel.c、README.md 保留当前版与冻结版，新增 STATIC-REVIEW.md 单独保留；冻结目录实际含有的审查也按原样收录。每个成员真实 preflight-results 或 diagnostics/preflight-results 树递归保存所有 ALLOC_PASS/CASE_PASS/SOURCE_FEATURES/MODE/失败注入原日志，以及 summary.tsv、commands.txt、guard.json、completion.txt、summary.json、budget-summary.json 和 trsm-panel16.s。请求字节、history/X/KB 层级、每 worker X 调用、预算外零 history 调用、窄 VL 与无 SVE 的区别均保留原观测；不以 packed 入口为0补造“没有分配”的结论。
+
+通用模块的严格结果 parser 完整包含于 run.sh；候选只在预检编译时通过 check-panel.c 包装分配和函数入口。summary.json 与 budget-summary.json 来自实际输出，归档不重建它们。预算进程 budget-t1/t4/t38、budget-x-fail-t4、budget-no-sve-t4、budget-narrow-vl-t4，以及 packed 成员的 budget-shared-fail-t4 与全部继承的一般/微核/失败模式日志分别保留。不同成员的覆盖计数以其冻结特征和实际完成标记为准，不能用一个成员的结果替代另一个。
+
+只有 T18-budgetwide 使用本轮单独 wide32 模块；四输入来自 r12 模块的准备副本，当前 preflight-wide32 与 submitted-payload/preflight-wide32 均明确收录 guard.py、run.sh、check-wide32.c、README.md。实际 preflight-wide32-results/T18-budgetwide 从取回结果树保存所有日志、summary.tsv/json、completion.txt、commands.txt、guard.json、instrumented-trsm.c 与 trsm-wide4x32.s。参数观察生成器和严格parser内嵌run.sh，不补造不存在的独立脚本。instrumented-trsm.c 仅是参数/入口观察的预检副本；真正 benchmark 源码仍是该成员 source/trsm.c，trsm-wide4x32.s 由原候选源码生成。原 KB256/CT64、参数与宽核完成标记按真实输出保留，缺失结果不生成。所有实际汇编审查及其输入另行收录；检查程序二进制不归档。
+
+static-readiness.json、prepared-repeat-readiness.json、STATIC-CONTROLLER-REVIEW、preflight 静态审查及候选准备文件只说明准备过程。预热原日志、linkage 与 warmup/summary.json 单独保存，不作为额外正式轮次。各成员实际三轮日志、登记、三个 T8 比较、T10-lhistbarrier-vs-T17-lhistbudget4.json 和 T17-lhistbudget4-vs-T18-budgetwide.json 两个机理比较完整保留；result.json 的机制字段是 mechanism_comparisons。T10→T17 用于区分4MiB预算，T17→T18用于区分大宽核；二者不独立授权晋级，T8仍是本轮晋级比较父版本。不同作业样本不混入本轮比较，也不预判候选是否胜出。
+
+T8/T10 的 prior-record.json 各自关联 r13 公开档：对应 [T8 台账](../trsm-stage-r13-20260912/records/latest/T8-control12.json)与 [T8-control12-repeat-r13](../trsm-stage-r13-20260912/members/T8-control12-repeat-r13/cluster.json)，以及 [T10 台账](../trsm-stage-r13-20260912/records/latest/T10-lhistbarrier.json)与 [T10-lhistbarrier-repeat-r13](../trsm-stage-r13-20260912/members/T10-lhistbarrier-repeat-r13/cluster.json)。这两份 prior 的预期作业均为1579673，但仍分别核对版本、run与公开记录；结果列于 ARCHIVE.json.prior_record_origins。r13 档案继续保存更早 T8/r12 和 T10/r7 的不同来源，T10 准备文档的原 r7 来源与本轮 prior 测量的 r13 来源不能混淆。原始 T8 初测仍见 r6 公开档。
+
+records/latest 是归档时的四版本台账，仅按当前 run job ID匹配其已有声明。失败或不完整运行只收录已经存在的日志、失败JSON或failed-diagnostics等目录，预期正常收集位置缺失时明确列入 missing_optional_or_expected_evidence；不填补成功标记、JSON、源码或测量。原件不改、不删；目标排他，已有目录禁止原地重跑。
+
+实际 KML25.1.0/GCC12.3.1 与指定官方KML25.2.0复验仍分开。ARCHIVE.json 的 verified 只转述已有台账声明，归档不重新验证成绩。SOURCE记录路径与字节数而不包含摘要。私有集群配置、SSH/认证/钥匙串/doctor文件、二进制、编译器、tar/ZIP和Git目录排除在外。
+''')
+    print('Created public TRSM r14 archive:', DEST.relative_to(ROOT), 'text_files=', len(inventory))
+    print('Missing expected/optional evidence entries:', len(missing), '; no measurements were generated or revalidated.')
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,14 @@
+SOURCE_FEATURES_PASS panel16=1 packedL16=0 has_budget=0 history_budget_bytes=0
+MODE=budget THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=0
+ALLOC_PASS m=1023 n=9 small=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=1 x_bytes=65472 x_success=1 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=1 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1023 n=9 sve16_entries=126 expected=126 old_entries=126 packed_entries=0 packed_expected=0
+ALLOC_PASS m=1024 n=9 small=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=1 x_bytes=65536 x_success=1 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=1 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1024 n=9 sve16_entries=128 expected=128 old_entries=128 packed_entries=0 packed_expected=0
+ALLOC_PASS m=1039 n=9 small=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=1 x_bytes=66496 x_success=1 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=1 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1039 n=9 sve16_entries=128 expected=128 old_entries=128 packed_entries=0 packed_expected=0
+ALLOC_PASS m=1040 n=9 small=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=1 x_bytes=66560 x_success=1 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=1 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1040 n=9 sve16_entries=130 expected=130 old_entries=130 packed_entries=0 packed_expected=0
+ALLOC_PASS m=1041 n=9 small=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=1 x_bytes=66624 x_success=1 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=1 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1041 n=9 sve16_entries=130 expected=130 old_entries=130 packed_entries=0 packed_expected=0
+ALLOCATION_SUMMARY_PASS cases=5 budget_cases=5 shared_injection_cases=0
+PASS whole_cases=5 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
