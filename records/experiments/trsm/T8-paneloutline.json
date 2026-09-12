@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T8-paneloutline",
+  "parent": "T7-control11",
+  "source_from": "T8-paneloutline",
+  "source_implementation_id": "T8-paneloutline",
+  "strategy": "仅将既有NEON panel_sums声明为noinline，检验GCC12调用者寄存器压力与代码体积假设。",
+  "created_at": "2026-09-12T02:24:14.502422+00:00",
+  "status": "passed",
+  "verified": true,
+  "validation_policy": "user-requested-no-hash",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc",
+      "KML251_ROOT": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0",
+      "KML251_ARCH": "sme",
+      "KML251_LIBDIR": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi",
+      "COMPILER_ROOT": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux",
+      "GOMP_LIBRARY": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1.0.0",
+      "CPATH": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include",
+      "LIBRARY_PATH": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib",
+      "LD_LIBRARY_PATH": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib:/opt/stars:",
+      "COMPILER_VERSION": "gcc (gcc for openEuler 3.0.2) 12.3.1"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        22.95,
+        23.3,
+        24.21
+      ],
+      "median_ms": 23.3,
+      "min_ms": 22.95,
+      "max_ms": 24.21,
+      "spread_pct": 5.407725321888419,
+      "gflops": [
+        228.034,
+        224.6804,
+        216.2272
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        290.95,
+        290.26,
+        291.3
+      ],
+      "median_ms": 290.95,
+      "min_ms": 290.26,
+      "max_ms": 291.3,
+      "spread_pct": 0.3574497336312152,
+      "gflops": [
+        346.0693,
+        346.9025,
+        345.6643
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        194.65,
+        194.08,
+        194.76
+      ],
+      "median_ms": 194.65,
+      "min_ms": 194.08,
+      "max_ms": 194.76,
+      "spread_pct": 0.34934497816592774,
+      "gflops": [
+        762.3176,
+        764.5426,
+        761.9106
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 508.9,
+  "official_score": null,
+  "ranking": null,
+  "recorded_at": "2026-09-12T02:32:31.625793+00:00",
+  "environment": "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-job1576028",
+  "reference": "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1",
+      "gcc (gcc for openEuler 3.0.2) 12.3.1"
+    ]
+  },
+  "job_id": "1576028",
+  "checks": {
+    "evidence_files_present": true,
+    "job_id": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_zero": true,
+    "three_complete_ordered_suites": true,
+    "precision_at_most_1e_12": true,
+    "machine_and_38_cpus": true,
+    "settings_38_threads": true,
+    "settings_three_suites": true,
+    "test_runs_exactly_three": true,
+    "fixed_thread_binding_settings": true,
+    "real_kml251_and_private_gcc1231_documented": true,
+    "runtime_environment_matches_settings": true,
+    "three_suites_link_true_kml251_and_private_gomp": true,
+    "runner_compiler_reference_and_binding_match": true,
+    "benchmark_matches_current_trsm_bytes": true,
+    "runner_matches_current_trsm_bytes": true,
+    "local_source_files_present": true,
+    "record_snapshot_matches_live_bytes": true
+  },
+  "kml_evidence_schema": "trsm-kml251-gcc1231-linkage-v1",
+  "intended_reference_version": "KML 25.1.0",
+  "actual_reference_version": "KML 25.1.0",
+  "actual_compiler_version": "GCC 12.3.1",
+  "official_kml252_revalidated": false,
+  "hash_validation": "not performed: prohibited by user",
+  "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
+  "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
+  "run_dir": ".runs/trsm/T8-paneloutline",
+  "nohash_evidence": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence",
+  "log": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/benchmark.log",
+  "metric": "sum of per-case median ms; not official score",
+  "archived_evidence": "records/evidence/trsm-stage-r5-20260912/members/T8-paneloutline/nohash-recorded-evidence",
+  "archived_log": "records/evidence/trsm-stage-r5-20260912/members/T8-paneloutline/nohash-recorded-evidence/benchmark.log"
+}

@@ -1,0 +1,4210 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "stage": "r5-20260912",
+  "created_at": "2026-09-12T02:35:06.943433+00:00",
+  "publication_scope": "Redacted public derivative; unredacted originals retained in local .runs/trsm directories.",
+  "validation_policy": "No hash computation or verification; no local compilation or tests; no promotion or contest submission by this script.",
+  "reference_scope": "KML 25.1.0 with private GCC 12.3.1; this archive does not establish the specified KML 25.2.0 revalidation.",
+  "verified_by_archive_creation": false,
+  "remote_source_identity_verified": false,
+  "transport_integrity_verified": false,
+  "public_copies_are_original_byte_evidence": false,
+  "missing_optional_or_expected_evidence": [],
+  "omitted_files": [],
+  "runs": [
+    {
+      "run": "T7-control11",
+      "job_id": "1576015",
+      "run_state": "collected",
+      "matching_record_status": "passed",
+      "matching_record_reports_verified": true,
+      "recorded_at": "2026-09-12T02:24:04.647245+00:00",
+      "raw_member_evidence_present": [
+        "benchmark.log",
+        "environment.log",
+        "scheduler-status.txt",
+        "exit-code.txt",
+        "linkage.log"
+      ],
+      "note": "Existing local record claim only; archive creation does not revalidate measurements, source identity, or transport."
+    },
+    {
+      "run": "T7-control11-repeat-r5",
+      "job_id": "1576028",
+      "run_state": "collected",
+      "matching_record_status": "passed",
+      "matching_record_reports_verified": true,
+      "recorded_at": "2026-09-12T02:32:31.422813+00:00",
+      "raw_member_evidence_present": [
+        "benchmark.log",
+        "environment.log",
+        "scheduler-status.txt",
+        "exit-code.txt",
+        "linkage.log"
+      ],
+      "note": "Existing local record claim only; archive creation does not revalidate measurements, source identity, or transport."
+    },
+    {
+      "run": "T8-svepanel16",
+      "job_id": "1576028",
+      "run_state": "collected",
+      "matching_record_status": "passed",
+      "matching_record_reports_verified": true,
+      "recorded_at": "2026-09-12T02:32:31.525147+00:00",
+      "raw_member_evidence_present": [
+        "benchmark.log",
+        "environment.log",
+        "scheduler-status.txt",
+        "exit-code.txt",
+        "linkage.log"
+      ],
+      "note": "Existing local record claim only; archive creation does not revalidate measurements, source identity, or transport."
+    },
+    {
+      "run": "T8-paneloutline",
+      "job_id": "1576028",
+      "run_state": "collected",
+      "matching_record_status": "passed",
+      "matching_record_reports_verified": true,
+      "recorded_at": "2026-09-12T02:32:31.625793+00:00",
+      "raw_member_evidence_present": [
+        "benchmark.log",
+        "environment.log",
+        "scheduler-status.txt",
+        "exit-code.txt",
+        "linkage.log"
+      ],
+      "note": "Existing local record claim only; archive creation does not revalidate measurements, source identity, or transport."
+    }
+  ],
+  "files": [
+    {
+      "path": "cohorts/baseline/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260912-r5/cohort-config.json",
+      "source_bytes": 917,
+      "public_bytes": 917,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/cohort-submission.json",
+      "source": ".runs/trsm/optimization-20260912-r5/cohort-submission.json",
+      "source_bytes": 1082,
+      "public_bytes": 1057,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260912-r5/cohort_driver.py",
+      "source_bytes": 9168,
+      "public_bytes": 9168,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/collect.log",
+      "source": ".runs/trsm/optimization-20260912-r5/collect.log",
+      "source_bytes": 8466,
+      "public_bytes": 8494,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/benchmark.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/benchmark.log",
+      "source_bytes": 12284,
+      "public_bytes": 12231,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/environment.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/environment.log",
+      "source_bytes": 8849,
+      "public_bytes": 8796,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/linkage.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/linkage.log",
+      "source_bytes": 3579,
+      "public_bytes": 3534,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/runtime-settings.json",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/summary.log",
+      "source_bytes": 1024,
+      "public_bytes": 1024,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/summary.log",
+      "source_bytes": 1024,
+      "public_bytes": 1024,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/summary.log",
+      "source_bytes": 1024,
+      "public_bytes": 1024,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/wrapper.stdout.log",
+      "source_bytes": 12284,
+      "public_bytes": 12231,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/assigned-job-id.txt",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/assigned-job-id.txt",
+      "source_bytes": 8,
+      "public_bytes": 8,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/cohort-config.json",
+      "source_bytes": 917,
+      "public_bytes": 917,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/cohort-exit-code.txt",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/cohort-exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/compiler-environment.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/compiler-environment.log",
+      "source_bytes": 386,
+      "public_bytes": 381,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/environment.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/environment.log",
+      "source_bytes": 6169,
+      "public_bytes": 6146,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/omp-runtime-symbol.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/omp-runtime-symbol.log",
+      "source_bytes": 205,
+      "public_bytes": 205,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/assembly.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/assembly.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/boundary-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/boundary-t1.log",
+      "source_bytes": 263,
+      "public_bytes": 263,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/build-fail-alloc.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/build-fail-alloc.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/build-no-sve.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/build-normal.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/build-normal.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/commands.txt",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/commands.txt",
+      "source_bytes": 2747,
+      "public_bytes": 2652,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/compiler.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/compiler.log",
+      "source_bytes": 239,
+      "public_bytes": 239,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/completion.txt",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/completion.txt",
+      "source_bytes": 70,
+      "public_bytes": 70,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/fail-alloc-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/fail-alloc-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/guard.json",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/guard.json",
+      "source_bytes": 329,
+      "public_bytes": 336,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/guard.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/guard.log",
+      "source_bytes": 329,
+      "public_bytes": 336,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/narrow-vl-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/no-sve-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/normal-t1.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/normal-t38.log",
+      "source_bytes": 355,
+      "public_bytes": 355,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/normal-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/summary.tsv",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/summary.tsv",
+      "source_bytes": 232,
+      "public_bytes": 232,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight-results/T7-control11/trsm-panel16.s",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight-results/T7-control11/trsm-panel16.s",
+      "source_bytes": 67533,
+      "public_bytes": 67533,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/preflight.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/preflight.log",
+      "source_bytes": 20531,
+      "public_bytes": 20538,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/reference-results/probe-ldd.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/reference-results/probe-ldd.log",
+      "source_bytes": 669,
+      "public_bytes": 664,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/reference-results/probe.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/reference-results/probe.log",
+      "source_bytes": 22510,
+      "public_bytes": 22464,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/wrapper.stdout.log",
+      "source_bytes": 23603,
+      "public_bytes": 23610,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/job-marker.log",
+      "source": ".runs/trsm/optimization-20260912-r5/job-marker.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/job_control.py",
+      "source": ".runs/trsm/optimization-20260912-r5/job_control.py",
+      "source_bytes": 11328,
+      "public_bytes": 11328,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/pending-details.txt",
+      "source": ".runs/trsm/optimization-20260912-r5/pending-details.txt",
+      "source_bytes": 7977,
+      "public_bytes": 8005,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/plan.json",
+      "source": ".runs/trsm/optimization-20260912-r5/plan.json",
+      "source_bytes": 689,
+      "public_bytes": 689,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/preflight/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5/preflight/README.md",
+      "source_bytes": 2877,
+      "public_bytes": 2877,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/preflight/check-panel.c",
+      "source": ".runs/trsm/optimization-20260912-r5/preflight/check-panel.c",
+      "source_bytes": 9540,
+      "public_bytes": 9540,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/preflight/guard.py",
+      "source": ".runs/trsm/optimization-20260912-r5/preflight/guard.py",
+      "source_bytes": 1404,
+      "public_bytes": 1404,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/preflight/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/preflight/run.sh",
+      "source_bytes": 2842,
+      "public_bytes": 2842,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260912-r5/reference/audit-dependencies.py",
+      "source_bytes": 1015,
+      "public_bytes": 1015,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/reference/probe.sh",
+      "source_bytes": 2397,
+      "public_bytes": 2397,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260912-r5/reference/required-symbols.c",
+      "source_bytes": 1755,
+      "public_bytes": 1755,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/reference/target-environment.sh",
+      "source_bytes": 2644,
+      "public_bytes": 2644,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/remote_job.sh",
+      "source_bytes": 1412,
+      "public_bytes": 1407,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/scheduler-status.txt",
+      "source": ".runs/trsm/optimization-20260912-r5/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submit.log",
+      "source": ".runs/trsm/optimization-20260912-r5/submit.log",
+      "source_bytes": 35,
+      "public_bytes": 35,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/cohort-config.json",
+      "source_bytes": 917,
+      "public_bytes": 917,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/cohort_driver.py",
+      "source_bytes": 9168,
+      "public_bytes": 9168,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/preflight/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/preflight/README.md",
+      "source_bytes": 2877,
+      "public_bytes": 2877,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/preflight/check-panel.c",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/preflight/check-panel.c",
+      "source_bytes": 9540,
+      "public_bytes": 9540,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/preflight/guard.py",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/preflight/guard.py",
+      "source_bytes": 1404,
+      "public_bytes": 1404,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/preflight/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/preflight/run.sh",
+      "source_bytes": 2842,
+      "public_bytes": 2842,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/reference/audit-dependencies.py",
+      "source_bytes": 1015,
+      "public_bytes": 1015,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/reference/probe.sh",
+      "source_bytes": 2397,
+      "public_bytes": 2397,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/reference/required-symbols.c",
+      "source_bytes": 1755,
+      "public_bytes": 1755,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/reference/target-environment.sh",
+      "source_bytes": 2644,
+      "public_bytes": 2644,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/remote_job.sh",
+      "source_bytes": 1412,
+      "public_bytes": 1407,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/baseline/upload.log",
+      "source": ".runs/trsm/optimization-20260912-r5/upload.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/T7-control11-vs-T8-paneloutline.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/T7-control11-vs-T8-paneloutline.json",
+      "source_bytes": 833,
+      "public_bytes": 833,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/T7-control11-vs-T8-svepanel16.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/T7-control11-vs-T8-svepanel16.json",
+      "source_bytes": 760,
+      "public_bytes": 760,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/cohort-config.json",
+      "source_bytes": 2562,
+      "public_bytes": 2562,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/cohort-submission.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/cohort-submission.json",
+      "source_bytes": 1124,
+      "public_bytes": 1099,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/cohort_driver.py",
+      "source_bytes": 9168,
+      "public_bytes": 9168,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/collect.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/collect.log",
+      "source_bytes": 8466,
+      "public_bytes": 8494,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/benchmark.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/benchmark.log",
+      "source_bytes": 12263,
+      "public_bytes": 12210,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/environment.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/environment.log",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/linkage.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/linkage.log",
+      "source_bytes": 3609,
+      "public_bytes": 3564,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/runtime-settings.json",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/wrapper.stdout.log",
+      "source_bytes": 12263,
+      "public_bytes": 12210,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/benchmark.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/benchmark.log",
+      "source_bytes": 12242,
+      "public_bytes": 12189,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/environment.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/environment.log",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/linkage.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/linkage.log",
+      "source_bytes": 3588,
+      "public_bytes": 3543,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/runtime-settings.json",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/wrapper.stdout.log",
+      "source_bytes": 12242,
+      "public_bytes": 12189,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/benchmark.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/benchmark.log",
+      "source_bytes": 12236,
+      "public_bytes": 12183,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/environment.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/environment.log",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/linkage.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/linkage.log",
+      "source_bytes": 3582,
+      "public_bytes": 3537,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/runtime-settings.json",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/wrapper.stdout.log",
+      "source_bytes": 12236,
+      "public_bytes": 12183,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/assigned-job-id.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/assigned-job-id.txt",
+      "source_bytes": 8,
+      "public_bytes": 8,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/cohort-config.json",
+      "source_bytes": 2562,
+      "public_bytes": 2562,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/cohort-exit-code.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/cohort-exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/compiler-environment.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/compiler-environment.log",
+      "source_bytes": 386,
+      "public_bytes": 381,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/environment.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/environment.log",
+      "source_bytes": 6121,
+      "public_bytes": 6098,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/omp-runtime-symbol.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/omp-runtime-symbol.log",
+      "source_bytes": 205,
+      "public_bytes": 205,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/assembly.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/assembly.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/boundary-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/boundary-t1.log",
+      "source_bytes": 263,
+      "public_bytes": 263,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/build-fail-alloc.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/build-fail-alloc.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/build-no-sve.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/build-normal.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/build-normal.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/commands.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/commands.txt",
+      "source_bytes": 2897,
+      "public_bytes": 2802,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/compiler.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/compiler.log",
+      "source_bytes": 239,
+      "public_bytes": 239,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/completion.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/completion.txt",
+      "source_bytes": 70,
+      "public_bytes": 70,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/fail-alloc-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/fail-alloc-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/guard.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/guard.json",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/guard.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/guard.log",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/narrow-vl-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/no-sve-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/normal-t1.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/normal-t38.log",
+      "source_bytes": 355,
+      "public_bytes": 355,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/normal-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/summary.tsv",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/summary.tsv",
+      "source_bytes": 232,
+      "public_bytes": 232,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T7-control11-repeat-r5/trsm-panel16.s",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T7-control11-repeat-r5/trsm-panel16.s",
+      "source_bytes": 67533,
+      "public_bytes": 67533,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/assembly.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/assembly.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/boundary-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/boundary-t1.log",
+      "source_bytes": 263,
+      "public_bytes": 263,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/build-fail-alloc.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/build-fail-alloc.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/build-no-sve.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/build-normal.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/build-normal.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/commands.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/commands.txt",
+      "source_bytes": 2792,
+      "public_bytes": 2697,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/compiler.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/compiler.log",
+      "source_bytes": 239,
+      "public_bytes": 239,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/completion.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/completion.txt",
+      "source_bytes": 70,
+      "public_bytes": 70,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/fail-alloc-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/fail-alloc-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/guard.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/guard.json",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/guard.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/guard.log",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/narrow-vl-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/no-sve-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/normal-t1.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/normal-t38.log",
+      "source_bytes": 355,
+      "public_bytes": 355,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/normal-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/summary.tsv",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/summary.tsv",
+      "source_bytes": 232,
+      "public_bytes": 232,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-paneloutline/trsm-panel16.s",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-paneloutline/trsm-panel16.s",
+      "source_bytes": 64575,
+      "public_bytes": 64575,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/assembly.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/assembly.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/boundary-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/boundary-t1.log",
+      "source_bytes": 267,
+      "public_bytes": 267,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/build-fail-alloc.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/build-fail-alloc.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/build-no-sve.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/build-normal.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/build-normal.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/commands.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/commands.txt",
+      "source_bytes": 2905,
+      "public_bytes": 2805,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/compiler.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/compiler.log",
+      "source_bytes": 239,
+      "public_bytes": 239,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/completion.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/completion.txt",
+      "source_bytes": 71,
+      "public_bytes": 71,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/fail-alloc-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/fail-alloc-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/guard.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/guard.json",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/guard.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/guard.log",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/micro-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/micro-t1.log",
+      "source_bytes": 119,
+      "public_bytes": 119,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/narrow-vl-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/no-sve-t4.log",
+      "source_bytes": 3855,
+      "public_bytes": 3855,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/normal-t1.log",
+      "source_bytes": 3889,
+      "public_bytes": 3889,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/normal-t38.log",
+      "source_bytes": 361,
+      "public_bytes": 361,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/normal-t4.log",
+      "source_bytes": 3889,
+      "public_bytes": 3889,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/summary.tsv",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/summary.tsv",
+      "source_bytes": 245,
+      "public_bytes": 245,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-svepanel16/trsm-panel16.s",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight-results/T8-svepanel16/trsm-panel16.s",
+      "source_bytes": 82325,
+      "public_bytes": 82325,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/preflight.log",
+      "source_bytes": 61719,
+      "public_bytes": 61740,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/reference-results/probe-ldd.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/reference-results/probe-ldd.log",
+      "source_bytes": 669,
+      "public_bytes": 664,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/reference-results/probe.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/reference-results/probe.log",
+      "source_bytes": 22510,
+      "public_bytes": 22464,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/wrapper.stdout.log",
+      "source_bytes": 70926,
+      "public_bytes": 70947,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/job-marker.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/job-marker.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/job_control.py",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/job_control.py",
+      "source_bytes": 11328,
+      "public_bytes": 11328,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/plan.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/plan.json",
+      "source_bytes": 1245,
+      "public_bytes": 1245,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/preflight/README.md",
+      "source_bytes": 2877,
+      "public_bytes": 2877,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight/check-panel.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/preflight/check-panel.c",
+      "source_bytes": 9540,
+      "public_bytes": 9540,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight/guard.py",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/preflight/guard.py",
+      "source_bytes": 1404,
+      "public_bytes": 1404,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/preflight/run.sh",
+      "source_bytes": 2842,
+      "public_bytes": 2842,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/reference/audit-dependencies.py",
+      "source_bytes": 1015,
+      "public_bytes": 1015,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/reference/probe.sh",
+      "source_bytes": 2397,
+      "public_bytes": 2397,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/reference/required-symbols.c",
+      "source_bytes": 1755,
+      "public_bytes": 1755,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/reference/target-environment.sh",
+      "source_bytes": 2644,
+      "public_bytes": 2644,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/remote_job.sh",
+      "source_bytes": 1412,
+      "public_bytes": 1407,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/scheduler-status.txt",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submit.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/submit.log",
+      "source_bytes": 35,
+      "public_bytes": 35,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/trsm.c",
+      "source_bytes": 23432,
+      "public_bytes": 23432,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/trsm.c",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/cohort-config.json",
+      "source_bytes": 2562,
+      "public_bytes": 2562,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/cohort_driver.py",
+      "source_bytes": 9168,
+      "public_bytes": 9168,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/preflight/README.md",
+      "source_bytes": 2877,
+      "public_bytes": 2877,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight/check-panel.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/preflight/check-panel.c",
+      "source_bytes": 9540,
+      "public_bytes": 9540,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight/guard.py",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/preflight/guard.py",
+      "source_bytes": 1404,
+      "public_bytes": 1404,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/preflight/run.sh",
+      "source_bytes": 2842,
+      "public_bytes": 2842,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/reference/audit-dependencies.py",
+      "source_bytes": 1015,
+      "public_bytes": 1015,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/reference/probe.sh",
+      "source_bytes": 2397,
+      "public_bytes": 2397,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/reference/required-symbols.c",
+      "source_bytes": 1755,
+      "public_bytes": 1755,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/reference/target-environment.sh",
+      "source_bytes": 2644,
+      "public_bytes": 2644,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/remote_job.sh",
+      "source_bytes": 1412,
+      "public_bytes": 1407,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/upload.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/upload.log",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/benchmark.log",
+      "source": ".runs/trsm/T7-control11/benchmark.log",
+      "source_bytes": 12284,
+      "public_bytes": 12231,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/cluster.json",
+      "source": ".runs/trsm/T7-control11/cluster.json",
+      "source_bytes": 3121,
+      "public_bytes": 3091,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/environment.log",
+      "source": ".runs/trsm/T7-control11/environment.log",
+      "source_bytes": 8849,
+      "public_bytes": 8796,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/exit-code.txt",
+      "source": ".runs/trsm/T7-control11/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/experiment.json",
+      "source": ".runs/trsm/T7-control11/experiment.json",
+      "source_bytes": 1047,
+      "public_bytes": 1047,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/linkage.log",
+      "source": ".runs/trsm/T7-control11/linkage.log",
+      "source_bytes": 3579,
+      "public_bytes": 3534,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/benchmark.log",
+      "source_bytes": 12284,
+      "public_bytes": 12231,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/cluster.json",
+      "source_bytes": 3121,
+      "public_bytes": 3091,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/environment.log",
+      "source_bytes": 8849,
+      "public_bytes": 8796,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/linkage.log",
+      "source_bytes": 3579,
+      "public_bytes": 3534,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/record-for-original-run.json",
+      "source": ".runs/trsm/T7-control11-repeat-r5/prior-record.json",
+      "source_bytes": 6705,
+      "public_bytes": 6689,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/runtime-settings.json",
+      "source": ".runs/trsm/T7-control11/runtime-settings.json",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/scheduler-status.txt",
+      "source": ".runs/trsm/T7-control11/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11/source/README.md",
+      "source": ".runs/trsm/T7-control11/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/source/bench_trsm.c",
+      "source": ".runs/trsm/T7-control11/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/source/compat/kblas.h",
+      "source": ".runs/trsm/T7-control11/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/source/run.sh",
+      "source": ".runs/trsm/T7-control11/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/source/trsm.c",
+      "source": ".runs/trsm/T7-control11/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/wrapper.stdout.log",
+      "source": ".runs/trsm/T7-control11/wrapper.stdout.log",
+      "source_bytes": 12284,
+      "public_bytes": 12231,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/benchmark.log",
+      "source": ".runs/trsm/T7-control11-repeat-r5/benchmark.log",
+      "source_bytes": 12263,
+      "public_bytes": 12210,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/cluster.json",
+      "source": ".runs/trsm/T7-control11-repeat-r5/cluster.json",
+      "source_bytes": 3131,
+      "public_bytes": 3101,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/environment.log",
+      "source": ".runs/trsm/T7-control11-repeat-r5/environment.log",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/exit-code.txt",
+      "source": ".runs/trsm/T7-control11-repeat-r5/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/experiment.json",
+      "source": ".runs/trsm/T7-control11-repeat-r5/experiment.json",
+      "source_bytes": 1047,
+      "public_bytes": 1047,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/linkage.log",
+      "source": ".runs/trsm/T7-control11-repeat-r5/linkage.log",
+      "source_bytes": 3609,
+      "public_bytes": 3564,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/benchmark.log",
+      "source_bytes": 12263,
+      "public_bytes": 12210,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/cluster.json",
+      "source_bytes": 3131,
+      "public_bytes": 3101,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/environment.log",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/linkage.log",
+      "source_bytes": 3609,
+      "public_bytes": 3564,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/prior-record.json",
+      "source": ".runs/trsm/T7-control11-repeat-r5/prior-record.json",
+      "source_bytes": 6705,
+      "public_bytes": 6689,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/runtime-settings.json",
+      "source": ".runs/trsm/T7-control11-repeat-r5/runtime-settings.json",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/scheduler-status.txt",
+      "source": ".runs/trsm/T7-control11-repeat-r5/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/README.md",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/bench_trsm.c",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/compat/kblas.h",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/run.sh",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/trsm.c",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/wrapper.stdout.log",
+      "source": ".runs/trsm/T7-control11-repeat-r5/wrapper.stdout.log",
+      "source_bytes": 12263,
+      "public_bytes": 12210,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/PREPARATION.md",
+      "source": ".runs/trsm/T8-paneloutline/PREPARATION.md",
+      "source_bytes": 2585,
+      "public_bytes": 2585,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/benchmark.log",
+      "source": ".runs/trsm/T8-paneloutline/benchmark.log",
+      "source_bytes": 12242,
+      "public_bytes": 12189,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/cluster.json",
+      "source": ".runs/trsm/T8-paneloutline/cluster.json",
+      "source_bytes": 3127,
+      "public_bytes": 3097,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/environment.log",
+      "source": ".runs/trsm/T8-paneloutline/environment.log",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/exit-code.txt",
+      "source": ".runs/trsm/T8-paneloutline/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/experiment.json",
+      "source": ".runs/trsm/T8-paneloutline/experiment.json",
+      "source_bytes": 1044,
+      "public_bytes": 1044,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/linkage.log",
+      "source": ".runs/trsm/T8-paneloutline/linkage.log",
+      "source_bytes": 3588,
+      "public_bytes": 3543,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/benchmark.log",
+      "source_bytes": 12242,
+      "public_bytes": 12189,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/cluster.json",
+      "source_bytes": 3127,
+      "public_bytes": 3097,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/environment.log",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/linkage.log",
+      "source_bytes": 3588,
+      "public_bytes": 3543,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/source/trsm.c",
+      "source_bytes": 23432,
+      "public_bytes": 23432,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/runtime-settings.json",
+      "source": ".runs/trsm/T8-paneloutline/runtime-settings.json",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/scheduler-status.txt",
+      "source": ".runs/trsm/T8-paneloutline/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-paneloutline/source/README.md",
+      "source": ".runs/trsm/T8-paneloutline/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-paneloutline/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-paneloutline/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/source/run.sh",
+      "source": ".runs/trsm/T8-paneloutline/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/source/trsm.c",
+      "source": ".runs/trsm/T8-paneloutline/source/trsm.c",
+      "source_bytes": 23432,
+      "public_bytes": 23432,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/wrapper.stdout.log",
+      "source": ".runs/trsm/T8-paneloutline/wrapper.stdout.log",
+      "source_bytes": 12242,
+      "public_bytes": 12189,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/PREPARATION.md",
+      "source": ".runs/trsm/T8-svepanel16/PREPARATION.md",
+      "source_bytes": 4187,
+      "public_bytes": 4187,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/benchmark.log",
+      "source": ".runs/trsm/T8-svepanel16/benchmark.log",
+      "source_bytes": 12236,
+      "public_bytes": 12183,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/cluster.json",
+      "source": ".runs/trsm/T8-svepanel16/cluster.json",
+      "source_bytes": 3123,
+      "public_bytes": 3093,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/environment.log",
+      "source": ".runs/trsm/T8-svepanel16/environment.log",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/exit-code.txt",
+      "source": ".runs/trsm/T8-svepanel16/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/experiment.json",
+      "source": ".runs/trsm/T8-svepanel16/experiment.json",
+      "source_bytes": 1054,
+      "public_bytes": 1054,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/linkage.log",
+      "source": ".runs/trsm/T8-svepanel16/linkage.log",
+      "source_bytes": 3582,
+      "public_bytes": 3537,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/benchmark.log",
+      "source_bytes": 12236,
+      "public_bytes": 12183,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/cluster.json",
+      "source_bytes": 3123,
+      "public_bytes": 3093,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/environment.log",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/exit-code.txt",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/linkage.log",
+      "source_bytes": 3582,
+      "public_bytes": 3537,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/source/trsm.c",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/runtime-settings.json",
+      "source": ".runs/trsm/T8-svepanel16/runtime-settings.json",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/scheduler-status.txt",
+      "source": ".runs/trsm/T8-svepanel16/scheduler-status.txt",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-svepanel16/source/README.md",
+      "source": ".runs/trsm/T8-svepanel16/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-svepanel16/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-svepanel16/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/source/run.sh",
+      "source": ".runs/trsm/T8-svepanel16/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/source/trsm.c",
+      "source": ".runs/trsm/T8-svepanel16/source/trsm.c",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/wrapper.stdout.log",
+      "source": ".runs/trsm/T8-svepanel16/wrapper.stdout.log",
+      "source_bytes": 12236,
+      "public_bytes": 12183,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "records/latest/T7-control11.json",
+      "source": "records/experiments/trsm/T7-control11.json",
+      "source_bytes": 7240,
+      "public_bytes": 7224,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "records/latest/T8-paneloutline.json",
+      "source": "records/experiments/trsm/T8-paneloutline.json",
+      "source_bytes": 6570,
+      "public_bytes": 6554,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "records/latest/T8-svepanel16.json",
+      "source": "records/experiments/trsm/T8-svepanel16.json",
+      "source_bytes": 6699,
+      "public_bytes": 6683,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "tools/archive-r5.py",
+      "source": ".runs/trsm/archive-r5.py",
+      "source_bytes": 16240,
+      "public_bytes": 16236,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "tools/records-kml-NOTES.md",
+      "source": ".runs/trsm/nohash-tools/records-kml-NOTES.md",
+      "source_bytes": 6293,
+      "public_bytes": 6293,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "tools/records-kml.py",
+      "source": ".runs/trsm/nohash-tools/records-kml.py",
+      "source_bytes": 36902,
+      "public_bytes": 36902,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    }
+  ],
+  "SOURCE": [
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102305-oGlajd/summary.log",
+      "source_bytes": 1024,
+      "public_bytes": 1024,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102312-eNyQy5/summary.log",
+      "source_bytes": 1024,
+      "public_bytes": 1024,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5/diagnostics/T7-control11/source/results/run-20260912-102320-PrKGND/summary.log",
+      "source_bytes": 1024,
+      "public_bytes": 1024,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/baseline/submitted-payload/T7-control11/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5/payload/T7-control11/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103028-XBpe3Q/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103113-hcXjYe/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T7-control11-repeat-r5/source/results/run-20260912-103132-tzyzAp/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103046-mGBVhp/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103105-TY7tUo/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-paneloutline/source/results/run-20260912-103121-9scUYR/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103037-xLTbK9/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103054-mbFHsR/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-0.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-1.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/case-2.log",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/diagnostics/T8-svepanel16/source/results/run-20260912-103140-EMxIwo/summary.log",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T7-control11-repeat-r5/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T7-control11-repeat-r5/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-paneloutline/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-paneloutline/source/trsm.c",
+      "source_bytes": 23432,
+      "public_bytes": 23432,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-svepanel16/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r5-compare/payload/T8-svepanel16/source/trsm.c",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T7-control11/nohash-recorded-evidence/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/source/README.md",
+      "source": ".runs/trsm/T7-control11/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/source/bench_trsm.c",
+      "source": ".runs/trsm/T7-control11/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/source/compat/kblas.h",
+      "source": ".runs/trsm/T7-control11/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/source/run.sh",
+      "source": ".runs/trsm/T7-control11/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11/source/trsm.c",
+      "source": ".runs/trsm/T7-control11/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T7-control11-repeat-r5/nohash-recorded-evidence/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/README.md",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/bench_trsm.c",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/compat/kblas.h",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/run.sh",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T7-control11-repeat-r5/source/trsm.c",
+      "source": ".runs/trsm/T7-control11-repeat-r5/source/trsm.c",
+      "source_bytes": 23287,
+      "public_bytes": 23287,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T8-paneloutline/nohash-recorded-evidence/source/trsm.c",
+      "source_bytes": 23432,
+      "public_bytes": 23432,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/source/README.md",
+      "source": ".runs/trsm/T8-paneloutline/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-paneloutline/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-paneloutline/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/source/run.sh",
+      "source": ".runs/trsm/T8-paneloutline/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-paneloutline/source/trsm.c",
+      "source": ".runs/trsm/T8-paneloutline/source/trsm.c",
+      "source_bytes": 23432,
+      "public_bytes": 23432,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T8-svepanel16/nohash-recorded-evidence/source/trsm.c",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/source/README.md",
+      "source": ".runs/trsm/T8-svepanel16/source/README.md",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-svepanel16/source/bench_trsm.c",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-svepanel16/source/compat/kblas.h",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/source/run.sh",
+      "source": ".runs/trsm/T8-svepanel16/source/run.sh",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-svepanel16/source/trsm.c",
+      "source": ".runs/trsm/T8-svepanel16/source/trsm.c",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    }
+  ],
+  "file_count_excluding_generated_readme_and_manifest": 354,
+  "failure_policy": "Only existing failed/partial logs are copied; missing logs and unverified runs are never filled with synthetic results.",
+  "repeat_policy": "Original T7-control11 raw run, repeat run, prior-record.json when present, and latest version record are separate objects."
+}

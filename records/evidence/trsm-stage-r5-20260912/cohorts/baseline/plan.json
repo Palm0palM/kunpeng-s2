@@ -1,0 +1,15 @@
+{
+  "phase": "baseline",
+  "reference": "Huawei KML 25.1.0 with private GCC 12.3.1; not specified official KML 25.2.0",
+  "members": [
+    {
+      "run_name": "T7-control11",
+      "version": "T7-control11",
+      "parent": null,
+      "source_from": "T7-diagpanel",
+      "source_implementation_id": "T7-diagpanel",
+      "strategy": "已晋级 T7-diagpanel 原样在 KML25.1/GCC12 下完成三轮完整官方用例，先建立本环境基线；无源码变化。"
+    }
+  ],
+  "followup": "After baseline record and promote, create T8 children and repeat this same baseline version in a fresh run directory within their interleaved cohort; retain the old immutable baseline evidence."
+}

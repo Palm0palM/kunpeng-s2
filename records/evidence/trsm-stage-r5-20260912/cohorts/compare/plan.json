@@ -1,0 +1,31 @@
+{
+  "phase": "interleaved-candidates-after-promoted-kml-baseline",
+  "reference": "Huawei KML 25.1.0 with private GCC 12.3.1; not specified official KML 25.2.0",
+  "members": [
+    {
+      "run_name": "T7-control11-repeat-r5",
+      "version": "T7-control11",
+      "parent": null,
+      "source_from": "T7-control11",
+      "source_implementation_id": "T7-diagpanel",
+      "repeat_existing": true,
+      "strategy": "已晋级 T7-diagpanel 原样在 KML25.1/GCC12 下完成三轮完整官方用例，先建立本环境基线；无源码变化。"
+    },
+    {
+      "run_name": "T8-svepanel16",
+      "version": "T8-svepanel16",
+      "parent": "T7-control11",
+      "source_from": "T8-svepanel16",
+      "source_implementation_id": "T8-svepanel16",
+      "strategy": "小工作集前代用16行SVE核复用每个历史X向量，保持递增k/q顺序，块内显式FMA；大路径保持T7。"
+    },
+    {
+      "run_name": "T8-paneloutline",
+      "version": "T8-paneloutline",
+      "parent": "T7-control11",
+      "source_from": "T8-paneloutline",
+      "source_implementation_id": "T8-paneloutline",
+      "strategy": "仅将既有NEON panel_sums声明为noinline，检验GCC12调用者寄存器压力与代码体积假设。"
+    }
+  ]
+}
