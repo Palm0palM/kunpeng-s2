@@ -1,0 +1,37 @@
+{
+  "executed_argv": [
+    [
+      "python3",
+      ".runs/trsm/optimization-20260913-r17-baseline/job_control.py",
+      "prepare"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260913-r17-baseline/job_control.py",
+      "submit"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260913-r17-baseline/job_control.py",
+      "collect"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T19-control13",
+      "--environment",
+      "COMPUTE_NODE-numa0-gcc1231-generic38-kml251-test3-warmup1-job1581760",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0"
+    ]
+  ],
+  "exit_codes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "job_id": "1581760",
+  "no_hash_operations": true
+}

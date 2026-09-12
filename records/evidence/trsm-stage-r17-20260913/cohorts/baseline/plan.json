@@ -1,0 +1,42 @@
+{
+  "phase": "unchanged-T19-measurement-baseline",
+  "members": [
+    {
+      "run_name": "T19-control13",
+      "version": "T19-control13",
+      "parent": null,
+      "source_from": "T19-panel8x16budget",
+      "source_implementation_id": "T19-panel8x16budget",
+      "strategy": "Unchanged promoted T19 implementation, freshly measured as a parent-null KML25.1/GCC12 baseline for subsequent independent candidates."
+    }
+  ],
+  "reference": "KML25.1/GCC12; not specified KML25.2.0",
+  "previous_best": "T19-panel8x16budget",
+  "source_validation_job_id": "1579861",
+  "exact_zip_job_id": "1581516",
+  "measurement_protocol": {
+    "warmup_order": [
+      "T19-control13"
+    ],
+    "warmup_suites_per_member": 1,
+    "formal_round_order": [
+      [
+        "T19-control13"
+      ],
+      [
+        "T19-control13"
+      ],
+      [
+        "T19-control13"
+      ]
+    ],
+    "formal_suites_per_member": 3,
+    "TEST_RUNS": 3,
+    "formal_case_count": 9,
+    "warmup_case_count": 3,
+    "sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  },
+  "preflight_policy": "Unchanged four task files are directly associated with the verified T19 snapshot and exact ZIP. Do not repeat candidate-specific preflights or claim fresh preflight results. Run actual KML probe, one official warmup and three independent official suites.",
+  "hash_operations": false,
+  "local_task_tests": false
+}

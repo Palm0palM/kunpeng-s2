@@ -1,0 +1,59 @@
+{
+  "status": "reviewed_not_promoted",
+  "job_id": "1582004",
+  "formal_pass_count": 18,
+  "warmup_pass_count": 6,
+  "baseline_version": "T19-control13",
+  "best_implementation": "T19-panel8x16budget",
+  "comparisons": {
+    "T20-wideunroll2": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 2.6662% does not exceed threshold 3.2970%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 14.63,
+          "candidate_ms": 14.33,
+          "gain_pct": 2.050580997949424
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 122.84,
+          "candidate_ms": 120.55,
+          "gain_pct": 1.8642136112015681
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 180.58,
+          "candidate_ms": 174.69,
+          "gain_pct": 3.2617122604939723
+        }
+      ],
+      "total_gain_pct": 2.6662474453702303,
+      "noise_threshold_pct": 3.296971670465644,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "medians_ms": {
+    "T19-control13": 318.05,
+    "T20-wideunroll2": 309.57
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false,
+  "root_review": "ROOT-RESULT-REVIEW.md",
+  "reason": "Total gain 2.66625% below unchanged 3.29697% noise gate",
+  "next_step": "Prepare independent constrained-lifetime unroll candidate, retain T20 mechanism control and T19 promotion parent"
+}

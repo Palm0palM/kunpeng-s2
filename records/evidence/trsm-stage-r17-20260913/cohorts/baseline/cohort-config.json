@@ -1,0 +1,71 @@
+{
+  "cohort_id": "trsm-kml251-d926b23a2d68",
+  "members": {
+    "T19-control13": {
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic",
+          "TEST_RUNS": "3",
+          "KBLAS_LIB": "",
+          "CC": "gcc"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      },
+      "version": "T19-control13",
+      "repeat_existing": false
+    }
+  },
+  "warmup_order": [
+    "T19-control13"
+  ],
+  "warmup_suites_per_member": 1,
+  "round_order": [
+    [
+      "T19-control13"
+    ],
+    [
+      "T19-control13"
+    ],
+    [
+      "T19-control13"
+    ]
+  ],
+  "warmup_protocol": {
+    "protocol_id": "trsm-r17-baseline-one-official-warmup-v1",
+    "declared_at": "2026-09-12T16:27:02.078677+00:00",
+    "declared_before_new_performance_data": true,
+    "purpose": "One full official warmup before three independent unchanged-source baseline suites.",
+    "runner": "./run.sh",
+    "TEST_RUNS": "3",
+    "cases": [
+      [
+        512,
+        19968
+      ],
+      [
+        2432,
+        17024
+      ],
+      [
+        17024,
+        512
+      ]
+    ],
+    "excluded_from_comparison": true,
+    "formal_suites_per_member": 3,
+    "formal_sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  }
+}

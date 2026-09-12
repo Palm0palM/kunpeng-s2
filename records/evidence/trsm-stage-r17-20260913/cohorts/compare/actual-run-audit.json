@@ -1,0 +1,101 @@
+{
+  "job_id": "1581862",
+  "cohort_exit": 0,
+  "measured_official_pass_count": 18,
+  "warmup_official_pass_count": 6,
+  "members": {
+    "T19-control13-repeat-r17": {
+      "warmup_cases_pass": 3,
+      "measured_cases_pass": 9,
+      "formal_original_log_checks": {
+        "evidence_files_present": true,
+        "job_id": true,
+        "scheduler_succeeded": true,
+        "wrapper_exit_zero": true,
+        "three_complete_ordered_suites": true,
+        "precision_at_most_1e_12": true,
+        "machine_and_38_cpus": true,
+        "settings_38_threads": true,
+        "settings_three_suites": true,
+        "test_runs_exactly_three": true,
+        "fixed_thread_binding_settings": true,
+        "real_kml251_and_private_gcc1231_documented": true,
+        "runtime_environment_matches_settings": true,
+        "three_suites_link_true_kml251_and_private_gomp": true,
+        "runner_compiler_reference_and_binding_match": true,
+        "benchmark_matches_current_trsm_bytes": true,
+        "runner_matches_current_trsm_bytes": true,
+        "local_source_files_present": true
+      },
+      "warmup_excluded_from_comparison": true
+    },
+    "T20-wideunroll2": {
+      "warmup_cases_pass": 3,
+      "measured_cases_pass": 9,
+      "formal_original_log_checks": {
+        "evidence_files_present": true,
+        "job_id": true,
+        "scheduler_succeeded": true,
+        "wrapper_exit_zero": true,
+        "three_complete_ordered_suites": true,
+        "precision_at_most_1e_12": true,
+        "machine_and_38_cpus": true,
+        "settings_38_threads": true,
+        "settings_three_suites": true,
+        "test_runs_exactly_three": true,
+        "fixed_thread_binding_settings": true,
+        "real_kml251_and_private_gcc1231_documented": true,
+        "runtime_environment_matches_settings": true,
+        "three_suites_link_true_kml251_and_private_gomp": true,
+        "runner_compiler_reference_and_binding_match": true,
+        "benchmark_matches_current_trsm_bytes": true,
+        "runner_matches_current_trsm_bytes": true,
+        "local_source_files_present": true
+      },
+      "warmup_excluded_from_comparison": true
+    }
+  },
+  "hash_operations": false,
+  "wide_preflight": {
+    "T19-control13-repeat-r17": {
+      "completion": "TRSM_WIDE32_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=28 SHARED_FAIL_CASES=1 NO_SVE_CASES=1 NARROW_VL_CASES=1",
+      "summary": {
+        "schema": "trsm-wide32-preflight-v1",
+        "complete": true,
+        "expected_CT": 64,
+        "KB": 256,
+        "tile_config_processes": 7,
+        "micro_cases": 28,
+        "whole_cases": 28,
+        "shared_fail_cases": 1,
+        "no_sve_cases": 1,
+        "narrow_vl_cases": 1,
+        "argument_checked_cases": 56,
+        "argument_observations": 463420,
+        "kernel_argument_mismatches": 0,
+        "test_copy_instrumented": true,
+        "original_candidate_modified": false
+      }
+    },
+    "T20-wideunroll2": {
+      "completion": "TRSM_WIDE32_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=28 SHARED_FAIL_CASES=1 NO_SVE_CASES=1 NARROW_VL_CASES=1",
+      "summary": {
+        "schema": "trsm-wide32-preflight-v1",
+        "complete": true,
+        "expected_CT": 64,
+        "KB": 256,
+        "tile_config_processes": 7,
+        "micro_cases": 28,
+        "whole_cases": 28,
+        "shared_fail_cases": 1,
+        "no_sve_cases": 1,
+        "narrow_vl_cases": 1,
+        "argument_checked_cases": 56,
+        "argument_observations": 463420,
+        "kernel_argument_mismatches": 0,
+        "test_copy_instrumented": true,
+        "original_candidate_modified": false
+      }
+    }
+  }
+}
