@@ -1,0 +1,79 @@
+{
+  "status": "reviewed_promoted_unchanged_measurement_baseline",
+  "job_id": "1581760",
+  "version": "T19-control13",
+  "source_implementation_id": "T19-panel8x16budget",
+  "parent": null,
+  "formal_pass_count": 9,
+  "warmup_pass_count": 3,
+  "fresh_preflight_executed": false,
+  "historical_preflight_job": "1579861",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        14.42,
+        13.98,
+        13.77
+      ],
+      "median_ms": 13.98,
+      "min_ms": 13.77,
+      "max_ms": 14.42,
+      "spread_pct": 4.64949928469242,
+      "gflops": [
+        362.8883,
+        374.3677,
+        380.0853
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        119.6,
+        121.52,
+        118.72
+      ],
+      "median_ms": 119.6,
+      "min_ms": 118.72,
+      "max_ms": 121.52,
+      "spread_pct": 2.341137123745817,
+      "gflops": [
+        841.9221,
+        828.5725,
+        848.159
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        181.54,
+        181.05,
+        179.59
+      ],
+      "median_ms": 181.05,
+      "min_ms": 179.59,
+      "max_ms": 181.54,
+      "spread_pct": 1.077050538525263,
+      "gflops": [
+        817.3791,
+        819.572,
+        826.2693
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "total_median_ms": 314.63,
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": true
+}
