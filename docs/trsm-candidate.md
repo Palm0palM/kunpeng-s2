@@ -1,5 +1,7 @@
 # TRSM 当前最佳与候选记录
 
+2026-09-12 第十轮：T13 的 4×32 大路径核同分配三轮大用例快 **6.49%**、合计快 **2.62%**，但未超过 **7.55%** 波动门槛，不晋级，保持 T8。18/18 正式、6/6 预热及宽核/回退预检通过；优先继续同源码确认。[完整记录](trsm-stage-r10-20260912.md)。
+
 2026-09-12 第九轮：T11 同源码复测的大用例快 **2.07%**、合计快 **1.22%**，仍未超过 **4.73%** 波动门槛；T12 前代调度约束合计慢 **0.50%**，均不晋级，保持 T8。27/27 正式、9/9 预热及预检通过，两份 prior 记录完整保留。[完整记录](trsm-stage-r9-20260912.md)。
 
 2026-09-12 第八轮：T11 的 8×16 大路径核在同分配三轮中大用例快 **3.57%**，但合计只快 **0.38%**，未超过 **11.52%** 波动门槛，暂不晋级，保持 T8。18/18 正式、6/6 预热及新核/回退预检全部通过；准备继续确认。[完整记录](trsm-stage-r8-20260912.md)。
@@ -68,7 +70,7 @@ python3 tools/experiment.py new trsm T1-panel --parent T0 --strategy '大工作�
 
 ```bash
 mkdir -p .runs/trsm/T1-panel/local
-clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=address,undefined -fno-sanitize-recover=all -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /Users/lingsu011900/Downloads/conv/other-problems/tests/check-final.c zgemm/zgemm.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-final
+clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=address,undefined -fno-sanitize-recover=all -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /LOCAL_USER_HOME/Downloads/conv/other-problems/tests/check-final.c zgemm/zgemm.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-final
 clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=address,undefined -fno-sanitize-recover=all -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp .runs/trsm/T1-panel/local/check-packed.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-packed
 OMP_NUM_THREADS=1 .runs/trsm/T1-panel/local/check-final > .runs/trsm/T1-panel/local/check-final-t1.log 2>&1
 OMP_NUM_THREADS=4 .runs/trsm/T1-panel/local/check-packed > .runs/trsm/T1-panel/local/check-packed-t4.log 2>&1
@@ -77,7 +79,7 @@ OMP_NUM_THREADS=4 .runs/trsm/T1-panel/local/check-packed > .runs/trsm/T1-panel/l
 最初上面的 ASan+UBSan 两次运行被中断；以下是实际完成的 UBSan 编译与运行命令：
 
 ```bash
-clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /Users/lingsu011900/Downloads/conv/other-problems/tests/check-final.c zgemm/zgemm.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-final-ubsan
+clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /LOCAL_USER_HOME/Downloads/conv/other-problems/tests/check-final.c zgemm/zgemm.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-final-ubsan
 clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp .runs/trsm/T1-panel/local/check-packed.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-packed-ubsan
 OMP_NUM_THREADS=1 .runs/trsm/T1-panel/local/check-final-ubsan > .runs/trsm/T1-panel/local/check-final-t1.log 2>&1
 OMP_NUM_THREADS=4 .runs/trsm/T1-panel/local/check-final-ubsan > .runs/trsm/T1-panel/local/check-final-t4.log 2>&1
