@@ -1,0 +1,485 @@
+KML251_PROBE_BEGIN=2026-09-12T18:16:05Z
+REFERENCE=Huawei KML 25.1.0 GCC kblas multi; not required KML 25.2.0
+ROOT=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0
+ARCH_SELECTION=sme
+LIBDIR=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi
+KBLAS_LIB_IS_UNSET=1
+
+PACKAGE_TEXT=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kml
+#%Module1.0#############################################################################
+##
+##  Huawei Kunpeng Math library
+##
+## Copyright 2024 Huawei Technologies Co. Ltd. All rights reserved.
+
+########################################################################################
+# Module description
+########################################################################################
+
+proc ModulesHelp { } {
+    puts stderr " "
+    puts stderr "This module loads the Huawei Kunpeng Math library."
+}
+
+module-whatis "Huawei Kunpeng Math library"
+module-whatis "Description: This module loads the Huawei Kunpeng Math library."
+########################################################################################
+# Main section
+########################################################################################
+# 获取modulefile路径(含文件名)
+set modulefilepathname "${ModulesCurrentModulefile}"
+# 获取modulefile绝对路径(含文件名)
+set modulefilepathname "[file normalize "$modulefilepathname"]"
+# 获取modulefiles绝对路径
+set modulefilepath "[file dirname "$modulefilepathname"]"
+# 获取bisheng或gcc版本kml安装路径
+set kml_path "[file dirname "$modulefilepath"]"
+
+set libdir "neon"
+set implementer [exec sh -c "cat /proc/cpuinfo | grep 'CPU implementer' | awk 'NR==1{printf \$4}'"]
+set part [exec sh -c "cat /proc/cpuinfo | grep 'CPU part' | awk 'NR==1{printf \$4}'"]
+set cputype "${implementer}-${part}"
+
+# 根据 CPU 类型设置 libdir
+if {[string equal $cputype "0x48-0xd01"]} {
+    set libdir "neon"
+} elseif {[string equal $cputype "0x48-0xd02"]} {
+    set libdir "sve"
+} elseif {[string equal $cputype "0x48-0xd03"]} {
+    set libdir "sve"
+} elseif {[string equal $cputype "0x48-0xd06"]} {
+    set libdir "sve"
+} elseif {[string equal $cputype "0x48-0xd22"]} {
+    set libdir "sve512"
+} else {
+    set libdir "neon"
+}
+
+# 环境变量依赖检查安装
+if { ![ is-loaded ./kspblas/serial ] && ![ is-loaded ./kspblas/omp ] }    { module load ./kspblas/omp }
+if { ![ is-loaded ./kvml/serial ] && ![ is-loaded ./kvml/omp ] }    { module load ./kvml/serial }
+if { ![ is-loaded ./kblas/multi ] &&
+     ![ is-loaded ./kblas/serial-locking ] && ![ is-loaded ./kblas/serial-nolocking ] } {
+        module load ./kblas/multi
+}
+
+# 设置环境变量
+prepend-path    LD_LIBRARY_PATH ${kml_path}/lib:${kml_path}/lib/noarch:${kml_path}/lib/${libdir}
+prepend-path    CPATH ${kml_path}/include
+prepend-path    INCLUDE ${kml_path}/include
+
+PACKAGE_TEXT=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/modulefiles/kblas/multi
+#%Module1.0#############################################################################
+##
+##  kblas multi library
+##
+## Copyright 2024 Huawei Technologies Co. Ltd. All rights reserved.
+
+########################################################################################
+# Module description
+########################################################################################
+
+proc ModulesHelp { } {
+    puts stderr " "
+    puts stderr "This module loads the kblas multi library."
+}
+
+module-whatis "Huawei Kunpeng Math library"
+module-whatis "Description: This module loads the kblas multi library."
+########################################################################################
+# Main section
+########################################################################################
+# 获取modulefile路径(含文件名)
+set modulefilepathname "${ModulesCurrentModulefile}"
+# 获取modulefile绝对路径(含文件名)
+set modulefilepathname "[file normalize "$modulefilepathname"]"
+# 获取modulefiles绝对路径
+set modulefilepath "[file dirname "$modulefilepathname"]"
+set modulefilepath "[file dirname "$modulefilepath"]"
+# 获取bisheng或gcc版本kml安装路径
+set kml_path "[file dirname "$modulefilepath"]"
+
+# 环境变量校验
+
+if { [ is-loaded ./serial-locking ] } {
+    puts stderr "ERROR: The environment variable of kblas serial-locking library has added."
+    puts stderr "You can module unload kblas serial-locking modulefile, try again."
+    exit 1
+}
+
+if { [ is-loaded ./serial-nolocking ] } {
+    puts stderr "ERROR: The environment variable of kblas serial-nolocking library has added."
+    puts stderr "You can module unload kblas serial-nolocking modulefile, try again."
+    exit 1
+}
+
+set libdir "neon"
+set implementer [exec sh -c "cat /proc/cpuinfo | grep 'CPU implementer' | awk 'NR==1{printf \$4}'"]
+set part [exec sh -c "cat /proc/cpuinfo | grep 'CPU part' | awk 'NR==1{printf \$4}'"]
+set cputype "${implementer}-${part}"
+
+# 根据 CPU 类型设置 libdir
+if {[string equal $cputype "0x48-0xd01"]} {
+    set libdir "neon"
+} elseif {[string equal $cputype "0x48-0xd02"]} {
+    set libdir "sve"
+} elseif {[string equal $cputype "0x48-0xd03"]} {
+    set libdir "sve"
+} elseif {[string equal $cputype "0x48-0xd06"]} {
+    set libdir "sve"
+} elseif {[string equal $cputype "0x48-0xd22"]} {
+    set libdir "sme"
+} else {
+    set libdir "neon"
+}
+
+# 设置环境变量
+prepend-path    LD_LIBRARY_PATH ${kml_path}/lib/${libdir}/kblas/multi
+prepend-path    CPATH ${kml_path}/include
+prepend-path    INCLUDE ${kml_path}/include
+
+PACKAGE_TEXT=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/env/setvars.sh
+#!/bin/bash
+
+usage()
+{
+    echo "------------------------------------How to use------------------------------------"
+    echo "usage     : source setvars.sh"
+    echo "------------------------------Parameter Description-------------------------------"
+    echo "--kblas   : 'locking', 'nolocking', 'multi'"
+    echo "--kspblas : 'single', 'multi'. Default value is 'multi'"
+    echo "--kvml    : 'single', 'multi'. Default value is 'single'"
+    echo "Examples  : source setvars.sh --kblas=locking "
+    echo "----------------------------------------------------------------------------------"
+}
+
+implementer=$(cat /proc/cpuinfo | grep "CPU implementer" | awk 'NR==1{printf $4}')
+part=$(cat /proc/cpuinfo | grep "CPU part" | awk 'NR==1{printf $4}')
+cputype="${implementer}-${part}"
+
+if [ "$0" = "$BASH_SOURCE" ]; then
+    echo "Incorrect usage: ${_script_name} must be sourced."
+    usage
+    exit 0
+fi
+
+KMLROOT=$(
+  cd $(dirname $BASH_SOURCE)/..
+  pwd
+)
+
+
+kml_lib_path_config() (
+    kml_lib="$1"
+    env_lib="$2"
+
+    if [ "" = "${env_lib}" ]; then
+        printf "%s" "${kml_lib}"
+    else
+        printf "%s" "${kml_lib}:${env_lib}"
+    fi
+)
+
+setvars_kml_kblas_list=("locking" "nolocking" "multi")
+setvars_kml_kspblas_list=("multi" "single")
+setvars_kml_kvml_list=("multi" "single")
+kblas="multi"
+kspblas="multi"
+kvml="single"
+
+value_is_valid=""
+kml_check_options() {
+    local list
+    eval list="\${setvars_kml_${1}_list[@]}"
+    local value=$2
+    value_is_true="true"
+    if ! echo "${list[@]}" | grep -w -q "$value"; then
+        echo -e "\e[31m'$value' is invalid, 'kml_$1' has been set to the default value.\e[0m"
+        value_is_true="false"
+    fi
+}
+
+kml_parse_args() {
+    while [ "$#" -gt 0 ]; do
+        case "$1" in
+        --kblas=*)
+            kml_check_options kblas "${1#*=}"
+            if [[ $value_is_true == "true" ]] ; then
+                kblas="${1#*=}"
+            fi
+            shift
+            ;;
+        --kspblas=*)
+            kml_check_options kspblas "${1#*=}"
+            if [[ $value_is_true == "true" ]] ; then
+                kspblas="${1#*=}"
+            fi
+            shift
+            ;;
+        --kvml=*)
+            kml_check_options kvml "${1#*=}"
+            if [[ $value_is_true == "true" ]] ; then
+                kvml="${1#*=}"
+            fi
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            shift
+            ;;
+        esac
+    done
+}
+
+kml_parse_args $@
+
+libdir="neon"
+kblaslibdir="neon"
+get_libpath()
+{
+    if [ "${cputype}" = "0x48-0xd01" ]; then
+        libdir="neon"
+        kblaslibdir="neon"
+    elif [ "${cputype}" = "0x48-0xd02" ]; then
+        libdir="sve"
+        kblaslibdir="sve"
+    elif [ "${cputype}" = "0x48-0xd03" ]; then
+        libdir="sve"
+        kblaslibdir="sve"
+    elif [ "${cputype}" = "0x48-0xd06" ]; then
+        libdir="sve"
+        kblaslibdir="sve"
+    elif [ "${cputype}" = "0x48-0xd22" ]; then
+        libdir="sve512"
+        kblaslibdir="sme"
+    else
+        libdir="neon"
+    fi
+}
+
+get_libpath
+
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$kblaslibdir/kblas/$kblas" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$libdir/kspblas/$kspblas" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/noarch/kvml/$kvml" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/noarch" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$libdir" "${LIBRARY_PATH:-}")
+
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$kblaslibdir/kblas/$kblas" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$libdir/kspblas/$kspblas" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/noarch/kvml/$kvml" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/noarch" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$libdir" "${LD_LIBRARY_PATH:-}")
+
+export KMLROOT
+export LIBRARY_PATH
+export LD_LIBRARY_PATH
+export CPATH=${KMLROOT}/include:$CPATH
+export INCLUDE=${KMLROOT}/include:$INCLUDE
+
+PACKAGE_README_FILES
+
+PACKAGE_KBLAS_LAYOUT
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sve/kblas/locking/libkblas.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sve/kblas/locking/libkblas.so -> libkblas.so.25.1.0
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sve/kblas/nolocking/libkblas.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sve/kblas/nolocking/libkblas.so -> libkblas.so.25.1.0
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sve/kblas/multi/libkblas.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sve/kblas/multi/libkblas.so -> libkblas.so.25.1.0
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/neon/kblas/locking/libkblas.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/neon/kblas/locking/libkblas.so -> libkblas.so.25.1.0
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/neon/kblas/nolocking/libkblas.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/neon/kblas/nolocking/libkblas.so -> libkblas.so.25.1.0
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/neon/kblas/multi/libkblas.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/neon/kblas/multi/libkblas.so -> libkblas.so.25.1.0
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/locking/libkblas.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/locking/libkblas.so -> libkblas.so.25.1.0
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/nolocking/libkblas.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/nolocking/libkblas.so -> libkblas.so.25.1.0
+f /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0 -> 
+l /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so -> libkblas.so.25.1.0
+
+REQUIRED_HEADER_DECLARATIONS
+86-void BlasSetNumThreadsLocal(int numThreadsLocal);
+87-
+88-/* Get the number of threads on runtime. */
+89:int BlasGetNumThreads(void);
+90-
+91-/* Get the number of local threads on runtime. */
+92:int BlasGetNumThreadsLocal(void);
+93-
+94-/* Get the number of physical processors (cores). */
+95-int BlasGetNumProcs(void);
+96-
+--
+155-    char componentVersion[VERSION_STRUCT_LEN];
+156-    char componentAppendInfo[VERSION_STRUCT_LEN];
+157-    char softwareName[VERSION_STRUCT_LEN];
+158:    char softwareVersion[VERSION_STRUCT_LEN];
+159-} KBLASVersion;
+160:int KBLASGetVersion(KBLASVersion *ver);
+161-
+162-float cblas_sdsdot(const BLASINT n, const float alpha, const float *x, const BLASINT incX, const float *y,
+163-    const BLASINT incY);
+164-double cblas_dsdot(const BLASINT n, const float *x, const BLASINT incX, const float *y, const BLASINT incY);
+--
+205-
+206-void cblas_somatcopy(const enum CBLAS_ORDER cblasOrder, const enum CBLAS_TRANSPOSE cblasTrans, const BLASINT crows,
+207-    const BLASINT ccols, const float calpha, const float *a, const BLASINT clda, float *b, const BLASINT cldb);
+208:void cblas_domatcopy(const enum CBLAS_ORDER cblasOrder, const enum CBLAS_TRANSPOSE cblasTrans, const BLASINT crows,
+209-    const BLASINT ccols, const double calpha, const double *a, const BLASINT clda, double *b, const BLASINT cldb);
+210-void cblas_comatcopy(const enum CBLAS_ORDER cblasOrder, const enum CBLAS_TRANSPOSE cblasTrans, const BLASINT crows,
+211-    const BLASINT ccols, const float *calpha, const float *a, const BLASINT clda, float *b, const BLASINT cldb);
+212-void cblas_zomatcopy(const enum CBLAS_ORDER cblasOrder, const enum CBLAS_TRANSPOSE cblasTrans, const BLASINT crows,
+--
+525-void cblas_sgemm(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE transA, const enum CBLAS_TRANSPOSE transB,
+526-    const BLASINT m, const BLASINT n, const BLASINT k, const float alpha, const float *a, const BLASINT lda,
+527-    const float *b, const BLASINT ldb, const float beta, float *c, const BLASINT ldc);
+528:void cblas_dgemm(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE transA, const enum CBLAS_TRANSPOSE transB,
+529-    const BLASINT m, const BLASINT n, const BLASINT k, const double alpha, const double *a, const BLASINT lda,
+530-    const double *b, const BLASINT ldb, const double beta, double *c, const BLASINT ldc);
+531-void cblas_cgemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA, const enum CBLAS_TRANSPOSE TransB,
+532-    const BLASINT M, const BLASINT N, const BLASINT K, const void *alpha, const void *A, const BLASINT lda,
+
+ELF_DYNAMIC
+
+Dynamic section at offset 0x14ef438 contains 30 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgomp.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-aarch64.so.1]
+ 0x000000000000000e (SONAME)             Library soname: [libkblas.so.25.1.0]
+ 0x000000000000000c (INIT)               0x65f88
+ 0x000000000000000d (FINI)               0x140640c
+ 0x0000000000000019 (INIT_ARRAY)         0x14d3440
+ 0x000000000000001b (INIT_ARRAYSZ)       24 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x14d3458
+ 0x000000000000001c (FINI_ARRAYSZ)       16 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x228
+ 0x0000000000000005 (STRTAB)             0x40d0
+ 0x0000000000000006 (SYMTAB)             0xf38
+ 0x000000000000000a (STRSZ)              5719 (bytes)
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x14ef658
+ 0x0000000000000002 (PLTRELSZ)           4272 (bytes)
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000017 (JMPREL)             0x64ed8
+ 0x0000000000000007 (RELA)               0x5be0
+ 0x0000000000000008 (RELASZ)             389880 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x0000000000000018 (BIND_NOW)           
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW
+ 0x000000006ffffffe (VERNEED)            0x5b50
+ 0x000000006fffffff (VERNEEDNUM)         3
+ 0x000000006ffffff0 (VERSYM)             0x5728
+ 0x000000006ffffff9 (RELACOUNT)          16239
+ 0x0000000000000000 (NULL)               0x0
+
+REQUIRED_DYNAMIC_SYMBOLS
+   150: 0000000000073060  2244 FUNC    GLOBAL DEFAULT   11 cblas_dgemm
+   152: 00000000003be480    20 FUNC    GLOBAL DEFAULT   11 BlasGetNumThreads
+   244: 00000000003be4a0    56 FUNC    GLOBAL DEFAULT   11 BlasGetNumThreadsLocal
+   331: 000000000007d240  1208 FUNC    GLOBAL DEFAULT   11 cblas_domatcopy
+   449: 00000000000670e0   444 FUNC    GLOBAL DEFAULT   11 KBLASGetVersion
+
+ACTUAL_COMPILER
+gcc (gcc for openEuler 3.0.2) 12.3.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+. /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include/kblas.h
+.. /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/gcc/aarch64-linux-gnu/12.3.1/include/stddef.h
+.. /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/gcc/aarch64-linux-gnu/12.3.1/include/stdint.h
+... /usr/include/stdint.h
+.... /usr/include/bits/libc-header-start.h
+..... /usr/include/features.h
+...... /usr/include/features-time64.h
+....... /usr/include/bits/wordsize.h
+....... /usr/include/bits/timesize.h
+........ /usr/include/bits/wordsize.h
+...... /usr/include/sys/cdefs.h
+....... /usr/include/bits/wordsize.h
+....... /usr/include/bits/long-double.h
+...... /usr/include/gnu/stubs.h
+....... /usr/include/bits/wordsize.h
+....... /usr/include/gnu/stubs-lp64.h
+.... /usr/include/bits/types.h
+..... /usr/include/bits/wordsize.h
+..... /usr/include/bits/timesize.h
+...... /usr/include/bits/wordsize.h
+..... /usr/include/bits/typesizes.h
+..... /usr/include/bits/time64.h
+.... /usr/include/bits/wchar.h
+.... /usr/include/bits/wordsize.h
+.... /usr/include/bits/stdint-intn.h
+.... /usr/include/bits/stdint-uintn.h
+.. /usr/include/complex.h
+... /usr/include/bits/libc-header-start.h
+... /usr/include/bits/mathdef.h
+... /usr/include/bits/floatn.h
+.... /usr/include/bits/long-double.h
+.... /usr/include/bits/floatn-common.h
+..... /usr/include/bits/long-double.h
+... /usr/include/bits/cmathcalls.h
+... /usr/include/bits/cmathcalls.h
+... /usr/include/bits/cmathcalls.h
+... /usr/include/bits/cmathcalls.h
+... /usr/include/bits/cmathcalls.h
+... /usr/include/bits/cmathcalls.h
+... /usr/include/bits/cmathcalls.h
+... /usr/include/bits/cmathcalls.h
+. /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/gcc/aarch64-linux-gnu/12.3.1/include/omp.h
+. /usr/include/dlfcn.h
+.. /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/gcc/aarch64-linux-gnu/12.3.1/include/stddef.h
+.. /usr/include/bits/dlfcn.h
+. /usr/include/stdio.h
+.. /usr/include/bits/libc-header-start.h
+.. /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/gcc/aarch64-linux-gnu/12.3.1/include/stddef.h
+.. /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/gcc/aarch64-linux-gnu/12.3.1/include/stdarg.h
+.. /usr/include/bits/types/__fpos_t.h
+... /usr/include/bits/types/__mbstate_t.h
+.. /usr/include/bits/types/__fpos64_t.h
+.. /usr/include/bits/types/__FILE.h
+.. /usr/include/bits/types/FILE.h
+.. /usr/include/bits/types/struct_FILE.h
+.. /usr/include/bits/types/cookie_io_functions_t.h
+.. /usr/include/bits/stdio_lim.h
+.. /usr/include/bits/stdio.h
+. /usr/include/string.h
+.. /usr/include/bits/libc-header-start.h
+.. /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/gcc/aarch64-linux-gnu/12.3.1/include/stddef.h
+.. /usr/include/bits/types/locale_t.h
+... /usr/include/bits/types/__locale_t.h
+.. /usr/include/strings.h
+... /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/gcc/aarch64-linux-gnu/12.3.1/include/stddef.h
+Multiple include guards may be useful for:
+/usr/include/bits/dlfcn.h
+/usr/include/bits/time64.h
+/usr/include/bits/typesizes.h
+/usr/include/features-time64.h
+/usr/include/gnu/stubs-lp64.h
+/usr/include/gnu/stubs.h
+	linux-vdso.so.1 (0x000040000c92f000)
+	libm.so.6 => /usr/lib64/libm.so.6 (0x000040000c950000)
+	libkblas.so.25.1.0 => /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0 (0x000040000ca00000)
+	libgomp.so.1 => /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1 (0x0000400012b40000)
+	libc.so.6 => /usr/lib64/libc.so.6 (0x0000400012bb0000)
+	/lib/ld-linux-aarch64.so.1 (0x000040000c905000)
+	libdl.so.2 => /usr/lib64/libdl.so.2 (0x0000400012d70000)
+	libpthread.so.0 => /usr/lib64/libpthread.so.0 (0x0000400012da0000)
+KML251_LINKED_LIBRARY=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0
+KML251_DEPENDENCY_AUDIT_PASS=1
+KML_VERSION_QUERY_EXIT=1
+KML_SOFTWARE_NAME=hpckit-kml-blas
+KML_SOFTWARE_VERSION=25.1.0
+KML_CONFIGURED_THREADS=38
+OMP_ACTUAL_TEAM_THREADS=38
+DGEMM_PROVIDER=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-8fde9582beb3/reference-results/required-symbols
+DOMATCOPY_PROVIDER=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-8fde9582beb3/reference-results/required-symbols
+KML_CONFIGURED_THREADS_AFTER_CALLS=38
+KML251_REQUIRED_SYMBOLS_SMOKE_PASS=1
+KML251_PROBE_COMPLETE=1

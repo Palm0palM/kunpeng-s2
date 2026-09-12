@@ -1,0 +1,61 @@
+{
+  "version": "T19-control13",
+  "status": "passed",
+  "verified": true,
+  "record_updated": true,
+  "validation_policy": "user-requested-no-hash",
+  "total_median_ms": 313.89,
+  "failures": [],
+  "metric": "sum of per-case median ms; not official score"
+}
+{
+  "version": "T25-smallpairload",
+  "status": "passed",
+  "verified": true,
+  "record_updated": true,
+  "validation_policy": "user-requested-no-hash",
+  "total_median_ms": 311.56,
+  "failures": [],
+  "metric": "sum of per-case median ms; not official score"
+}
+{
+  "eligible": false,
+  "reasons": [
+    "total improvement 0.7423% does not exceed threshold 6.7847%",
+    "at least one official case regresses by more than 1%"
+  ],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 14.06,
+      "candidate_ms": 13.56,
+      "gain_pct": 3.556187766714082
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 119.59,
+      "candidate_ms": 115.22,
+      "gain_pct": 3.6541516849234923
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 180.24,
+      "candidate_ms": 182.78,
+      "gain_pct": -1.4092321349311983
+    }
+  ],
+  "total_gain_pct": 0.7422982573512964,
+  "noise_threshold_pct": 6.784660766961652,
+  "validation_policy": "user-requested-no-hash",
+  "hash_validation": "not performed",
+  "metric": "sum of per-case median ms; not official score"
+}

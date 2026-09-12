@@ -1,0 +1,10 @@
+SOURCE_FEATURES_PASS panel16=1 packedL16=1 has_budget=1 history_budget_bytes=4194304 panel8x16=1
+MODE=budget-smoke THREADS=38 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+ALLOC_PASS m=1039 n=313 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=4128768 history_success=1 history_fail=0 x_calls=38 x_bytes=2526848 x_success=38 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=39 injected=0 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1039 n=313 sve16_entries=2560 expected=2560 old_entries=40 packed_entries=2520 packed_expected=2520 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=1039 n=313 calls=0 bad=0 expected_panel_stride=8312
+ALLOC_PASS m=1040 n=313 small=1 wide_path=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=38 x_bytes=5058560 x_success=38 x_fail=0 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=38 injected=0 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1040 n=313 sve16_entries=130 expected=130 old_entries=130 packed_entries=0 packed_expected=0 wide_entries=2470 wide_expected=2470 wrapper_entries=1 wrapper_expected=1
+ARGUMENTS_PASS m=1040 n=313 calls=2470 bad=0 expected_panel_stride=8320
+ALLOCATION_SUMMARY_PASS cases=2 budget_cases=2 shared_injection_cases=0
+PASS whole_cases=2 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16
