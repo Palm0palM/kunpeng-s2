@@ -1,0 +1,20 @@
+{
+  "check": "Read-only registration preconditions with actual current metadata; no measurement registration or task test",
+  "runs": [
+    {
+      "run_name": "T8-control12-repeat-r9",
+      "version": "T8-control12",
+      "parent": null,
+      "prior_job_id": "1579444",
+      "repeat_preconditions_pass": true
+    },
+    {
+      "run_name": "T11-sve8x16-repeat-r9",
+      "version": "T11-sve8x16",
+      "parent": "T8-control12",
+      "prior_job_id": "1579444",
+      "repeat_preconditions_pass": true
+    }
+  ],
+  "hash_operations": false
+}

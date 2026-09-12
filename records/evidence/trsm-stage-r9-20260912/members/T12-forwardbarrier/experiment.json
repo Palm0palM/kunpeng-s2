@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T12-forwardbarrier",
+  "parent": "T8-control12",
+  "source_from": "T12-forwardbarrier",
+  "source_implementation_id": "T12-forwardbarrier",
+  "strategy": "From T8, add only three empty compiler constraints on a15 after within-block q=3,7,11 to consume its dependent FMA chain earlier; preserve all arithmetic, history, layout, allocation and dispatch. Test actual scheduling effect against T8; no spill-repair assumption.",
+  "created_at": "2026-09-12T09:35:41.444354+00:00",
+  "status": "prepared",
+  "verified": false,
+  "validation_policy": "No hash computation or validation at explicit user request",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  }
+}
