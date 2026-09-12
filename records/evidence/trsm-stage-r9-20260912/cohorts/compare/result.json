@@ -1,0 +1,100 @@
+{
+  "status": "complete_no_promotion",
+  "job_id": "1579479",
+  "formal_pass_count": 27,
+  "warmup_pass_count": 9,
+  "baseline_version": "T8-control12",
+  "best_implementation": "T8-svepanel16",
+  "comparisons": {
+    "T11-sve8x16": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 1.2237% does not exceed threshold 4.7280%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 18.86,
+          "candidate_ms": 18.78,
+          "gain_pct": 0.4241781548250174
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 238.97,
+          "candidate_ms": 237.52,
+          "gain_pct": 0.6067707243587014
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 192.44,
+          "candidate_ms": 188.46,
+          "gain_pct": 2.0681770941592132
+        }
+      ],
+      "total_gain_pct": 1.2237102183134543,
+      "noise_threshold_pct": 4.728022903334452,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    },
+    "T12-forwardbarrier": {
+      "eligible": false,
+      "reasons": [
+        "total improvement -0.5019% does not exceed threshold 4.4998%",
+        "at least one official case regresses by more than 1%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 18.86,
+          "candidate_ms": 18.97,
+          "gain_pct": -0.5832449628844084
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 238.97,
+          "candidate_ms": 238.9,
+          "gain_pct": 0.029292379796624336
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 192.44,
+          "candidate_ms": 194.66,
+          "gain_pct": -1.1536063188526287
+        }
+      ],
+      "total_gain_pct": -0.5019210695804719,
+      "noise_threshold_pct": 4.499790707408958,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "medians_ms": {
+    "T8-control12": 450.27,
+    "T11-sve8x16": 444.76,
+    "T12-forwardbarrier": 452.53
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false,
+  "package_action": "Keep already verified T8 ZIP; source unchanged",
+  "next_direction": "T13-sve4x32 prepared from T8, uncompiled and untested"
+}

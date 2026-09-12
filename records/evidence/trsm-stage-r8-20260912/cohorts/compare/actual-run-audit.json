@@ -1,0 +1,22 @@
+{
+  "job_id": "1579444",
+  "cohort_exit": 0,
+  "measured_official_pass_count": 18,
+  "warmup_official_pass_count": 6,
+  "members": {
+    "T8-control12-repeat-r8": {
+      "warmup_cases_pass": 3,
+      "measured_cases_pass": 9,
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=14 WHOLE_CASES=406 NOOP_CASES=28 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=0 SHARED_FAIL_CASES=0",
+      "warmup_excluded_from_comparison": true
+    },
+    "T11-sve8x16": {
+      "warmup_cases_pass": 3,
+      "measured_cases_pass": 9,
+      "preflight_completion": "TRSM_PREFLIGHT_COMPLETE=1 MICRO_CASES=14 WHOLE_CASES=406 NOOP_CASES=28 OLD_MICRO_CASES=14 PACKED_MICRO_CASES=0 SHARED_FAIL_CASES=0",
+      "warmup_excluded_from_comparison": true
+    }
+  },
+  "hash_operations": false,
+  "wide_preflight_completion": "TRSM_WIDE_PREFLIGHT_COMPLETE=1 MICRO_CASES=28 WHOLE_CASES=8 SHARED_FAIL_CASES=1 NO_SVE_CASES=1 NARROW_VL_CASES=1"
+}
