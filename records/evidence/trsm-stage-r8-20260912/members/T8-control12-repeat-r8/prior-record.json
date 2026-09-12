@@ -48,18 +48,18 @@
         19968
       ],
       "times_ms": [
-        18.66,
-        18.97,
-        18.68
+        18.88,
+        18.67,
+        18.7
       ],
-      "median_ms": 18.68,
-      "min_ms": 18.66,
-      "max_ms": 18.97,
-      "spread_pct": 1.6595289079229052,
+      "median_ms": 18.7,
+      "min_ms": 18.67,
+      "max_ms": 18.88,
+      "spread_pct": 1.1229946524064027,
       "gflops": [
-        280.5163,
-        275.9466,
-        280.2927
+        277.2493,
+        280.3671,
+        279.9439
       ],
       "max_error": 1.67e-16
     },
@@ -69,18 +69,18 @@
         17024
       ],
       "times_ms": [
-        218.83,
-        226.89,
-        223.1
+        239.07,
+        234.04,
+        236.12
       ],
-      "median_ms": 223.1,
-      "min_ms": 218.83,
-      "max_ms": 226.89,
-      "spread_pct": 3.6127297176154074,
+      "median_ms": 236.12,
+      "min_ms": 234.04,
+      "max_ms": 239.07,
+      "spread_pct": 2.1302727426732173,
       "gflops": [
-        460.1281,
-        443.7808,
-        451.3265
+        421.17,
+        430.2256,
+        426.4366
       ],
       "max_error": 2.22e-16
     },
@@ -90,34 +90,34 @@
         512
       ],
       "times_ms": [
-        195.87,
-        196.0,
-        195.44
+        192.87,
+        193.39,
+        194.44
       ],
-      "median_ms": 195.87,
-      "min_ms": 195.44,
-      "max_ms": 196.0,
-      "spread_pct": 0.2859039158625631,
+      "median_ms": 193.39,
+      "min_ms": 192.87,
+      "max_ms": 194.44,
+      "spread_pct": 0.8118310150473103,
       "gflops": [
-        757.5809,
-        757.0858,
-        759.2504
+        769.3583,
+        767.2979,
+        763.1303
       ],
       "max_error": 1.11e-15
     }
   ],
   "repeats": 3,
-  "total_median_ms": 437.65,
+  "total_median_ms": 448.21,
   "official_score": null,
   "ranking": null,
-  "recorded_at": "2026-09-12T09:26:34.031494+00:00",
-  "environment": "COMPUTE_NODE_1-numa3-gcc1231-generic38-kml251-test3-warmup1-job1579444",
+  "recorded_at": "2026-09-12T08:57:55.248661+00:00",
+  "environment": "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579401",
   "reference": "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
   "machine": {
     "HOST": "COMPUTE_NODE_1",
     "ARCH": "aarch64",
-    "NUMA_NODE": "3",
-    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
     "OMP_NUM_THREADS": "38",
     "CPU_TARGET": "generic",
     "compiler_banners": [
@@ -125,7 +125,7 @@
       "gcc (gcc for openEuler 3.0.2) 12.3.1"
     ]
   },
-  "job_id": "1579444",
+  "job_id": "1579401",
   "checks": {
     "evidence_files_present": true,
     "job_id": true,
@@ -156,14 +156,14 @@
   "hash_validation": "not performed: prohibited by user",
   "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
   "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
-  "run_dir": ".runs/trsm/T8-control12-repeat-r8",
-  "nohash_evidence": ".runs/trsm/T8-control12-repeat-r8/nohash-recorded-evidence",
-  "log": ".runs/trsm/T8-control12-repeat-r8/nohash-recorded-evidence/benchmark.log",
+  "run_dir": ".runs/trsm/T8-control12-repeat-r7",
+  "nohash_evidence": ".runs/trsm/T8-control12-repeat-r7/nohash-recorded-evidence",
+  "log": ".runs/trsm/T8-control12-repeat-r7/nohash-recorded-evidence/benchmark.log",
   "metric": "sum of per-case median ms; not official score",
   "promotion_validation_policy": "user-requested-no-hash",
   "promoted_at": "2026-09-12T08:25:29.941998+00:00",
   "repeat_existing": true,
-  "repeat_requested_at": "2026-09-12T09:18:10.614698+00:00",
+  "repeat_requested_at": "2026-09-12T08:50:04.707377+00:00",
   "previous_runs": [
     {
       "record_file": ".runs/trsm/T8-control12-repeat-r6/prior-record.json",
@@ -179,14 +179,6 @@
       "nohash_evidence": ".runs/trsm/T8-control12-repeat-r6/nohash-recorded-evidence",
       "recorded_at": "2026-09-12T08:34:37.584779+00:00",
       "job_id": "1579365",
-      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
-    },
-    {
-      "record_file": ".runs/trsm/T8-control12-repeat-r8/prior-record.json",
-      "run_dir": ".runs/trsm/T8-control12-repeat-r7",
-      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r7/nohash-recorded-evidence",
-      "recorded_at": "2026-09-12T08:57:55.248661+00:00",
-      "job_id": "1579401",
       "promoted_at": "2026-09-12T08:25:29.941998+00:00"
     }
   ]

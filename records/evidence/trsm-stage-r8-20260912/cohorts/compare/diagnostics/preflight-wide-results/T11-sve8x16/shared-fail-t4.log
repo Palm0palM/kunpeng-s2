@@ -1,0 +1,5 @@
+DISPATCH workers=4 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+CASE_PASS m=4105 n=25 threads=4 calls=3856 expected=3856 max_error=3.3306690738754696e-16 max_residual=7.2873025121346131e-16 padding_L_unchanged=1 shared_fail=1
+SHARED_ALLOC_PASS calls=1 injected=1
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1
