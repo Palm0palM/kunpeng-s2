@@ -1,0 +1,6 @@
+TILE_CONFIG_PASS KB=256 CT=64
+DISPATCH workers=38 hwcap_sve=1 min_vl=64 max_vl=64 expected_wide=1
+FIXTURE dense_structured_lower=1 independent_long_double_prefix=1 supplement_only=1
+ARGUMENTS_PASS calls=30912 bad=0 expected_ldx=8 expected_panel_stride=2048
+CASE_PASS m=4111 n=129 threads=38 calls=30912 expected=30912 max_error=3.8857805861880479e-16 max_residual=8.034328967208903e-16 padding_L_unchanged=1 shared_fail=0
+PASS whole_cases=1 padding_L_unchanged=1 actual_entry_counts=1

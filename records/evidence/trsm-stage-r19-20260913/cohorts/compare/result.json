@@ -1,0 +1,149 @@
+{
+  "status": "reviewed_not_promoted",
+  "job_id": "1582129",
+  "formal_pass_count": 27,
+  "warmup_pass_count": 9,
+  "baseline_version": "T19-control13",
+  "best_implementation": "T19-panel8x16budget",
+  "comparisons": {
+    "T20-wideunroll2": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 2.7247% does not exceed threshold 8.3215%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 14.55,
+          "candidate_ms": 14.06,
+          "gain_pct": 3.3676975945017196
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 121.78,
+          "candidate_ms": 119.66,
+          "gain_pct": 1.7408441451798362
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 180.4,
+          "candidate_ms": 174.38,
+          "gain_pct": 3.3370288248337086
+        }
+      ],
+      "total_gain_pct": 2.724718214251885,
+      "noise_threshold_pct": 8.321479374110952,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    },
+    "T21-unrollfence": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 0.6062% does not exceed threshold 5.9794%",
+        "at least one official case regresses by more than 1%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 14.55,
+          "candidate_ms": 14.73,
+          "gain_pct": -1.2371134020618537
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 121.78,
+          "candidate_ms": 119.96,
+          "gain_pct": 1.494498275578919
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 180.4,
+          "candidate_ms": 180.12,
+          "gain_pct": 0.1552106430155217
+        }
+      ],
+      "total_gain_pct": 0.6061945505635765,
+      "noise_threshold_pct": 5.979381443298963,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "mechanism_comparisons": {
+    "T20-wideunroll2-vs-T21-unrollfence": {
+      "base": "T20-wideunroll2",
+      "candidate": "T21-unrollfence",
+      "promotion_authorization": false,
+      "result": {
+        "eligible": false,
+        "reasons": [
+          "total improvement -2.1779% does not exceed threshold 8.3215%",
+          "at least one official case regresses by more than 1%"
+        ],
+        "cases": [
+          {
+            "dims": [
+              512,
+              19968
+            ],
+            "base_ms": 14.06,
+            "candidate_ms": 14.73,
+            "gain_pct": -4.765291607396869
+          },
+          {
+            "dims": [
+              2432,
+              17024
+            ],
+            "base_ms": 119.66,
+            "candidate_ms": 119.96,
+            "gain_pct": -0.2507103459802751
+          },
+          {
+            "dims": [
+              17024,
+              512
+            ],
+            "base_ms": 174.38,
+            "candidate_ms": 180.12,
+            "gain_pct": -3.2916618878311787
+          }
+        ],
+        "total_gain_pct": -2.177864329763057,
+        "noise_threshold_pct": 8.321479374110952,
+        "validation_policy": "user-requested-no-hash",
+        "hash_validation": "not performed",
+        "metric": "sum of per-case median ms; not official score"
+      }
+    }
+  },
+  "medians_ms": {
+    "T19-control13": 316.73,
+    "T20-wideunroll2": 308.1,
+    "T21-unrollfence": 314.81
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false,
+  "root_review": "ROOT-RESULT-REVIEW.md",
+  "reason": "T20 gain 2.72472% below 8.32148% gate; T21 gain 0.60619% below 5.97938% gate and small-case regression",
+  "next_step": "Prepare T22 without memory clobbers while retaining the accumulator constraints; test against T19/T20 on the cluster"
+}

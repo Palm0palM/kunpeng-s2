@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T21-unrollfence",
+  "parent": "T19-control13",
+  "source_from": "T21-unrollfence",
+  "source_implementation_id": "T21-unrollfence",
+  "strategy": "Retain the T20 two-step SVE 4x32 update, adding two empty compiler constraint statements for all 16 accumulators between k and k+1. Test whether limiting temporary live ranges reduces GCC register moves; retain all arithmetic order, small paths, layout, KB256/CT64 and fallback behavior.",
+  "created_at": "2026-09-12T17:04:35.026395+00:00",
+  "status": "prepared",
+  "verified": false,
+  "validation_policy": "No hash computation or validation at explicit user request",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  }
+}
