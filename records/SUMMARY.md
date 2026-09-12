@@ -199,3 +199,5 @@ CONV 输入复制与行距对照完成：434,352项专项检查及12套件48/48�
 ## CONV I diagnostics
 
 C45-row4dup4 and C46-row5x5asmfix independently passed 121560 and 27408 scheduled-node checks (jobs 1579762 and 1579795). GCC 10.3.1, six VL/thread configurations, all 19 stage exits and scheduler/job/wrapper exits zero. Actual C45 shared loop has six vector spill loads/stores; C46 quint has none. Performance remains unmeasured; retain C6. [Full report](../docs/CONV_SEP12I.md).
+
+CONV N round completed 96/96 benchmark checks in job 1581459. C45/C49/C46/C47/C48 totals were 557.35/511.76/516.89/450.63/448.13 ms versus closing C6 452.38 ms; none passed both unchanged-C6 gates. C40-r3 444.44 ms remains reference-only and does not change G/J/K decisions. O diagnosis passed 121560 checks, but eliminating vector spills did not beat C6. All samples and the recovered metadata-recording failure are preserved in [N](../docs/CONV_SEP12N.md) and [O](../docs/CONV_SEP12O.md). C6 remains the submission package.

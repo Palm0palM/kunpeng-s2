@@ -2,7 +2,7 @@
   "schema_version": 1,
   "problem": "conv",
   "version": "C48-row8x2u1",
-  "parent": "C40-row6x3u1",
+  "parent": "C26-r21",
   "strategy": "Independent eight-row by two-vector single-column tile replacing only C40 specialized six-row by three-vector tile and its dispatch; 16 accumulators and fifteen phases; input-load savings trade against 50 percent higher coefficient-broadcast amortization; source-only preparation",
   "created_at": "2026-09-12T11:29:37.413294+00:00",
   "settings": {
@@ -30,7 +30,7 @@
     "conv2d.c": "8623781dc784547e31b07facd65507b56ff40f6b5da3e617c1ef53f4a4f7f7c3",
     "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
   },
-  "status": "prepared",
+  "status": "passed",
   "source_parent": "C40-row6x3u1",
   "rows_per_group": 8,
   "vectors_per_row": 2,
@@ -43,7 +43,303 @@
   "source_scope": "Specialized helper and initial row-group dispatch only; all C6 helpers/legacy dispatch/nonSVE and other submission files preserved",
   "parent_measurement_context": "C40 G failed noise gates; J independent repeat qualified; K confirmation failed own C-case spread gate. C40 is not promoted; C6 remains formal.",
   "prepared_execution_policy": "Source only. No diagnostic package, local compile/tests, SSH, job, reset, or publication. Root independent review required.",
-  "note": "Prepared source-only: C40 specialized6x3VL ->8x2VL,16acc,fifteen single-column phases and eight-row dispatch; original C6 helpers/fallback/nonSVE and build retained. Static kernel-order, rows/columns,size_t,remainder1..7 reviewed; generator eighth pointer named krow_h to avoid kh shadowing. Input-load reduction trades for50% greater coefficient broadcast amortization. No compile/tests/SSH/jobs/diagnostic/reset; C6 unchanged.",
-  "updated_at": "2026-09-12T11:33:13.529831+00:00",
-  "verified": false
+  "comparison_baseline": "C26-r21",
+  "promotion_allowed": true,
+  "diagnostic_source_version": "C48-row8x2u1",
+  "diagnostic_evidence_directory": ".runs/conv/C48-row8x2u1/sve-correctness-sep12m",
+  "diagnostic_job_id": "1579843",
+  "diagnostic_source_sha256": "8623781dc784547e31b07facd65507b56ff40f6b5da3e617c1ef53f4a4f7f7c3",
+  "reused_identical_source_diagnostic": false,
+  "recorded_at": "2026-09-12T16:17:54.630095+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12n",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "d78f17a89acd52ee113593333e9c4162f0bb1f3bc0583f7b16f08fb791d41192",
+  "log": ".runs/conv/C48-row8x2u1/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        52.77,
+        52.88,
+        52.86
+      ],
+      "median_ms": 52.86,
+      "min_ms": 52.77,
+      "max_ms": 52.88,
+      "spread_pct": 0.20809685962920815,
+      "gflops": [
+        1428.398,
+        1425.3781,
+        1425.8609
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        61.15,
+        61.12,
+        61.2
+      ],
+      "median_ms": 61.15,
+      "min_ms": 61.12,
+      "max_ms": 61.2,
+      "spread_pct": 0.1308258381030342,
+      "gflops": [
+        1361.146,
+        1361.8834,
+        1360.0635
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        105.64,
+        105.68,
+        105.7
+      ],
+      "median_ms": 105.68,
+      "min_ms": 105.64,
+      "max_ms": 105.7,
+      "spread_pct": 0.05677517032551312,
+      "gflops": [
+        1524.7291,
+        1524.149,
+        1523.9218
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        228.52,
+        228.44,
+        228.42
+      ],
+      "median_ms": 228.44,
+      "min_ms": 228.42,
+      "max_ms": 228.52,
+      "spread_pct": 0.04377517072317578,
+      "gflops": [
+        1513.0675,
+        1513.6475,
+        1513.7322
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 448.13,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1581459",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "qualified_for_confirmation": false,
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 0.94% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.48,
+        "candidate_ms": 52.86,
+        "gain_pct": -2.6806526806526856
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.91,
+        "candidate_ms": 61.15,
+        "gain_pct": 1.2275884348247426
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.3,
+        "candidate_ms": 105.68,
+        "gain_pct": 1.5097856477166733
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.69,
+        "candidate_ms": 228.44,
+        "gain_pct": 1.4027364150373345
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r20",
+    "eligible": false,
+    "reasons": [
+      "提速 0.98% 未超过测量波动/最低1%门槛 1.16%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.42,
+        "candidate_ms": 52.86,
+        "gain_pct": -2.800466744457405
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 62.16,
+        "candidate_ms": 61.15,
+        "gain_pct": 1.6248391248391219
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.31,
+        "candidate_ms": 105.68,
+        "gain_pct": 1.5189637498835107
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.66,
+        "candidate_ms": 228.44,
+        "gain_pct": 1.3899680566347228
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Does not meet both C6 gates; retain every sample and C6. No automatic exclusion or promotion.",
+  "rowsix_reference_comparison": {
+    "baseline": "C40-r3",
+    "eligible": false,
+    "reasons": [
+      "提速 -0.83% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 50.46,
+        "candidate_ms": 52.86,
+        "gain_pct": -4.7562425683709835
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 60.32,
+        "candidate_ms": 61.15,
+        "gain_pct": -1.3759946949602093
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.3,
+        "candidate_ms": 105.68,
+        "gain_pct": 1.5097856477166733
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 226.36,
+        "candidate_ms": 228.44,
+        "gain_pct": -0.9188902632973953
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "rowsix_comparison_supported_in_initial_group": false,
+  "rowsix_attribution_note": "Separate whole-implementation comparison with unchanged C40 source in this allocation. Rows/vector shape, instruction scheduling, tails and dispatch may all contribute; this cannot isolate spill cost and does not replace usefulness against C6."
 }

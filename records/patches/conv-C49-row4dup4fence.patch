@@ -1,0 +1,186 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -961,6 +961,183 @@
+             const float *kc = kernel + (size_t)(t - 2) * kw;
+             const float *kd = kernel + (size_t)(t - 3) * kw;
+             int ik = 0;
++            /* Four coefficient columns; each q advances all sixteen accumulators.
++             * Explicit DUP keeps this source hypothesis separate from indexed
++             * multiply; actual compiler scheduling still requires inspection. */
++            for (; kw - ik >= 4; ik += 4) {
++                svfloat32_t ak4 = svld1rq_f32(pg, ka + ik);
++                svfloat32_t bk4 = svld1rq_f32(pg, kb + ik);
++                svfloat32_t ck4 = svld1rq_f32(pg, kc + ik);
++                svfloat32_t dk4 = svld1rq_f32(pg, kd + ik);
++                const float *p = row + ik;
++                /* Kernel column ik + 0; preserve each output's order. */
++                {
++                    const svfloat32_t ak = svdup_lane_f32(ak4, 0);
++                    const svfloat32_t bk = svdup_lane_f32(bk4, 0);
++                    const svfloat32_t ck = svdup_lane_f32(ck4, 0);
++                    const svfloat32_t dk = svdup_lane_f32(dk4, 0);
++                    {
++                        const svfloat32_t v = svld1(pg, p + 0 * lanes + 0);
++                        a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
++                        b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
++                        c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
++                        d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 1 * lanes + 0);
++                        a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
++                        b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
++                        c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
++                        d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 2 * lanes + 0);
++                        a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
++                        b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
++                        c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
++                        d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 3 * lanes + 0);
++                        a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, v, ak));
++                        b3 = svadd_f32_x(pg, b3, svmul_f32_x(pg, v, bk));
++                        c3 = svadd_f32_x(pg, c3, svmul_f32_x(pg, v, ck));
++                        d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, v, dk));
++                    }
++                }
++                /* Finish q0 before later DUPs consume the tied packed outputs.
++                 * Empty compiler barrier; no hardware instruction or value change. */
++                __asm__ __volatile__(""
++                    : "+w"(ak4), "+w"(bk4), "+w"(ck4), "+w"(dk4)
++                    : "w"(a0), "w"(a1), "w"(a2), "w"(a3),
++                      "w"(b0), "w"(b1), "w"(b2), "w"(b3),
++                      "w"(c0), "w"(c1), "w"(c2), "w"(c3),
++                      "w"(d0), "w"(d1), "w"(d2), "w"(d3)
++                    : "memory");
++                /* Kernel column ik + 1; preserve each output's order. */
++                {
++                    const svfloat32_t ak = svdup_lane_f32(ak4, 1);
++                    const svfloat32_t bk = svdup_lane_f32(bk4, 1);
++                    const svfloat32_t ck = svdup_lane_f32(ck4, 1);
++                    const svfloat32_t dk = svdup_lane_f32(dk4, 1);
++                    {
++                        const svfloat32_t v = svld1(pg, p + 0 * lanes + 1);
++                        a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
++                        b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
++                        c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
++                        d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 1 * lanes + 1);
++                        a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
++                        b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
++                        c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
++                        d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 2 * lanes + 1);
++                        a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
++                        b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
++                        c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
++                        d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 3 * lanes + 1);
++                        a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, v, ak));
++                        b3 = svadd_f32_x(pg, b3, svmul_f32_x(pg, v, bk));
++                        c3 = svadd_f32_x(pg, c3, svmul_f32_x(pg, v, ck));
++                        d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, v, dk));
++                    }
++                }
++                /* Finish q1 before later DUPs consume the tied packed outputs.
++                 * Empty compiler barrier; no hardware instruction or value change. */
++                __asm__ __volatile__(""
++                    : "+w"(ak4), "+w"(bk4), "+w"(ck4), "+w"(dk4)
++                    : "w"(a0), "w"(a1), "w"(a2), "w"(a3),
++                      "w"(b0), "w"(b1), "w"(b2), "w"(b3),
++                      "w"(c0), "w"(c1), "w"(c2), "w"(c3),
++                      "w"(d0), "w"(d1), "w"(d2), "w"(d3)
++                    : "memory");
++                /* Kernel column ik + 2; preserve each output's order. */
++                {
++                    const svfloat32_t ak = svdup_lane_f32(ak4, 2);
++                    const svfloat32_t bk = svdup_lane_f32(bk4, 2);
++                    const svfloat32_t ck = svdup_lane_f32(ck4, 2);
++                    const svfloat32_t dk = svdup_lane_f32(dk4, 2);
++                    {
++                        const svfloat32_t v = svld1(pg, p + 0 * lanes + 2);
++                        a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
++                        b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
++                        c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
++                        d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 1 * lanes + 2);
++                        a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
++                        b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
++                        c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
++                        d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 2 * lanes + 2);
++                        a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
++                        b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
++                        c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
++                        d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 3 * lanes + 2);
++                        a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, v, ak));
++                        b3 = svadd_f32_x(pg, b3, svmul_f32_x(pg, v, bk));
++                        c3 = svadd_f32_x(pg, c3, svmul_f32_x(pg, v, ck));
++                        d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, v, dk));
++                    }
++                }
++                /* Finish q2 before later DUPs consume the tied packed outputs.
++                 * Empty compiler barrier; no hardware instruction or value change. */
++                __asm__ __volatile__(""
++                    : "+w"(ak4), "+w"(bk4), "+w"(ck4), "+w"(dk4)
++                    : "w"(a0), "w"(a1), "w"(a2), "w"(a3),
++                      "w"(b0), "w"(b1), "w"(b2), "w"(b3),
++                      "w"(c0), "w"(c1), "w"(c2), "w"(c3),
++                      "w"(d0), "w"(d1), "w"(d2), "w"(d3)
++                    : "memory");
++                /* Kernel column ik + 3; preserve each output's order. */
++                {
++                    const svfloat32_t ak = svdup_lane_f32(ak4, 3);
++                    const svfloat32_t bk = svdup_lane_f32(bk4, 3);
++                    const svfloat32_t ck = svdup_lane_f32(ck4, 3);
++                    const svfloat32_t dk = svdup_lane_f32(dk4, 3);
++                    {
++                        const svfloat32_t v = svld1(pg, p + 0 * lanes + 3);
++                        a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
++                        b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
++                        c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
++                        d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 1 * lanes + 3);
++                        a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
++                        b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
++                        c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
++                        d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 2 * lanes + 3);
++                        a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
++                        b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
++                        c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
++                        d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, p + 3 * lanes + 3);
++                        a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, v, ak));
++                        b3 = svadd_f32_x(pg, b3, svmul_f32_x(pg, v, bk));
++                        c3 = svadd_f32_x(pg, c3, svmul_f32_x(pg, v, ck));
++                        d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, v, dk));
++                    }
++                }
++            }
+             for (; ik < kw - 1; ik += 2) {
+                 const svfloat32_t ak0 = svdup_n_f32(ka[ik]);
+                 const svfloat32_t ak1 = svdup_n_f32(ka[ik + 1]);

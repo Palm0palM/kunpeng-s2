@@ -169,7 +169,10 @@ def main():
     table = ['# CONV 版本与测量记录', '', '所有耗时均为内部比较指标，不是官方分数。空白表示尚无测量；未完成、失败与退化实验也保留。每版完整策略、环境、原始测量字段与结论见 JSON，所有公开证据经过脱敏。', '', '| 版本 | 父版本 | 状态 | 优化策略 | 各用例中位数 ms（按记录顺序） | 总中位数 ms | 可晋级 | 结论 |', '| --- | --- | --- | --- | --- | --- | --- | --- |']
     for version, record in records.items():
         comparison = record.get('comparison', {})
-        eligible = '是' if comparison.get('eligible') is True else '否' if comparison.get('eligible') is False else '已晋级' if record.get('promoted_at') else '待判定' if record.get('parent') else '基线复测'
+        if record.get('reference_only') is True or record.get('promotion_allowed') is False:
+            eligible = '仅参考，不晋级'
+        else:
+            eligible = '是' if comparison.get('eligible') is True else '否' if comparison.get('eligible') is False else '已晋级' if record.get('promoted_at') else '待判定' if record.get('parent') else '基线复测'
         cases = '; '.join('×'.join(map(str, c['dims'])) + ': ' + format(c['median_ms'], '.2f') for c in record.get('cases', []) if c.get('median_ms') is not None)
         total = format(record['total_median_ms'], '.2f') if record.get('total_median_ms') is not None else ''
         conclusion = record.get('decision_note') or record.get('failure') or '; '.join(comparison.get('reasons', [])) or record.get('decision') or ('尚未取得完整远程测量' if not record.get('verified') else '已验证；按共同基线比较后决定')

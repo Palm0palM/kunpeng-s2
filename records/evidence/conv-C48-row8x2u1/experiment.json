@@ -2,7 +2,7 @@
   "schema_version": 1,
   "problem": "conv",
   "version": "C48-row8x2u1",
-  "parent": "C40-row6x3u1",
+  "parent": "C26-r21",
   "strategy": "Independent eight-row by two-vector single-column tile replacing only C40 specialized six-row by three-vector tile and its dispatch; 16 accumulators and fifteen phases; input-load savings trade against 50 percent higher coefficient-broadcast amortization; source-only preparation",
   "created_at": "2026-09-12T11:29:37.413294+00:00",
   "settings": {
@@ -42,5 +42,12 @@
   "source_hypothesis": "Replace the specialized 6x3VL tile by8x2VL; source-level lower input loads/output trades for50% more coefficient broadcasts/output; no measured claim",
   "source_scope": "Specialized helper and initial row-group dispatch only; all C6 helpers/legacy dispatch/nonSVE and other submission files preserved",
   "parent_measurement_context": "C40 G failed noise gates; J independent repeat qualified; K confirmation failed own C-case spread gate. C40 is not promoted; C6 remains formal.",
-  "prepared_execution_policy": "Source only. No diagnostic package, local compile/tests, SSH, job, reset, or publication. Root independent review required."
+  "prepared_execution_policy": "Source only. No diagnostic package, local compile/tests, SSH, job, reset, or publication. Root independent review required.",
+  "comparison_baseline": "C26-r21",
+  "promotion_allowed": true,
+  "diagnostic_source_version": "C48-row8x2u1",
+  "diagnostic_evidence_directory": ".runs/conv/C48-row8x2u1/sve-correctness-sep12m",
+  "diagnostic_job_id": "1579843",
+  "diagnostic_source_sha256": "8623781dc784547e31b07facd65507b56ff40f6b5da3e617c1ef53f4a4f7f7c3",
+  "reused_identical_source_diagnostic": false
 }

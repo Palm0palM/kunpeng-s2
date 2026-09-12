@@ -1,0 +1,65 @@
+--- C45-row4dup4/source/conv2d.c
++++ C49-row4dup4fence/source/conv2d.c
+@@ -965,10 +965,10 @@
+              * Explicit DUP keeps this source hypothesis separate from indexed
+              * multiply; actual compiler scheduling still requires inspection. */
+             for (; kw - ik >= 4; ik += 4) {
+-                const svfloat32_t ak4 = svld1rq_f32(pg, ka + ik);
+-                const svfloat32_t bk4 = svld1rq_f32(pg, kb + ik);
+-                const svfloat32_t ck4 = svld1rq_f32(pg, kc + ik);
+-                const svfloat32_t dk4 = svld1rq_f32(pg, kd + ik);
++                svfloat32_t ak4 = svld1rq_f32(pg, ka + ik);
++                svfloat32_t bk4 = svld1rq_f32(pg, kb + ik);
++                svfloat32_t ck4 = svld1rq_f32(pg, kc + ik);
++                svfloat32_t dk4 = svld1rq_f32(pg, kd + ik);
+                 const float *p = row + ik;
+                 /* Kernel column ik + 0; preserve each output's order. */
+                 {
+@@ -1005,6 +1005,15 @@
+                         d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, v, dk));
+                     }
+                 }
++                /* Finish q0 before later DUPs consume the tied packed outputs.
++                 * Empty compiler barrier; no hardware instruction or value change. */
++                __asm__ __volatile__(""
++                    : "+w"(ak4), "+w"(bk4), "+w"(ck4), "+w"(dk4)
++                    : "w"(a0), "w"(a1), "w"(a2), "w"(a3),
++                      "w"(b0), "w"(b1), "w"(b2), "w"(b3),
++                      "w"(c0), "w"(c1), "w"(c2), "w"(c3),
++                      "w"(d0), "w"(d1), "w"(d2), "w"(d3)
++                    : "memory");
+                 /* Kernel column ik + 1; preserve each output's order. */
+                 {
+                     const svfloat32_t ak = svdup_lane_f32(ak4, 1);
+@@ -1040,6 +1049,15 @@
+                         d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, v, dk));
+                     }
+                 }
++                /* Finish q1 before later DUPs consume the tied packed outputs.
++                 * Empty compiler barrier; no hardware instruction or value change. */
++                __asm__ __volatile__(""
++                    : "+w"(ak4), "+w"(bk4), "+w"(ck4), "+w"(dk4)
++                    : "w"(a0), "w"(a1), "w"(a2), "w"(a3),
++                      "w"(b0), "w"(b1), "w"(b2), "w"(b3),
++                      "w"(c0), "w"(c1), "w"(c2), "w"(c3),
++                      "w"(d0), "w"(d1), "w"(d2), "w"(d3)
++                    : "memory");
+                 /* Kernel column ik + 2; preserve each output's order. */
+                 {
+                     const svfloat32_t ak = svdup_lane_f32(ak4, 2);
+@@ -1075,6 +1093,15 @@
+                         d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, v, dk));
+                     }
+                 }
++                /* Finish q2 before later DUPs consume the tied packed outputs.
++                 * Empty compiler barrier; no hardware instruction or value change. */
++                __asm__ __volatile__(""
++                    : "+w"(ak4), "+w"(bk4), "+w"(ck4), "+w"(dk4)
++                    : "w"(a0), "w"(a1), "w"(a2), "w"(a3),
++                      "w"(b0), "w"(b1), "w"(b2), "w"(b3),
++                      "w"(c0), "w"(c1), "w"(c2), "w"(c3),
++                      "w"(d0), "w"(d1), "w"(d2), "w"(d3)
++                    : "memory");
+                 /* Kernel column ik + 3; preserve each output's order. */
+                 {
+                     const svfloat32_t ak = svdup_lane_f32(ak4, 3);

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "problem": "conv",
   "version": "C45-row4dup4",
-  "parent": "C26-row4loads",
+  "parent": "C26-r21",
   "strategy": "In quad shared middle only, batch four kernel columns with LD1RQ, explicit constant-lane DUP and ordinary separate FMUL/FADD in q-major order; retain C6 two/one remainders and all other code; diagnostic-first, no assumed speedup",
   "created_at": "2026-09-12T10:38:33.624406+00:00",
   "settings": {
@@ -45,5 +45,12 @@
   "compiler_risk": "GCC may fold DUP+ordinary multiply back to indexed FMUL or reschedule/introduce spills",
   "performance_requires_distinct_actual_assembly": true,
   "execution_priority": "Prepared only; root reviews and explicitly schedules future diagnostics, no automatic performance run",
-  "reference_only": false
+  "reference_only": false,
+  "comparison_baseline": "C26-r21",
+  "promotion_allowed": true,
+  "diagnostic_source_version": "C45-row4dup4",
+  "diagnostic_evidence_directory": ".runs/conv/C45-row4dup4/sve-correctness-sep12i",
+  "diagnostic_job_id": "1579762",
+  "diagnostic_source_sha256": "d428611f068b81befa4412a6bd11480468e3b7816906647d15cc0e9265c866a5",
+  "reused_identical_source_diagnostic": false
 }
