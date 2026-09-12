@@ -6,7 +6,7 @@
 
 TRSM 最新提交包：**T7-diagpanel**，同分配三轮较 T5 合计耗时减少 **8.06%**，大用例减少 **15.88%**；最终 ZIP 超算解压三轮 9/9 PASS。[下载压缩包](outputs/trsm-best.zip) · [最终交付与 KML 状态](docs/trsm-final-20260911-r4.md)。另完成 KML 25.1 + GCC12 三轮 9/9 PASS；官方 KML 25.2.0 复验仍待完成。
 
-**提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C5、ZGEMM Z1、TRSM T7；各题 result 目录保留版本说明、校验值与平台反馈字段。
+**提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C6、ZGEMM Z1、TRSM T7；各题 result 目录保留版本说明、校验值与平台反馈字段。
 
 ## 先把环境跑通
 
@@ -22,9 +22,9 @@ TRSM 最新提交包：**T7-diagpanel**，同分配三轮较 T5 合计耗时减�
 
 CONV 最新最佳版本、父子关系和耗时见 [晋级台账](records/conv-lineage.json) 与 [本轮逐版本记录](docs/CONV_ROUND_RECORDS.md)；本轮已确认显式 SVE 优化产生稳定提速。候选失败与退化也完整留档，[此前实验](docs/CONV_RESULTS.md) 保留作历史对照。提交包对应的源码校验见 [包清单](outputs/conv-best.json)，记录及公开导出方式见 [记录说明](docs/CONV_RECORDING.md)。
 
-2026-09-11 最新 CONV 为 **C5**：三相邻输出行共享 SVE 输入加载，同资源 C4 对照从 **561.60 ms 降至 502.20 ms（减少 10.58%）**。最终 ZIP 在超算解压并完成三轮独立复验，12/12 用例通过、最大误差为零，包验证合计 **502.29 ms**。
+2026-09-12 最新 CONV 为 **C6 = C26-r1**（来源 C26-row4loads）：四行共享方案采用直接加载移位窗口，调整输入加载与寄存器使用。同资源 C5 对照从 **502.35 ms 降至 452.62 ms（减少 9.90%）**。最终 ZIP 在超算解压并完成三轮独立复验，12/12 PASS、最大误差为零，包验证合计 **452.66 ms**。
 
-**直接提交 [conv/result/C5/conv.zip](conv/result/C5/conv.zip)**，无需重新压缩。该目录只保留当前最佳提交包，附版本说明和 SHA-256；此前版本的测量与策略保留在记录中。[本轮完整报告](docs/CONV_SEP11B.md) · [逐版本记录](docs/CONV_SEP11B_ROUND_RECORDS.md) · [C4 历史报告](docs/CONV_SEP11.md)。以上耗时均为内部指标，正式平台分数待队友手动提交后反馈。
+**直接提交 [conv/result/C6/conv.zip](conv/result/C6/conv.zip)**，无需重新压缩。当前仅保留最佳提交包，此前测量与策略继续保留。[本轮完整报告](docs/CONV_SEP11C.md) · [逐版本记录](docs/CONV_SEP11C_ROUND_RECORDS.md) · [C5 历史报告](docs/CONV_SEP11B.md)。以上是内部指标，正式平台分数待队友手动提交后反馈。
 
 ## 先重测当前基线
 

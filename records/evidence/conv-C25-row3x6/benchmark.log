@@ -1,0 +1,231 @@
+BENCH_JOB_BEGIN 2026-09-11T11:31:44Z
+HOST=COMPUTE_NODE_1
+ARCH=aarch64
+OMP_NUM_THREADS=38
+CPU_TARGET=generic
+ALLOWED_CPUS=76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113
+NUMA_NODE=2
+{
+  "bench_repeats": 3,
+  "environment": {
+    "BENCH_REPEATS": "3",
+    "CPU_TARGET": "generic",
+    "NUMA_NODE": "2",
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_NUM_THREADS": "38",
+    "OMP_PLACES": "cores",
+    "OMP_PROC_BIND": "close"
+  },
+  "numa_policy": "38 allowed CPUs within one NUMA node",
+  "scheduler_resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "queue": "q_kunpeng",
+    "walltime_seconds": 1800
+  }
+}
+UTC: 2026-09-11T11:31:45Z
+COMPUTE_NODE_1
+Linux COMPUTE_NODE_1 5.10.0-285.5.v2403.ky10p.aarch64 #1 SMP Mon May 11 10:51:36 CST 2026 aarch64 aarch64 aarch64 GNU/Linux
+Architecture:                       aarch64
+CPU op-mode(s):                     64-bit
+Byte Order:                         Little Endian
+CPU(s):                             608
+On-line CPU(s) list:                0-607
+Vendor ID:                          HiSilicon
+Model:                              0
+Thread(s) per core:                 1
+Core(s) per socket:                 304
+Socket(s):                          2
+Stepping:                           0x0
+Frequency boost:                    enabled
+CPU max MHz:                        2000.0000
+CPU min MHz:                        1200.0000
+BogoMIPS:                           200.00
+Flags:                              fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm ssbs sb paca pacg dcpodp sve2 sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh ecv afp rpres sme smef64f64 smei8i32 smef16f32 smeb16f32 smef32f32 smefa64 wfxt
+L1d cache:                          19 MiB (608 instances)
+L1i cache:                          19 MiB (608 instances)
+L2 cache:                           456 MiB (608 instances)
+NUMA node(s):                       32
+NUMA node0 CPU(s):                  0-37
+NUMA node1 CPU(s):                  38-75
+NUMA node2 CPU(s):                  76-113
+NUMA node3 CPU(s):                  114-151
+NUMA node4 CPU(s):                  152-189
+NUMA node5 CPU(s):                  190-227
+NUMA node6 CPU(s):                  228-265
+NUMA node7 CPU(s):                  266-303
+NUMA node8 CPU(s):                  304-341
+NUMA node9 CPU(s):                  342-379
+NUMA node10 CPU(s):                 380-417
+NUMA node11 CPU(s):                 418-455
+NUMA node12 CPU(s):                 456-493
+NUMA node13 CPU(s):                 494-531
+NUMA node14 CPU(s):                 532-569
+NUMA node15 CPU(s):                 570-607
+NUMA node16 CPU(s):                 
+NUMA node17 CPU(s):                 
+NUMA node18 CPU(s):                 
+NUMA node19 CPU(s):                 
+NUMA node20 CPU(s):                 
+NUMA node21 CPU(s):                 
+NUMA node22 CPU(s):                 
+NUMA node23 CPU(s):                 
+NUMA node24 CPU(s):                 
+NUMA node25 CPU(s):                 
+NUMA node26 CPU(s):                 
+NUMA node27 CPU(s):                 
+NUMA node28 CPU(s):                 
+NUMA node29 CPU(s):                 
+NUMA node30 CPU(s):                 
+NUMA node31 CPU(s):                 
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Not affected
+Vulnerability Spec rstack overflow: Not affected
+Vulnerability Spec store bypass:    Not affected
+Vulnerability Spectre v1:           Mitigation; __user pointer sanitization
+Vulnerability Spectre v2:           Mitigation; CSV2, but not BHB
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
+policy: default
+preferred node: current
+physcpubind: 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 
+cpubind: 2 
+nodebind: 2 
+membind: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+preferred: 
+No Modulefiles Currently Loaded.
+Compiler from initial PATH (run.sh also records its actual selected compiler):
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+BENCH_REPEAT 1/3 BEGIN
+Compiler modules unavailable at CLUSTER_USER_HOME/HPCKit/latest/modulefiles; using compiler from PATH.
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Host=COMPUTE_NODE_1 CPU target=generic
+Block=32 Unroll=2 Threads=38 Bind=close Places=cores Node=2
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4096 x  6144     39 x    39        56.79    1327.3629     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6144 x  4096     41 x    41        66.26    1256.2259     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4256 x  6390     55 x    55       117.71    1368.3486     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6390 x  4256     81 x    81       258.36    1338.3517     0.00e+00     PASS
+PASS cases: 4; total of printed times: 499.12 ms
+Results: CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-c6c89f423d5e/member-3/source/results/run-20260911-193145-Tw7oru
+BENCH_REPEAT 1/3 END
+
+BENCH_REPEAT 2/3 BEGIN
+Compiler modules unavailable at CLUSTER_USER_HOME/HPCKit/latest/modulefiles; using compiler from PATH.
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Host=COMPUTE_NODE_1 CPU target=generic
+Block=32 Unroll=2 Threads=38 Bind=close Places=cores Node=2
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4096 x  6144     39 x    39        56.65    1330.5130     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6144 x  4096     41 x    41        66.27    1256.0451     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4256 x  6390     55 x    55       117.51    1370.6764     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6390 x  4256     81 x    81       258.75    1336.3344     0.00e+00     PASS
+PASS cases: 4; total of printed times: 499.18 ms
+Results: CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-c6c89f423d5e/member-3/source/results/run-20260911-193209-Xe2XUo
+BENCH_REPEAT 2/3 END
+
+BENCH_REPEAT 3/3 BEGIN
+Compiler modules unavailable at CLUSTER_USER_HOME/HPCKit/latest/modulefiles; using compiler from PATH.
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Host=COMPUTE_NODE_1 CPU target=generic
+Block=32 Unroll=2 Threads=38 Bind=close Places=cores Node=2
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4096 x  6144     39 x    39        56.72    1328.9837     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6144 x  4096     41 x    41        66.29    1255.7058     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4256 x  6390     55 x    55       117.66    1368.9892     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6390 x  4256     81 x    81       258.29    1338.7205     0.00e+00     PASS
+PASS cases: 4; total of printed times: 498.96 ms
+Results: CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-c6c89f423d5e/member-3/source/results/run-20260911-193233-1G2WqY
+BENCH_REPEAT 3/3 END
+BENCH_JOB_END 2026-09-11T11:32:57Z

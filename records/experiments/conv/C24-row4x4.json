@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C24-row4x4",
+  "parent": "C21-r3",
+  "strategy": "Share input rows across four output rows and four SVE vectors each, preserving strict per-output accumulation order",
+  "created_at": "2026-09-11T11:15:43.843832+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "dae78157f095d5cce265ea1741c496d7a8e909b23a31f9dd2639c0a899477a5a",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-11T16:42:55.334783+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep11c",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "717dc98454e03c96e46b07c51963bb9a59ea5717c2a2c4b556cbe21e2a65de80",
+  "log": ".runs/conv/C24-row4x4/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        55.04,
+        55.04,
+        55.05
+      ],
+      "median_ms": 55.04,
+      "min_ms": 55.04,
+      "max_ms": 55.05,
+      "spread_pct": 0.018168604651159177,
+      "gflops": [
+        1369.3546,
+        1369.5588,
+        1369.1384
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        65.49,
+        65.52,
+        65.59
+      ],
+      "median_ms": 65.52,
+      "min_ms": 65.49,
+      "max_ms": 65.59,
+      "spread_pct": 0.15262515262516566,
+      "gflops": [
+        1270.9752,
+        1270.3696,
+        1268.9931
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        114.93,
+        114.83,
+        114.89
+      ],
+      "median_ms": 114.89,
+      "min_ms": 114.83,
+      "max_ms": 114.93,
+      "spread_pct": 0.08703977717817785,
+      "gflops": [
+        1401.5009,
+        1402.6951,
+        1402.0343
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        248.1,
+        248.16,
+        248.14
+      ],
+      "median_ms": 248.14,
+      "min_ms": 248.1,
+      "max_ms": 248.16,
+      "spread_pct": 0.02417989844442745,
+      "gflops": [
+        1393.6587,
+        1393.3481,
+        1393.4585
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 483.59,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1531236",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison_baseline": "C21-r5",
+  "comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 56.99,
+        "candidate_ms": 55.04,
+        "gain_pct": 3.4216529215651916
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.32,
+        "candidate_ms": 65.52,
+        "gain_pct": 4.098360655737701
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.42,
+        "candidate_ms": 114.89,
+        "gain_pct": 2.980915385914542
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.58,
+        "candidate_ms": 248.14,
+        "gain_pct": 4.037435223141774
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C21-r4",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 56.99,
+        "candidate_ms": 55.04,
+        "gain_pct": 3.4216529215651916
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.29,
+        "candidate_ms": 65.52,
+        "gain_pct": 4.056230780494962
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.39,
+        "candidate_ms": 114.89,
+        "gain_pct": 2.9563307711799984
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.67,
+        "candidate_ms": 248.14,
+        "gain_pct": 4.070823829589836
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "source_parent": "C21-r3",
+  "decision_note": "Source independently confirmed by C24-r1. The later C26 beats C24-r1 in the same allocation; retain this source and evidence without a current submission ZIP."
+}

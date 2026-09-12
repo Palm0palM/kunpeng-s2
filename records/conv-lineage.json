@@ -1,5 +1,5 @@
 {
-  "current_label": "C5",
+  "current_label": "C6",
   "notice": "C labels here count verified source improvements; experiment IDs and r suffixes also include rejected candidates and repeat measurements. Times are internal metrics, not official scores.",
   "versions": [
     {
@@ -123,8 +123,39 @@
         "total_median_ms": 502.28999999999996,
         "sha256": "62b048136fa55bc52d9a36c9326e17b6084e91867880cd02300d3ffd34e34046"
       }
+    },
+    {
+      "label": "C6",
+      "experiment": "C26-r1",
+      "source_experiment": "C26-row4loads",
+      "parent_label": "C5",
+      "comparison_baseline": "C21-r9",
+      "kernel_sha256": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+      "total_median_ms": 452.62,
+      "time_reduction_pct": 9.899472479347072,
+      "strategy": "Four-row SVE input sharing with direct shifted loads in the shared middle loop; strict accumulation order preserved",
+      "promoted_at": "2026-09-12T02:50:07.110165+00:00",
+      "official_score": null,
+      "repeat_measurements": [
+        {
+          "experiment": "C26-row4loads",
+          "total_median_ms": 452.58
+        }
+      ],
+      "package_verification": {
+        "experiment": "C26-package",
+        "job_id": "1576103",
+        "total_median_ms": 452.65999999999997,
+        "suites": 3,
+        "cases_per_suite": 4,
+        "all_pass": true,
+        "max_error": 0,
+        "archive_verified_and_extracted_on_compute_node": true,
+        "same_source_as_promoted": true,
+        "sha256": "6d6368d555eb46b24d13d0732189ab0bff422f3f1930fda0fa48b60d74e8e5fb"
+      }
     }
   ],
-  "current_measurement": "C21-r2",
-  "current_total_median_ms": 502.20000000000005
+  "current_measurement": "C26-r1",
+  "current_total_median_ms": 452.62
 }

@@ -63,6 +63,21 @@
 | conv | C8-r4 | — | passed | 631.37 | Unchanged C2 baseline; repeated before/after candidates in one pinned-node allocation to detect timing drift |
 | conv | C8-sve128 | C7-r1 | passed | 630.50 | 与 C7-sve64 并行候选：以其已验证 SVE 实现为模板，将独立累加器从 4 增至 8，每块 8*svcntw() 个输出（当前实机128列），提高指令并行、分摊循环开销；可能增加寄存器和缓存压力。保持运行时 SVE 检查、逐输出严格累加顺序、回退路径、run.sh 和官方 benchmark 不变。 |
 | conv | C9-sve256 | C8-r1 | passed | 649.39 | 本轮最后一个有界并行候选：以 C8 的 8 个 SVE 累加器实现为模板扩展到 16 个显式独立累加器，每块 16*svcntw() 个输出（当前实机256列）；提高独立指令并行并分摊循环控制，但更大工作集与寄存器压力可能导致栈spill。保持运行时检查、strict逐输出累加顺序、回退路径、run.sh和official benchmark。当前parent C7-r1（已晋级C1源码）；尚未性能测量前协调者按C8对照结果选择共同基线。 |
+| conv | C21-r3 | — | passed | 502.27 | Fresh unchanged C5 baseline for the next optimization round; three complete official suites |
+| conv | C21-r4 | — | passed | 502.34 | Unchanged C5 opening control for same-allocation comparison of C23/C24/C25 |
+| conv | C23-row3loads | C21-r3 | passed | 486.55 | In the C5 three-output-row shared middle loop only, replace three ext windows with direct shifted loads to trade load bandwidth for fewer shuffle instructions |
+| conv | C24-row4x4 | C21-r3 | passed | 483.59 | Share input rows across four output rows and four SVE vectors each, preserving strict per-output accumulation order |
+| conv | C25-row3x6 | C21-r3 | passed | 499.01 | Expand the C5 three-output-row tile from four to six vectors per row, amortizing kernel and loop overhead with eighteen accumulators |
+| conv | C21-r5 | — | passed | 502.31 | Unchanged C5 closing primary control for same-allocation comparison of C23/C24/C25; selected before performance execution |
+| conv | C21-r6 | — | passed | 502.38 | Unchanged C5 opening control for Sep12 same-allocation followup |
+| conv | C24-r1 | C21-r7 | passed | 483.83 | Repeat unchanged four-row/four-vector candidate alongside C26 and C27 and bracketed C5 controls |
+| conv | C26-row4loads | C21-r7 | passed | 452.58 | Combine four-output-row sharing with direct shifted input loads in the shared middle phase only; remove three ext windows while preserving arithmetic order |
+| conv | C27-row3staged | C21-r7 | passed | 521.20 | Keep the eighteen-accumulator tile but constrain GCC scheduling between per-vector three-row updates to reduce live input-window registers and target the observed c4 spill |
+| conv | C21-r7 | — | passed | 502.51 | Unchanged C5 closing primary control predeclared before Sep12 followup |
+| conv | C21-r8 | — | passed | 502.64 | Unchanged C5 confirmation control; no new algorithm version |
+| conv | C26-r1 | C21-r9 | passed | 452.62 | Independent repeat of unchanged C26-row4loads against bracketed C5 controls |
+| conv | C21-r9 | — | passed | 502.35 | Unchanged C5 confirmation control; no new algorithm version |
+| conv | C26-package | C26-row4loads | passed | 452.66 | Independent exact final C26 ZIP compute-node extraction and three complete official suites; only submit after confirmation |
 | trsm | T0-r1 | T0 | passed | 784.80 | 与首轮T0源码和参数完全相同的独立复测；按T0、T1-panel、T0-r1、T1-panel-r1顺序交错运行，核查小用例波动与打包收益；不代表新优化版本 |
 | trsm | T0-r2 | — | passed | 778.18 | T0源码不变的同一资源分配内三轮测量基线；与T2-k128及T2-unroll交错测量，避免独立作业CPU/NUMA变化；不是新优化版本 |
 | trsm | T0-r3 | — | passed | 776.95 | T0源码不变，专用于与T1-panel打包版在同一38核单NUMA分配内交错三轮确认收益；非新优化版本 |

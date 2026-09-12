@@ -1,0 +1,284 @@
+{
+  "label": "C6",
+  "experiment": "C26-r1",
+  "source_experiment": "C26-row4loads",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "package_sha256": "6d6368d555eb46b24d13d0732189ab0bff422f3f1930fda0fa48b60d74e8e5fb",
+  "total_median_ms": 452.62,
+  "metric": "sum of four per-case medians across three independent suites; not official score",
+  "controlled_comparison": {
+    "baseline": "C21-r9",
+    "baseline_total_median_ms": 502.35,
+    "candidate_total_median_ms": 452.62,
+    "time_reduction_pct": 9.899472479347072,
+    "opening_baseline": "C21-r8",
+    "opening_baseline_total_median_ms": 502.64000000000004,
+    "initial_candidate": "C26-row4loads",
+    "initial_candidate_total_median_ms": 452.58
+  },
+  "verification": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "zip_verification": {
+    "experiment": "C26-package",
+    "job_id": "1576103",
+    "total_median_ms": 452.65999999999997,
+    "suites": 3,
+    "cases_per_suite": 4,
+    "all_pass": true,
+    "max_error": 0,
+    "archive_verified_and_extracted_on_compute_node": true,
+    "same_source_as_promoted": true
+  },
+  "specialized_correctness": {
+    "source_experiment": "C26-row4loads",
+    "checks": 108888,
+    "all_pass": true,
+    "threads": [
+      1,
+      4
+    ],
+    "sve_bits": [
+      128,
+      256,
+      512
+    ]
+  },
+  "official_submission": false,
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C6",
+  "archive": "conv.zip",
+  "archive_sha256": "6d6368d555eb46b24d13d0732189ab0bff422f3f1930fda0fa48b60d74e8e5fb",
+  "archive_bytes": 13129,
+  "archive_root": "conv/",
+  "entrypoint": "conv/run.sh",
+  "archive_members": {
+    "conv/README.md": {
+      "sha256": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+      "bytes": 754,
+      "mode": "0o100644"
+    },
+    "conv/bench_conv.c": {
+      "sha256": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "bytes": 8125,
+      "mode": "0o100644"
+    },
+    "conv/conv2d.c": {
+      "sha256": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+      "bytes": 72661,
+      "mode": "0o100644"
+    },
+    "conv/run.sh": {
+      "sha256": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+      "bytes": 5339,
+      "mode": "0o100755"
+    }
+  },
+  "ready_for_manual_submission": true,
+  "official_score": null,
+  "measurement_cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.51,
+        51.52,
+        51.5
+      ],
+      "median_ms": 51.51,
+      "min_ms": 51.5,
+      "max_ms": 51.52,
+      "spread_pct": 0.038827412152986074,
+      "gflops": [
+        1463.4467,
+        1463.1088,
+        1463.6538
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        62.0,
+        61.94,
+        62.0
+      ],
+      "median_ms": 62.0,
+      "min_ms": 61.94,
+      "max_ms": 62.0,
+      "spread_pct": 0.09677419354839076,
+      "gflops": [
+        1342.4614,
+        1343.8228,
+        1342.5051
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        107.33,
+        107.33,
+        107.33
+      ],
+      "median_ms": 107.33,
+      "min_ms": 107.33,
+      "max_ms": 107.33,
+      "spread_pct": 0.0,
+      "gflops": [
+        1500.7077,
+        1500.7892,
+        1500.7176
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        231.78,
+        232.03,
+        231.74
+      ],
+      "median_ms": 231.78,
+      "min_ms": 231.74,
+      "max_ms": 232.03,
+      "spread_pct": 0.12511864699283462,
+      "gflops": [
+        1491.83,
+        1490.2218,
+        1492.0618
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "package_verification_cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.64,
+        51.5,
+        51.41
+      ],
+      "median_ms": 51.5,
+      "min_ms": 51.41,
+      "max_ms": 51.64,
+      "spread_pct": 0.44660194174758056,
+      "gflops": [
+        1459.5197,
+        1463.6171,
+        1466.2892
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        62.05,
+        62.04,
+        61.93
+      ],
+      "median_ms": 62.04,
+      "min_ms": 61.93,
+      "max_ms": 62.05,
+      "spread_pct": 0.1934235976789127,
+      "gflops": [
+        1341.3905,
+        1341.6312,
+        1344.1323
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        107.4,
+        107.37,
+        107.32
+      ],
+      "median_ms": 107.37,
+      "min_ms": 107.32,
+      "max_ms": 107.4,
+      "spread_pct": 0.07450870820528314,
+      "gflops": [
+        1499.724,
+        1500.2035,
+        1500.9262
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        231.75,
+        231.76,
+        231.64
+      ],
+      "median_ms": 231.75,
+      "min_ms": 231.64,
+      "max_ms": 231.76,
+      "spread_pct": 0.051779935275082865,
+      "gflops": [
+        1492.0359,
+        1491.9108,
+        1492.7421
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "competition_feedback": {
+    "score": null,
+    "submitted_at": null,
+    "passed": null,
+    "notes": null
+  }
+}
