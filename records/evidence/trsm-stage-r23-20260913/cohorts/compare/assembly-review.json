@@ -1,0 +1,72 @@
+{
+  "T19-control13-repeat-r23": {
+    "function_assembly_lines": 318,
+    "history_loop_label": ".L168",
+    "k_steps": 1,
+    "instructions": 37,
+    "opcodes": {
+      "ldr": 8,
+      "mov": 8,
+      "ld1d": 2,
+      "fmla": 16,
+      "add": 1,
+      "cmp": 1,
+      "bne": 1
+    },
+    "hot_stack_references": [],
+    "function_stack_references": [
+      "\tstp\td8, d9, [sp, -32]!",
+      "\tstp\td10, d11, [sp, 16]",
+      "\tldp\td10, d11, [sp, 16]",
+      "\tldp\td8, d9, [sp], 32"
+    ],
+    "final_collected_assembly_equals_preview": true
+  },
+  "T25-smallpairload": {
+    "function_assembly_lines": 554,
+    "history_loop_label": ".L168",
+    "k_steps": 2,
+    "instructions": 75,
+    "opcodes": {
+      "add": 16,
+      "ld1rd": 16,
+      "ld1d": 4,
+      "fmla": 31,
+      "fmad": 1,
+      "movprfx": 5,
+      "cmp": 1,
+      "bne": 1
+    },
+    "hot_stack_references": [],
+    "function_stack_references": [
+      "\tstp\tx29, x30, [sp, -176]!",
+      "\tstp\td8, d9, [sp, 96]",
+      "\tstp\td10, d11, [sp, 112]",
+      "\tstp\td12, d13, [sp, 128]",
+      "\tstr\td14, [sp, 144]",
+      "\tstp\tx19, x20, [sp, 16]",
+      "\tstp\tx21, x22, [sp, 32]",
+      "\tstp\tx23, x24, [sp, 48]",
+      "\tstp\tx25, x26, [sp, 64]",
+      "\tstp\tx27, x28, [sp, 80]",
+      "\tstr\tx7, [sp, 168]",
+      "\tldp\tx19, x20, [sp, 16]",
+      "\tldp\tx21, x22, [sp, 32]",
+      "\tldp\tx23, x24, [sp, 48]",
+      "\tldp\tx25, x26, [sp, 64]",
+      "\tldp\tx27, x28, [sp, 80]",
+      "\tldr\tx7, [sp, 168]",
+      "\tldp\td8, d9, [sp, 96]",
+      "\tldp\td10, d11, [sp, 112]",
+      "\tldp\td12, d13, [sp, 128]",
+      "\tldr\td14, [sp, 144]",
+      "\tldp\tx29, x30, [sp], 176"
+    ],
+    "final_collected_assembly_equals_preview": true
+  },
+  "job_id": "1582642",
+  "source": "original uninstrumented source on allocated COMPUTE_NODE NUMA0 CPU0-37",
+  "conclusion": "T25 perpair75instructions32fusedoperations16ADD16LD1RD5MOVPRFX,0hotstack; paired loads sharebase but unused-in-template memory operands induce additional address preparation. This causal explanation is a hypothesis to test by changing only memory operand description. T19perstep37instructions16FMLA; differenthostfromr22,nopooling.",
+  "binary_identity_verified": false,
+  "hash_operations": false
+}
