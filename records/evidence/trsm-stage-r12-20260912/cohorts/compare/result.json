@@ -1,0 +1,138 @@
+{
+  "status": "complete_no_promotion",
+  "job_id": "1579645",
+  "formal_pass_count": 36,
+  "warmup_pass_count": 12,
+  "baseline_version": "T8-control12",
+  "best_implementation": "T8-svepanel16",
+  "comparisons": {
+    "T13-sve4x32": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 4.5531% does not exceed threshold 5.2604%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 19.01,
+          "candidate_ms": 18.73,
+          "gain_pct": 1.4729089952656556
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 224.62,
+          "candidate_ms": 218.87,
+          "gain_pct": 2.5598789065978096
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 194.97,
+          "candidate_ms": 181.03,
+          "gain_pct": 7.1498179207057495
+        }
+      ],
+      "total_gain_pct": 4.553123575011406,
+      "noise_threshold_pct": 5.260389268805891,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    },
+    "T15-svetile128": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 1.6553% does not exceed threshold 5.2604%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 19.01,
+          "candidate_ms": 18.84,
+          "gain_pct": 0.8942661756970104
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 224.62,
+          "candidate_ms": 222.88,
+          "gain_pct": 0.7746416169530803
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 194.97,
+          "candidate_ms": 189.62,
+          "gain_pct": 2.744011899266551
+        }
+      ],
+      "total_gain_pct": 1.655266757865935,
+      "noise_threshold_pct": 5.260389268805891,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    },
+    "T16-svetile32": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 3.7848% does not exceed threshold 6.6355%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 19.01,
+          "candidate_ms": 18.73,
+          "gain_pct": 1.4729089952656556
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 224.62,
+          "candidate_ms": 218.22,
+          "gain_pct": 2.8492565221262605
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 194.97,
+          "candidate_ms": 185.05,
+          "gain_pct": 5.087962250602651
+        }
+      ],
+      "total_gain_pct": 3.7847697218422303,
+      "noise_threshold_pct": 6.63550545321235,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "medians_ms": {
+    "T8-control12": 438.6,
+    "T13-sve4x32": 418.63,
+    "T15-svetile128": 431.34000000000003,
+    "T16-svetile32": 422.0
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false
+}

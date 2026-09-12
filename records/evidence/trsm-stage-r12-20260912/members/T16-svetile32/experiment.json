@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T16-svetile32",
+  "parent": "T8-control12",
+  "source_from": "T16-svetile32",
+  "source_implementation_id": "T16-svetile32",
+  "strategy": "From T13-sve4x32, change only the large-path row/column CT constant from 64 to 32. Keep KB256, all kernels, arithmetic, packing, barriers, fallbacks and small path. Compare with unchanged T13 to isolate tile scheduling/reuse; promotion remains against current T8 baseline.",
+  "created_at": "2026-09-12T10:44:32.494480+00:00",
+  "status": "prepared",
+  "verified": false,
+  "validation_policy": "No hash computation or validation at explicit user request",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  }
+}
