@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C54-row7x3shared4",
+  "parent": "C26-r31",
+  "strategy": "Source-only shared unroll2 to unroll4: kw-ik>=4 and ik+=4; four sequential complete 21 mul/add column scopes; retain original u1 remainder for 0..3 columns. All other stages,dispatch,tail,fallback and submission files unchanged. Future own correctness/codegen/performance required; prior Y/S failed confirmations preserved.",
+  "created_at": "2026-09-12T17:59:15.584610+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C52-row7x3shared2",
+  "source_parent_frozen_directory": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t",
+  "source_parent_diagnostic_job_id": "1582134",
+  "source_parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "rows_per_group": 7,
+  "vectors_per_row": 3,
+  "total_accumulators": 21,
+  "stage_count": 13,
+  "shared_kernel_columns_per_iteration": 4,
+  "other_stage_kernel_columns_per_iteration": 1,
+  "shared_remainder_columns_per_iteration": 1,
+  "shared_remainder_max_columns": 3,
+  "shared_paired_remainder_layer": false,
+  "formal_best_label": "C6",
+  "source_scope": "Only shared main loop factor2 to factor4; all other12 stages, original u1 remainder, dispatch, tails, fallback and other submission files unchanged.",
+  "source_hypothesis": "Amortize shared loop/address control with four sequential complete column scopes; actual scheduling, spills, code size and speed unknown.",
+  "runtime_validation_status": "Source prepared only; own C54 diagnostic required. Parent T PASS cannot cover the new factor4 main loop.",
+  "required_future_kernel_widths": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    15,
+    81
+  ],
+  "historical_decisions_preserved": {
+    "S_C51_confirmation_passed": false,
+    "Y_C52_confirmation_passed": false
+  },
+  "prepared_execution_policy": "No compiler/operator/SSH/diagnostic/job/performance/ZIP/promotion/publication. New source hypothesis, not a retry of failed S or Y confirmation.",
+  "comparison_baseline": "C26-r31",
+  "reference_only": false,
+  "promotion_allowed": true,
+  "qualified_for_confirmation": false,
+  "confirmation_only": false,
+  "failed_confirmation_retry_allowed": false,
+  "diagnostic_source_version": "C54-row7x3shared4",
+  "diagnostic_evidence_directory": ".runs/conv/C54-row7x3shared4/sve-correctness-sep13aa",
+  "diagnostic_job_id": "1582656",
+  "diagnostic_source_sha256": "fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88",
+  "reused_identical_source_diagnostic": false,
+  "recorded_at": "2026-09-12T18:49:04.639694+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep13ab",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "2bfdd042d665b2ea33faa0c21e04f922e66847f57569652fdf513a851be91f73",
+  "log": ".runs/conv/C54-row7x3shared4/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        80.92,
+        80.9,
+        80.89
+      ],
+      "median_ms": 80.9,
+      "min_ms": 80.89,
+      "max_ms": 80.92,
+      "spread_pct": 0.03708281829419176,
+      "gflops": [
+        931.5313,
+        931.7639,
+        931.8108
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        88.52,
+        88.41,
+        88.46
+      ],
+      "median_ms": 88.46,
+      "min_ms": 88.41,
+      "max_ms": 88.52,
+      "spread_pct": 0.12434998869545494,
+      "gflops": [
+        940.3333,
+        941.4365,
+        940.9001
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        168.38,
+        168.27,
+        168.31
+      ],
+      "median_ms": 168.31,
+      "min_ms": 168.27,
+      "max_ms": 168.38,
+      "spread_pct": 0.06535559384468256,
+      "gflops": [
+        956.6171,
+        957.242,
+        956.9971
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        369.32,
+        371.96,
+        369.3
+      ],
+      "median_ms": 369.32,
+      "min_ms": 369.3,
+      "max_ms": 371.96,
+      "spread_pct": 0.7202426080363826,
+      "gflops": [
+        936.2482,
+        929.6026,
+        936.2953
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 706.99,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1582814",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "baseline": "C26-r31",
+    "eligible": false,
+    "reasons": [
+      "提速 -56.26% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.41,
+        "candidate_ms": 80.9,
+        "gain_pct": -57.362380859754936
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.97,
+        "candidate_ms": 88.46,
+        "gain_pct": -42.746490237211546
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.36,
+        "candidate_ms": 168.31,
+        "gain_pct": -56.771609538002984
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.7,
+        "candidate_ms": 369.32,
+        "gain_pct": -59.39577039274925
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": -56.261603748563346,
+    "threshold_pct": 1.0
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r30",
+    "eligible": false,
+    "reasons": [
+      "提速 -56.24% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.45,
+        "candidate_ms": 80.9,
+        "gain_pct": -57.24003887269193
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.93,
+        "candidate_ms": 88.46,
+        "gain_pct": -42.83868884224123
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.31,
+        "candidate_ms": 168.31,
+        "gain_pct": -56.84465567048738
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.81,
+        "candidate_ms": 369.32,
+        "gain_pct": -59.32013286743453
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": -56.24088397790056,
+    "threshold_pct": 1.0
+  },
+  "decision_note": "C54 does not meet both C6 gates; retain every sample and C6. No automatic confirmation, promotion or ZIP.",
+  "source_parent_reference_comparison": {
+    "baseline": "C52-r2",
+    "eligible": false,
+    "reasons": [
+      "提速 -61.82% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.77,
+        "candidate_ms": 80.9,
+        "gain_pct": -56.26810894340352
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.46,
+        "candidate_ms": 88.46,
+        "gain_pct": -51.317139924734846
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 103.88,
+        "candidate_ms": 168.31,
+        "gain_pct": -62.02348864073932
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 222.79,
+        "candidate_ms": 369.32,
+        "gain_pct": -65.77045648368419
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": -61.81963836118106,
+    "threshold_pct": 1.0
+  },
+  "source_parent_comparison_supported_in_initial_group": false,
+  "source_parent_attribution_note": "Separate whole-implementation comparison between C54 shared-four-column and original C52 shared-two-column sources in this allocation. Complete preserved AB samples only. Code layout, scheduling, tails and dispatch may contribute; this is not an isolated instruction-cost measurement and does not replace either C6 gate. C52-r2 remains background reference-only; Yfalse/Sfalse are unchanged."
+}

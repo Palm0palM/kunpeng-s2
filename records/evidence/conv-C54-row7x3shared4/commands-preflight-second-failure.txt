@@ -1,0 +1,6 @@
+Actual local text-only preflight failure before new, exit 1, chunk 0ccc4b:
+Traceback (most recent call last):
+  File "<stdin>", line 15, in <module>
+AssertionError
+
+The compared dictionaries had different valid purposes: production snapshot holds README/bench_conv.c/conv2d.c/run.sh, frozen T diagnostic manifest holds candidate.env/harness/conv2d.c/remote_job.sh. No run or record was created. Production current vs parent record matches all four files; only conv2d.c must also match frozen T kernel. Both prep lookup/assertion failures are preserved; no validation/source/measurement was rewritten.
