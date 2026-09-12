@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C30-r1",
+  "parent": "C26-r5",
+  "strategy": "Independent exploratory repeat of unchanged C30; original inconclusive result retained",
+  "created_at": "2026-09-12T07:39:43.662142+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "8fc5b620c1fee673febc7d3f14a6d74dcb6ed42981221a7253c3fdfbf8c0cf51",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "comparison_baseline": "C26-r5",
+  "source_parent": "C30-colchunks"
+}

@@ -1,0 +1,54 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -1248,27 +1248,39 @@
+ #if CONV_CAN_DISPATCH_SVE
+     const int use_sve = (getauxval(AT_HWCAP) & HWCAP_SVE) != 0;
+     if (use_sve) {
+-        /* Avoid oh+3 and j+3: each group starts at a valid output row. */
+-        const int groups = oh / 4 + (oh % 4 != 0);
++        /* Uniform column chunks increase work units without changing kernels. */
++        const size_t column_step = 256;
++        const size_t output_stride = (size_t)ow;
++        const size_t groups = (size_t)oh / 4 + ((size_t)oh % 4 != 0);
++        const size_t column_chunks = output_stride / column_step
++                                   + (output_stride % column_step != 0);
++        const size_t tasks = groups * column_chunks;
+ #pragma omp parallel for schedule(static)
+-        for (int group = 0; group < groups; ++group) {
+-            const int j = group * 4;
+-            const int remaining = oh - j;
+-            const float *base = input + (size_t)j * stride;
+-            float *dst = output + (size_t)j * (size_t)ow;
++        for (size_t work = 0; work < tasks; ++work) {
++            const size_t group = work / column_chunks;
++            const size_t column = (work % column_chunks) * column_step;
++            const size_t row = group * 4;
++            const size_t remaining = (size_t)oh - row;
++            const size_t remaining_columns = output_stride - column;
++            const int chunk_width = (int)(remaining_columns < column_step
++                                        ? remaining_columns : column_step);
++            const float *base = input + row * stride + column;
++            float *dst = output + row * output_stride + column;
++            /* Local width, but all output-row offsets use the global ow. */
+             if (remaining >= 4) {
+                 conv_sve_rowquad(base, stride, kernel, kernelHeight, kernelWidth,
+-                                 dst, dst + ow, dst + (size_t)2 * ow,
+-                                 dst + (size_t)3 * ow, ow);
++                                 dst, dst + output_stride, dst + 2 * output_stride,
++                                 dst + 3 * output_stride, chunk_width);
+             } else if (remaining == 3) {
+                 conv_sve_rowtriple(base, stride, kernel, kernelHeight, kernelWidth,
+-                                   dst, dst + ow, dst + (size_t)2 * ow, ow);
++                                   dst, dst + output_stride, dst + 2 * output_stride,
++                                   chunk_width);
+             } else if (remaining == 2) {
+                 conv_sve_rowpair(base, stride, kernel, kernelHeight, kernelWidth,
+-                                 dst, dst + ow, ow);
++                                 dst, dst + output_stride, chunk_width);
+             } else {
+                 conv_sve_prefix(base, stride, kernel, kernelHeight,
+-                                kernelWidth, dst, ow);
++                                kernelWidth, dst, chunk_width);
+             }
+         }
+         return;
