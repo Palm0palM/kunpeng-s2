@@ -201,3 +201,7 @@ CONV 输入复制与行距对照完成：434,352项专项检查及12套件48/48�
 C45-row4dup4 and C46-row5x5asmfix independently passed 121560 and 27408 scheduled-node checks (jobs 1579762 and 1579795). GCC 10.3.1, six VL/thread configurations, all 19 stage exits and scheduler/job/wrapper exits zero. Actual C45 shared loop has six vector spill loads/stores; C46 quint has none. Performance remains unmeasured; retain C6. [Full report](../docs/CONV_SEP12I.md).
 
 CONV N round completed 96/96 benchmark checks in job 1581459. C45/C49/C46/C47/C48 totals were 557.35/511.76/516.89/450.63/448.13 ms versus closing C6 452.38 ms; none passed both unchanged-C6 gates. C40-r3 444.44 ms remains reference-only and does not change G/J/K decisions. O diagnosis passed 121560 checks, but eliminating vector spills did not beat C6. All samples and the recovered metadata-recording failure are preserved in [N](../docs/CONV_SEP12N.md) and [O](../docs/CONV_SEP12O.md). C6 remains the submission package.
+
+## TRSM 第十六轮：T19 8×16 双面板前代（2026-09-13交付）
+
+T19-panel8x16budget 已晋级。作业1579861同分配ABC/BCA/CAB三轮，27/27正式与9/9预热PASS，T8→T19小/中/大用例耗时减少23.33%/48.85%/7.06%，合计444.75→313.20ms（减少29.58%），超过8.53%门槛。T18未晋级；全部原始样本及完整预检保留。最终ZIP作业1581516独立解压三套9/9 PASS，15,593字节，包验证合计317.01ms不与策略比较混算。实际KML25.1/GCC12，非指定KML25.2复验；未本机运行或算哈希，未正式提交比赛。[比较记录](../docs/trsm-stage-r16-20260912.md) · [最终交付](../docs/trsm-final-20260912-r16.md)。

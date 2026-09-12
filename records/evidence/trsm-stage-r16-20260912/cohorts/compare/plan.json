@@ -1,0 +1,122 @@
+{
+  "phase": "interleaved-budgeted-small-path-8x16-after-r15",
+  "reference": "Huawei KML 25.1.0 with private GCC 12.3.1; not specified official KML 25.2.0",
+  "members": [
+    {
+      "version": "T8-control12",
+      "parent": null,
+      "source_implementation_id": "T8-svepanel16",
+      "strategy": "已晋级T8-svepanel16原样三轮复测，建立本轮KML25.1/GCC12基线；后续以同版本新run和候选同分配交错比较。",
+      "run_name": "T8-control12-repeat-r16",
+      "source_from": "T8-control12",
+      "repeat_existing": true,
+      "prior_job_id": "1579788"
+    },
+    {
+      "run_name": "T18-budgetwide-repeat-r16",
+      "version": "T18-budgetwide",
+      "parent": "T8-control12",
+      "source_from": "T18-budgetwide",
+      "source_implementation_id": "T18-budgetwide",
+      "strategy": "Combine the complete T17-lhistbudget4 small-path prefix with the complete T13-sve4x32 large-path suffix at the existing KB256/CT64 enum boundary. Compare with same-cohort T17 to isolate the wide large-path update; the promotion parent remains current T8, and neither source candidate is represented as promoted.",
+      "repeat_existing": true,
+      "prior_job_id": "1579788"
+    },
+    {
+      "run_name": "T19-panel8x16budget",
+      "version": "T19-panel8x16budget",
+      "parent": "T8-control12",
+      "source_from": "T19-panel8x16budget",
+      "source_implementation_id": "T19-panel8x16budget",
+      "strategy": "From T18-budgetwide, use a fused SVE 8-row by 16-column forward-history kernel only when the existing small-path safely computed shared history size exceeds 4 MiB. Use two contiguous RHS8 panels per task. Retain T18 budget-contained/unsupported/failed-allocation paths and its entire large path. Compare with same-cohort T18 for this shape change; promotion remains against T8."
+    }
+  ],
+  "integration_status": "ROOT REVIEW READY: controller guard released before prepare; target execution remains unverified",
+  "measurement_protocol": {
+    "warmup_order": [
+      "T8-control12-repeat-r16",
+      "T18-budgetwide-repeat-r16",
+      "T19-panel8x16budget"
+    ],
+    "warmup_suites_per_member": 1,
+    "formal_round_order": [
+      [
+        "T8-control12-repeat-r16",
+        "T18-budgetwide-repeat-r16",
+        "T19-panel8x16budget"
+      ],
+      [
+        "T18-budgetwide-repeat-r16",
+        "T19-panel8x16budget",
+        "T8-control12-repeat-r16"
+      ],
+      [
+        "T19-panel8x16budget",
+        "T8-control12-repeat-r16",
+        "T18-budgetwide-repeat-r16"
+      ]
+    ],
+    "formal_suites_per_member": 3,
+    "TEST_RUNS": 3,
+    "formal_case_count": 27,
+    "warmup_case_count": 9,
+    "sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  },
+  "preflight_contract": {
+    "old_members": [
+      "T8-control12-repeat-r16",
+      "T18-budgetwide-repeat-r16"
+    ],
+    "old_general_module": "preflight",
+    "old_general_audit": "preflight_audit.py",
+    "old_expected_whole": [
+      433,
+      518
+    ],
+    "new_member": "T19-panel8x16budget",
+    "new_module": "preflight-panel8x16",
+    "new_audit": "audit_panel8x16.py:audit_panel8x16(folder, source)",
+    "new_contract_status": "Frozen dedicated contract: 615 whole / 96 no-op / 46 micro; includes 1047x33 38-thread new-kernel tail case",
+    "wide_members": [
+      "T18-budgetwide-repeat-r16",
+      "T19-panel8x16budget"
+    ],
+    "wide_module": "preflight-wide32",
+    "CT": 64,
+    "wide_expected": {
+      "micro": 28,
+      "whole": 28,
+      "argument_cases": 56,
+      "tile_processes": 7
+    },
+    "new_expected": {
+      "micro": 46,
+      "whole": 615,
+      "noop": 96,
+      "processes": 27,
+      "steps": 37,
+      "argument_cases": 633
+    },
+    "new_guard_job_key": "scheduler_job_id"
+  },
+  "promotion_comparisons": [
+    [
+      "T8-control12",
+      "T18-budgetwide"
+    ],
+    [
+      "T8-control12",
+      "T19-panel8x16budget"
+    ]
+  ],
+  "mechanism_comparisons": [
+    {
+      "base": "T18-budgetwide",
+      "candidate": "T19-panel8x16budget",
+      "promotion_authorization": false
+    }
+  ],
+  "hash_operations": false,
+  "local_task_tests": false,
+  "root_reviewed_at": "2026-09-12T12:24:42.738311+00:00"
+}

@@ -1,0 +1,123 @@
+{
+  "status": "static_ready_pending_root_review",
+  "prepare_blocked": true,
+  "prior_job_id": "1579788",
+  "members": [
+    "T8-control12-repeat-r16",
+    "T18-budgetwide-repeat-r16",
+    "T19-panel8x16budget"
+  ],
+  "versions": [
+    "T8-control12",
+    "T18-budgetwide",
+    "T19-panel8x16budget"
+  ],
+  "repeat_flags": [
+    true,
+    true,
+    false
+  ],
+  "formal_round_order": [
+    [
+      "T8-control12-repeat-r16",
+      "T18-budgetwide-repeat-r16",
+      "T19-panel8x16budget"
+    ],
+    [
+      "T18-budgetwide-repeat-r16",
+      "T19-panel8x16budget",
+      "T8-control12-repeat-r16"
+    ],
+    [
+      "T19-panel8x16budget",
+      "T8-control12-repeat-r16",
+      "T18-budgetwide-repeat-r16"
+    ]
+  ],
+  "formal_pass_expected": 27,
+  "warmup_pass_expected": 9,
+  "python_ast_pass": [
+    "cohort_driver.py",
+    "finish_records.py",
+    "job_control.py",
+    "preflight/guard.py",
+    "preflight-panel8x16/audit_panel8x16.py",
+    "preflight-panel8x16/guard.py",
+    "preflight-wide32/guard.py",
+    "preflight_audit.py",
+    "reference/audit-dependencies.py"
+  ],
+  "bash_n_pass": [
+    "preflight/run.sh",
+    "preflight-panel8x16/run.sh",
+    "preflight-wide32/run.sh",
+    "reference/probe.sh",
+    "reference/target-environment.sh",
+    "remote_job.sh"
+  ],
+  "embedded_python_ast_pass": [
+    {
+      "file": "preflight/run.sh",
+      "start_line": 82
+    },
+    {
+      "file": "preflight-panel8x16/run.sh",
+      "start_line": 42
+    },
+    {
+      "file": "preflight-wide32/run.sh",
+      "start_line": 71
+    },
+    {
+      "file": "reference/probe.sh",
+      "start_line": 7
+    },
+    {
+      "file": "reference/target-environment.sh",
+      "start_line": 12
+    }
+  ],
+  "prior_identity_and_source_snapshot_match": true,
+  "new_T19_has_no_run_metadata_or_record": true,
+  "general_members": [
+    "T8-control12-repeat-r16",
+    "T18-budgetwide-repeat-r16"
+  ],
+  "general_whole_expected": [
+    433,
+    518
+  ],
+  "dedicated_member": "T19-panel8x16budget",
+  "dedicated_contract": {
+    "micro": 46,
+    "whole": 615,
+    "noop": 96,
+    "shared_fail": 89,
+    "processes": 27,
+    "steps": 37,
+    "argument_cases": 633,
+    "guard_job_key": "scheduler_job_id"
+  },
+  "wide32_members": [
+    "T18-budgetwide-repeat-r16",
+    "T19-panel8x16budget"
+  ],
+  "wide32_expected": {
+    "CT": 64,
+    "KB": 256,
+    "micro": 28,
+    "whole": 28,
+    "argument_cases": 56,
+    "tile_processes": 7
+  },
+  "reference_remote_config_and_old_preflight_exact_r15_copies": true,
+  "no_payload_or_submission_state": true,
+  "hash_operations": false,
+  "local_task_compile_or_execution": false,
+  "scheduler": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "walltime_seconds": 1800
+  }
+}

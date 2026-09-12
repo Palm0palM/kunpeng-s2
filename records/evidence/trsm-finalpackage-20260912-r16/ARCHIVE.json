@@ -1,0 +1,240 @@
+{
+  "created_at": "2026-09-12T16:12:13.145294+00:00",
+  "job_id": "1581516",
+  "source_version": "T19-panel8x16budget",
+  "public_redacted_derivative": true,
+  "original_evidence_retained": true,
+  "provenance": [
+    {
+      "path": "submitted-payload/remote_job.sh",
+      "source": ".runs/trsm/package-check-20260912-r16/payload/remote_job.sh",
+      "role": "prepared_upload_snapshot"
+    },
+    {
+      "path": "submitted-payload/run-three-suites.sh",
+      "source": ".runs/trsm/package-check-20260912-r16/payload/run-three-suites.sh",
+      "role": "prepared_upload_snapshot"
+    },
+    {
+      "path": "submitted-payload/probe.sh",
+      "source": ".runs/trsm/package-check-20260912-r16/payload/probe.sh",
+      "role": "prepared_upload_snapshot"
+    },
+    {
+      "path": "submitted-payload/target-environment.sh",
+      "source": ".runs/trsm/package-check-20260912-r16/payload/target-environment.sh",
+      "role": "prepared_upload_snapshot"
+    },
+    {
+      "path": "submitted-payload/required-symbols.c",
+      "source": ".runs/trsm/package-check-20260912-r16/payload/required-symbols.c",
+      "role": "prepared_upload_snapshot"
+    },
+    {
+      "path": "submitted-payload/audit-dependencies.py",
+      "source": ".runs/trsm/package-check-20260912-r16/payload/audit-dependencies.py",
+      "role": "prepared_upload_snapshot"
+    },
+    {
+      "path": "submitted-payload/package-metadata.json",
+      "source": ".runs/trsm/package-check-20260912-r16/payload/package-metadata.json",
+      "role": "prepared_upload_snapshot"
+    },
+    {
+      "path": "job_control.py",
+      "source": ".runs/trsm/package-check-20260912-r16/job_control.py",
+      "role": "current_local_tool_or_document_not_submitted_snapshot"
+    },
+    {
+      "path": "remote_job.sh",
+      "source": ".runs/trsm/package-check-20260912-r16/remote_job.sh",
+      "role": "current_local_tool_or_document_not_submitted_snapshot"
+    },
+    {
+      "path": "run-three-suites.sh",
+      "source": ".runs/trsm/package-check-20260912-r16/run-three-suites.sh",
+      "role": "current_local_tool_or_document_not_submitted_snapshot"
+    },
+    {
+      "path": "package_rules.py",
+      "source": ".runs/trsm/package-check-20260912-r16/package_rules.py",
+      "role": "current_local_tool_or_document_not_submitted_snapshot"
+    },
+    {
+      "path": "probe.sh",
+      "source": ".runs/trsm/package-check-20260912-r16/probe.sh",
+      "role": "current_local_tool_or_document_not_submitted_snapshot"
+    },
+    {
+      "path": "target-environment.sh",
+      "source": ".runs/trsm/package-check-20260912-r16/target-environment.sh",
+      "role": "current_local_tool_or_document_not_submitted_snapshot"
+    },
+    {
+      "path": "required-symbols.c",
+      "source": ".runs/trsm/package-check-20260912-r16/required-symbols.c",
+      "role": "current_local_tool_or_document_not_submitted_snapshot"
+    },
+    {
+      "path": "audit-dependencies.py",
+      "source": ".runs/trsm/package-check-20260912-r16/audit-dependencies.py",
+      "role": "current_local_tool_or_document_not_submitted_snapshot"
+    },
+    {
+      "path": "README.md",
+      "source": ".runs/trsm/package-check-20260912-r16/README.md",
+      "role": "current_local_tool_or_document_not_submitted_snapshot"
+    },
+    {
+      "path": "build-final-package-r16.py",
+      "source": ".runs/trsm/build-final-package-r16.py",
+      "role": "current_local_tool_not_submitted_snapshot"
+    },
+    {
+      "path": "finalize-r16.py",
+      "source": ".runs/trsm/finalize-r16.py",
+      "role": "current_local_tool_not_submitted_snapshot"
+    }
+  ],
+  "submitted_payload_policy": "Six frozen scripts and original metadata come only from payload; their bytes match the prepared upload tar. Current tools are separately identified. This is a local upload-snapshot association, not a remote script byte-identity claim.",
+  "published_metadata_policy": "Top-level package-metadata.json includes publication fields; submitted-payload/package-metadata.json preserves the original prepared metadata.",
+  "hash_validation": "not performed",
+  "files": [
+    {
+      "path": "benchmark.log",
+      "bytes": 10286
+    },
+    {
+      "path": "environment.log",
+      "bytes": 7007
+    },
+    {
+      "path": "exit-code.txt",
+      "bytes": 2
+    },
+    {
+      "path": "scheduler-status.txt",
+      "bytes": 8314
+    },
+    {
+      "path": "cluster.json",
+      "bytes": 3396
+    },
+    {
+      "path": "linkage.log",
+      "bytes": 3552
+    },
+    {
+      "path": "wrapper.stdout.log",
+      "bytes": 35959
+    },
+    {
+      "path": "zip-validation.json",
+      "bytes": 430
+    },
+    {
+      "path": "result.json",
+      "bytes": 3677
+    },
+    {
+      "path": "submission.json",
+      "bytes": 1282
+    },
+    {
+      "path": "probe.log",
+      "bytes": 22616
+    },
+    {
+      "path": "probe-ldd.log",
+      "bytes": 664
+    },
+    {
+      "path": "compiler-environment.log",
+      "bytes": 381
+    },
+    {
+      "path": "omp-runtime-symbol.log",
+      "bytes": 205
+    },
+    {
+      "path": "runtime-settings.json",
+      "bytes": 3137
+    },
+    {
+      "path": "job_control.py",
+      "bytes": 12676
+    },
+    {
+      "path": "remote_job.sh",
+      "bytes": 5135
+    },
+    {
+      "path": "run-three-suites.sh",
+      "bytes": 4061
+    },
+    {
+      "path": "package_rules.py",
+      "bytes": 8313
+    },
+    {
+      "path": "probe.sh",
+      "bytes": 2397
+    },
+    {
+      "path": "target-environment.sh",
+      "bytes": 3539
+    },
+    {
+      "path": "required-symbols.c",
+      "bytes": 1755
+    },
+    {
+      "path": "audit-dependencies.py",
+      "bytes": 2138
+    },
+    {
+      "path": "README.md",
+      "bytes": 6230
+    },
+    {
+      "path": "build-final-package-r16.py",
+      "bytes": 6413
+    },
+    {
+      "path": "finalize-r16.py",
+      "bytes": 14121
+    },
+    {
+      "path": "submitted-payload/remote_job.sh",
+      "bytes": 5135
+    },
+    {
+      "path": "submitted-payload/run-three-suites.sh",
+      "bytes": 4061
+    },
+    {
+      "path": "submitted-payload/probe.sh",
+      "bytes": 2397
+    },
+    {
+      "path": "submitted-payload/target-environment.sh",
+      "bytes": 3539
+    },
+    {
+      "path": "submitted-payload/required-symbols.c",
+      "bytes": 1755
+    },
+    {
+      "path": "submitted-payload/audit-dependencies.py",
+      "bytes": 2138
+    },
+    {
+      "path": "submitted-payload/package-metadata.json",
+      "bytes": 1925
+    },
+    {
+      "path": "package-metadata.json",
+      "bytes": 2514
+    }
+  ]
+}
