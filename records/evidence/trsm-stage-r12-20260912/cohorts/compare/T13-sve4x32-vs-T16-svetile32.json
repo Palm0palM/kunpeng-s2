@@ -1,0 +1,37 @@
+{
+  "job_id": "1579645",
+  "baseline": "T13-sve4x32",
+  "candidate": "T16-svetile32",
+  "promotion_comparison": false,
+  "note": "Same-cohort incremental CT comparison only. Both candidates have T8-control12 as promotion parent; do not redefine parent or pool jobs. Small-path code is unchanged, so differences in the first two cases are not evidence of a CT mechanism.",
+  "total_gain_pct": -0.805006807921077,
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 18.73,
+      "candidate_ms": 18.73,
+      "gain_pct": 0.0
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 218.87,
+      "candidate_ms": 218.22,
+      "gain_pct": 0.296979942431583
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 181.03,
+      "candidate_ms": 185.05,
+      "gain_pct": -2.220626415511247
+    }
+  ]
+}

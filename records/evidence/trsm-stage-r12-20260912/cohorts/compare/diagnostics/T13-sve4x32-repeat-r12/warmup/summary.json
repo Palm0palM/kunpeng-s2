@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "cohort_id": "trsm-kml251-b9ae2bf8464f",
+  "member": "T13-sve4x32-repeat-r12",
+  "job_id": "1579645",
+  "started_at": "2026-09-12T10:49:08Z",
+  "protocol": {
+    "protocol_id": "trsm-r12-one-official-warmup-v1",
+    "declared_at": "2026-09-12T10:44:32.486169+00:00",
+    "declared_before_new_performance_data": true,
+    "purpose": "One identical full official suite per member after general preflight, to apply the startup-warming protocol declared before viewing r12 measurements.",
+    "runner": "./run.sh",
+    "TEST_RUNS": "3",
+    "cases": [
+      [
+        512,
+        19968
+      ],
+      [
+        2432,
+        17024
+      ],
+      [
+        17024,
+        512
+      ]
+    ],
+    "excluded_from_comparison": true,
+    "formal_suites_per_member": 3,
+    "formal_sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  },
+  "warmup_suites_completed": 1,
+  "passed": true,
+  "runner_exit_code": 0,
+  "environment": {
+    "env_values": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc",
+      "KML251_ROOT": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0",
+      "KML251_ARCH": "sme",
+      "KML251_LIBDIR": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi",
+      "COMPILER_ROOT": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux",
+      "GOMP_LIBRARY": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1.0.0",
+      "CPATH": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include",
+      "LIBRARY_PATH": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib",
+      "LD_LIBRARY_PATH": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib:/opt/stars:",
+      "COMPILER_VERSION": "gcc (gcc for openEuler 3.0.2) 12.3.1"
+    },
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": [
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151
+    ]
+  },
+  "excluded_from_comparison": true,
+  "raw_log": "warmup.log",
+  "linkage_log": "warmup-linkage.log",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "time_ms": 19.81,
+      "gflops": 264.2053,
+      "max_error": 1.67e-16,
+      "status": "PASS",
+      "raw_line": "   512 x 19968        19.81     264.2053     1.67e-16     PASS"
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "time_ms": 226.95,
+      "gflops": 443.6612,
+      "max_error": 2.22e-16,
+      "status": "PASS",
+      "raw_line": "  2432 x 17024       226.95     443.6612     2.22e-16     PASS"
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "time_ms": 181.21,
+      "gflops": 818.8541,
+      "max_error": 1.11e-15,
+      "status": "PASS",
+      "raw_line": " 17024 x   512       181.21     818.8541     1.11e-15     PASS"
+    }
+  ],
+  "official_log_directory": "results/run-20260912-184908-fLrCQA",
+  "dependency_audit": {
+    "passed": true,
+    "ldd_exit_code": 0,
+    "kml251_linked_library": "/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0",
+    "gomp_linked_library": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1.0.0",
+    "log": "warmup-linkage.log"
+  },
+  "case_pass_count": 3,
+  "official_completion_markers": 1,
+  "finished_at": "2026-09-12T10:49:16Z"
+}

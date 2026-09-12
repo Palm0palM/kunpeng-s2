@@ -1,0 +1,99 @@
+{
+  "phase": "interleaved-shared-L-production-static1-after-r12",
+  "reference": "Huawei KML 25.1.0 with private GCC 12.3.1; not specified official KML 25.2.0",
+  "members": [
+    {
+      "version": "T8-control12",
+      "parent": null,
+      "source_implementation_id": "T8-svepanel16",
+      "strategy": "已晋级T8-svepanel16原样三轮复测，建立本轮KML25.1/GCC12基线；后续以同版本新run和候选同分配交错比较。",
+      "run_name": "T8-control12-repeat-r13",
+      "source_from": "T8-control12",
+      "repeat_existing": true
+    },
+    {
+      "version": "T10-lhistbarrier",
+      "parent": "T8-control12",
+      "source_implementation_id": "T10-lhistbarrier",
+      "strategy": "从T9-lhistpack出发，只在历史循环每四次FMA后增加空asm编译器约束，限制系数广播同时存活，尝试消除实际GCC12每k的Z系数spill；其它打包/算法/精度不变，性能仍对照T8。",
+      "run_name": "T10-lhistbarrier-repeat-r13",
+      "source_from": "T10-lhistbarrier",
+      "repeat_existing": true
+    },
+    {
+      "run_name": "T14-lhistcyclic",
+      "version": "T14-lhistcyclic",
+      "parent": "T8-control12",
+      "source_from": "T14-lhistcyclic",
+      "source_implementation_id": "T14-lhistcyclic",
+      "strategy": "From unpromoted T10-lhistbarrier, change only the shared packed_history production loop from schedule(static) to schedule(static,1). Preserve packed layout, arithmetic, compiler barriers, consumer scheduling, allocation/fallback, OpenMP barriers and the T8 large path. Compare with unchanged T10 to isolate production scheduling; promotion remains against current T8 baseline."
+    }
+  ],
+  "measurement_protocol": {
+    "warmup_suites_per_member": 1,
+    "warmup_order": [
+      "T8-control12-repeat-r13",
+      "T10-lhistbarrier-repeat-r13",
+      "T14-lhistcyclic"
+    ],
+    "formal_round_order": [
+      [
+        "T8-control12-repeat-r13",
+        "T10-lhistbarrier-repeat-r13",
+        "T14-lhistcyclic"
+      ],
+      [
+        "T10-lhistbarrier-repeat-r13",
+        "T14-lhistcyclic",
+        "T8-control12-repeat-r13"
+      ],
+      [
+        "T14-lhistcyclic",
+        "T8-control12-repeat-r13",
+        "T10-lhistbarrier-repeat-r13"
+      ]
+    ],
+    "formal_suites_per_member": 3,
+    "TEST_RUNS": 3,
+    "formal_case_count": 27,
+    "warmup_case_count": 9,
+    "sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  },
+  "preflight": {
+    "module": "preflight",
+    "source": "r7 packed-L-aware general preflight",
+    "members": {
+      "T8-control12-repeat-r13": {
+        "old_micro": 14,
+        "packed_micro": 0,
+        "whole": 406,
+        "noop": 28,
+        "shared_fail": 0
+      },
+      "T10-lhistbarrier-repeat-r13": {
+        "old_micro": 14,
+        "packed_micro": 14,
+        "whole": 486,
+        "noop": 36,
+        "shared_fail": 80
+      },
+      "T14-lhistcyclic": {
+        "old_micro": 14,
+        "packed_micro": 14,
+        "whole": 486,
+        "noop": 36,
+        "shared_fail": 80
+      }
+    },
+    "wide_preflight": false
+  },
+  "comparison_policy": {
+    "promotion_parent": "T8-control12",
+    "mechanism_pair": [
+      "T10-lhistbarrier",
+      "T14-lhistcyclic"
+    ],
+    "mechanism_comparison_is_not_promotion": true,
+    "note": "Only the T8-parent comparison can authorize promotion. The separate T10/T14 pair isolates the single scheduling change."
+  }
+}

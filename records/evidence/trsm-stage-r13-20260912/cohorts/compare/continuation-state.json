@@ -1,0 +1,33 @@
+{
+  "updated_at": "2026-09-12T11:06:21.570828+00:00",
+  "status": "collected_recorded_no_promotion",
+  "job_id": "1579673",
+  "cohort_id": "trsm-kml251-d7f667784eb8",
+  "start_time_local": "2026/09/12 19:05:14",
+  "members": [
+    "T8-control12-repeat-r13",
+    "T10-lhistbarrier-repeat-r13",
+    "T14-lhistcyclic"
+  ],
+  "expected_formal_passes": 27,
+  "expected_warmup_passes": 9,
+  "formal_rounds": "ABC/BCA/CAB",
+  "prior_runs": {
+    "T8-control12": "r12 job1579645",
+    "T10-lhistbarrier": "r7 job1579401"
+  },
+  "next_action": "Complete assembly review, archive once, publish r13 report. r14 T17/T18 and budget preflight are being prepared; no r14 payload/job.",
+  "archive_script": ".runs/trsm/archive-r13.py",
+  "archive_status": "being prepared by wide_shape_followup; do not execute before complete results",
+  "best_implementation": "T8-svepanel16",
+  "last_published_pr": "https://github.com/Palm0palM/kunpeng-s2/pull/20",
+  "no_local_task_tests": true,
+  "no_hash_operations": true,
+  "no_reset_credit": true,
+  "no_shutdown": true,
+  "previous_goal_turn": "progress: r12 comparison completed, PR20 merged, r13 submitted and scheduler confirmed RUNNING.",
+  "scheduler_state": "SUCCEEDED",
+  "end_time_local": "2026/09/12 19:09:17",
+  "formal_pass_count": 27,
+  "warmup_pass_count": 9
+}

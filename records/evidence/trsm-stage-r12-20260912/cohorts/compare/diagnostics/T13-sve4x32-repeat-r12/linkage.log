@@ -1,0 +1,48 @@
+LINKAGE_REPEAT 1/3 BEGIN
+JOB_ID=1579645
+BINARY=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-b9ae2bf8464f/T13-sve4x32-repeat-r12/source/trsm_test
+LDD_EXIT_CODE=0
+	linux-vdso.so.1 (0x0000400037b14000)
+	libm.so.6 => /usr/lib64/libm.so.6 (0x0000400037b30000)
+	libkblas.so.25.1.0 => /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0 (0x0000400037be0000)
+	libgomp.so.1 => /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1 (0x000040003dd20000)
+	libc.so.6 => /usr/lib64/libc.so.6 (0x000040003dd90000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400037aea000)
+	libdl.so.2 => /usr/lib64/libdl.so.2 (0x000040003df50000)
+	libpthread.so.0 => /usr/lib64/libpthread.so.0 (0x000040003df80000)
+KML251_LINKED_LIBRARY=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0
+GOMP_LINKED_LIBRARY=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1.0.0
+KML251_DEPENDENCY_AUDIT_PASS=1
+LINKAGE_REPEAT 1/3 END
+LINKAGE_REPEAT 2/3 BEGIN
+JOB_ID=1579645
+BINARY=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-b9ae2bf8464f/T13-sve4x32-repeat-r12/source/trsm_test
+LDD_EXIT_CODE=0
+	linux-vdso.so.1 (0x000040000bd45000)
+	libm.so.6 => /usr/lib64/libm.so.6 (0x000040000bd60000)
+	libkblas.so.25.1.0 => /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0 (0x000040000be10000)
+	libgomp.so.1 => /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1 (0x0000400011f50000)
+	libc.so.6 => /usr/lib64/libc.so.6 (0x0000400011fc0000)
+	/lib/ld-linux-aarch64.so.1 (0x000040000bd1b000)
+	libdl.so.2 => /usr/lib64/libdl.so.2 (0x0000400012180000)
+	libpthread.so.0 => /usr/lib64/libpthread.so.0 (0x00004000121b0000)
+KML251_LINKED_LIBRARY=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0
+GOMP_LINKED_LIBRARY=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1.0.0
+KML251_DEPENDENCY_AUDIT_PASS=1
+LINKAGE_REPEAT 2/3 END
+LINKAGE_REPEAT 3/3 BEGIN
+JOB_ID=1579645
+BINARY=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-b9ae2bf8464f/T13-sve4x32-repeat-r12/source/trsm_test
+LDD_EXIT_CODE=0
+	linux-vdso.so.1 (0x000040002de1a000)
+	libm.so.6 => /usr/lib64/libm.so.6 (0x000040002de40000)
+	libkblas.so.25.1.0 => /opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0 (0x000040002def0000)
+	libgomp.so.1 => /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1 (0x0000400034020000)
+	libc.so.6 => /usr/lib64/libc.so.6 (0x0000400034090000)
+	/lib/ld-linux-aarch64.so.1 (0x000040002ddf0000)
+	libdl.so.2 => /usr/lib64/libdl.so.2 (0x0000400034250000)
+	libpthread.so.0 => /usr/lib64/libpthread.so.0 (0x0000400034280000)
+KML251_LINKED_LIBRARY=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi/libkblas.so.25.1.0
+GOMP_LINKED_LIBRARY=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1.0.0
+KML251_DEPENDENCY_AUDIT_PASS=1
+LINKAGE_REPEAT 3/3 END
