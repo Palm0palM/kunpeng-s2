@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "problem": "trsm",
-  "version": "T8-control12",
-  "parent": null,
-  "source_from": "T8-svepanel16",
-  "source_implementation_id": "T8-svepanel16",
-  "strategy": "已晋级T8-svepanel16原样三轮复测，建立本轮KML25.1/GCC12基线；后续以同版本新run和候选同分配交错比较。",
-  "created_at": "2026-09-12T06:57:42.239623+00:00",
+  "version": "T13-sve4x32",
+  "parent": "T8-control12",
+  "source_from": "T13-sve4x32",
+  "source_implementation_id": "T13-sve4x32",
+  "strategy": "From T8, use a 4-row x 32-column SVE update for complete 32-column regions of the large path. Reuse four L coefficients across four RHS vectors, preserving increasing-k FMA, one final C subtraction, KB256/CT64, packing, scheduling, tails and fallback. More X input bytes are an explicit tradeoff; test actual performance against T8.",
+  "created_at": "2026-09-12T10:10:18.627982+00:00",
   "status": "passed",
   "verified": true,
   "validation_policy": "user-requested-no-hash",
@@ -48,18 +48,18 @@
         19968
       ],
       "times_ms": [
-        18.95,
-        18.55,
-        18.68
+        18.97,
+        18.75,
+        18.82
       ],
-      "median_ms": 18.68,
-      "min_ms": 18.55,
-      "max_ms": 18.95,
-      "spread_pct": 2.141327623126331,
+      "median_ms": 18.82,
+      "min_ms": 18.75,
+      "max_ms": 18.97,
+      "spread_pct": 1.1689691817215666,
       "gflops": [
-        276.2169,
-        282.1195,
-        280.2163
+        275.9048,
+        279.1928,
+        278.1501
       ],
       "max_error": 1.67e-16
     },
@@ -69,18 +69,18 @@
         17024
       ],
       "times_ms": [
-        249.22,
-        231.62,
-        233.09
+        233.82,
+        225.36,
+        236.37
       ],
-      "median_ms": 233.09,
-      "min_ms": 231.62,
-      "max_ms": 249.22,
-      "spread_pct": 7.550731477111842,
+      "median_ms": 233.82,
+      "min_ms": 225.36,
+      "max_ms": 236.37,
+      "spread_pct": 4.708750320759555,
       "gflops": [
-        404.0227,
-        434.721,
-        431.9748
+        430.6321,
+        446.7909,
+        425.9948
       ],
       "max_error": 2.22e-16
     },
@@ -90,27 +90,27 @@
         512
       ],
       "times_ms": [
-        193.55,
-        193.32,
-        193.44
+        180.89,
+        184.3,
+        180.77
       ],
-      "median_ms": 193.44,
-      "min_ms": 193.32,
-      "max_ms": 193.55,
-      "spread_pct": 0.11889991728702347,
+      "median_ms": 180.89,
+      "min_ms": 180.77,
+      "max_ms": 184.3,
+      "spread_pct": 1.951462214605562,
       "gflops": [
-        766.6354,
-        767.5523,
-        767.104
+        820.3089,
+        805.1302,
+        820.8418
       ],
       "max_error": 1.11e-15
     }
   ],
   "repeats": 3,
-  "total_median_ms": 445.21000000000004,
+  "total_median_ms": 433.53,
   "official_score": null,
   "ranking": null,
-  "recorded_at": "2026-09-12T10:18:10.945697+00:00",
+  "recorded_at": "2026-09-12T10:18:10.993460+00:00",
   "environment": "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579585",
   "reference": "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
   "machine": {
@@ -145,8 +145,7 @@
     "benchmark_matches_current_trsm_bytes": true,
     "runner_matches_current_trsm_bytes": true,
     "local_source_files_present": true,
-    "record_snapshot_matches_live_bytes": true,
-    "repeat_existing_preconditions_still_valid": true
+    "record_snapshot_matches_live_bytes": true
   },
   "kml_evidence_schema": "trsm-kml251-gcc1231-linkage-v1",
   "intended_reference_version": "KML 25.1.0",
@@ -156,54 +155,8 @@
   "hash_validation": "not performed: prohibited by user",
   "legacy_hash_fields": "Any inherited hash values are preserved metadata only; not recomputed or validated",
   "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
-  "run_dir": ".runs/trsm/T8-control12-repeat-r10",
-  "nohash_evidence": ".runs/trsm/T8-control12-repeat-r10/nohash-recorded-evidence",
-  "log": ".runs/trsm/T8-control12-repeat-r10/nohash-recorded-evidence/benchmark.log",
-  "metric": "sum of per-case median ms; not official score",
-  "promotion_validation_policy": "user-requested-no-hash",
-  "promoted_at": "2026-09-12T08:25:29.941998+00:00",
-  "repeat_existing": true,
-  "repeat_requested_at": "2026-09-12T10:10:18.625742+00:00",
-  "previous_runs": [
-    {
-      "record_file": ".runs/trsm/T8-control12-repeat-r6/prior-record.json",
-      "run_dir": ".runs/trsm/T8-control12",
-      "nohash_evidence": ".runs/trsm/T8-control12/nohash-recorded-evidence",
-      "recorded_at": "2026-09-12T08:25:15.564062+00:00",
-      "job_id": "1579357",
-      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
-    },
-    {
-      "record_file": ".runs/trsm/T8-control12-repeat-r7/prior-record.json",
-      "run_dir": ".runs/trsm/T8-control12-repeat-r6",
-      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r6/nohash-recorded-evidence",
-      "recorded_at": "2026-09-12T08:34:37.584779+00:00",
-      "job_id": "1579365",
-      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
-    },
-    {
-      "record_file": ".runs/trsm/T8-control12-repeat-r8/prior-record.json",
-      "run_dir": ".runs/trsm/T8-control12-repeat-r7",
-      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r7/nohash-recorded-evidence",
-      "recorded_at": "2026-09-12T08:57:55.248661+00:00",
-      "job_id": "1579401",
-      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
-    },
-    {
-      "record_file": ".runs/trsm/T8-control12-repeat-r9/prior-record.json",
-      "run_dir": ".runs/trsm/T8-control12-repeat-r8",
-      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r8/nohash-recorded-evidence",
-      "recorded_at": "2026-09-12T09:26:34.031494+00:00",
-      "job_id": "1579444",
-      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
-    },
-    {
-      "record_file": ".runs/trsm/T8-control12-repeat-r10/prior-record.json",
-      "run_dir": ".runs/trsm/T8-control12-repeat-r9",
-      "nohash_evidence": ".runs/trsm/T8-control12-repeat-r9/nohash-recorded-evidence",
-      "recorded_at": "2026-09-12T09:53:06.467317+00:00",
-      "job_id": "1579479",
-      "promoted_at": "2026-09-12T08:25:29.941998+00:00"
-    }
-  ]
+  "run_dir": ".runs/trsm/T13-sve4x32",
+  "nohash_evidence": ".runs/trsm/T13-sve4x32/nohash-recorded-evidence",
+  "log": ".runs/trsm/T13-sve4x32/nohash-recorded-evidence/benchmark.log",
+  "metric": "sum of per-case median ms; not official score"
 }

@@ -1,0 +1,15 @@
+{
+  "state": "collected",
+  "cohort_id": "trsm-kml251-2ead04533b42",
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-2ead04533b42",
+  "created_at": "2026-09-12T10:10:18.622597+00:00",
+  "job_id": "1579585",
+  "phase": "interleaved-wide4x32-after-r9",
+  "validation_policy": "No hash computation or validation at explicit user request",
+  "upload_command": "mkdir /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-2ead04533b42 && tar -xzf - -C /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-2ead04533b42",
+  "submit_command": "dsub -n trsm-kml251-2ead04533b42 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-2ead04533b42/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-2ead04533b42/remote_job.sh",
+  "submission_started_at": "2026-09-12T10:10:24.000472+00:00",
+  "submitted_at": "2026-09-12T10:10:24.586285+00:00",
+  "identity_marker_sent_at": "2026-09-12T10:10:24.906178+00:00",
+  "collected_at": "2026-09-12T10:18:07.746411+00:00"
+}
