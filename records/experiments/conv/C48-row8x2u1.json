@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C48-row8x2u1",
+  "parent": "C40-row6x3u1",
+  "strategy": "Independent eight-row by two-vector single-column tile replacing only C40 specialized six-row by three-vector tile and its dispatch; 16 accumulators and fifteen phases; input-load savings trade against 50 percent higher coefficient-broadcast amortization; source-only preparation",
+  "created_at": "2026-09-12T11:29:37.413294+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "8623781dc784547e31b07facd65507b56ff40f6b5da3e617c1ef53f4a4f7f7c3",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "prepared",
+  "source_parent": "C40-row6x3u1",
+  "rows_per_group": 8,
+  "vectors_per_row": 2,
+  "total_accumulators": 16,
+  "kernel_columns_per_iteration": 1,
+  "stage_count": 15,
+  "formal_best_label": "C6",
+  "reference_only": false,
+  "source_hypothesis": "Replace the specialized 6x3VL tile by8x2VL; source-level lower input loads/output trades for50% more coefficient broadcasts/output; no measured claim",
+  "source_scope": "Specialized helper and initial row-group dispatch only; all C6 helpers/legacy dispatch/nonSVE and other submission files preserved",
+  "parent_measurement_context": "C40 G failed noise gates; J independent repeat qualified; K confirmation failed own C-case spread gate. C40 is not promoted; C6 remains formal.",
+  "prepared_execution_policy": "Source only. No diagnostic package, local compile/tests, SSH, job, reset, or publication. Root independent review required.",
+  "note": "Prepared source-only: C40 specialized6x3VL ->8x2VL,16acc,fifteen single-column phases and eight-row dispatch; original C6 helpers/fallback/nonSVE and build retained. Static kernel-order, rows/columns,size_t,remainder1..7 reviewed; generator eighth pointer named krow_h to avoid kh shadowing. Input-load reduction trades for50% greater coefficient broadcast amortization. No compile/tests/SSH/jobs/diagnostic/reset; C6 unchanged.",
+  "updated_at": "2026-09-12T11:33:13.529831+00:00",
+  "verified": false
+}

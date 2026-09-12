@@ -1,0 +1,3 @@
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=1
+FULL_MATRIX_COUNTS core=2808 narrow=144 small=576 larger=32
+PASS: 3560 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference

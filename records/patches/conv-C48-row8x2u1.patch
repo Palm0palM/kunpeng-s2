@@ -1,0 +1,547 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -1231,43 +1231,43 @@
+ #endif
+ 
+ #if CONV_CAN_DISPATCH_SVE
+-/* Six outputs share input row t; output r consumes kernel row t-r.
++/* Eight outputs share input row t; output r consumes kernel row t-r.
+  * Each output retains the original kernel-row/column order and separate mul/add. */
+ __attribute__((target("arch=armv8-a+sve"), noinline))
+-static void conv_sve_rowsix(const float *restrict base, size_t stride,
+-                             const float *restrict kernel, int kh, int kw,
+-                             float *restrict dst0, float *restrict dst1,
+-                             float *restrict dst2, float *restrict dst3,
+-                             float *restrict dst4, float *restrict dst5, int ow)
++static void conv_sve_roweight(const float *restrict base, size_t stride,
++                               const float *restrict kernel, int kh, int kw,
++                               float *restrict dst0, float *restrict dst1,
++                               float *restrict dst2, float *restrict dst3,
++                               float *restrict dst4, float *restrict dst5,
++                               float *restrict dst6, float *restrict dst7, int ow)
+ {
+-    if (kh < 6) {
++    if (kh < 8) {
+         conv_sve_rowquad(base, stride, kernel, kh, kw, dst0, dst1, dst2, dst3, ow);
+-        conv_sve_rowpair(base + (size_t)4 * stride, stride, kernel, kh, kw, dst4, dst5, ow);
++        conv_sve_rowquad(base + (size_t)4 * stride, stride, kernel, kh, kw,
++                         dst4, dst5, dst6, dst7, ow);
+         return;
+     }
+     const int lanes = (int)svcntw();
+-    const int block = 3 * lanes;
++    const int block = 2 * lanes;
+     const svbool_t pg = svptrue_b32();
+     int i = 0;
+     for (; ow - i >= block; i += block) {
+         svfloat32_t a0 = svdup_n_f32(0.0f);
+         svfloat32_t a1 = svdup_n_f32(0.0f);
+-        svfloat32_t a2 = svdup_n_f32(0.0f);
+         svfloat32_t b0 = svdup_n_f32(0.0f);
+         svfloat32_t b1 = svdup_n_f32(0.0f);
+-        svfloat32_t b2 = svdup_n_f32(0.0f);
+         svfloat32_t c0 = svdup_n_f32(0.0f);
+         svfloat32_t c1 = svdup_n_f32(0.0f);
+-        svfloat32_t c2 = svdup_n_f32(0.0f);
+         svfloat32_t d0 = svdup_n_f32(0.0f);
+         svfloat32_t d1 = svdup_n_f32(0.0f);
+-        svfloat32_t d2 = svdup_n_f32(0.0f);
+         svfloat32_t e0 = svdup_n_f32(0.0f);
+         svfloat32_t e1 = svdup_n_f32(0.0f);
+-        svfloat32_t e2 = svdup_n_f32(0.0f);
+         svfloat32_t f0 = svdup_n_f32(0.0f);
+         svfloat32_t f1 = svdup_n_f32(0.0f);
+-        svfloat32_t f2 = svdup_n_f32(0.0f);
++        svfloat32_t g0 = svdup_n_f32(0.0f);
++        svfloat32_t g1 = svdup_n_f32(0.0f);
++        svfloat32_t h0 = svdup_n_f32(0.0f);
++        svfloat32_t h1 = svdup_n_f32(0.0f);
+         /* Input row 0: start output 0 and advance earlier outputs. */
+         {
+             const float *row = base + i;
+@@ -1282,10 +1282,6 @@
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
+                     a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
+                 }
+             }
+         }
+@@ -1307,11 +1303,6 @@
+                     const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
+                     a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
+                     b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
+-                    b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
+                 }
+             }
+         }
+@@ -1337,12 +1328,6 @@
+                     a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
+                     b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
+                     c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
+-                    b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
+-                    c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
+                 }
+             }
+         }
+@@ -1372,13 +1357,6 @@
+                     b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
+                     c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
+                     d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
+-                    b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
+-                    c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
+-                    d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
+                 }
+             }
+         }
+@@ -1413,25 +1391,17 @@
+                     d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
+                     e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
+                 }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
+-                    b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
+-                    c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
+-                    d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
+-                    e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
+-                }
+-            }
+-        }
+-        /* Shared input rows advance all six outputs in strict kernel-column order. */
+-        for (int t = 5; t < kh; ++t) {
+-            const float *row = base + (size_t)t * stride + i;
+-            const float *ka = kernel + ((size_t)t) * (size_t)kw;
+-            const float *kb = kernel + ((size_t)t - 1) * (size_t)kw;
+-            const float *kc = kernel + ((size_t)t - 2) * (size_t)kw;
+-            const float *kd = kernel + ((size_t)t - 3) * (size_t)kw;
+-            const float *ke = kernel + ((size_t)t - 4) * (size_t)kw;
+-            const float *kf = kernel + ((size_t)t - 5) * (size_t)kw;
++            }
++        }
++        /* Input row 5: start output 5 and advance earlier outputs. */
++        {
++            const float *row = base + (size_t)5 * stride + i;
++            const float *ka = kernel + ((size_t)5) * (size_t)kw;
++            const float *kb = kernel + ((size_t)4) * (size_t)kw;
++            const float *kc = kernel + ((size_t)3) * (size_t)kw;
++            const float *kd = kernel + ((size_t)2) * (size_t)kw;
++            const float *ke = kernel + ((size_t)1) * (size_t)kw;
++            const float *kf = kernel;
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1458,14 +1428,91 @@
+                     e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
+                     f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
+                 }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
+-                    b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
+-                    c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
+-                    d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
+-                    e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
+-                    f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
++            }
++        }
++        /* Input row 6: start output 6 and advance earlier outputs. */
++        {
++            const float *row = base + (size_t)6 * stride + i;
++            const float *ka = kernel + ((size_t)6) * (size_t)kw;
++            const float *kb = kernel + ((size_t)5) * (size_t)kw;
++            const float *kc = kernel + ((size_t)4) * (size_t)kw;
++            const float *kd = kernel + ((size_t)3) * (size_t)kw;
++            const float *ke = kernel + ((size_t)2) * (size_t)kw;
++            const float *kf = kernel + ((size_t)1) * (size_t)kw;
++            const float *kg = kernel;
++            for (int ik = 0; ik < kw; ++ik) {
++                const svfloat32_t ak = svdup_n_f32(ka[ik]);
++                const svfloat32_t bk = svdup_n_f32(kb[ik]);
++                const svfloat32_t ck = svdup_n_f32(kc[ik]);
++                const svfloat32_t dk = svdup_n_f32(kd[ik]);
++                const svfloat32_t ek = svdup_n_f32(ke[ik]);
++                const svfloat32_t fk = svdup_n_f32(kf[ik]);
++                const svfloat32_t gk = svdup_n_f32(kg[ik]);
++                /* One source-level input window; GCC may reschedule. */
++                {
++                    const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
++                    a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
++                    b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
++                    c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
++                    d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
++                    e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
++                    f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
++                    g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
++                }
++                {
++                    const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
++                    a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
++                    b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
++                    c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
++                    d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
++                    e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
++                    f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
++                    g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
++                }
++            }
++        }
++        /* Shared input rows advance all eight outputs in strict kernel-column order. */
++        for (int t = 7; t < kh; ++t) {
++            const float *row = base + (size_t)t * stride + i;
++            const float *ka = kernel + ((size_t)t) * (size_t)kw;
++            const float *kb = kernel + ((size_t)t - 1) * (size_t)kw;
++            const float *kc = kernel + ((size_t)t - 2) * (size_t)kw;
++            const float *kd = kernel + ((size_t)t - 3) * (size_t)kw;
++            const float *ke = kernel + ((size_t)t - 4) * (size_t)kw;
++            const float *kf = kernel + ((size_t)t - 5) * (size_t)kw;
++            const float *kg = kernel + ((size_t)t - 6) * (size_t)kw;
++            const float *krow_h = kernel + ((size_t)t - 7) * (size_t)kw;
++            for (int ik = 0; ik < kw; ++ik) {
++                const svfloat32_t ak = svdup_n_f32(ka[ik]);
++                const svfloat32_t bk = svdup_n_f32(kb[ik]);
++                const svfloat32_t ck = svdup_n_f32(kc[ik]);
++                const svfloat32_t dk = svdup_n_f32(kd[ik]);
++                const svfloat32_t ek = svdup_n_f32(ke[ik]);
++                const svfloat32_t fk = svdup_n_f32(kf[ik]);
++                const svfloat32_t gk = svdup_n_f32(kg[ik]);
++                const svfloat32_t hk = svdup_n_f32(krow_h[ik]);
++                /* One source-level input window; GCC may reschedule. */
++                {
++                    const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
++                    a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
++                    b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
++                    c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
++                    d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
++                    e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
++                    f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
++                    g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
++                    h0 = svadd_f32_x(pg, h0, svmul_f32_x(pg, v, hk));
++                }
++                {
++                    const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
++                    a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
++                    b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
++                    c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
++                    d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
++                    e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
++                    f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
++                    g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
++                    h1 = svadd_f32_x(pg, h1, svmul_f32_x(pg, v, hk));
+                 }
+             }
+         }
+@@ -1477,12 +1524,16 @@
+             const float *kd = kernel + ((size_t)kh - 3) * (size_t)kw;
+             const float *ke = kernel + ((size_t)kh - 4) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 5) * (size_t)kw;
++            const float *kg = kernel + ((size_t)kh - 6) * (size_t)kw;
++            const float *krow_h = kernel + ((size_t)kh - 7) * (size_t)kw;
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+                 const svfloat32_t ck = svdup_n_f32(kc[ik]);
+                 const svfloat32_t dk = svdup_n_f32(kd[ik]);
+                 const svfloat32_t ek = svdup_n_f32(ke[ik]);
+                 const svfloat32_t fk = svdup_n_f32(kf[ik]);
++                const svfloat32_t gk = svdup_n_f32(kg[ik]);
++                const svfloat32_t hk = svdup_n_f32(krow_h[ik]);
+                 /* One source-level input window; GCC may reschedule. */
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
+@@ -1491,6 +1542,8 @@
+                     d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
+                     e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
+                     f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
++                    g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
++                    h0 = svadd_f32_x(pg, h0, svmul_f32_x(pg, v, hk));
+                 }
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
+@@ -1499,14 +1552,8 @@
+                     d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
+                     e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
+                     f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
+-                    c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
+-                    d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
+-                    e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
+-                    f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
++                    g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
++                    h1 = svadd_f32_x(pg, h1, svmul_f32_x(pg, v, hk));
+                 }
+             }
+         }
+@@ -1517,11 +1564,15 @@
+             const float *kd = kernel + ((size_t)kh - 2) * (size_t)kw;
+             const float *ke = kernel + ((size_t)kh - 3) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 4) * (size_t)kw;
++            const float *kg = kernel + ((size_t)kh - 5) * (size_t)kw;
++            const float *krow_h = kernel + ((size_t)kh - 6) * (size_t)kw;
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ck = svdup_n_f32(kc[ik]);
+                 const svfloat32_t dk = svdup_n_f32(kd[ik]);
+                 const svfloat32_t ek = svdup_n_f32(ke[ik]);
+                 const svfloat32_t fk = svdup_n_f32(kf[ik]);
++                const svfloat32_t gk = svdup_n_f32(kg[ik]);
++                const svfloat32_t hk = svdup_n_f32(krow_h[ik]);
+                 /* One source-level input window; GCC may reschedule. */
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
+@@ -1529,6 +1580,8 @@
+                     d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
+                     e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
+                     f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
++                    g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
++                    h0 = svadd_f32_x(pg, h0, svmul_f32_x(pg, v, hk));
+                 }
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
+@@ -1536,13 +1589,8 @@
+                     d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
+                     e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
+                     f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
+-                    d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
+-                    e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
+-                    f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
++                    g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
++                    h1 = svadd_f32_x(pg, h1, svmul_f32_x(pg, v, hk));
+                 }
+             }
+         }
+@@ -1552,28 +1600,30 @@
+             const float *kd = kernel + ((size_t)kh - 1) * (size_t)kw;
+             const float *ke = kernel + ((size_t)kh - 2) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 3) * (size_t)kw;
++            const float *kg = kernel + ((size_t)kh - 4) * (size_t)kw;
++            const float *krow_h = kernel + ((size_t)kh - 5) * (size_t)kw;
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t dk = svdup_n_f32(kd[ik]);
+                 const svfloat32_t ek = svdup_n_f32(ke[ik]);
+                 const svfloat32_t fk = svdup_n_f32(kf[ik]);
++                const svfloat32_t gk = svdup_n_f32(kg[ik]);
++                const svfloat32_t hk = svdup_n_f32(krow_h[ik]);
+                 /* One source-level input window; GCC may reschedule. */
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
+                     d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
+                     e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
+                     f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
++                    g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
++                    h0 = svadd_f32_x(pg, h0, svmul_f32_x(pg, v, hk));
+                 }
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
+                     d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
+                     e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
+                     f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
+-                    e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
+-                    f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
++                    g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
++                    h1 = svadd_f32_x(pg, h1, svmul_f32_x(pg, v, hk));
+                 }
+             }
+         }
+@@ -1582,24 +1632,27 @@
+             const float *row = base + ((size_t)kh + 3) * stride + i;
+             const float *ke = kernel + ((size_t)kh - 1) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 2) * (size_t)kw;
++            const float *kg = kernel + ((size_t)kh - 3) * (size_t)kw;
++            const float *krow_h = kernel + ((size_t)kh - 4) * (size_t)kw;
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ek = svdup_n_f32(ke[ik]);
+                 const svfloat32_t fk = svdup_n_f32(kf[ik]);
++                const svfloat32_t gk = svdup_n_f32(kg[ik]);
++                const svfloat32_t hk = svdup_n_f32(krow_h[ik]);
+                 /* One source-level input window; GCC may reschedule. */
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
+                     e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
+                     f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
++                    g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
++                    h0 = svadd_f32_x(pg, h0, svmul_f32_x(pg, v, hk));
+                 }
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
+                     e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
+                     f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
+-                    f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
++                    g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
++                    h1 = svadd_f32_x(pg, h1, svmul_f32_x(pg, v, hk));
+                 }
+             }
+         }
+@@ -1607,47 +1660,87 @@
+         {
+             const float *row = base + ((size_t)kh + 4) * stride + i;
+             const float *kf = kernel + ((size_t)kh - 1) * (size_t)kw;
++            const float *kg = kernel + ((size_t)kh - 2) * (size_t)kw;
++            const float *krow_h = kernel + ((size_t)kh - 3) * (size_t)kw;
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t fk = svdup_n_f32(kf[ik]);
++                const svfloat32_t gk = svdup_n_f32(kg[ik]);
++                const svfloat32_t hk = svdup_n_f32(krow_h[ik]);
+                 /* One source-level input window; GCC may reschedule. */
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
+                     f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
++                    g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
++                    h0 = svadd_f32_x(pg, h0, svmul_f32_x(pg, v, hk));
+                 }
+                 {
+                     const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
+                     f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
++                    g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
++                    h1 = svadd_f32_x(pg, h1, svmul_f32_x(pg, v, hk));
++                }
++            }
++        }
++        /* Trailing input row kh+5: finish output 6 and advance later outputs. */
++        {
++            const float *row = base + ((size_t)kh + 5) * stride + i;
++            const float *kg = kernel + ((size_t)kh - 1) * (size_t)kw;
++            const float *krow_h = kernel + ((size_t)kh - 2) * (size_t)kw;
++            for (int ik = 0; ik < kw; ++ik) {
++                const svfloat32_t gk = svdup_n_f32(kg[ik]);
++                const svfloat32_t hk = svdup_n_f32(krow_h[ik]);
++                /* One source-level input window; GCC may reschedule. */
++                {
++                    const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
++                    g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
++                    h0 = svadd_f32_x(pg, h0, svmul_f32_x(pg, v, hk));
++                }
++                {
++                    const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
++                    g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
++                    h1 = svadd_f32_x(pg, h1, svmul_f32_x(pg, v, hk));
++                }
++            }
++        }
++        /* Trailing input row kh+6: finish output 7 and advance later outputs. */
++        {
++            const float *row = base + ((size_t)kh + 6) * stride + i;
++            const float *krow_h = kernel + ((size_t)kh - 1) * (size_t)kw;
++            for (int ik = 0; ik < kw; ++ik) {
++                const svfloat32_t hk = svdup_n_f32(krow_h[ik]);
++                /* One source-level input window; GCC may reschedule. */
++                {
++                    const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
++                    h0 = svadd_f32_x(pg, h0, svmul_f32_x(pg, v, hk));
++                }
++                {
++                    const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
++                    h1 = svadd_f32_x(pg, h1, svmul_f32_x(pg, v, hk));
+                 }
+             }
+         }
+         svst1(pg, dst0 + i + 0 * lanes, a0);
+         svst1(pg, dst0 + i + 1 * lanes, a1);
+-        svst1(pg, dst0 + i + 2 * lanes, a2);
+         svst1(pg, dst1 + i + 0 * lanes, b0);
+         svst1(pg, dst1 + i + 1 * lanes, b1);
+-        svst1(pg, dst1 + i + 2 * lanes, b2);
+         svst1(pg, dst2 + i + 0 * lanes, c0);
+         svst1(pg, dst2 + i + 1 * lanes, c1);
+-        svst1(pg, dst2 + i + 2 * lanes, c2);
+         svst1(pg, dst3 + i + 0 * lanes, d0);
+         svst1(pg, dst3 + i + 1 * lanes, d1);
+-        svst1(pg, dst3 + i + 2 * lanes, d2);
+         svst1(pg, dst4 + i + 0 * lanes, e0);
+         svst1(pg, dst4 + i + 1 * lanes, e1);
+-        svst1(pg, dst4 + i + 2 * lanes, e2);
+         svst1(pg, dst5 + i + 0 * lanes, f0);
+         svst1(pg, dst5 + i + 1 * lanes, f1);
+-        svst1(pg, dst5 + i + 2 * lanes, f2);
++        svst1(pg, dst6 + i + 0 * lanes, g0);
++        svst1(pg, dst6 + i + 1 * lanes, g1);
++        svst1(pg, dst7 + i + 0 * lanes, h0);
++        svst1(pg, dst7 + i + 1 * lanes, h1);
+     }
+     if (i < ow) {
+         conv_sve_rowquad(base + i, stride, kernel, kh, kw,
+                          dst0 + i, dst1 + i, dst2 + i, dst3 + i, ow - i);
+-        conv_sve_rowpair(base + (size_t)4 * stride + i, stride, kernel, kh, kw,
+-                         dst4 + i, dst5 + i, ow - i);
++        conv_sve_rowquad(base + (size_t)4 * stride + i, stride, kernel, kh, kw,
++                         dst4 + i, dst5 + i, dst6 + i, dst7 + i, ow - i);
+     }
+ }
+ #endif
+@@ -1669,21 +1762,36 @@
+     const size_t stride = (size_t)inputWidth;
+ #if CONV_CAN_DISPATCH_SVE
+     const int use_sve = (getauxval(AT_HWCAP) & HWCAP_SVE) != 0;
+-    if (use_sve && kernelHeight >= 6 && oh >= 6) {
++    if (use_sve && kernelHeight >= 8 && oh >= 8) {
+         const size_t output_rows = (size_t)oh;
+         const size_t output_stride = (size_t)ow;
+-        const size_t groups = output_rows / 6 + (output_rows % 6 != 0);
++        const size_t groups = output_rows / 8 + (output_rows % 8 != 0);
+ #pragma omp parallel for schedule(static)
+         for (size_t group = 0; group < groups; ++group) {
+-            const size_t first_row = group * 6;
++            const size_t first_row = group * 8;
+             const size_t remaining = output_rows - first_row;
+             const float *base = input + first_row * stride;
+             float *dst = output + first_row * output_stride;
+-            if (remaining >= 6) {
+-                conv_sve_rowsix(base, stride, kernel, kernelHeight, kernelWidth,
+-                               dst, dst + output_stride, dst + 2 * output_stride,
+-                               dst + 3 * output_stride, dst + 4 * output_stride,
+-                               dst + 5 * output_stride, ow);
++            if (remaining >= 8) {
++                conv_sve_roweight(base, stride, kernel, kernelHeight, kernelWidth,
++                                 dst, dst + output_stride, dst + 2 * output_stride,
++                                 dst + 3 * output_stride, dst + 4 * output_stride,
++                                 dst + 5 * output_stride, dst + 6 * output_stride,
++                                 dst + 7 * output_stride, ow);
++            } else if (remaining == 7) {
++                conv_sve_rowquad(base, stride, kernel, kernelHeight, kernelWidth,
++                                 dst, dst + output_stride, dst + 2 * output_stride,
++                                 dst + 3 * output_stride, ow);
++                conv_sve_rowtriple(base + (size_t)4 * stride, stride, kernel,
++                                   kernelHeight, kernelWidth, dst + 4 * output_stride,
++                                   dst + 5 * output_stride, dst + 6 * output_stride, ow);
++            } else if (remaining == 6) {
++                conv_sve_rowquad(base, stride, kernel, kernelHeight, kernelWidth,
++                                 dst, dst + output_stride, dst + 2 * output_stride,
++                                 dst + 3 * output_stride, ow);
++                conv_sve_rowpair(base + (size_t)4 * stride, stride, kernel,
++                                 kernelHeight, kernelWidth, dst + 4 * output_stride,
++                                 dst + 5 * output_stride, ow);
+             } else if (remaining == 5) {
+                 conv_sve_rowquad(base, stride, kernel, kernelHeight, kernelWidth,
+                                  dst, dst + output_stride, dst + 2 * output_stride,

@@ -1,0 +1,11 @@
+# C48 independent source review
+
+Root independently read the emitted eight-row helper and full public dispatch, reviewed every actual stage address/accumulator mapping via lightweight source extraction, and compared unchanged surrounding text with C40. The generator was read as background, not run or treated as the numerical proof. No operator was compiled or executed locally, no SSH/job was created, and this is not a numerical PASS or performance result.
+
+No definite source-level blocker was found. Leading stages activate outputs0..t for t0..6; shared t7..kh-1 activates all8; trailing t=kh+q activates q+1..7. The emitted coefficient rows are exactly t-r. Thus fixed output r receives kernel rows0..kh-1 once, with each stage's ik0..kw-1 in order and separate svmul then svadd. All15 actual scopes have the matching two source windows row+ik+0/1*lanes, 64 correctly associated scalar broadcasts across the unrolled scopes, 128 source mul/add updates, and16 correctly mapped stores. krow_h avoids the earlier unmeasured generator's kh shadowing issue.
+
+Full blocks require ow-i>=2*lanes; the largest input column is i+2*lanes+kw-2<=inputWidth-1. The public path only groups eight when kh>=8 and oh>=8; group*8 is a valid output row and the full tile's largest input row is first_row+kh+6<=inputHeight-1. size_t widening occurs before row products/trailing offsets. Each full group owns eight outputs; remainders7/6/5 use quad plus triple/pair/prefix, then4/3/2/1 use original corresponding helpers. Two disjoint old quads handle the specialized helper's horizontal remainder and kh<8 defensive entry.
+
+All code before the old specialized helper, common conv2d validation/shape setup, original general-SVE fallback and nonSVE suffix, README, benchmark and runner remain the parent text. Only the specialized shape/helper and its first row grouping changed. The source-level input-load reduction trades against50% more coefficient broadcasts per output vector; neither the16acc budget nor this review proves target register allocation or speed.
+
+Proceeding to prepare a separate target diagnostic package is reasonable. Actual GCC10.3.1 compilation, fifteen-stage/transition/dispatch assembly, boundary and bitwise checks, six real VL/thread configurations and performance remain pending. Old C40/C47 numerical results cannot be reused as C48 execution.
