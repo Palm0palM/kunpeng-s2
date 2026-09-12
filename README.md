@@ -8,6 +8,8 @@ TRSM 最新提交包：**T8 = T8-svepanel16**，KML25.1/GCC12 同分配三轮较
 
 **提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C6、ZGEMM Z1、TRSM T8；各题 result 目录保留版本说明、验证范围与平台反馈字段。
 
+TRSM 第六轮比较已完成：两个新候选均未超过 T8，保留上述已验证提交包；完整三轮数据、数值预检和汇编发现见[本轮记录](docs/trsm-stage-r6-20260912.md)。
+
 ## 先把环境跑通
 
 1. 安装 Python 3，并确保本机可以使用 Git、SSH。本机配置位于 `config/cluster.local.json`；服务器主机密钥已按用户确认更新到 `config/known_hosts.local`。不要把密码、私钥、令牌写进仓库。

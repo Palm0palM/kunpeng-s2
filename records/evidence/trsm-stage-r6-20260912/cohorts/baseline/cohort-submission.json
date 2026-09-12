@@ -1,0 +1,17 @@
+{
+  "state": "collected",
+  "cohort_id": "trsm-kml251-d3fe2d277603",
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-d3fe2d277603",
+  "created_at": "2026-09-12T06:57:42.236392+00:00",
+  "job_id": "1579357",
+  "phase": "baseline",
+  "validation_policy": "No hash computation or validation at explicit user request",
+  "upload_command": "mkdir /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-d3fe2d277603 && tar -xzf - -C /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-d3fe2d277603",
+  "resumed_at": "2026-09-12T08:16:41.951238+00:00",
+  "resume_reason": "Previously failed before authentication; authenticated check confirms remote directory absent; no scheduler submission occurred",
+  "submit_command": "dsub -n trsm-kml251-d3fe2d277603 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-d3fe2d277603/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-d3fe2d277603/remote_job.sh",
+  "submission_started_at": "2026-09-12T08:16:53.498758+00:00",
+  "submitted_at": "2026-09-12T08:16:54.090264+00:00",
+  "identity_marker_sent_at": "2026-09-12T08:16:54.537694+00:00",
+  "collected_at": "2026-09-12T08:24:37.017579+00:00"
+}
