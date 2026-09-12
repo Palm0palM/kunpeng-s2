@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        18.63,
+        18.81,
+        18.91
+      ],
+      "median_ms": 18.81,
+      "min_ms": 18.63,
+      "max_ms": 18.91,
+      "spread_pct": 1.4885699096225475,
+      "gflops": [
+        281.0457,
+        278.262,
+        276.8014
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        244.01,
+        227.5,
+        237.09
+      ],
+      "median_ms": 237.09,
+      "min_ms": 227.5,
+      "max_ms": 244.01,
+      "spread_pct": 6.963600320553373,
+      "gflops": [
+        412.6548,
+        442.5948,
+        424.6972
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        194.85,
+        215.0,
+        194.58
+      ],
+      "median_ms": 194.85,
+      "min_ms": 194.58,
+      "max_ms": 215.0,
+      "spread_pct": 10.479856299717726,
+      "gflops": [
+        761.5291,
+        690.1535,
+        762.5926
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 450.75,
+  "official_score": null,
+  "ranking": null,
+  "job_id": "1576076",
+  "source_version": "T8-svepanel16",
+  "package_extracted_and_tested": true,
+  "reference": "KML 25.1.0; not specified KML 25.2.0",
+  "recorded_at": "2026-09-12T02:43:07.350898+00:00",
+  "hash_validation": "not performed at user request"
+}

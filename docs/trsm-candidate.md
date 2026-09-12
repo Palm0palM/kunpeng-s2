@@ -1,6 +1,8 @@
 # TRSM 当前最佳与候选记录
 
-当前最佳：**T7-diagpanel**。大工作集对角块改为在共享连续面板内求解，复用 4×8 NEON 前代并合并独立打包阶段；同分配三轮合计较 T5 减少 **8.06%**，大用例减少 **15.88%**。24 行 SVE 候选未晋级。[本轮记录](trsm-stage-r4-20260911.md)；[最终交付](trsm-final-20260911-r4.md)。
+当前最佳：**T8-svepanel16**。小工作集使用 16×8 SVE 历史点积与块内前代，大路径保持 T7；KML25.1/GCC12 同分配三轮合计由 508.56 降到 447.59 ms，耗时减少 **11.99%**，小/中用例分别减少 **21.46% / 18.88%**。27/27 官方结果通过，noinline 候选未晋级。真实 KML25.1 验证不等同指定 KML25.2.0 复验。[本轮记录](trsm-stage-r5-20260912.md)；[最终交付](trsm-final-20260912-r5.md)。
+
+此前最佳 **T7-diagpanel** 将大工作集对角块改为在共享连续面板内求解，复用 4×8 NEON 前代并合并独立打包阶段；OpenBLAS/GCC10 同分配三轮合计较 T5 减少 **8.06%**，大用例减少 **15.88%**。24 行 SVE 候选未晋级。[历史记录](trsm-stage-r4-20260911.md)；[历史交付](trsm-final-20260911-r4.md)。不同参考库和编译器的结果分别保留，不混算提速。
 
 此前 T5-sve16rows 的 16 行 SVE 更新继续保留；其同分配三轮较 T4 合计减少 2.28%，见[历史交付](trsm-final-20260911-r2.md)。
 
@@ -17,9 +19,9 @@
 
 2026-09-08 建立。当前最佳 `trsm/trsm.c` 已晋级为 **T1-panel 实现**，当前测量与晋级记录 ID 为 **T1-panel-r2**，父测量为源码等同 T0 的 T0-r3。原候选源码仍保存在 `.runs/trsm/T1-panel/source/trsm.c`；确认快照在 `.runs/trsm/T1-panel-r2/source/`，两者源码逐字节相同。
 
-**后续同分配确认与晋级：** 作业 1485286 将 T0-r3 和 T1-panel-r2 放入同一 COMPUTE_NODE_1、NUMA 6、CPU 228–265 分配交错执行三轮，18 个官方结果全部 PASS。合计中位数由 776.95 ms 降到 758.31 ms（改善 2.40%），大用例改善 3.71%；最大逐用例波动 2.26%，没有用例退步超过 1%，满足工具晋级门槛。已先建立等源码测量基线 T0-r3，再通过工具晋级 T1-panel-r2。参考库仍为 OpenBLAS，未完成官方 KML 复验，未正式提交比赛。另尝试的 KB=128 和两步循环展开未晋级。详见 [后续优化与晋级记录](trsm-continuation-20260908.md)。
+**后续同分配确认与晋级：** 作业 1485286 将 T0-r3 和 T1-panel-r2 放入同一 cn22965、NUMA 6、CPU 228–265 分配交错执行三轮，18 个官方结果全部 PASS。合计中位数由 776.95 ms 降到 758.31 ms（改善 2.40%），大用例改善 3.71%；最大逐用例波动 2.26%，没有用例退步超过 1%，满足工具晋级门槛。已先建立等源码测量基线 T0-r3，再通过工具晋级 T1-panel-r2。参考库仍为 OpenBLAS，未完成官方 KML 复验，未正式提交比赛。另尝试的 KB=128 和两步循环展开未晋级。详见 [后续优化与晋级记录](trsm-continuation-20260908.md)。
 
-**首轮鲲鹏测量（历史）：** 已用现有 T0、T1-panel 目录各完成三轮完整官方用例，每用例 `TEST_RUNS=3`。两作业在 COMPUTE_NODE_1、NUMA 6、CPU 228–265 使用相同 GCC 10.3.1 和 OpenBLAS 静态参考库，18 条结果全部 PASS。三组中位数合计由 781.24 ms 降至 761.41 ms（2.54%），大用例改善 4.02%；但小用例退步 2.16%，总体改善未超过 3.59% 波动门槛，当时未晋级。T0 当时通过工具建立为测量基线。首轮复测、T1-colreuse 实验和完整证据见 [首轮比较记录](trsm-comparison-20260908.md)。
+**首轮鲲鹏测量（历史）：** 已用现有 T0、T1-panel 目录各完成三轮完整官方用例，每用例 `TEST_RUNS=3`。两作业在 cn22965、NUMA 6、CPU 228–265 使用相同 GCC 10.3.1 和 OpenBLAS 静态参考库，18 条结果全部 PASS。三组中位数合计由 781.24 ms 降至 761.41 ms（2.54%），大用例改善 4.02%；但小用例退步 2.16%，总体改善未超过 3.59% 波动门槛，当时未晋级。T0 当时通过工具建立为测量基线。首轮复测、T1-colreuse 实验和完整证据见 [首轮比较记录](trsm-comparison-20260908.md)。
 
 计算节点检查确认当前官方模块路径缺失，`kblas.h` 和 `-lkblas` 不可用；本轮仅为 **OpenBLAS 参考环境下的官方用例验证，不是官方 KML 25.2.0 复验**。以下初始假设和本机检查保留为候选建立时的历史记录。
 
@@ -58,7 +60,7 @@ python3 tools/experiment.py new trsm T1-panel --parent T0 --strategy '大工作�
 
 ```bash
 mkdir -p .runs/trsm/T1-panel/local
-clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=address,undefined -fno-sanitize-recover=all -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /LOCAL_USER_HOME/Downloads/conv/other-problems/tests/check-final.c zgemm/zgemm.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-final
+clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=address,undefined -fno-sanitize-recover=all -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /Users/lingsu011900/Downloads/conv/other-problems/tests/check-final.c zgemm/zgemm.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-final
 clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=address,undefined -fno-sanitize-recover=all -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp .runs/trsm/T1-panel/local/check-packed.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-packed
 OMP_NUM_THREADS=1 .runs/trsm/T1-panel/local/check-final > .runs/trsm/T1-panel/local/check-final-t1.log 2>&1
 OMP_NUM_THREADS=4 .runs/trsm/T1-panel/local/check-packed > .runs/trsm/T1-panel/local/check-packed-t4.log 2>&1
@@ -67,7 +69,7 @@ OMP_NUM_THREADS=4 .runs/trsm/T1-panel/local/check-packed > .runs/trsm/T1-panel/l
 最初上面的 ASan+UBSan 两次运行被中断；以下是实际完成的 UBSan 编译与运行命令：
 
 ```bash
-clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /LOCAL_USER_HOME/Downloads/conv/other-problems/tests/check-final.c zgemm/zgemm.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-final-ubsan
+clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp /Users/lingsu011900/Downloads/conv/other-problems/tests/check-final.c zgemm/zgemm.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-final-ubsan
 clang -O2 -fno-fast-math -ffp-contract=off -fsanitize=undefined -fno-sanitize-recover=undefined -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -lomp .runs/trsm/T1-panel/local/check-packed.c .runs/trsm/T1-panel/source/trsm.c -o .runs/trsm/T1-panel/local/check-packed-ubsan
 OMP_NUM_THREADS=1 .runs/trsm/T1-panel/local/check-final-ubsan > .runs/trsm/T1-panel/local/check-final-t1.log 2>&1
 OMP_NUM_THREADS=4 .runs/trsm/T1-panel/local/check-final-ubsan > .runs/trsm/T1-panel/local/check-final-t4.log 2>&1

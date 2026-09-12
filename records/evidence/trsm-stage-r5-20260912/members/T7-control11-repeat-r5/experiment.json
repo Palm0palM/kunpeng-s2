@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T7-control11",
+  "parent": null,
+  "source_from": "T7-control11",
+  "source_implementation_id": "T7-diagpanel",
+  "strategy": "已晋级 T7-diagpanel 原样在 KML25.1/GCC12 下完成三轮完整官方用例，先建立本环境基线；无源码变化。",
+  "created_at": "2026-09-12T02:24:14.498472+00:00",
+  "status": "prepared",
+  "verified": false,
+  "validation_policy": "No hash computation or validation at explicit user request",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  }
+}
