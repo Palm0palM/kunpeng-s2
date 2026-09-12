@@ -1,0 +1,1219 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C52-row7x3shared2",
+  "job_id": "1582134",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1582134",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "expected_checks": {
+    "full_per_configuration": 4784,
+    "dispatch_per_configuration": 972,
+    "direct_per_configuration": 432,
+    "configurations": 6,
+    "total": 37128
+  },
+  "total_cases": 37128,
+  "full_cases": 28704,
+  "dispatch_cases": 5832,
+  "direct_cases": 2592,
+  "runner_cases": 0,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 12,
+      "full_cases": 4784,
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "passed": true,
+      "dispatch_entries": 756,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 1080,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 12,
+      "full_cases": 4784,
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "passed": true,
+      "dispatch_entries": 756,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 1080,
+      "direct_worker_mask": 15
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 24,
+      "full_cases": 4784,
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "passed": true,
+      "dispatch_entries": 756,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 1080,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 24,
+      "full_cases": 4784,
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "passed": true,
+      "dispatch_entries": 756,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 1080,
+      "direct_worker_mask": 15
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 48,
+      "full_cases": 4784,
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "passed": true,
+      "dispatch_entries": 756,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 1080,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 48,
+      "full_cases": 4784,
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "passed": true,
+      "dispatch_entries": 756,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 1080,
+      "direct_worker_mask": 15
+    }
+  ],
+  "source_hashes": {
+    "candidate.env": "0db61a149c7da0be9aa6a33fd19830c38fbdad02fcd74e6213ac31efcef15a05",
+    "check_conv_guard.c": "b11bfe06a6d09228ad0d4dc6ae3d7581642fb534a1bd612f94c86574f41cc307",
+    "check_sve_dispatch.c": "5751451998db3f2bee920afc78af05039d5b11949db5a4765aefe8553d4aacbc",
+    "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+    "remote_job.sh": "5f50319bf5208ddbd6fc7cad199d9d175077634a218e5a6bae6ce0a928dd37c3"
+  },
+  "source_hashes_verified": true,
+  "source_manifest_remote_matches": true,
+  "extra_manual_hash_audit": false,
+  "compiler_version": "10.3.1",
+  "build_commands": {
+    "commands": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=3",
+        "check_conv_guard.c",
+        "conv2d.c",
+        "-o",
+        "check_conv_guard"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=3",
+        "-finstrument-functions",
+        "check_sve_dispatch.c",
+        "-o",
+        "check_sve_dispatch"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=3",
+        "-S",
+        "conv2d.c",
+        "-o",
+        "conv2d-sve.s"
+      ]
+    ],
+    "actual_trace_locations": {
+      "probe.log": [
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=3",
+          "check_conv_guard.c",
+          "conv2d.c",
+          "-o",
+          "check_conv_guard"
+        ],
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=3",
+          "-finstrument-functions",
+          "check_sve_dispatch.c",
+          "-o",
+          "check_sve_dispatch"
+        ],
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=3",
+          "-S",
+          "conv2d.c",
+          "-o",
+          "conv2d-sve.s"
+        ]
+      ],
+      "build-guard.log": [],
+      "build-dispatch.log": [],
+      "build-assembly.log": []
+    }
+  },
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "allocation": {
+    "cpus": [
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151
+    ],
+    "numa_node": "node3"
+  },
+  "assembly": {
+    "candidate": "C52-row7x3shared2",
+    "job_id": "1582134",
+    "source_sha256": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+    "compiler_version": "10.3.1",
+    "assembly_sha256": "e42a1f618c0007479b282f963829b654b6d1b5a8dc8301c702f296586f8df220",
+    "helper_review_complete": true,
+    "production_uninstrumented": true,
+    "whole_helper_stack_reviewed": true,
+    "all_stages_and_transitions_reviewed": true,
+    "abi_saves_distinguished": true,
+    "shared_pair_and_remainder_reviewed": true,
+    "whole_source_fma_count": 0,
+    "shape": {
+      "rows_per_group": 7,
+      "vectors_per_row": 3,
+      "accumulators": 21
+    },
+    "shared_unroll": {
+      "paired_columns": 2,
+      "odd_remainder_columns": 1,
+      "other_stage_columns": 1
+    },
+    "whole_machine_code_identical_claimed": false,
+    "production_object_disassembly_available": false,
+    "helpers": [
+      {
+        "symbol": "conv_sve_rowseven",
+        "line_start": 5705,
+        "line_end": 7053,
+        "stack_frame_description": "Fixed720byte frame: sub sp,sp,#720 at5708; balanced add sp at6887(normal),6993(width-tail),7026(kh<7). No addvl/subvl or scalable vector area. Scalar X/W pointers,counters and outgoing arguments occupy frame. Caller stack arguments read at currentSP720..752. The tail branches store outgoing ow atSP720 before restoring original SP; this is the callee stack argument, not a spill.",
+        "spill_notes": "All1349 lines from actual function label5705 to.size7053 read, including prologue,13stage transitions,14arithmetic regions,zero-kw state path,21outputs,all restores and fallback/tail paths. No Z/Q/predicate spill loads/stores; D8..D14 save only low64bit ABI state. Source-level scope and21acc count were not used as spill proof.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "abi_saves": [
+          {
+            "registers": [
+              "d8",
+              "d9"
+            ],
+            "store_line": 5780,
+            "load_line": 6862,
+            "stack_offset": 112
+          },
+          {
+            "registers": [
+              "d10",
+              "d11"
+            ],
+            "store_line": 5785,
+            "load_line": 6865,
+            "stack_offset": 128
+          },
+          {
+            "registers": [
+              "d12",
+              "d13"
+            ],
+            "store_line": 5790,
+            "load_line": 6868,
+            "stack_offset": 144
+          },
+          {
+            "registers": [
+              "d14"
+            ],
+            "store_line": 5795,
+            "load_line": 6871,
+            "stack_offset": 160
+          }
+        ],
+        "transition_spill_review": "Prologue5705..5955 materializes only scalar address/counter slots. Its indirect stack alias x0=sp+664 at5765 is consumed by STP X at5800/5803 and subsequent scalar LDR X at6118..6120/6178..6180; no vector access through that alias. x29=sp+16 is frame pointer. Input stage transitions initialize exactly each newly active output chain. Shared transition and paired/odd details are separately recorded. All trailing transitions6471..6724 reload scalar pointers only. All21 stores and output-pointer advancement6725..6858 were read. kw<=0 .L4256920..6939 zeros the18 previously established accumulators; .L394 zeros final3, shared skips its arithmetic, trailing skip jumps.L411 to zero stores. No indirect vector stack storage.",
+        "tail_and_fallback_review": "Width guard cntw*3 at5742..5747; fullblock entry ensures all three predicated-all vectors remain within the current output span and the final input load obeys source halo geometry. Exactly21 ST1W at6731..6779 store rows0..6 vectors0/1/2, distinct output bases with block offsets0,VL,2VL. i increments3VL at6761; x28 and all cached column pointers increment3VL*4 at6763/6780..6855; final compare repeats only if ow-i>=3VL. D saves restore before.L393. Narrow ow<3VL .L4567036..7050 sets i=0,remaining=ow then.L393. Any positive remainder .L4576940..7001 calls quad on rows0..3 with base+i/dst+i/ow-i, restores frame and tail-calls triple on rows4..6 with base+4*stride+i. kh<=6 branch5735..5738 enters.L3917002..7035 before SVE-body saves; calls quad then frame-restored triple with base+4*stride and unchanged ow. Early routes never restore unsaved D or X27/X28 registers. Shared body makes no calls.",
+        "arithmetic_and_load_review": "Original separate FMUL/FADD retains kernel row/column order for each output. Actual final accumulator map: row0(z23,z22,z16),row1(z20,z21,z7),row2(z24,z25,z17),row3(z26,z27,z18),row4(z28,z29,z19),row5(z30,z31,z6),row6(z4,z5,z1). Paired region uses6 input LD1W,14 coefficient LD1RW and42ordinary FMUL/FADD; odd uses3/7/21/21. Other12 stages have3 LD1W,n LD1RW,3nordinary FMUL/FADD. All source assembly FMA lexemes0; no indexed FMUL,LD1RQW,DUP,indexed MOV,EXT,MOVPRFX in the14 regions. Both columns inputs/coefficients overlap in actual scheduling; no claimed one-window liveness guarantee. Counts describe assembly instructions, not dynamic cycles, objects, speed or official results.",
+        "stages": [
+          {
+            "stage": "input_0",
+            "label": ".L395",
+            "line_start": 5970,
+            "line_end": 5984,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input t=0; updates only output rows0..0 with kernel row t-r and three vectors per row; kernel-column counter advances1, each accumulator retains increasing column order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 14,
+              "fmul": 3,
+              "fmul_ordinary": 3,
+              "fmul_indexed": 0,
+              "fadd": 3,
+              "ld1w": 3,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 14.0,
+              "fmul": 3.0,
+              "fmul_ordinary": 3.0,
+              "fmul_indexed": 0.0,
+              "fadd": 3.0,
+              "ld1w": 3.0,
+              "ld1rw": 1.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "input_1",
+            "label": ".L397",
+            "line_start": 5993,
+            "line_end": 6016,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input t=1; updates only output rows0..1 with kernel row t-r and three vectors per row; kernel-column counter advances1, each accumulator retains increasing column order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 23,
+              "fmul": 6,
+              "fmul_ordinary": 6,
+              "fmul_indexed": 0,
+              "fadd": 6,
+              "ld1w": 3,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 23.0,
+              "fmul": 6.0,
+              "fmul_ordinary": 6.0,
+              "fmul_indexed": 0.0,
+              "fadd": 6.0,
+              "ld1w": 3.0,
+              "ld1rw": 2.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "input_2",
+            "label": ".L399",
+            "line_start": 6027,
+            "line_end": 6058,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input t=2; updates only output rows0..2 with kernel row t-r and three vectors per row; kernel-column counter advances1, each accumulator retains increasing column order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 31,
+              "fmul": 9,
+              "fmul_ordinary": 9,
+              "fmul_indexed": 0,
+              "fadd": 9,
+              "ld1w": 3,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 31.0,
+              "fmul": 9.0,
+              "fmul_ordinary": 9.0,
+              "fmul_indexed": 0.0,
+              "fadd": 9.0,
+              "ld1w": 3.0,
+              "ld1rw": 3.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "input_3",
+            "label": ".L401",
+            "line_start": 6070,
+            "line_end": 6109,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input t=3; updates only output rows0..3 with kernel row t-r and three vectors per row; kernel-column counter advances1, each accumulator retains increasing column order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 39,
+              "fmul": 12,
+              "fmul_ordinary": 12,
+              "fmul_indexed": 0,
+              "fadd": 12,
+              "ld1w": 3,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 39.0,
+              "fmul": 12.0,
+              "fmul_ordinary": 12.0,
+              "fmul_indexed": 0.0,
+              "fadd": 12.0,
+              "ld1w": 3.0,
+              "ld1rw": 4.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "input_4",
+            "label": ".L403",
+            "line_start": 6122,
+            "line_end": 6169,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input t=4; updates only output rows0..4 with kernel row t-r and three vectors per row; kernel-column counter advances1, each accumulator retains increasing column order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 47,
+              "fmul": 15,
+              "fmul_ordinary": 15,
+              "fmul_indexed": 0,
+              "fadd": 15,
+              "ld1w": 3,
+              "ld1rw": 5,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 47.0,
+              "fmul": 15.0,
+              "fmul_ordinary": 15.0,
+              "fmul_indexed": 0.0,
+              "fadd": 15.0,
+              "ld1w": 3.0,
+              "ld1rw": 5.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "input_5",
+            "label": ".L405",
+            "line_start": 6182,
+            "line_end": 6237,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input t=5; updates only output rows0..5 with kernel row t-r and three vectors per row; kernel-column counter advances1, each accumulator retains increasing column order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 55,
+              "fmul": 18,
+              "fmul_ordinary": 18,
+              "fmul_indexed": 0,
+              "fadd": 18,
+              "ld1w": 3,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 55.0,
+              "fmul": 18.0,
+              "fmul_ordinary": 18.0,
+              "fmul_indexed": 0.0,
+              "fadd": 18.0,
+              "ld1w": 3.0,
+              "ld1rw": 6.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "shared",
+            "source_mapping": "One semantic t=6..kh-1 phase lowered into separately bounded paired and odd regions; source13phases therefore correspond to14 arithmetic regions.",
+            "control_flow_notes": "Prologue computes unsigned paired bound at5768/5806/5907/5923 and equivalent W remainder start5941..5942. This bound is used only after kw>1 at6265. .L4106257..6470 iterates t beginning6; x21=stride*4 and x26=kw*4. After each row x3+=kw*4, other coefficient bases are recomputed from rolling x3/x4; input vector bases advance stride*4. At t==kh the code reloads saved scalar state and enters trailing0.",
+            "accumulator_order_review": "All21 accumulator FADD pairs were traced through the interleaved actual lowering: each ik add precedes its own ik+1 add. Row g vector1 temporarily renames z5 to z2 at6383, and its second add at6390 reads z2 into z5; it is not an independent partial sum. Other accumulators retain their destination register. Inputs and coefficient values for both columns really overlap (e.g.6279..6295); lexical C scopes did not prevent simultaneous liveness. No reassociation, indexed multiply or FMA observed.",
+            "pair_to_remainder_review": "paired exits with x1=even bound and tests.L454 before odd; odd updates the same21 logical accumulator chains once for a positive odd kw, then outer t advances. kw1 skips pair and reaches odd from x1=0; kw2 skips odd; kw3 pair0/1 then odd2. Zero/negative kw skips all arithmetic via initial.L425 plus.L426 and trailing.L411.",
+            "transition_spill_review": "Saved x24/x30 at6245 and x28/x18 at6248 are scalar pointers/counters, restored6471/6473. Paired/odd contain no stack loads/stores, calls or Z/Q/predicate spills; outer address transitions use scalar state and Z accumulator chains only.",
+            "accumulator_fadd_order": [
+              {
+                "accumulator": "a0",
+                "register": "z23",
+                "ik_fadd_line": 6277,
+                "ik_plus_1_fadd_line": 6308
+              },
+              {
+                "accumulator": "a1",
+                "register": "z22",
+                "ik_fadd_line": 6284,
+                "ik_plus_1_fadd_line": 6288
+              },
+              {
+                "accumulator": "a2",
+                "register": "z16",
+                "ik_fadd_line": 6287,
+                "ik_plus_1_fadd_line": 6300
+              },
+              {
+                "accumulator": "b0",
+                "register": "z20",
+                "ik_fadd_line": 6294,
+                "ik_plus_1_fadd_line": 6324
+              },
+              {
+                "accumulator": "b1",
+                "register": "z21",
+                "ik_fadd_line": 6299,
+                "ik_plus_1_fadd_line": 6305
+              },
+              {
+                "accumulator": "b2",
+                "register": "z7",
+                "ik_fadd_line": 6304,
+                "ik_plus_1_fadd_line": 6316
+              },
+              {
+                "accumulator": "c0",
+                "register": "z24",
+                "ik_fadd_line": 6309,
+                "ik_plus_1_fadd_line": 6340
+              },
+              {
+                "accumulator": "c1",
+                "register": "z25",
+                "ik_fadd_line": 6315,
+                "ik_plus_1_fadd_line": 6321
+              },
+              {
+                "accumulator": "c2",
+                "register": "z17",
+                "ik_fadd_line": 6320,
+                "ik_plus_1_fadd_line": 6332
+              },
+              {
+                "accumulator": "d0",
+                "register": "z26",
+                "ik_fadd_line": 6325,
+                "ik_plus_1_fadd_line": 6353
+              },
+              {
+                "accumulator": "d1",
+                "register": "z27",
+                "ik_fadd_line": 6331,
+                "ik_plus_1_fadd_line": 6337
+              },
+              {
+                "accumulator": "d2",
+                "register": "z18",
+                "ik_fadd_line": 6336,
+                "ik_plus_1_fadd_line": 6348
+              },
+              {
+                "accumulator": "e0",
+                "register": "z28",
+                "ik_fadd_line": 6341,
+                "ik_plus_1_fadd_line": 6370
+              },
+              {
+                "accumulator": "e1",
+                "register": "z29",
+                "ik_fadd_line": 6347,
+                "ik_plus_1_fadd_line": 6356
+              },
+              {
+                "accumulator": "e2",
+                "register": "z19",
+                "ik_fadd_line": 6352,
+                "ik_plus_1_fadd_line": 6361
+              },
+              {
+                "accumulator": "f0",
+                "register": "z30",
+                "ik_fadd_line": 6360,
+                "ik_plus_1_fadd_line": 6387
+              },
+              {
+                "accumulator": "f1",
+                "register": "z31",
+                "ik_fadd_line": 6366,
+                "ik_plus_1_fadd_line": 6388
+              },
+              {
+                "accumulator": "f2",
+                "register": "z6",
+                "ik_fadd_line": 6367,
+                "ik_plus_1_fadd_line": 6377
+              },
+              {
+                "accumulator": "g0",
+                "register": "z4",
+                "ik_fadd_line": 6382,
+                "ik_plus_1_fadd_line": 6389
+              },
+              {
+                "accumulator": "g1",
+                "register": "z5 via z2",
+                "ik_fadd_line": 6383,
+                "ik_plus_1_fadd_line": 6390
+              },
+              {
+                "accumulator": "g2",
+                "register": "z1",
+                "ik_fadd_line": 6376,
+                "ik_plus_1_fadd_line": 6391
+              }
+            ],
+            "blocks": [
+              {
+                "line_start": 6270,
+                "line_end": 6393,
+                "kernel_columns_per_iteration": 2,
+                "source_mapping": "Shared input t=6..kh-1: x12/x10/x11 address column ik vectors0/1/2; x14/x16/x15 address ik+1 vectors0/1/2. Coefficient bases x6/x4/x7/x5/x9/x3/x8 map outputs0..6 kernel[t-r]. x1=4*ik, x2=4*(ik+1); six LD1W,14 LD1RW and42 separate FMUL/FADD cover exactly two columns.",
+                "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+                "vector_spill_loads": 0,
+                "vector_spill_stores": 0,
+                "derived_counts": {
+                  "instructions": 123,
+                  "fmul": 42,
+                  "fmul_ordinary": 42,
+                  "fmul_indexed": 0,
+                  "fadd": 42,
+                  "ld1w": 6,
+                  "ld1rw": 14,
+                  "ld1rqw": 0,
+                  "dup": 0,
+                  "indexed_mov": 0,
+                  "ext": 0,
+                  "movprfx": 0
+                },
+                "derived_counts_per_kernel_column": {
+                  "instructions": 61.5,
+                  "fmul": 21.0,
+                  "fmul_ordinary": 21.0,
+                  "fmul_indexed": 0.0,
+                  "fadd": 21.0,
+                  "ld1w": 3.0,
+                  "ld1rw": 7.0,
+                  "ld1rqw": 0.0,
+                  "dup": 0.0,
+                  "indexed_mov": 0.0,
+                  "ext": 0.0,
+                  "movprfx": 0.0
+                },
+                "block": "paired",
+                "label": ".L407",
+                "region_kind": "loop",
+                "entry_exit_notes": "At6265..6266 kw<=1 branches to.L426. For kw>=2 x0=0,x2=4, x17=2*(floor((kw-2)/2)+1)=2*floor(kw/2). Each actual loop increments x0 by2 at6371 and x2 by8 at6386; cmp x17,x0 / bne.L407 at6392..6393 is the real backedge. After loop x1=signextend(w18), the same even bound, then branch.L454. kw2 executes one pair and skips odd; kw3 executes one pair then odd; positive even kw never reads beyond kw-1."
+              },
+              {
+                "line_start": 6397,
+                "line_end": 6461,
+                "kernel_columns_per_iteration": 1,
+                "source_mapping": "Original u1 remainder for shared t: x1 is first unprocessed column; LD1W from x12/x10/x11 and7 LD1RW from the same ordered output coefficient bases,21 ordinary FMUL/FADD. This is an actual loop region including the.L454 compare/backedge, though a valid positive odd kw executes at most once.",
+                "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+                "vector_spill_loads": 0,
+                "vector_spill_stores": 0,
+                "derived_counts": {
+                  "instructions": 63,
+                  "fmul": 21,
+                  "fmul_ordinary": 21,
+                  "fmul_indexed": 0,
+                  "fadd": 21,
+                  "ld1w": 3,
+                  "ld1rw": 7,
+                  "ld1rqw": 0,
+                  "dup": 0,
+                  "indexed_mov": 0,
+                  "ext": 0,
+                  "movprfx": 0
+                },
+                "derived_counts_per_kernel_column": {
+                  "instructions": 63.0,
+                  "fmul": 21.0,
+                  "fmul_ordinary": 21.0,
+                  "fmul_indexed": 0.0,
+                  "fadd": 21.0,
+                  "ld1w": 3.0,
+                  "ld1rw": 7.0,
+                  "ld1rqw": 0.0,
+                  "dup": 0.0,
+                  "indexed_mov": 0.0,
+                  "ext": 0.0,
+                  "movprfx": 0.0
+                },
+                "block": "odd_remainder",
+                "label": ".L409",
+                "region_kind": "loop",
+                "entry_exit_notes": "Entry is .L454 at6459, compare kw with current x1 and bgt.L409. x1 is0 through.L426 for kw<=1 or the even paired bound after6394. kw1 executes once; kw2 skips; kw3 executes column2 once; general odd executes final kw-1. x1+=1 at6424;6459..6461 is the real condition/backedge, not an invented straight-line PC. kw<=0 skips both regions. After completion6462..6470 advances t and input/coefficient-row state."
+              }
+            ]
+          },
+          {
+            "stage": "trailing_0",
+            "label": ".L412",
+            "line_start": 6482,
+            "line_end": 6537,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Trailing input t=kh+0; updates only output rows1..6 with kernel row t-r and three vectors per row. Completed earlier outputs remain untouched; kernel-column counter advances1 in original order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 55,
+              "fmul": 18,
+              "fmul_ordinary": 18,
+              "fmul_indexed": 0,
+              "fadd": 18,
+              "ld1w": 3,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 55.0,
+              "fmul": 18.0,
+              "fmul_ordinary": 18.0,
+              "fmul_indexed": 0.0,
+              "fadd": 18.0,
+              "ld1w": 3.0,
+              "ld1rw": 6.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "trailing_1",
+            "label": ".L414",
+            "line_start": 6544,
+            "line_end": 6591,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Trailing input t=kh+1; updates only output rows2..6 with kernel row t-r and three vectors per row. Completed earlier outputs remain untouched; kernel-column counter advances1 in original order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 47,
+              "fmul": 15,
+              "fmul_ordinary": 15,
+              "fmul_indexed": 0,
+              "fadd": 15,
+              "ld1w": 3,
+              "ld1rw": 5,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 47.0,
+              "fmul": 15.0,
+              "fmul_ordinary": 15.0,
+              "fmul_indexed": 0.0,
+              "fadd": 15.0,
+              "ld1w": 3.0,
+              "ld1rw": 5.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "trailing_2",
+            "label": ".L416",
+            "line_start": 6598,
+            "line_end": 6637,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Trailing input t=kh+2; updates only output rows3..6 with kernel row t-r and three vectors per row. Completed earlier outputs remain untouched; kernel-column counter advances1 in original order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 39,
+              "fmul": 12,
+              "fmul_ordinary": 12,
+              "fmul_indexed": 0,
+              "fadd": 12,
+              "ld1w": 3,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 39.0,
+              "fmul": 12.0,
+              "fmul_ordinary": 12.0,
+              "fmul_indexed": 0.0,
+              "fadd": 12.0,
+              "ld1w": 3.0,
+              "ld1rw": 4.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "trailing_3",
+            "label": ".L418",
+            "line_start": 6644,
+            "line_end": 6675,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Trailing input t=kh+3; updates only output rows4..6 with kernel row t-r and three vectors per row. Completed earlier outputs remain untouched; kernel-column counter advances1 in original order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 31,
+              "fmul": 9,
+              "fmul_ordinary": 9,
+              "fmul_indexed": 0,
+              "fadd": 9,
+              "ld1w": 3,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 31.0,
+              "fmul": 9.0,
+              "fmul_ordinary": 9.0,
+              "fmul_indexed": 0.0,
+              "fadd": 9.0,
+              "ld1w": 3.0,
+              "ld1rw": 3.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "trailing_4",
+            "label": ".L420",
+            "line_start": 6681,
+            "line_end": 6704,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Trailing input t=kh+4; updates only output rows5..6 with kernel row t-r and three vectors per row. Completed earlier outputs remain untouched; kernel-column counter advances1 in original order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 23,
+              "fmul": 6,
+              "fmul_ordinary": 6,
+              "fmul_indexed": 0,
+              "fadd": 6,
+              "ld1w": 3,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 23.0,
+              "fmul": 6.0,
+              "fmul_ordinary": 6.0,
+              "fmul_indexed": 0.0,
+              "fadd": 6.0,
+              "ld1w": 3.0,
+              "ld1rw": 2.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          },
+          {
+            "stage": "trailing_5",
+            "label": ".L422",
+            "line_start": 6710,
+            "line_end": 6724,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Trailing input t=kh+5; updates only output rows6..6 with kernel row t-r and three vectors per row. Completed earlier outputs remain untouched; kernel-column counter advances1 in original order.",
+            "spill_notes": "Full actual range read; all LD1W address input arrays and LD1RW address kernel arrays. No Z/Q/predicate load/store to direct or indirect stack storage; accumulators stay in registers. Scalar X/W frame slots and ABI D saves are recorded separately.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "derived_counts": {
+              "instructions": 14,
+              "fmul": 3,
+              "fmul_ordinary": 3,
+              "fmul_indexed": 0,
+              "fadd": 3,
+              "ld1w": 3,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts_per_kernel_column": {
+              "instructions": 14.0,
+              "fmul": 3.0,
+              "fmul_ordinary": 3.0,
+              "fmul_indexed": 0.0,
+              "fadd": 3.0,
+              "ld1w": 3.0,
+              "ld1rw": 1.0,
+              "ld1rqw": 0.0,
+              "dup": 0.0,
+              "indexed_mov": 0.0,
+              "ext": 0.0,
+              "movprfx": 0.0
+            }
+          }
+        ]
+      }
+    ],
+    "dispatch_review_pending": false,
+    "review_scope": "Full actual returned rowseven helper and all clones (only one actual symbol) plus whole-source assembly FMA scan. Root owns separate actual dispatch interpretation and final review assembly/accept/freeze; this helper fragment is not full diagnostic acceptance. All local work is read-only assembly/source/log text plus this fragment/report writing; no compilation,operator,job,performance,package,promotion or reset.",
+    "dispatch_functions": [
+      {
+        "symbol": "conv2d._omp_fn.2",
+        "line_start": 662,
+        "line_end": 2269,
+        "control_flow_notes": "Actual legacy per-output-row worker: omp thread quotient/remainder assigns disjoint row intervals at .L58/.L141; .L67 advances input by stride and output by ow. Context flag at +48 optionally calls prefix at .L60, then returned column offset enters remaining 32/16/8/4/2/1 output blocks (.L123/.L109/.L63/.L64/.L65/.L66). Non-SVE context stores flag zero in conv2d, so this runtime branch does not call SVE. Ordered kernel rows/columns and scalar-tail stores observed through .L76. No new seven-row dispatch enters this path. Complete function text exactly matches the independently reviewed C47 artifact; comparison included every instruction, label and directive without normalization. For T, the complete function is exactly equal to original Q1581822 text, including every label/directive/instruction without normalization; Q retained the independently reviewed complete C47 equivalence.",
+        "stack_notes": "Actual 368-byte fixed frame. x19..x30 ABI and scalar/pointer loop state at sp160..232; d8..d15 four STP/LDP ABI pairs at sp96..144. x18=sp240 aliases the local 32-float tile: zeroed sp240..352 then 8+4+2 STR Q sites materialize computed 32/16/8 blocks, subsequently copied via scalar LDP/STP. These 14 vector tile-store sites are real stack traffic, distinct from hot SVE accumulator spill and ABI saves. No Z/predicate stack access in this function; all non-SVE scalar and NEON paths reviewed."
+      },
+      {
+        "symbol": "conv2d._omp_fn.1",
+        "line_start": 7058,
+        "line_end": 7237,
+        "control_flow_notes": "Root read complete actual four-row SVE worker. Signed quotient/remainder partitions ceil(oh/4) at .L459/.L467. Group*4 pointers and remaining>3 call rowquad at .L463; remaining3 .L464 calls triple,2 .L465 pair,1 default prefix. .L466 advances one group, subtracts4 and increments original input/output strides; .L471 restores nonempty-assignment callee saves. All remainder branches and exits preserve context.",
+        "stack_notes": "160-byte fixed frame. Integer x19..x30 ABI saves, outgoing args sp0..8, scalar loop bounds/pointers/strides sp124..152. No vector/predicate stack access. All prologue/empty/nonempty/remainder epilogues read."
+      },
+      {
+        "symbol": "conv2d._omp_fn.0",
+        "line_start": 7241,
+        "line_end": 7557,
+        "control_flow_notes": "Root read complete actual seven-row worker. Unsigned quotient/remainder partitions ceil(oh/7) groups at .L474/.L485; group*7 uses shift3-sub. .L478 calls rowseven only when remaining>6. Remaining6 .L479 quad then pair from input+4*stride and output+4*ow;5 .L480 quad then prefix;4 .L481 quad;3 .L482 triple;2 .L483 pair;1 default prefix. .L484 advances one group, subtracts7, advances pointers by7 global strides. rowseven receives seven output row pointers via x5/x6/x7 and stack0/8/16/24, width stack32. All preserved pointers around two-call remainders and .L489 empty-assignment exit read.",
+        "stack_notes": "240-byte fixed frame. Integer ABI saves x19..x30 at sp48..128; outgoing pointers and width sp0..32; scalar state sp156..232. No Z/Q/D/predicate stack transfers. Both assignment/empty epilogues and remainder call preservation read."
+      },
+      {
+        "symbol": "conv2d",
+        "line_start": 7562,
+        "line_end": 7733,
+        "control_flow_notes": "Root read complete public entry. kh/kw nonpositive returns before frame; kernels larger than input exit before output dimensions are used. getauxval HWCAP bit4194304 selects SVE. .L501 requires kh>6 and oh>6, computes ceil(oh/7) using constant multiply/high/shift and residual comparison. Other SVE cases .L494 use ceil(oh/4) and .omp_fn.1. Absent SVE .L493 uses .omp_fn.2 with context flag0. Each chosen route calls one GOMP_parallel, preserving input stride and corresponding context layouts. No allocation/copy or timing changes.",
+        "stack_notes": "160-byte frame, integer ABI saves and outlined-worker context at sp88..152. No vector/predicate memory access. Early and common returns restore all saved state. Actual worker fields agree with the respective reads."
+      }
+    ],
+    "dispatch_reviewed": true,
+    "review_complete": true,
+    "review_fragments": [
+      "assembly-helper-review.json",
+      "assembly-dispatch-review.json"
+    ],
+    "root_integration_note": "Root reviewed complete helper report and actual shared pair/remainder transitions, and owns complete dispatch fragment. Independent helper reviewer read full actual helper; both fragments bind identical actual T source/job/assembly. Numeric acceptance remains a separate checked step.",
+    "stage_count": 13,
+    "fma_count": 0,
+    "transitions_reviewed": true,
+    "arithmetic_region_count_per_helper": 14,
+    "performance_submission_automatic": false
+  },
+  "performance_measured": false,
+  "performance_requires_root_review": true,
+  "automatic_performance_submission": false,
+  "spill_is_correctness_failure": false,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "note": "Actual independent T diagnostics only; parent Q/C51 and older logs provide no C52 PASS. No speed or promotion claim."
+}

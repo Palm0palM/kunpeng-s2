@@ -1,0 +1,3 @@
+# W report generation
+
+The first lightweight document-generation invocation stopped with FileNotFoundError before creating the report: the prepared script used sep13w-compare-output.json. The author corrected only its own script to read the actual sep13w-lifecycle-compare.stdout.json and checked the lifecycle compare exit0. The document was then created once, read back, and all48 displayed samples agreed with the original benchmark. No benchmark, record, or compare was rerun; raw performance files were not changed. This is a provenance note from the tool/agent reports, not a reconstructed stdout log.

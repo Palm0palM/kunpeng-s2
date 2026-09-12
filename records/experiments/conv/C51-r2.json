@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C51-r2",
+  "parent": "C26-r27",
+  "strategy": "Same-source C51 background reference for C52; promotion forbidden, not a failed S confirmation retry",
+  "created_at": "2026-09-12T17:22:13.017410+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "comparison_baseline": "C26-r27",
+  "source_parent": "C51-row7x3u1",
+  "reference_only": true,
+  "promotion_allowed": false,
+  "qualified_for_confirmation": false,
+  "confirmation_only": false,
+  "failed_confirmation_retry_allowed": false,
+  "diagnostic_source_version": "C51-row7x3u1",
+  "diagnostic_evidence_directory": ".runs/conv/C51-row7x3u1/sve-correctness-sep13q",
+  "diagnostic_job_id": "1581822",
+  "diagnostic_source_sha256": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+  "reused_identical_source_diagnostic": true,
+  "prior_confirmation_version": "C51-r1",
+  "prior_confirmation_passed": false,
+  "prior_confirmation_job": "1582067",
+  "recorded_at": "2026-09-12T17:29:35.995051+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep13w",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "c60bfcfe3d3320f6d9f4bcc5ce97386d32324b21678dafb449695413bba706d1",
+  "log": ".runs/conv/C51-r2/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.94,
+        51.86,
+        51.85
+      ],
+      "median_ms": 51.86,
+      "min_ms": 51.85,
+      "max_ms": 51.94,
+      "spread_pct": 0.17354415734669554,
+      "gflops": [
+        1451.085,
+        1453.4531,
+        1453.7632
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        59.3,
+        59.29,
+        59.29
+      ],
+      "median_ms": 59.29,
+      "min_ms": 59.29,
+      "max_ms": 59.3,
+      "spread_pct": 0.016866250632481043,
+      "gflops": [
+        1403.5292,
+        1403.7643,
+        1403.7709
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        104.33,
+        104.2,
+        104.22
+      ],
+      "median_ms": 104.22,
+      "min_ms": 104.2,
+      "max_ms": 104.33,
+      "spread_pct": 0.12473613509882504,
+      "gflops": [
+        1543.9537,
+        1545.7467,
+        1545.5701
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        223.62,
+        223.64,
+        223.65
+      ],
+      "median_ms": 223.64,
+      "min_ms": 223.62,
+      "max_ms": 223.65,
+      "spread_pct": 0.013414416025756187,
+      "gflops": [
+        1546.2236,
+        1546.1095,
+        1546.027
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 439.01,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1582256",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "baseline": "C26-r27",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.4,
+        "candidate_ms": 51.86,
+        "gain_pct": -0.8949416342412468
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.98,
+        "candidate_ms": 59.29,
+        "gain_pct": 4.34010971281058
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.3,
+        "candidate_ms": 104.22,
+        "gain_pct": 2.8704566635601103
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.72,
+        "candidate_ms": 223.64,
+        "gain_pct": 3.4869670291731456
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": 2.959770114942526,
+    "threshold_pct": 1.0
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r26",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.54,
+        "candidate_ms": 51.86,
+        "gain_pct": -0.6208769887466051
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.98,
+        "candidate_ms": 59.29,
+        "gain_pct": 4.34010971281058
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.41,
+        "candidate_ms": 104.22,
+        "gain_pct": 2.969928312075224
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.88,
+        "candidate_ms": 223.64,
+        "gain_pct": 3.553562187338282
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": 3.0476358737660414,
+    "threshold_pct": 1.1132623426911987
+  },
+  "decision_note": "Same-source C51 background reference for C52. Never qualifies or promotes; S confirmation remains false. This is not a failed S confirmation retry."
+}

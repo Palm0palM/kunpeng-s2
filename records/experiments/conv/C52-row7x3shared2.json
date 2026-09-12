@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C52-row7x3shared2",
+  "parent": "C26-r27",
+  "strategy": "Unroll only rowseven shared-stage kernel-column loop by2, with separate per-column scopes and original u1 odd remainder; preserve per-accumulator ik then ik+1 order,7rows x3VL/21acc, other12 phases and all fallback/dispatch bytes. Hypothesis: amortize shared loop/address overhead, with unmeasured liveness/code-size risk. Source preparation only.",
+  "created_at": "2026-09-12T16:43:18.312321+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C51-row7x3u1",
+  "source_parent_frozen_directory": ".runs/conv/C51-row7x3u1/sve-correctness-sep13q",
+  "source_parent_diagnostic_job_id": "1581822",
+  "source_parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "rows_per_group": 7,
+  "vectors_per_row": 3,
+  "total_accumulators": 21,
+  "stage_count": 13,
+  "shared_kernel_columns_per_iteration": 2,
+  "other_stage_kernel_columns_per_iteration": 1,
+  "shared_odd_remainder_columns_per_iteration": 1,
+  "formal_best_label": "C6",
+  "source_scope": "Only the shared inner kernel-column loop changed; original other12 stages,21 output stores,all fallback/dispatch and other submission files unchanged.",
+  "source_hypothesis": "Amortize Q shared63-instruction loop control/address cost with two sequential column bodies; target scheduling,live ranges,spills,code size and speed remain unmeasured.",
+  "runtime_validation_status": "Not compiled or run; parent Q PASS does not imply C52 correctness or performance.",
+  "prepared_execution_policy": "Source preparation only. No compiler,diagnostic,SSH,job,benchmark,ZIP or promotion. R1581911 remains root-owned and no result is inferred.",
+  "comparison_baseline": "C26-r27",
+  "reference_only": false,
+  "promotion_allowed": true,
+  "qualified_for_confirmation": true,
+  "confirmation_only": false,
+  "failed_confirmation_retry_allowed": false,
+  "diagnostic_source_version": "C52-row7x3shared2",
+  "diagnostic_evidence_directory": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t",
+  "diagnostic_job_id": "1582134",
+  "diagnostic_source_sha256": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+  "reused_identical_source_diagnostic": false,
+  "recorded_at": "2026-09-12T17:29:35.546291+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep13w",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "39c051ea78fbdabb106ba1dd29a83281d6b1a5a24f46c9acebc96e326fd43681",
+  "log": ".runs/conv/C52-row7x3shared2/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.71,
+        51.55,
+        51.86
+      ],
+      "median_ms": 51.71,
+      "min_ms": 51.55,
+      "max_ms": 51.86,
+      "spread_pct": 0.5994971959002171,
+      "gflops": [
+        1457.6058,
+        1462.1287,
+        1453.316
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        58.43,
+        58.43,
+        58.46
+      ],
+      "median_ms": 58.43,
+      "min_ms": 58.43,
+      "max_ms": 58.46,
+      "spread_pct": 0.051343487934282284,
+      "gflops": [
+        1424.6179,
+        1424.5757,
+        1423.7964
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        103.86,
+        103.87,
+        103.85
+      ],
+      "median_ms": 103.86,
+      "min_ms": 103.85,
+      "max_ms": 103.87,
+      "spread_pct": 0.01925669170037573,
+      "gflops": [
+        1550.8762,
+        1550.6585,
+        1551.0323
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        222.78,
+        222.84,
+        222.78
+      ],
+      "median_ms": 222.78,
+      "min_ms": 222.78,
+      "max_ms": 222.84,
+      "spread_pct": 0.026932399676812224,
+      "gflops": [
+        1552.0868,
+        1551.6704,
+        1552.1127
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 436.78,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1582256",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "baseline": "C26-r27",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.4,
+        "candidate_ms": 51.71,
+        "gain_pct": -0.6031128404669305
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.98,
+        "candidate_ms": 58.43,
+        "gain_pct": 5.727654081961918
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.3,
+        "candidate_ms": 103.86,
+        "gain_pct": 3.205964585274928
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.72,
+        "candidate_ms": 222.78,
+        "gain_pct": 3.858104609010874
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": 3.452696728558799,
+    "threshold_pct": 1.0
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r26",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.54,
+        "candidate_ms": 51.71,
+        "gain_pct": -0.329840900271637
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.98,
+        "candidate_ms": 58.43,
+        "gain_pct": 5.727654081961918
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.41,
+        "candidate_ms": 103.86,
+        "gain_pct": 3.3050926356949977
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.88,
+        "candidate_ms": 222.78,
+        "gain_pct": 3.924443677764358
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": 3.540116163512296,
+    "threshold_pct": 1.1132623426911987
+  },
+  "decision_note": "Initial C52 candidate qualifies versus both same-job C6 controls; return to root for an independent next-step decision. No automatic confirmation, promotion or ZIP.",
+  "source_parent_reference_comparison": {
+    "baseline": "C51-r2",
+    "eligible": false,
+    "reasons": [
+      "提速 0.51% 未超过测量波动/最低1%门槛 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.86,
+        "candidate_ms": 51.71,
+        "gain_pct": 0.2892402622445017
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 59.29,
+        "candidate_ms": 58.43,
+        "gain_pct": 1.4504975543936574
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.22,
+        "candidate_ms": 103.86,
+        "gain_pct": 0.345423143350604
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.64,
+        "candidate_ms": 222.78,
+        "gain_pct": 0.38454659273832287
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": 0.5079610942803168,
+    "threshold_pct": 1.0
+  },
+  "source_parent_comparison_supported_in_initial_group": false,
+  "source_parent_attribution_note": "Separate whole-implementation comparison between C52 shared-two-column and original C51 shared-one-column sources in this allocation. Complete preserved W samples only. Code layout, scheduling, tails and dispatch may contribute; this is not an isolated instruction-cost measurement and does not replace either C6 gate. C51-r2 remains background reference-only; Sfalse is unchanged."
+}
