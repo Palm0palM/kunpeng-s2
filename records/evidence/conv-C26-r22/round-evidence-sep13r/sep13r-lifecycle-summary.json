@@ -1,0 +1,555 @@
+{
+  "job_id": "1581911",
+  "performance_group": "kp-conv-group-6d54aff1252c",
+  "completed_at": "2026-09-12T16:47:09.383890+00:00",
+  "status": "SUCCEEDED",
+  "job_exit_code": 0,
+  "system_exit_code": 0,
+  "raw_pass": 48,
+  "raw_fail": 0,
+  "member_wrapper_exits": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "campaign_status": "performance_complete",
+  "confirmation_pending": [
+    "C51-row7x3u1"
+  ],
+  "prior_c40_decisions": {
+    "G_qualified": false,
+    "J_qualified": true,
+    "K_confirmation_passed": false,
+    "N_reference_only": true,
+    "N_promotion_allowed": false,
+    "N_qualified": false,
+    "N_reference_job": "1581459",
+    "original_versions": [
+      "C40-row6x3u1",
+      "C40-r1",
+      "C40-r2",
+      "C40-r3"
+    ]
+  },
+  "prior_c40_decisions_unchanged": true,
+  "automatic_confirmation": false,
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "resubmission": false,
+  "measurement_rerun": false,
+  "local_operator_execution": false,
+  "record_command": "python3 .runs/conv/sep13r-record-group.py",
+  "record_process_exit_code": 0,
+  "record_output": ".runs/conv/sep13r-record-output.log",
+  "record_tool_output_origin": {
+    "pty_session_id": 61694,
+    "exit_chunk_id": "7cb848"
+  },
+  "compare_command": "python3 .runs/conv/sep13r-compare.py",
+  "compare_process_exit_code": 0,
+  "compare_output": ".runs/conv/sep13r-compare-output.json",
+  "compare_stderr": ".runs/conv/sep13r-compare-stderr.log",
+  "compare_tool_exit_chunk_id": "061223",
+  "tool_adaptations_needed": false,
+  "rows": [
+    {
+      "version": "C26-r22",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 452.32,
+      "cases_ms": [
+        51.39,
+        61.97,
+        107.29,
+        231.67
+      ],
+      "all_samples_ms": [
+        [
+          51.4,
+          51.38,
+          51.39
+        ],
+        [
+          62.72,
+          61.97,
+          61.89
+        ],
+        [
+          107.38,
+          107.29,
+          107.28
+        ],
+        [
+          231.67,
+          231.63,
+          231.71
+        ]
+      ],
+      "case_spreads_pct": [
+        0.038918077446966376,
+        1.3393577537518127,
+        0.09320533134494763,
+        0.034531877239181816
+      ],
+      "max_spread_pct": 1.3393577537518127,
+      "qualified_for_confirmation": false,
+      "reference_only": false,
+      "promotion_allowed": null,
+      "comparison": null,
+      "opening_control_comparison": null,
+      "rowsix_reference_comparison": null,
+      "rowsix_comparison_supported_in_initial_group": null,
+      "artifact_hashes": {
+        "benchmark.log": "efbae1523bf264a20a3df6144f7aa2a0fd5fb3af056fecb55e8336826ce6d734",
+        "environment.log": "109b2bccbfa89e8817aa263a94f88475d0920365c91730f5cb9283dfb0cbbed7",
+        "source-sha256.txt": "e290dd24423be9a22535e1644e857a4d7e05e182695c286eba5c17eff9cbf8d3",
+        "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    {
+      "version": "C51-row7x3u1",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 438.95000000000005,
+      "cases_ms": [
+        51.86,
+        59.3,
+        104.18,
+        223.61
+      ],
+      "all_samples_ms": [
+        [
+          51.75,
+          51.86,
+          51.86
+        ],
+        [
+          59.27,
+          59.3,
+          59.32
+        ],
+        [
+          104.18,
+          104.23,
+          104.18
+        ],
+        [
+          223.61,
+          223.59,
+          223.62
+        ]
+      ],
+      "case_spreads_pct": [
+        0.2121095256459688,
+        0.0843170320404674,
+        0.04799385678632862,
+        0.01341621573274949
+      ],
+      "max_spread_pct": 0.2121095256459688,
+      "qualified_for_confirmation": true,
+      "reference_only": false,
+      "promotion_allowed": true,
+      "comparison": {
+        "baseline": "C26-r23",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.4,
+            "candidate_ms": 51.86,
+            "gain_pct": -0.8949416342412468
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.9,
+            "candidate_ms": 59.3,
+            "gain_pct": 4.200323101777062
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.29,
+            "candidate_ms": 104.18,
+            "gain_pct": 2.8986858048280357
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.69,
+            "candidate_ms": 223.61,
+            "gain_pct": 3.48741853338512
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 2.9472892898204495,
+        "threshold_pct": 1.0
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r22",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.39,
+            "candidate_ms": 51.86,
+            "gain_pct": -0.9145748200038896
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.97,
+            "candidate_ms": 59.3,
+            "gain_pct": 4.30853638857512
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.29,
+            "candidate_ms": 104.18,
+            "gain_pct": 2.8986858048280357
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.67,
+            "candidate_ms": 223.61,
+            "gain_pct": 3.479086631847013
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 2.9558719490625993,
+        "threshold_pct": 1.3393577537518127
+      },
+      "rowsix_reference_comparison": {
+        "baseline": "C40-r4",
+        "eligible": false,
+        "reasons": [
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 50.41,
+            "candidate_ms": 51.86,
+            "gain_pct": -2.8764134100376966
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 60.31,
+            "candidate_ms": 59.3,
+            "gain_pct": 1.6746808157851185
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.32,
+            "candidate_ms": 104.18,
+            "gain_pct": 2.925829295564654
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 226.36,
+            "candidate_ms": 223.61,
+            "gain_pct": 1.2148789538787772
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 1.2263726372637112,
+        "threshold_pct": 1.0
+      },
+      "rowsix_comparison_supported_in_initial_group": false,
+      "artifact_hashes": {
+        "benchmark.log": "e88eff063b7a8e024e2c64134175f8b0e180ce8a797c20ba765300825ceb85d8",
+        "environment.log": "682ef9f74ead8f01a7f453adf536132a27a46ba59a6f706efe8380e1997de8a3",
+        "source-sha256.txt": "f900c94f500ccd92b2acbbe77d838a42ee6f4d7b0302e5774ed40c42315a54ec",
+        "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    {
+      "version": "C40-r4",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 444.4,
+      "cases_ms": [
+        50.41,
+        60.31,
+        107.32,
+        226.36
+      ],
+      "all_samples_ms": [
+        [
+          50.41,
+          50.45,
+          50.39
+        ],
+        [
+          60.3,
+          60.33,
+          60.31
+        ],
+        [
+          107.31,
+          107.39,
+          107.32
+        ],
+        [
+          226.36,
+          226.36,
+          226.34
+        ]
+      ],
+      "case_spreads_pct": [
+        0.11902400317397793,
+        0.04974299452827249,
+        0.07454342154304724,
+        0.008835483300941081
+      ],
+      "max_spread_pct": 0.11902400317397793,
+      "qualified_for_confirmation": false,
+      "reference_only": true,
+      "promotion_allowed": false,
+      "comparison": {
+        "baseline": "C26-r23",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.4,
+            "candidate_ms": 50.41,
+            "gain_pct": 1.9260700389105097
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.9,
+            "candidate_ms": 60.31,
+            "gain_pct": 2.568659127625196
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.29,
+            "candidate_ms": 107.32,
+            "gain_pct": -0.027961599403473696
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.69,
+            "candidate_ms": 226.36,
+            "gain_pct": 2.3004877206612218
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 1.7422835411691862,
+        "threshold_pct": 1.0
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r22",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.39,
+            "candidate_ms": 50.41,
+            "gain_pct": 1.9069857949017395
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.97,
+            "candidate_ms": 60.31,
+            "gain_pct": 2.6787155075036253
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.29,
+            "candidate_ms": 107.32,
+            "gain_pct": -0.027961599403473696
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.67,
+            "candidate_ms": 226.36,
+            "gain_pct": 2.2920533517503237
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 1.750972762645918,
+        "threshold_pct": 1.3393577537518127
+      },
+      "rowsix_reference_comparison": null,
+      "rowsix_comparison_supported_in_initial_group": null,
+      "artifact_hashes": {
+        "benchmark.log": "629a355358e3a90e6cb86768e29f59be68eaa7e97db92246c36817165f211572",
+        "environment.log": "9f1bc2b28f676b5e27e6a56b2be0cd72ea1ea5acc45f1314f3258fe6c09fa424",
+        "source-sha256.txt": "fce0e55b8f953b39e1be61f7c6f762e7ca94106cc6564d00362143c4f0ed3067",
+        "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    {
+      "version": "C26-r23",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 452.28,
+      "cases_ms": [
+        51.4,
+        61.9,
+        107.29,
+        231.69
+      ],
+      "all_samples_ms": [
+        [
+          51.44,
+          51.4,
+          51.38
+        ],
+        [
+          61.88,
+          61.91,
+          61.9
+        ],
+        [
+          107.29,
+          107.28,
+          107.38
+        ],
+        [
+          231.64,
+          231.69,
+          231.79
+        ]
+      ],
+      "case_spreads_pct": [
+        0.11673151750971823,
+        0.04846526655895644,
+        0.09320533134494763,
+        0.06474168069403327
+      ],
+      "max_spread_pct": 0.11673151750971823,
+      "qualified_for_confirmation": false,
+      "reference_only": false,
+      "promotion_allowed": null,
+      "comparison": null,
+      "opening_control_comparison": null,
+      "rowsix_reference_comparison": null,
+      "rowsix_comparison_supported_in_initial_group": null,
+      "artifact_hashes": {
+        "benchmark.log": "cb16765f3aa7368be0800f99848668d00ee4a5c4c996b2466941c16cea513975",
+        "environment.log": "4d9e3195efb2e4fab2d2e08b8b1079df3797bf2f5225a95141282eda97a2c9de",
+        "source-sha256.txt": "e290dd24423be9a22535e1644e857a4d7e05e182695c286eba5c17eff9cbf8d3",
+        "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    }
+  ]
+}

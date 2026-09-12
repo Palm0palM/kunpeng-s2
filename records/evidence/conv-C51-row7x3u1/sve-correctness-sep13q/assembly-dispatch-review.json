@@ -1,0 +1,41 @@
+{
+  "candidate": "C51-row7x3u1",
+  "job_id": "1581822",
+  "source_sha256": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+  "compiler_version": "10.3.1",
+  "assembly_sha256": "d4beb953f22d853345a7dc88eeb414449353bdf63d23fc36f568d526f0f02371",
+  "dispatch_reviewed": true,
+  "review_complete": true,
+  "production_object_disassembly_available": false,
+  "scope": "Root read complete three SVE/public dispatcher functions. Complete legacy nonSVE function exactly matches independently reviewed C47 actual text; no normalization. No rowseven helper or numeric acceptance claim in this fragment. Local operations only text reads/comparisons.",
+  "dispatch_functions": [
+    {
+      "symbol": "conv2d._omp_fn.2",
+      "line_start": 662,
+      "line_end": 2269,
+      "control_flow_notes": "Actual legacy per-output-row worker: omp thread quotient/remainder assigns disjoint row intervals at .L58/.L141; .L67 advances input by stride and output by ow. Context flag at +48 optionally calls prefix at .L60, then returned column offset enters remaining 32/16/8/4/2/1 output blocks (.L123/.L109/.L63/.L64/.L65/.L66). Non-SVE context stores flag zero in conv2d, so this runtime branch does not call SVE. Ordered kernel rows/columns and scalar-tail stores observed through .L76. No new seven-row dispatch enters this path. Complete function text exactly matches the independently reviewed C47 artifact; comparison included every instruction, label and directive without normalization.",
+      "stack_notes": "Actual 368-byte fixed frame. x19..x30 ABI and scalar/pointer loop state at sp160..232; d8..d15 four STP/LDP ABI pairs at sp96..144. x18=sp240 aliases the local 32-float tile: zeroed sp240..352 then 8+4+2 STR Q sites materialize computed 32/16/8 blocks, subsequently copied via scalar LDP/STP. These 14 vector tile-store sites are real stack traffic, distinct from hot SVE accumulator spill and ABI saves. No Z/predicate stack access in this function; all non-SVE scalar and NEON paths reviewed."
+    },
+    {
+      "symbol": "conv2d._omp_fn.1",
+      "line_start": 6873,
+      "line_end": 7052,
+      "control_flow_notes": "Full legacy SVE four-row dispatcher reviewed. Signed OpenMP quotient/remainder at .L454/.L462, group*4 addressing, remaining>=4 at .L458 calls quad; remaining3 .L459 triple,2 .L460 pair,1 default prefix. .L461 advances one group, subtracts4 and advances global input/output strides, then checks assigned-group end. No overlap/skipped remaining row observed.",
+      "stack_notes": "160-byte fixed frame; x19..x30 integer ABI saves, outgoing args sp0..8, scalar bounds/strides/pointers sp124..152. No vector/predicate stack access. Entry, all remainder branches and all epilogues read."
+    },
+    {
+      "symbol": "conv2d._omp_fn.0",
+      "line_start": 7056,
+      "line_end": 7372,
+      "control_flow_notes": "Full new seven-row worker reviewed. Unsigned quotient/remainder partitions ceil(oh/7) groups at .L469/.L480. Addresses use group*7 via shift3-sub, .L473 calls rowseven only for remaining>6. Remaining6 .L474 calls quad then pair from input+4*stride/output+4*ow;5 .L475 quad then prefix;4 .L476 quad;3 .L477 triple;2 .L478 pair;1 default prefix. .L479 advances group exactly once, subtracts7 and adds7 global strides; no cross-group writes. rowseven receives seven output row pointers via x5/x6/x7 and sp0/8/16/24, plus width sp32. All preservation around two-call remainders and exits read.",
+      "stack_notes": "240-byte fixed frame; integer ABI x19..x30 stored at sp48..128. Outgoing row pointers/width at sp0..32; scalar state and original strides/pointers at sp156..232. No Z/Q/predicate or D stack transfers. Full main and empty-assignment epilogues restore only saved integer state."
+    },
+    {
+      "symbol": "conv2d",
+      "line_start": 7377,
+      "line_end": 7548,
+      "control_flow_notes": "Full public entry reviewed. Rejects nonpositive kh/kw before frame and kernels larger than input before subtraction. getauxval bit4194304 selects SVE. New .L496 route requires kh>6 and oh>6; constant multiply division by7 plus remainder computes ceil(oh/7), with original input stride and 64-bit oh/ow context. Other SVE shapes use ceil(oh/4) worker .omp_fn.1 at .L489. Absent SVE .L488 calls legacy .omp_fn.2 with flag0. Each path invokes one GOMP_parallel and returns through valid restoration; no new allocation/copy/timing region.",
+      "stack_notes": "160-byte frame. Integer ABI and outlined-worker context at sp88..152; no vector/predicate memory access. Early returns and all GOMP paths preserve the required state; worker context fields match actual worker reads."
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Q prepared package for C51-row7x3u1. No compilation, operator execution, SSH or job has occurred. Five frozen source files are transport inputs, not accepted diagnostic results. See PLAN.md, prepared.json and ../INTERFACE.md. Root review and explicit compute GO are required before the one unique submission. C40/C47/C48 results do not supply C51 PASS.

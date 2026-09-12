@@ -4,11 +4,11 @@
 
 `conv/`、`zgemm/`、`trsm/` 保存当前晋级版本。现有版本的验证范围与环境见 [基线说明](docs/BASELINES.md)，不要把历史测试直接当作当前排行榜成绩。
 
-TRSM 最新提交包：**T8 = T8-svepanel16**，KML25.1/GCC12 同分配三轮较 T7 合计耗时减少 **11.99%**；最终 ZIP 超算解压三轮 **9/9 PASS**，合计中位耗时 **450.75 ms**。[直接提交 T8/trsm.zip](trsm/result/T8/trsm.zip) · [最终交付与 KML 状态](docs/trsm-final-20260912-r5.md)。已验证真实 KML25.1；指定官方 KML25.2.0 复验仍未完成，哈希按用户要求未计算或验证。
+TRSM 最新提交包：**T19 = T19-panel8x16budget**，队友在 KML25.1/GCC12 同分配三轮较 T8 合计耗时减少 **29.58%**；最终原 ZIP 独立解压三轮 **9/9 PASS**，合计中位耗时 **317.01 ms**。[直接提交 T19/trsm.zip](trsm/result/T19/trsm.zip) · [最终交付与 KML 状态](docs/trsm-final-20260912-r16.md)。指定官方 KML25.2.0 复验仍未完成。
 
-**提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C6、ZGEMM Z1、TRSM T8；各题 result 目录保留版本说明、验证范围与平台反馈字段。
+**提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C6、ZGEMM Z1、TRSM T19；各题 result 目录保留版本说明、验证范围与平台反馈字段。
 
-TRSM 第七轮比较已完成：T10 消除了历史核的栈读写，但整题仍慢 6.66%，保留上述已验证 T8 提交包；完整预热、三轮数据及汇编发现见[本轮记录](docs/trsm-stage-r7-20260912.md)。
+CONV 新七行方案 C51 已通过 37128 项专项检查和 48/48 原 benchmark 校验；同分配较 C6 合计耗时减少约 **2.95%**，达到初筛门槛，仍待独立确认和原 ZIP 验证，当前继续提供 C6。[完整样本与判定](docs/CONV_SEP13R.md)。
 
 ## 先把环境跑通
 

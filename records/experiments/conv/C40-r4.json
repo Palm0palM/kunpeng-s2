@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C40-r4",
+  "parent": "C26-r23",
+  "strategy": "Same-source C40 reference-only context for C51; promotion forbidden, not a confirmation repeat",
+  "created_at": "2026-09-12T16:40:38.557805+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "comparison_baseline": "C26-r23",
+  "source_parent": "C40-row6x3u1",
+  "reference_only": true,
+  "promotion_allowed": false,
+  "diagnostic_source_version": "C40-row6x3u1",
+  "diagnostic_evidence_directory": ".runs/conv/C40-row6x3u1/sve-correctness-sep12g",
+  "diagnostic_job_id": "1579597",
+  "diagnostic_source_sha256": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+  "reused_identical_source_diagnostic": true,
+  "recorded_at": "2026-09-12T16:46:23.772708+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep13r",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "629a355358e3a90e6cb86768e29f59be68eaa7e97db92246c36817165f211572",
+  "log": ".runs/conv/C40-r4/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        50.41,
+        50.45,
+        50.39
+      ],
+      "median_ms": 50.41,
+      "min_ms": 50.39,
+      "max_ms": 50.45,
+      "spread_pct": 0.11902400317397793,
+      "gflops": [
+        1495.1572,
+        1494.1852,
+        1495.7119
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        60.3,
+        60.33,
+        60.31
+      ],
+      "median_ms": 60.31,
+      "min_ms": 60.3,
+      "max_ms": 60.33,
+      "spread_pct": 0.04974299452827249,
+      "gflops": [
+        1380.3731,
+        1379.6695,
+        1380.2258
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        107.31,
+        107.39,
+        107.32
+      ],
+      "median_ms": 107.32,
+      "min_ms": 107.31,
+      "max_ms": 107.39,
+      "spread_pct": 0.07454342154304724,
+      "gflops": [
+        1500.9735,
+        1499.8987,
+        1500.838
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        226.36,
+        226.36,
+        226.34
+      ],
+      "median_ms": 226.36,
+      "min_ms": 226.34,
+      "max_ms": 226.36,
+      "spread_pct": 0.008835483300941081,
+      "gflops": [
+        1527.5137,
+        1527.5078,
+        1527.6935
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 444.4,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1581911",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "qualified_for_confirmation": false,
+  "comparison": {
+    "baseline": "C26-r23",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.4,
+        "candidate_ms": 50.41,
+        "gain_pct": 1.9260700389105097
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.9,
+        "candidate_ms": 60.31,
+        "gain_pct": 2.568659127625196
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.29,
+        "candidate_ms": 107.32,
+        "gain_pct": -0.027961599403473696
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.69,
+        "candidate_ms": 226.36,
+        "gain_pct": 2.3004877206612218
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": 1.7422835411691862,
+    "threshold_pct": 1.0
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r22",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.39,
+        "candidate_ms": 50.41,
+        "gain_pct": 1.9069857949017395
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.97,
+        "candidate_ms": 60.31,
+        "gain_pct": 2.6787155075036253
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.29,
+        "candidate_ms": 107.32,
+        "gain_pct": -0.027961599403473696
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.67,
+        "candidate_ms": 226.36,
+        "gain_pct": 2.2920533517503237
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "total_gain_pct": 1.750972762645918,
+    "threshold_pct": 1.3393577537518127
+  },
+  "decision_note": "Same-source C40 reference-only for C51 context. Never qualifies or promotes; Gfalse/Jtrue/Kfalse and Nreference remain unchanged. Not a C40 confirmation."
+}

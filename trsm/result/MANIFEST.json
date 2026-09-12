@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
-  "purpose": "当前 T8 提交包及原样保留的历史脱敏测量证据",
-  "active_submission_version": "T8",
-  "implementation_experiment": "T8-svepanel16",
-  "source_ref": "8de73e662cedb40add2ce8cdb2f4f0c240219cce",
+  "purpose": "当前T19提交包及原样保留的历史脱敏测量证据",
+  "active_submission_version": "T19",
+  "implementation_experiment": "T19-panel8x16budget",
+  "source_ref": "56d0ef562344cefc99ef5bc60a6c4cbc17adc800",
   "notice": "按用户要求，不计算或验证当前交付文件哈希；本清单只登记路径和字节数。历史 evidence 条目及原有哈希原样保留，未重新计算或验证。MANIFEST.json 自身不递归列入。",
   "files": [
     {
       "path": "README.md",
-      "bytes": 2459,
+      "bytes": 2079,
       "hash_validation": "not performed at user request"
     },
     {
-      "path": "T8/README.md",
-      "bytes": 3023,
+      "path": "T19/README.md",
+      "bytes": 2870,
       "hash_validation": "not performed at user request"
     },
     {
-      "path": "T8/metadata.json",
-      "bytes": 6732,
+      "path": "T19/metadata.json",
+      "bytes": 5952,
       "hash_validation": "not performed at user request"
     },
     {
-      "path": "T8/trsm.zip",
-      "bytes": 11740,
+      "path": "T19/trsm.zip",
+      "bytes": 15593,
       "hash_validation": "not performed at user request"
     },
     {
@@ -289,7 +289,8 @@
   ],
   "hash_validation": "not performed at user request",
   "historical_submission": {
-    "version": "T7",
-    "url": "https://github.com/Palm0palM/kunpeng-s2/tree/e0bf061987e729dfdca7ff537fd128a2c9889e6c/trsm/result/T7"
+    "version": "T8",
+    "source_ref": "ce44a3d0187ad316906107a4b00937ce95e0ba18",
+    "url": "https://github.com/Palm0palM/kunpeng-s2/tree/ce44a3d0187ad316906107a4b00937ce95e0ba18/trsm/result/T8"
   }
 }
