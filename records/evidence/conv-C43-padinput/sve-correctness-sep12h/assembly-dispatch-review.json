@@ -1,0 +1,82 @@
+{
+  "candidate": "C43-padinput",
+  "job_id": "1579692",
+  "source_sha256": "a805f1a60d22fd8ed88ac079c030be8186fa0e1048e39e38430880f49f5a59fa",
+  "compiler_version": "gcc (GCC) 10.3.1",
+  "production_object_sha256": "269620bd1846a70074482ef7f8be22f1f99b38dc5599062c05d84d0219911b08",
+  "assembly_sha256": "f59f14a7aea3e9e509d8150f1f8e5f6d268d4ad186fd03a63fc840423a23ad25",
+  "review_scope": "Actual returned production assembly: complete public conv2d and all three conv2d OMP workers, with corresponding production object disassembly. Quad arithmetic is reviewed in the independent quad fragment, not duplicated here.",
+  "dispatch_review_complete": true,
+  "production_uninstrumented": true,
+  "production_object_disassembly_reviewed": true,
+  "abi_saves_distinguished": true,
+  "whole_machine_code_identical_claimed": false,
+  "production_identity_notes": "build-production.log actual + gcc argv compiles conv2d.c alone with GCC 10.3.1, generic, -O3 -fno-fast-math -ffp-contract=off -fopenmp and original macros; it does not compile instrumented_candidate.c or include copy-probe interposition. The .s SHA is calculated once here from the returned file; object SHA is taken from returned production-object-sha256.txt.",
+  "object_mapping_limit": "The returned objdump is of a relocatable production object. Some adrp/add symbol-address placeholders show zero before link; worker identity is read from the named .s relocations and matched object instructions/control flow, not inferred from misleading unresolved zero addresses. No claim that .s text proves whole-program byte identity with C6.",
+  "dynamic_coverage_limit": "All six H configurations execute on SVE hardware (VL16/32/64, threads1/4). Legacy non-SVE worker inspection below is static actual-machine-code review, not an additional dynamically forced non-SVE test. 512 MiB and size_t extremes are static-only coverage.",
+  "dispatch_functions": [
+    {
+      "symbol": "conv2d._omp_fn.0",
+      "line_start": 7,
+      "line_end": 82,
+      "object_address_range": "0x0..0xb0 inclusive",
+      "role": "New OMP static row-copy worker, invoked only after successful allocation.",
+      "stack_frame_description": "64 bytes. Scalar ABI saves x19..x24 and x29/x30; no SVE/NEON stack state or vector arithmetic.",
+      "spill_notes": "No vector stack loads/stores or vector accumulator spills in this worker. Scalar callee saves preserve copy pointers across memcpy.",
+      "vector_spill_loads": 0,
+      "vector_spill_stores": 0,
+      "copy_path_notes": "Capture fields [0,8] are original input/stride, [16,24] allocated destination/padded stride, [32] original width*4 bytes, [40] input height. Both strides shift by two once. Each .L4 iteration calls memcpy(dst,src,row_bytes), advances source by original stride bytes and destination by padded stride bytes using memcpy return=dst. Padding is not copied or read by the worker. Object memcpy is at0x80, increments0x84/0x88.",
+      "control_flow_notes": "omp_get_num_threads/thread_num produce quotient/remainder static partition of inputHeight; .L2 grants one extra row to early threads, .L5 computes nonoverlapping contiguous first/end rows and exits empty partitions. .L4 copies exactly those rows; join occurs on parent GOMP_parallel return. No malloc/free or compute helper in worker."
+    },
+    {
+      "symbol": "conv2d._omp_fn.2",
+      "line_start": 741,
+      "line_end": 2348,
+      "object_address_range": "0x8a4..0x1eac inclusive",
+      "role": "Legacy output-row static worker for the public non-SVE branch, with inline NEON tiles 32/16/8/4/2/1 and preserved conditional prefix branch.",
+      "stack_frame_description": "368 bytes. Scalar ABI x19..x28/x29/x30; d8..d15 saved at sp+96..159 and restored once on worker exit. sp+160..239 stores row/loop state. sp+240..367 is the local output tile array, reused for 32-,16-,8-float tails.",
+      "spill_notes": "No observed non-ABI vector reload from stack and no register-pressure accumulator spill/reload pair in kernel loops. Distinguish 4 STP/4 LDP instructions for ABI d8..d15 from 14 static STR Q instructions that materialize completed tile arrays after the kh backedge: lines1214..1235 (8),1491..1500 (4),2138/2141 (2). Those Q values are then read by GPR LDP and copied to final output at1238..1256,1503..1513,2144..2149. They are real stack traffic, explicitly not a claim of a stack-free program.",
+      "vector_spill_loads": 0,
+      "vector_spill_stores": 0,
+      "vector_stack_materialization_stores": 14,
+      "abi_fp_save_pair_instructions": 4,
+      "abi_fp_restore_pair_instructions": 4,
+      "copy_path_notes": "No calls to malloc, memcpy, free or copy interposition. The local tile-array copy is output materialization and is distinct from the new whole-input copy. Public non-SVE capture passes original input/stride and use_sve=0, so the retained .L68 conv_sve_prefix branch is not reached from that public branch.",
+      "control_flow_notes": "Quotient/remainder OMP partitions output rows. .L75 forms row input/output bases; .L69/.L132/.L118/.L106/.L96/.L86 dispatch descending width tiles32/16/8/4/2/1. Per-row .L84 increments original input stride and global output ow. Hot kh loops retain FP values in registers; materialization follows their exits, then advances output tile. Remaining cold kw-unroll branches at end of function jump back into the same arithmetic flow. Object confirms 368-byte prologue0x8a4, ABI stores0x9ac..0x9b8, tile Q stores0xf74..0xfac/0x1384..0x139c/0x1c18..0x1c20 and GPR copies following each; conditional prefix call0x14d0. Only other calls are OMP thread queries."
+    },
+    {
+      "symbol": "conv2d._omp_fn.1",
+      "line_start": 5785,
+      "line_end": 5964,
+      "object_address_range": "0x4ec0..0x5090 inclusive",
+      "role": "SVE static group-of-four compute worker with quad/triple/pair/prefix remainder dispatch.",
+      "stack_frame_description": "160 bytes. Scalar ABI x19..x28/x29/x30, scalar loop/capture state sp+124..159, outgoing helper arguments sp+0/sp+8. No vector stack state in this worker; helpers have separate frames.",
+      "spill_notes": "No FP/SVE instructions or vector spills in the dispatcher. Scalar kernel pointer at sp+136 is preserved across helper calls; outgoing destination/ow arguments are not vector spills.",
+      "vector_spill_loads": 0,
+      "vector_spill_stores": 0,
+      "copy_path_notes": "Captured input and independent stride are either original or successful copied/padded values, selected by conv2d before entering. Output base and ow remain global. Input advances by4*sve_stride floats, output by4*ow floats; no malloc/memcpy/free occurs here.",
+      "control_flow_notes": "Static quotient/remainder partition of ceil(oh/4) groups, first row=4*group. Remaining>3 selects quad (.s .L402/object call0x4ffc); remaining3 selects triple(.L403/0x507c),2 pair(.L404/0x5048),1 prefix(.L408/0x4f94). Destination row1/2/3 offsets derive from global ow, never padded stride. .L405 advances four rows and exits at group end; no overlapping output groups."
+    },
+    {
+      "symbol": "conv2d",
+      "line_start": 5969,
+      "line_end": 6176,
+      "object_address_range": "0x5094..0x527c inclusive",
+      "role": "Public validation/HWCAP dispatch, checked optional allocation, two sequential OMP regions, final release.",
+      "stack_frame_description": "176 bytes. Scalar ABI x19..x28/x29/x30, temporary padded-stride/capture pointers around sp+96, captured OMP structures sp+120..171. No FP/SVE stack operands.",
+      "spill_notes": "No vector spills. Scalar saved registers preserve original input/stride across malloc and selected input/stride across copy GOMP; nonnull allocation is kept in x21 until compute returns.",
+      "vector_spill_loads": 0,
+      "vector_spill_stores": 0,
+      "copy_path_notes": "Actual eligibility .L431 computes odd 16-float-line stride, compares it with original, checks product and512MiB cap, then .L432 malloc. NULL jumps .L416 while x26/x28 remain original. Success captures old input/stride and new pointer/stride for copy worker, replaces x26/x28 with copied/padded values, calls copy GOMP, then .L416 compute GOMP. Only afterwards does nonnull x21 tail-branch free; zero skips free.",
+      "control_flow_notes": "Invalid kernel dimensions return before subtraction or HWCAP. getauxval(16), TBZbit22 selects public non-SVE worker .L415. SVE gate requires width>=64,kh>=4,oh>=4. Gate/stride/cap failure uses original SVE path. Object invalid tests0x5094..0x50e0, HWCAP0x5110..0x5118, eligibility0x511c..0x5128/0x51e8..0x5228, malloc0x5230 and NULL branch0x5240, copy GOMP0x5274 and branch back0x527c, compute GOMP0x5164, free tail0x5188. Non-SVE path0x518c..0x51d0 calls fn2 with use_sve zero and never allocates."
+    }
+  ],
+  "copy_path_review": {
+    "eligibility_and_overflow": "Actual public function first enforces positive kh/kw and kh<=height,kw<=width, making dimensions positive int32. SVE bit22 and width>=64/kh>=4/oh>=4 precede allocation. .L431 add15/and-16/orr16 computes ((width+15)/16 |1)*16 floats and equality disables copy. Maximum padded stride is2^31+16 for positive int32 width; add15, width*4 and height*padded_stride are therefore representable in64-bit size_t (product<2^63). GCC removes source guards proven redundant under those ranges; retained compare toSIZE_MAX/4 precedes shift2 and compare to536870912. Failure paths preserve original input/stride. This is static bound/control-flow proof, not a huge-allocation dynamic test.",
+    "malloc_and_null_fallback": "One malloc in public .L432 after all gates; object0x5230. x21 receives result, cbz x0 at0x5240 reaches shared compute .L416 without rewriting original x26=input/x28=stride. No copy region is launched and x21=0 skips free on this path. Success rewrites selected pointers only after NULL branch.",
+    "row_memcpy_and_stride": "Copy capture stores original input/original stride and allocated output/padded stride separately, plus original row_bytes=width*4 and full inputHeight. Worker0 static row partition is disjoint, uses exact row_bytes once per assigned row and independent strides in bytes. No padding bytes feed the convolution: helper logical widths and kw stay unchanged while only row stride changes. Actual memcpy source is never output, and input/kernel remain readonly.",
+    "compute_and_free_order": "Copy GOMP_parallel completes at public0x5274 before branch0x527c to .L416/compute0x5164; compute returns before cbz allocation and tail free0x5188. OMP region return is the join/barrier semantics here; no standalone barrier instruction is invented. All worker helpers finish before the shared input copy is freed, once per successful invocation; no persistent allocation/state.",
+    "noncopy_and_non_sve_fallback": "Disabled gate, unchanged padded stride, cap failure and malloc NULL all reach original SVE compute with original stride and no free. HWCAP-not-SVE directly captures original input/kernel/output/stride and use_sve=0 for worker2, bypassing all allocation/copy/free logic. Invalid dimensions return immediately. Worker2 actual machine code and stack traffic were reviewed statically; the six H configurations do not provide forced non-SVE dynamic coverage."
+  },
+  "review_conclusion": "No blocker found in the actual production dispatch/copy control flow or object correspondence. This fragment does not assert whole-quad completion, benchmark performance, promotion, huge-size dynamic coverage, or whole-program no-stack/no-spill."
+}

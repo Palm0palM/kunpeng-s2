@@ -74,8 +74,11 @@ class Redactor:
         text = re.sub(r'/Users/[^/\s"\'\\]+', 'LOCAL_USER_HOME', text)
         text = re.sub(r'/home/share/[^/\s"\'\\]+', 'CLUSTER_USER_HOME', text)
         text = re.sub(r'/home/[^/\s"\'\\]+', 'CLUSTER_USER_HOME', text)
+        # Scheduler output may be a JSON string containing an escaped tab/newline.
+        # The final t/n/r is a serialization delimiter, not a username prefix.
+        left = r'(?:(?<![A-Za-z0-9_])|(?<=\\[nrt])|(?<=\\u000[9aAdD]))'
         for value in sorted(self.values, key=len, reverse=True):
-            text = re.sub(r'(?<![A-Za-z0-9_])' + re.escape(value) + r'(?![A-Za-z0-9_])', self.values[value], text)
+            text = re.sub(left + re.escape(value) + r'(?![A-Za-z0-9_])', self.values[value], text)
         return text
 
 
