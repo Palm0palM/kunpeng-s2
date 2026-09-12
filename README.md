@@ -6,7 +6,7 @@
 
 TRSM 最新提交包：**T7-diagpanel**，同分配三轮较 T5 合计耗时减少 **8.06%**，大用例减少 **15.88%**；最终 ZIP 超算解压三轮 9/9 PASS。[下载压缩包](outputs/trsm-best.zip) · [最终交付与 KML 状态](docs/trsm-final-20260911-r4.md)。另完成 KML 25.1 + GCC12 三轮 9/9 PASS；官方 KML 25.2.0 复验仍待完成。
 
-**提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C5、ZGEMM Z1、TRSM T5；各题 result 目录保留版本说明、校验值与平台反馈字段。
+**提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C5、ZGEMM Z1、TRSM T7；各题 result 目录保留版本说明、校验值与平台反馈字段。
 
 ## 先把环境跑通
 
