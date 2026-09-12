@@ -1,35 +1,30 @@
 {
   "schema_version": 1,
-  "purpose": "当前 T7 提交包及原样保留的历史脱敏测量证据",
-  "active_submission_version": "T7",
-  "implementation_experiment": "T7-diagpanel",
-  "source_ref": "d1ede6f35bb1fa75599edb3894dfc4bca5d5eaa1",
-  "notice": "本清单 SHA-256 仅校验当前分发文件字节；历史远端哈希验证未执行的记录保持原义。MANIFEST.json 自身不递归列入。",
+  "purpose": "当前 T8 提交包及原样保留的历史脱敏测量证据",
+  "active_submission_version": "T8",
+  "implementation_experiment": "T8-svepanel16",
+  "source_ref": "8de73e662cedb40add2ce8cdb2f4f0c240219cce",
+  "notice": "按用户要求，不计算或验证当前交付文件哈希；本清单只登记路径和字节数。历史 evidence 条目及原有哈希原样保留，未重新计算或验证。MANIFEST.json 自身不递归列入。",
   "files": [
     {
       "path": "README.md",
-      "sha256": "3a73341123a328196ca2c55d1cfd17879615d3a60dcbb06fd5b3862ff1b944bb",
-      "bytes": 2076
+      "bytes": 2459,
+      "hash_validation": "not performed at user request"
     },
     {
-      "path": "T7/README.md",
-      "sha256": "9065d5d6f75654a849c3dc9188673bd26b3cce8d2732577df5e1963c8a3c1147",
-      "bytes": 3190
+      "path": "T8/README.md",
+      "bytes": 3023,
+      "hash_validation": "not performed at user request"
     },
     {
-      "path": "T7/SHA256SUMS",
-      "sha256": "64e50a7e2c2d15883a4d4764820d16c46ec126b2d18afee9f7642b7af87c04b9",
-      "bytes": 75
+      "path": "T8/metadata.json",
+      "bytes": 6732,
+      "hash_validation": "not performed at user request"
     },
     {
-      "path": "T7/metadata.json",
-      "sha256": "6f5e2afdee212d337e4817b634379b4c21476a74cfa931cb054d0aedca11d99e",
-      "bytes": 7767
-    },
-    {
-      "path": "T7/trsm.zip",
-      "sha256": "5728a0ccfeaf0e71ce7c3a7ccf238b857b900f2fb075bea4cb8948b935181ad4",
-      "bytes": 10343
+      "path": "T8/trsm.zip",
+      "bytes": 11740,
+      "hash_validation": "not performed at user request"
     },
     {
       "path": "evidence/T0/benchmark.log",
@@ -291,5 +286,10 @@
       "sha256": "5e7740862a73e1b83528ab19f75bd0d9a0a51718ca11d1af07b0c74ad1c5ea8e",
       "bytes": 11154
     }
-  ]
+  ],
+  "hash_validation": "not performed at user request",
+  "historical_submission": {
+    "version": "T7",
+    "url": "https://github.com/Palm0palM/kunpeng-s2/tree/e0bf061987e729dfdca7ff537fd128a2c9889e6c/trsm/result/T7"
+  }
 }

@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "submission_version": "T8",
+  "implementation_experiment": "T8-svepanel16",
+  "parent": "T7-control11",
+  "source_ref": "8de73e662cedb40add2ce8cdb2f4f0c240219cce",
+  "source_package": "../../../outputs/trsm-best.zip",
+  "source_metadata": "../../../outputs/trsm-best.json",
+  "source_created_at": "2026-09-12T02:34:08.787559+00:00",
+  "release_tag": "trsm-t8-svepanel16-20260912",
+  "strategy": "小工作集前代用16行SVE核复用每个历史X向量，保持递增k/q顺序，块内显式FMA；大路径保持T7。 本次只复制 main 已验证的原 ZIP，不修改源码或重新压缩。",
+  "recommended": true,
+  "ready_for_manual_submission": true,
+  "archive": {
+    "filename": "trsm.zip",
+    "bytes": 11740,
+    "sha256": null,
+    "hash_validation": "not performed at user request",
+    "layout": "trsm/ 顶层目录，5 个源码/运行文件",
+    "members": {
+      "trsm/README.md": {
+        "bytes": 2207,
+        "mode": "0644"
+      },
+      "trsm/bench_trsm.c": {
+        "bytes": 4799,
+        "mode": "0644"
+      },
+      "trsm/compat/kblas.h": {
+        "bytes": 615,
+        "mode": "0644"
+      },
+      "trsm/run.sh": {
+        "bytes": 2686,
+        "mode": "0755"
+      },
+      "trsm/trsm.c": {
+        "bytes": 36794,
+        "mode": "0644"
+      }
+    },
+    "members_metadata_source": "../../../outputs/trsm-best.json; upstream byte counts and modes copied without new member hash audit"
+  },
+  "source_validation": {
+    "job_id": "1576028",
+    "suites": 3,
+    "test_runs": 3,
+    "official_rows_passed": 9,
+    "max_error": 1.11e-15,
+    "case_median_ms": [
+      18.74,
+      236.16,
+      192.69
+    ],
+    "reference": "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+    "cases": [
+      {
+        "dims": [
+          512,
+          19968
+        ],
+        "times_ms": [
+          18.5,
+          18.79,
+          18.74
+        ],
+        "median_ms": 18.74,
+        "min_ms": 18.5,
+        "max_ms": 18.79,
+        "spread_pct": 1.547491995731052,
+        "gflops": [
+          282.9638,
+          278.5587,
+          279.3739
+        ],
+        "max_error": 1.67e-16
+      },
+      {
+        "dims": [
+          2432,
+          17024
+        ],
+        "times_ms": [
+          236.86,
+          227.23,
+          236.16
+        ],
+        "median_ms": 236.16,
+        "min_ms": 227.23,
+        "max_ms": 236.86,
+        "spread_pct": 4.0777439024390345,
+        "gflops": [
+          425.1079,
+          443.1209,
+          426.3657
+        ],
+        "max_error": 2.22e-16
+      },
+      {
+        "dims": [
+          17024,
+          512
+        ],
+        "times_ms": [
+          192.69,
+          193.56,
+          192.11
+        ],
+        "median_ms": 192.69,
+        "min_ms": 192.11,
+        "max_ms": 193.56,
+        "spread_pct": 0.7525040220042497,
+        "gflops": [
+          770.078,
+          766.6186,
+          772.403
+        ],
+        "max_error": 1.11e-15
+      }
+    ],
+    "total_median_ms": 447.59,
+    "evidence": "../../../records/experiments/trsm/T8-svepanel16.json"
+  },
+  "package_validation": {
+    "status": "passed",
+    "job_id": "1576076",
+    "suites": 3,
+    "test_runs": 3,
+    "official_rows_passed": 9,
+    "max_error": 1.11e-15,
+    "case_median_ms": [
+      18.81,
+      237.09,
+      194.85
+    ],
+    "total_median_ms": 450.75,
+    "reference": "KML 25.1.0; not specified KML 25.2.0",
+    "actual_compiler": "GCC 12.3.1",
+    "true_kml251_and_private_gomp_ldd_all_suites": true,
+    "package_extracted_and_tested": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_code": 0,
+    "cases": [
+      {
+        "dims": [
+          512,
+          19968
+        ],
+        "times_ms": [
+          18.63,
+          18.81,
+          18.91
+        ],
+        "median_ms": 18.81,
+        "max_error": 1.67e-16
+      },
+      {
+        "dims": [
+          2432,
+          17024
+        ],
+        "times_ms": [
+          244.01,
+          227.5,
+          237.09
+        ],
+        "median_ms": 237.09,
+        "max_error": 2.22e-16
+      },
+      {
+        "dims": [
+          17024,
+          512
+        ],
+        "times_ms": [
+          194.85,
+          215.0,
+          194.58
+        ],
+        "median_ms": 194.85,
+        "max_error": 1.11e-15
+      }
+    ],
+    "evidence": "../../../records/evidence/trsm-finalpackage-20260912-r5"
+  },
+  "same_allocation_comparison": {
+    "job_id": "1576028",
+    "baseline_experiment": "T7-control11",
+    "baseline_run": "T7-control11-repeat-r5",
+    "candidate_experiment": "T8-svepanel16",
+    "baseline_total_median_ms": 508.56,
+    "candidate_total_median_ms": 447.59,
+    "reduction_pct_rounded": 11.99,
+    "case_reduction_pct_rounded": [
+      21.46,
+      18.88,
+      0.46
+    ],
+    "observed_gate_pct_rounded": 7.67,
+    "reference": "Huawei KML 25.1.0 + GCC 12.3.1",
+    "evidence": "../../../docs/trsm-stage-r5-20260912.md",
+    "note": "Same allocation; independent package rerun and historical OpenBLAS/GCC10 results are not used to calculate strategy gain. Unchanged large-workset path is not claimed to have a new stable improvement."
+  },
+  "measurement_metric": "三项用例在三轮独立完整套件中的中位耗时之和；每个打印样本为 TEST_RUNS=3 的平均值；不是官方分数。",
+  "total_median_ms": 450.75,
+  "actual_reference_version": "KML 25.1.0",
+  "actual_compiler_version": "GCC 12.3.1",
+  "actual_threads": 38,
+  "numa_policy": "single NUMA",
+  "official_kml252_revalidated": false,
+  "official_kml_target_version": "25.2.0",
+  "hash_validation": "not performed at user request",
+  "source_identity_limit": "Local byte snapshots only; remote source identity and transfer integrity are not verified",
+  "local_artifact_check": {
+    "performed": "原样复制 outputs/trsm-best.zip，并以直接字节比较确认本地副本相同；没有计算或验证哈希，也没有解包重压。",
+    "zip_identical_to_source_output_by_bytes": true,
+    "new_hash_audit_performed": false
+  },
+  "source_matches_measured_local_snapshot_by_bytes": true,
+  "local_compilation_or_tests": false,
+  "contest_submission": false,
+  "unvalidated_candidate_included": false,
+  "historical_submission": {
+    "version": "T7",
+    "url": "https://github.com/Palm0palM/kunpeng-s2/tree/e0bf061987e729dfdca7ff537fd128a2c9889e6c/trsm/result/T7"
+  },
+  "competition_feedback": {
+    "score": null,
+    "submitted_at": null,
+    "passed": null,
+    "notes": null
+  },
+  "competition": {
+    "submission_status": "not_submitted_by_agent",
+    "score": null,
+    "rank": null,
+    "submitted_at": null,
+    "submission_id": null,
+    "feedback": ""
+  }
+}
