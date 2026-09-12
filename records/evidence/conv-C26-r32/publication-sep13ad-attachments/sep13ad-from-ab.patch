@@ -1,0 +1,579 @@
+--- .runs/conv/sep13ab-submit-performance.py
++++ .runs/conv/sep13ad-submit-performance.py
+@@ -1,6 +1,6 @@
+-"""Prepared AB four-member comparison; root review and explicit --go required.
+-
+-C54 requires its own actual frozen AA diagnostic. C52-r2 is reference-only,
++"""Prepared AD four-member comparison; root review and explicit --go required.
++
++C55 requires its own actual frozen AC diagnostic. C52-r3 is reference-only,
+ never a retry of failed Y. No work happens on import beyond loading definitions.
+ """
+ import argparse
+@@ -16,26 +16,25 @@
+ import cluster_group
+ import experiment as e
+ 
+-spec = importlib.util.spec_from_file_location('sep13ab_prior_y_checks', Path(__file__).with_name('sep13y-record-group.py'))
++spec = importlib.util.spec_from_file_location('sep13ad_prior_ab_checks', Path(__file__).with_name('sep13ab-record-group.py'))
+ prior = importlib.util.module_from_spec(spec)
+ spec.loader.exec_module(prior)
+-y = prior.contract
+-w = y.w
+-s = w.s
+-r = w.r
+-
+-ORDER = ['C26-r30', 'C54-row7x3shared4', 'C52-r2', 'C26-r31']
+-CANDIDATES = ['C54-row7x3shared4']
+-REFERENCES = ['C52-r2']
+-CONTROLS = ['C26-r30', 'C26-r31']
++ab = prior.contract
++w = ab.w
++r = ab.r
++
++ORDER = ['C26-r32', 'C55-row7x3shared3', 'C52-r3', 'C26-r33']
++CANDIDATES = ['C55-row7x3shared3']
++REFERENCES = ['C52-r3']
++CONTROLS = ['C26-r32', 'C26-r33']
+ SOURCE_VERSION = 'C52-row7x3shared2'
+-SOURCE_PARENTS = {'C54-row7x3shared4': SOURCE_VERSION, 'C52-r2': SOURCE_VERSION}
+-DIAGNOSTIC_SOURCE_VERSIONS = {'C54-row7x3shared4': 'C54-row7x3shared4', 'C52-r2': SOURCE_VERSION}
+-DIAGNOSTIC_EXPECTED_CHECKS = {'C54-row7x3shared4': 44328, 'C52-r2': 37128}
+-AA_JOB_PATH = ROOT / '.runs/conv/sep13aa-checks/C54-row7x3shared4/job.json'
+-AA_JOB_ID = '1582656'  # Root's one actual AA submission, read from its saved job.json.
+-SOURCE_SHA = {'C54-row7x3shared4': 'fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88',
+-              'C52-r2': '8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7'}
++SOURCE_PARENTS = {'C55-row7x3shared3': SOURCE_VERSION, 'C52-r3': SOURCE_VERSION}
++DIAGNOSTIC_SOURCE_VERSIONS = {'C55-row7x3shared3': 'C55-row7x3shared3', 'C52-r3': SOURCE_VERSION}
++DIAGNOSTIC_EXPECTED_CHECKS = {'C55-row7x3shared3': 44328, 'C52-r3': 37128}
++AC_JOB_PATH = ROOT / '.runs/conv/sep13ac-checks/C55-row7x3shared3/job.json'
++AC_JOB_ID = '1582860'  # Root's one actual AC submission, read from its saved job.json.
++SOURCE_SHA = {'C55-row7x3shared3': 'cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138',
++              'C52-r3': '8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7'}
+ RESOURCES = r.RESOURCES
+ ENVIRONMENT = r.ENVIRONMENT
+ TERMINAL = r.TERMINAL
+@@ -43,37 +42,41 @@
+ 
+ 
+ def diagnostic_jobs():
+-    # Require AA's actual saved original reservation and later
+-    # bind that exact ID to C54 validation/freeze/raw evidence.
+-    job = e.read_json(AA_JOB_PATH)
+-    assert job['version'] == 'C54-row7x3shared4' and str(job.get('job_id', '')) == AA_JOB_ID
+-    assert job['source_hashes']['conv2d.c'] == SOURCE_SHA['C54-row7x3shared4']
+-    return {'C54-row7x3shared4': str(job['job_id']), 'C52-r2': '1582134'}
++    # Require AC's actual saved original reservation and later
++    # bind that exact ID to C55 validation/freeze/raw evidence.
++    job = e.read_json(AC_JOB_PATH)
++    assert job['version'] == 'C55-row7x3shared3' and str(job.get('job_id', '')) == AC_JOB_ID
++    assert job['source_hashes']['conv2d.c'] == SOURCE_SHA['C55-row7x3shared3']
++    return {'C55-row7x3shared3': str(job['job_id']), 'C52-r3': '1582134'}
+ 
+ 
+ def old_decisions():
+-    decisions = y.old_decisions()
+-    plan = e.read_json(ROOT / '.runs/conv/sep13y-campaign.json')
+-    candidate = e.get_record('conv', 'C52-r1')
+-    assert plan['status'] == 'performance_complete' and plan['performance_job'] == candidate['job_id'] == '1582410'
+-    assert plan['confirmation_passed'] is candidate['confirmation_passed'] is False
++    decisions = ab.old_decisions()
++    plan = e.read_json(ROOT / '.runs/conv/sep13ab-campaign.json')
++    candidate = e.get_record('conv', 'C54-row7x3shared4')
++    reference = e.get_record('conv', 'C52-r2')
++    assert plan['status'] == 'performance_complete' and plan['performance_job'] == candidate['job_id'] == reference['job_id'] == '1582814'
+     assert plan['confirmation_pending'] == [] and candidate['qualified_for_confirmation'] is False
+-    assert candidate['source_hashes'] == e.get_record('conv', SOURCE_VERSION)['source_hashes']
+-    return dict(decisions, Y_confirmation_passed=False, Y_confirmation_job='1582410',
+-                C52_reference_only=True, C52_promotion_allowed=False, C52_qualified=False,
+-                failed_Y_confirmation_retried=False)
++    assert candidate['comparison']['eligible'] is candidate['opening_control_comparison']['eligible'] is False
++    assert plan['reference_only_versions'] == ['C52-r2']
++    assert reference['reference_only'] is True and reference['promotion_allowed'] is False
++    assert reference['qualified_for_confirmation'] is False and reference['prior_confirmation_passed'] is False
++    assert reference['prior_confirmation_version'] == 'C52-r1' and reference['prior_confirmation_job'] == '1582410'
++    assert reference['source_hashes'] == e.get_record('conv', SOURCE_VERSION)['source_hashes']
++    return dict(decisions, AB_job='1582814', AB_C54_qualified=False,
++                AB_C52_reference_only=True, AB_C52_promotion_allowed=False, AB_C52_qualified=False)
+ 
+ 
+ def previous_gate():
+-    # Reuse reviewed Y checks: complete W48/S36/R48 history stays read-only.
+-    # These arrays preserve historical decisions, never AB timing samples.
+-    plan = e.read_json(ROOT / '.runs/conv/sep13y-campaign.json')
++    # Reuse reviewed AB checks: complete Y/W/S/R history stays read-only.
++    # These arrays preserve historical decisions, never AD timing samples.
++    plan = e.read_json(ROOT / '.runs/conv/sep13ab-campaign.json')
+     prior.verify_plan(plan)
+-    assert plan['status'] == 'performance_complete' and plan['performance_job'] == '1582410'
+-    assert plan['confirmation_passed'] is False and plan['confirmation_pending'] == []
++    assert plan['status'] == 'performance_complete' and plan['performance_job'] == '1582814'
++    assert plan['confirmation_pending'] == [] and plan['prior_decisions_unchanged'] is True
+     records = {name: e.get_record('conv', name) for name in prior.ORDER}
+-    baseline, opening = records['C26-r29'], records['C26-r28']
+-    assert len(plan['results']) == 3 and [row['version'] for row in plan['results']] == prior.ORDER
++    baseline, opening = records['C26-r31'], records['C26-r30']
++    assert len(plan['results']) == 4 and [row['version'] for row in plan['results']] == prior.ORDER
+     for index, (name, rec) in enumerate(records.items()):
+         run = ROOT / '.runs/conv' / name
+         prior.verify_record(rec, plan, run)
+@@ -81,7 +84,7 @@
+         prior.verify_manifest(manifest, plan, name)
+         assert manifest['source_hashes'] == rec['source_hashes']
+         status = manifest.get('scheduler_status') or {}
+-        assert str(status.get('jobId')) == '1582410' and status.get('status') == 'SUCCEEDED'
++        assert str(status.get('jobId')) == '1582814' and status.get('status') == 'SUCCEEDED'
+         assert status.get('jobExitCode') == status.get('systemExitCode') == 0
+         assert (run / 'exit-code.txt').read_text().strip() == '0'
+         assert rec['machine'] == baseline['machine']
+@@ -89,11 +92,12 @@
+         assert row['total_median_ms'] == rec['total_median_ms']
+         assert row['all_samples_ms'] == [case['times_ms'] for case in rec['cases']]
+         assert row['qualified_for_confirmation'] is rec['qualified_for_confirmation'] is False
+-    assert sum(len(case['times_ms']) for rec in records.values() for case in rec['cases']) == 36
++    assert sum(len(case['times_ms']) for rec in records.values() for case in rec['cases']) == 48
+     assert opening['source_hashes'] == baseline['source_hashes'] == e.get_record('conv', 'C26-row4loads')['source_hashes']
+-    candidate = records['C52-r1']
+-    assert candidate['confirmation_passed'] is False
+-    for base, field in ((opening, 'opening_control_comparison'), (baseline, 'comparison')):
++    candidate = records['C54-row7x3shared4']
++    assert candidate['qualified_for_confirmation'] is False
++    for base, field in ((opening, 'opening_control_comparison'), (baseline, 'comparison'),
++                        (records['C52-r2'], 'source_parent_reference_comparison')):
+         actual = e.comparison(base, candidate)
+         saved = candidate[field]
+         assert saved['baseline'] == base['version']
+@@ -104,14 +108,16 @@
+ 
+ 
+ def serial_gate(cfg):
+-    # Bounded original Y/X/T/AA identities and explicit P/AB reservations only.
++    # Bounded original AC/AB/AA/Y/X/T identities and explicit P/AD reservations only.
+     # An unknown P ID is not adopted automatically; root must reconcile it.
+-    paths = [(ROOT / '.runs/conv/sep13y-campaign.json', 'performance_job', '1582410', True, None),
++    paths = [(AC_JOB_PATH, 'job_id', diagnostic_jobs()['C55-row7x3shared3'], True, 'C55-row7x3shared3'),
++             (ROOT / '.runs/conv/sep13ab-campaign.json', 'performance_job', '1582814', True, None),
++             (ROOT / '.runs/conv/sep13aa-checks/C54-row7x3shared4/job.json', 'job_id', '1582656', True, 'C54-row7x3shared4'),
++             (ROOT / '.runs/conv/sep13y-campaign.json', 'performance_job', '1582410', True, None),
+              (ROOT / '.runs/conv/sep13x-checks/C53-row7cursors/job.json', 'job_id', '1582372', True, 'C53-row7cursors'),
+              (ROOT / '.runs/conv/sep13t-checks/C52-row7x3shared2/job.json', 'job_id', '1582134', True, SOURCE_VERSION),
+-             (AA_JOB_PATH, 'job_id', diagnostic_jobs()['C54-row7x3shared4'], True, 'C54-row7x3shared4'),
+              (ROOT / '.runs/conv/sep13p-checks/C50-row4dupfencenomem/job.json', 'job_id', None, False, 'C50-row4dupfencenomem'),
+-             (ROOT / '.runs/conv/sep13ab-campaign.json', 'performance_job', None, False, None)]
++             (ROOT / '.runs/conv/sep13ad-campaign.json', 'performance_job', None, False, None)]
+     paths += [(ROOT / '.runs/conv' / name / 'cluster.json', 'job_id', None, False, None) for name in ORDER]
+     identities, unresolved = {}, []
+     for path, field, expected, required, version in paths:
+@@ -146,8 +152,8 @@
+         diag, frozen = w.diagnostic_gate(DIAGNOSTIC_SOURCE_VERSIONS[name], source)
+         assert str(diag['job_id']) == '1582134'
+         return diag, frozen
+-    # C54 changed shared2 to shared4: T cannot supply its correctness/codegen.
+-    frozen = ROOT / '.runs/conv/C54-row7x3shared4/sve-correctness-sep13aa'
++    # C55 changed shared2 to shared3: T cannot supply its correctness/codegen.
++    frozen = ROOT / '.runs/conv/C55-row7x3shared3/sve-correctness-sep13ac'
+     diag = e.read_json(frozen / 'validation.json')
+     assert diag['candidate'] == name and diag['status'] == 'passed' and diag['complete'] is True
+     assert str(diag['job_id']) == diagnostic_jobs()[name]
+@@ -161,7 +167,7 @@
+     assert scheduler['jobExitCode'] == scheduler['systemExitCode'] == 0
+     job = e.read_json(frozen / 'job.json')
+     assert job['version'] == name and str(job['job_id']) == str(diag['job_id'])
+-    original_job = e.read_json(AA_JOB_PATH)
++    original_job = e.read_json(AC_JOB_PATH)
+     assert original_job['source_hashes'] == job['source_hashes']
+     assert original_job['expected_checks'] == job['expected_checks'] == expected_checks
+     assert job['scheduler_status'] == scheduler and job['resources'] == RESOURCES
+@@ -199,12 +205,12 @@
+     assert assembly['candidate'] == name and str(assembly['job_id']) == str(diag['job_id'])
+     assert assembly['source_sha256'] == source['conv2d.c'] and assembly['compiler_version'] == '10.3.1'
+     assert assembly['assembly_sha256'] == e.digest(frozen / 'raw/conv2d-sve.s')
+-    assert assembly['schema'] == 'aa-shared4-paths-v1'
++    assert assembly['schema'] == 'ac-shared3-paths-v1'
+     assert all(assembly[key] is True for key in ('review_complete','production_uninstrumented',
+         'whole_helper_stack_reviewed','transitions_reviewed','all_stages_and_transitions_reviewed',
+-        'abi_saves_distinguished','dispatch_reviewed','shared_quad_and_remainder_reviewed'))
++        'abi_saves_distinguished','dispatch_reviewed','shared_triple_and_remainder_reviewed'))
+     assert assembly['shape'] == dict(rows_per_group=7, vectors_per_row=3, accumulators=21)
+-    assert assembly['shared_unroll'] == dict(main_columns=4,remainder_source_columns=1,remainder_max_columns=3,other_stage_columns=1)
++    assert assembly['shared_unroll'] == dict(main_columns=3,remainder_source_columns=1,remainder_max_columns=2,other_stage_columns=1)
+     assert assembly['stage_count'] == 13
+     assert assembly['fma_count'] == assembly['whole_source_fma_count'] == 0
+     assert assembly['whole_machine_code_identical_claimed'] is False and assembly['dispatch_functions']
+@@ -228,10 +234,10 @@
+         for stage in helper['stages']:
+             if stage['stage'] == 'shared':
+                 assert all(stage.get(key) for key in ('source_mapping','control_flow_notes',
+-                    'accumulator_order_review','quad_to_remainder_review','transition_spill_review',
++                    'accumulator_order_review','triple_to_remainder_review','transition_spill_review',
+                     't_and_tile_reset_review'))
+                 blocks = stage['blocks']
+-                assert blocks and {block['role'] for block in blocks} == {'quad_main','u1_remainder'}
++                assert blocks and {block['role'] for block in blocks} == {'triple_main','u1_remainder'}
+                 ids = [block['block_id'] for block in blocks]
+                 assert all(isinstance(x,str) and x for x in ids) and len(set(ids)) == len(ids)
+                 regions = []
+@@ -239,7 +245,7 @@
+                     work = block['kernel_columns_per_iteration']
+                     role, kind = block['role'], block['region_kind']
+                     assert kind in ('loop','straight_line')
+-                    assert type(work) is int and (work == 4 if role == 'quad_main' else 1 <= work <= 3)
++                    assert type(work) is int and (work == 3 if role == 'triple_main' else 1 <= work <= 2)
+                     assert role != 'u1_remainder' or kind != 'loop' or work == 1
+                     assert all(block.get(key) for key in ('source_mapping','spill_notes','entry_exit_notes',
+                         'column_order_review','control_flow_evidence'))
+@@ -250,10 +256,10 @@
+                     assert block['ranges']
+                     for part in block['ranges']:
+                         regions.append((dict(block,line_start=part['line_start'],line_end=part['line_end']),work))
+-                assert any(block['role'] == 'quad_main' and block['region_kind'] == 'loop' for block in blocks)
++                assert any(block['role'] == 'triple_main' and block['region_kind'] == 'loop' for block in blocks)
+                 assert stage['actual_arithmetic_region_count'] == len(regions)
+                 paths = stage['remainder_paths']
+-                assert paths and {path['remainder_columns'] for path in paths} == {0,1,2,3}
++                assert paths and {path['remainder_columns'] for path in paths} == {0,1,2}
+                 path_ids = [path['path_id'] for path in paths]
+                 assert all(isinstance(x,str) and x for x in path_ids) and len(set(path_ids)) == len(path_ids)
+                 lookup = {block['block_id']:block for block in blocks}
+@@ -266,7 +272,7 @@
+                     for step in path['sequence']:
+                         block = lookup[step['block_id']]
+                         repeat = step['executions']
+-                        assert block['role'] == 'u1_remainder' and type(repeat) is int and 1 <= repeat <= 3
++                        assert block['role'] == 'u1_remainder' and type(repeat) is int and 1 <= repeat <= 2
+                         assert block['region_kind'] == 'loop' or repeat == 1
+                         work += repeat * block['kernel_columns_per_iteration']
+                         used.add(block['block_id'])
+@@ -290,7 +296,7 @@
+         assert helper['actual_arithmetic_region_count'] == assembly['arithmetic_region_counts'][helper['symbol']] == len(ranges)
+     parent_codegen = assembly['parent_codegen_comparison']
+     assert parent_codegen['candidate'] == SOURCE_VERSION and str(parent_codegen['job_id']) == '1582134'
+-    assert parent_codegen['source_sha256'] == SOURCE_SHA['C52-r2']
++    assert parent_codegen['source_sha256'] == SOURCE_SHA['C52-r3']
+     assert parent_codegen['assembly_sha256'] == e.digest(ROOT / '.runs/conv/C52-row7x3shared2/sve-correctness-sep13t/raw/conv2d-sve.s')
+     assert parent_codegen['shared_work_and_schedule_review'] and parent_codegen['stack_and_spill_review']
+     freeze = e.read_json(frozen / 'freeze-source.json')
+@@ -308,10 +314,10 @@
+     assert prepared['expected_checks'] == expected_checks and prepared['total_cases_planned'] == 44328
+     assert prepared['runner_cases_planned'] == 0 and prepared['expected_semantic_stage_count'] == 13
+     assert prepared['expected_stages'] == job['expected_stages'] == stages
+-    assert prepared['assembly_review_schema'] == 'aa-shared4-paths-v1'
+-    assert prepared['shared_kernel_columns_per_iteration'] == 4
++    assert prepared['assembly_review_schema'] == 'ac-shared3-paths-v1'
++    assert prepared['shared_kernel_columns_per_iteration'] == 3
+     assert prepared['shared_remainder_source_columns_per_iteration'] == prepared['other_stage_kernel_columns_per_iteration'] == 1
+-    assert prepared['shared_remainder_max_columns'] == 3
++    assert prepared['shared_remainder_max_columns'] == 2
+     assert prepared['expected_rowseven_entries'] == dict(dispatch_per_configuration=1236, direct_per_configuration=1080)
+     assert prepared['full_matrix_counts'] == dict(core=3888,narrow=144,small=720,larger=32,quad_boundary=960)
+     assert prepared['dispatch_matrix_counts'] == dict(core=972,quad_boundary=240)
+@@ -328,9 +334,9 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--go', action='store_true')
+     args = parser.parse_args()
+-    assert args.go, 'Prepared only; root explicit GO required before AB writes or SSH'
+-    path = ROOT / '.runs/conv/sep13ab-campaign.json'
+-    assert not path.exists(), 'AB already reserved; reconcile original job and never resubmit'
++    assert args.go, 'Prepared only; root explicit GO required before AD writes or SSH'
++    path = ROOT / '.runs/conv/sep13ad-campaign.json'
++    assert not path.exists(), 'AD already reserved; reconcile original job and never resubmit'
+     for name in CONTROLS + REFERENCES:
+         assert not (ROOT / '.runs/conv' / name).exists() and not e.record_path('conv', name).exists(), name
+     previous, old_records = previous_gate()
+@@ -338,7 +344,7 @@
+     current = e.source_files(ROOT / 'conv')
+     best = e.read_json(ROOT / 'outputs/conv-best.json')
+     assert best['label'] == 'C6' and best['source_hashes'] == current
+-    assert current == old_records['C26-r29']['source_hashes'] == e.get_record('conv','C26-row4loads')['source_hashes']
++    assert current == old_records['C26-r31']['source_hashes'] == e.get_record('conv','C26-row4loads')['source_hashes']
+     settings = previous['settings']
+     verify_settings(settings)
+     cfg = c.load_config(ROOT / 'config/conv-sep12.local.json')
+@@ -359,22 +365,22 @@
+         sources[name], jobs[name] = source, diag['job_id']
+     gate = serial_gate(cfg)
+     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+-    e.write_json(ROOT / '.runs/conv' / ('sep13ab-performance-gate-'+stamp+'.json'), gate)
+-    assert gate['clear'], 'Known Y/X/T/AA or explicit P/AB work active/unknown; no AB reservation or submission'
+-    plan = dict(round='sep13ab', status='preparing', measurement_order=ORDER,
++    e.write_json(ROOT / '.runs/conv' / ('sep13ad-performance-gate-'+stamp+'.json'), gate)
++    assert gate['clear'], 'Known AC/AB/AA/Y/X/T or explicit P/AD work active/unknown; no AD reservation or submission'
++    plan = dict(round='sep13ad', status='preparing', measurement_order=ORDER,
+         candidate_versions=CANDIDATES, reference_only_versions=REFERENCES,
+-        opening_control=CONTROLS[0], primary_baseline=CONTROLS[1], source_parent_reference='C52-r2',
++        opening_control=CONTROLS[0], primary_baseline=CONTROLS[1], source_parent_reference='C52-r3',
+         suites_per_member=3, expected_benchmark_cases=48, settings=settings,
+-        expected_compiler_banners=['gcc (GCC) 10.3.1'], record_environment='kunpeng-gcc10-generic-38-sep13ab',
++        expected_compiler_banners=['gcc (GCC) 10.3.1'], record_environment='kunpeng-gcc10-generic-38-sep13ad',
+         record_reference=previous['record_reference'], best_label='C6', source_parents=SOURCE_PARENTS,
+         candidate_source_hashes=sources, diagnostic_jobs=jobs, diagnostic_evidence_directories=frozen_paths,
+         diagnostic_source_versions=DIAGNOSTIC_SOURCE_VERSIONS,
+-        diagnostic_expected_checks=DIAGNOSTIC_EXPECTED_CHECKS, prior_job='1582410',
+-        prior_campaign='.runs/conv/sep13y-campaign.json', prior_decisions=decisions,
+-        auxiliary_comparisons={'C54-row7x3shared4':'C52-r2'}, confirmation_only=False,
++        diagnostic_expected_checks=DIAGNOSTIC_EXPECTED_CHECKS, prior_job='1582814',
++        prior_campaign='.runs/conv/sep13ab-campaign.json', prior_decisions=decisions,
++        auxiliary_comparisons={'C55-row7x3shared3':'C52-r3'}, confirmation_only=False,
+         failed_confirmation_retry_allowed=False,
+-        selection_rule='Use only all48 AB samples. C54 must independently pass both unchanged same-job C6 controls: total median gain strictly exceeds max(1%, all compared case spreads), and no individual case regresses over1%. Keep every slow sample. Initial qualification is only a flag for root review.',
+-        attribution_rule='C54 versus same-source C52-r2 is a separate whole-implementation background comparison and never replaces either C6 gate. C52-r2 is reference-only, promotion_allowed=false, qualified_for_confirmation=false. Y and S confirmations remain false; this is not a retry of either.',
++        selection_rule='Use only all48 AD samples. C55 must independently pass both unchanged same-job C6 controls: total median gain strictly exceeds max(1%, all compared case spreads), and no individual case regresses over1%. Keep every slow sample. Initial qualification is only a flag for root review.',
++        attribution_rule='C55 versus same-source C52-r3 is a separate whole-implementation background comparison and never replaces either C6 gate. C52-r3 is reference-only, promotion_allowed=false, qualified_for_confirmation=false. Y and S confirmations remain false; this is not a retry of either.',
+         local_compilation_or_tests_run=False, official_score=None, automatic_confirmation=False,
+         automatic_promotion=False, automatic_packaging=False, submitted=False, submit_attempted=False)
+     with e.locked():
+@@ -392,9 +398,9 @@
+         # A saved reservation is irreversible for this submit entry point.
+         e.write_json(path, plan)
+         for name in CONTROLS:
+-            e.new(argparse.Namespace(problem='conv',version=name,parent=None,strategy='Unchanged C6 AB-round matched control'))
+-        e.new(argparse.Namespace(problem='conv',version='C52-r2',parent=SOURCE_VERSION,
+-            strategy='Same-source C52 background reference for C54; promotion forbidden, not a failed Y confirmation retry'))
++            e.new(argparse.Namespace(problem='conv',version=name,parent=None,strategy='Unchanged C6 AD-round matched control'))
++        e.new(argparse.Namespace(problem='conv',version='C52-r3',parent=SOURCE_VERSION,
++            strategy='Same-source C52 background reference for C55; promotion forbidden, not a failed Y confirmation retry'))
+         for name in ORDER:
+             meta_path = ROOT/'.runs/conv'/name/'experiment.json'
+             meta = e.read_json(meta_path)
+@@ -412,7 +418,7 @@
+                                 prior_confirmation_job='1582410')
+             e.write_json(meta_path, meta)
+             e.checkpoint(argparse.Namespace(problem='conv',version=name,
+-                note='AB fixed four-member order, three independent original official suites each, total48 cases. C54 requires its own actual frozen AA44328. C52-r2 copies original C52 with T37128 as background reference-only; Yfalse/Sfalse preserved, not a confirmation repeat. Both C6 controls unchanged. No local operator execution.'))
++                note='AD fixed four-member order, three independent original official suites each, total48 cases. C55 requires its own actual frozen AC44328. C52-r3 copies original C52 with T37128 as background reference-only; Yfalse/Sfalse preserved, not a confirmation repeat. Both C6 controls unchanged. No local operator execution.'))
+         plan.update(status='prepared', submit_attempted=True)
+         e.write_json(path, plan)
+     cluster_group.submit_group(cfg, [ROOT/'.runs/conv'/name for name in ORDER])
+--- .runs/conv/sep13ab-record-group.py
++++ .runs/conv/sep13ad-record-group.py
+@@ -1,4 +1,4 @@
+-"""Record only the saved AB group; preserve all 48 original measurements.
++"""Record only the saved AD group; preserve all 48 original measurements.
+ 
+ No sources/campaigns/jobs are created. Actual matching terminal evidence is
+ required; failed measurements are not overwritten or silently excluded.
+@@ -18,7 +18,7 @@
+ import experiment as e
+ 
+ # Definition reuse only: the submit module has an explicit main guard.
+-spec = importlib.util.spec_from_file_location('sep13ab_submission_contract', Path(__file__).with_name('sep13ab-submit-performance.py'))
++spec = importlib.util.spec_from_file_location('sep13ad_submission_contract', Path(__file__).with_name('sep13ad-submit-performance.py'))
+ contract = importlib.util.module_from_spec(spec)
+ spec.loader.exec_module(contract)
+ ORDER = contract.ORDER
+@@ -28,19 +28,19 @@
+ 
+ 
+ def verify_plan(plan):
+-    assert plan['round'] == 'sep13ab' and plan['status'] in ('performance_running','performance_complete')
++    assert plan['round'] == 'sep13ad' and plan['status'] in ('performance_running','performance_complete')
+     assert plan['measurement_order'] == ORDER and plan['candidate_versions'] == contract.CANDIDATES
+     assert plan['reference_only_versions'] == contract.REFERENCES
+     assert plan['opening_control'] == ORDER[0] and plan['primary_baseline'] == ORDER[-1]
+-    assert plan['source_parent_reference'] == 'C52-r2'
++    assert plan['source_parent_reference'] == 'C52-r3'
+     assert plan['suites_per_member'] == 3 and plan['expected_benchmark_cases'] == 48
+     assert plan['expected_compiler_banners'] == ['gcc (GCC) 10.3.1']
+     assert plan['source_parents'] == contract.SOURCE_PARENTS
+     assert plan['diagnostic_expected_checks'] == contract.DIAGNOSTIC_EXPECTED_CHECKS
+     assert plan['diagnostic_source_versions'] == contract.DIAGNOSTIC_SOURCE_VERSIONS
+     assert {name:str(job) for name,job in plan['diagnostic_jobs'].items()} == contract.diagnostic_jobs()
+-    assert plan['auxiliary_comparisons'] == {'C54-row7x3shared4':'C52-r2'}
+-    assert plan['prior_job'] == '1582410' and plan['prior_campaign'] == '.runs/conv/sep13y-campaign.json'
++    assert plan['auxiliary_comparisons'] == {'C55-row7x3shared3':'C52-r3'}
++    assert plan['prior_job'] == '1582814' and plan['prior_campaign'] == '.runs/conv/sep13ab-campaign.json'
+     assert plan['prior_decisions'] == contract.old_decisions()
+     assert plan['confirmation_only'] is False and plan['failed_confirmation_retry_allowed'] is False
+     assert all(plan[key] is False for key in ('automatic_confirmation','automatic_promotion','automatic_packaging'))
+@@ -49,7 +49,7 @@
+     contract.verify_settings(plan['settings'])
+     previous, records = contract.previous_gate()
+     assert plan['settings'] == previous['settings']
+-    assert plan['candidate_source_hashes']['C52-r2'] == records['C52-r1']['source_hashes']
++    assert plan['candidate_source_hashes']['C52-r3'] == records['C52-r2']['source_hashes']
+ 
+ 
+ def verify_source_association(rec, plan):
+@@ -71,7 +71,7 @@
+     assert str(rec['diagnostic_job_id']) == str(plan['diagnostic_jobs'][name])
+     assert rec['diagnostic_source_sha256'] == rec['source_hashes']['conv2d.c']
+     assert rec['reused_identical_source_diagnostic'] is (name in contract.REFERENCES)
+-    # Independently associate changed C54 with AA and byte-identical C52 with T.
++    # Independently associate changed C55 with AC and byte-identical C52 with T.
+     diag, frozen = contract.diagnostic_gate(name, rec['source_hashes'])
+     assert frozen == rec['diagnostic_evidence_directory']
+     assert str(diag['job_id']) == str(rec['diagnostic_job_id'])
+@@ -104,7 +104,7 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('versions', nargs='*')
+     args = parser.parse_args()
+-    plan = e.read_json(ROOT/'.runs/conv/sep13ab-campaign.json')
++    plan = e.read_json(ROOT/'.runs/conv/sep13ad-campaign.json')
+     verify_plan(plan)
+     names = args.versions or ORDER
+     assert len(set(names)) == len(names) and all(n in ORDER for n in names)
+@@ -115,7 +115,7 @@
+         verify_manifest(cluster.read_json(ROOT/'.runs/conv'/name/'cluster.json'), plan, name)
+     for name in names:
+         run = ROOT/'.runs/conv'/name
+-        with (run/('status-driver-sep13ab-'+stamp+'.log')).open('x') as output, contextlib.redirect_stdout(output):
++        with (run/('status-driver-sep13ad-'+stamp+'.log')).open('x') as output, contextlib.redirect_stdout(output):
+             cluster.status(cfg, run)
+         manifest = cluster.read_json(run/'cluster.json')
+         verify_manifest(manifest, plan, name)
+@@ -131,7 +131,7 @@
+             print(name, 'already recorded; preserving all matching original measurements')
+             continue
+         assert previous['status'] in ('planned','prepared','unverified'), (name,'Failed/immutable evidence must remain unchanged')
+-        with (run/('fetch-driver-sep13ab-'+stamp+'.log')).open('x') as output, contextlib.redirect_stdout(output):
++        with (run/('fetch-driver-sep13ad-'+stamp+'.log')).open('x') as output, contextlib.redirect_stdout(output):
+             cluster.fetch(cfg, run)
+         verify_machine(e.machine_profile(run,(run/'benchmark.log').read_text(errors='replace')), plan)
+         metadata = e.read_json(run/'experiment.json')
+--- .runs/conv/sep13ab-compare.py
++++ .runs/conv/sep13ad-compare.py
+@@ -1,6 +1,6 @@
+-"""Compare only all four saved AB records; never confirm, promote or package.
++"""Compare only all four saved AD records; never confirm, promote or package.
+ 
+-C54 requires both unchanged C6 gates. C52-r2 remains reference-only regardless
++C55 requires both unchanged C6 gates. C52-r3 remains reference-only regardless
+ of its numerical comparisons; the failed Y/S confirmations and all history are preserved.
+ """
+ import importlib.util
+@@ -13,20 +13,20 @@
+ sys.path.insert(0, str(ROOT / 'tools'))
+ import experiment as e
+ 
+-spec = importlib.util.spec_from_file_location('sep13ab_record_checks', Path(__file__).with_name('sep13ab-record-group.py'))
++spec = importlib.util.spec_from_file_location('sep13ad_record_checks', Path(__file__).with_name('sep13ad-record-group.py'))
+ checks = importlib.util.module_from_spec(spec)
+ spec.loader.exec_module(checks)
+ 
+ 
+ # Reuse the already reviewed R wrapper around experiment.comparison unchanged.
+-comparison_spec = importlib.util.spec_from_file_location('sep13ab_common_comparison', Path(__file__).with_name('sep13r-compare.py'))
++comparison_spec = importlib.util.spec_from_file_location('sep13ad_common_comparison', Path(__file__).with_name('sep13r-compare.py'))
+ common = importlib.util.module_from_spec(comparison_spec)
+ comparison_spec.loader.exec_module(common)
+ comparison = common.comparison
+ 
+ 
+ def main():
+-    path = ROOT / '.runs/conv/sep13ab-campaign.json'
++    path = ROOT / '.runs/conv/sep13ad-campaign.json'
+     with e.locked():
+         plan = e.read_json(path)
+         checks.verify_plan(plan)
+@@ -58,16 +58,16 @@
+             rec['opening_control_comparison'] = comparison(opening, rec)
+             if name in checks.contract.REFERENCES:
+                 assert rec['reference_only'] is True and rec['promotion_allowed'] is False
+-                rec['decision_note'] = 'Same-source C52 background reference for C54. Never qualifies or promotes; Y/S confirmations remain false. This is not a failed Y confirmation retry.'
++                rec['decision_note'] = 'Same-source C52 background reference for C55. Never qualifies or promotes; Y/S confirmations remain false. This is not a failed Y confirmation retry.'
+                 continue
+-            assert name == 'C54-row7x3shared4' and rec['promotion_allowed'] is True and rec['reference_only'] is False
++            assert name == 'C55-row7x3shared3' and rec['promotion_allowed'] is True and rec['reference_only'] is False
+             rec['qualified_for_confirmation'] = bool(rec['comparison']['eligible'] and rec['opening_control_comparison']['eligible'])
+-            rec['decision_note'] = ('Initial C54 candidate qualifies versus both same-job C6 controls; return to root for an independent next-step decision. No automatic confirmation, promotion or ZIP.'
+-                if rec['qualified_for_confirmation'] else 'C54 does not meet both C6 gates; retain every sample and C6. No automatic confirmation, promotion or ZIP.')
+-        candidate = records['C54-row7x3shared4']
+-        candidate['source_parent_reference_comparison'] = comparison(records['C52-r2'], candidate)
++            rec['decision_note'] = ('Initial C55 candidate qualifies versus both same-job C6 controls; return to root for an independent next-step decision. No automatic confirmation, promotion or ZIP.'
++                if rec['qualified_for_confirmation'] else 'C55 does not meet both C6 gates; retain every sample and C6. No automatic confirmation, promotion or ZIP.')
++        candidate = records['C55-row7x3shared3']
++        candidate['source_parent_reference_comparison'] = comparison(records['C52-r3'], candidate)
+         candidate['source_parent_comparison_supported_in_initial_group'] = candidate['source_parent_reference_comparison']['eligible']
+-        candidate['source_parent_attribution_note'] = 'Separate whole-implementation comparison between C54 shared-four-column and original C52 shared-two-column sources in this allocation. Complete preserved AB samples only. Code layout, scheduling, tails and dispatch may contribute; this is not an isolated instruction-cost measurement and does not replace either C6 gate. C52-r2 remains background reference-only; Yfalse/Sfalse are unchanged.'
++        candidate['source_parent_attribution_note'] = 'Separate whole-implementation comparison between C55 shared-three-column and original C52 shared-two-column sources in this allocation. Complete preserved AD samples only. Code layout, scheduling, tails and dispatch may contribute; this is not an isolated instruction-cost measurement and does not replace either C6 gate. C52-r3 remains background reference-only; Yfalse/Sfalse are unchanged.'
+         rows = []
+         extra = ('comparison', 'opening_control_comparison', 'source_parent_reference_comparison',
+                  'source_parent_comparison_supported_in_initial_group')
+@@ -82,8 +82,8 @@
+                 qualified_for_confirmation=rec['qualified_for_confirmation'],
+                 decision_note=rec['decision_note'], **{key: rec.get(key) for key in extra}))
+         assert checks.contract.old_decisions() == old_decisions
+-        assert records['C52-r2']['qualified_for_confirmation'] is False
+-        # These four AB records and AB campaign alone receive comparison fields.
++        assert records['C52-r3']['qualified_for_confirmation'] is False
++        # These four AD records and AD campaign alone receive comparison fields.
+         for name, rec in records.items():
+             e.write_json(e.record_path('conv', name), rec)
+         plan.update(status='performance_complete', results=rows, final_selection=None,
+@@ -91,7 +91,7 @@
+             prior_decisions_unchanged=True, automatic_confirmation=False,
+             automatic_promotion=False, automatic_packaging=False)
+         e.write_json(path, plan)
+-    print(json.dumps(dict(round='sep13ab', results=rows, prior_decisions_unchanged=True), ensure_ascii=False, indent=2))
++    print(json.dumps(dict(round='sep13ad', results=rows, prior_decisions_unchanged=True), ensure_ascii=False, indent=2))
+ 
+ 
+ if __name__ == '__main__':
+--- .runs/conv/sep13ab-README.md
++++ .runs/conv/sep13ad-README.md
+@@ -1,42 +1,42 @@
+-# CONV AB：C54 shared 四列展开的同分配初筛（仅准备）
++# CONV AD：C55 shared 三列展开同分配初筛（仅准备）
+ 
+-固定顺序为 **C26-r30 / C54-row7x3shared4 / C52-r2（参考）/ C26-r31**。新 C26-r30、C52-r2、C26-r31 的 run/record 和 AB campaign 在准备前只读确认均不存在。C54 已有源码准备记录，AB 未修改候选或任何历史记录。本次只编辑三工具、本说明与静态差异，不导入/执行这些工具，不 SSH、不 new/checkpoint、不创建 campaign/job，不编译或测试。未来须 root 审查后明确 GO，由 root 唯一提交。
++固定顺序为 **C26-r32 / C55-row7x3shared3 / C52-r3（参考）/ C26-r33**。准备前已只读确认三个新控制/参考 ID 的 run/record 及 AD campaign 不存在；C55 已有 prepared 源。此次只编辑 sep13ad-* 三工具、README、静态说明和差异，不导入/运行工具，不 SSH、new/checkpoint、创建版本/作业或改变 records/source/best。未来执行须 root 审后明确 GO，由 root 唯一提交。
+ 
+-|AB 成员|source_parent|diagnostic_source_version|要求的独立诊断|角色|
++|AD 成员|source_parent|diagnostic_source_version|要求的实际诊断|角色|
+ |---|---|---|---|---|
+-|C26-r30|无，未变 C6|无|原样 C6 控制|前控制|
+-|C54-row7x3shared4|C52-row7x3shared2|C54-row7x3shared4|自身 AA1582656，44328，须实际通过且冻结|唯一初筛候选|
+-|C52-r2|C52-row7x3shared2|C52-row7x3shared2|原字节自身 T1582134，37128|参考，禁止晋级和确认资格|
+-|C26-r31|无，未变 C6|无|原样 C6 控制|后主基线|
++|C26-r32|无，未变 C6|无|原样 C6 控制|前控制|
++|C55-row7x3shared3|C52-row7x3shared2|C55-row7x3shared3|自身 AC1582860，44328，须真实验收冻结|唯一初筛候选|
++|C52-r3|C52-row7x3shared2|C52-row7x3shared2|原字节自身 T1582134，37128|参考，禁止确认与晋级|
++|C26-r33|无，未变 C6|无|原样 C6 控制|后主基线|
+ 
+-source_parent 和 diagnostic_source_version 分开保存。C54 固定源 SHA `fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88`；C52-r2 只能复制原 C52/T 的 `8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7`。README、官方 benchmark、runner 三文件与 C6 保持一致。C52-r2 明确 reference_only=true、promotion_allowed=false、qualified_for_confirmation=false、prior_confirmation_version=C52-r1、prior_confirmation_passed=false、prior_confirmation_job=1582410；它不构成失败 Y 确认的重试。
++C55 conv2d.c 固定 SHA `cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138`；C52-r3 必须复制原 C52/T 的 `8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7`。source_parent 与 diagnostic_source_version 独立保存。README、官方 benchmark、runner 与当前 C6 原字节一致。参考元数据固定 reference_only=true、promotion_allowed=false、qualified_for_confirmation=false，并保留 prior_confirmation_version=C52-r1 / job1582410 / passed=false；不得成为 Y 失败确认的重试。
+ 
+-每成员三套原始完整官方 benchmark，共 4×3×4=48 个样本。复用 W/R 已审资源和 settings 验证：GCC10.3.1、generic、38 CPU、24576 MiB、单 packed NUMA、1800 秒，OMP 38/FALSE/close/cores。沿用原 benchmark/runner、TEST_RUNS 和编译 flags；总耗时是各 case 中位数之和这一内部指标。
++每成员三套原始完整官方 benchmark，共4×3×4=48个样本。完整复用已审 AB/W/R 设置：GCC10.3.1、generic、38 CPU、24576 MiB、单 packed NUMA、1800秒；OMP38/FALSE/close/cores，原 TEST_RUNS、flags、benchmark/runner 不变。内部总耗时是各 case 中位数之和，不是官方分数。
+ 
+-历史入口以 Y1582410 的完整36 PASS及 confirmation_passed=false 为事实，逐成员校验原数组、源码、设置、机器、scheduler/job/system/wrapper 和标准两端比较。已审 Y 定义继续只读核对 W48、S36、R48 与原 C40 限制；Y/S false、W 的 C51-r2 参考身份和所有慢样本不改变。AB 的比较只能使用自己的48样本，禁止跨组拼接或挑选。
++前史入口为原 AB1582814：完整48 PASS、所有成员原源码/数组/机器/设置/scheduler/job/system/wrapper 身份与退出均需核对，C54 qualified_for_confirmation=false、两端 eligible=false、confirmation_pending=[] 保持。C54 的两端及 C52-r2 辅助比较从原数组重新核对；全部慢样本保留，包括 D 的371.96 ms。原 C52-r2 即使数值 eligible，也继续只读保留 reference_only/promotionfalse/qualifiedfalse。复用 AB 的既有定义继续保留 Y/S false、W/R/N/C40 历史限制，不写这些旧记录。
+ 
+-C54 只能使用 `.runs/conv/C54-row7x3shared4/sve-correctness-sep13aa` 的实际验证与冻结证据。准备开始时没有预填 AA ID；root 唯一提交后，本任务只读 `.runs/conv/sep13aa-checks/C54-row7x3shared4/job.json`，绑定实际原 ID1582656。该 ID 不代表 AA 已通过。门禁要求其原源码身份与 validation、冻结 job、调度日志、raw 和 source manifest 一致；ID 变化、缺文件、诊断不完整或未冻结均阻止 AB 创建。父 T37128 不证明 C54 四列主循环；C52-r2 的 T 门禁直接复用 W 已审定义。
++C55 只接受 `.runs/conv/C55-row7x3shared3/sve-correctness-sep13ac` 的实际 passed/complete 及 freeze-source.json。AC 原 job.json 已只读核实为1582860，工具固定这个真实 ID，并关联原传输清单、冻结 job、validation、源码、scheduler.log、raw 和 assembly；身份变化、缺件、失败、未完整验收或未冻结均阻止 AD。原 T/AA 的数值或机器码不替代 C55 自身通过，已有 AC 数值日志也不等于完整验收。
+ 
+-AA 门禁要求19个有序 stage 全0、scheduler/job/system/wrapper 全0、六个 VL16/32/64 ×线程1/4 配置；每配置 full5744/dispatch1212/direct432，共34464/7272/2592=44328，入口1236/1080、mask1/15及旧 helper 入口非零。full 家族 core3888/narrow144/small720/larger32/quad_boundary960、dispatch 家族 core972/quad_boundary240 必须相符；quad_boundary 明确覆盖 kw4/5/6/7/8 与 kh7/8、横向3L/6L邻界及 oh7/8/14/28。实际 GCC argv、38 CPU 单 NUMA 分配、生产未插桩汇编和完整 helper/dispatch/ABI/转换/栈审查均必需。
++AC 数值合同保持44328：六 VL16/32/64×线程1/4，每配置 full5744/dispatch1212/direct432，总34464/7272/2592，runner0；entries1236/1080、mask1/15、旧 helper 入口非零。full 家族 core3888/narrow144/small720/larger32/quad_boundary960，dispatch core972/quad_boundary240。`quad_boundary` 是沿用 AA checker 的网格名，不能解释成 C55 四列执行；kw1/2跳三列 main，kw3进入，kw4/5余1/2，kw6/7/8覆盖两轮后余0/1/2，kw15/81长整轮。实际 GCC argv、19个有序 stage 全0、scheduler/job/system/wrapper全0及38 CPU单NUMA均必需。
+ 
+-AA 汇编 schema 固定 `aa-shared4-paths-v1`：7行×3VL/21acc、13语义阶段；shared.blocks 每块有独立 block_id、quad_main/u1_remainder 角色、loop/straight_line 类型、实际工作列数及一个或多个 ranges。quad main 每轮4列，u1 loop 每轮1列，连续直线 u1 可含1..3列；每块实际 FMUL/FADD 必须各为21×工作列数。remainder_paths 按0..3余数保存有序 sequence，并核对 executions×工作量。各实际范围须在完整 helper 内且互不重叠，区域数由真实范围派生，绝不固定为14。其它12阶段各1列。门禁还关联父 T 实际源码/汇编的调度及栈比较，但不把其计数或零 spill 当 C54 结论，也不把零 spill 设为性能门槛。完整差异见 `sep13ab-from-w.patch` 与 `sep13ab-STATIC_REVIEW.md`。
++AC 汇编 schema=`ac-shared3-paths-v1`，shape7rows/3VL/21acc、13语义阶段，shared_triple_and_remainder_reviewed=true。shared_unroll 为 main_columns3/remainder_source_columns1/remainder_max_columns2/other_stage_columns1。shared.blocks 的 role 为 triple_main/u1_remainder：main每轮3列；u1 loop每轮1列，直线可为1或2列。每块可含多个实际 ranges，derived_counts 汇总整个工作块并按 work 归一化，FMUL/FADD 各为21×work。remainder_paths 必须覆盖0/1/2，按有序 sequence 的 executions×work 核对动态工作量；直线不能假称循环。范围在完整 helper 内互不重叠，region count 由实际范围派生，不固定14或其它数量。
+ 
+-串行门禁仅查询固定 Y1582410、X1582372、T1582134、原 AA ID，以及已存在的明确 P/AB reservation；不扫描其它协作者任务。P 不存在不阻塞，存在且未获固定 ID 对账则阻塞；AB campaign/四成员 manifest 一旦存在也禁止重投。已知 ID 变化、查询失败、非终态或 job/system 整数退出码缺失均阻止提交。按 ID 去重，单次查询有45秒上限。该门禁不替代 root 的唯一提交协调。
++全部 helper/clone、另外12个u1阶段、转场/reset、dispatch、ABI、标量/地址栈与 Z/Q/谓词 spill 均需真实完整审查，FMA须实际为0。parent_codegen_comparison 仍绑定原 C52/T1582134 源与真实 `.s`，只作背景分析；不要求零 spill、不硬编码指令总数、不凭计数宣称速度。
+ 
+-提交入口先做全部只读门禁，再在公共锁内复核 C6、历史、来源及 ID 未占用，保存排他 campaign，之后才 new/checkpoint 三个新成员并登记四成员。任何保存后的预约、上传/提交结果不明或连接中断都必须恢复原作业，不删除预留或重投。创建时 metadata 的 source_hashes 快照保留；最终 prepared record、当前源与实际上传 manifest 必须一致。
++串行门禁仅检查固定 AC1582860、AB1582814、AA1582656、Y1582410、X1582372、T1582134 及明确的 P/AD reservations；不扫描队友。P无文件不占用；未知/变化的 ID、查询失败、非终态、缺整数 job/system 退出码都阻塞。AD campaign/四成员 manifest 一旦存在即禁止重复提交。按 ID 去重，单次查询最多45秒；root仍负责唯一调度协调。
+ 
+-record 只处理保存的原 AB 作业；真实 SUCCEEDED、所有退出0后取回原件，复用 W 成熟 case/checks/机器验证。只在内存 metadata 视图适配当前 source_hashes，不修改 creation 快照。已通过且完全相符的记录跳过；失败记录和首次工具输出保留，schema/解析差异先报 root，不重新测量或放宽校验。
++提交先读完所有门禁，再在共享 workflow lock 内重新核对历史/C6/source/ID，保存排他 campaign 后才 new/checkpoint。上传、提交或连接结果不明时保留预留并恢复原 job，不能删除重投。record只取回该保存作业：真实 SUCCEEDED/全部退出0后保留原件；prepared/current/submitted hash须一致，creation metadata的原 hash快照不改，只在内存视图适配。已录且一致的记录跳过，失败或 schema差异保留首次输出并停报root，不重测。
+ 
+-compare 需要全部48 PASS和四成员完整同组环境/退出。沿用 R/W 原比较规则：C54 对前、后 C6 **分别**要求总中位数收益严格大于 max(1%, 两版本全部 case spread)，每个 case 退化不超过1%，第一 case 无例外。仅两端都 eligible 才标 qualified_for_confirmation，交 root 决定下一步；工具不自动确认。
++compare仅使用AD全部48原样本。C55分别对前、后未变C6要求总中位数收益 **严格大于 max(1%, 两版本所有 case spread)**，且任何 case退化不超过1%，第一case没有例外。两端都 eligible 才标初筛 qualified_for_confirmation；下一步交root，不自动确认。C55对C52-r3的完整辅助比较单独保存，不能替代C6门槛或赋予参考版确认资格，也不能把整体差异归因于单条指令成本。
+ 
+-C54 对 C52-r2 的辅助比较单独保存完整数组、中位数、spread、收益、门槛及 eligible；不能代替任一 C6 门槛，不能给参考版确认资格，也不能把整体差异归因为纯循环控制成本。所有慢样本保留，只写本组四 record 和 AB campaign。当前 C6 保持；无自动 ZIP、晋级、发布或失败确认重试。
++只写本组四记录与AD campaign，保存全部慢样本、中位数、spread、理由及参考限制。当前C6、AB C54false、Y/Sfalse保持；无自动确认、ZIP、晋级、发布或失败确认重试。
+ 
+-以下仅为 root 审后未来接口，本次未执行：
++未来接口仅供root审后调用，本次未执行：
+ 
+ ```text
+-python3 .runs/conv/sep13ab-submit-performance.py --go
+-python3 .runs/conv/sep13ab-record-group.py
+-python3 .runs/conv/sep13ab-compare.py
++python3 .runs/conv/sep13ad-submit-performance.py --go
++python3 .runs/conv/sep13ad-record-group.py
++python3 .runs/conv/sep13ad-compare.py
+ ```
+ 
+-状态等待始终使用唯一保存 job。每次实际 stdout/stderr/退出码由执行者留存；没有 AB job 时不得 record/compare 或把准备说明当成绩。
++完整相对AB差异在 sep13ad-from-ab.patch，静态范围在 sep13ad-STATIC_REVIEW.md。执行者需逐次保存原stdout/stderr/退出；无AD job时不能record/compare。

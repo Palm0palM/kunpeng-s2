@@ -1,0 +1,522 @@
+{
+  "status": "returned_numerical_overview_only",
+  "generated_at": "2026-09-12T18:51:56.155172+00:00",
+  "candidate": "C55-row7x3shared3",
+  "job_id": "1582860",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1582860",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "root_submit_origin": "Existing root-submit stdout/stderr/exit and root-submit-decision; no new submission by this lifecycle worker.",
+  "status_calls": 1,
+  "fetch_calls": 1,
+  "outer_calls": [
+    {
+      "action": "sep13ac-status-1",
+      "tool_chunk_id": "f2ccf4",
+      "outer_tool_exit_code": 0,
+      "stdout": "sep13ac-status-1.stdout.txt",
+      "stderr": "sep13ac-status-1.stderr.txt",
+      "exit_file": "sep13ac-status-1.exit.txt",
+      "saved_child_exit": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "action": "sep13ac-fetch",
+      "tool_chunk_id": "5bc3bb",
+      "outer_tool_exit_code": 0,
+      "stdout": "sep13ac-fetch.stdout.txt",
+      "stderr": "sep13ac-fetch.stderr.txt",
+      "exit_file": "sep13ac-fetch.exit.txt",
+      "saved_child_exit": 0,
+      "stderr_bytes": 0
+    }
+  ],
+  "wrapper_exit": 0,
+  "compiler_version": "10.3.1",
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "stage_count": 19,
+  "stage_overview_consistent": true,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "guard_log": "guard-vl16-t1.log",
+      "dispatch_log": "dispatch-vl16-t1.log",
+      "full_pass_counts": [
+        5744
+      ],
+      "dispatch_pass_counts": [
+        1212
+      ],
+      "direct_pass_counts": [
+        432
+      ],
+      "actual_entry_expected_mask_rows": {
+        "dispatch": [
+          [
+            1236,
+            1236,
+            1,
+            1
+          ]
+        ],
+        "direct": [
+          [
+            1080,
+            1080,
+            1,
+            1
+          ]
+        ]
+      },
+      "legacy_entries": {
+        "PREFIX": [
+          10850
+        ],
+        "TAIL": [
+          10850
+        ],
+        "ROWPAIR": [
+          234
+        ],
+        "ROWTRIPLE": [
+          2746
+        ],
+        "ROWQUAD": [
+          1778
+        ]
+      },
+      "full_matrix_lines": [
+        "core=3888 narrow=144 small=720 larger=32 quad_boundary=960"
+      ],
+      "dispatch_matrix_lines": [
+        "core=972 quad_boundary=240"
+      ],
+      "overview_consistent": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "guard_log": "guard-vl16-t4.log",
+      "dispatch_log": "dispatch-vl16-t4.log",
+      "full_pass_counts": [
+        5744
+      ],
+      "dispatch_pass_counts": [
+        1212
+      ],
+      "direct_pass_counts": [
+        432
+      ],
+      "actual_entry_expected_mask_rows": {
+        "dispatch": [
+          [
+            1236,
+            1236,
+            15,
+            15
+          ]
+        ],
+        "direct": [
+          [
+            1080,
+            1080,
+            15,
+            15
+          ]
+        ]
+      },
+      "legacy_entries": {
+        "PREFIX": [
+          10850
+        ],
+        "TAIL": [
+          10850
+        ],
+        "ROWPAIR": [
+          234
+        ],
+        "ROWTRIPLE": [
+          2746
+        ],
+        "ROWQUAD": [
+          1778
+        ]
+      },
+      "full_matrix_lines": [
+        "core=3888 narrow=144 small=720 larger=32 quad_boundary=960"
+      ],
+      "dispatch_matrix_lines": [
+        "core=972 quad_boundary=240"
+      ],
+      "overview_consistent": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "guard_log": "guard-vl32-t1.log",
+      "dispatch_log": "dispatch-vl32-t1.log",
+      "full_pass_counts": [
+        5744
+      ],
+      "dispatch_pass_counts": [
+        1212
+      ],
+      "direct_pass_counts": [
+        432
+      ],
+      "actual_entry_expected_mask_rows": {
+        "dispatch": [
+          [
+            1236,
+            1236,
+            1,
+            1
+          ]
+        ],
+        "direct": [
+          [
+            1080,
+            1080,
+            1,
+            1
+          ]
+        ]
+      },
+      "legacy_entries": {
+        "PREFIX": [
+          10850
+        ],
+        "TAIL": [
+          10850
+        ],
+        "ROWPAIR": [
+          234
+        ],
+        "ROWTRIPLE": [
+          2746
+        ],
+        "ROWQUAD": [
+          1778
+        ]
+      },
+      "full_matrix_lines": [
+        "core=3888 narrow=144 small=720 larger=32 quad_boundary=960"
+      ],
+      "dispatch_matrix_lines": [
+        "core=972 quad_boundary=240"
+      ],
+      "overview_consistent": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "guard_log": "guard-vl32-t4.log",
+      "dispatch_log": "dispatch-vl32-t4.log",
+      "full_pass_counts": [
+        5744
+      ],
+      "dispatch_pass_counts": [
+        1212
+      ],
+      "direct_pass_counts": [
+        432
+      ],
+      "actual_entry_expected_mask_rows": {
+        "dispatch": [
+          [
+            1236,
+            1236,
+            15,
+            15
+          ]
+        ],
+        "direct": [
+          [
+            1080,
+            1080,
+            15,
+            15
+          ]
+        ]
+      },
+      "legacy_entries": {
+        "PREFIX": [
+          10850
+        ],
+        "TAIL": [
+          10850
+        ],
+        "ROWPAIR": [
+          234
+        ],
+        "ROWTRIPLE": [
+          2746
+        ],
+        "ROWQUAD": [
+          1778
+        ]
+      },
+      "full_matrix_lines": [
+        "core=3888 narrow=144 small=720 larger=32 quad_boundary=960"
+      ],
+      "dispatch_matrix_lines": [
+        "core=972 quad_boundary=240"
+      ],
+      "overview_consistent": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "guard_log": "guard-vl64-t1.log",
+      "dispatch_log": "dispatch-vl64-t1.log",
+      "full_pass_counts": [
+        5744
+      ],
+      "dispatch_pass_counts": [
+        1212
+      ],
+      "direct_pass_counts": [
+        432
+      ],
+      "actual_entry_expected_mask_rows": {
+        "dispatch": [
+          [
+            1236,
+            1236,
+            1,
+            1
+          ]
+        ],
+        "direct": [
+          [
+            1080,
+            1080,
+            1,
+            1
+          ]
+        ]
+      },
+      "legacy_entries": {
+        "PREFIX": [
+          10850
+        ],
+        "TAIL": [
+          10850
+        ],
+        "ROWPAIR": [
+          234
+        ],
+        "ROWTRIPLE": [
+          2746
+        ],
+        "ROWQUAD": [
+          1778
+        ]
+      },
+      "full_matrix_lines": [
+        "core=3888 narrow=144 small=720 larger=32 quad_boundary=960"
+      ],
+      "dispatch_matrix_lines": [
+        "core=972 quad_boundary=240"
+      ],
+      "overview_consistent": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "guard_log": "guard-vl64-t4.log",
+      "dispatch_log": "dispatch-vl64-t4.log",
+      "full_pass_counts": [
+        5744
+      ],
+      "dispatch_pass_counts": [
+        1212
+      ],
+      "direct_pass_counts": [
+        432
+      ],
+      "actual_entry_expected_mask_rows": {
+        "dispatch": [
+          [
+            1236,
+            1236,
+            15,
+            15
+          ]
+        ],
+        "direct": [
+          [
+            1080,
+            1080,
+            15,
+            15
+          ]
+        ]
+      },
+      "legacy_entries": {
+        "PREFIX": [
+          10850
+        ],
+        "TAIL": [
+          10850
+        ],
+        "ROWPAIR": [
+          234
+        ],
+        "ROWTRIPLE": [
+          2746
+        ],
+        "ROWQUAD": [
+          1778
+        ]
+      },
+      "full_matrix_lines": [
+        "core=3888 narrow=144 small=720 larger=32 quad_boundary=960"
+      ],
+      "dispatch_matrix_lines": [
+        "core=972 quad_boundary=240"
+      ],
+      "overview_consistent": true
+    }
+  ],
+  "observed_full_cases": 34464,
+  "observed_dispatch_cases": 7272,
+  "observed_direct_cases": 2592,
+  "probe_complete_lines": [
+    "PROBE_COMPLETE=1"
+  ],
+  "probe_expected_total_lines": [
+    "44328"
+  ],
+  "returned_source_bytes_equal": {
+    "candidate.env": true,
+    "check_conv_guard.c": true,
+    "check_sve_dispatch.c": true,
+    "conv2d.c": true,
+    "remote_job.sh": true
+  },
+  "returned_source_manifest_matches": true,
+  "source_sha256": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
+  "assembly_file": "raw/conv2d-sve.s",
+  "assembly_present": true,
+  "assembly_bytes": 159134,
+  "raw_files": [
+    "build-assembly.log",
+    "build-dispatch.log",
+    "build-guard.log",
+    "candidate.env",
+    "check_conv_guard.c",
+    "check_sve_dispatch.c",
+    "compiler-version.txt",
+    "conv2d-sve.s",
+    "conv2d.c",
+    "dispatch-vl16-t1.log",
+    "dispatch-vl16-t4.log",
+    "dispatch-vl32-t1.log",
+    "dispatch-vl32-t4.log",
+    "dispatch-vl64-t1.log",
+    "dispatch-vl64-t4.log",
+    "exit-code.txt",
+    "guard-vl16-t1.log",
+    "guard-vl16-t4.log",
+    "guard-vl32-t1.log",
+    "guard-vl32-t4.log",
+    "guard-vl64-t1.log",
+    "guard-vl64-t4.log",
+    "probe.log",
+    "remote_job.sh",
+    "source-sha256.txt",
+    "stage-exits.txt",
+    "wrapper.stdout.log"
+  ],
+  "issues": [],
+  "scope": "Log completeness synopsis only; not an acceptance result or assembly review.",
+  "acceptance_or_freeze_executed": false,
+  "helper_or_dispatch_assembly_review_performed": false,
+  "source_or_tools_modified": false,
+  "performance_or_packaging_performed": false,
+  "reset_card_used": false,
+  "observed_total_cases": 44328
+}

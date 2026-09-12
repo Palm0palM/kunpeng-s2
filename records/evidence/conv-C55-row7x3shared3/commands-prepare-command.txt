@@ -1,0 +1,15 @@
+python3 - <<'PY'
+import subprocess,json
+from pathlib import Path
+b=Path('.runs/conv/C55-row7x3shared3')
+for name in ['commands-prepare.stdout.txt','commands-prepare.stderr.txt','commands-prepare-result.json']:
+    assert not (b/name).exists()
+command=['python3',str(b/'prepare-source.py')]
+r=subprocess.run(command,text=True,capture_output=True)
+(b/'commands-prepare.stdout.txt').write_text(r.stdout)
+(b/'commands-prepare.stderr.txt').write_text(r.stderr)
+(b/'commands-prepare-result.json').write_text(json.dumps({'argv':command,'exit_code':r.returncode,'operator_executed':False},indent=2)+'\n')
+print(r.stdout,end=''); print(r.stderr,end='')
+raise SystemExit(r.returncode)
+PY
+
