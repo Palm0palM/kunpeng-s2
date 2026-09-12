@@ -1,0 +1,361 @@
+{
+  "round": "sep13y",
+  "status": "performance_complete",
+  "measurement_order": [
+    "C26-r28",
+    "C52-r1",
+    "C26-r29"
+  ],
+  "candidate_versions": [
+    "C52-r1"
+  ],
+  "reference_only_versions": [],
+  "opening_control": "C26-r28",
+  "primary_baseline": "C26-r29",
+  "suites_per_member": 3,
+  "expected_benchmark_cases": 36,
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "expected_compiler_banners": [
+    "gcc (GCC) 10.3.1"
+  ],
+  "record_environment": "kunpeng-gcc10-generic-38-sep13y",
+  "record_reference": "官方内置参考",
+  "best_label": "C6",
+  "source_parents": {
+    "C52-r1": "C52-row7x3shared2"
+  },
+  "candidate_source_hashes": {
+    "C52-r1": {
+      "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+      "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+      "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+    }
+  },
+  "diagnostic_jobs": {
+    "C52-r1": "1582134"
+  },
+  "diagnostic_evidence_directories": {
+    "C52-r1": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t"
+  },
+  "diagnostic_source_versions": {
+    "C52-r1": "C52-row7x3shared2"
+  },
+  "diagnostic_expected_checks": {
+    "C52-r1": 37128
+  },
+  "prior_job": "1582256",
+  "prior_campaign": ".runs/conv/sep13w-campaign.json",
+  "initial_qualification_version": "C52-row7x3shared2",
+  "initial_qualification_passed": true,
+  "confirmation_only": true,
+  "prior_decisions": {
+    "G_qualified": false,
+    "J_qualified": true,
+    "K_confirmation_passed": false,
+    "N_reference_only": true,
+    "N_promotion_allowed": false,
+    "N_qualified": false,
+    "N_reference_job": "1581459",
+    "original_versions": [
+      "C40-row6x3u1",
+      "C40-r1",
+      "C40-r2",
+      "C40-r3"
+    ],
+    "R_reference_only": true,
+    "R_promotion_allowed": false,
+    "R_qualified": false,
+    "R_reference_job": "1581911",
+    "S_confirmation_passed": false,
+    "S_confirmation_job": "1582067",
+    "C51_reference_only": true,
+    "C51_promotion_allowed": false,
+    "C51_qualified": false,
+    "failed_S_confirmation_retried": false,
+    "W_C51_reference_only": true,
+    "W_C51_promotion_allowed": false,
+    "W_C51_qualified": false,
+    "W_reference_job": "1582256",
+    "C51_confirmation_retried": false
+  },
+  "selection_rule": "Use only the36 Y samples. C52-r1 must independently pass both unchanged Y C6 controls: total median gain strictly exceeds max(1%, all compared case spreads), and no individual case regresses over1%. No W/Y sample pooling or selection; preserve every slow sample.",
+  "local_compilation_or_tests_run": false,
+  "official_score": null,
+  "submitted": true,
+  "submit_attempted": true,
+  "automatic_confirmation": false,
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "failed_confirmation_retry_allowed": false,
+  "performance_job": "1582410",
+  "performance_group": "kp-conv-group-643f10609c47",
+  "results": [
+    {
+      "version": "C26-r28",
+      "total_median_ms": 452.4,
+      "cases_ms": [
+        51.43,
+        61.98,
+        107.3,
+        231.69
+      ],
+      "all_samples_ms": [
+        [
+          51.43,
+          51.56,
+          51.43
+        ],
+        [
+          62.16,
+          61.98,
+          61.96
+        ],
+        [
+          107.3,
+          107.3,
+          107.3
+        ],
+        [
+          231.73,
+          231.63,
+          231.69
+        ]
+      ],
+      "case_spreads_pct": [
+        0.25277075636788365,
+        0.32268473701193245,
+        0.0,
+        0.043161120462684756
+      ],
+      "max_spread_pct": 0.32268473701193245,
+      "gain_pct": 0.03535442814213141,
+      "confirmation_passed": null,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 confirmation control; not a candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    },
+    {
+      "version": "C52-r1",
+      "total_median_ms": 436.67999999999995,
+      "cases_ms": [
+        51.6,
+        58.44,
+        103.88,
+        222.76
+      ],
+      "all_samples_ms": [
+        [
+          51.55,
+          51.6,
+          51.7
+        ],
+        [
+          58.44,
+          58.43,
+          58.46
+        ],
+        [
+          103.88,
+          103.88,
+          104.01
+        ],
+        [
+          222.76,
+          222.76,
+          222.85
+        ]
+      ],
+      "case_spreads_pct": [
+        0.29069767441861566,
+        0.05133470225872884,
+        0.12514439738160346,
+        0.04040222661160146
+      ],
+      "max_spread_pct": 0.29069767441861566,
+      "gain_pct": 3.5089269931058986,
+      "confirmation_passed": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Independent Y confirmation failed at least one current Y C6 gate. Preserve every original sample and C6; do not repeat failed confirmation or combine W/Y samples.",
+      "comparison": {
+        "baseline": "C26-r29",
+        "eligible": false,
+        "reasons": [
+          "提速 3.51% 未超过测量波动/最低1%门槛 18.95%"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.5,
+            "candidate_ms": 51.6,
+            "gain_pct": -0.19417475728155617
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.96,
+            "candidate_ms": 58.44,
+            "gain_pct": 5.681084570690773
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.46,
+            "candidate_ms": 103.88,
+            "gain_pct": 3.33147217569328
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.64,
+            "candidate_ms": 222.76,
+            "gain_pct": 3.8335347953721275
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.5089269931058977,
+        "threshold_pct": 18.95145631067962
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r28",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.43,
+            "candidate_ms": 51.6,
+            "gain_pct": -0.33054637371184464
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.98,
+            "candidate_ms": 58.44,
+            "gain_pct": 5.711519845111325
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 103.88,
+            "gain_pct": 3.1873252562907752
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.69,
+            "candidate_ms": 222.76,
+            "gain_pct": 3.8542880573179708
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.4748010610079634,
+        "threshold_pct": 1.0
+      }
+    },
+    {
+      "version": "C26-r29",
+      "total_median_ms": 452.56,
+      "cases_ms": [
+        51.5,
+        61.96,
+        107.46,
+        231.64
+      ],
+      "all_samples_ms": [
+        [
+          51.48,
+          61.24,
+          51.5
+        ],
+        [
+          61.96,
+          62.0,
+          61.93
+        ],
+        [
+          107.46,
+          107.33,
+          107.48
+        ],
+        [
+          231.74,
+          231.6,
+          231.64
+        ]
+      ],
+      "case_spreads_pct": [
+        18.95145631067962,
+        0.11297611362169188,
+        0.13958682300391373,
+        0.06043861163875616
+      ],
+      "max_spread_pct": 18.95145631067962,
+      "gain_pct": 0.0,
+      "confirmation_passed": null,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 confirmation control; not a candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    }
+  ],
+  "confirmation_passed": false,
+  "final_selection": null,
+  "confirmation_pending": [],
+  "prior_decisions_unchanged": true,
+  "samples_mixed_with_initial_round": false
+}

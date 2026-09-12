@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C37-row4u1",
+  "parent": "C26-r11",
+  "strategy": "Use one coefficient per iteration only in the four-row shared middle loop, keeping four vectors per row and strict per-output summation; test reduced live coefficient/input state without changing tile shape.",
+  "created_at": "2026-09-12T08:50:26.704834+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "b3c5cea11efb07afe1178f2b77f4c0dcc7fad7872a73665c6127b2d68e58ec27",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "comparison_baseline": "C26-r11",
+  "source_parent": "C26-row4loads",
+  "reference_only": false,
+  "recorded_at": "2026-09-12T10:11:30.914616+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12f",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "15cf8f7070de57f7a9da4fc2956442438a22ea8fb4177c958e4ddeea3c2c8b5e",
+  "log": ".runs/conv/C37-row4u1/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        52.76,
+        52.85,
+        52.82
+      ],
+      "median_ms": 52.82,
+      "min_ms": 52.76,
+      "max_ms": 52.85,
+      "spread_pct": 0.170390003786451,
+      "gflops": [
+        1428.6564,
+        1426.1675,
+        1426.8942
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        62.52,
+        62.54,
+        63.55
+      ],
+      "median_ms": 62.54,
+      "min_ms": 62.52,
+      "max_ms": 63.55,
+      "spread_pct": 1.6469459545890537,
+      "gflops": [
+        1331.4206,
+        1330.9798,
+        1309.8174
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        109.32,
+        109.28,
+        109.42
+      ],
+      "median_ms": 109.32,
+      "min_ms": 109.28,
+      "max_ms": 109.42,
+      "spread_pct": 0.12806439809732947,
+      "gflops": [
+        1473.4331,
+        1473.997,
+        1472.0105
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        234.83,
+        234.87,
+        234.89
+      ],
+      "median_ms": 234.87,
+      "min_ms": 234.83,
+      "max_ms": 234.89,
+      "spread_pct": 0.025546046749254418,
+      "gflops": [
+        1472.4599,
+        1472.2105,
+        1472.0384
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 459.55,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1579528",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -1.58% 未超过测量波动/最低1%门槛 1.65%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.43,
+        "candidate_ms": 52.82,
+        "gain_pct": -2.702702702702704
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.97,
+        "candidate_ms": 62.54,
+        "gain_pct": -0.919799903178958
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.32,
+        "candidate_ms": 109.32,
+        "gain_pct": -1.8635855385762206
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.69,
+        "candidate_ms": 234.87,
+        "gain_pct": -1.3725236307134563
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r10",
+    "eligible": false,
+    "reasons": [
+      "提速 -1.58% 未超过测量波动/最低1%门槛 1.65%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.4,
+        "candidate_ms": 52.82,
+        "gain_pct": -2.7626459143968907
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.95,
+        "candidate_ms": 62.54,
+        "gain_pct": -0.9523809523809464
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.34,
+        "candidate_ms": 109.32,
+        "gain_pct": -1.8446059250978104
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.73,
+        "candidate_ms": 234.87,
+        "gain_pct": -1.355025244897085
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Does not meet predeclared comparison gate; preserve actual samples without promotion.",
+  "qualified_for_confirmation": false
+}

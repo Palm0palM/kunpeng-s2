@@ -1,0 +1,13 @@
+python3 - <<'PY'
+import json, subprocess, sys
+from pathlib import Path
+base = Path('.runs/conv/C56-row7shared3fence')
+argv = [sys.executable, str(base / 'prepare-source.py')]
+result = subprocess.run(argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+for name, data in [('commands-prepare.stdout.txt', result.stdout), ('commands-prepare.stderr.txt', result.stderr), ('commands-prepare.exit.txt', (str(result.returncode) + '\n').encode()), ('commands-prepare.argv.json', (json.dumps(argv, ensure_ascii=False, indent=2) + '\n').encode())]:
+    with (base / name).open('xb') as handle:
+        handle.write(data)
+sys.stdout.buffer.write(result.stdout)
+sys.stderr.buffer.write(result.stderr)
+raise SystemExit(result.returncode)
+PY

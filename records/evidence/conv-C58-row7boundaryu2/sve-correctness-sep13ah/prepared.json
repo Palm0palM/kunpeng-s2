@@ -1,0 +1,183 @@
+{
+  "candidate": "C58-row7boundaryu2",
+  "status": "prepared",
+  "complete": false,
+  "prepared_at": "2026-09-12T20:01:29.273970+00:00",
+  "source_parent": "C52-row7x3shared2",
+  "source_experiment": "C58-row7boundaryu2",
+  "source_sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+  "production_source_sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+  "source_hashes": {
+    "candidate.env": "1d4e60cff8b53cfd662af3ee48e16fbb1f21f9b9de6fd396aa7747e945582972",
+    "check_conv_guard.c": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+    "check_sve_dispatch.c": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+    "remote_job.sh": "437843ec63b427d6800dd18390736ebd382ec81dbe6730d5a5c3985a68d9ba46"
+  },
+  "source_hash_scope": "First five-file AH transport byte-count/SHA manifest after root independent C58 source review; two original AE checker bytes.",
+  "guard_template": ".runs/conv/sep13ae-checks/C56-row7shared3fence/source",
+  "guard_change": "No checker byte changes. Inherited quad_boundary/grid origin comments remain original; source main remains shared2.",
+  "rows_per_group": 7,
+  "vectors_per_row": 3,
+  "accumulators": 21,
+  "configurations": 6,
+  "sve_bytes": [
+    16,
+    32,
+    64
+  ],
+  "threads": [
+    1,
+    4
+  ],
+  "expected_checks": {
+    "full_per_configuration": 5744,
+    "dispatch_per_configuration": 1212,
+    "direct_per_configuration": 432,
+    "configurations": 6,
+    "total": 44328
+  },
+  "full_cases_per_configuration": 5744,
+  "dispatch_cases_per_configuration": 1212,
+  "direct_cases_per_configuration": 432,
+  "full_cases": 34464,
+  "dispatch_cases": 7272,
+  "direct_cases": 2592,
+  "total_cases_planned": 44328,
+  "runner_cases_planned": 0,
+  "full_matrix_counts": {
+    "core": 3888,
+    "narrow": 144,
+    "small": 720,
+    "larger": 32,
+    "quad_boundary": 960
+  },
+  "dispatch_matrix_counts": {
+    "core": 972,
+    "quad_boundary": 240
+  },
+  "matrix_height_values": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    21,
+    22,
+    28
+  ],
+  "quad_boundary": {
+    "widths_in_lanes": [
+      "3L-1",
+      "3L",
+      "3L+1",
+      "6L-1",
+      "6L",
+      "6L+1"
+    ],
+    "kernel_heights": [
+      7,
+      8
+    ],
+    "kernel_widths": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "output_heights": [
+      7,
+      8,
+      14,
+      28
+    ],
+    "full_allocations": 4,
+    "dispatch_pad": 1,
+    "dispatch_leading": 0
+  },
+  "expected_acc": 3,
+  "expected_rowseven_entries": {
+    "dispatch_per_configuration": 1236,
+    "direct_per_configuration": 1080
+  },
+  "expected_worker_masks": {
+    "1": 1,
+    "4": 15
+  },
+  "expected_stages": [
+    "allocation",
+    "compiler",
+    "manifest",
+    "build-guard",
+    "guard-vl16-t1",
+    "guard-vl16-t4",
+    "guard-vl32-t1",
+    "guard-vl32-t4",
+    "guard-vl64-t1",
+    "guard-vl64-t4",
+    "build-dispatch",
+    "dispatch-vl16-t1",
+    "dispatch-vl16-t4",
+    "dispatch-vl32-t1",
+    "dispatch-vl32-t4",
+    "dispatch-vl64-t1",
+    "dispatch-vl64-t4",
+    "build-assembly",
+    "complete"
+  ],
+  "expected_compiler_version": "10.3.1",
+  "resources_required": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack"
+  },
+  "actual_job_id": null,
+  "compiled": false,
+  "executed": false,
+  "verified": false,
+  "local_compilation_or_tests_run": false,
+  "production_assembly_review": "Pending actual C58 GCC10.3.1 uninstrumented assembly: whole-source FMA0 and concise targeted boundary unroll/odd-remainder/stack review. No prefilled PCs, unroll decision, zero-spill result or speedup; no AE fence or full per-binary-block schema.",
+  "source_parent_frozen_directory": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t",
+  "source_parent_diagnostic_job_id": "1582134",
+  "expected_semantic_stage_count": 13,
+  "shared_kernel_columns_per_iteration": 2,
+  "shared_remainder_source_columns_per_iteration": 1,
+  "shared_remainder_max_columns": 1,
+  "preparation_authorizes_compute": false,
+  "performance_measured": false,
+  "scheduling_scope": "Only original AG1583276 and AF1583230 plus present P/AH reservations. Actual terminal with integer job/system exits; FAILED can clear serial gate. Root waits for complete original result recording before GO.",
+  "inherited_grid_name": "quad_boundary names the unchanged checker boundary grid only, not the C58 source unroll factor.",
+  "shared_width_coverage": "Original shared2 source remains unchanged: kw1 skips main; even/odd widths exercise main/u1 remainder. Boundary pragmas request unroll2 of twelve source loops; actual compiler paths unknown.",
+  "production_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751"
+  },
+  "source_parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+    "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7"
+  },
+  "boundary_source_loop_count": 12,
+  "boundary_source_unroll_hint": 2,
+  "future_acceptance_requirements": [
+    "Own original job/source/manifests/raw must match; no inherited parent PASS.",
+    "Six full/dispatch/direct configurations and exact44328 counts, worker entries/masks and unchanged checks.",
+    "All19 ordered stages, actual compiler/build argv/resources and scheduler/job/system/wrapper exits zero.",
+    "Whole original production assembly FMA0; concise actual boundary unroll/stack review, no prefilled machine result."
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "current_label": "C3",
+  "current_label": "C6",
   "notice": "C labels here count verified source improvements; experiment IDs and r suffixes also include rejected candidates and repeat measurements. Times are internal metrics, not official scores.",
   "versions": [
     {
@@ -66,8 +66,96 @@
         "total_median_ms": 590.65,
         "sha256": "2e8bb11e23733a8c7423d265e32a9ffcb4701084782515ac09ca601b79eed907"
       }
+    },
+    {
+      "label": "C4",
+      "experiment": "C19-r2",
+      "source_experiment": "C19-sverow2",
+      "parent_label": "C3",
+      "comparison_baseline": "C13-r9",
+      "kernel_sha256": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+      "total_median_ms": 561.54,
+      "time_reduction_pct": 5.031372084763822,
+      "strategy": "Two output rows share SVE input loads with eight accumulators; per-output kernel order and separate multiply/add preserved",
+      "promoted_at": "2026-09-11T08:41:24.235826+00:00",
+      "official_score": null,
+      "repeat_measurements": [
+        {
+          "experiment": "C19-sverow2",
+          "total_median_ms": 562.12,
+          "note": "Opening C3 control noise failed gate; preserved and followed by confirmation"
+        },
+        {
+          "experiment": "C19-r1",
+          "total_median_ms": 562.32,
+          "comparison_baseline": "C13-r8",
+          "baseline_total_median_ms": 589.49
+        }
+      ],
+      "package_verification": {
+        "experiment": "C19-package",
+        "total_median_ms": 562.02,
+        "sha256": "d0887d526ea122ebe10d3aef8b5fe724b82ff4fdbef32e31f2628b68ea9d7206"
+      }
+    },
+    {
+      "label": "C5",
+      "experiment": "C21-r2",
+      "source_experiment": "C21-row3x4",
+      "parent_label": "C4",
+      "comparison_baseline": "C19-r7",
+      "kernel_sha256": "d5f40f40479dff5c10a300b28a392fffe2c3fa1978c2f2bd793600ca768836ac",
+      "total_median_ms": 502.20000000000005,
+      "time_reduction_pct": 10.576923076923073,
+      "strategy": "Three output rows share SVE input loads with twelve accumulators; kernel row/column order and separate multiply/add preserved",
+      "promoted_at": "2026-09-11T10:57:07.691757+00:00",
+      "official_score": null,
+      "repeat_measurements": [
+        {
+          "experiment": "C21-row3x4",
+          "total_median_ms": 502.45,
+          "comparison_baseline": "C19-r4",
+          "baseline_total_median_ms": 561.9300000000001
+        }
+      ],
+      "package_verification": {
+        "experiment": "C21-package",
+        "total_median_ms": 502.28999999999996,
+        "sha256": "62b048136fa55bc52d9a36c9326e17b6084e91867880cd02300d3ffd34e34046"
+      }
+    },
+    {
+      "label": "C6",
+      "experiment": "C26-r1",
+      "source_experiment": "C26-row4loads",
+      "parent_label": "C5",
+      "comparison_baseline": "C21-r9",
+      "kernel_sha256": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+      "total_median_ms": 452.62,
+      "time_reduction_pct": 9.899472479347072,
+      "strategy": "Four-row SVE input sharing with direct shifted loads in the shared middle loop; strict accumulation order preserved",
+      "promoted_at": "2026-09-12T02:50:07.110165+00:00",
+      "official_score": null,
+      "repeat_measurements": [
+        {
+          "experiment": "C26-row4loads",
+          "total_median_ms": 452.58
+        }
+      ],
+      "package_verification": {
+        "experiment": "C26-package",
+        "job_id": "1576103",
+        "total_median_ms": 452.65999999999997,
+        "suites": 3,
+        "cases_per_suite": 4,
+        "all_pass": true,
+        "max_error": 0,
+        "archive_verified_and_extracted_on_compute_node": true,
+        "same_source_as_promoted": true,
+        "sha256": "6d6368d555eb46b24d13d0732189ab0bff422f3f1930fda0fa48b60d74e8e5fb"
+      }
     }
   ],
-  "current_measurement": "C13-exttail",
-  "current_total_median_ms": 590.36
+  "current_measurement": "C26-r1",
+  "current_total_median_ms": 452.62
 }

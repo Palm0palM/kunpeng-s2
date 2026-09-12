@@ -1,0 +1,280 @@
+{
+  "candidate": "C49-row4dup4fence",
+  "job_id": "1579856",
+  "source_sha256": "b47718a3c2759b9992278031e83d7531798aa3865248fb5c90cb6f9b92906e05",
+  "compiler_version": "10.3.1",
+  "assembly_sha256": "cfeff97d8d27cfa050ddf4a7bd2fdec10eec488ac7a4cc747996a5c079e73596",
+  "review_scope": "Merged actual returned uninstrumented .s review: full quad helper/stages/remainders/transitions/stack and three empty compiler fences by assigned O reviewer; all actual conv2d dispatch functions and C45/C49 same-work machine-arrangement comparison by root. No production object or performance measurement.",
+  "review_complete": true,
+  "production_uninstrumented": true,
+  "whole_helper_stack_reviewed": true,
+  "all_stages_and_transitions_reviewed": true,
+  "abi_saves_distinguished": true,
+  "whole_source_fma_count": 0,
+  "whole_source_fma_reviewed": true,
+  "production_object_disassembly_available": false,
+  "helpers": [
+    {
+      "symbol": "conv_sve_rowquad",
+      "line_start": 3997,
+      "line_end": 5902,
+      "actual_clones": [],
+      "stack_frame_description": "SUB sp,sp,#784 at 4000 reserves a fixed 784-byte frame; no ADDVL or scalable spill area exists. X-register saves and integer/pointer locals occupy the frame. STP d8,d9 at 4104 (sp+112), d10,d11 at 4111 (+128), d12,d13 at 4115 (+144), d14,d15 at 4120 (+160), paired with LDP at 5682,5685,5688,5691, are low-64-bit ABI preservation. They are not Z/Q/predicate spills. All three actual returns/tail calls restore exactly 784 bytes at 5708,5823,5854.",
+      "vector_spill_loads": 0,
+      "vector_spill_stores": 0,
+      "spill_count_scope": "Static sites over the entire helper from symbol to .size, including all out-of-line initialization, tails and fallback paths. ABI D saves are excluded and separately listed; no tile vector materialization occurs.",
+      "spill_notes": "Reviewed all vector memory operations and all SP-derived aliases. x8=sp+632 at 4002 stores the four external output pointers through integer STP; x2=sp+312 at 4181 reads integer kernel-pointer bookkeeping; x1=sp+664 at 4670 reads integer kernel-pointer bookkeeping; x0=sp+632 at 5553 reloads the external output pointers. The 16 ST1W at 5562..5595 use those loaded output pointers plus column offsets, not SP addresses. All LD1W/LD1RW/LD1RQW addresses lead to input/kernel pointers. No LDR/STR Z, Q or predicate operand, no vector load/store through a derived SP address, and no vector accumulator slot exists. The only vector register memory operations on SP are the four ABI D-register STP/LDP pairs.",
+      "transition_spill_review": "The full path and every alternate initialization label were read. input_0 remainder 4312..4339, input_1 copies 4417..4482, input_2 copies 4582..4668 and shared setup 4669..4718 pass live accumulators in Z registers. shared exit 4895..4913 enters the paired remainder without loading any accumulator slots; 5008..5015 selects one-column copies 5016..5070 and 5071..5120, followed by row transition 5121..5131. 5132..5148 restores integer pointers for trailing_0; trailing_0 copies 5229..5315 and trailing_1 copies 5391..5456 keep all accumulators in registers. trailing_2 copies 5507..5551 feed the final 16 external ST1W. .L369 5749..5754, .L328 5755..5763, .L368 5764..5769 and .L392 5879..5899 initialize zero Z registers on bypass paths. No vector spill appears in transitions, zero initialization, output stores, or the horizontal-block pointer update 5596..5678.",
+      "tail_and_fallback_review": "kh<=3 branches at 4024 to .L325, which calls rowtriple at 5842 then restores its fixed frame and tail-calls prefix at 5863 for the fourth row using 3*stride. Width below CNTB (4*CNTW float outputs) branches 4033 to .L389, then .L327 selects the horizontal remainder. .L391 passes current column i, remaining ow-i and original stride to rowtriple (5803), then restores its frame before prefix (5831). No live vector output must survive these calls. For shared rows, kw<=3 branches 4690 to .L370, which sets ik=0 at 5740 and bypasses all LD1RQW via .L341; the four-column loads only execute when four coefficient columns remain. Pair/unpaired paths preserve source order and existing bounded input windows. kh5 was not dynamically covered by this diagnostic; these are actual assembly/source observations, not added test coverage.",
+      "stages": [
+        {
+          "stage": "input_0",
+          "label": ".L329",
+          "line_start": 4275,
+          "line_end": 4307,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row 0 / kernel row 0 contributes to output a.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector stack traffic in this paired arithmetic loop; all LD1W/LD1RW read external input/kernel buffers. Three EXT construct the shifted internal windows; the final shifted window is the fifth direct input load. Surrounding setup and remainders also have no vector spills."
+        },
+        {
+          "stage": "input_1",
+          "label": ".L333",
+          "line_start": 4357,
+          "line_end": 4412,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row 1 / kernel rows 1,0 contributes to outputs a,b.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector stack traffic in this paired arithmetic loop; all LD1W/LD1RW read external input/kernel buffers. Three EXT construct the shifted internal windows; the final shifted window is the fifth direct input load. Surrounding setup and remainders also have no vector spills."
+        },
+        {
+          "stage": "input_2",
+          "label": ".L338",
+          "line_start": 4502,
+          "line_end": 4577,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row 2 / kernel rows 2,1,0 contributes to outputs a,b,c.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector stack traffic in this paired arithmetic loop; all LD1W/LD1RW read external input/kernel buffers. Three EXT construct the shifted internal windows; the final shifted window is the fifth direct input load. Surrounding setup and remainders also have no vector spills."
+        },
+        {
+          "stage": "shared",
+          "label": ".L342",
+          "line_start": 4719,
+          "line_end": 4894,
+          "kernel_columns_per_iteration": 4,
+          "source_mapping": "Enclosing .L347 iterates t=3..kh-1; kernel rows t,t-1,t-2,t-3 contribute to a,b,c,d. Each iteration consumes four columns with 4 LD1RQW, 16 DUP, 16 direct shifted LD1W, 64 ordinary FMUL and 64 FADD. q0/q1/q2/q3 are ordered for every accumulator; input windows are loaded in four q groups. ik advances 4 and the coefficient byte offset advances 16.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector stack traffic in this actual loop. Input/coefficient addresses derive from caller buffers; fixed-frame pointer bookkeeping is outside the loop. The shared loop uses three full-register MOV at 4774,4788,4816 to retain packed coefficients, with no spill."
+        },
+        {
+          "stage": "trailing_0",
+          "label": ".L349",
+          "line_start": 5149,
+          "line_end": 5224,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row kh / kernel rows kh-1,kh-2,kh-3 contributes to outputs b,c,d.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector stack traffic in this paired arithmetic loop; all LD1W/LD1RW read external input/kernel buffers. Three EXT construct the shifted internal windows; the final shifted window is the fifth direct input load. Surrounding setup and remainders also have no vector spills."
+        },
+        {
+          "stage": "trailing_1",
+          "label": ".L353",
+          "line_start": 5331,
+          "line_end": 5386,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row kh+1 / kernel rows kh-1,kh-2 contributes to outputs c,d.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector stack traffic in this paired arithmetic loop; all LD1W/LD1RW read external input/kernel buffers. Three EXT construct the shifted internal windows; the final shifted window is the fifth direct input load. Surrounding setup and remainders also have no vector spills."
+        },
+        {
+          "stage": "trailing_2",
+          "label": ".L357",
+          "line_start": 5469,
+          "line_end": 5501,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row kh+2 / kernel row kh-1 contributes to output d.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector stack traffic in this paired arithmetic loop; all LD1W/LD1RW read external input/kernel buffers. Three EXT construct the shifted internal windows; the final shifted window is the fifth direct input load. Surrounding setup and remainders also have no vector spills."
+        }
+      ],
+      "shared_remainders": [
+        {
+          "loop": "remainder2",
+          "label": ".L344",
+          "line_start": 4914,
+          "line_end": 5007,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Existing shared two-column remainder advances all 16 accumulators with 8 external LD1W and 8 LD1RW, 32 separate FMUL/FADD pairs. Counter advances by 2 at 4978; coefficient offset advances 8 at 4998; backedge 5007.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector spill in the loop or entry/exit; all 16 accumulators remain in registers."
+        },
+        {
+          "loop": "remainder1",
+          "line_start": 5016,
+          "line_end": 5070,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "First emitted one-column remainder copy advances all 16 accumulators using 4 external LD1W, 4 LD1RW and 16 separate FMUL/FADD pairs; the guard at 5014..5015 bounds entry. The compiler also emits a second guarded one-column copy at 5071..5120, with the same arithmetic/load work and no spill, covered by transition review rather than counted as another stage.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "The LDP/ LDR in this range read integer lane-offset bookkeeping from SP, not vectors. All accumulator state stays in Z registers; no vector spills in either copy."
+        }
+      ],
+      "nonshared_remainder_review": "input_0 .L331 4322..4339 is a one-column loop with 4 FMUL/FADD, 4 LD1W, 1 LD1RW; its guarded setup begins 4312. input_1 has guarded one-column copies 4417..4452 and 4453..4482 (8 arithmetic pairs each); input_2 copies 4582..4628 and 4629..4668 (12 pairs each). trailing_0 copies 5229..5275 and 5276..5315 have 12 pairs each, trailing_1 copies 5391..5426 and 5427..5456 have 8 each, and trailing_2 copies 5507..5531 and 5532..5551 have 4 each. Each retains scalar coefficient broadcasts and 4 bounded full input vectors per single column. No vector spill occurs in any copy; no LD1RQW appears in nonshared remainders."
+    }
+  ],
+  "fence_review": {
+    "review_complete": true,
+    "compiler_accepted": true,
+    "source_contract_reviewed": true,
+    "empty_templates_emit_no_instruction": true,
+    "does_not_claim_hardware_fence": true,
+    "source_fence_count": 3,
+    "source_contract_notes": "The actual returned conv2d.c at 1010,1054,1098 contains exactly empty __asm__ __volatile__ templates with +w(ak4,bk4,ck4,dk4), w(a0..a3,b0..b3,c0..c3,d0..d3), and memory clobber. These three original sites follow q0,q1,q2. The local text-only acceptor separately checks the full normalized source contract and immutable transport identity.",
+    "compiler_acceptance_evidence": "Actual O job 1579856 reports GCC 10.3.1 and zero build-guard/build-dispatch/build-assembly exits in its 19-stage log, with wrapper and scheduler exits zero. Actual probe.log gcc xtrace includes the uninstrumented -S conv2d.c command with -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1. The target compiler accepted these exact returned C49 source bytes; acceptance is not borrowed from C45.",
+    "observations": [
+      {
+        "after_kernel_lane": 0,
+        "source_asm_line": 1010,
+        "mapping_status": "not_separately_identifiable",
+        "instruction_address_claimed": false,
+        "evidence_ranges": [
+          {
+            "line_start": 4719,
+            "line_end": 4779
+          }
+        ],
+        "packed_value_notes": "The actual four packed loads are ak4=z24 (4721), bk4=z23 (4732), ck4=z14 (4735), dk4=z13 (4752). Lane-0 DUPs use these values at 4725,4734,4740,4754. The same packed registers supply lane-1 DUPs at 4769,4771,4772,4779. The empty source output constraints are tied read/write values; there is no emitted instruction at source line 1010.",
+        "accumulator_readiness_notes": "All 16 q0 sums are produced by 4767: a=(z18,z8,z9,z6), b=(z17,z21,z31,z5), c=(z22,z19,z20,z0), d=(z4,z2,z3,z1). The last d sums are FADD at 4764..4767; the first q1 input LD1W follows at 4768 and first q1 DUP at 4769.",
+        "scheduling_notes": "The returned listing has no #APP/#NO_APP marker, so no discrete fence instruction or PC is assigned. Data dependencies reconstruct surrounding q0 completion and q1 consumption. q0 loads only four input windows at 4723,4724,4726,4727 before their 16 products/adds, followed by q1 input loads starting 4768.",
+        "register_and_spill_notes": "Packed ck4 is copied z14->z25 at 4774 while q1 starts, retaining its later lanes; this real MOV is coefficient preservation and is not the fence. No stack memory operation exists in this shared interval; only caller input/kernel memory is read."
+      },
+      {
+        "after_kernel_lane": 1,
+        "source_asm_line": 1054,
+        "mapping_status": "not_separately_identifiable",
+        "instruction_address_claimed": false,
+        "evidence_ranges": [
+          {
+            "line_start": 4768,
+            "line_end": 4819
+          }
+        ],
+        "packed_value_notes": "q1 packed values remain ak4=z24, bk4=z23, ck4=z25 after MOV 4774, dk4=z7 after MOV z13->z7 at 4788. The next lane-2 DUPs at 4810,4812,4813,4819 read exactly these four registers. Packed copies preserve the whole register across consumer scheduling.",
+        "accumulator_readiness_notes": "By 4809, all q1 sums are ready: a=(z18,z8,z9,z6), b=(z17,z21,z31,z5), c=(z22,z19,z16,z30), d=(z4,z2,z3,z1). The final q1 FADDs at 4805,4807,4808,4809 complete row-group vector3 before lane-2 DUP at 4810 and q2 input load at 4811.",
+        "scheduling_notes": "No separately emitted asm boundary is visible. Actual q1 input LD1W occur at 4768,4782,4790,4800; arithmetic updates across all output rows complete before the q2 load group begins. Evidence ranges include neighboring instructions to demonstrate dependencies rather than invent an empty-asm instruction range.",
+        "register_and_spill_notes": "The real MOVs at 4774 and 4788 carry packed ck4/dk4 forward. At 4816 another MOV z25->z0 retains packed ck4 for q3 as z25 becomes q2 arithmetic/input storage. No vector stack load/store or scalable spill slot exists in this helper."
+      },
+      {
+        "after_kernel_lane": 2,
+        "source_asm_line": 1098,
+        "mapping_status": "not_separately_identifiable",
+        "instruction_address_claimed": false,
+        "evidence_ranges": [
+          {
+            "line_start": 4810,
+            "line_end": 4862
+          }
+        ],
+        "packed_value_notes": "After q2, the packed values for q3 are ak4=z24, bk4=z23, ck4=z0 (copy 4816), dk4=z7. q3 DUPs use z23[3] at 4855, z7[3] at 4856, z0[3] at 4857, and z24[3] at 4862. Each packed value is still available after all q2 accumulator input requirements are met.",
+        "accumulator_readiness_notes": "All 16 q2 sums are produced by 4850: a=(z10,z14,z9,z27), b=(z11,z15,z31,z26), c=(z13,z12,z8,z20), d=(z29,z25,z28,z19). The last q2 FADDs at 4847..4850 precede q3 full-window loads 4851..4854 and lane-3 DUPs.",
+        "scheduling_notes": "q2 input LD1W are at 4811,4814,4818,4836. The q3 load group follows the final q2 sum at 4850. The empty asm has no #APP marker or emitted PC; this is a recovered surrounding schedule observation and does not assert a hardware memory barrier.",
+        "register_and_spill_notes": "z0 is reused as packed ck4 across q2/q3 after its original q1 accumulator value was consumed into c3=z30; q3 DUP then reuses z0 in place. z7 similarly becomes its lane-3 broadcast. All state remains in vector registers; no vector stack traffic appears."
+      }
+    ]
+  },
+  "performance_measured": false,
+  "promotion_decision": "none",
+  "executed_locally": false,
+  "dispatch_reviewed": true,
+  "dispatch_functions": [
+    {
+      "symbol": "conv2d._omp_fn.1",
+      "line_start": 662,
+      "line_end": 2269,
+      "control_flow_notes": "Actual legacy per-output-row worker: omp thread quotient/remainder assigns disjoint row intervals at .L58/.L141; .L67 advances input by stride and output by ow. Context flag at +48 optionally calls prefix at .L60, then returned column offset enters remaining 32/16/8/4/2/1 output blocks (.L123/.L109/.L63/.L64/.L65/.L66). Non-SVE context stores flag zero in conv2d, so this runtime branch does not call SVE. Ordered kernel rows/columns and scalar-tail stores observed through .L76. No new six-row dispatch enters this path. Direct full actual-function diff against C47 found only function name .omp_fn.2->.omp_fn.1, .LFB17->.LFB15 and .LFE17->.LFE15 plus matching .size symbol. Every other instruction/directive/label is identical; reuse the fully read actual non-SVE body, not source-level sameness.",
+      "stack_notes": "Actual 368-byte fixed frame. x19..x30 ABI and scalar/pointer loop state at sp160..232; d8..d15 four STP/LDP ABI pairs at sp96..144. x18=sp240 aliases the local 32-float tile: zeroed sp240..352 then 8+4+2 STR Q sites materialize computed 32/16/8 blocks, subsequently copied via scalar LDP/STP. These 14 vector tile-store sites are real stack traffic, distinct from hot SVE accumulator spill and ABI saves. No Z/predicate stack access in this function; all non-SVE scalar and NEON paths reviewed."
+    },
+    {
+      "symbol": "conv2d._omp_fn.0",
+      "line_start": 5907,
+      "line_end": 6086,
+      "control_flow_notes": "Actual SVE four-row group worker: .L394/.L402 quotient/remainder assigns ceil(oh/4) group intervals. .L398 routes >=4 remaining to quad;3 at.L399 to triple;2 at.L400 to pair;1 default to prefix. .L401 increments group once, subtracts4 remaining, advances input four strides/output four widths and bounds-checks assigned end. Complete rare branches and return paths inspected; no new group shape or overlapping outputs introduced.",
+      "stack_notes": "160-byte fixed frame, integer ABI x19..x30 and saved end/width/strides/kernel at124..152. Outgoing quad/triple args sp0/8; no vector/predicate stack operations or D ABI saves in this dispatcher. Paired epilogues and preserved x2 around all calls read."
+    },
+    {
+      "symbol": "conv2d",
+      "line_start": 6091,
+      "line_end": 6222,
+      "control_flow_notes": "Rejects nonpositive kh/kw before allocating frame and kernels larger than input before hardware query. Computes positive oh/ow, getauxval HWCAP bit22 chooses .L415 SVE worker vs nonSVE .omp_fn.1. SVE groups ceil(oh/4) via shift2 plus remainder; nonSVE context flag is explicitly zero. Each path initializes original stride/kernel/dimensions/context and invokes exactly one GOMP_parallel. No allocator, persistent cache, copy region or altered external contract.",
+      "stack_notes": "144-byte fixed frame with integer ABI at0..80 and context88..136, no vector/predicate memory operations. Both joined GOMP returns restore full ABI; no writes beyond frame. Early invalid-input return without frame and kernel-larger return with correct frame restore inspected."
+    }
+  ],
+  "codegen_comparison": {
+    "review_complete": true,
+    "distinct_from_prior_machine_arrangements": true,
+    "prior_versions": [
+      "C45-row4dup4"
+    ],
+    "prior_identity": {
+      "candidate": "C45-row4dup4",
+      "job_id": "1579762",
+      "source_sha256": "d428611f068b81befa4412a6bd11480468e3b7816906647d15cc0e9265c866a5",
+      "assembly_sha256": "d6d4547d7d3770d22319bfbeae7cb2a790cd34ebc4dc6efc8dfdf79d3a34bba2"
+    },
+    "prior_shared": [
+      {
+        "symbol": "conv_sve_rowquad",
+        "line_start": 4734,
+        "line_end": 4919,
+        "kernel_columns_per_iteration": 4,
+        "counts": {
+          "instructions": 185,
+          "fmul": 64,
+          "fmul_ordinary": 64,
+          "fmul_indexed": 0,
+          "fadd": 64,
+          "ld1w": 16,
+          "ld1rw": 0,
+          "ld1rqw": 4,
+          "dup": 16,
+          "indexed_mov": 0,
+          "ext": 0,
+          "movprfx": 0
+        },
+        "vector_spill_loads": 6,
+        "vector_spill_stores": 6
+      }
+    ],
+    "normalization": "Both original C45 and C49 actual shared loops compute four kernel columns for four output rows by four vectors:64 ordinary FMUL+64 separate FADD,16 input LD1W,4 LD1RQW and16 DUP. Compare per four kernel columns, not per source line or total function byte size.",
+    "notes": "Root directly read C49 actual .L342 lines4719..4894 and original frozen C45 shared evidence. C49 contains175 machine instructions versus185 in C45. C49 advances through completed q0/q1/q2 accumulator sets before the following packed-coefficient lane use; this is a changed arithmetic/input liveness schedule, not only register renaming. There are3 vector MOV packed coefficient preservation instructions and no indexed multiply. No performance measurement or whole-object identity claimed.",
+    "spill_and_schedule_difference_notes": "C45 actual shared loop has6 loads+6 stores of vector accumulator slots through x15=sp+784 plus VL offsets. C49 shared loop contains no such vector stack traffic:its memory operations are4 packed coefficient loads and16 input loads, with3 register MOV preserving packed c/d values at4774,4788,4816. Nonarithmetic/address instruction counts also differ; the175-versus185 total is not a subtraction of pure spill cost. Full helper and transitions remain separately reviewed by the assigned reviewer; compiler fences emit no hardware instruction and cannot be assigned invented PCs.",
+    "candidate_shared": {
+      "symbol": "conv_sve_rowquad",
+      "line_start": 4719,
+      "line_end": 4894,
+      "kernel_columns_per_iteration": 4,
+      "instructions": 175,
+      "fmul": 64,
+      "fadd": 64,
+      "ld1w": 16,
+      "ld1rqw": 4,
+      "dup": 16,
+      "vector_mov": 3,
+      "vector_spill_loads": 0,
+      "vector_spill_stores": 0
+    }
+  },
+  "review_fragments": [
+    "assembly-helper-review.json",
+    "assembly-dispatch-comparison-review.json"
+  ]
+}

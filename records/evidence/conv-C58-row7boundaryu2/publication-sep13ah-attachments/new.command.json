@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "tools/experiment.py",
+    "new",
+    "conv",
+    "C58-row7boundaryu2",
+    "--parent",
+    "C52-row7x3shared2",
+    "--strategy",
+    "Only add GCC unroll 2 pragmas before the six rowseven input and six trailing kernel-column loops. Keep shared2, arithmetic, dispatch and submission flags unchanged. Source-only hypothesis; own diagnostic required."
+  ],
+  "exit": 0,
+  "standard_cli_workflow_lock": true
+}

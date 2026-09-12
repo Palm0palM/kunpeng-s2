@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "problem": "zgemm",
+  "version": "Z1-control2",
+  "parent": null,
+  "strategy": "保持已晋级Z1-pack-pair1源码不变，与MB48候选在同一个38核NUMA作业内各执行三轮官方用例，建立第二轮可比较控制基线；来源Z1-pack-pair1",
+  "created_at": "2026-09-08T01:34:18.211632+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
+    "bench_zgemm.c": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+    "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+    "zgemm.c": "3a26f10b2080d057cace983db2fa26c375e654e219991e23e2e61eb58baefba9"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T01:51:58.993819+00:00",
+  "environment": "kunpeng-zgemm-pair2-compute-node-A-aarch64-3-114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+  "reference": "官方 benchmark 内置 reference_zgemm；无外部 BLAS",
+  "verified": true,
+  "log_sha256": "6e9a4caf8cad1f237b79cdfdf724d883b18e43d04c2fd93eae1d63210302601b",
+  "log": "benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        7427,
+        7427,
+        256
+      ],
+      "times_ms": [
+        243.21,
+        242.76,
+        242.09
+      ],
+      "median_ms": 242.76,
+      "min_ms": 242.09,
+      "max_ms": 243.21,
+      "spread_pct": 0.46136101499423493,
+      "gflops": [
+        464.4905,
+        465.355,
+        466.6333
+      ],
+      "max_error": 3.05e-12
+    },
+    {
+      "dims": [
+        14848,
+        14848,
+        256
+      ],
+      "times_ms": [
+        962.34,
+        963.83,
+        962.7
+      ],
+      "median_ms": 962.7,
+      "min_ms": 962.34,
+      "max_ms": 963.83,
+      "spread_pct": 0.15477303417471788,
+      "gflops": [
+        469.1764,
+        468.4523,
+        469.0
+      ],
+      "max_error": 3.51e-12
+    },
+    {
+      "dims": [
+        37360,
+        8192,
+        512
+      ],
+      "times_ms": [
+        2530.06,
+        2535.16,
+        2531.76
+      ],
+      "median_ms": 2531.76,
+      "min_ms": 2530.06,
+      "max_ms": 2535.16,
+      "spread_pct": 0.2014408948715482,
+      "gflops": [
+        495.4792,
+        494.4832,
+        495.1462
+      ],
+      "max_error": 6.04e-12
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 3737.2200000000003,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "compute-node-A",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) <PRIVATE_IP>",
+      "gcc (GCC) <PRIVATE_IP>"
+    ]
+  },
+  "job_id": "1485352",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "promoted_at": "2026-09-08T01:51:59.031691+00:00",
+  "publication_note": "Public copy: compute/login aliases and private paths/usernames redacted. Original log hashes refer to unredacted private evidence; public hashes are in artifact-manifest.json."
+}

@@ -1,0 +1,30 @@
+python3 - <<'PY'
+import hashlib, json, subprocess, sys
+from pathlib import Path
+root = Path.cwd()
+version = 'C56-row7shared3fence'
+base = root / '.runs/conv' / version
+record = root / 'records/experiments/conv' / (version + '.json')
+parent = root / '.runs/conv/C55-row7x3shared3/source'
+frozen = root / '.runs/conv/C55-row7x3shared3/sve-correctness-sep13ac'
+expected = 'cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138'
+assert not base.exists() and not record.exists(), 'C56 ID is occupied'
+assert hashlib.sha256((parent / 'conv2d.c').read_bytes()).hexdigest() == expected
+assert (parent / 'conv2d.c').read_bytes() == (frozen / 'source/conv2d.c').read_bytes()
+freeze = json.loads((frozen / 'freeze-source.json').read_text())
+assert freeze['candidate'] == 'C55-row7x3shared3' and freeze['job_id'] == '1582860' and freeze['mode'] == 'passed'
+argv = [sys.executable, 'tools/experiment.py', 'new', 'conv', version, '--parent', 'C55-row7x3shared3', '--strategy', 'Source-only hypothesis: after each of the three complete C55 shared-column scopes add one empty volatile asm with21 read-only w inputs and memory clobber, zero outputs. Preserve every arithmetic statement, triple3 loop, u1 remainder, other12 stages, dispatch and other submission files. Try to reduce cross-column live inputs and AC five-slot spill; compiler acceptance, scheduling and speed remain unverified. Own diagnostic required; parent AC1582860 PASS is not inherited.']
+result = subprocess.run(argv, cwd=root, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+if result.returncode == 0:
+    (base / 'commands-new.stdout.txt').write_bytes(result.stdout)
+    (base / 'commands-new.stderr.txt').write_bytes(result.stderr)
+    (base / 'commands-new.exit.txt').write_text(str(result.returncode) + '\n')
+    (base / 'commands-new.argv.json').write_text(json.dumps(argv, ensure_ascii=False, indent=2) + '\n')
+    (base / 'creation-experiment.json').write_bytes((base / 'experiment.json').read_bytes())
+    (base / 'creation-record.json').write_bytes(record.read_bytes())
+    for name in ('README.md', 'bench_conv.c', 'conv2d.c', 'run.sh'):
+        assert (base / 'source' / name).read_bytes() == (parent / name).read_bytes()
+sys.stdout.buffer.write(result.stdout)
+sys.stderr.buffer.write(result.stderr)
+raise SystemExit(result.returncode)
+PY

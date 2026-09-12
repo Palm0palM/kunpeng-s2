@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C49-row4dup4fence",
+  "parent": "C26-r21",
+  "strategy": "Only fence C45 shared four-column q0/q1/q2 boundaries: four packed coefficients become mutable +w tied outputs, sixteen current accumulators are w inputs, and memory clobber; constrain future DUP dependencies and register lifetimes without changing arithmetic/remainders; source-only hypothesis",
+  "created_at": "2026-09-12T11:57:00.120831+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "b47718a3c2759b9992278031e83d7531798aa3865248fb5c90cb6f9b92906e05",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C45-row4dup4",
+  "formal_best_label": "C6",
+  "source_scope": "Only four shared packed coefficient const qualifiers and three empty asm fences after q0/q1/q2; all arithmetic/addresses/remainders/helpers/dispatch/build preserved",
+  "barriers_per_four_column_iteration": 3,
+  "packed_readwrite_operands": 4,
+  "accumulator_input_operands": 16,
+  "gcc_operand_count_per_asm": 24,
+  "reference_only": false,
+  "observation_job": "1579762",
+  "observation": "C45 actual shared .L342 has4LD1RQW+16DUP+64ordinaryFMUL/0indexed+64FADD;6vectorload/6store accumulator spills;784B+6VL frame. This .s observation is not performance or object validation.",
+  "execution_policy": "Prepared source only, no diagnostic package, compile/test, SSH, job, reset or publication; root independent review before execution",
+  "comparison_baseline": "C26-r21",
+  "promotion_allowed": true,
+  "diagnostic_source_version": "C49-row4dup4fence",
+  "diagnostic_evidence_directory": ".runs/conv/C49-row4dup4fence/sve-correctness-sep12o",
+  "diagnostic_job_id": "1579856",
+  "diagnostic_source_sha256": "b47718a3c2759b9992278031e83d7531798aa3865248fb5c90cb6f9b92906e05",
+  "reused_identical_source_diagnostic": false,
+  "recorded_at": "2026-09-12T16:17:52.824266+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12n",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "13824266f11d3b7f100ac32ee7a1b018d697c22cb4f8b0e8c162958502b7d6a4",
+  "log": ".runs/conv/C49-row4dup4fence/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        58.06,
+        58.02,
+        58.02
+      ],
+      "median_ms": 58.02,
+      "min_ms": 58.02,
+      "max_ms": 58.06,
+      "spread_pct": 0.06894174422612745,
+      "gflops": [
+        1298.1566,
+        1299.1064,
+        1299.079
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        68.36,
+        68.45,
+        68.39
+      ],
+      "median_ms": 68.39,
+      "min_ms": 68.36,
+      "max_ms": 68.45,
+      "spread_pct": 0.13159818686943034,
+      "gflops": [
+        1217.5545,
+        1216.0461,
+        1217.1007
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        121.63,
+        121.58,
+        121.52
+      ],
+      "median_ms": 121.58,
+      "min_ms": 121.52,
+      "max_ms": 121.63,
+      "spread_pct": 0.09047540713933167,
+      "gflops": [
+        1324.3084,
+        1324.8523,
+        1325.4621
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        263.61,
+        263.78,
+        263.77
+      ],
+      "median_ms": 263.77,
+      "min_ms": 263.61,
+      "max_ms": 263.78,
+      "spread_pct": 0.0644500890927547,
+      "gflops": [
+        1311.6611,
+        1310.8114,
+        1310.8637
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 511.76,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1581459",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "qualified_for_confirmation": false,
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -13.13% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.48,
+        "candidate_ms": 58.02,
+        "gain_pct": -12.703962703962718
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.91,
+        "candidate_ms": 68.39,
+        "gain_pct": -10.466806654821523
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.3,
+        "candidate_ms": 121.58,
+        "gain_pct": -13.308480894687793
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.69,
+        "candidate_ms": 263.77,
+        "gain_pct": -13.846087444430049
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r20",
+    "eligible": false,
+    "reasons": [
+      "提速 -13.08% 未超过测量波动/最低1%门槛 1.16%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.42,
+        "candidate_ms": 58.02,
+        "gain_pct": -12.83547257876313
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 62.16,
+        "candidate_ms": 68.39,
+        "gain_pct": -10.02252252252253
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.31,
+        "candidate_ms": 121.58,
+        "gain_pct": -13.297921908489418
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.66,
+        "candidate_ms": 263.77,
+        "gain_pct": -13.860830527497189
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Does not meet both C6 gates; retain every sample and C6. No automatic exclusion or promotion.",
+  "compiler_scheduling_comparison": {
+    "baseline": "C45-row4dup4",
+    "eligible": false,
+    "reasons": [
+      "提速 8.18% 未超过测量波动/最低1%门槛 13.71%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 63.31,
+        "candidate_ms": 58.02,
+        "gain_pct": 8.355709998420469
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 73.48,
+        "candidate_ms": 68.39,
+        "gain_pct": 6.927054980947201
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 133.27,
+        "candidate_ms": 121.58,
+        "gain_pct": 8.771666541607273
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 287.29,
+        "candidate_ms": 263.77,
+        "gain_pct": 8.186849524870352
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "compiler_scheduling_supported_in_initial_group": false,
+  "compiler_scheduling_attribution_note": "Whole compiler-scheduling result of three empty source barriers versus C45 in this allocation; no hardware fence or isolated spill-cost measurement. The C6 usefulness gate remains independent."
+}

@@ -1,0 +1,217 @@
+{
+  "status": "reviewed",
+  "complete": true,
+  "review_complete": true,
+  "job_id": "1579588",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579588",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_manifest_remote_matches": true,
+  "source_hashes": {
+    "analyze_profile.py": "d2198833d0031234e50423b3496e8031233db37391332953ab33fa3eeafb7eea",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "build_c6.sh": "71c4631c5c09cf3203a01d8efe412de5a3166f93d9cf257984e324745b086e5f",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "profile_state.py": "ab0f53a19a46e30b9cf1dbba170596cf0839a8a7229eb4ee84bab79ab9f00d67",
+    "remote_job.sh": "abe6089b9f7d2efb9e5fe75ccbda8a4fab1156f5e46d6a2f562c96028ffa1a83",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "extra_manual_hash_audit": false,
+  "compiler_version": "10.3.1",
+  "profile_is_benchmark": false,
+  "benchmark_numeric_pass": true,
+  "benchmark_passes": 1,
+  "tool_exit_codes": {
+    "record": 0,
+    "report-all": 0,
+    "report-quad": 0,
+    "annotate": 0,
+    "objdump": 0
+  },
+  "quad_samples": 2666,
+  "elf_symbol_mapping_verified": true,
+  "elf_build_id": "f7498c9ff38f39543bf6bcee8cb8dab599a0b1f5",
+  "source_scope": "C26-r1/C6 unchanged original build prefix and case4",
+  "original_remote_status": "inconclusive",
+  "classifier_explanation": "Remote regex did not allow additional IPC columns after the symbol. Manual parsing of original report and annotate agrees on2666 attributable quad samples; all tool exits are0.",
+  "analysis": {
+    "event": "cycles:u",
+    "frequency_hz": 99,
+    "total_record_samples": 38266,
+    "quad_samples": 2666,
+    "quad_event_period_share_pct": 6.75,
+    "total_lost_samples": 0,
+    "quad_symbol_address": "0x0000000000404b14",
+    "elf_build_id": "f7498c9ff38f39543bf6bcee8cb8dab599a0b1f5",
+    "main_shared_loop": {
+      "start": "0x4055f8",
+      "end": "0x405768",
+      "instructions": 93,
+      "fmul": 32,
+      "fadd": 32,
+      "rounded_local_period_pct": 92.9
+    },
+    "loops": [
+      {
+        "start": "0x404ee8",
+        "end": "0x404f64",
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "rounded_local_period_pct": 0.47
+      },
+      {
+        "start": "0x404f98",
+        "end": "0x404fd8",
+        "instructions": 17,
+        "fmul": 4,
+        "fadd": 4,
+        "rounded_local_period_pct": 0.0
+      },
+      {
+        "start": "0x405018",
+        "end": "0x4050f0",
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "rounded_local_period_pct": 0.65
+      },
+      {
+        "start": "0x405250",
+        "end": "0x405378",
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "rounded_local_period_pct": 1.32
+      },
+      {
+        "start": "0x4055f8",
+        "end": "0x405768",
+        "instructions": 93,
+        "fmul": 32,
+        "fadd": 32,
+        "rounded_local_period_pct": 92.9
+      },
+      {
+        "start": "0x405960",
+        "end": "0x405a88",
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "rounded_local_period_pct": 0.75
+      },
+      {
+        "start": "0x405c30",
+        "end": "0x405d08",
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "rounded_local_period_pct": 0.6
+      },
+      {
+        "start": "0x405e50",
+        "end": "0x405ecc",
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "rounded_local_period_pct": 0.56
+      }
+    ],
+    "rounded_annotation_percent_sum": 100.11,
+    "top_instruction_ips": [
+      {
+        "rounded_local_period_pct": 25.25,
+        "address": "0x405604",
+        "instruction": "ld1rw   {z8.s}, p0/z, [x7]"
+      },
+      {
+        "rounded_local_period_pct": 8.84,
+        "address": "0x4055f8",
+        "instruction": "lsl     x1, x0, #2"
+      },
+      {
+        "rounded_local_period_pct": 7.54,
+        "address": "0x405728",
+        "instruction": "fadd    z18.s, z18.s, z17.s"
+      },
+      {
+        "rounded_local_period_pct": 7.21,
+        "address": "0x405628",
+        "instruction": "ld1w    {z4.s}, p0/z, [x11, x0, lsl #2]"
+      },
+      {
+        "rounded_local_period_pct": 6.24,
+        "address": "0x405664",
+        "instruction": "ld1w    {z30.s}, p0/z, [x12, x0, lsl #2]"
+      },
+      {
+        "rounded_local_period_pct": 5.42,
+        "address": "0x4056ec",
+        "instruction": "fmul    z6.s, z6.s, z8.s"
+      },
+      {
+        "rounded_local_period_pct": 3.75,
+        "address": "0x405678",
+        "instruction": "fmul    z11.s, z30.s, z9.s"
+      },
+      {
+        "rounded_local_period_pct": 3.71,
+        "address": "0x405668",
+        "instruction": "ld1w    {z28.s}, p0/z, [x9, x0, lsl #2]"
+      },
+      {
+        "rounded_local_period_pct": 2.6,
+        "address": "0x405614",
+        "instruction": "fmul    z10.s, z6.s, z8.s"
+      },
+      {
+        "rounded_local_period_pct": 2.55,
+        "address": "0x4056b4",
+        "instruction": "fmul    z11.s, z31.s, z9.s"
+      },
+      {
+        "rounded_local_period_pct": 2.44,
+        "address": "0x405618",
+        "instruction": "ld1w    {z5.s}, p0/z, [x13, x0, lsl #2]"
+      },
+      {
+        "rounded_local_period_pct": 2.21,
+        "address": "0x405700",
+        "instruction": "add     x1, x4, x2"
+      }
+    ],
+    "scope": "The symbol-filtered stream combines validation, warmup and timed conv calls from original official case4. Local percentages are sampled cycle periods within quad, not whole-program CPI or per-instruction latency.",
+    "limitations": [
+      "Reported percent rows are rounded; their total is100.11, so loop92.90 is approximate.",
+      "Low-frequency cycles sampling has IP skid and instruction attribution bias; the25.25% LD1RW IP does not establish cache-miss cost or a broadcast bottleneck.",
+      "No instructions/cache-miss/stall event was collected. No operator CPI or hardware-cause claim.",
+      "The benchmark time recorded under perf is diagnostic only and cannot be used for promotion."
+    ]
+  },
+  "evidence_directory": "raw",
+  "actual_build_argv": [
+    "gcc",
+    "-O3",
+    "-std=c11",
+    "-Wall",
+    "-Wextra",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-mcpu=generic",
+    "-fopenmp",
+    "-DCONV_BLOCK=32",
+    "-DCONV_KERNEL_UNROLL=2",
+    "bench_conv.c",
+    "conv2d.c",
+    "-o",
+    "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/results/run-20260912-181226-UpXbHH/conv2d_test",
+    "-lm"
+  ],
+  "original_compile_flags_verified": true
+}

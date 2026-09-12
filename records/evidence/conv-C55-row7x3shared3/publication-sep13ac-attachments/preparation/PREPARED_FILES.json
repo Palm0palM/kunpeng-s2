@@ -1,0 +1,76 @@
+{
+  "status": "prepared_only",
+  "generated_at": "2026-09-12T18:41:26.036231+00:00",
+  "source_parent": "C52-row7x3shared2",
+  "candidate": "C55-row7x3shared3",
+  "files": {
+    "AA-to-AC.patch": {
+      "bytes": 43674,
+      "sha256": "1c47863902d04ccdc0ccf3b4f0e8cf150e2444c59dc7c8400ea74618d275940d"
+    },
+    "C55-row7x3shared3/prepared.json": {
+      "bytes": 4900,
+      "sha256": "18bd42f8f5f2cd13b38c33bea2b2636df843f7c84757857d25f19ceeaab317d2"
+    },
+    "C55-row7x3shared3/source/candidate.env": {
+      "bytes": 204,
+      "sha256": "751790be9095e0e92b10a5e11e3952a75d65c9df54d7dcb735b0fcc6a4f1685e"
+    },
+    "C55-row7x3shared3/source/check_conv_guard.c": {
+      "bytes": 8698,
+      "sha256": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5"
+    },
+    "C55-row7x3shared3/source/check_sve_dispatch.c": {
+      "bytes": 7454,
+      "sha256": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d"
+    },
+    "C55-row7x3shared3/source/conv2d.c": {
+      "bytes": 111044,
+      "sha256": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138"
+    },
+    "C55-row7x3shared3/source/remote_job.sh": {
+      "bytes": 3940,
+      "sha256": "d187d0016c986df296fdb42357282de9acdfd8d29db8716ef1a2b3bbeafb561e"
+    },
+    "C55-row7x3shared3/source-hashes.json": {
+      "bytes": 445,
+      "sha256": "30efec27a1ef6db32e4740fac38d9a3e5e02a2e69a30b302a3272fdea9a40ac0"
+    },
+    "C55-row7x3shared3/source-manifest.json": {
+      "bytes": 641,
+      "sha256": "2826897e4cd50d3f9aa9f6fb34a4c2f04bec3214e45fac92ea8c94c3b9d13e0f"
+    },
+    "INTERFACE.md": {
+      "bytes": 10795,
+      "sha256": "d03c9b0e50614c0c203ede490213e0c391117f9214848617eb3f78d8136a8ee8"
+    },
+    "PREPARATION_COMMANDS.md": {
+      "bytes": 1795,
+      "sha256": "bcd31569e1d003523a236aebb343b4d04dd5da4306adb6a799d01b9521fa3ab4"
+    },
+    "STATIC_REVIEW.md": {
+      "bytes": 2161,
+      "sha256": "40221f83939b854c5c0344139b1e734e1e12d1cbe09f20e2ad526583f598ceac"
+    },
+    "SUBMISSION_INTERFACE.md": {
+      "bytes": 4528,
+      "sha256": "7e9f096e9dbde267e98a8351cd499b91d4deb3a3bf06c7afc014edc44435c0db"
+    },
+    "accept_returned.py": {
+      "bytes": 27116,
+      "sha256": "0cdaa18a7b576f1644c9d2a918ba0af407c7f72ae4b7ec5de2e2e6ad0c97a580"
+    },
+    "driver.py": {
+      "bytes": 19416,
+      "sha256": "89ca93a8131c743571930e2ec1967d328381d9772a2d9e891cb927e321fe1df6"
+    },
+    "freeze_returned.py": {
+      "bytes": 17136,
+      "sha256": "5af23982c0771d17c8d509df06924ae76ec5da2c3036425ac3eae9c97d390b2a"
+    }
+  },
+  "excludes": "This inventory itself and any future root reviews/lifecycle output; files above are preparation artifacts, not executed diagnostics.",
+  "local_operator_execution": false,
+  "new_tool_import_or_execution": false,
+  "compute_authorized": false
+}

@@ -1,0 +1,90 @@
+{
+  "label": "C6",
+  "experiment": "C26-r1",
+  "source_experiment": "C26-row4loads",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "package_sha256": "6d6368d555eb46b24d13d0732189ab0bff422f3f1930fda0fa48b60d74e8e5fb",
+  "total_median_ms": 452.62,
+  "metric": "sum of four per-case medians across three independent suites; not official score",
+  "controlled_comparison": {
+    "baseline": "C21-r9",
+    "baseline_total_median_ms": 502.35,
+    "candidate_total_median_ms": 452.62,
+    "time_reduction_pct": 9.899472479347072,
+    "opening_baseline": "C21-r8",
+    "opening_baseline_total_median_ms": 502.64000000000004,
+    "initial_candidate": "C26-row4loads",
+    "initial_candidate_total_median_ms": 452.58
+  },
+  "verification": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "zip_verification": {
+    "experiment": "C26-package",
+    "job_id": "1576103",
+    "total_median_ms": 452.65999999999997,
+    "suites": 3,
+    "cases_per_suite": 4,
+    "all_pass": true,
+    "max_error": 0,
+    "archive_verified_and_extracted_on_compute_node": true,
+    "same_source_as_promoted": true
+  },
+  "specialized_correctness": {
+    "source_experiment": "C26-row4loads",
+    "checks": 108888,
+    "all_pass": true,
+    "threads": [
+      1,
+      4
+    ],
+    "sve_bits": [
+      128,
+      256,
+      512
+    ]
+  },
+  "official_submission": false,
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C6",
+  "archive": "conv.zip",
+  "archive_sha256": "6d6368d555eb46b24d13d0732189ab0bff422f3f1930fda0fa48b60d74e8e5fb",
+  "archive_bytes": 13129,
+  "archive_root": "conv/",
+  "entrypoint": "conv/run.sh",
+  "archive_members": {
+    "conv/README.md": {
+      "sha256": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+      "bytes": 754,
+      "mode": "0o100644"
+    },
+    "conv/bench_conv.c": {
+      "sha256": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "bytes": 8125,
+      "mode": "0o100644"
+    },
+    "conv/conv2d.c": {
+      "sha256": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+      "bytes": 72661,
+      "mode": "0o100644"
+    },
+    "conv/run.sh": {
+      "sha256": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+      "bytes": 5339,
+      "mode": "0o100755"
+    }
+  },
+  "ready_for_manual_submission": true,
+  "official_score": null
+}

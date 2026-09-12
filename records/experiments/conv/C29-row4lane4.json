@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C29-row4lane4",
+  "parent": "C26-r3",
+  "strategy": "In the four-row shared middle phase only, process four consecutive kernel columns using four LD1RQ coefficient vectors and indexed FMUL lanes 0-3; stream direct input windows while preserving separate multiply/add and the original pair/single remainder loops",
+  "created_at": "2026-09-12T02:26:30.493868+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "721d1835dd5fe45886a7ba0719c975fc44c1715b7e055eb2f9bdd88dd48e3745",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C26-row4loads",
+  "comparison_baseline": "C26-r3",
+  "parent_note": "Comparison parent fixed before measurement; source_parent preserves candidate derivation.",
+  "recorded_at": "2026-09-12T07:29:00.504108+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12b",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "84dbf6d504a4c071d6ecd99c336ac45c8696c3ddae8fe28d951b59df3d3635ad",
+  "log": ".runs/conv/C29-row4lane4/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        56.01,
+        55.98,
+        55.94
+      ],
+      "median_ms": 55.98,
+      "min_ms": 55.94,
+      "max_ms": 56.01,
+      "spread_pct": 0.1250446588067172,
+      "gflops": [
+        1345.6493,
+        1346.4787,
+        1347.4274
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        65.39,
+        65.42,
+        65.44
+      ],
+      "median_ms": 65.42,
+      "min_ms": 65.39,
+      "max_ms": 65.44,
+      "spread_pct": 0.07642922653622311,
+      "gflops": [
+        1273.0021,
+        1272.384,
+        1271.9513
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        116.81,
+        116.8,
+        116.78
+      ],
+      "median_ms": 116.8,
+      "min_ms": 116.78,
+      "max_ms": 116.81,
+      "spread_pct": 0.02568493150685029,
+      "gflops": [
+        1378.9469,
+        1379.0439,
+        1379.3132
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        251.42,
+        251.33,
+        251.3
+      ],
+      "median_ms": 251.33,
+      "min_ms": 251.3,
+      "max_ms": 251.42,
+      "spread_pct": 0.04774599132613541,
+      "gflops": [
+        1375.2667,
+        1375.7798,
+        1375.9494
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 489.53,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1579274",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -8.22% 未超过测量波动/最低1%门槛 2.02%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.46,
+        "candidate_ms": 55.98,
+        "gain_pct": -8.783521181500188
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.86,
+        "candidate_ms": 65.42,
+        "gain_pct": -5.754930488199163
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.33,
+        "candidate_ms": 116.8,
+        "gain_pct": -8.823255380601882
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.69,
+        "candidate_ms": 251.33,
+        "gain_pct": -8.476844058871775
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r2",
+    "eligible": false,
+    "reasons": [
+      "提速 -8.20% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.42,
+        "candidate_ms": 55.98,
+        "gain_pct": -8.868144690781786
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.9,
+        "candidate_ms": 65.42,
+        "gain_pct": -5.686591276252025
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.29,
+        "candidate_ms": 116.8,
+        "gain_pct": -8.863827010905014
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.81,
+        "candidate_ms": 251.33,
+        "gain_pct": -8.420689357663608
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Does not meet predeclared comparison gate; preserve actual samples without promotion."
+}

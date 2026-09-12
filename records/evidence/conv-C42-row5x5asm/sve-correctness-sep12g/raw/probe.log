@@ -1,0 +1,46 @@
++ python3 -
+ALLOWED_CPUS=76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113
+NUMA_NODE=node2
++ source candidate.env
+++ EXPECTED_ACC=5
+++ EXPECTED_FULL=3776
+++ EXPECTED_DISPATCH=504
+++ EXPECTED_DIRECT=288
+++ EXPECTED_DISPATCH_ROWQUINT_ENTRIES=528
+++ EXPECTED_DIRECT_ROWQUINT_ENTRIES=720
++ [[ 5 == 5 ]]
++ [[ 3776 == 3776 ]]
++ [[ 504 == 504 ]]
++ [[ 288 == 288 ]]
++ [[ 528 == 528 ]]
++ [[ 720 == 720 ]]
++ date -u
+Sat Sep 12 10:38:20 UTC 2026
++ hostname
+COMPUTE_NODE_1
++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++ gcc -dumpfullversion -dumpversion
+++ cat compiler-version.txt
++ [[ 10.3.1 == 10.3.1 ]]
++ sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env
++ cat source-sha256.txt
+cbdadacaa24a28f2eff0b9d01810ccae69ddc127da22942f30b15a6713265def  conv2d.c
+dd603a5b3e6060f848b67ef0fb7c27235aca915da7800c26d8f43280504199b1  check_conv_guard.c
+da40cf39877f8e5c9ded8c0726e3045473755443ffb104c55bf9a8e183ecaa15  check_sve_dispatch.c
+5d0acbc4cd8023017c6251a896247da7e62d057dab3e14d6879836d05857190c  remote_job.sh
+212c280a51ffed809972f4ad3a4d4ebe40bec3423853481e85cc1ac49fbd21dd  candidate.env
++ export OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ flags=(-O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp "-DEXPECTED_ACC=$EXPECTED_ACC")
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=5 check_conv_guard.c conv2d.c -o check_conv_guard
++ finish
++ local code=1 log_code=0
++ trap - EXIT
++ exec

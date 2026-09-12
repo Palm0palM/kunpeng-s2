@@ -1,0 +1,636 @@
+--- a/.runs/conv/sep13ae-checks/driver.py
++++ b/.runs/conv/sep13ah-checks/driver.py
+@@ -1,4 +1,4 @@
+-"""Prepared AE diagnostic transport for C56; explicit root --go only.
++"""Prepared AH diagnostic transport for C58; explicit root --go only.
+ 
+ No work occurs on import. status/fetch reuse a saved unique job; no local
+ operator execution, automatic polling, acceptance, promotion or publication.
+@@ -21,13 +21,13 @@
+ sys.path.insert(0, str(ROOT / 'tools'))
+ import cluster
+ 
+-VERSIONS = ('C56-row7shared3fence',)
+-SOURCE_SHA256 = '6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c'
++VERSIONS = ('C58-row7boundaryu2',)
++SOURCE_SHA256 = 'c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751'
+ SOURCE_NAMES = {'conv2d.c', 'check_conv_guard.c', 'check_sve_dispatch.c', 'candidate.env', 'remote_job.sh'}
+-SOURCE_PARENTS = {'C56-row7shared3fence': 'C55-row7x3shared3'}
+-FENCE_CONTRACT = dict(source_fences_per_main_iteration=3, input_accumulators_per_fence=21,
+-    output_operands=0, memory_clobber=True, empty_template=True)
+-COUNTS = {'C56-row7shared3fence': dict(full_per_configuration=5744, dispatch_per_configuration=1212,
++SOURCE_PARENTS = {'C58-row7boundaryu2': 'C52-row7x3shared2'}
++PARENT_SHA256 = '8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7'
++PRODUCTION_NAMES = {'conv2d.c', 'README.md', 'bench_conv.c', 'run.sh'}
++COUNTS = {'C58-row7boundaryu2': dict(full_per_configuration=5744, dispatch_per_configuration=1212,
+     direct_per_configuration=432, configurations=6, total=44328)}
+ RESOURCES = dict(cpus=38, memory_mb=24576, numa_count=1,
+     numa_distribution='pack', walltime_seconds=1800)
+@@ -37,7 +37,7 @@
+     + [f'dispatch-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4)]
+     + ['build-assembly', 'complete'])
+ TERMINAL = {'SUCCEEDED', 'FAILED', 'CANCELLED', 'CANCELED', 'TIMEOUT', 'TERMINATED'}
+-# The frozen AE wrapper builds no retained production object for separate transfer.
++# The frozen AH wrapper builds no retained production object for separate transfer.
+ OBJECT_ARTIFACTS = {name: set() for name in VERSIONS}
+ 
+ 
+@@ -80,58 +80,39 @@
+ 
+ 
+ def serial_gate(cfg):
+-    """Only fixed AD/AC/AB/AA/Y/X/T plus present P/AE reservations.
+-
+-    Prepared P/AE without job.json is not active. Unknown IDs/reservations,
+-    missing fixed evidence, query failure or nonterminal state block. This is
+-    not a distributed lock; root remains the sole submitter and never cancels.
++    """Only original AG/AF plus present P/AH reservations; no peer scanning.
++
++    Actual terminal failures also clear the serial gate when both exit fields
++    are present. Root separately requires full original AG/AF result recording
++    before authorizing this one submission. Never cancel or adopt another ID.
+     """
+-    identities = {}
+-    unresolved = []
+-    ignored_prepared = []
+-    for path in (ROOT / '.runs/conv/sep13p-checks/C50-row4dupfencenomem/job.json',
+-                 BASE / 'C56-row7shared3fence/job.json'):
++    identities, unresolved, ignored_prepared = {}, [], []
++    for path, version in (
++            (ROOT / '.runs/conv/sep13p-checks/C50-row4dupfencenomem/job.json', 'C50-row4dupfencenomem'),
++            (BASE / 'C58-row7boundaryu2/job.json', 'C58-row7boundaryu2')):
+         origin = str(path.relative_to(ROOT))
+         if not path.exists():
+             ignored_prepared.append(origin)
+             continue
+-        job_id = str(read_json(path).get('job_id') or '')
+-        if not re.fullmatch(r'[0-9]+', job_id):
+-            unresolved.append(dict(path=origin, reason='Actual reservation lacks reconciled job ID'))
++        data = read_json(path)
++        job_id = str(data.get('job_id') or '')
++        if data.get('version') != version or not re.fullmatch(r'[0-9]+', job_id):
++            unresolved.append(dict(path=origin, reason='Actual reservation has unknown identity or unreconciled job ID'))
+             continue
+         identities.setdefault(job_id, []).append(origin)
+-    required = [('.runs/conv/sep13ad-campaign.json', 'performance_job', '1582956'),
+-                ('.runs/conv/sep13ac-checks/C55-row7x3shared3/job.json', 'job_id', '1582860'),
+-                ('.runs/conv/sep13ab-campaign.json', 'performance_job', '1582814'),
+-                ('.runs/conv/sep13aa-checks/C54-row7x3shared4/job.json', 'job_id', '1582656'),
+-                ('.runs/conv/sep13y-campaign.json', 'performance_job', '1582410'),
+-                ('.runs/conv/sep13x-checks/C53-row7cursors/job.json', 'job_id', '1582372'),
+-                ('.runs/conv/sep13t-checks/C52-row7x3shared2/job.json', 'job_id', '1582134')]
+-    for origin, field, expected_id in required:
++    required = [('.runs/conv/sep13ag-fma/C57-row7shared2fma/job.json', 'job_id', '1583276', 'C57-row7shared2fma'),
++                ('.runs/conv/sep13af-campaign.json', 'performance_job', '1583230', None)]
++    for origin, field, expected_id, version in required:
+         path = ROOT / origin
+         if not path.exists():
+             unresolved.append(dict(path=origin, reason='Required fixed evidence is missing'))
+             continue
+-        job_id = str(read_json(path).get(field) or '')
+-        if job_id != expected_id:
+-            unresolved.append(dict(path=origin, reason='Required job differs from fixed ID ' + expected_id))
++        data = read_json(path)
++        job_id = str(data.get(field) or '')
++        if job_id != expected_id or (version is not None and data.get('version') != version):
++            unresolved.append(dict(path=origin, reason='Required reservation differs from fixed identity ' + expected_id))
+             continue
+         identities.setdefault(job_id, []).append(origin)
+-    # Only the explicitly named performance group members; never scan peers.
+-    for expected_id, members in (
+-            ('1582956', ('C26-r32', 'C55-row7x3shared3', 'C52-r3', 'C26-r33')),
+-            ('1582814', ('C26-r30', 'C54-row7x3shared4', 'C52-r2', 'C26-r31'))):
+-        for version in members:
+-            path = ROOT / '.runs/conv' / version / 'cluster.json'
+-            origin = str(path.relative_to(ROOT))
+-            if not path.exists():
+-                unresolved.append(dict(path=origin, reason='Required fixed member manifest is missing'))
+-                continue
+-            job_id = str(read_json(path).get('job_id') or '')
+-            if job_id != expected_id:
+-                unresolved.append(dict(path=origin, reason='Member reservation differs from original fixed group ID'))
+-                continue
+-            identities.setdefault(job_id, []).append(origin)
+     evidence = [query_scheduler(cfg, job_id, origins) for job_id, origins in identities.items()]
+     clear = not unresolved and all(
+         row['query_exit'] == 0 and row['scheduler'] is not None
+@@ -147,7 +128,7 @@
+ def frozen_source(base, version):
+     expected = read_json(base / 'source-hashes.json')
+     require(set(expected) == SOURCE_NAMES, 'Unexpected frozen transport source set')
+-    require(expected['conv2d.c'] == SOURCE_SHA256, 'AE requires its own root-reviewed C56 source')
++    require(expected['conv2d.c'] == SOURCE_SHA256, 'AH requires its own root-reviewed C58 source')
+     source = base / 'source'
+     require(source.is_dir() and not source.is_symlink(), 'Source must be a real directory')
+     actual = {}
+@@ -160,7 +141,7 @@
+     require(actual == expected, 'Prepared source changed; never silently refresh its frozen manifest')
+     extra_manifest = base / 'source-manifest.json'
+     require(extra_manifest.is_file() and not extra_manifest.is_symlink(),
+-        'Frozen AE bytes/SHA source-manifest.json is required')
++        'Frozen AH bytes/SHA source-manifest.json is required')
+     require(read_json(extra_manifest) == {name: dict(bytes=sizes[name], sha256=actual[name]) for name in actual},
+         'Supplementary bytes/SHA manifest mismatch')
+     record = read_json(ROOT / 'records/experiments/conv' / (version + '.json'))
+@@ -170,9 +151,31 @@
+         and record.get('source_parent', record.get('parent')) == SOURCE_PARENTS[version],
+         'Candidate checkpoint identity mismatch')
+     require(record['source_hashes']['conv2d.c'] == expected['conv2d.c'], 'Candidate checkpoint/source mismatch')
+-    candidate_source = ROOT / '.runs/conv' / version / 'source/conv2d.c'
+-    require(hashlib.sha256(candidate_source.read_bytes()).hexdigest() == expected['conv2d.c'],
+-        'Candidate production source differs from the frozen diagnostic copy')
++    production = ROOT / '.runs/conv' / version / 'source'
++    require(record.get('status') == 'prepared' and record.get('verified') is False,
++        'Original unmeasured prepared C58 record required')
++    require(set(record['source_hashes']) == PRODUCTION_NAMES, 'Unexpected production source set')
++    production_hashes = {name: hashlib.sha256((production / name).read_bytes()).hexdigest() for name in PRODUCTION_NAMES}
++    require(production_hashes == record['source_hashes'] and production_hashes['conv2d.c'] == expected['conv2d.c'],
++        'Candidate production four-file identity differs from its checkpoint/diagnostic copy')
++    parent = SOURCE_PARENTS[version]
++    parent_record = read_json(ROOT / 'records/experiments/conv' / (parent + '.json'))
++    parent_source = ROOT / '.runs/conv' / parent / 'source'
++    parent_hashes = {name: hashlib.sha256((parent_source / name).read_bytes()).hexdigest() for name in PRODUCTION_NAMES}
++    require(parent_hashes == parent_record['source_hashes'] and parent_hashes['conv2d.c'] == PARENT_SHA256,
++        'Original C52 source/record identity changed')
++    require(all(production_hashes[name] == parent_hashes[name] for name in PRODUCTION_NAMES if name != 'conv2d.c'),
++        'C58 must preserve original README/official benchmark/runner bytes')
++    parent_frozen = ROOT / '.runs/conv' / parent / 'sve-correctness-sep13t'
++    parent_validation = read_json(parent_frozen / 'validation.json')
++    parent_freeze = read_json(parent_frozen / 'freeze-source.json')
++    require(parent_validation.get('candidate') == parent and str(parent_validation.get('job_id')) == '1582134'
++        and parent_validation.get('status') == 'passed' and parent_validation.get('complete') is True
++        and parent_validation.get('total_cases') == 37128, 'Original T parent diagnostic identity mismatch')
++    require(parent_freeze.get('candidate') == parent and str(parent_freeze.get('job_id')) == '1582134'
++        and parent_freeze.get('mode') == 'passed', 'Original T parent freeze missing')
++    require(hashlib.sha256((parent_frozen / 'source/conv2d.c').read_bytes()).hexdigest()
++        == parent_validation['source_hashes']['conv2d.c'] == PARENT_SHA256, 'Original T frozen source identity mismatch')
+     prepared = read_json(base / 'prepared.json')
+     counts = COUNTS[version]
+     require(prepared.get('candidate') == prepared.get('source_experiment') == version
+@@ -197,23 +200,29 @@
+     require(prepared.get('resources_required') == {key: value for key, value in RESOURCES.items() if key != 'walltime_seconds'},
+         'Prepared resource expectations mismatch')
+     require(prepared.get('expected_acc') == 3 and prepared.get('expected_checks') == counts,
+-        'AE matrix schema mismatch')
++        'AH matrix schema mismatch')
+     require(prepared.get('rows_per_group') == 7 and prepared.get('vectors_per_row') == 3
+-        and prepared.get('accumulators') == 21, 'C56 seven-row/three-vector shape mismatch')
++        and prepared.get('accumulators') == 21, 'C58 seven-row/three-vector shape mismatch')
+     require(prepared.get('expected_rowseven_entries') == dict(dispatch_per_configuration=1236, direct_per_configuration=1080),
+         'Rowseven entry expectations mismatch')
+     require(prepared.get('full_matrix_counts') == dict(core=3888, narrow=144, small=720, larger=32, quad_boundary=960)
+         and prepared.get('dispatch_matrix_counts') == dict(core=972, quad_boundary=240)
+         and prepared.get('expected_worker_masks') == {'1': 1, '4': 15}, 'Full-matrix/worker expectations mismatch')
++    require(prepared.get('production_source_hashes') == production_hashes
++        and prepared.get('source_parent_source_hashes') == parent_hashes
++        and prepared.get('source_parent_diagnostic_job_id') == '1582134'
++        and prepared.get('source_parent_frozen_directory') == str(parent_frozen.relative_to(ROOT)),
++        'Prepared current/parent production identity mismatch')
+     require(prepared.get('expected_semantic_stage_count') == 13
+-        and prepared.get('shared_kernel_columns_per_iteration') == 3
++        and prepared.get('shared_kernel_columns_per_iteration') == 2
+         and prepared.get('shared_remainder_source_columns_per_iteration') == 1
+-        and prepared.get('shared_remainder_max_columns') == 2
+-        and prepared.get('assembly_review_schema') == 'ae-shared3-fence-paths-v1'
+-        and prepared.get('other_stage_kernel_columns_per_iteration') == 1,
+-        'C56 shared triple/u1-remainder expectations mismatch')
+-    require(prepared.get('column_fence_contract') == FENCE_CONTRACT,
+-        'Prepared three-column input-only compiler fence contract mismatch')
++        and prepared.get('shared_remainder_max_columns') == 1
++        and prepared.get('boundary_source_loop_count') == 12
++        and prepared.get('boundary_source_unroll_hint') == 2,
++        'C58 source-only boundary pragma/shared2 expectations mismatch')
++    # No C56 fence or per-binary-block acceptance schema belongs to AH transport.
++    require('column_fence_contract' not in prepared and 'assembly_review_schema' not in prepared,
++        'AH must not inherit the unrelated AE fence/binary-block schema')
+     return expected
+ 
+ 
+@@ -232,7 +241,7 @@
+     parser.add_argument('version', choices=VERSIONS)
+     parser.add_argument('config', help='Verified existing config; read only, never included in source or archive')
+     parser.add_argument('action', choices=('gate', 'submit', 'status', 'fetch'))
+-    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AE submission authorization')
++    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AH submission authorization')
+     args = parser.parse_args()
+     require(args.action == 'submit' or not args.go, '--go is valid only for submit')
+     base = BASE / args.version
+@@ -254,7 +263,7 @@
+         require(gate['clear'], 'Known CONV work active/unresolved or query incomplete; retain gate evidence and stop')
+         hashes = frozen_source(base, args.version)
+         created = stamp()
+-        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13ae-' + args.version + '-' + created
++        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13ah-' + args.version + '-' + created
+         data = dict(version=args.version, remote_dir=remote_dir, submitted=False,
+             submit_attempted=False, created_at=created, resources=RESOURCES,
+             expected_checks=COUNTS[args.version], expected_stages=STAGES,
+@@ -270,7 +279,7 @@
+         command = 'umask 077; mkdir -p ' + shlex.quote(remote_dir) + ' && tar -xzf - -C ' + shlex.quote(remote_dir)
+         result = logged_remote(cfg, command, base / 'upload.log', input=archive.getvalue(), timeout=cfg['transfer_timeout'])
+         require(result.returncode == 0, 'Upload failed; keep reservation/log and do not resubmit')
+-        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13ae-' + args.version)
++        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13ah-' + args.version)
+         data.update(command=command, submit_attempted=True)
+         save(manifest, data)
+         result = logged_remote(cfg, command, base / 'submit.log')
+@@ -334,7 +343,7 @@
+             path = dest / name
+             if not path.exists():
+                 path.write_bytes(content)
+-    print('Fetched immutable AE diagnostic text/assembly. Fetch is not acceptance or performance.')
++    print('Fetched immutable AH diagnostic text/assembly. Fetch is not acceptance or performance.')
+ 
+ 
+ if __name__ == '__main__':
+--- a/.runs/conv/sep13ae-checks/README.md
++++ b/.runs/conv/sep13ah-checks/README.md
+@@ -1,11 +1,29 @@
+-# AE 准备入口
++# AH：C58 边界 unroll2 自身数值诊断（仅准备）
+ 
+-候选 `C56-row7shared3fence`；父 `C55-row7x3shared3` / 原 AC1582860。此目录只用于本版独立诊断，未授权计算、性能或晋级。完整合同见 [INTERFACE.md](INTERFACE.md)。
++唯一候选 C58-row7boundaryu2，source parent 为原 C52-row7x3shared2/T1582134；生产 conv2d.c 为108874字节，SHA `c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751`。root 已独立读12个 pragma hunks，并删除12行完整还原父字节、核对其他三文件。收到该审结论后才首次复制五文件及生成清单。本轮仅准备运输 driver、源码副本/清单/prepared、本说明和完整相对 AE 差异；没有导入或运行 driver、SSH、new/checkpoint、预约、数值或汇编执行。
+ 
+-三工具、接口和五文件首次清单已完成静态准备，候选生产源为112355字节、SHA256=`6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c`。最终文件身份与完整差异列在 PREPARED_FILES.json、AC-to-AE.patch；它们不是通过证据。首次准备schema KeyError原输出保留，record采用source_parent优先、缺省parent的兼容读取，未改历史。
++原 AE 两个 checker 完全不改：check_conv_guard.c SHA `ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5`，check_sve_dispatch.c SHA `fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d`，另与 AE 冻结 source/raw 逐字核对。remote_job.sh 只把 C56 身份改 C58、源 SHA 改本版；candidate.env 只改身份。原19阶段、编译命令、FMA0路线、guard位比较、容差和计数不变；不把额外位比较/FMA0解释为官方题目的全面禁令。
+ 
+-唯一未来预约为 `C56-row7shared3fence/job.json`，冻结目标为候选原树的 `sve-correctness-sep13ae`。driver/accept/freezer 均只由 root 审查后另行授权；失联只恢复原ID，已有预约禁止重投。
++完整44328矩阵不变：VL16/32/64字节×线程1/4共六配置，各 full5744/dispatch1212/direct432，总34464/7272/2592，runner0；rowseven entries1236/1080，worker masks1/15。full家族 core3888/narrow144/small720/larger32/quad_boundary960，dispatch core972/quad_boundary240。quad_boundary 是原 checker 网格名，不能解释为本候选四列展开。原网格包含 kw1/2/3 与 kw4/5/6/7/8边界及长宽15/81；十二条 pragma 的真实偶数展开/奇数余项和寄存器影响仍未知。
+ 
+-复用两个原 AC checker 的44328矩阵、六VL/线程配置和19stage，不继承父PASS；实际汇编审查必须覆盖三列边界和整个helper栈。schema `ae-shared3-fence-paths-v1` 允许如实记录调度未收紧或仍有spill，不把它们等同数值失败，不推导提速。
++资源保持38CPU、24576MiB、单 packed NUMA、1800秒、GCC10.3.1/generic，原 `-fno-fast-math -ffp-contract=off` 与 OpenMP绑定不变。wrapper先核对Linux/aarch64、实际affinity38和同一NUMA，再运行原stage序列；算子只在调度分配节点执行。生产 README/bench_conv/run.sh 与父四源/原record一致，driver另外核对新record的当前四文件；标准parent缺省兼容不改record或creation。
+ 
+-本机只编辑/读文件，没有工具导入、编译、数值、SSH、预约或接受/冻结。AD原C55false、Yfalse/Sfalse与C6保持。用量40%停止，不用重置卡。准备完成，FINAL/STOP，等待root独立审查。
++source-hashes.json、source-manifest.json 是首次五文件SHA/字节清单，prepared.json 关联本版源与原父T，compiled/executed/verified/complete仍false、actual_job_id=null。driver核对原五文件、当前四源、父C52/T身份、六配置/44328/19stage/资源预期；任何差异不能静默刷新清单。父T37128仅证明父字节，不提供本版PASS。
++
++串行范围只有原 `.runs/conv/sep13ag-fma/C57-row7shared2fma/job.json` 的 AG1583276、sep13af-campaign.json 的 AF1583230，以及明确的 P/AH job.json。缺失固定证据、固定ID变化、未知预约身份/不明ID、查询失败、非终态或缺整数job/system退出码阻止。实际 FAILED 也能清除串行占用，不能把前一候选数值失败当资源仍占用；root另行要求原结果完整登记后才GO。不扫描队友，不查询旧AD/AC等历史链。
++
++仅显式 root --go 可提交一次，先排他创建 AH job.json 再上传/提交；任何中断或不明返回都保留预留，恢复原ID，禁止重投。status只读原ID并保留查询失败，fetch要求真实终态与两个退出字段，含失败作业；返回原件只能首次落盘或确认原字节相同，不能覆盖不同raw。无自动轮询、接受、冻结、性能、确认、ZIP、晋级或发布。
++
++**未来验收边界**：自己的原job/源清单/raw身份、完整六配置与44328各类计数、19有序stage、实际argv/资源、scheduler/job/system/wrapper全0仍必须核对；全源实际FMA0仍必需。该仅pragma改变采用简洁的实际边界展开/余项/栈审查，不预先要求13stage×binary-block的庞大schema。源码仍有13语义阶段、shared2/u1余0..1，边界源循环单列加unroll2提示；实际展开、PC/区域数、spill或速度不能预填。没有复制 AE accept_returned.py、freeze_returned.py，也没有 C56 fence 合同或 AE assembly_review_schema。数值/运输成功均不自动等于接受或性能通过。
++
++未来仅供 root 审后授权使用，本次未执行：
++
++```text
++python3 .runs/conv/sep13ah-checks/driver.py C58-row7boundaryu2 config/conv-sep12.local.json submit --go
++python3 .runs/conv/sep13ah-checks/driver.py C58-row7boundaryu2 config/conv-sep12.local.json status
++python3 .runs/conv/sep13ah-checks/driver.py C58-row7boundaryu2 config/conv-sep12.local.json fetch
++```
++
++准备来源：driver纯文本草稿chunk ed3260/0；root源审只读chunk dc4759/0；首次五文件复制/清单chunk4115eb/0。首次只读查找误用 sep13ag-checks 路径，chunk6e578b/1原输出 `rg: .runs/conv/sep13ag-checks: IO error for operation on .runs/conv/sep13ag-checks: No such file or directory (os error 2)`；root给出实际 sep13ag-fma 路径后仅修正门禁文本，未查询/重试作业。driver完整相对AE diff只读chunk5d1ec6/1是预期差异，不是执行失败。
++
++AE-to-AH.patch 完整列出 driver、README、五文件、三个metadata的对应文本差异；两个checker无diff。原文件、冻结证据、candidate source/record/best和其他队友目录不改。主额度达到40%停止、不用重置卡；准备完成FINAL/STOP供root审查。
+--- a/.runs/conv/sep13ae-checks/C56-row7shared3fence/source/conv2d.c
++++ b/.runs/conv/sep13ah-checks/C58-row7boundaryu2/source/conv2d.c
+@@ -1277,6 +1277,7 @@
+         {
+             const float *row = base + i;
+             const float *ka = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 /* One source-level input window; GCC may reschedule. */
+@@ -1299,6 +1300,7 @@
+             const float *row = base + (size_t)1 * stride + i;
+             const float *ka = kernel + ((size_t)1) * (size_t)kw;
+             const float *kb = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1326,6 +1328,7 @@
+             const float *ka = kernel + ((size_t)2) * (size_t)kw;
+             const float *kb = kernel + ((size_t)1) * (size_t)kw;
+             const float *kc = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1358,6 +1361,7 @@
+             const float *kb = kernel + ((size_t)2) * (size_t)kw;
+             const float *kc = kernel + ((size_t)1) * (size_t)kw;
+             const float *kd = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1395,6 +1399,7 @@
+             const float *kc = kernel + ((size_t)2) * (size_t)kw;
+             const float *kd = kernel + ((size_t)1) * (size_t)kw;
+             const float *ke = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1437,6 +1442,7 @@
+             const float *kd = kernel + ((size_t)2) * (size_t)kw;
+             const float *ke = kernel + ((size_t)1) * (size_t)kw;
+             const float *kf = kernel;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+@@ -1485,8 +1491,8 @@
+             const float *kf = kernel + ((size_t)t - 5) * (size_t)kw;
+             const float *kg = kernel + ((size_t)t - 6) * (size_t)kw;
+             int ik = 0;
+-            /* Preserve each accumulator order: columns ik, ik+1, ik+2. */
+-            for (; kw - ik >= 3; ik += 3) {
++            /* Preserve each accumulator order: column ik, then column ik+1. */
++            for (; kw - ik >= 2; ik += 2) {
+                 {
+                     const int column = ik;
+                     const svfloat32_t ak = svdup_n_f32(ka[column]);
+@@ -1528,16 +1534,6 @@
+                         g2 = svadd_f32_x(pg, g2, svmul_f32_x(pg, v, gk));
+                     }
+                 }
+-                __asm__ __volatile__(""
+-                    :
+-                    : "w"(a0), "w"(a1), "w"(a2),
+-                      "w"(b0), "w"(b1), "w"(b2),
+-                      "w"(c0), "w"(c1), "w"(c2),
+-                      "w"(d0), "w"(d1), "w"(d2),
+-                      "w"(e0), "w"(e1), "w"(e2),
+-                      "w"(f0), "w"(f1), "w"(f2),
+-                      "w"(g0), "w"(g1), "w"(g2)
+-                    : "memory");
+                 {
+                     const int column = ik + 1;
+                     const svfloat32_t ak = svdup_n_f32(ka[column]);
+@@ -1579,67 +1575,6 @@
+                         g2 = svadd_f32_x(pg, g2, svmul_f32_x(pg, v, gk));
+                     }
+                 }
+-                __asm__ __volatile__(""
+-                    :
+-                    : "w"(a0), "w"(a1), "w"(a2),
+-                      "w"(b0), "w"(b1), "w"(b2),
+-                      "w"(c0), "w"(c1), "w"(c2),
+-                      "w"(d0), "w"(d1), "w"(d2),
+-                      "w"(e0), "w"(e1), "w"(e2),
+-                      "w"(f0), "w"(f1), "w"(f2),
+-                      "w"(g0), "w"(g1), "w"(g2)
+-                    : "memory");
+-                {
+-                    const int column = ik + 2;
+-                    const svfloat32_t ak = svdup_n_f32(ka[column]);
+-                    const svfloat32_t bk = svdup_n_f32(kb[column]);
+-                    const svfloat32_t ck = svdup_n_f32(kc[column]);
+-                    const svfloat32_t dk = svdup_n_f32(kd[column]);
+-                    const svfloat32_t ek = svdup_n_f32(ke[column]);
+-                    const svfloat32_t fk = svdup_n_f32(kf[column]);
+-                    const svfloat32_t gk = svdup_n_f32(kg[column]);
+-                    /* One source-level input window; GCC may reschedule. */
+-                    {
+-                        const svfloat32_t v = svld1(pg, row + column + 0 * lanes);
+-                        a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
+-                        b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
+-                        c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
+-                        d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
+-                        e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
+-                        f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
+-                        g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
+-                    }
+-                    {
+-                        const svfloat32_t v = svld1(pg, row + column + 1 * lanes);
+-                        a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
+-                        b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
+-                        c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
+-                        d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
+-                        e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
+-                        f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
+-                        g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
+-                    }
+-                    {
+-                        const svfloat32_t v = svld1(pg, row + column + 2 * lanes);
+-                        a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
+-                        b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
+-                        c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
+-                        d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
+-                        e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
+-                        f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
+-                        g2 = svadd_f32_x(pg, g2, svmul_f32_x(pg, v, gk));
+-                    }
+-                }
+-                __asm__ __volatile__(""
+-                    :
+-                    : "w"(a0), "w"(a1), "w"(a2),
+-                      "w"(b0), "w"(b1), "w"(b2),
+-                      "w"(c0), "w"(c1), "w"(c2),
+-                      "w"(d0), "w"(d1), "w"(d2),
+-                      "w"(e0), "w"(e1), "w"(e2),
+-                      "w"(f0), "w"(f1), "w"(f2),
+-                      "w"(g0), "w"(g1), "w"(g2)
+-                    : "memory");
+             }
+             for (; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+@@ -1691,6 +1626,7 @@
+             const float *ke = kernel + ((size_t)kh - 4) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 5) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 6) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);
+                 const svfloat32_t ck = svdup_n_f32(kc[ik]);
+@@ -1736,6 +1672,7 @@
+             const float *ke = kernel + ((size_t)kh - 3) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 4) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 5) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ck = svdup_n_f32(kc[ik]);
+                 const svfloat32_t dk = svdup_n_f32(kd[ik]);
+@@ -1776,6 +1713,7 @@
+             const float *ke = kernel + ((size_t)kh - 2) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 3) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 4) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t dk = svdup_n_f32(kd[ik]);
+                 const svfloat32_t ek = svdup_n_f32(ke[ik]);
+@@ -1811,6 +1749,7 @@
+             const float *ke = kernel + ((size_t)kh - 1) * (size_t)kw;
+             const float *kf = kernel + ((size_t)kh - 2) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 3) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ek = svdup_n_f32(ke[ik]);
+                 const svfloat32_t fk = svdup_n_f32(kf[ik]);
+@@ -1841,6 +1780,7 @@
+             const float *row = base + ((size_t)kh + 4) * stride + i;
+             const float *kf = kernel + ((size_t)kh - 1) * (size_t)kw;
+             const float *kg = kernel + ((size_t)kh - 2) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t fk = svdup_n_f32(kf[ik]);
+                 const svfloat32_t gk = svdup_n_f32(kg[ik]);
+@@ -1866,6 +1806,7 @@
+         {
+             const float *row = base + ((size_t)kh + 5) * stride + i;
+             const float *kg = kernel + ((size_t)kh - 1) * (size_t)kw;
++            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t gk = svdup_n_f32(kg[ik]);
+                 /* One source-level input window; GCC may reschedule. */
+--- a/.runs/conv/sep13ae-checks/C56-row7shared3fence/source/candidate.env
++++ b/.runs/conv/sep13ah-checks/C58-row7boundaryu2/source/candidate.env
+@@ -1,4 +1,4 @@
+-CANDIDATE=C56-row7shared3fence
++CANDIDATE=C58-row7boundaryu2
+ EXPECTED_ACC=3
+ EXPECTED_FULL=5744
+ EXPECTED_DISPATCH=1212
+--- a/.runs/conv/sep13ae-checks/C56-row7shared3fence/source/remote_job.sh
++++ b/.runs/conv/sep13ah-checks/C58-row7boundaryu2/source/remote_job.sh
+@@ -46,7 +46,7 @@
+ print('NUMA_NODE=' + nodes[0])
+ CHECK_ALLOCATION
+ source candidate.env
+-[[ "$CANDIDATE" == C56-row7shared3fence && "$EXPECTED_ACC" == 3 ]]
++[[ "$CANDIDATE" == C58-row7boundaryu2 && "$EXPECTED_ACC" == 3 ]]
+ [[ "$EXPECTED_FULL" == 5744 && "$EXPECTED_DISPATCH" == 1212 && "$EXPECTED_DIRECT" == 432 && "$EXPECTED_TOTAL" == 44328 ]]
+ [[ "$EXPECTED_DISPATCH_ROWSEVEN_ENTRIES" == 1236 && "$EXPECTED_DIRECT_ROWSEVEN_ENTRIES" == 1080 ]]
+ printf 'CANDIDATE=%s\n' "$CANDIDATE"
+@@ -60,7 +60,7 @@
+ stage compiler compiler_check
+ write_manifest() {
+     sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env > source-sha256.txt || return "$?"
+-    printf '%s  conv2d.c\n' 6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c | sha256sum -c - || return "$?"
++    printf '%s  conv2d.c\n' c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751 | sha256sum -c - || return "$?"
+     cat source-sha256.txt
+ }
+ stage manifest write_manifest
+--- a/.runs/conv/sep13ae-checks/C56-row7shared3fence/source-hashes.json
++++ b/.runs/conv/sep13ah-checks/C58-row7boundaryu2/source-hashes.json
+@@ -1,7 +1,7 @@
+ {
+-  "candidate.env": "ac725bd0f173565500cc006fa1d89ef02c4fdca51b2e415650fc975b799c87b7",
++  "candidate.env": "1d4e60cff8b53cfd662af3ee48e16fbb1f21f9b9de6fd396aa7747e945582972",
+   "check_conv_guard.c": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+   "check_sve_dispatch.c": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+-  "conv2d.c": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c",
+-  "remote_job.sh": "3ac920b75a16e15eafeafb5bc42da4b3cab4b5943297f08c459430e5cff5d2de"
++  "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
++  "remote_job.sh": "437843ec63b427d6800dd18390736ebd382ec81dbe6730d5a5c3985a68d9ba46"
+ }
+--- a/.runs/conv/sep13ae-checks/C56-row7shared3fence/source-manifest.json
++++ b/.runs/conv/sep13ah-checks/C58-row7boundaryu2/source-manifest.json
+@@ -1,7 +1,7 @@
+ {
+   "candidate.env": {
+-    "bytes": 207,
+-    "sha256": "ac725bd0f173565500cc006fa1d89ef02c4fdca51b2e415650fc975b799c87b7"
++    "bytes": 205,
++    "sha256": "1d4e60cff8b53cfd662af3ee48e16fbb1f21f9b9de6fd396aa7747e945582972"
+   },
+   "check_conv_guard.c": {
+     "bytes": 8698,
+@@ -12,11 +12,11 @@
+     "sha256": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d"
+   },
+   "conv2d.c": {
+-    "bytes": 112355,
+-    "sha256": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c"
++    "bytes": 108874,
++    "sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751"
+   },
+   "remote_job.sh": {
+-    "bytes": 3943,
+-    "sha256": "3ac920b75a16e15eafeafb5bc42da4b3cab4b5943297f08c459430e5cff5d2de"
++    "bytes": 3941,
++    "sha256": "437843ec63b427d6800dd18390736ebd382ec81dbe6730d5a5c3985a68d9ba46"
+   }
+ }
+--- a/.runs/conv/sep13ae-checks/C56-row7shared3fence/prepared.json
++++ b/.runs/conv/sep13ah-checks/C58-row7boundaryu2/prepared.json
+@@ -1,22 +1,22 @@
+ {
+-  "candidate": "C56-row7shared3fence",
++  "candidate": "C58-row7boundaryu2",
+   "status": "prepared",
+   "complete": false,
+-  "prepared_at": "2026-09-12T19:19:34.566012+00:00",
+-  "source_parent": "C55-row7x3shared3",
+-  "source_experiment": "C56-row7shared3fence",
+-  "source_sha256": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c",
+-  "production_source_sha256": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c",
++  "prepared_at": "2026-09-12T20:01:29.273970+00:00",
++  "source_parent": "C52-row7x3shared2",
++  "source_experiment": "C58-row7boundaryu2",
++  "source_sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
++  "production_source_sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+   "source_hashes": {
+-    "candidate.env": "ac725bd0f173565500cc006fa1d89ef02c4fdca51b2e415650fc975b799c87b7",
++    "candidate.env": "1d4e60cff8b53cfd662af3ee48e16fbb1f21f9b9de6fd396aa7747e945582972",
+     "check_conv_guard.c": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+     "check_sve_dispatch.c": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+-    "conv2d.c": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c",
+-    "remote_job.sh": "3ac920b75a16e15eafeafb5bc42da4b3cab4b5943297f08c459430e5cff5d2de"
++    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
++    "remote_job.sh": "437843ec63b427d6800dd18390736ebd382ec81dbe6730d5a5c3985a68d9ba46"
+   },
+-  "source_hash_scope": "First five-file AE transport byte-count/SHA manifest after root confirmed final C56 source; two original AC checker bytes.",
+-  "guard_template": ".runs/conv/sep13ac-checks/C55-row7x3shared3/source",
+-  "guard_change": "No checker byte changes. quad_boundary/C54 comments retain inherited grid and origin labels, not C56 four-column work.",
++  "source_hash_scope": "First five-file AH transport byte-count/SHA manifest after root independent C58 source review; two original AE checker bytes.",
++  "guard_template": ".runs/conv/sep13ae-checks/C56-row7shared3fence/source",
++  "guard_change": "No checker byte changes. Inherited quad_boundary/grid origin comments remain original; source main remains shared2.",
+   "rows_per_group": 7,
+   "vectors_per_row": 3,
+   "accumulators": 21,
+@@ -148,25 +148,36 @@
+   "executed": false,
+   "verified": false,
+   "local_compilation_or_tests_run": false,
+-  "production_assembly_review": "Pending own actual C56 GCC10.3.1 uninstrumented assembly. Thirteen semantic stages and triple3/u1 remainder0..2 dynamic intervals/paths; actual three empty-input-fence boundaries, all helpers/clones, dispatch and complete Z/Q/predicate/D ABI/scalar stack. Parent AC PASS/PC/spill result not inherited.",
+-  "source_parent_frozen_directory": ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac",
+-  "source_parent_diagnostic_job_id": "1582860",
++  "production_assembly_review": "Pending actual C58 GCC10.3.1 uninstrumented assembly: whole-source FMA0 and concise targeted boundary unroll/odd-remainder/stack review. No prefilled PCs, unroll decision, zero-spill result or speedup; no AE fence or full per-binary-block schema.",
++  "source_parent_frozen_directory": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t",
++  "source_parent_diagnostic_job_id": "1582134",
+   "expected_semantic_stage_count": 13,
+-  "shared_kernel_columns_per_iteration": 3,
++  "shared_kernel_columns_per_iteration": 2,
+   "shared_remainder_source_columns_per_iteration": 1,
+-  "shared_remainder_max_columns": 2,
+-  "other_stage_kernel_columns_per_iteration": 1,
+-  "assembly_review_schema": "ae-shared3-fence-paths-v1",
++  "shared_remainder_max_columns": 1,
+   "preparation_authorizes_compute": false,
+   "performance_measured": false,
+-  "scheduling_scope": "Fixed AD1582956/AC1582860/AB1582814/AA1582656/Y1582410/X1582372/T1582134, exact AD/AB four member manifests and present P/AE reservations only. Missing or conflicting fixed identities, unknown/unreconciled or nonterminal actual jobs block.",
+-  "inherited_grid_name": "quad_boundary names the original unchanged boundary grid only; C56 shared main remains three columns.",
+-  "shared_width_coverage": "kw1/2 skip main; kw3 one main; kw4/5 one main and remainder1/2; kw6/7/8 two main iterations and remainder0/1/2; kw15/81 multiple iterations. No optional kw79/80 cases added.",
+-  "column_fence_contract": {
+-    "source_fences_per_main_iteration": 3,
+-    "input_accumulators_per_fence": 21,
+-    "output_operands": 0,
+-    "memory_clobber": true,
+-    "empty_template": true
+-  }
++  "scheduling_scope": "Only original AG1583276 and AF1583230 plus present P/AH reservations. Actual terminal with integer job/system exits; FAILED can clear serial gate. Root waits for complete original result recording before GO.",
++  "inherited_grid_name": "quad_boundary names the unchanged checker boundary grid only, not the C58 source unroll factor.",
++  "shared_width_coverage": "Original shared2 source remains unchanged: kw1 skips main; even/odd widths exercise main/u1 remainder. Boundary pragmas request unroll2 of twelve source loops; actual compiler paths unknown.",
++  "production_source_hashes": {
++    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
++    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
++    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
++    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751"
++  },
++  "source_parent_source_hashes": {
++    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
++    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
++    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
++    "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7"
++  },
++  "boundary_source_loop_count": 12,
++  "boundary_source_unroll_hint": 2,
++  "future_acceptance_requirements": [
++    "Own original job/source/manifests/raw must match; no inherited parent PASS.",
++    "Six full/dispatch/direct configurations and exact44328 counts, worker entries/masks and unchanged checks.",
++    "All19 ordered stages, actual compiler/build argv/resources and scheduler/job/system/wrapper exits zero.",
++    "Whole original production assembly FMA0; concise actual boundary unroll/stack review, no prefilled machine result."
++  ]
+ }

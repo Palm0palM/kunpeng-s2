@@ -1,0 +1,971 @@
+{
+  "round": "sep12n",
+  "results": [
+    {
+      "version": "C26-r20",
+      "total_median_ms": 452.54999999999995,
+      "cases_ms": [
+        51.42,
+        62.16,
+        107.31,
+        231.66
+      ],
+      "max_spread_pct": 1.1583011583011564,
+      "gain_pct": -0.037579026482159605,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 control; not a new candidate.",
+      "comparison": null,
+      "opening_control_comparison": null,
+      "rowsix_reference_comparison": null,
+      "rowsix_comparison_supported_in_initial_group": null,
+      "compiler_scheduling_comparison": null,
+      "compiler_scheduling_supported_in_initial_group": null
+    },
+    {
+      "version": "C45-row4dup4",
+      "total_median_ms": 557.3500000000001,
+      "cases_ms": [
+        63.31,
+        73.48,
+        133.27,
+        287.29
+      ],
+      "max_spread_pct": 13.710314326330753,
+      "gain_pct": -23.203943587249686,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Does not meet both C6 gates; retain every sample and C6. No automatic exclusion or promotion.",
+      "comparison": {
+        "eligible": false,
+        "reasons": [
+          "提速 -23.20% 未超过测量波动/最低1%门槛 13.71%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.48,
+            "candidate_ms": 63.31,
+            "gain_pct": -22.979797979797993
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.91,
+            "candidate_ms": 73.48,
+            "gain_pct": -18.688418672266206
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 133.27,
+            "gain_pct": -24.20316868592732
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.69,
+            "candidate_ms": 287.29,
+            "gain_pct": -23.9975829772541
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r20",
+        "eligible": false,
+        "reasons": [
+          "提速 -23.16% 未超过测量波动/最低1%门槛 13.71%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.42,
+            "candidate_ms": 63.31,
+            "gain_pct": -23.12329832749903
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 62.16,
+            "candidate_ms": 73.48,
+            "gain_pct": -18.211068211068223
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.31,
+            "candidate_ms": 133.27,
+            "gain_pct": -24.191594445997584
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.66,
+            "candidate_ms": 287.29,
+            "gain_pct": -24.013640680307358
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "rowsix_reference_comparison": null,
+      "rowsix_comparison_supported_in_initial_group": null,
+      "compiler_scheduling_comparison": null,
+      "compiler_scheduling_supported_in_initial_group": null
+    },
+    {
+      "version": "C49-row4dup4fence",
+      "total_median_ms": 511.76,
+      "cases_ms": [
+        58.02,
+        68.39,
+        121.58,
+        263.77
+      ],
+      "max_spread_pct": 0.13159818686943034,
+      "gain_pct": -13.126132897121877,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Does not meet both C6 gates; retain every sample and C6. No automatic exclusion or promotion.",
+      "comparison": {
+        "eligible": false,
+        "reasons": [
+          "提速 -13.13% 未超过测量波动/最低1%门槛 1.00%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.48,
+            "candidate_ms": 58.02,
+            "gain_pct": -12.703962703962718
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.91,
+            "candidate_ms": 68.39,
+            "gain_pct": -10.466806654821523
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 121.58,
+            "gain_pct": -13.308480894687793
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.69,
+            "candidate_ms": 263.77,
+            "gain_pct": -13.846087444430049
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r20",
+        "eligible": false,
+        "reasons": [
+          "提速 -13.08% 未超过测量波动/最低1%门槛 1.16%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.42,
+            "candidate_ms": 58.02,
+            "gain_pct": -12.83547257876313
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 62.16,
+            "candidate_ms": 68.39,
+            "gain_pct": -10.02252252252253
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.31,
+            "candidate_ms": 121.58,
+            "gain_pct": -13.297921908489418
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.66,
+            "candidate_ms": 263.77,
+            "gain_pct": -13.860830527497189
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "rowsix_reference_comparison": null,
+      "rowsix_comparison_supported_in_initial_group": null,
+      "compiler_scheduling_comparison": {
+        "baseline": "C45-row4dup4",
+        "eligible": false,
+        "reasons": [
+          "提速 8.18% 未超过测量波动/最低1%门槛 13.71%"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 63.31,
+            "candidate_ms": 58.02,
+            "gain_pct": 8.355709998420469
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 73.48,
+            "candidate_ms": 68.39,
+            "gain_pct": 6.927054980947201
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 133.27,
+            "candidate_ms": 121.58,
+            "gain_pct": 8.771666541607273
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 287.29,
+            "candidate_ms": 263.77,
+            "gain_pct": 8.186849524870352
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "compiler_scheduling_supported_in_initial_group": false
+    },
+    {
+      "version": "C46-row5x5asmfix",
+      "total_median_ms": 516.89,
+      "cases_ms": [
+        58.42,
+        70.92,
+        124.0,
+        263.55
+      ],
+      "max_spread_pct": 0.29610829103214004,
+      "gain_pct": -14.260135284495323,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Does not meet both C6 gates; retain every sample and C6. No automatic exclusion or promotion.",
+      "comparison": {
+        "eligible": false,
+        "reasons": [
+          "提速 -14.26% 未超过测量波动/最低1%门槛 1.00%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.48,
+            "candidate_ms": 58.42,
+            "gain_pct": -13.48096348096349
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.91,
+            "candidate_ms": 70.92,
+            "gain_pct": -14.55338394443548
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 124.0,
+            "gain_pct": -15.56383970177074
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.69,
+            "candidate_ms": 263.55,
+            "gain_pct": -13.751132979412152
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r20",
+        "eligible": false,
+        "reasons": [
+          "提速 -14.22% 未超过测量波动/最低1%门槛 1.16%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.42,
+            "candidate_ms": 58.42,
+            "gain_pct": -13.613380007779075
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 62.16,
+            "candidate_ms": 70.92,
+            "gain_pct": -14.092664092664101
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.31,
+            "candidate_ms": 124.0,
+            "gain_pct": -15.553070543285804
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.66,
+            "candidate_ms": 263.55,
+            "gain_pct": -13.765863765863774
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "rowsix_reference_comparison": null,
+      "rowsix_comparison_supported_in_initial_group": null,
+      "compiler_scheduling_comparison": null,
+      "compiler_scheduling_supported_in_initial_group": null
+    },
+    {
+      "version": "C40-r3",
+      "total_median_ms": 444.44,
+      "cases_ms": [
+        50.46,
+        60.32,
+        107.3,
+        226.36
+      ],
+      "max_spread_pct": 0.15854141894569618,
+      "gain_pct": 1.7551615898138695,
+      "reference_only": true,
+      "qualified_for_confirmation": false,
+      "decision_note": "C40 same-source reference-only for C47/C48 context. Never qualifies or promotes; original G false/J true/K false unchanged. Not a C40 confirmation.",
+      "comparison": {
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.48,
+            "candidate_ms": 50.46,
+            "gain_pct": 1.9813519813519735
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.91,
+            "candidate_ms": 60.32,
+            "gain_pct": 2.568244225488607
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 107.3,
+            "gain_pct": 0.0
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.69,
+            "candidate_ms": 226.36,
+            "gain_pct": 2.3004877206612218
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r20",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.42,
+            "candidate_ms": 50.46,
+            "gain_pct": 1.8669778296382746
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 62.16,
+            "candidate_ms": 60.32,
+            "gain_pct": 2.9601029601029545
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.31,
+            "candidate_ms": 107.3,
+            "gain_pct": 0.009318796011560073
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.66,
+            "candidate_ms": 226.36,
+            "gain_pct": 2.2878356211689472
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "rowsix_reference_comparison": null,
+      "rowsix_comparison_supported_in_initial_group": null,
+      "compiler_scheduling_comparison": null,
+      "compiler_scheduling_supported_in_initial_group": null
+    },
+    {
+      "version": "C47-row6x4u1",
+      "total_median_ms": 450.63,
+      "cases_ms": [
+        51.36,
+        60.78,
+        108.63,
+        229.86
+      ],
+      "max_spread_pct": 0.1752336448598197,
+      "gain_pct": 0.38684291966930573,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Does not meet both C6 gates; retain every sample and C6. No automatic exclusion or promotion.",
+      "comparison": {
+        "eligible": false,
+        "reasons": [
+          "提速 0.39% 未超过测量波动/最低1%门槛 1.00%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.48,
+            "candidate_ms": 51.36,
+            "gain_pct": 0.23310023310022815
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.91,
+            "candidate_ms": 60.78,
+            "gain_pct": 1.8252301728315223
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 108.63,
+            "gain_pct": -1.2395153774464103
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.69,
+            "candidate_ms": 229.86,
+            "gain_pct": 0.7898485044671691
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r20",
+        "eligible": false,
+        "reasons": [
+          "提速 0.42% 未超过测量波动/最低1%门槛 1.16%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.42,
+            "candidate_ms": 51.36,
+            "gain_pct": 0.11668611435239648
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 62.16,
+            "candidate_ms": 60.78,
+            "gain_pct": 2.2200772200772128
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.31,
+            "candidate_ms": 108.63,
+            "gain_pct": -1.230081073525294
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.66,
+            "candidate_ms": 229.86,
+            "gain_pct": 0.7770007770007696
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "rowsix_reference_comparison": {
+        "baseline": "C40-r3",
+        "eligible": false,
+        "reasons": [
+          "提速 -1.39% 未超过测量波动/最低1%门槛 1.00%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 50.46,
+            "candidate_ms": 51.36,
+            "gain_pct": -1.7835909631391171
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 60.32,
+            "candidate_ms": 60.78,
+            "gain_pct": -0.7625994694960226
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 108.63,
+            "gain_pct": -1.2395153774464103
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 226.36,
+            "candidate_ms": 229.86,
+            "gain_pct": -1.546209577663898
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "rowsix_comparison_supported_in_initial_group": false,
+      "compiler_scheduling_comparison": null,
+      "compiler_scheduling_supported_in_initial_group": null
+    },
+    {
+      "version": "C48-row8x2u1",
+      "total_median_ms": 448.13,
+      "cases_ms": [
+        52.86,
+        61.15,
+        105.68,
+        228.44
+      ],
+      "max_spread_pct": 0.20809685962920815,
+      "gain_pct": 0.9394756620540234,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Does not meet both C6 gates; retain every sample and C6. No automatic exclusion or promotion.",
+      "comparison": {
+        "eligible": false,
+        "reasons": [
+          "提速 0.94% 未超过测量波动/最低1%门槛 1.00%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.48,
+            "candidate_ms": 52.86,
+            "gain_pct": -2.6806526806526856
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.91,
+            "candidate_ms": 61.15,
+            "gain_pct": 1.2275884348247426
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 105.68,
+            "gain_pct": 1.5097856477166733
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.69,
+            "candidate_ms": 228.44,
+            "gain_pct": 1.4027364150373345
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r20",
+        "eligible": false,
+        "reasons": [
+          "提速 0.98% 未超过测量波动/最低1%门槛 1.16%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.42,
+            "candidate_ms": 52.86,
+            "gain_pct": -2.800466744457405
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 62.16,
+            "candidate_ms": 61.15,
+            "gain_pct": 1.6248391248391219
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.31,
+            "candidate_ms": 105.68,
+            "gain_pct": 1.5189637498835107
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.66,
+            "candidate_ms": 228.44,
+            "gain_pct": 1.3899680566347228
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "rowsix_reference_comparison": {
+        "baseline": "C40-r3",
+        "eligible": false,
+        "reasons": [
+          "提速 -0.83% 未超过测量波动/最低1%门槛 1.00%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 50.46,
+            "candidate_ms": 52.86,
+            "gain_pct": -4.7562425683709835
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 60.32,
+            "candidate_ms": 61.15,
+            "gain_pct": -1.3759946949602093
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 105.68,
+            "gain_pct": 1.5097856477166733
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 226.36,
+            "candidate_ms": 228.44,
+            "gain_pct": -0.9188902632973953
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score"
+      },
+      "rowsix_comparison_supported_in_initial_group": false,
+      "compiler_scheduling_comparison": null,
+      "compiler_scheduling_supported_in_initial_group": null
+    },
+    {
+      "version": "C26-r21",
+      "total_median_ms": 452.38,
+      "cases_ms": [
+        51.48,
+        61.91,
+        107.3,
+        231.69
+      ],
+      "max_spread_pct": 0.19425019425019702,
+      "gain_pct": 0.0,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 control; not a new candidate.",
+      "comparison": null,
+      "opening_control_comparison": null,
+      "rowsix_reference_comparison": null,
+      "rowsix_comparison_supported_in_initial_group": null,
+      "compiler_scheduling_comparison": null,
+      "compiler_scheduling_supported_in_initial_group": null
+    }
+  ],
+  "prior_c40_decisions_unchanged": true
+}

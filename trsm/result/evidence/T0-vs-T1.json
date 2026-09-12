@@ -1,0 +1,34 @@
+{
+  "eligible": true,
+  "reasons": [],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 22.39,
+      "candidate_ms": 22.54,
+      "gain_pct": -0.6699419383653353
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 255.29,
+      "candidate_ms": 255.04,
+      "gain_pct": 0.09792784676250538
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 499.27,
+      "candidate_ms": 480.73,
+      "gain_pct": 3.713421595529466
+    }
+  ],
+  "metric": "sum of per-case median ms; not official score"
+}

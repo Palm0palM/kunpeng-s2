@@ -1,0 +1,1106 @@
+{
+  "created_at": "2026-09-12T19:56:35.796777+00:00",
+  "round": "sep13af",
+  "job_id": "1583230",
+  "group": "kp-conv-group-01b8f067516e",
+  "status": "performance_complete",
+  "measurement_order": [
+    "C26-r34",
+    "C56-row7shared3fence",
+    "C55-r1",
+    "C26-r35"
+  ],
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "members": [
+    {
+      "version": "C26-r34",
+      "record_file": "records/experiments/conv/C26-r34.json",
+      "status": "passed",
+      "verified": true,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.41,
+            51.51,
+            51.51
+          ],
+          "median_ms": 51.51,
+          "min_ms": 51.41,
+          "max_ms": 51.51,
+          "spread_pct": 0.19413706076490278,
+          "gflops": [
+            1466.1926,
+            1463.3137,
+            1463.304
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            61.98,
+            61.94,
+            61.9
+          ],
+          "median_ms": 61.94,
+          "min_ms": 61.9,
+          "max_ms": 61.98,
+          "spread_pct": 0.1291572489505946,
+          "gflops": [
+            1342.948,
+            1343.8187,
+            1344.7753
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            107.32,
+            107.31,
+            107.32
+          ],
+          "median_ms": 107.32,
+          "min_ms": 107.31,
+          "max_ms": 107.32,
+          "spread_pct": 0.00931792769287263,
+          "gflops": [
+            1500.9269,
+            1501.0202,
+            1500.8914
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            235.87,
+            234.13,
+            231.69
+          ],
+          "median_ms": 234.13,
+          "min_ms": 231.69,
+          "max_ms": 235.87,
+          "spread_pct": 1.7853329346944034,
+          "gflops": [
+            1465.9181,
+            1476.8364,
+            1492.4229
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "total_median_ms": 454.9,
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "source_parent": null,
+      "diagnostic_job_id": null,
+      "diagnostic_source_version": null,
+      "reference_only": false,
+      "promotion_allowed": false,
+      "qualified_for_confirmation": false,
+      "comparison": null,
+      "opening_control_comparison": null,
+      "source_parent_reference_comparison": null,
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1583230",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "benchmark_log": ".runs/conv/C26-r34/benchmark.log",
+      "benchmark_log_sha256": "8a0bc84ecf13e851068b95ba1f6fea78e883ffb46976d6c1b351f6f73f5875fb",
+      "scheduler_log": ".runs/conv/C26-r34/scheduler-status.txt",
+      "machine_matches_group": true
+    },
+    {
+      "version": "C56-row7shared3fence",
+      "record_file": "records/experiments/conv/C56-row7shared3fence.json",
+      "status": "passed",
+      "verified": true,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            55.19,
+            55.12,
+            55.11
+          ],
+          "median_ms": 55.12,
+          "min_ms": 55.11,
+          "max_ms": 55.19,
+          "spread_pct": 0.1451378809869345,
+          "gflops": [
+            1365.665,
+            1367.4499,
+            1367.8027
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            62.19,
+            62.23,
+            62.15
+          ],
+          "median_ms": 62.19,
+          "min_ms": 62.15,
+          "max_ms": 62.23,
+          "spread_pct": 0.1286380447017178,
+          "gflops": [
+            1338.356,
+            1337.5426,
+            1339.1927
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            110.9,
+            110.96,
+            110.96
+          ],
+          "median_ms": 110.96,
+          "min_ms": 110.9,
+          "max_ms": 110.96,
+          "spread_pct": 0.05407354001440885,
+          "gflops": [
+            1452.3884,
+            1451.6296,
+            1451.5813
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            239.35,
+            239.19,
+            239.16
+          ],
+          "median_ms": 239.19,
+          "min_ms": 239.16,
+          "max_ms": 239.35,
+          "spread_pct": 0.07943475897821721,
+          "gflops": [
+            1444.6235,
+            1445.575,
+            1445.7525
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "total_median_ms": 467.46,
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "source_parent": "C55-row7x3shared3",
+      "diagnostic_job_id": "1583102",
+      "diagnostic_source_version": "C56-row7shared3fence",
+      "reference_only": false,
+      "promotion_allowed": true,
+      "qualified_for_confirmation": false,
+      "comparison": {
+        "baseline": "C26-r35",
+        "eligible": false,
+        "reasons": [
+          "提速 -3.34% 未超过测量波动/最低1%门槛 1.00%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.41,
+            "candidate_ms": 55.12,
+            "gain_pct": -7.216494845360827
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.95,
+            "candidate_ms": 62.19,
+            "gain_pct": -0.3874092009685147
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.32,
+            "candidate_ms": 110.96,
+            "gain_pct": -3.3917256802087223
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.65,
+            "candidate_ms": 239.19,
+            "gain_pct": -3.254910425210443
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": -3.3449030575022523,
+        "threshold_pct": 1.0
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r34",
+        "eligible": false,
+        "reasons": [
+          "提速 -2.76% 未超过测量波动/最低1%门槛 1.79%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.51,
+            "candidate_ms": 55.12,
+            "gain_pct": -7.00834789361289
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.94,
+            "candidate_ms": 62.19,
+            "gain_pct": -0.40361640297061674
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.32,
+            "candidate_ms": 110.96,
+            "gain_pct": -3.3917256802087223
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 234.13,
+            "candidate_ms": 239.19,
+            "gain_pct": -2.1611924998932226
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": -2.7610463838206205,
+        "threshold_pct": 1.7853329346944034
+      },
+      "source_parent_reference_comparison": {
+        "baseline": "C55-r1",
+        "eligible": false,
+        "reasons": [
+          "提速 -0.18% 未超过测量波动/最低1%门槛 17.52%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 55.44,
+            "candidate_ms": 55.12,
+            "gain_pct": 0.5772005772005777
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 60.98,
+            "candidate_ms": 62.19,
+            "gain_pct": -1.9842571334863903
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 111.67,
+            "candidate_ms": 110.96,
+            "gain_pct": 0.6358019163607127
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 238.55,
+            "candidate_ms": 239.19,
+            "gain_pct": -0.2682875707398811
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": -0.17572432710440453,
+        "threshold_pct": 17.515895047909005
+      },
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1583230",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "benchmark_log": ".runs/conv/C56-row7shared3fence/benchmark.log",
+      "benchmark_log_sha256": "e1324da7479db3c12b702922c78179b3deb6f79ca133ebd0697e336950c30f07",
+      "scheduler_log": ".runs/conv/C56-row7shared3fence/scheduler-status.txt",
+      "machine_matches_group": true
+    },
+    {
+      "version": "C55-r1",
+      "record_file": "records/experiments/conv/C55-r1.json",
+      "status": "passed",
+      "verified": true,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            55.46,
+            55.44,
+            55.37
+          ],
+          "median_ms": 55.44,
+          "min_ms": 55.37,
+          "max_ms": 55.46,
+          "spread_pct": 0.1623376623376685,
+          "gflops": [
+            1359.1852,
+            1359.5419,
+            1361.3393
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            60.98,
+            60.98,
+            61.05
+          ],
+          "median_ms": 60.98,
+          "min_ms": 60.98,
+          "max_ms": 61.05,
+          "spread_pct": 0.11479173499508082,
+          "gflops": [
+            1364.8715,
+            1364.8972,
+            1363.3544
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            131.2,
+            111.64,
+            111.67
+          ],
+          "median_ms": 111.67,
+          "min_ms": 111.64,
+          "max_ms": 131.2,
+          "spread_pct": 17.515895047909005,
+          "gflops": [
+            1227.7174,
+            1442.7796,
+            1442.4715
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            238.53,
+            238.62,
+            238.55
+          ],
+          "median_ms": 238.55,
+          "min_ms": 238.53,
+          "max_ms": 238.62,
+          "spread_pct": 0.03772793963529801,
+          "gflops": [
+            1449.6016,
+            1449.0284,
+            1449.4618
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "total_median_ms": 466.64,
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "source_parent": "C55-row7x3shared3",
+      "diagnostic_job_id": "1582860",
+      "diagnostic_source_version": "C55-row7x3shared3",
+      "reference_only": true,
+      "promotion_allowed": false,
+      "qualified_for_confirmation": false,
+      "comparison": {
+        "baseline": "C26-r35",
+        "eligible": false,
+        "reasons": [
+          "提速 -3.16% 未超过测量波动/最低1%门槛 17.52%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.41,
+            "candidate_ms": 55.44,
+            "gain_pct": -7.83894184010893
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.95,
+            "candidate_ms": 60.98,
+            "gain_pct": 1.5657788539144568
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.32,
+            "candidate_ms": 111.67,
+            "gain_pct": -4.053298546403288
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.65,
+            "candidate_ms": 238.55,
+            "gain_pct": -2.978631556227069
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": -3.163619481352098,
+        "threshold_pct": 17.515895047909005
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r34",
+        "eligible": false,
+        "reasons": [
+          "提速 -2.58% 未超过测量波动/最低1%门槛 17.52%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.51,
+            "candidate_ms": 55.44,
+            "gain_pct": -7.62958648806057
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.94,
+            "candidate_ms": 60.98,
+            "gain_pct": 1.5498869874071697
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.32,
+            "candidate_ms": 111.67,
+            "gain_pct": -4.053298546403288
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 234.13,
+            "candidate_ms": 238.55,
+            "gain_pct": -1.8878400888395406
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": -2.580786986150805,
+        "threshold_pct": 17.515895047909005
+      },
+      "source_parent_reference_comparison": null,
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1583230",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "benchmark_log": ".runs/conv/C55-r1/benchmark.log",
+      "benchmark_log_sha256": "1df9a7fa1d6fd6b7bb7e4d802960ec1cbd3dbf8fef6306114efd24b26a539afa",
+      "scheduler_log": ".runs/conv/C55-r1/scheduler-status.txt",
+      "machine_matches_group": true
+    },
+    {
+      "version": "C26-r35",
+      "record_file": "records/experiments/conv/C26-r35.json",
+      "status": "passed",
+      "verified": true,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.41,
+            51.45,
+            51.4
+          ],
+          "median_ms": 51.41,
+          "min_ms": 51.4,
+          "max_ms": 51.45,
+          "spread_pct": 0.09725734292939947,
+          "gflops": [
+            1466.2122,
+            1465.0788,
+            1466.5545
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            61.97,
+            61.95,
+            61.91
+          ],
+          "median_ms": 61.95,
+          "min_ms": 61.91,
+          "max_ms": 61.97,
+          "spread_pct": 0.09685230024213441,
+          "gflops": [
+            1343.2026,
+            1343.5189,
+            1344.4942
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            107.36,
+            107.29,
+            107.32
+          ],
+          "median_ms": 107.32,
+          "min_ms": 107.29,
+          "max_ms": 107.36,
+          "spread_pct": 0.06522549385016137,
+          "gflops": [
+            1500.3841,
+            1501.2924,
+            1500.8469
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            231.65,
+            231.73,
+            231.64
+          ],
+          "median_ms": 231.65,
+          "min_ms": 231.64,
+          "max_ms": 231.73,
+          "spread_pct": 0.038851715950789296,
+          "gflops": [
+            1492.6712,
+            1492.1387,
+            1492.7047
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "total_median_ms": 452.33000000000004,
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "source_parent": null,
+      "diagnostic_job_id": null,
+      "diagnostic_source_version": null,
+      "reference_only": false,
+      "promotion_allowed": false,
+      "qualified_for_confirmation": false,
+      "comparison": null,
+      "opening_control_comparison": null,
+      "source_parent_reference_comparison": null,
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1583230",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "benchmark_log": ".runs/conv/C26-r35/benchmark.log",
+      "benchmark_log_sha256": "f360841db0cc0f278066c1d190e61706004c3cc7a99e85bcc26f35a9049c47f4",
+      "scheduler_log": ".runs/conv/C26-r35/scheduler-status.txt",
+      "machine_matches_group": true
+    }
+  ],
+  "total_samples": 48,
+  "all_48_samples_passed": true,
+  "all_max_errors_zero": true,
+  "all_scheduler_job_system_wrapper_zero": true,
+  "all_checks_true": true,
+  "status_call_count": 4,
+  "status_intervals_seconds": [
+    96.109542,
+    83.4603,
+    83.10291
+  ],
+  "record_group_exit": 0,
+  "compare_exit": 0,
+  "outer_events": [
+    {
+      "event_file": ".runs/conv/sep13af-lifecycle-status-001.json",
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C26-r34"
+      ],
+      "job_id": "1583230",
+      "action": "status",
+      "started_at": "2026-09-12T19:49:45.186321+00:00",
+      "ended_at": "2026-09-12T19:49:45.557696+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13af-lifecycle-status-001.stdout.txt",
+      "stderr_file": ".runs/conv/sep13af-lifecycle-status-001.stderr.txt",
+      "exit_file": ".runs/conv/sep13af-lifecycle-status-001.exit.txt"
+    },
+    {
+      "event_file": ".runs/conv/sep13af-lifecycle-status-002.json",
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C26-r34"
+      ],
+      "job_id": "1583230",
+      "action": "status",
+      "started_at": "2026-09-12T19:51:21.667238+00:00",
+      "since_previous_status_end_seconds": 96.109542,
+      "ended_at": "2026-09-12T19:51:22.061348+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13af-lifecycle-status-002.stdout.txt",
+      "stderr_file": ".runs/conv/sep13af-lifecycle-status-002.stderr.txt",
+      "exit_file": ".runs/conv/sep13af-lifecycle-status-002.exit.txt"
+    },
+    {
+      "event_file": ".runs/conv/sep13af-lifecycle-status-003.json",
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C26-r34"
+      ],
+      "job_id": "1583230",
+      "action": "status",
+      "started_at": "2026-09-12T19:52:45.521648+00:00",
+      "since_previous_status_end_seconds": 83.4603,
+      "ended_at": "2026-09-12T19:52:45.901557+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13af-lifecycle-status-003.stdout.txt",
+      "stderr_file": ".runs/conv/sep13af-lifecycle-status-003.stderr.txt",
+      "exit_file": ".runs/conv/sep13af-lifecycle-status-003.exit.txt"
+    },
+    {
+      "event_file": ".runs/conv/sep13af-lifecycle-status-004.json",
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C26-r34"
+      ],
+      "job_id": "1583230",
+      "action": "status",
+      "started_at": "2026-09-12T19:54:09.004467+00:00",
+      "since_previous_status_end_seconds": 83.10291,
+      "ended_at": "2026-09-12T19:54:09.486206+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13af-lifecycle-status-004.stdout.txt",
+      "stderr_file": ".runs/conv/sep13af-lifecycle-status-004.stderr.txt",
+      "exit_file": ".runs/conv/sep13af-lifecycle-status-004.exit.txt"
+    },
+    {
+      "event_file": ".runs/conv/sep13af-lifecycle-record.json",
+      "argv": [
+        "python3",
+        ".runs/conv/sep13af-record-group.py"
+      ],
+      "job_id": "1583230",
+      "action": "record",
+      "started_at": "2026-09-12T19:54:31.312134+00:00",
+      "ended_at": "2026-09-12T19:54:34.706157+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13af-lifecycle-record.stdout.txt",
+      "stderr_file": ".runs/conv/sep13af-lifecycle-record.stderr.txt",
+      "exit_file": ".runs/conv/sep13af-lifecycle-record.exit.txt"
+    },
+    {
+      "event_file": ".runs/conv/sep13af-lifecycle-compare.json",
+      "argv": [
+        "python3",
+        ".runs/conv/sep13af-compare.py"
+      ],
+      "job_id": "1583230",
+      "action": "compare",
+      "started_at": "2026-09-12T19:55:04.070852+00:00",
+      "ended_at": "2026-09-12T19:55:04.140977+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13af-lifecycle-compare.stdout.txt",
+      "stderr_file": ".runs/conv/sep13af-lifecycle-compare.stderr.txt",
+      "exit_file": ".runs/conv/sep13af-lifecycle-compare.exit.txt"
+    }
+  ],
+  "all_outer_stderr_empty": true,
+  "outer_evidence_files": [
+    ".runs/conv/sep13af-lifecycle-compare.exit.txt",
+    ".runs/conv/sep13af-lifecycle-compare.json",
+    ".runs/conv/sep13af-lifecycle-compare.stderr.txt",
+    ".runs/conv/sep13af-lifecycle-compare.stdout.txt",
+    ".runs/conv/sep13af-lifecycle-record.exit.txt",
+    ".runs/conv/sep13af-lifecycle-record.json",
+    ".runs/conv/sep13af-lifecycle-record.stderr.txt",
+    ".runs/conv/sep13af-lifecycle-record.stdout.txt",
+    ".runs/conv/sep13af-lifecycle-status-001.exit.txt",
+    ".runs/conv/sep13af-lifecycle-status-001.json",
+    ".runs/conv/sep13af-lifecycle-status-001.stderr.txt",
+    ".runs/conv/sep13af-lifecycle-status-001.stdout.txt",
+    ".runs/conv/sep13af-lifecycle-status-002.exit.txt",
+    ".runs/conv/sep13af-lifecycle-status-002.json",
+    ".runs/conv/sep13af-lifecycle-status-002.stderr.txt",
+    ".runs/conv/sep13af-lifecycle-status-002.stdout.txt",
+    ".runs/conv/sep13af-lifecycle-status-003.exit.txt",
+    ".runs/conv/sep13af-lifecycle-status-003.json",
+    ".runs/conv/sep13af-lifecycle-status-003.stderr.txt",
+    ".runs/conv/sep13af-lifecycle-status-003.stdout.txt",
+    ".runs/conv/sep13af-lifecycle-status-004.exit.txt",
+    ".runs/conv/sep13af-lifecycle-status-004.json",
+    ".runs/conv/sep13af-lifecycle-status-004.stderr.txt",
+    ".runs/conv/sep13af-lifecycle-status-004.stdout.txt",
+    ".runs/conv/sep13af-lifecycle-submit-origin.json",
+    ".runs/conv/sep13af-lifecycle-summary.json",
+    ".runs/conv/sep13af-lifecycle-summary.md"
+  ],
+  "standard_record_fetch_driver_files": [
+    ".runs/conv/C26-r34/status-driver-sep13af-20260912T195431369779Z.log",
+    ".runs/conv/C26-r34/fetch-driver-sep13af-20260912T195431369779Z.log",
+    ".runs/conv/C56-row7shared3fence/status-driver-sep13af-20260912T195431369779Z.log",
+    ".runs/conv/C56-row7shared3fence/fetch-driver-sep13af-20260912T195431369779Z.log",
+    ".runs/conv/C55-r1/status-driver-sep13af-20260912T195431369779Z.log",
+    ".runs/conv/C55-r1/fetch-driver-sep13af-20260912T195431369779Z.log",
+    ".runs/conv/C26-r35/status-driver-sep13af-20260912T195431369779Z.log",
+    ".runs/conv/C26-r35/fetch-driver-sep13af-20260912T195431369779Z.log"
+  ],
+  "root_submit_files": [
+    ".runs/conv/sep13af-root-submit.command.json",
+    ".runs/conv/sep13af-root-submit.exit.txt",
+    ".runs/conv/sep13af-root-submit.stderr.txt",
+    ".runs/conv/sep13af-root-submit.stdout.txt"
+  ],
+  "root_submit_origin": ".runs/conv/sep13af-lifecycle-submit-origin.json",
+  "campaign_file": ".runs/conv/sep13af-campaign.json",
+  "record_files": [
+    "records/experiments/conv/C26-r34.json",
+    "records/experiments/conv/C56-row7shared3fence.json",
+    "records/experiments/conv/C55-r1.json",
+    "records/experiments/conv/C26-r35.json"
+  ],
+  "confirmation_pending": [],
+  "best_retained": "C6",
+  "prior_decisions": {
+    "G_qualified": false,
+    "J_qualified": true,
+    "K_confirmation_passed": false,
+    "N_reference_only": true,
+    "N_promotion_allowed": false,
+    "N_qualified": false,
+    "N_reference_job": "1581459",
+    "original_versions": [
+      "C40-row6x3u1",
+      "C40-r1",
+      "C40-r2",
+      "C40-r3"
+    ],
+    "R_reference_only": true,
+    "R_promotion_allowed": false,
+    "R_qualified": false,
+    "R_reference_job": "1581911",
+    "S_confirmation_passed": false,
+    "S_confirmation_job": "1582067",
+    "C51_reference_only": true,
+    "C51_promotion_allowed": false,
+    "C51_qualified": false,
+    "failed_S_confirmation_retried": false,
+    "W_C51_reference_only": true,
+    "W_C51_promotion_allowed": false,
+    "W_C51_qualified": false,
+    "W_reference_job": "1582256",
+    "C51_confirmation_retried": false,
+    "Y_confirmation_passed": false,
+    "Y_confirmation_job": "1582410",
+    "C52_reference_only": true,
+    "C52_promotion_allowed": false,
+    "C52_qualified": false,
+    "failed_Y_confirmation_retried": false,
+    "AB_job": "1582814",
+    "AB_C54_qualified": false,
+    "AB_C52_reference_only": true,
+    "AB_C52_promotion_allowed": false,
+    "AB_C52_qualified": false,
+    "AD_job": "1582956",
+    "AD_C55_qualified": false,
+    "AD_C52_reference_only": true,
+    "AD_C52_promotion_allowed": false,
+    "AD_C52_qualified": false
+  },
+  "prior_decisions_unchanged": true,
+  "automatic_confirmation": false,
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "original_tools_unchanged": true,
+  "first_lifecycle_failures": [],
+  "issues": [],
+  "new_job_submitted_by_lifecycle_agent": false,
+  "ag_started_by_lifecycle_agent": false,
+  "reset_card_used": false,
+  "note": "Only original AF48 records and compare results are summarized. All samples retained. C56 failed both C6 initial gates; C55-r1 reference remains ineligible for confirmation. Actual times are internal measurements, not official scores. No extra raw copies or operator checks were created.",
+  "group_machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  }
+}

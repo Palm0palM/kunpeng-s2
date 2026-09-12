@@ -1,0 +1,274 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C30-colchunks",
+  "job_id": "1579257",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579257",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "1608433218ec6e2ce9dda9da46810774696d7f877dbc6cfdd44cdc31bf19a841",
+    "check_conv_guard.c": "253e86c42164dc8283b3ab2cbad6df4d4836c6f9741adb1d13b967e39eeb2641",
+    "check_sve_dispatch.c": "58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1",
+    "conv2d.c": "8fc5b620c1fee673febc7d3f14a6d74dcb6ed42981221a7253c3fdfbf8c0cf51",
+    "remote_job.sh": "c81124bb754a67064344c3bff27e328bee50a8e999acc4d4a1c1b45fcc75a104"
+  },
+  "source_manifest_remote_matches": true,
+  "source_hash_verification_scope": "Existing automated transport manifest matches remote wrapper SHA entries; no separate repeated manual byte-hash audit.",
+  "extra_manual_hash_audit": false,
+  "accumulators_per_row": 4,
+  "rows_per_group": 4,
+  "total_accumulators": 16,
+  "column_chunk_width": 256,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 21748,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 552,
+        "tail": 480,
+        "rowpair": 64,
+        "rowtriple": 120,
+        "rowquad": 128
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 21748,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 552,
+        "tail": 480,
+        "rowpair": 64,
+        "rowtriple": 120,
+        "rowquad": 128
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 21748,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 552,
+        "tail": 480,
+        "rowpair": 64,
+        "rowtriple": 120,
+        "rowquad": 128
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 21748,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 552,
+        "tail": 480,
+        "rowpair": 64,
+        "rowtriple": 120,
+        "rowquad": 128
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 21748,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 552,
+        "tail": 480,
+        "rowpair": 64,
+        "rowtriple": 120,
+        "rowquad": 128
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 21748,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 552,
+        "tail": 480,
+        "rowpair": 64,
+        "rowtriple": 120,
+        "rowquad": 128
+      },
+      "passed": true
+    }
+  ],
+  "full_cases": 130488,
+  "smoke_cases": 576,
+  "total_cases": 131064,
+  "coverage_extension": {
+    "output_widths_added": [
+      255,
+      256,
+      257,
+      511,
+      512,
+      513
+    ],
+    "output_heights": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      16
+    ],
+    "additional_full_cases_per_configuration": 3696,
+    "chunk_boundary_all_pass": true
+  },
+  "chunk_dispatch_static_review": "Returned source keeps input stride and global output_stride=ow for every output-row pointer; only chunk_width is passed as helper width. Work indexes disjoint rowgroup/column-chunk pairs. Four-thread cases include multiple workers splitting rowgroups; widths up to513 yield at most3 chunks in one rowgroup, without claiming all4 workers split that one group. Entire poisoned output is checked bitwise and allocation-edge canaries/guards pass.",
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "review_complete": true,
+    "helper": "conv_sve_rowquad",
+    "inner_loops": [
+      {
+        "label": ".L329",
+        "stage": "first input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "ext": 3,
+        "movprfx": 0,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L333",
+        "stage": "second input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "ext": 3,
+        "movprfx": 3,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L338",
+        "stage": "third input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "ext": 3,
+        "movprfx": 3,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L342",
+        "stage": "shared four-output interior row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 93,
+        "fmul": 32,
+        "fadd": 32,
+        "ext": 0,
+        "movprfx": 0,
+        "input_ld1w": 8,
+        "kernel_ld1rw": 8,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L347",
+        "stage": "first trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "ext": 3,
+        "movprfx": 3,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L351",
+        "stage": "second trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "ext": 3,
+        "movprfx": 3,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L355",
+        "stage": "last input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "ext": 3,
+        "movprfx": 0,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      }
+    ],
+    "whole_source_fma_count": 0,
+    "note": "Remote GCC10.3.1 strict-FP. Seven paired-column quad loops have no vector spills/stack accesses. Shared .L342 has the same reviewed C26 instruction profile:93 instructions,32mul+32add,eight input loads/eight broadcasts,zero ext/movprfx; frame752 fixed bytes with scalar bookkeeping and ABI d8-d11 saves outside loops. Outer work scheduling changes; helper instruction counts alone do not establish performance."
+  },
+  "evidence_directory": "raw"
+}

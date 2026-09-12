@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C39-tunehip11",
+  "parent": "C26-r11",
+  "strategy": "Use the C38 split-build layout and append -mtune=hip11 only when compiling conv2d.o; keep benchmark object flags, strict FP, ISA default, resource binding and official validation unchanged",
+  "created_at": "2026-09-12T08:57:24.770607+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "run.sh": "29d2edbd879e5366e3257047bfd0a123d23bdb5cb083b83569a6eb52d08cba5c"
+  },
+  "status": "passed",
+  "source_parent": "C26-row4loads",
+  "build_layout": "Separate benchmark/kernel objects under the original RUN_DIR, then link in original source order; no LTO",
+  "kernel_tune_flag": "-mtune=hip11",
+  "benchmark_extra_flags": [],
+  "experiment_role": "unverified kernel-only tuning candidate",
+  "build_reference": "C38-splitbuild",
+  "runner_derived_from": "C38-splitbuild/source/run.sh; only -mtune=hip11 added to conv2d.o compile command",
+  "comparison_baseline": "C26-r11",
+  "reference_only": false,
+  "recorded_at": "2026-09-12T10:11:31.974405+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12f",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "08b74df10cde396097fbc9816a4cd74bb61cead9d425a639b78ec4e025a65f33",
+  "log": ".runs/conv/C39-tunehip11/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        52.18,
+        52.27,
+        52.25
+      ],
+      "median_ms": 52.25,
+      "min_ms": 52.18,
+      "max_ms": 52.27,
+      "spread_pct": 0.17224880382775773,
+      "gflops": [
+        1444.4714,
+        1441.951,
+        1442.6518
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        62.78,
+        62.76,
+        62.71
+      ],
+      "median_ms": 62.76,
+      "min_ms": 62.71,
+      "max_ms": 62.78,
+      "spread_pct": 0.11153601019757854,
+      "gflops": [
+        1325.9376,
+        1326.3328,
+        1327.2758
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        109.0,
+        109.08,
+        109.3
+      ],
+      "median_ms": 109.08,
+      "min_ms": 109.0,
+      "max_ms": 109.3,
+      "spread_pct": 0.27502750275027243,
+      "gflops": [
+        1477.6923,
+        1476.6927,
+        1473.7353
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        235.66,
+        235.48,
+        235.69
+      ],
+      "median_ms": 235.66,
+      "min_ms": 235.48,
+      "max_ms": 235.69,
+      "spread_pct": 0.08911143172367307,
+      "gflops": [
+        1467.2589,
+        1468.3789,
+        1467.0897
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 459.75,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1579528",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -1.62% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.43,
+        "candidate_ms": 52.25,
+        "gain_pct": -1.5944001555512355
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.97,
+        "candidate_ms": 62.76,
+        "gain_pct": -1.2748103921252205
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.32,
+        "candidate_ms": 109.08,
+        "gain_pct": -1.639955273947079
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.69,
+        "candidate_ms": 235.66,
+        "gain_pct": -1.713496482368682
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r10",
+    "eligible": false,
+    "reasons": [
+      "提速 -1.62% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.4,
+        "candidate_ms": 52.25,
+        "gain_pct": -1.6536964980544775
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.95,
+        "candidate_ms": 62.76,
+        "gain_pct": -1.3075060532687572
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.34,
+        "candidate_ms": 109.08,
+        "gain_pct": -1.6210173281162612
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.73,
+        "candidate_ms": 235.66,
+        "gain_pct": -1.6959392396323338
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Tuning is not confirmed against the predeclared split-build reference; preserve all measurements without promotion.",
+  "build_control_comparison": {
+    "baseline": "C38-splitbuild",
+    "eligible": false,
+    "reasons": [
+      "提速 -1.64% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.4,
+        "candidate_ms": 52.25,
+        "gain_pct": -1.6536964980544775
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.92,
+        "candidate_ms": 62.76,
+        "gain_pct": -1.3565891472868157
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.31,
+        "candidate_ms": 109.08,
+        "gain_pct": -1.6494268940452856
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.71,
+        "candidate_ms": 235.66,
+        "gain_pct": -1.7047171032756412
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "qualified_for_confirmation": false
+}

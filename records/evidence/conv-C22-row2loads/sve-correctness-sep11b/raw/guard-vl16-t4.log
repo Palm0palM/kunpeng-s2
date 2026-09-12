@@ -1,0 +1,2 @@
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=4
+PASS: 13636 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference

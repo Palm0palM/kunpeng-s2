@@ -1,0 +1,13 @@
+python3 - <<'PY'
+import json, subprocess, sys
+from pathlib import Path
+base = Path('.runs/conv/C56-row7shared3fence')
+argv = [sys.executable, 'tools/experiment.py', 'checkpoint', 'conv', 'C56-row7shared3fence', '--note', 'Source-only prepared: exactly three identical21 read-only w input plus memory empty volatile asm statements after parent C55 lines1530/1571/1612. Current conv2d.c SHA6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c; removing only inserted text recovers all parent bytes. README/bench/run unchanged. Source parent C55-row7x3shared3, frozen AC1582860 at .runs/conv/C55-row7x3shared3/sve-correctness-sep13ac; its PASS is not inherited. Only lightweight editing and text/hash/cmp checks performed. GCC10.3.1 acceptance, numeric correctness, actual schedule/spills and performance unverified. Own independent diagnostic requires separate root GO. Creation snapshots, source-audit, candidate.patch, PLAN/STATIC_REVIEW/BOUNDARY_MATRIX and exact new/prepare/checkpoint command outputs retained.']
+result = subprocess.run(argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+for name, data in [('commands-checkpoint.stdout.txt', result.stdout), ('commands-checkpoint.stderr.txt', result.stderr), ('commands-checkpoint.exit.txt', (str(result.returncode) + '\n').encode()), ('commands-checkpoint.argv.json', (json.dumps(argv, ensure_ascii=False, indent=2) + '\n').encode())]:
+    with (base / name).open('xb') as handle:
+        handle.write(data)
+sys.stdout.buffer.write(result.stdout)
+sys.stderr.buffer.write(result.stderr)
+raise SystemExit(result.returncode)
+PY

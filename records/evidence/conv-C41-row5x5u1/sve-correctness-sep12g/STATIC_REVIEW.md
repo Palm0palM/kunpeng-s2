@@ -1,0 +1,15 @@
+# C41 package static review
+
+Only lightweight source/file operations and reasoning were used. No C compiler, executable, sanitizer, benchmark, SSH or scheduler command was run.
+
+- Production C41 is copied unchanged. Full correctness and emitted assembly receive no instrumentation; only the separate diagnostic TU receives `-finstrument-functions`. The production candidate, benchmark/runner and shared driver are untouched.
+- The C40/C37 scalar reference, deterministic input generation, read-only mappings, guard pages, poison, outside-array canaries and whole-output bitwise comparison are retained. Switching the diagnostic call target does not bypass those checks.
+- Full families are disjoint: `8×3×3×11×4=3168`, `1×3×3×4×4=144`, `3×3×3×4×4=432`, `4×2×4=32`, total 3776. Public entry smoke is `8×3×3×7=504`; direct fallback is `3×4×3×2×4=288`. Six configurations total 27408.
+- Full and smoke width sets contain eight distinct positive values for all supported VL settings, including both 4L and 5L boundaries. The `10L-1` case exercises a real full quint block followed by a suffix large enough for the quad fallback's 4L block. `ow=1` is covered separately without duplicating core widths.
+- Direct-wrapper dimensions are restricted to kh=1..4 and oh=5/20; row groups are `oh/5`. Each call passes exactly five output pointers. `size_t` products preserve global input/output strides, and groups write distinct rows. The last necessary input row remains `height-1`; all five output rows exist before pointers are formed. The wrapper's only purpose is to force the original helper's first defensive branch.
+- Public kh=4 requires zero quint entries; active kh=5/6 requires floor(oh/5). The sum over heights is `5×1+2+4=11`, giving 528 total active entries. Direct calls contribute `(1+4)` groups per height pair, giving 720 entries. Every case checks its own delta after the prior OpenMP team has joined.
+- Atomic entry counts and masks are read/reset between completed phases. The one/four-thread settings are validated before forming the expected mask. Twenty output rows yield four full quint groups, proving worker participation when the runtime mask is checked. Function-entry callbacks are excluded from instrumentation.
+- Prefix, tail, pair, triple and quad counts must be nonzero in public smoke; remainder heights 6..9 and below-5L suffixes make them reachable. The probe does not falsely claim to count individual arithmetic blocks or to establish production register allocation.
+- Runtime VL and worker checks, allocation and GCC10.3.1 gates, strict FP options, pipeline failure propagation and completion requirements are retained from the reviewed C40 package. Planned totals and counters agree between source, environment, README and validation metadata.
+
+No blocking static issue was identified. GCC compilation, requested VL availability, emitted code, runtime entry behavior, strict bitwise correctness and memory checks remain unverified. This template is C41-specific; later C42 use requires its own source identity and appropriate review.

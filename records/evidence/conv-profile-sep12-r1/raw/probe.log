@@ -1,0 +1,55 @@
++ python3 -
++ source allocation.env
+++ PROFILE_CPUS=152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189
+++ NUMA_NODE=4
++ python3 profile_state.py running 'Allocated compute-node profile; no benchmark performance result will be recorded.'
++ sha256sum conv2d.c bench_conv.c run.sh build_c6.sh remote_job.sh profile_state.py analyze_profile.py
++ export COMPILER=gcc CC=gcc CPU_TARGET=generic CONV_BLOCK=32 CONV_KERNEL_UNROLL=2
++ COMPILER=gcc
++ CC=gcc
++ CPU_TARGET=generic
++ CONV_BLOCK=32
++ CONV_KERNEL_UNROLL=2
++ export OMP_NUM_THREADS=38 OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores NUMA_NODE
++ OMP_NUM_THREADS=38
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ phase=build
++ source ./build_c6.sh
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r1-20260912T092226Z/results/run-20260912-172321-zFX6gq/build.log build.log
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r1-20260912T092226Z/results/run-20260912-172321-zFX6gq/environment.log environment.log
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r1-20260912T092226Z/results/run-20260912-172321-zFX6gq/conv2d_test conv2d_profile
++ gcc -dumpfullversion -dumpversion
+++ cat compiler-version.txt
++ [[ 10.3.1 != 10.3.1 ]]
++ phase=tools
++ command -v perf
++ perf --version
++ cat /proc/sys/kernel/perf_event_paranoid
++ nm -an ./conv2d_profile
++ awk '$NF == "conv_sve_rowquad" {found++} END {exit found != 1}' symbols.txt
++ readelf -n ./conv2d_profile
+readelf: Warning: Gap in build notes detected from 0x400abd to 0x400ac3
++ set +e
++ objdump -d --disassemble=conv_sve_rowquad ./conv2d_profile
++ objdump_code=0
++ set -e
++ printf '%s\n' 0
++ phase=record
++ printf '%q ' perf record -e cycles:u -F 99 -m 128 -T -P -C 152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189 -o perf.data -- numactl -N 4 ./conv2d_profile 6390 4256 81 81 1
++ printf '\n'
++ set +e
++ perf record -e cycles:u -F 99 -m 128 -T -P -C 152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189 -o perf.data -- numactl -N 4 ./conv2d_profile 6390 4256 81 81 1
++ record_code=255
++ set -e
++ printf '%s\n' 255
++ ((  record_code != 0  ))
++ grep -Eiq 'permission|not supported|unsupported|operation not permitted' record.log
++ python3 profile_state.py inconclusive 'perf record failed; retain original benchmark/record logs.'
++ exit 0
++ finish
++ local code=0 log_code=0
++ trap - EXIT
++ ((  code != 0  ))
++ exec

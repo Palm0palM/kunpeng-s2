@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C54-row7x3shared4",
+  "parent": "C26-r31",
+  "strategy": "Source-only shared unroll2 to unroll4: kw-ik>=4 and ik+=4; four sequential complete 21 mul/add column scopes; retain original u1 remainder for 0..3 columns. All other stages,dispatch,tail,fallback and submission files unchanged. Future own correctness/codegen/performance required; prior Y/S failed confirmations preserved.",
+  "created_at": "2026-09-12T17:59:15.584610+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C52-row7x3shared2",
+  "source_parent_frozen_directory": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t",
+  "source_parent_diagnostic_job_id": "1582134",
+  "source_parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "rows_per_group": 7,
+  "vectors_per_row": 3,
+  "total_accumulators": 21,
+  "stage_count": 13,
+  "shared_kernel_columns_per_iteration": 4,
+  "other_stage_kernel_columns_per_iteration": 1,
+  "shared_remainder_columns_per_iteration": 1,
+  "shared_remainder_max_columns": 3,
+  "shared_paired_remainder_layer": false,
+  "formal_best_label": "C6",
+  "source_scope": "Only shared main loop factor2 to factor4; all other12 stages, original u1 remainder, dispatch, tails, fallback and other submission files unchanged.",
+  "source_hypothesis": "Amortize shared loop/address control with four sequential complete column scopes; actual scheduling, spills, code size and speed unknown.",
+  "runtime_validation_status": "Source prepared only; own C54 diagnostic required. Parent T PASS cannot cover the new factor4 main loop.",
+  "required_future_kernel_widths": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    15,
+    81
+  ],
+  "historical_decisions_preserved": {
+    "S_C51_confirmation_passed": false,
+    "Y_C52_confirmation_passed": false
+  },
+  "prepared_execution_policy": "No compiler/operator/SSH/diagnostic/job/performance/ZIP/promotion/publication. New source hypothesis, not a retry of failed S or Y confirmation.",
+  "comparison_baseline": "C26-r31",
+  "reference_only": false,
+  "promotion_allowed": true,
+  "qualified_for_confirmation": false,
+  "confirmation_only": false,
+  "failed_confirmation_retry_allowed": false,
+  "diagnostic_source_version": "C54-row7x3shared4",
+  "diagnostic_evidence_directory": ".runs/conv/C54-row7x3shared4/sve-correctness-sep13aa",
+  "diagnostic_job_id": "1582656",
+  "diagnostic_source_sha256": "fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88",
+  "reused_identical_source_diagnostic": false
+}

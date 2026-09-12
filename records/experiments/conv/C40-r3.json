@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C40-r3",
+  "parent": "C26-r21",
+  "strategy": "Same-source C40 reference-only context for C47/C48; promotion forbidden, not a confirmation repeat",
+  "created_at": "2026-09-12T16:00:03.444330+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "comparison_baseline": "C26-r21",
+  "source_parent": "C40-row6x3u1",
+  "reference_only": true,
+  "promotion_allowed": false,
+  "diagnostic_source_version": "C40-row6x3u1",
+  "diagnostic_evidence_directory": ".runs/conv/C40-row6x3u1/sve-correctness-sep12g",
+  "diagnostic_job_id": "1579597",
+  "diagnostic_source_sha256": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+  "reused_identical_source_diagnostic": true,
+  "recorded_at": "2026-09-12T16:17:53.733324+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12n",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "331193087ab13a6a04fcb519859cb1e95462d42576fa62cbcdad5a87b59edc66",
+  "log": ".runs/conv/C40-r3/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        50.48,
+        50.46,
+        50.4
+      ],
+      "median_ms": 50.46,
+      "min_ms": 50.4,
+      "max_ms": 50.48,
+      "spread_pct": 0.15854141894569618,
+      "gflops": [
+        1493.2397,
+        1493.8363,
+        1495.4073
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        60.29,
+        60.34,
+        60.32
+      ],
+      "median_ms": 60.32,
+      "min_ms": 60.29,
+      "max_ms": 60.34,
+      "spread_pct": 0.0828912466843572,
+      "gflops": [
+        1380.6098,
+        1379.5053,
+        1379.9251
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        107.35,
+        107.3,
+        107.3
+      ],
+      "median_ms": 107.3,
+      "min_ms": 107.3,
+      "max_ms": 107.35,
+      "spread_pct": 0.04659832246038878,
+      "gflops": [
+        1500.4603,
+        1501.1012,
+        1501.2107
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        226.36,
+        226.35,
+        226.41
+      ],
+      "median_ms": 226.36,
+      "min_ms": 226.35,
+      "max_ms": 226.41,
+      "spread_pct": 0.02650644990281069,
+      "gflops": [
+        1527.536,
+        1527.6286,
+        1527.1868
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 444.44,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1581459",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "qualified_for_confirmation": false,
+  "comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.48,
+        "candidate_ms": 50.46,
+        "gain_pct": 1.9813519813519735
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.91,
+        "candidate_ms": 60.32,
+        "gain_pct": 2.568244225488607
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.3,
+        "candidate_ms": 107.3,
+        "gain_pct": 0.0
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.69,
+        "candidate_ms": 226.36,
+        "gain_pct": 2.3004877206612218
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r20",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.42,
+        "candidate_ms": 50.46,
+        "gain_pct": 1.8669778296382746
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 62.16,
+        "candidate_ms": 60.32,
+        "gain_pct": 2.9601029601029545
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.31,
+        "candidate_ms": 107.3,
+        "gain_pct": 0.009318796011560073
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.66,
+        "candidate_ms": 226.36,
+        "gain_pct": 2.2878356211689472
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "C40 same-source reference-only for C47/C48 context. Never qualifies or promotes; original G false/J true/K false unchanged. Not a C40 confirmation."
+}

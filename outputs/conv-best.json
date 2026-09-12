@@ -1,24 +1,25 @@
 {
-  "label": "C3",
-  "experiment": "C13-exttail",
+  "label": "C6",
+  "experiment": "C26-r1",
+  "source_experiment": "C26-row4loads",
   "source_hashes": {
     "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
     "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
-    "conv2d.c": "418191b0a5f8b5a97b219b2648df30132b935ae602e6a4c066cfadd8680554c8",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
     "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
   },
-  "package_sha256": "2e8bb11e23733a8c7423d265e32a9ffcb4701084782515ac09ca601b79eed907",
-  "total_median_ms": 590.36,
+  "package_sha256": "6d6368d555eb46b24d13d0732189ab0bff422f3f1930fda0fa48b60d74e8e5fb",
+  "total_median_ms": 452.62,
   "metric": "sum of four per-case medians across three independent suites; not official score",
   "controlled_comparison": {
-    "baseline": "C8-r3",
-    "baseline_total_median_ms": 631.31,
-    "candidate_total_median_ms": 590.36,
-    "time_reduction_pct": 6.486512173100367,
-    "repeat_baseline": "C8-r4",
-    "repeat_baseline_total_median_ms": 631.37,
-    "repeat_candidate": "C13-r1",
-    "repeat_candidate_total_median_ms": 590.17
+    "baseline": "C21-r9",
+    "baseline_total_median_ms": 502.35,
+    "candidate_total_median_ms": 452.62,
+    "time_reduction_pct": 9.899472479347072,
+    "opening_baseline": "C21-r8",
+    "opening_baseline_total_median_ms": 502.64000000000004,
+    "initial_candidate": "C26-row4loads",
+    "initial_candidate_total_median_ms": 452.58
   },
   "verification": {
     "scheduler": true,
@@ -29,15 +30,29 @@
     "machine": true
   },
   "zip_verification": {
-    "experiment": "C13-package",
-    "job_id": "1492041",
-    "total_median_ms": 590.65,
+    "experiment": "C26-package",
+    "job_id": "1576103",
+    "total_median_ms": 452.65999999999997,
     "suites": 3,
     "cases_per_suite": 4,
     "all_pass": true,
     "max_error": 0,
     "archive_verified_and_extracted_on_compute_node": true,
     "same_source_as_promoted": true
+  },
+  "specialized_correctness": {
+    "source_experiment": "C26-row4loads",
+    "checks": 108888,
+    "all_pass": true,
+    "threads": [
+      1,
+      4
+    ],
+    "sve_bits": [
+      128,
+      256,
+      512
+    ]
   },
   "official_submission": false
 }

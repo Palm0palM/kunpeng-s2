@@ -1,0 +1,48 @@
+{
+  "status": "prepared",
+  "complete": false,
+  "candidate": "C44-copyinput",
+  "source_parent": "C26-row4loads",
+  "configurations": 6,
+  "sve_bytes": [
+    16,
+    32,
+    64
+  ],
+  "threads": [
+    1,
+    4
+  ],
+  "production_guard_cases_per_configuration": 24100,
+  "production_guard_cases": 144600,
+  "copy_success_cases_per_configuration": 6048,
+  "copy_failure_cases_per_configuration": 6048,
+  "copy_success_cases": 36288,
+  "copy_failure_cases": 36288,
+  "total_cases_planned": 217176,
+  "runner_cases_planned": 0,
+  "instrumentation_scope": "Only candidate malloc/free/memcpy in separate included-source TU; production object and guard libc remain unwrapped",
+  "success_probe_per_configuration": {
+    "cases": 6048,
+    "eligible": 2800,
+    "disabled": 3248,
+    "malloc_attempts": 2800,
+    "malloc_successes": 2800,
+    "memcpy_calls": 28280,
+    "free_calls": 2800
+  },
+  "failure_probe_per_configuration": {
+    "cases": 6048,
+    "eligible": 2800,
+    "disabled": 3248,
+    "malloc_attempts": 2800,
+    "malloc_successes": 0,
+    "forced_failures": 2800,
+    "memcpy_calls": 0,
+    "free_calls": 0
+  },
+  "large_allocation_and_size_t_extremes": "static proof only; no huge or invalid-buffer execution",
+  "executed_locally": false,
+  "executed_remotely": false,
+  "job_created": false
+}

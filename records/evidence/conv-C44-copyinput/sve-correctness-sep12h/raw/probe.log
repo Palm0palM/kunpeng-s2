@@ -1,0 +1,272 @@
++ python3 -
+ALLOWED_CPUS=76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113
+NUMA_NODE=node2
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' allocation
++ source candidate.env
+++ CANDIDATE=C44-copyinput
+++ COPY_EXPECT_PADDED=0
+++ EXPECTED_ACC=4
+++ CHECK_ROWTRIPLE=1
+++ CHECK_ROWQUAD=1
++ [[ 4 == 4 ]]
++ [[ 1 == 1 ]]
++ [[ 1 == 1 ]]
++ case "$CANDIDATE:$COPY_EXPECT_PADDED" in
++ STAGE=source-manifest
++ sha256sum README.md bench_conv.c conv2d.c run.sh check_conv_guard.c copy_probe.h copy_probe.c instrumented_candidate.c candidate.env remote_job.sh
++ cat source-sha256.txt
+97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8  README.md
+2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927  bench_conv.c
+8618bd699656a750a378bd008a863178ab738093a783dfda9619ec035945fb6d  conv2d.c
+6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868  run.sh
+68d05908db64163f1cdd2ed572e52e602618a5dd1c2ff5650549ca0f22beec79  check_conv_guard.c
+060b798b04fa62a3b0862812f2044ac08c2323525b5bd421051ff7876ca22967  copy_probe.h
+47537e458a8da6ade7fe81899fb90a729d8c18c94e630be46b155906a48b986b  copy_probe.c
+54fff084175bd3d26113f2c103f0bfc098c41de95f16e74f15fcb7d1f1f5150e  instrumented_candidate.c
+52b032991a3af2f36845f607a7b4e49c68fe2743cf684a7c419afcf31eac101d  candidate.env
+649896347b77cc00def3f9c3f16d715149dc5c5e4c95fdd0919aac56df7b0525  remote_job.sh
++ date -u
+Sat Sep 12 11:31:00 UTC 2026
++ hostname
+COMPUTE_NODE_1
++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++ export OMP_NUM_THREADS=38 OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores
++ OMP_NUM_THREADS=38
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ KERNEL_FLAGS=(-O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2)
++ GUARD_FLAGS=("${KERNEL_FLAGS[@]}" -D_DEFAULT_SOURCE -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1)
++ printf 'Threads=%s Bind=%s Places=%s CPU_TARGET=generic\n' 38 close cores
++ gcc --version
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' source-manifest
++ STAGE=production-kernel
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c conv2d.c -o production-conv2d.o
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-kernel
++ STAGE=production-guard
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -D_DEFAULT_SOURCE -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -c check_conv_guard.c -o production-guard.o
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 production-guard.o production-conv2d.o -o check_conv_guard -lm
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard
++ STAGE=production-assembly
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -S conv2d.c -o conv2d-sve.s
++ objdump -d production-conv2d.o
++ sha256sum production-conv2d.o
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-assembly
++ for bytes in 16 32 64
++ for threads in 1 4
++ STAGE=production-guard-vl16-t1
++ tee guard-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=1
+PASS: 24100 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl16-t1
++ for threads in 1 4
++ STAGE=production-guard-vl16-t4
++ tee guard-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=4
+PASS: 24100 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl16-t4
++ for bytes in 16 32 64
++ for threads in 1 4
++ STAGE=production-guard-vl32-t1
++ tee guard-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=1
+PASS: 24100 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl32-t1
++ for threads in 1 4
++ STAGE=production-guard-vl32-t4
++ tee guard-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=4
+PASS: 24100 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl32-t4
++ for bytes in 16 32 64
++ for threads in 1 4
++ STAGE=production-guard-vl64-t1
++ tee guard-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=1
+PASS: 24100 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl64-t1
++ for threads in 1 4
++ STAGE=production-guard-vl64-t4
++ tee guard-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=4
+PASS: 24100 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl64-t4
++ STAGE=instrumented-kernel
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c instrumented_candidate.c -o instrumented-conv2d.o
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' instrumented-kernel
++ STAGE=instrumented-guard
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -D_DEFAULT_SOURCE -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -DCOPY_PATH_PROBE -c check_conv_guard.c -o copy-guard.o
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -DCOPY_EXPECT_PADDED=0 -c copy_probe.c -o copy-probe.o
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 copy-guard.o instrumented-conv2d.o copy-probe.o -o check_input_copy -lm
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' instrumented-guard
++ for bytes in 16 32 64
++ for threads in 1 4
++ for mode in success failure
++ STAGE=copy-success-vl16-t1
++ tee copy-success-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_input_copy 16 copy-success
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=1
+COPY_PROBE_MODE=success STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=2800 FORCED_FAILURES=0 MEMCPY_CALLS=28280 FREE_CALLS=2800 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-success-vl16-t1
++ for mode in success failure
++ STAGE=copy-failure-vl16-t1
++ tee copy-failure-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_input_copy 16 copy-failure
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=1
+COPY_PROBE_MODE=failure STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=0 FORCED_FAILURES=2800 MEMCPY_CALLS=0 FREE_CALLS=0 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-failure-vl16-t1
++ for threads in 1 4
++ for mode in success failure
++ STAGE=copy-success-vl16-t4
++ tee copy-success-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_input_copy 16 copy-success
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=4
+COPY_PROBE_MODE=success STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=2800 FORCED_FAILURES=0 MEMCPY_CALLS=28280 FREE_CALLS=2800 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-success-vl16-t4
++ for mode in success failure
++ STAGE=copy-failure-vl16-t4
++ tee copy-failure-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_input_copy 16 copy-failure
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=4
+COPY_PROBE_MODE=failure STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=0 FORCED_FAILURES=2800 MEMCPY_CALLS=0 FREE_CALLS=0 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-failure-vl16-t4
++ for bytes in 16 32 64
++ for threads in 1 4
++ for mode in success failure
++ STAGE=copy-success-vl32-t1
++ tee copy-success-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_input_copy 32 copy-success
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=1
+COPY_PROBE_MODE=success STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=2800 FORCED_FAILURES=0 MEMCPY_CALLS=28280 FREE_CALLS=2800 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-success-vl32-t1
++ for mode in success failure
++ STAGE=copy-failure-vl32-t1
++ tee copy-failure-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_input_copy 32 copy-failure
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=1
+COPY_PROBE_MODE=failure STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=0 FORCED_FAILURES=2800 MEMCPY_CALLS=0 FREE_CALLS=0 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-failure-vl32-t1
++ for threads in 1 4
++ for mode in success failure
++ STAGE=copy-success-vl32-t4
++ tee copy-success-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_input_copy 32 copy-success
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=4
+COPY_PROBE_MODE=success STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=2800 FORCED_FAILURES=0 MEMCPY_CALLS=28280 FREE_CALLS=2800 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-success-vl32-t4
++ for mode in success failure
++ STAGE=copy-failure-vl32-t4
++ tee copy-failure-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_input_copy 32 copy-failure
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=4
+COPY_PROBE_MODE=failure STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=0 FORCED_FAILURES=2800 MEMCPY_CALLS=0 FREE_CALLS=0 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-failure-vl32-t4
++ for bytes in 16 32 64
++ for threads in 1 4
++ for mode in success failure
++ STAGE=copy-success-vl64-t1
++ tee copy-success-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_input_copy 64 copy-success
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=1
+COPY_PROBE_MODE=success STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=2800 FORCED_FAILURES=0 MEMCPY_CALLS=28280 FREE_CALLS=2800 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-success-vl64-t1
++ for mode in success failure
++ STAGE=copy-failure-vl64-t1
++ tee copy-failure-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_input_copy 64 copy-failure
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=1
+COPY_PROBE_MODE=failure STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=0 FORCED_FAILURES=2800 MEMCPY_CALLS=0 FREE_CALLS=0 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-failure-vl64-t1
++ for threads in 1 4
++ for mode in success failure
++ STAGE=copy-success-vl64-t4
++ tee copy-success-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_input_copy 64 copy-success
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=4
+COPY_PROBE_MODE=success STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=2800 FORCED_FAILURES=0 MEMCPY_CALLS=28280 FREE_CALLS=2800 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-success-vl64-t4
++ for mode in success failure
++ STAGE=copy-failure-vl64-t4
++ tee copy-failure-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_input_copy 64 copy-failure
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=4
+COPY_PROBE_MODE=failure STRIDE_MODE=original CASES=6048 ELIGIBLE=2800 DISABLED=3248 MALLOC_ATTEMPTS=2800 MALLOC_SUCCESSES=0 FORCED_FAILURES=2800 MEMCPY_CALLS=0 FREE_CALLS=0 ERROR_COUNT=0
+PASS: 6048 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' copy-failure-vl64-t4
++ STAGE=complete
++ printf 'PRODUCTION_GUARD_CASES=144600 COPY_SUCCESS_CASES=36288 COPY_FAILURE_CASES=36288 TOTAL_CASES=217176\n'
+PRODUCTION_GUARD_CASES=144600 COPY_SUCCESS_CASES=36288 COPY_FAILURE_CASES=36288 TOTAL_CASES=217176
++ printf 'RUNNER_CASES=0 SANITIZER_STATUS=NOT_RUN LARGE_ALLOCATION_EXTREMES=STATIC_ONLY\n'
+RUNNER_CASES=0 SANITIZER_STATUS=NOT_RUN LARGE_ALLOCATION_EXTREMES=STATIC_ONLY
++ printf 'PROBE_COMPLETE=1\n'
+PROBE_COMPLETE=1
++ finish
++ local code=0 log_code=0
++ trap - EXIT
++ printf 'STAGE=%s EXIT=%s\n' complete 0
++ exec

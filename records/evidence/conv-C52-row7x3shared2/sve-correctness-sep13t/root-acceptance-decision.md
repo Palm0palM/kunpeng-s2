@@ -1,0 +1,5 @@
+# T actual acceptance decision
+
+Original T1582134 completed on a scheduled compute allocation. The reviewed accept_returned.py ran once over actual downloaded text and combined helper/dispatch reviews, exited0 and accepted37128 checks,13semantic stages/14arithmetic regions, all19job stages and scheduler/job/system/wrapper0. No schema change or manufactured assembly evidence was needed. Independent helper and root dispatcher fragments identify the same actual production source/job/assembly. Source arithmetic and original benchmark remain unchanged after submission.
+
+The pair loop has123instructions for2columns,42ordinaryFMUL/42FADD,6inputLD1W/14coefficientLD1RW; actual odd loop63instructions/1column,21/21 and3/7. Entire helper720-byte fixed frame,7lower64-bitD ABI saves, zeroZ/Q/predicate spills. These are static observations, not a speed or promotion claim. C52 needs its own same-node performance measurement; Sfailed C51 remains failed, C6 still currentbest. This log acceptance and following archive operation are local lightweight file processing only.

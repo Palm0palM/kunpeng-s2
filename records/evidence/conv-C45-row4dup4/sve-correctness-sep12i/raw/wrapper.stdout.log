@@ -1,0 +1,402 @@
++ :
++ stage allocation python3 -
++ local name=allocation code
++ shift
++ set +e
++ python3 -
+ALLOWED_CPUS=76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113
+NUMA_NODE=node2
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' allocation 0
+STAGE=allocation EXIT=0
++ return 0
++ source candidate.env
+++ CANDIDATE=C45-row4dup4
+++ EXPECTED_ACC=4
+++ CHECK_ROWTRIPLE=1
+++ CHECK_ROWQUAD=1
+++ EXPECTED_FULL=20164
+++ EXPECTED_DISPATCH=96
+++ EXPECTED_TOTAL=121560
++ [[ C45-row4dup4 == C45-row4dup4 ]]
++ [[ 4 == 4 ]]
++ [[ 1 == 1 ]]
++ [[ 1 == 1 ]]
++ [[ 20164 == 20164 ]]
++ [[ 96 == 96 ]]
++ [[ 121560 == 121560 ]]
++ printf 'CANDIDATE=%s\n' C45-row4dup4
+CANDIDATE=C45-row4dup4
++ date -u
+Sat Sep 12 11:46:12 UTC 2026
++ hostname
+COMPUTE_NODE_1
++ stage compiler compiler_check
++ local name=compiler code
++ shift
++ set +e
++ compiler_check
++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++ gcc -dumpfullversion -dumpversion
+++ cat compiler-version.txt
++ [[ 10.3.1 == 10.3.1 ]]
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' compiler 0
+STAGE=compiler EXIT=0
++ return 0
++ stage manifest write_manifest
++ local name=manifest code
++ shift
++ set +e
++ write_manifest
++ sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env
++ cat source-sha256.txt
+d428611f068b81befa4412a6bd11480468e3b7816906647d15cc0e9265c866a5  conv2d.c
+cc863350467de6ab4d51847bbaba0c394daea77aa7c5f1201113ed527e362c37  check_conv_guard.c
+58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1  check_sve_dispatch.c
+8078f0056bc4224636393cca44e1b938edf08add8f03b6d2e22e92c6de0a2ff1  remote_job.sh
+c3b865c164f5d0f794f58ee58bd9887c4c83040958de3971ed111a4db0180fa0  candidate.env
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' manifest 0
+STAGE=manifest EXIT=0
++ return 0
++ export OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ flags=(-O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp "-DEXPECTED_ACC=$EXPECTED_ACC" "-DCHECK_ROWTRIPLE=$CHECK_ROWTRIPLE" "-DCHECK_ROWQUAD=$CHECK_ROWQUAD")
++ stage build-guard build_logged build-guard.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 check_conv_guard.c conv2d.c -o check_conv_guard
++ local name=build-guard code
++ shift
++ set +e
++ build_logged build-guard.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 check_conv_guard.c conv2d.c -o check_conv_guard
++ local logfile=build-guard.log
++ shift
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 check_conv_guard.c conv2d.c -o check_conv_guard
+ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 check_conv_guard.c conv2d.c -o check_conv_guard+ printf '\n'
+
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 check_conv_guard.c conv2d.c -o check_conv_guard
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' build-guard 0
+STAGE=build-guard EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage guard-vl16-t1 run_guard 16 1
++ local name=guard-vl16-t1 code
++ shift
++ set +e
++ run_guard 16 1
++ local bytes=16 threads=1
++ tee guard-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=1
+PASS: 20164 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl16-t1 0
+STAGE=guard-vl16-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage guard-vl16-t4 run_guard 16 4
++ local name=guard-vl16-t4 code
++ shift
++ set +e
++ run_guard 16 4
++ local bytes=16 threads=4
++ tee guard-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=4
+PASS: 20164 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl16-t4 0
+STAGE=guard-vl16-t4 EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage guard-vl32-t1 run_guard 32 1
++ local name=guard-vl32-t1 code
++ shift
++ set +e
++ run_guard 32 1
++ local bytes=32 threads=1
++ tee guard-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=1
+PASS: 20164 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl32-t1 0
+STAGE=guard-vl32-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage guard-vl32-t4 run_guard 32 4
++ local name=guard-vl32-t4 code
++ shift
++ set +e
++ run_guard 32 4
++ local bytes=32 threads=4
++ tee guard-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=4
+PASS: 20164 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl32-t4 0
+STAGE=guard-vl32-t4 EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage guard-vl64-t1 run_guard 64 1
++ local name=guard-vl64-t1 code
++ shift
++ set +e
++ run_guard 64 1
++ local bytes=64 threads=1
++ tee guard-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=1
+PASS: 20164 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl64-t1 0
+STAGE=guard-vl64-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage guard-vl64-t4 run_guard 64 4
++ local name=guard-vl64-t4 code
++ shift
++ set +e
++ run_guard 64 4
++ local bytes=64 threads=4
++ tee guard-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=4
+PASS: 20164 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl64-t4 0
+STAGE=guard-vl64-t4 EXIT=0
++ return 0
++ stage build-dispatch build_logged build-dispatch.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
++ local name=build-dispatch code
++ shift
++ set +e
++ build_logged build-dispatch.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
++ local logfile=build-dispatch.log
++ shift
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
+ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch+ printf '\n'
+
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' build-dispatch 0
+STAGE=build-dispatch EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage dispatch-vl16-t1 run_dispatch 16 1
++ local name=dispatch-vl16-t1 code
++ shift
++ set +e
++ run_dispatch 16 1
++ local bytes=16 threads=1
++ tee dispatch-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 16 smoke
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=1
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl16-t1 0
+STAGE=dispatch-vl16-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage dispatch-vl16-t4 run_dispatch 16 4
++ local name=dispatch-vl16-t4 code
++ shift
++ set +e
++ run_dispatch 16 4
++ local bytes=16 threads=4
++ tee dispatch-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 16 smoke
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=4
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl16-t4 0
+STAGE=dispatch-vl16-t4 EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage dispatch-vl32-t1 run_dispatch 32 1
++ local name=dispatch-vl32-t1 code
++ shift
++ set +e
++ run_dispatch 32 1
++ local bytes=32 threads=1
++ tee dispatch-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 32 smoke
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=1
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl32-t1 0
+STAGE=dispatch-vl32-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage dispatch-vl32-t4 run_dispatch 32 4
++ local name=dispatch-vl32-t4 code
++ shift
++ set +e
++ run_dispatch 32 4
++ local bytes=32 threads=4
++ tee dispatch-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 32 smoke
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=4
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl32-t4 0
+STAGE=dispatch-vl32-t4 EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage dispatch-vl64-t1 run_dispatch 64 1
++ local name=dispatch-vl64-t1 code
++ shift
++ set +e
++ run_dispatch 64 1
++ local bytes=64 threads=1
++ tee dispatch-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 64 smoke
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=1
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl64-t1 0
+STAGE=dispatch-vl64-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage dispatch-vl64-t4 run_dispatch 64 4
++ local name=dispatch-vl64-t4 code
++ shift
++ set +e
++ run_dispatch 64 4
++ local bytes=64 threads=4
++ tee dispatch-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 64 smoke
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=4
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=480 SVE_TAIL_ACTUAL_ENTRIES=480
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=96
+SVE_ROWQUAD_ACTUAL_ENTRIES=96
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl64-t4 0
+STAGE=dispatch-vl64-t4 EXIT=0
++ return 0
++ stage build-assembly build_logged build-assembly.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -S conv2d.c -o conv2d-sve.s
++ local name=build-assembly code
++ shift
++ set +e
++ build_logged build-assembly.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -S conv2d.c -o conv2d-sve.s
++ local logfile=build-assembly.log
++ shift
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -S conv2d.c -o conv2d-sve.s
+ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -S conv2d.c -o conv2d-sve.s+ printf '\n'
+
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -S conv2d.c -o conv2d-sve.s
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' build-assembly 0
+STAGE=build-assembly EXIT=0
++ return 0
++ printf 'SANITIZER_STATUS=NOT_RUN; guard pages and bitwise reference checks only\n'
+SANITIZER_STATUS=NOT_RUN; guard pages and bitwise reference checks only
++ printf 'EXPECTED_TOTAL_CHECKS=%s\n' 121560
+EXPECTED_TOTAL_CHECKS=121560
++ stage complete printf 'PROBE_COMPLETE=1\n'
++ local name=complete code
++ shift
++ set +e
++ printf 'PROBE_COMPLETE=1\n'
+PROBE_COMPLETE=1
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' complete 0
+STAGE=complete EXIT=0
++ wait 1227840
++ return 0
++ finish
++ local code=0 log_code=0
++ trap - EXIT
++ exec
++ ((  code == 0 && log_code != 0  ))
++ printf '%s\n' 0
++ exit 0

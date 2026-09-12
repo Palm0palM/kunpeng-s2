@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C27-row3staged",
+  "parent": "C21-r7",
+  "strategy": "Keep the eighteen-accumulator tile but constrain GCC scheduling between per-vector three-row updates to reduce live input-window registers and target the observed c4 spill",
+  "created_at": "2026-09-11T11:32:28.028488+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "6df1ac9d226f8b74cdb87af6f4a080e83a927e4a0345c42a795e45012b8896ce",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C25-row3x6",
+  "comparison_baseline": "C21-r7",
+  "parent_note": "Measurement parent is predeclared closing C5 control; source_parent preserves derivation before measurement.",
+  "recorded_at": "2026-09-12T02:36:46.995762+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "3039edb9ed6898b488a0be5ed1036e5657fa909a5012f042e1cd2d0e2192fdcd",
+  "log": ".runs/conv/C27-row3staged/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        58.87,
+        58.91,
+        58.86
+      ],
+      "median_ms": 58.87,
+      "min_ms": 58.86,
+      "max_ms": 58.91,
+      "spread_pct": 0.08493290300661994,
+      "gflops": [
+        1280.4455,
+        1279.5338,
+        1280.5924
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        70.11,
+        70.2,
+        70.1
+      ],
+      "median_ms": 70.11,
+      "min_ms": 70.1,
+      "max_ms": 70.2,
+      "spread_pct": 0.14263300527743333,
+      "gflops": [
+        1187.2701,
+        1185.6171,
+        1187.4166
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        122.48,
+        122.46,
+        122.46
+      ],
+      "median_ms": 122.46,
+      "min_ms": 122.46,
+      "max_ms": 122.48,
+      "spread_pct": 0.016331863465629783,
+      "gflops": [
+        1315.065,
+        1315.3664,
+        1315.332
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        269.73,
+        269.76,
+        270.34
+      ],
+      "median_ms": 269.76,
+      "min_ms": 269.73,
+      "max_ms": 270.34,
+      "spread_pct": 0.22612692763936715,
+      "gflops": [
+        1281.9426,
+        1281.7743,
+        1279.0338
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 521.2,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1576034",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -3.72% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 57.01,
+        "candidate_ms": 58.87,
+        "gain_pct": -3.2625855113138034
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.33,
+        "candidate_ms": 70.11,
+        "gain_pct": -2.605005122201085
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.46,
+        "candidate_ms": 122.46,
+        "gain_pct": -3.3766672294445383
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.71,
+        "candidate_ms": 269.76,
+        "gain_pct": -4.271191681805888
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C21-r6",
+    "eligible": false,
+    "reasons": [
+      "提速 -3.75% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 57.02,
+        "candidate_ms": 58.87,
+        "gain_pct": -3.2444756225885554
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.4,
+        "candidate_ms": 70.11,
+        "gain_pct": -2.4999999999999907
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.41,
+        "candidate_ms": 122.46,
+        "gain_pct": -3.4203192297947784
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.55,
+        "candidate_ms": 269.76,
+        "gain_pct": -4.3357184297041105
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "comparison_to_confirmed_row4": {
+    "baseline": "C24-r1",
+    "eligible": false,
+    "reasons": [
+      "提速 -7.72% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 55.06,
+        "candidate_ms": 58.87,
+        "gain_pct": -6.919723937522694
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 65.67,
+        "candidate_ms": 70.11,
+        "gain_pct": -6.761078117862033
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 114.91,
+        "candidate_ms": 122.46,
+        "gain_pct": -6.570359411713513
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 248.19,
+        "candidate_ms": 269.76,
+        "gain_pct": -8.690922277287559
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Rejected: despite removing the vector spill, this staged schedule is 3.7193% slower than closing C5 in the same allocation. Preserve correct code and measurements, do not publish a submission ZIP."
+}

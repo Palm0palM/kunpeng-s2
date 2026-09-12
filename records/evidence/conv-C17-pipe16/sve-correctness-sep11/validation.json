@@ -1,0 +1,112 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C17-pipe16",
+  "job_id": "1507615",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1507615",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "ccd163c740c46ec7234948cd017d4bfe12ed43277dc8238ce4e185acc48409ff",
+    "check_conv_guard.c": "533cf6eb52a74eb13f33174741e46bf93b73c2f100d55999a632f18ac3a34fd1",
+    "check_sve_dispatch.c": "6adebfeae03eca0836bab48bad75f97d701c14e4df5df4a7cb1ef44d1549778f",
+    "conv2d.c": "482c951dd062cfcb9ca52afeb8d7317773e604725323070ce4a8bf1ef0da0af6",
+    "remote_job.sh": "e41727da8d255754122716c5c996a4d61d2215d5cd3c5a64a6b2b7c376ba4e3f"
+  },
+  "current_candidate_source_matches": true,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs": 64,
+      "full_cases": 3496,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs": 64,
+      "full_cases": 3496,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs": 128,
+      "full_cases": 3496,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs": 128,
+      "full_cases": 3496,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs": 256,
+      "full_cases": 3496,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs": 256,
+      "full_cases": 3496,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    }
+  ],
+  "full_cases": 20976,
+  "dispatch_cases": 144,
+  "total_cases": 21120,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "hot_loop_label": ".L41",
+    "hot_loop_instructions": 109,
+    "hot_loop_fmul": 32,
+    "hot_loop_fadd": 32,
+    "hot_loop_ext": 15,
+    "hot_loop_vector_spill_stores": 2,
+    "hot_loop_vector_spill_loads": 2,
+    "prefix_movprfx_count": 0,
+    "prefix_fma_count": 0,
+    "spill_eliminated": false,
+    "note": "Paired-kernel .L41 derives x1=sp+480, then str z14 [x1,#1,mul vl], ldr z14 [x1], ldr z14 [x1,#1,mul vl], str z14 [x1]. One live accumulator and one transient consume two vector stack slots. Do not mistake indirect x1 addressing for absence of stack spills. Further scalar address spills exist outside this loop. Separate strict fmul/fadd, no movprfx or FMA. The pipe16 scheduling did not eliminate vector spilling."
+  },
+  "evidence_directory": "raw"
+}

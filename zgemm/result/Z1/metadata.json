@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "problem": "zgemm",
+  "version": "Z1",
+  "source_experiment_id": "Z1-control2",
+  "parent_version": "Z0",
+  "source_history_aliases": [
+    "Z1-pack",
+    "Z1-pack-pair1",
+    "Z1-control2"
+  ],
+  "strategy": "将 A 重排为三行 K 优先连续微面板，NEON lane 读取九个分量；保持 3×4、MB24、3M 顺序。",
+  "recommendation_order": 1,
+  "recommendation": "优先提交",
+  "archive": "zgemm.zip",
+  "archive_sha256": "abc24285bd875eadab82fd43328506fc20f55e3a64c4ddb73492a55cd6fae221",
+  "archive_bytes": 8573,
+  "archive_layout": [
+    "zgemm/zgemm.c",
+    "zgemm/bench_zgemm.c",
+    "zgemm/run.sh",
+    "zgemm/README.md"
+  ],
+  "source_record": "../evidence/Z1-control2/record.json",
+  "initial_promotion_experiment_id": "Z1-pack-pair1",
+  "source_hashes": {
+    "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
+    "bench_zgemm.c": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+    "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+    "zgemm.c": "3a26f10b2080d057cace983db2fa26c375e654e219991e23e2e61eb58baefba9"
+  },
+  "latest_measurement_id": "Z1-control2",
+  "latest_total_median_ms": 3737.22,
+  "measurement_metric": "sum of three case medians; each median is from 3 independent suites, each suite value averages TEST_RUNS=3; not an official score",
+  "correctness": {
+    "official_cases_per_suite": 3,
+    "independent_suites_per_measurement": 3,
+    "passed_results_per_measurement": 9,
+    "max_absolute_error": 6.04e-12,
+    "tolerance": 1e-10
+  },
+  "measurements": [
+    {
+      "version": "Z1-pack-pair1",
+      "job_id": "1485263",
+      "recorded_at": "2026-09-08T01:33:56.093659+00:00",
+      "cases": [
+        {
+          "dims": [
+            7427,
+            7427,
+            256
+          ],
+          "times_ms": [
+            242.6,
+            242.3,
+            241.74
+          ],
+          "median_ms": 242.3,
+          "min_ms": 241.74,
+          "max_ms": 242.6,
+          "spread_pct": 0.35493190260007645,
+          "gflops": [
+            465.6538,
+            466.2338,
+            467.3169
+          ],
+          "max_error": 3.05e-12
+        },
+        {
+          "dims": [
+            14848,
+            14848,
+            256
+          ],
+          "times_ms": [
+            962.5,
+            963.35,
+            962.32
+          ],
+          "median_ms": 962.5,
+          "min_ms": 962.32,
+          "max_ms": 963.35,
+          "spread_pct": 0.10701298701298419,
+          "gflops": [
+            469.098,
+            468.6865,
+            469.1867
+          ],
+          "max_error": 3.51e-12
+        },
+        {
+          "dims": [
+            37360,
+            8192,
+            512
+          ],
+          "times_ms": [
+            2533.31,
+            2534.12,
+            2534.36
+          ],
+          "median_ms": 2534.12,
+          "min_ms": 2533.31,
+          "max_ms": 2534.36,
+          "spread_pct": 0.0414345019178327,
+          "gflops": [
+            494.8443,
+            494.6861,
+            494.6382
+          ],
+          "max_error": 6.04e-12
+        }
+      ],
+      "repeats": 3,
+      "total_median_ms": 3738.92,
+      "reference": "官方 benchmark 内置 reference_zgemm；无外部 BLAS",
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "status": "passed",
+      "verified": true,
+      "log_sha256": "1c91bcb2ba301739ea58b852285213cee2c3cc89cfd30e7624de6b6dd9e827c5",
+      "environment": {
+        "hardware": "HiSilicon aarch64",
+        "host_alias": "compute-node-A",
+        "numa_node": 3,
+        "cpus": "114-151",
+        "threads": 38,
+        "compiler": "GCC 10.3.1",
+        "flags": [
+          "-O3",
+          "-ffp-contract=off",
+          "-fopenmp",
+          "-mcpu=generic"
+        ],
+        "test_runs_per_case": 3,
+        "independent_suites": 3
+      }
+    },
+    {
+      "version": "Z1-control2",
+      "job_id": "1485352",
+      "recorded_at": "2026-09-08T01:51:58.993819+00:00",
+      "cases": [
+        {
+          "dims": [
+            7427,
+            7427,
+            256
+          ],
+          "times_ms": [
+            243.21,
+            242.76,
+            242.09
+          ],
+          "median_ms": 242.76,
+          "min_ms": 242.09,
+          "max_ms": 243.21,
+          "spread_pct": 0.46136101499423493,
+          "gflops": [
+            464.4905,
+            465.355,
+            466.6333
+          ],
+          "max_error": 3.05e-12
+        },
+        {
+          "dims": [
+            14848,
+            14848,
+            256
+          ],
+          "times_ms": [
+            962.34,
+            963.83,
+            962.7
+          ],
+          "median_ms": 962.7,
+          "min_ms": 962.34,
+          "max_ms": 963.83,
+          "spread_pct": 0.15477303417471788,
+          "gflops": [
+            469.1764,
+            468.4523,
+            469.0
+          ],
+          "max_error": 3.51e-12
+        },
+        {
+          "dims": [
+            37360,
+            8192,
+            512
+          ],
+          "times_ms": [
+            2530.06,
+            2535.16,
+            2531.76
+          ],
+          "median_ms": 2531.76,
+          "min_ms": 2530.06,
+          "max_ms": 2535.16,
+          "spread_pct": 0.2014408948715482,
+          "gflops": [
+            495.4792,
+            494.4832,
+            495.1462
+          ],
+          "max_error": 6.04e-12
+        }
+      ],
+      "repeats": 3,
+      "total_median_ms": 3737.2200000000003,
+      "reference": "官方 benchmark 内置 reference_zgemm；无外部 BLAS",
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "status": "passed",
+      "verified": true,
+      "log_sha256": "6e9a4caf8cad1f237b79cdfdf724d883b18e43d04c2fd93eae1d63210302601b",
+      "environment": {
+        "hardware": "HiSilicon aarch64",
+        "host_alias": "compute-node-A",
+        "numa_node": 3,
+        "cpus": "114-151",
+        "threads": 38,
+        "compiler": "GCC 10.3.1",
+        "flags": [
+          "-O3",
+          "-ffp-contract=off",
+          "-fopenmp",
+          "-mcpu=generic"
+        ],
+        "test_runs_per_case": 3,
+        "independent_suites": 3
+      }
+    }
+  ],
+  "official_score": null,
+  "ranking": null,
+  "submission_date": null,
+  "platform_feedback": null,
+  "source_unmodified": true,
+  "new_cluster_test_performed_for_packaging": false,
+  "verification": "ZIP integrity, four file layout, each extracted SHA-256, measured snapshot and remote source manifest checked; run.sh has Unix mode 0755.",
+  "controlled_promotion": {
+    "base": "Z0-pair1",
+    "candidate": "Z1-pack-pair1",
+    "base_total_median_ms": 4554.89,
+    "candidate_total_median_ms": 3738.92,
+    "time_reduction_pct": 17.91415379954291,
+    "job_id": "1485263",
+    "same_allocation": true,
+    "sequential_not_interleaved": true
+  }
+}

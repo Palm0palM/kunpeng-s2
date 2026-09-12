@@ -1,0 +1,943 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C45-row4dup4",
+  "job_id": "1579762",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579762",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "expected_checks": {
+    "full_per_configuration": 20164,
+    "dispatch_per_configuration": 96,
+    "direct_per_configuration": 0,
+    "configurations": 6,
+    "total": 121560
+  },
+  "total_cases": 121560,
+  "full_cases": 120984,
+  "dispatch_cases": 576,
+  "direct_cases": 0,
+  "runner_cases": 0,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 20164,
+      "dispatch_cases": 96,
+      "direct_cases": 0,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true,
+      "entry_check_scope": "Aggregate original C32 smoke entries; no per-case new-loop count or worker mask"
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 20164,
+      "dispatch_cases": 96,
+      "direct_cases": 0,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true,
+      "entry_check_scope": "Aggregate original C32 smoke entries; no per-case new-loop count or worker mask"
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 20164,
+      "dispatch_cases": 96,
+      "direct_cases": 0,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true,
+      "entry_check_scope": "Aggregate original C32 smoke entries; no per-case new-loop count or worker mask"
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 20164,
+      "dispatch_cases": 96,
+      "direct_cases": 0,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true,
+      "entry_check_scope": "Aggregate original C32 smoke entries; no per-case new-loop count or worker mask"
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 20164,
+      "dispatch_cases": 96,
+      "direct_cases": 0,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true,
+      "entry_check_scope": "Aggregate original C32 smoke entries; no per-case new-loop count or worker mask"
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 20164,
+      "dispatch_cases": 96,
+      "direct_cases": 0,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true,
+      "entry_check_scope": "Aggregate original C32 smoke entries; no per-case new-loop count or worker mask"
+    }
+  ],
+  "source_hashes": {
+    "candidate.env": "c3b865c164f5d0f794f58ee58bd9887c4c83040958de3971ed111a4db0180fa0",
+    "check_conv_guard.c": "cc863350467de6ab4d51847bbaba0c394daea77aa7c5f1201113ed527e362c37",
+    "check_sve_dispatch.c": "58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1",
+    "conv2d.c": "d428611f068b81befa4412a6bd11480468e3b7816906647d15cc0e9265c866a5",
+    "remote_job.sh": "8078f0056bc4224636393cca44e1b938edf08add8f03b6d2e22e92c6de0a2ff1"
+  },
+  "source_hashes_verified": true,
+  "source_manifest_remote_matches": true,
+  "extra_manual_hash_audit": false,
+  "compiler_version": "10.3.1",
+  "build_commands": {
+    "commands": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=4",
+        "-DCHECK_ROWTRIPLE=1",
+        "-DCHECK_ROWQUAD=1",
+        "check_conv_guard.c",
+        "conv2d.c",
+        "-o",
+        "check_conv_guard"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=4",
+        "-DCHECK_ROWTRIPLE=1",
+        "-DCHECK_ROWQUAD=1",
+        "-finstrument-functions",
+        "check_sve_dispatch.c",
+        "-o",
+        "check_sve_dispatch"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=4",
+        "-DCHECK_ROWTRIPLE=1",
+        "-DCHECK_ROWQUAD=1",
+        "-S",
+        "conv2d.c",
+        "-o",
+        "conv2d-sve.s"
+      ]
+    ],
+    "actual_trace_locations": {
+      "probe.log": [
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=4",
+          "-DCHECK_ROWTRIPLE=1",
+          "-DCHECK_ROWQUAD=1",
+          "check_conv_guard.c",
+          "conv2d.c",
+          "-o",
+          "check_conv_guard"
+        ],
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=4",
+          "-DCHECK_ROWTRIPLE=1",
+          "-DCHECK_ROWQUAD=1",
+          "-finstrument-functions",
+          "check_sve_dispatch.c",
+          "-o",
+          "check_sve_dispatch"
+        ],
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=4",
+          "-DCHECK_ROWTRIPLE=1",
+          "-DCHECK_ROWQUAD=1",
+          "-S",
+          "conv2d.c",
+          "-o",
+          "conv2d-sve.s"
+        ]
+      ],
+      "build-guard.log": [],
+      "build-dispatch.log": [],
+      "build-assembly.log": []
+    }
+  },
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "allocation": {
+    "cpus": [
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113
+    ],
+    "numa_node": "node2"
+  },
+  "assembly": {
+    "candidate": "C45-row4dup4",
+    "job_id": "1579762",
+    "source_sha256": "d428611f068b81befa4412a6bd11480468e3b7816906647d15cc0e9265c866a5",
+    "compiler_version": "10.3.1",
+    "assembly_sha256": "d6d4547d7d3770d22319bfbeae7cb2a790cd34ebc4dc6efc8dfdf79d3a34bba2",
+    "review_scope": "Actual helper-only fragment; Bohr independently supplies conv2d/outlined-dispatch review before Avicenna merges and accepts. No object retained by this wrapper.",
+    "review_complete": true,
+    "production_uninstrumented": true,
+    "whole_helper_stack_reviewed": true,
+    "all_stages_and_transitions_reviewed": true,
+    "abi_saves_distinguished": true,
+    "whole_source_fma_count": 0,
+    "whole_source_fma_reviewed": true,
+    "production_object_disassembly_available": false,
+    "helpers": [
+      {
+        "symbol": "conv_sve_rowquad",
+        "line_start": 3997,
+        "line_end": 5998,
+        "actual_clones": [],
+        "stack_frame_description": "ADDVL sp,-6 then SUB sp,784 creates fixed784 bytes plus6 runtime VL bytes. Integer/pointer locals and X-register saves use the fixed frame. STP/LDP d8..d15 at sp+112/128/144/160 are ABI low64-bit preservation, distinct from six scalable accumulator slots starting sp+784.",
+        "vector_spill_loads": 29,
+        "vector_spill_stores": 39,
+        "spill_count_scope": "Static instruction sites in the entire helper including setup, branch-only initialization, remainders and output reloads; not dynamic counts per call. Stores include vector zero initialization of stack-resident accumulators.",
+        "spill_notes": "All29 vector loads and39 vector stores in this helper target the six slots via x0/x1/x3/x4/x5/x9/x15=sp+784; no Q/predicate spill observed. The output pointer bundle is separately at sp+632..656 and is accessed with integer LDP/STP, then its loaded external pointers feed16 ST1W. First stack slot c1 persists through input_2 remainder and the b/c/d trailing stages; other five are materialized at shared entry and largely reloaded at its exit. Slots are traced to final stores: dst2 vector1 reads slot0, dst0 vector1 derives slot2, dst3 vectors0..3 derive slots1/3/4/5.",
+        "spill_slot_mapping": [
+          {
+            "offset": "sp+784",
+            "accumulator": "c1"
+          },
+          {
+            "offset": "sp+784+1*VL",
+            "accumulator": "d0"
+          },
+          {
+            "offset": "sp+784+2*VL",
+            "accumulator": "a1"
+          },
+          {
+            "offset": "sp+784+3*VL",
+            "accumulator": "d1"
+          },
+          {
+            "offset": "sp+784+4*VL",
+            "accumulator": "d2"
+          },
+          {
+            "offset": "sp+784+5*VL",
+            "accumulator": "d3"
+          }
+        ],
+        "transition_spill_review": "Read entire3997..5998 including out-of-line fallback/initialization labels. input_2 pair exit4581/4582 spills c1; its remaining-column paths4613/4615 and4663 update that slot, and .L369 initializes the same slot on skipped pair path. shared setup4696..4700 initializes d0/d1/d2/d3 and spills a1. Four-column hot loop has6 loads+6 stores. Pair remainder setup4940..4945 reloads all six;5042..5047 spills them after the pair loop. Single-column copies5056..5183 retain six slots. Shared exit5196..5200 reloads five,5213 loads c1 for trailing_0; trailing_0 and trailing_1 pair exits and their scalar paths repeatedly preserve c1;5642 loads it for the final dst2+1VL store. These accesses are real even though the six nonshared main loops and inner pair remainder have zero spill. No vector live output crosses fallback calls.",
+        "tail_and_fallback_review": "Entry kh<=3 branches .L325 to rowtriple+prefix; width<CNTB (4*svcntw outputs) branches .L389/.L327. Final horizontal partial block uses .L391 rowtriple at column i and prefix for fourth row, with ow-i and original input stride; each epilogue restores fixed784+6VL and ABI saves. Shared .L347 kw<=3 branch .L370 skips all LD1RQW and sets ik=0 for old pair/one-column handling; four-column LD1RQW therefore only reads four in-range coefficients. Earlier/later stages retain pair/unpaired order. Full input windows remain bounded by4VL block and current legal column; no extra full vector is introduced.",
+        "stages": [
+          {
+            "stage": "input_0",
+            "label": ".L329",
+            "line_start": 4278,
+            "line_end": 4310,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input row0 / kernel row0 -> output a.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector stack access within this paired arithmetic loop; input and coefficient loads point to external buffers. See whole-helper notes for stack traffic in adjacent setup/remainder/exit paths.",
+            "observed_counts": {
+              "instructions": 32,
+              "fmul": 8,
+              "fmul_ordinary": 8,
+              "fmul_indexed": 0,
+              "fadd": 8,
+              "ld1w": 5,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 3,
+              "movprfx": 0
+            },
+            "derived_counts": {
+              "instructions": 32,
+              "fmul": 8,
+              "fmul_ordinary": 8,
+              "fmul_indexed": 0,
+              "fadd": 8,
+              "ld1w": 5,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 3,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_1",
+            "label": ".L333",
+            "line_start": 4360,
+            "line_end": 4415,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input row1 / kernel rows1,0 -> outputs a,b.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector stack access within this paired arithmetic loop; input and coefficient loads point to external buffers. See whole-helper notes for stack traffic in adjacent setup/remainder/exit paths.",
+            "observed_counts": {
+              "instructions": 55,
+              "fmul": 16,
+              "fmul_ordinary": 16,
+              "fmul_indexed": 0,
+              "fadd": 16,
+              "ld1w": 5,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 3,
+              "movprfx": 3
+            },
+            "derived_counts": {
+              "instructions": 55,
+              "fmul": 16,
+              "fmul_ordinary": 16,
+              "fmul_indexed": 0,
+              "fadd": 16,
+              "ld1w": 5,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 3,
+              "movprfx": 3
+            }
+          },
+          {
+            "stage": "input_2",
+            "label": ".L338",
+            "line_start": 4505,
+            "line_end": 4580,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input row2 / kernel rows2,1,0 -> outputs a,b,c.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector stack access within this paired arithmetic loop; input and coefficient loads point to external buffers. See whole-helper notes for stack traffic in adjacent setup/remainder/exit paths.",
+            "observed_counts": {
+              "instructions": 75,
+              "fmul": 24,
+              "fmul_ordinary": 24,
+              "fmul_indexed": 0,
+              "fadd": 24,
+              "ld1w": 5,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 3,
+              "movprfx": 3
+            },
+            "derived_counts": {
+              "instructions": 75,
+              "fmul": 24,
+              "fmul_ordinary": 24,
+              "fmul_indexed": 0,
+              "fadd": 24,
+              "ld1w": 5,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 3,
+              "movprfx": 3
+            }
+          },
+          {
+            "stage": "shared",
+            "label": ".L342",
+            "line_start": 4734,
+            "line_end": 4919,
+            "kernel_columns_per_iteration": 4,
+            "source_mapping": "The enclosing .L347 iterates t=3..kh-1; kernel rows t,t-1,t-2,t-3 contribute to a,b,c,d. Each four-column iteration uses four LD1RQW plus16 DUP to form scalar coefficient broadcasts,16 shifted input LD1W,64 ordinary FMUL and64 dependent FADD; each accumulator retains q0->q1->q2->q3. ik advances4 and coefficient byte offset16.",
+            "vector_spill_loads": 6,
+            "vector_spill_stores": 6,
+            "spill_notes": "Six accumulator slots at sp+784+[0..5]*VL are each loaded and stored once per four-column iteration through x15=sp+784. They hold c1,d0,a1,d1,d2,d3 respectively; these are true vector spills, not ABI D-register saves.",
+            "observed_counts": {
+              "instructions": 185,
+              "fmul": 64,
+              "fmul_ordinary": 64,
+              "fmul_indexed": 0,
+              "fadd": 64,
+              "ld1w": 16,
+              "ld1rw": 0,
+              "ld1rqw": 4,
+              "dup": 16,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts": {
+              "instructions": 185,
+              "fmul": 64,
+              "fmul_ordinary": 64,
+              "fmul_indexed": 0,
+              "fadd": 64,
+              "ld1w": 16,
+              "ld1rw": 0,
+              "ld1rqw": 4,
+              "dup": 16,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_0",
+            "label": ".L349",
+            "line_start": 5220,
+            "line_end": 5295,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input rowkh / kernel rowskh-1,kh-2,kh-3 -> outputs b,c,d.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector stack access within this paired arithmetic loop; input and coefficient loads point to external buffers. See whole-helper notes for stack traffic in adjacent setup/remainder/exit paths.",
+            "observed_counts": {
+              "instructions": 75,
+              "fmul": 24,
+              "fmul_ordinary": 24,
+              "fmul_indexed": 0,
+              "fadd": 24,
+              "ld1w": 5,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 3,
+              "movprfx": 3
+            },
+            "derived_counts": {
+              "instructions": 75,
+              "fmul": 24,
+              "fmul_ordinary": 24,
+              "fmul_indexed": 0,
+              "fadd": 24,
+              "ld1w": 5,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 3,
+              "movprfx": 3
+            }
+          },
+          {
+            "stage": "trailing_1",
+            "label": ".L353",
+            "line_start": 5411,
+            "line_end": 5466,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input rowkh+1 / kernel rowskh-1,kh-2 -> outputs c,d.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector stack access within this paired arithmetic loop; input and coefficient loads point to external buffers. See whole-helper notes for stack traffic in adjacent setup/remainder/exit paths.",
+            "observed_counts": {
+              "instructions": 55,
+              "fmul": 16,
+              "fmul_ordinary": 16,
+              "fmul_indexed": 0,
+              "fadd": 16,
+              "ld1w": 5,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 3,
+              "movprfx": 3
+            },
+            "derived_counts": {
+              "instructions": 55,
+              "fmul": 16,
+              "fmul_ordinary": 16,
+              "fmul_indexed": 0,
+              "fadd": 16,
+              "ld1w": 5,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 3,
+              "movprfx": 3
+            }
+          },
+          {
+            "stage": "trailing_2",
+            "label": ".L357",
+            "line_start": 5556,
+            "line_end": 5588,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input rowkh+2 / kernel rowkh-1 -> output d.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector stack access within this paired arithmetic loop; input and coefficient loads point to external buffers. See whole-helper notes for stack traffic in adjacent setup/remainder/exit paths.",
+            "observed_counts": {
+              "instructions": 32,
+              "fmul": 8,
+              "fmul_ordinary": 8,
+              "fmul_indexed": 0,
+              "fadd": 8,
+              "ld1w": 5,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 3,
+              "movprfx": 0
+            },
+            "derived_counts": {
+              "instructions": 32,
+              "fmul": 8,
+              "fmul_ordinary": 8,
+              "fmul_indexed": 0,
+              "fadd": 8,
+              "ld1w": 5,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 3,
+              "movprfx": 0
+            }
+          }
+        ],
+        "shared_remainders": [
+          {
+            "loop": "remainder2",
+            "line_start": 4947,
+            "line_end": 5040,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Actual .L344 pair loop advances ik by2 after the four-column body. All16 accumulators are loaded into registers before entry and saved after exit; inner body has32 FMUL/32 FADD and8 input/8 scalar broadcast loads.",
+            "spill_notes": "Counts exclude adjacent setup/exit; whole-helper notes retain those accesses. No hidden stack via input load; explicit vector LDR/STR addresses are sp+784 plus VL slots.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "observed_counts": {
+              "instructions": 93,
+              "fmul": 32,
+              "fmul_ordinary": 32,
+              "fmul_indexed": 0,
+              "fadd": 32,
+              "ld1w": 8,
+              "ld1rw": 8,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts": {
+              "instructions": 93,
+              "fmul": 32,
+              "fmul_ordinary": 32,
+              "fmul_indexed": 0,
+              "fadd": 32,
+              "ld1w": 8,
+              "ld1rw": 8,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "loop": "remainder1",
+            "line_start": 5056,
+            "line_end": 5125,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "First guarded one-column copy under .L343 after pair remainder, with16 FMUL/16 FADD,4 input loads and4 scalar broadcasts. Preserves original next ik position; six stack-resident accumulators are each loaded/written. A second compiler-emitted guarded copy5126..5183 is separately accounted below, not folded into one-column work.",
+            "spill_notes": "Counts exclude adjacent setup/exit; whole-helper notes retain those accesses. No hidden stack via input load; explicit vector LDR/STR addresses are sp+784 plus VL slots.",
+            "vector_spill_loads": 6,
+            "vector_spill_stores": 6,
+            "observed_counts": {
+              "instructions": 70,
+              "fmul": 16,
+              "fmul_ordinary": 16,
+              "fmul_indexed": 0,
+              "fadd": 16,
+              "ld1w": 4,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "derived_counts": {
+              "instructions": 70,
+              "fmul": 16,
+              "fmul_ordinary": 16,
+              "fmul_indexed": 0,
+              "fadd": 16,
+              "ld1w": 4,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          }
+        ],
+        "additional_shared_one_column_copy": {
+          "line_start": 5126,
+          "line_end": 5183,
+          "kernel_columns_per_iteration": 1,
+          "source_mapping": "Second separately guarded straight-line one-column copy; compiler retains it behind the 5124/5125 kw comparison. Do not claim it is executed for every remainder or delete it from whole-helper review.",
+          "observed_counts": {
+            "instructions": 58,
+            "fmul": 16,
+            "fmul_ordinary": 16,
+            "fmul_indexed": 0,
+            "fadd": 16,
+            "ld1w": 4,
+            "ld1rw": 4,
+            "ld1rqw": 0,
+            "dup": 0,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 6,
+          "spill_notes": "Uses prior one-column results retained in registers and writes six updated slots; six stores and no vector reload within this second copy."
+        },
+        "nonshared_remainder_review": "input_0 scalar loop.L331=4325..4342; input_1 straight-line scalar copies4416..4486; input_2 .L337 remaining paths4583..4678; trailing_0 .L348 paths5298..5393; trailing_1 .L352 paths5469..5543; trailing_2 .L356 paths5594..5638. All were read including guards and possible second single-column copy. c1 spills in input_2/trailing_0/trailing_1 remain included in29/39 full-helper counts; input_0/input_1/trailing_2 have no vector spills.",
+        "observed_function_counts": {
+          "instructions": 1822,
+          "fmul": 316,
+          "fmul_ordinary": 316,
+          "fmul_indexed": 0,
+          "fadd": 316,
+          "ld1w": 106,
+          "ld1rw": 63,
+          "ld1rqw": 4,
+          "dup": 16,
+          "ext": 18,
+          "movprfx": 12
+        }
+      }
+    ],
+    "codegen_comparison": {
+      "review_complete": true,
+      "distinct_from_prior_machine_arrangements": true,
+      "prior_versions": [
+        "C29-row4lane4",
+        "C32-row4lane4staged"
+      ],
+      "normalization": "All three actual shared-loop ranges perform4 kernel columns on16 output-vector accumulators (64 FMUL+64 FADD), using16 input LD1W and4 LD1RQW. Compare the complete four-column loop including backedge; source rows/columns are identical. Static per-column instruction figures185/4=46.25,161/4=40.25,159/4=39.75 are not cycles or measured speed.",
+      "notes": "C45 genuinely emits16 DUP and64 ordinary FMUL with zero indexed FMUL. C29 and C32 emit64 indexed FMUL, each lane0..3 used16 times; therefore this difference cannot be a register-renaming artifact. C45 all16 original input windows are loaded by4784 and remain needed for b/c/d, with row-oriented arithmetic and six accumulator spills. C29 similarly retains16 inputs but rotates packed coefficients in low z2/z1, has no DUP and2 load+2store spill sites. C32 bounds the first two horizontal vectors before loading the later two, keeps coefficient values across the compiler scheduling boundary with3 MOV, and has no vector stack access in its159-instruction main loop. Its source memory clobber is not a hardware fence. These assembly observations do not establish a hardware latency/cache/throughput bottleneck or speed ranking; no allocation-crossing performance comparison is made.",
+      "actual_loop_evidence": [
+        {
+          "version": "C45-row4dup4",
+          "path": "raw/conv2d-sve.s",
+          "line_start": 4734,
+          "line_end": 4919,
+          "instructions": 185,
+          "fmul_ordinary": 64,
+          "fmul_indexed": 0,
+          "dup": 16,
+          "vector_spill_loads": 6,
+          "vector_spill_stores": 6
+        },
+        {
+          "version": "C29-row4lane4",
+          "path": ".runs/conv/C29-row4lane4/sve-correctness-sep12b/raw/conv2d-sve.s",
+          "line_start": 4730,
+          "line_end": 4891,
+          "instructions": 161,
+          "fmul_ordinary": 0,
+          "fmul_indexed": 64,
+          "dup": 0,
+          "vector_spill_loads": 2,
+          "vector_spill_stores": 2
+        },
+        {
+          "version": "C32-row4lane4staged",
+          "path": ".runs/conv/C32-row4lane4staged/sve-correctness-sep12c/raw/conv2d-sve.s",
+          "line_start": 4720,
+          "line_end": 4879,
+          "instructions": 159,
+          "fmul_ordinary": 0,
+          "fmul_indexed": 64,
+          "dup": 0,
+          "mov": 3,
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0
+        }
+      ]
+    },
+    "performance_measured": false,
+    "promotion_decision": "none",
+    "executed_locally": false,
+    "dispatch_reviewed": true,
+    "dispatch_functions": [
+      {
+        "symbol": "conv2d._omp_fn.1",
+        "line_start": 662,
+        "line_end": 2269,
+        "role": "Legacy non-SVE row-parallel worker, inline NEON tiles plus preserved conditional prefix branch.",
+        "control_flow_notes": "omp_get_num_threads/thread_num at680/682 divide output height into quotient/remainder static row intervals (.L58/.L141); empty intervals exit.L57. .L67 builds the current input row and output row. Captured use_sve at+48 is loaded tosp172; public non-SVE branch passes zero, so .L60 call conv_sve_prefix at1556 is not taken from that public path. .L61/.L124/.L110/.L98/.L88/.L78 select32/16/8/4/2/1 width tiles; .L76 advances input stride, global output ow and row index. Full trailing cold labels rejoin the matching kw loops and do not introduce allocation or cross-row writes. All branches/calls from label through.size were covered; no malloc/memcpy/free or instrumentation calls.",
+        "stack_notes": "Fixed368-byte frame. Scalar ABI x19..x28/x29/x30; d8..d15 low64bits preserved by4 paired STP at745/748/751/754 and4 paired LDP at1465/1468/1471/1474. sp160..239 contains scalar row/loop state; sp240..367 is the local output tile array. x18=sp240 aliases at769/1185 are used by GPR LDP copying completed arrays to output, not hidden SVE reloads.14 static STR Q instructions at1135..1156(8),1412..1421(4),2059/2062(2) materialize completed32/16/8-float tiles after kh loops. Subsequent GPR LDP/STP copies are at1159..1177,1424..1434,2065..2070. No non-ABI vector stack reload or hotspot accumulator spill/reload pair observed. Real materialization and ABI traffic must not be reported as a stack-free program.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "vector_stack_materialization_stores": 14,
+        "abi_fp_save_pair_instructions": 4,
+        "abi_fp_restore_pair_instructions": 4,
+        "actual_assembly_comparison": "As a scope check, all1409 instruction lines of this returned C45 worker were compared with actual returned H/C43 legacy worker instructions, normalizing only local-label spelling to definition position and whitespace. They are equal; actual C45 labels/ranges and all stack accesses above were independently read. This is compiler-text evidence, not C45 production-object or whole-program identity."
+      },
+      {
+        "symbol": "conv2d._omp_fn.0",
+        "line_start": 6003,
+        "line_end": 6182,
+        "role": "SVE static four-output-row group dispatcher.",
+        "control_flow_notes": "Actual capture offsets0=input,8=kernel,16=output,24=input stride,32/36=kh/kw,40/44=oh/ow,48=ceil(oh/4). OMP queries at6022/6024 calculate contiguous static group partitions (.L394/.L402); first row is group<<2 and remaining=oh-first. Input base uses first*stride, destination uses first*global ow. .L398 remaining>3 calls quad at6103; remaining3 .L399 calls triple6168;2 .L400 calls pair6153;1 via.L404 calls prefix6075. Remaining cannot be zero in a valid group. .L401 advances input by4*stride floats and output by4*ow floats, reducing remaining by4 and exiting at stored group end. Destination rows1/2/3 derive from global ow, and row2/3 helper pointers are passed only in sufficient-row branches. No changed width, allocation, copy, fixed testcase detection or work overlap in dispatcher; horizontal main/remainder work is inside the helpers reviewed separately.",
+        "stack_notes": "Fixed160-byte frame, scalar saves x19..x28/x29/x30; sp124 group end,sp128 four-row input-byte step,sp136 kernel pointer across calls,sp144/152 output row offsets. Outgoing quad arguments use sp0/sp8 and triple ow uses sp0. No vector operations or vector stack spill; scalar pointer reloads and outgoing ABI arguments are distinct from vector accumulator spills. Full prologue, zero-work exit, helper call branches and restores through.size reviewed.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "symbol": "conv2d",
+        "line_start": 6187,
+        "line_end": 6318,
+        "role": "Public invalid-dimension guard and HWCAP SVE/non-SVE dispatch.",
+        "control_flow_notes": "Entry checks kh>0/kw>0 before frame allocation; invalid path.L411 returns. It checks kh<=height/kw<=width before subtraction; valid.L414 computes positive oh/ow and converts original width to stride. getauxval(16) at6239 and TBNZbit22 select.L415 SVE or the non-SVE worker. Non-SVE capture atsp88..139 preserves original input/kernel/output/stride and stores use_sve=0 atsp136; GOMP_parallel6251 invokes fn1. SVE.L415 uses tst/asr/cinc for oh/4+(oh%4!=0), avoidingoh+3, captures same addresses/dimensions with groupcountsp136 and invokes fn0 at6298. For positive int oh, valid group*4<=oh-1 so the worker first-row shift is safe; pointer arithmetic remains under the valid-buffer contract. Both branches return only after GOMP join and restore the frame. No malloc/free/memcpy or candidate-specific fast path added here.",
+        "stack_notes": "Fixed144-byte frame on positive-kernel path, scalar saves x19..x26/x29/x30 and captured data sp88..139. Nonpositive kernel exit uses no frame. Both dimension-failure return and SVE/non-SVE exits restore matching saved registers. No FP/SVE instructions or vector stack operations in public function; no accumulator state crosses GOMP calls.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      }
+    ],
+    "dispatch_review_notes": {
+      "review_scope": "Actual returned uninstrumented compiler assembly only: complete conv2d and both OMP workers, label through .size. Quad seven phases, new four-column codegen and prior C29/C32 comparison belong to the independent quad reviewer.",
+      "build_evidence": "probe.log actual + gcc at line372 emits -S conv2d.c with GCC10.3.1 -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp and EXPECTED_ACC=4/CHECK_ROWTRIPLE=1/CHECK_ROWQUAD=1. It does not use -finstrument-functions. The latter exists only in separate dispatch binary command at line219. The correctness binary line90 builds guard and candidate as separate TUs. No production .o or object disassembly is returned, so no instruction/object agreement claim is made.",
+      "coverage_limit": "The I six configurations exercise SVE hardware and separate instrumented helper-entry diagnostics; no forced public non-SVE execution is claimed by this static fragment. Whole-helper codegen/FMA/spill classification and aggregate numerical acceptance are separate coordinator gates. Only .s is available, not production .o; no local compilation, assembler, disassembler, test, SSH or job performed.",
+      "review_conclusion": "No dispatch/control-flow or stack-accounting blocker found in the actual returned C45 compiler assembly. All three actual conv2d/OMP functions are accounted for. Quad codegen distinction and any subsequent performance decision remain pending the independent review/coordinator; C6 unchanged."
+    },
+    "review_fragments": [
+      "assembly-helper-review.json",
+      "assembly-dispatch-review.json"
+    ],
+    "merge_notes": "Complete independent actual helper and dispatch reviews of the same C45 uninstrumented compiler assembly. No production object is available. Spill and codegen distinction are observations, not performance eligibility.",
+    "stage_count": 7,
+    "fma_count": 0,
+    "transitions_reviewed": true,
+    "performance_submission_automatic": false
+  },
+  "performance_measured": false,
+  "performance_requires_root_review": true,
+  "automatic_performance_submission": false,
+  "spill_is_correctness_failure": false,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "note": "Actual independent I diagnostics only; old C32/C41/C42 logs provide no candidate PASS. No speed or promotion claim."
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C52-row7x3shared2",
+  "parent": "C26-r27",
+  "strategy": "Unroll only rowseven shared-stage kernel-column loop by2, with separate per-column scopes and original u1 odd remainder; preserve per-accumulator ik then ik+1 order,7rows x3VL/21acc, other12 phases and all fallback/dispatch bytes. Hypothesis: amortize shared loop/address overhead, with unmeasured liveness/code-size risk. Source preparation only.",
+  "created_at": "2026-09-12T16:43:18.312321+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C51-row7x3u1",
+  "source_parent_frozen_directory": ".runs/conv/C51-row7x3u1/sve-correctness-sep13q",
+  "source_parent_diagnostic_job_id": "1581822",
+  "source_parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "rows_per_group": 7,
+  "vectors_per_row": 3,
+  "total_accumulators": 21,
+  "stage_count": 13,
+  "shared_kernel_columns_per_iteration": 2,
+  "other_stage_kernel_columns_per_iteration": 1,
+  "shared_odd_remainder_columns_per_iteration": 1,
+  "formal_best_label": "C6",
+  "source_scope": "Only the shared inner kernel-column loop changed; original other12 stages,21 output stores,all fallback/dispatch and other submission files unchanged.",
+  "source_hypothesis": "Amortize Q shared63-instruction loop control/address cost with two sequential column bodies; target scheduling,live ranges,spills,code size and speed remain unmeasured.",
+  "runtime_validation_status": "Not compiled or run; parent Q PASS does not imply C52 correctness or performance.",
+  "prepared_execution_policy": "Source preparation only. No compiler,diagnostic,SSH,job,benchmark,ZIP or promotion. R1581911 remains root-owned and no result is inferred.",
+  "comparison_baseline": "C26-r27",
+  "reference_only": false,
+  "promotion_allowed": true,
+  "qualified_for_confirmation": false,
+  "confirmation_only": false,
+  "failed_confirmation_retry_allowed": false,
+  "diagnostic_source_version": "C52-row7x3shared2",
+  "diagnostic_evidence_directory": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t",
+  "diagnostic_job_id": "1582134",
+  "diagnostic_source_sha256": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+  "reused_identical_source_diagnostic": false
+}

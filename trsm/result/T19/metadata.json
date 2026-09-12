@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "submission_version": "T19",
+  "implementation_experiment": "T19-panel8x16budget",
+  "source_ref": "56d0ef562344cefc99ef5bc60a6c4cbc17adc800",
+  "source_package": "../../../outputs/trsm-best.zip",
+  "source_metadata": "../../../outputs/trsm-best.json",
+  "source_created_at": "2026-09-12T16:04:20.249057+00:00",
+  "release_tag": "trsm-t19-panel8x16budget-20260912-r16",
+  "strategy": "同步队友已验证并晋级的T19完整实现。超预算小路径采用8x16历史前代及paired RHS8 scratch；大路径保持完整T18后缀。只复制原ZIP，不修改实现、重新压缩或新增测速。",
+  "implementation_provenance": {
+    "small_path": "T19 8x16 forward-history kernel only for safely computed over-budget small path; paired RHS8 scratch",
+    "large_path": "Unchanged complete T18 suffix, originally T13-sve4x32, from KB256/CT64 enum",
+    "immediate_source": "T18-budgetwide",
+    "derivation_sources_promoted_when_combined": false,
+    "final_target_requires_own_verified_promotion": true,
+    "packed_history_budget_bytes": 4194304,
+    "KB": 256,
+    "CT": 64
+  },
+  "recommended": true,
+  "ready_for_manual_submission": true,
+  "archive": {
+    "filename": "trsm.zip",
+    "bytes": 15593,
+    "sha256": null,
+    "hash_validation": "not performed at user request",
+    "layout": "trsm/顶层目录，5个源码/说明/运行文件",
+    "members": {
+      "trsm/README.md": {
+        "bytes": 2820,
+        "mode": "0644"
+      },
+      "trsm/bench_trsm.c": {
+        "bytes": 4799,
+        "mode": "0644"
+      },
+      "trsm/compat/kblas.h": {
+        "bytes": 615,
+        "mode": "0644"
+      },
+      "trsm/run.sh": {
+        "bytes": 2686,
+        "mode": "0755"
+      },
+      "trsm/trsm.c": {
+        "bytes": 73077,
+        "mode": "0644"
+      }
+    },
+    "members_metadata_source": "../../../outputs/trsm-best.json; actual local ZIP member names, uncompressed byte counts and modes checked without new hashes"
+  },
+  "source_validation": {
+    "job_id": "1579861",
+    "suites": 3,
+    "test_runs": 3,
+    "official_rows_passed": 9,
+    "max_error": 1.11e-15,
+    "case_median_ms": [
+      14.56,
+      118.82,
+      179.82
+    ],
+    "total_median_ms": 313.2,
+    "reference": "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+    "evidence": "../../../records/experiments/trsm/T19-panel8x16budget.json"
+  },
+  "package_validation": {
+    "status": "passed",
+    "job_id": "1581516",
+    "suites": 3,
+    "test_runs": 3,
+    "official_rows_passed": 9,
+    "max_error": 1.11e-15,
+    "case_median_ms": [
+      14.36,
+      120.51,
+      182.14
+    ],
+    "total_median_ms": 317.01,
+    "reference": "Huawei KML 25.1.0; not specified KML 25.2.0",
+    "actual_compiler": "GCC 12.3.1",
+    "true_kml251_and_private_gomp_all_suites": true,
+    "package_extracted_and_tested": true,
+    "same_uploaded_and_returned_zip_bytes": true,
+    "scheduler_succeeded": true,
+    "wrapper_exit_code": 0,
+    "cases": [
+      {
+        "dims": [
+          512,
+          19968
+        ],
+        "times_ms": [
+          14.36,
+          15.22,
+          13.92
+        ],
+        "median_ms": 14.36,
+        "max_error": 1.67e-16
+      },
+      {
+        "dims": [
+          2432,
+          17024
+        ],
+        "times_ms": [
+          121.12,
+          120.51,
+          120.1
+        ],
+        "median_ms": 120.51,
+        "max_error": 2.22e-16
+      },
+      {
+        "dims": [
+          17024,
+          512
+        ],
+        "times_ms": [
+          182.14,
+          202.18,
+          181.04
+        ],
+        "median_ms": 182.14,
+        "max_error": 1.11e-15
+      }
+    ],
+    "evidence": "../../../records/evidence/trsm-finalpackage-20260912-r16",
+    "report": "../../../docs/trsm-final-20260912-r16.md"
+  },
+  "measurement_metric": "三用例在三个独立完整套件中的中位耗时之和；每个打印样本为TEST_RUNS=3的内部平均值；不是官方分数。包验证不与此前作业混算增益。",
+  "total_median_ms": 317.01,
+  "actual_reference_version": "Huawei KML 25.1.0",
+  "actual_compiler_version": "GCC 12.3.1",
+  "actual_threads": 38,
+  "numa_policy": "single NUMA",
+  "official_kml252_revalidated": false,
+  "official_kml_target_version": "25.2.0",
+  "hash_validation": "not performed at user request",
+  "source_identity_limit": "This synchronization compares only the local upstream original ZIP and result copy and reads ZIP directory metadata. It adds no new remote source/transport verification. Upstream package-validation byte checks remain attributed to job1581516; historical source identity is not inferred.",
+  "local_artifact_check": {
+    "performed": "Directly copied outputs/trsm-best.zip bytes; compared local source/copy bytes and checked five ZIP member names, sizes and modes against upstream metadata. No recompression, new hash, compiler or operator run.",
+    "zip_identical_to_source_output_by_bytes": true,
+    "zip_member_structure_matches_upstream_metadata": true,
+    "new_hash_audit_performed": false
+  },
+  "source_matches_measured_local_snapshot_by_bytes": true,
+  "upstream_published": true,
+  "upstream_published_at": "2026-09-12T16:12:13.145294+00:00",
+  "new_performance_measurement": false,
+  "local_compilation_or_tests": false,
+  "contest_submission": false,
+  "unvalidated_candidate_included": false,
+  "historical_submission": {
+    "version": "T8",
+    "source_ref": "ce44a3d0187ad316906107a4b00937ce95e0ba18",
+    "url": "https://github.com/Palm0palM/kunpeng-s2/tree/ce44a3d0187ad316906107a4b00937ce95e0ba18/trsm/result/T8"
+  },
+  "competition_feedback": {
+    "score": null,
+    "submitted_at": null,
+    "passed": null,
+    "notes": null
+  },
+  "competition": {
+    "submission_status": "not_submitted_by_agent",
+    "score": null,
+    "rank": null,
+    "submitted_at": null,
+    "submission_id": null,
+    "feedback": ""
+  }
+}

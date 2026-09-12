@@ -1,0 +1,425 @@
++ :
++ stage allocation python3 -
++ local name=allocation code
++ shift
++ set +e
++ python3 -
+ALLOWED_CPUS=76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113
+NUMA_NODE=node2
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' allocation 0
+STAGE=allocation EXIT=0
++ return 0
++ source candidate.env
+++ CANDIDATE=C55-row7x3shared3
+++ EXPECTED_ACC=3
+++ EXPECTED_FULL=5744
+++ EXPECTED_DISPATCH=1212
+++ EXPECTED_DIRECT=432
+++ EXPECTED_DISPATCH_ROWSEVEN_ENTRIES=1236
+++ EXPECTED_DIRECT_ROWSEVEN_ENTRIES=1080
+++ EXPECTED_TOTAL=44328
++ [[ C55-row7x3shared3 == C55-row7x3shared3 ]]
++ [[ 3 == 3 ]]
++ [[ 5744 == 5744 ]]
++ [[ 1212 == 1212 ]]
++ [[ 432 == 432 ]]
++ [[ 44328 == 44328 ]]
++ [[ 1236 == 1236 ]]
++ [[ 1080 == 1080 ]]
++ printf 'CANDIDATE=%s\n' C55-row7x3shared3
+CANDIDATE=C55-row7x3shared3
++ date -u
+Sat Sep 12 18:49:30 UTC 2026
++ hostname
+COMPUTE_NODE_1
++ stage compiler compiler_check
++ local name=compiler code
++ shift
++ set +e
++ compiler_check
++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++ gcc -dumpfullversion -dumpversion
+++ cat compiler-version.txt
++ [[ 10.3.1 == 10.3.1 ]]
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' compiler 0
+STAGE=compiler EXIT=0
++ return 0
++ stage manifest write_manifest
++ local name=manifest code
++ shift
++ set +e
++ write_manifest
++ sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env
++ sha256sum -c -
++ printf '%s  conv2d.c\n' cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138
+conv2d.c: OK
++ cat source-sha256.txt
+cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138  conv2d.c
+ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5  check_conv_guard.c
+fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d  check_sve_dispatch.c
+d187d0016c986df296fdb42357282de9acdfd8d29db8716ef1a2b3bbeafb561e  remote_job.sh
+751790be9095e0e92b10a5e11e3952a75d65c9df54d7dcb735b0fcc6a4f1685e  candidate.env
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' manifest 0
+STAGE=manifest EXIT=0
++ return 0
++ export OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ flags=(-O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp "-DEXPECTED_ACC=$EXPECTED_ACC")
++ stage build-guard build_logged build-guard.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 check_conv_guard.c conv2d.c -o check_conv_guard
++ local name=build-guard code
++ shift
++ set +e
++ build_logged build-guard.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 check_conv_guard.c conv2d.c -o check_conv_guard
++ local logfile=build-guard.log
++ shift
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 check_conv_guard.c conv2d.c -o check_conv_guard
+ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 check_conv_guard.c conv2d.c -o check_conv_guard+ printf '\n'
+
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 check_conv_guard.c conv2d.c -o check_conv_guard
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' build-guard 0
+STAGE=build-guard EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage guard-vl16-t1 run_guard 16 1
++ local name=guard-vl16-t1 code
++ shift
++ set +e
++ run_guard 16 1
++ local bytes=16 threads=1
++ tee guard-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=12 THREADS=1
+FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960
+PASS: 5744 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl16-t1 0
+STAGE=guard-vl16-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage guard-vl16-t4 run_guard 16 4
++ local name=guard-vl16-t4 code
++ shift
++ set +e
++ run_guard 16 4
++ local bytes=16 threads=4
++ tee guard-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=12 THREADS=4
+FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960
+PASS: 5744 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl16-t4 0
+STAGE=guard-vl16-t4 EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage guard-vl32-t1 run_guard 32 1
++ local name=guard-vl32-t1 code
++ shift
++ set +e
++ run_guard 32 1
++ local bytes=32 threads=1
++ tee guard-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=24 THREADS=1
+FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960
+PASS: 5744 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl32-t1 0
+STAGE=guard-vl32-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage guard-vl32-t4 run_guard 32 4
++ local name=guard-vl32-t4 code
++ shift
++ set +e
++ run_guard 32 4
++ local bytes=32 threads=4
++ tee guard-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=24 THREADS=4
+FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960
+PASS: 5744 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl32-t4 0
+STAGE=guard-vl32-t4 EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage guard-vl64-t1 run_guard 64 1
++ local name=guard-vl64-t1 code
++ shift
++ set +e
++ run_guard 64 1
++ local bytes=64 threads=1
++ tee guard-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=48 THREADS=1
+FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960
+PASS: 5744 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl64-t1 0
+STAGE=guard-vl64-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage guard-vl64-t4 run_guard 64 4
++ local name=guard-vl64-t4 code
++ shift
++ set +e
++ run_guard 64 4
++ local bytes=64 threads=4
++ tee guard-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=48 THREADS=4
+FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960
+PASS: 5744 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' guard-vl64-t4 0
+STAGE=guard-vl64-t4 EXIT=0
++ return 0
++ stage build-dispatch build_logged build-dispatch.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
++ local name=build-dispatch code
++ shift
++ set +e
++ build_logged build-dispatch.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
++ local logfile=build-dispatch.log
++ shift
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
+ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch+ printf '\n'
+
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' build-dispatch 0
+STAGE=build-dispatch EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage dispatch-vl16-t1 run_dispatch 16 1
++ local name=dispatch-vl16-t1 code
++ shift
++ set +e
++ run_dispatch 16 1
++ local bytes=16 threads=1
++ tee dispatch-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=12 THREADS=1
+SVE_PREFIX_ACTUAL_ENTRIES=10850 SVE_TAIL_ACTUAL_ENTRIES=10850
+SVE_ROWPAIR_ACTUAL_ENTRIES=234 SVE_ROWTRIPLE_ACTUAL_ENTRIES=2746 SVE_ROWQUAD_ACTUAL_ENTRIES=1778
+DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240
+DISPATCH_ROWSEVEN_ACTUAL_ENTRIES=1236 EXPECTED=1236 WORKER_MASK=1 EXPECTED_MASK=1
+PASS: 1212 dispatch cases; exact per-case rowseven entries and bitwise scalar reference
+DIRECT_ROWSEVEN_ACTUAL_ENTRIES=1080 EXPECTED=1080 WORKER_MASK=1 EXPECTED_MASK=1
+PASS: 432 direct fallback cases; kh1..6, readonly/guard/canary and bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl16-t1 0
+STAGE=dispatch-vl16-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage dispatch-vl16-t4 run_dispatch 16 4
++ local name=dispatch-vl16-t4 code
++ shift
++ set +e
++ run_dispatch 16 4
++ local bytes=16 threads=4
++ tee dispatch-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=12 THREADS=4
+SVE_PREFIX_ACTUAL_ENTRIES=10850 SVE_TAIL_ACTUAL_ENTRIES=10850
+SVE_ROWPAIR_ACTUAL_ENTRIES=234 SVE_ROWTRIPLE_ACTUAL_ENTRIES=2746 SVE_ROWQUAD_ACTUAL_ENTRIES=1778
+DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240
+DISPATCH_ROWSEVEN_ACTUAL_ENTRIES=1236 EXPECTED=1236 WORKER_MASK=15 EXPECTED_MASK=15
+PASS: 1212 dispatch cases; exact per-case rowseven entries and bitwise scalar reference
+DIRECT_ROWSEVEN_ACTUAL_ENTRIES=1080 EXPECTED=1080 WORKER_MASK=15 EXPECTED_MASK=15
+PASS: 432 direct fallback cases; kh1..6, readonly/guard/canary and bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl16-t4 0
+STAGE=dispatch-vl16-t4 EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage dispatch-vl32-t1 run_dispatch 32 1
++ local name=dispatch-vl32-t1 code
++ shift
++ set +e
++ run_dispatch 32 1
++ local bytes=32 threads=1
++ tee dispatch-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=24 THREADS=1
+SVE_PREFIX_ACTUAL_ENTRIES=10850 SVE_TAIL_ACTUAL_ENTRIES=10850
+SVE_ROWPAIR_ACTUAL_ENTRIES=234 SVE_ROWTRIPLE_ACTUAL_ENTRIES=2746 SVE_ROWQUAD_ACTUAL_ENTRIES=1778
+DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240
+DISPATCH_ROWSEVEN_ACTUAL_ENTRIES=1236 EXPECTED=1236 WORKER_MASK=1 EXPECTED_MASK=1
+PASS: 1212 dispatch cases; exact per-case rowseven entries and bitwise scalar reference
+DIRECT_ROWSEVEN_ACTUAL_ENTRIES=1080 EXPECTED=1080 WORKER_MASK=1 EXPECTED_MASK=1
+PASS: 432 direct fallback cases; kh1..6, readonly/guard/canary and bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl32-t1 0
+STAGE=dispatch-vl32-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage dispatch-vl32-t4 run_dispatch 32 4
++ local name=dispatch-vl32-t4 code
++ shift
++ set +e
++ run_dispatch 32 4
++ local bytes=32 threads=4
++ tee dispatch-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=24 THREADS=4
+SVE_PREFIX_ACTUAL_ENTRIES=10850 SVE_TAIL_ACTUAL_ENTRIES=10850
+SVE_ROWPAIR_ACTUAL_ENTRIES=234 SVE_ROWTRIPLE_ACTUAL_ENTRIES=2746 SVE_ROWQUAD_ACTUAL_ENTRIES=1778
+DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240
+DISPATCH_ROWSEVEN_ACTUAL_ENTRIES=1236 EXPECTED=1236 WORKER_MASK=15 EXPECTED_MASK=15
+PASS: 1212 dispatch cases; exact per-case rowseven entries and bitwise scalar reference
+DIRECT_ROWSEVEN_ACTUAL_ENTRIES=1080 EXPECTED=1080 WORKER_MASK=15 EXPECTED_MASK=15
+PASS: 432 direct fallback cases; kh1..6, readonly/guard/canary and bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl32-t4 0
+STAGE=dispatch-vl32-t4 EXIT=0
++ return 0
++ for bytes in 16 32 64
++ for threads in 1 4
++ stage dispatch-vl64-t1 run_dispatch 64 1
++ local name=dispatch-vl64-t1 code
++ shift
++ set +e
++ run_dispatch 64 1
++ local bytes=64 threads=1
++ tee dispatch-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=48 THREADS=1
+SVE_PREFIX_ACTUAL_ENTRIES=10850 SVE_TAIL_ACTUAL_ENTRIES=10850
+SVE_ROWPAIR_ACTUAL_ENTRIES=234 SVE_ROWTRIPLE_ACTUAL_ENTRIES=2746 SVE_ROWQUAD_ACTUAL_ENTRIES=1778
+DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240
+DISPATCH_ROWSEVEN_ACTUAL_ENTRIES=1236 EXPECTED=1236 WORKER_MASK=1 EXPECTED_MASK=1
+PASS: 1212 dispatch cases; exact per-case rowseven entries and bitwise scalar reference
+DIRECT_ROWSEVEN_ACTUAL_ENTRIES=1080 EXPECTED=1080 WORKER_MASK=1 EXPECTED_MASK=1
+PASS: 432 direct fallback cases; kh1..6, readonly/guard/canary and bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl64-t1 0
+STAGE=dispatch-vl64-t1 EXIT=0
++ return 0
++ for threads in 1 4
++ stage dispatch-vl64-t4 run_dispatch 64 4
++ local name=dispatch-vl64-t4 code
++ shift
++ set +e
++ run_dispatch 64 4
++ local bytes=64 threads=4
++ tee dispatch-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=48 THREADS=4
+SVE_PREFIX_ACTUAL_ENTRIES=10850 SVE_TAIL_ACTUAL_ENTRIES=10850
+SVE_ROWPAIR_ACTUAL_ENTRIES=234 SVE_ROWTRIPLE_ACTUAL_ENTRIES=2746 SVE_ROWQUAD_ACTUAL_ENTRIES=1778
+DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240
+DISPATCH_ROWSEVEN_ACTUAL_ENTRIES=1236 EXPECTED=1236 WORKER_MASK=15 EXPECTED_MASK=15
+PASS: 1212 dispatch cases; exact per-case rowseven entries and bitwise scalar reference
+DIRECT_ROWSEVEN_ACTUAL_ENTRIES=1080 EXPECTED=1080 WORKER_MASK=15 EXPECTED_MASK=15
+PASS: 432 direct fallback cases; kh1..6, readonly/guard/canary and bitwise scalar reference
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' dispatch-vl64-t4 0
+STAGE=dispatch-vl64-t4 EXIT=0
++ return 0
++ stage build-assembly build_logged build-assembly.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -S conv2d.c -o conv2d-sve.s
++ local name=build-assembly code
++ shift
++ set +e
++ build_logged build-assembly.log gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -S conv2d.c -o conv2d-sve.s
++ local logfile=build-assembly.log
++ shift
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -S conv2d.c -o conv2d-sve.s
+ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -S conv2d.c -o conv2d-sve.s+ printf '\n'
+
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=3 -S conv2d.c -o conv2d-sve.s
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' build-assembly 0
+STAGE=build-assembly EXIT=0
++ return 0
++ printf 'SANITIZER_STATUS=NOT_RUN; guard pages and bitwise reference checks only\n'
+SANITIZER_STATUS=NOT_RUN; guard pages and bitwise reference checks only
++ printf 'EXPECTED_TOTAL_CHECKS=%s\n' 44328
+EXPECTED_TOTAL_CHECKS=44328
++ stage complete printf 'PROBE_COMPLETE=1\n'
++ local name=complete code
++ shift
++ set +e
++ printf 'PROBE_COMPLETE=1\n'
+PROBE_COMPLETE=1
++ code=0
++ set -e
++ tee -a stage-exits.txt
++ printf 'STAGE=%s EXIT=%s\n' complete 0
+STAGE=complete EXIT=0
++ wait 3760057
++ return 0
++ finish
++ local code=0 log_code=0
++ trap - EXIT
++ exec
++ ((  code == 0 && log_code != 0  ))
++ printf '%s\n' 0
++ exit 0

@@ -1,0 +1,10 @@
+# Prepared package static review
+
+- Only this new C46 package was created; C42 failure, C41/C45 packages, candidate source and formal C6 are unchanged.
+- Production conv2d.c is copied from C46; no instrumentation/edit is applied. Both guard C files are byte-identical copies of C42's planned template. Only candidate.env and wrapper identity/stage-command logging are adapted; compiler flags, standalone production TU, instrumented executable boundary, six VL/thread runs and dispatch arguments retain C42 conditions.
+- Full matrix counts from actual loops:8 widths×3kh×3kw×11 heights×4allocation =3168, narrow144, smaller kernels432, larger32, total3776. Dispatch8×3×3×7=504; direct3×4×3×2×4=288. Six configurations give27408. Exact entry totals528/720 and worker masks1/15 remain required, without fabricating any measured counts.
+- The guard sets/checks process and worker VL, uses independent strict scalar reference with bitwise comparison, makes input/kernel read-only, poisons output and checks leading/trailing allocation guards/canaries. These are allocation-edge guards, not per-row guard pages or sanitizers. Dimensions cover5VL/10VL±1,4VL..5VL tail,kh4/5/6,kw1/2/3,oh1..10/20; directkh1..4 uses valid five-row groups.
+- New wrapper stage function captures command/pipeline exit with pipefail and writes19 named records; failing stage returns nonzero under set-e. Compiler_check explicitly propagates GCC command failure. Final tee is awaited; wrapper exit cannot silently discard logging failure. Candidate identity and fixed counts are checked before builds. No assembly `.s` or success marker is generated at preparation time.
+- All five actual asm operand layouts and nine-stage spill/FMA results remain pending target execution/review. Default `%[name]` fixes an upstream-documented printer path but is not itself target PASS. Old C42 executed0 numerical cases; no old failed/accepted validation, job ID, raw logs or binaries were copied.
+
+Prepared only; no local compilation/test, SSH, scheduling, push or usage reset.

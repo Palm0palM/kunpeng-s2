@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C40-row6x3u1",
+  "parent": "C26-r13",
+  "strategy": "Prepare a later six-output-row by three-SVE-vector single-column helper with eighteen accumulators; share each input across six outputs while preserving strict per-output kernel order and all existing C6 helpers, with no prefetch/asm/lane/FMA changes",
+  "created_at": "2026-09-12T09:06:24.936010+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C26-row4loads",
+  "helper": "conv_sve_rowsix",
+  "rows_per_group": 6,
+  "vectors_per_row": 3,
+  "accumulators": 18,
+  "kernel_columns_per_iteration": 1,
+  "execution_priority": "Later reserve candidate; C37/C38/C39 take priority, do not auto-submit",
+  "comparison_baseline": "C26-r13",
+  "reference_only": false
+}

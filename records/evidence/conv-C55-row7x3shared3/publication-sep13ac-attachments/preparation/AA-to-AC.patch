@@ -1,0 +1,640 @@
+--- .runs/conv/sep13aa-checks/driver.py
++++ .runs/conv/sep13ac-checks/driver.py
+@@ -1,4 +1,4 @@
+-"""Prepared AA diagnostic transport for C54; explicit root --go only.
++"""Prepared AC diagnostic transport for C55; explicit root --go only.
+ 
+ No work occurs on import. status/fetch reuse a saved unique job; no local
+ operator execution, automatic polling, acceptance, promotion or publication.
+@@ -21,11 +21,11 @@
+ sys.path.insert(0, str(ROOT / 'tools'))
+ import cluster
+ 
+-VERSIONS = ('C54-row7x3shared4',)
+-SOURCE_SHA256 = 'fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88'
++VERSIONS = ('C55-row7x3shared3',)
++SOURCE_SHA256 = 'cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138'
+ SOURCE_NAMES = {'conv2d.c', 'check_conv_guard.c', 'check_sve_dispatch.c', 'candidate.env', 'remote_job.sh'}
+-SOURCE_PARENTS = {'C54-row7x3shared4': 'C52-row7x3shared2'}
+-COUNTS = {'C54-row7x3shared4': dict(full_per_configuration=5744, dispatch_per_configuration=1212,
++SOURCE_PARENTS = {'C55-row7x3shared3': 'C52-row7x3shared2'}
++COUNTS = {'C55-row7x3shared3': dict(full_per_configuration=5744, dispatch_per_configuration=1212,
+     direct_per_configuration=432, configurations=6, total=44328)}
+ RESOURCES = dict(cpus=38, memory_mb=24576, numa_count=1,
+     numa_distribution='pack', walltime_seconds=1800)
+@@ -35,7 +35,7 @@
+     + [f'dispatch-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4)]
+     + ['build-assembly', 'complete'])
+ TERMINAL = {'SUCCEEDED', 'FAILED', 'CANCELLED', 'CANCELED', 'TIMEOUT', 'TERMINATED'}
+-# The frozen AA wrapper builds no retained production object for separate transfer.
++# The frozen AC wrapper builds no retained production object for separate transfer.
+ OBJECT_ARTIFACTS = {name: set() for name in VERSIONS}
+ 
+ 
+@@ -78,9 +78,9 @@
+ 
+ 
+ def serial_gate(cfg):
+-    """Bounded fixed Y/W/S/T/X and present P/AA jobs; no teammate scan.
+-
+-    Prepared P/AA packages without job.json do not represent active jobs.
++    """Bounded fixed AA/Y/X/T and present AB/P/AC jobs; no teammate scan.
++
++    Prepared P/AC packages without job.json do not represent active jobs.
+     Any actual unresolved reservation blocks. Only root is a compute submitter;
+     this check is not a distributed scheduling lock and never cancels work.
+     """
+@@ -88,7 +88,7 @@
+     unresolved = []
+     ignored_prepared = []
+     job_paths = [ROOT / '.runs/conv/sep13p-checks/C50-row4dupfencenomem/job.json',
+-                 BASE / 'C54-row7x3shared4/job.json']
++                 BASE / 'C55-row7x3shared3/job.json']
+     for path in job_paths:
+         origin = str(path.relative_to(ROOT))
+         if not path.exists():
+@@ -100,21 +100,39 @@
+             unresolved.append(dict(path=origin, reason='Actual package reservation lacks reconciled job ID'))
+             continue
+         identities.setdefault(str(job_id), []).append(origin)
+-    required = [('.runs/conv/sep13y-campaign.json', 'performance_job', '1582410'),
+-                ('.runs/conv/sep13w-campaign.json', 'performance_job', '1582256'),
+-                ('.runs/conv/sep13s-campaign.json', 'performance_job', '1582067'),
++    required = [('.runs/conv/sep13aa-checks/C54-row7x3shared4/job.json', 'job_id', '1582656'),
++                ('.runs/conv/sep13y-campaign.json', 'performance_job', '1582410'),
+                 ('.runs/conv/sep13t-checks/C52-row7x3shared2/job.json', 'job_id', '1582134'),
+                 ('.runs/conv/sep13x-checks/C53-row7cursors/job.json', 'job_id', '1582372')]
+     for origin, field, expected_id in required:
+         path = ROOT / origin
+         if not path.exists():
+-            unresolved.append(dict(path=origin, reason='Required fixed Y/W/S/T/X evidence is missing'))
++            unresolved.append(dict(path=origin, reason='Required fixed AA/Y/X/T evidence is missing'))
+             continue
+         job_id = read_json(path).get(field)
+         if str(job_id) != expected_id:
+             unresolved.append(dict(path=origin, reason='Required job differs from fixed ID ' + expected_id))
+             continue
+         identities.setdefault(str(job_id), []).append(origin)
++    # A campaign is reserved before its member cluster manifests exist. Observe
++    # only these explicit AB paths; absent files are not active reservations.
++    ab_paths = [(ROOT / '.runs/conv/sep13ab-campaign.json', 'performance_job')]
++    ab_paths += [(ROOT / '.runs/conv' / name / 'cluster.json', 'job_id')
++                 for name in ('C26-r30', 'C54-row7x3shared4', 'C52-r2', 'C26-r31')]
++    ab_ids = set()
++    for path, field in ab_paths:
++        if not path.exists():
++            continue
++        origin = str(path.relative_to(ROOT))
++        job_id = str(read_json(path).get(field) or '')
++        if not re.fullmatch(r'[0-9]+', job_id):
++            unresolved.append(dict(path=origin, reason='Actual AB reservation lacks reconciled job ID'))
++            continue
++        ab_ids.add(job_id)
++        identities.setdefault(job_id, []).append(origin)
++    if len(ab_ids) > 1:
++        unresolved.append(dict(path='.runs/conv/sep13ab-campaign.json',
++            reason='AB campaign/member job IDs disagree; reconcile original submission'))
+     evidence = [query_scheduler(cfg, job_id, origins) for job_id, origins in identities.items()]
+     clear = not unresolved and all(
+         row['query_exit'] == 0 and row['scheduler'] is not None
+@@ -130,7 +148,7 @@
+ def frozen_source(base, version):
+     expected = read_json(base / 'source-hashes.json')
+     require(set(expected) == SOURCE_NAMES, 'Unexpected frozen transport source set')
+-    require(expected['conv2d.c'] == SOURCE_SHA256, 'AA requires its own root-reviewed C54 source')
++    require(expected['conv2d.c'] == SOURCE_SHA256, 'AC requires its own root-reviewed C55 source')
+     source = base / 'source'
+     require(source.is_dir() and not source.is_symlink(), 'Source must be a real directory')
+     actual = {}
+@@ -143,7 +161,7 @@
+     require(actual == expected, 'Prepared source changed; never silently refresh its frozen manifest')
+     extra_manifest = base / 'source-manifest.json'
+     require(extra_manifest.is_file() and not extra_manifest.is_symlink(),
+-        'Frozen AA bytes/SHA source-manifest.json is required')
++        'Frozen AC bytes/SHA source-manifest.json is required')
+     require(read_json(extra_manifest) == {name: dict(bytes=sizes[name], sha256=actual[name]) for name in actual},
+         'Supplementary bytes/SHA manifest mismatch')
+     record = read_json(ROOT / 'records/experiments/conv' / (version + '.json'))
+@@ -177,21 +195,21 @@
+     require(prepared.get('resources_required') == {key: value for key, value in RESOURCES.items() if key != 'walltime_seconds'},
+         'Prepared resource expectations mismatch')
+     require(prepared.get('expected_acc') == 3 and prepared.get('expected_checks') == counts,
+-        'AA matrix schema mismatch')
++        'AC matrix schema mismatch')
+     require(prepared.get('rows_per_group') == 7 and prepared.get('vectors_per_row') == 3
+-        and prepared.get('accumulators') == 21, 'C54 seven-row/three-vector shape mismatch')
++        and prepared.get('accumulators') == 21, 'C55 seven-row/three-vector shape mismatch')
+     require(prepared.get('expected_rowseven_entries') == dict(dispatch_per_configuration=1236, direct_per_configuration=1080),
+         'Rowseven entry expectations mismatch')
+     require(prepared.get('full_matrix_counts') == dict(core=3888, narrow=144, small=720, larger=32, quad_boundary=960)
+         and prepared.get('dispatch_matrix_counts') == dict(core=972, quad_boundary=240)
+         and prepared.get('expected_worker_masks') == {'1': 1, '4': 15}, 'Full-matrix/worker expectations mismatch')
+     require(prepared.get('expected_semantic_stage_count') == 13
+-        and prepared.get('shared_kernel_columns_per_iteration') == 4
++        and prepared.get('shared_kernel_columns_per_iteration') == 3
+         and prepared.get('shared_remainder_source_columns_per_iteration') == 1
+-        and prepared.get('shared_remainder_max_columns') == 3
+-        and prepared.get('assembly_review_schema') == 'aa-shared4-paths-v1'
++        and prepared.get('shared_remainder_max_columns') == 2
++        and prepared.get('assembly_review_schema') == 'ac-shared3-paths-v1'
+         and prepared.get('other_stage_kernel_columns_per_iteration') == 1,
+-        'C54 shared quad/u1-remainder expectations mismatch')
++        'C55 shared triple/u1-remainder expectations mismatch')
+     return expected
+ 
+ 
+@@ -210,7 +228,7 @@
+     parser.add_argument('version', choices=VERSIONS)
+     parser.add_argument('config', help='Verified existing config; read only, never included in source or archive')
+     parser.add_argument('action', choices=('gate', 'submit', 'status', 'fetch'))
+-    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AA submission authorization')
++    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AC submission authorization')
+     args = parser.parse_args()
+     require(args.action == 'submit' or not args.go, '--go is valid only for submit')
+     base = BASE / args.version
+@@ -232,7 +250,7 @@
+         require(gate['clear'], 'Known CONV work active/unresolved or query incomplete; retain gate evidence and stop')
+         hashes = frozen_source(base, args.version)
+         created = stamp()
+-        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13aa-' + args.version + '-' + created
++        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13ac-' + args.version + '-' + created
+         data = dict(version=args.version, remote_dir=remote_dir, submitted=False,
+             submit_attempted=False, created_at=created, resources=RESOURCES,
+             expected_checks=COUNTS[args.version], expected_stages=STAGES,
+@@ -248,7 +266,7 @@
+         command = 'umask 077; mkdir -p ' + shlex.quote(remote_dir) + ' && tar -xzf - -C ' + shlex.quote(remote_dir)
+         result = logged_remote(cfg, command, base / 'upload.log', input=archive.getvalue(), timeout=cfg['transfer_timeout'])
+         require(result.returncode == 0, 'Upload failed; keep reservation/log and do not resubmit')
+-        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13aa-' + args.version)
++        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13ac-' + args.version)
+         data.update(command=command, submit_attempted=True)
+         save(manifest, data)
+         result = logged_remote(cfg, command, base / 'submit.log')
+@@ -312,7 +330,7 @@
+             path = dest / name
+             if not path.exists():
+                 path.write_bytes(content)
+-    print('Fetched immutable AA diagnostic text/assembly. Fetch is not acceptance or performance.')
++    print('Fetched immutable AC diagnostic text/assembly. Fetch is not acceptance or performance.')
+ 
+ 
+ if __name__ == '__main__':
+--- .runs/conv/sep13aa-checks/accept_returned.py
++++ .runs/conv/sep13ac-checks/accept_returned.py
+@@ -1,4 +1,4 @@
+-"""Accept AA returned text only. No SSH, compilation, tests or operator execution.
++"""Accept AC returned text only. No SSH, compilation, tests or operator execution.
+ 
+ Usage: accept_returned.py VERSION [--failed]. Source/raw never change. An existing
+ prepared validation is preserved verbatim before a real final record replaces it.
+@@ -17,8 +17,8 @@
+ sys.dont_write_bytecode=True
+ BASE=Path(__file__).resolve().parent
+ ROOT=BASE.parents[2]
+-PLANS={'C54-row7x3shared4':dict(full=5744,dispatch=1212,direct=432,total=44328,vectors=3,rows=7,helper='conv_sve_rowseven',parent='C52-row7x3shared2')}
+-SOURCE_SHA256='fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88'
++PLANS={'C55-row7x3shared3':dict(full=5744,dispatch=1212,direct=432,total=44328,vectors=3,rows=7,helper='conv_sve_rowseven',parent='C52-row7x3shared2')}
++SOURCE_SHA256='cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138'
+ SOURCE_NAMES={'conv2d.c','check_conv_guard.c','check_sve_dispatch.c','remote_job.sh','candidate.env'}
+ FMA=r'^\s*(?:fmla|fmls|fmad|fmsb|fnmla|fnmls|fnmad|fnmsb|fmadd|fmsub|fnmadd|fnmsub|fmlal2?|fmlsl2?|fmmla)\b'
+ TERMINAL={'SUCCEEDED','FAILED','CANCELLED','CANCELED','TIMEOUT','TERMINATED'}
+@@ -42,21 +42,21 @@
+     hashes=read(base/'source-hashes.json')
+     prepared=read(base/'prepared.json')
+     require(set(hashes)==SOURCE_NAMES and job.get('source_hashes')==hashes,'Frozen/job source identity mismatch')
+-    require(hashes['conv2d.c']==SOURCE_SHA256,'AA requires its own fixed C54 production source')
++    require(hashes['conv2d.c']==SOURCE_SHA256,'AC requires its own fixed C55 production source')
+     require(prepared.get('candidate')==version and prepared.get('source_hashes')==hashes,'Prepared source identity mismatch')
+     require(prepared.get('total_cases_planned')==PLANS[version]['total'],'Prepared total mismatch')
+     manifest=read(base/'source-manifest.json')
+     require({name:item['sha256'] for name,item in manifest.items()}==hashes,'Two original transport manifests disagree')
+     require(prepared.get('source_parent')==PLANS[version]['parent'] and prepared.get('rows_per_group')==7
+-        and prepared.get('vectors_per_row')==3 and prepared.get('accumulators')==21,'Prepared AA source/shape mismatch')
++        and prepared.get('vectors_per_row')==3 and prepared.get('accumulators')==21,'Prepared AC source/shape mismatch')
+     require(prepared.get('expected_semantic_stage_count')==13
+-        and prepared.get('shared_kernel_columns_per_iteration')==4
++        and prepared.get('shared_kernel_columns_per_iteration')==3
+         and prepared.get('shared_remainder_source_columns_per_iteration')==1
+-        and prepared.get('shared_remainder_max_columns')==3
+-        and prepared.get('assembly_review_schema')=='aa-shared4-paths-v1'
+-        and prepared.get('other_stage_kernel_columns_per_iteration')==1,'Prepared shared quad/u1-remainder contract mismatch')
++        and prepared.get('shared_remainder_max_columns')==2
++        and prepared.get('assembly_review_schema')=='ac-shared3-paths-v1'
++        and prepared.get('other_stage_kernel_columns_per_iteration')==1,'Prepared shared triple/u1-remainder contract mismatch')
+     require(prepared.get('full_matrix_counts')==dict(core=3888,narrow=144,small=720,larger=32,quad_boundary=960)
+-        and prepared.get('dispatch_matrix_counts')==dict(core=972,quad_boundary=240), 'Prepared AA family counts mismatch')
++        and prepared.get('dispatch_matrix_counts')==dict(core=972,quad_boundary=240), 'Prepared AC family counts mismatch')
+     record=read(ROOT/'records/experiments/conv'/(version+'.json'))
+     require(record.get('version')==version and record.get('source_parent')==PLANS[version]['parent'] and record['source_hashes']['conv2d.c']==hashes['conv2d.c'],'Candidate checkpoint mismatch')
+     path=base/'raw/source-sha256.txt'
+@@ -153,19 +153,19 @@
+ def shared_review(stage,lines,outer,ranges):
+     """Read actual disjoint intervals and paths; never assume a fixed block count."""
+     for key in ('source_mapping','control_flow_notes','accumulator_order_review',
+-                'quad_to_remainder_review','transition_spill_review','t_and_tile_reset_review'):
++                'triple_to_remainder_review','transition_spill_review','t_and_tile_reset_review'):
+         require(bool(stage.get(key)),'Missing shared interpretation '+key)
+     blocks=stage.get('blocks') or []
+     require(isinstance(blocks,list) and blocks,'Missing actual shared blocks')
+     ids=[b.get('block_id') for b in blocks]
+     require(all(isinstance(x,str) and x for x in ids) and len(set(ids))==len(ids),'Actual shared block IDs must be unique')
+-    require({b.get('role') for b in blocks}=={'quad_main','u1_remainder'},'Shared quad and u1 evidence both required')
++    require({b.get('role') for b in blocks}=={'triple_main','u1_remainder'},'Shared triple and u1 evidence both required')
+     for block in blocks:
+         role=block['role']; work=block.get('kernel_columns_per_iteration')
+         kind=block.get('region_kind')
+         require(kind in ('loop','straight_line'),'Unknown actual shared control-flow form')
+-        require(type(work) is int and (work==4 if role=='quad_main' else 1<=work<=3),
+-            'Actual shared work is outside quad4/direct-u1 remainder contract')
++        require(type(work) is int and (work==3 if role=='triple_main' else 1<=work<=2),
++            'Actual shared work is outside triple3/direct-u1 remainder contract')
+         require(role!='u1_remainder' or kind!='loop' or work==1,'Remainder backedge must map one source column')
+         for key in ('source_mapping','spill_notes','entry_exit_notes','column_order_review','control_flow_evidence'):
+             require(bool(block.get(key)),'Missing actual shared block interpretation '+key)
+@@ -182,13 +182,13 @@
+             'Shared actual intervals do not map the stated work; preserve lowering and stop')
+         block['derived_counts']=dict(totals)
+         block['derived_counts_per_kernel_column']={key:value/work for key,value in totals.items()}
+-    require(any(b['role']=='quad_main' and b['region_kind']=='loop' for b in blocks),
+-        'No actual quad main backedge identified; changed lowering requires root review')
++    require(any(b['role']=='triple_main' and b['region_kind']=='loop' for b in blocks),
++        'No actual triple main backedge identified; changed lowering requires root review')
+     # Explicit path accounting supports one u1 loop, several straight-line
+     # blocks, and alternative control paths without claiming they all execute.
+     paths=stage.get('remainder_paths') or []
+-    require(isinstance(paths,list) and {p.get('remainder_columns') for p in paths}=={0,1,2,3},
+-        'Actual remainder paths must cover zero through three columns')
++    require(isinstance(paths,list) and {p.get('remainder_columns') for p in paths}=={0,1,2},
++        'Actual remainder paths must cover zero through two columns')
+     path_ids=[p.get('path_id') for p in paths]
+     require(all(isinstance(x,str) and x for x in path_ids) and len(set(path_ids))==len(path_ids),'Duplicate/missing remainder path ID')
+     lookup={b['block_id']:b for b in blocks}; used=set()
+@@ -202,7 +202,7 @@
+             block=lookup.get(step.get('block_id'))
+             repeat=step.get('executions')
+             require(block is not None and block['role']=='u1_remainder'
+-                and type(repeat) is int and 1<=repeat<=3,'Invalid remainder block invocation')
++                and type(repeat) is int and 1<=repeat<=2,'Invalid remainder block invocation')
+             require(block['region_kind']=='loop' or repeat==1,'Straight-line block cannot claim repeated execution')
+             work+=repeat*block['kernel_columns_per_iteration']; used.add(block['block_id'])
+         require(work==path['remainder_columns'],'Actual remainder path work does not equal its column count')
+@@ -218,7 +218,7 @@
+     review=read(base/'assembly-review.json')
+     require(review.get('candidate')==job['version'] and review.get('job_id')==job['job_id'] and review.get('source_sha256')==source_hash and review.get('compiler_version')=='10.3.1','Actual assembly review identity mismatch')
+     require(review.get('assembly_sha256')==hashlib.sha256(content).hexdigest(),'Assembly review has wrong returned artifact')
+-    require(review.get('schema')=='aa-shared4-paths-v1','AA requires its own actual multiple-region review schema')
++    require(review.get('schema')=='ac-shared3-paths-v1','AC requires its own actual multiple-region review schema')
+     for key in ('review_complete','production_uninstrumented','whole_helper_stack_reviewed','all_stages_and_transitions_reviewed','abi_saves_distinguished','dispatch_reviewed'):
+         require(review.get(key) is True,'Incomplete assembly review '+key)
+     fma=len(re.findall(FMA,text,re.M))
+@@ -252,12 +252,12 @@
+         require((item['line_start'],item['line_end'])==bounds(lines,item['symbol']),'Dispatch range mismatch')
+         require(bool(item.get('control_flow_notes')) and bool(item.get('stack_notes')),'Dispatch/fallback interpretation missing')
+     require(review.get('shape')==dict(rows_per_group=7,vectors_per_row=3,accumulators=21),
+-        'Missing actual review association with C54 seven-row/three-vector source shape')
++        'Missing actual review association with C55 seven-row/three-vector source shape')
+     require(review.get('whole_machine_code_identical_claimed') is False,
+-        'T/C52 is source background, not current C54 machine-code proof')
+-    require(review.get('shared_quad_and_remainder_reviewed') is True
+-        and review.get('shared_unroll')==dict(main_columns=4,remainder_source_columns=1,remainder_max_columns=3,other_stage_columns=1),
+-        'Missing independent C54 shared quad/u1-remainder review')
++        'T/C52 is source background, not current C55 machine-code proof')
++    require(review.get('shared_triple_and_remainder_reviewed') is True
++        and review.get('shared_unroll')==dict(main_columns=3,remainder_source_columns=1,remainder_max_columns=2,other_stage_columns=1),
++        'Missing independent C55 shared triple/u1-remainder review')
+     comparison=review.get('parent_codegen_comparison') or {}
+     require(comparison.get('candidate')=='C52-row7x3shared2' and comparison.get('job_id')=='1582134'
+         and comparison.get('source_sha256')=='8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7'
+@@ -306,11 +306,11 @@
+             ending=r' convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference$'
+             one(r'^PASS: '+str(p['full'])+ending,guard,'Production full count/PASS missing')
+             entries={name:int(one(r'SVE_'+name.upper()+r'_ACTUAL_ENTRIES=(\d+)',dispatch,'Missing legacy entry '+name)) for name in ('prefix','tail','rowpair','rowtriple','rowquad')}
+-            one(r'^FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960$',guard,'AA matrix family mismatch')
+-            one(r'^DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240$',dispatch,'AA dispatch family mismatch')
+-            require(all(value>0 for value in entries.values()),'AA legacy helper not entered')
+-            one(r'^PASS: 1212 dispatch cases; exact per-case rowseven entries and bitwise scalar reference$',dispatch,'AA dispatch1212 missing')
+-            one(r'^PASS: 432 direct fallback cases; kh1\.\.6, readonly/guard/canary and bitwise scalar reference$',dispatch,'AA direct432 missing')
++            one(r'^FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960$',guard,'AC matrix family mismatch')
++            one(r'^DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240$',dispatch,'AC dispatch family mismatch')
++            require(all(value>0 for value in entries.values()),'AC legacy helper not entered')
++            one(r'^PASS: 1212 dispatch cases; exact per-case rowseven entries and bitwise scalar reference$',dispatch,'AC dispatch1212 missing')
++            one(r'^PASS: 432 direct fallback cases; kh1\.\.6, readonly/guard/canary and bitwise scalar reference$',dispatch,'AC direct432 missing')
+             mask=(1<<threads)-1
+             extra={}
+             for phase,n in (('dispatch',1236),('direct',1080)):
+@@ -329,7 +329,7 @@
+         extra_manual_hash_audit=False,compiler_version='10.3.1',build_commands=commands,stage_exits=[dict(stage=s,exit_code=0) for s in stage_names()],
+         allocation=dict(cpus=cpus,numa_node=numa),assembly=assembly,performance_measured=False,performance_requires_root_review=True,
+         automatic_performance_submission=False,spill_is_correctness_failure=False,executed_locally=False,executed_remotely=True,
+-        sanitizer='not_run',issues=[],note='Actual independent AA diagnostics only; parent T/C52 and older logs provide no C54 PASS. No speed or promotion claim.')
++        sanitizer='not_run',issues=[],note='Actual independent AC diagnostics only; parent T/C52 and older logs provide no C55 PASS. No speed or promotion claim.')
+ 
+ 
+ def failed_result(base,version):
+--- .runs/conv/sep13aa-checks/freeze_returned.py
++++ .runs/conv/sep13ac-checks/freeze_returned.py
+@@ -1,6 +1,6 @@
+-"""Atomically freeze AA evidence; local file copying/text inspection only.
+-
+-Usage: python3 .runs/conv/sep13aa-checks/freeze_returned.py VERSION [--failed]
++"""Atomically freeze AC evidence; local file copying/text inspection only.
++
++Usage: python3 .runs/conv/sep13ac-checks/freeze_returned.py VERSION [--failed]
+ This does not run acceptance, compile, test, submit, poll, SSH or publish.
+ Original metadata/source/raw files are copied unchanged. Existing destination
+ or staging trees are never removed or overwritten, including failed freezes.
+@@ -18,9 +18,9 @@
+ sys.dont_write_bytecode = True
+ BASE=Path(__file__).resolve().parent
+ ROOT=BASE.parents[2]
+-VERSIONS=('C54-row7x3shared4',)
+-EXPECTED={'C54-row7x3shared4':dict(full=5744,dispatch=1212,direct=432,total=44328)}
+-SOURCE_SHA256='fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88'
++VERSIONS=('C55-row7x3shared3',)
++EXPECTED={'C55-row7x3shared3':dict(full=5744,dispatch=1212,direct=432,total=44328)}
++SOURCE_SHA256='cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138'
+ SOURCE_NAMES={'conv2d.c','check_conv_guard.c','check_sve_dispatch.c','remote_job.sh','candidate.env'}
+ TERMINAL={'SUCCEEDED','FAILED','CANCELLED','CANCELED','TIMEOUT','TERMINATED'}
+ ATTACHMENTS={
+@@ -69,8 +69,8 @@
+         and prepared.get('source_sha256')==hashes['conv2d.c'],
+         'Original prepared/job source identity missing or inconsistent')
+     require(hashes['conv2d.c']==SOURCE_SHA256 and prepared.get('source_parent')=='C52-row7x3shared2',
+-        'AA must retain the original independent C54 source identity')
+-    # Preserve the mandatory original AA byte-count manifest; compare existing
++        'AC must retain the original independent C55 source identity')
++    # Preserve the mandatory original AC byte-count manifest; compare existing
+     # metadata only, with no additional source digest computation.
+     manifest_path=source/'source-manifest.json'
+     manifest=read_json(manifest_path)
+@@ -114,7 +114,7 @@
+             and result.get('full_cases')==6*expected['full']
+             and result.get('dispatch_cases')==6*expected['dispatch']
+             and result.get('direct_cases',0)==6*expected['direct'],
+-            'Accepted per-path/total counts differ from AA plan')
++            'Accepted per-path/total counts differ from AC plan')
+         configurations=result.get('configurations') or []
+         require(isinstance(configurations,list) and len(configurations)==6 and
+             {(row.get('sve_bytes'),row.get('threads')) for row in configurations}==
+@@ -141,15 +141,15 @@
+         require(assembly.get('candidate')==version and assembly.get('job_id')==job_id
+             and assembly.get('source_sha256')==SOURCE_SHA256
+             and assembly.get('compiler_version')=='10.3.1'
+-            and assembly.get('schema')=='aa-shared4-paths-v1'
+-            and assembly.get('shared_quad_and_remainder_reviewed') is True
+-            and assembly.get('shared_unroll')==dict(main_columns=4,remainder_source_columns=1,remainder_max_columns=3,other_stage_columns=1),
+-            'Accepted independent shared quad/u1-remainder identity or review missing')
+-        require(prepared.get('assembly_review_schema')=='aa-shared4-paths-v1'
+-            and prepared.get('shared_kernel_columns_per_iteration')==4
++            and assembly.get('schema')=='ac-shared3-paths-v1'
++            and assembly.get('shared_triple_and_remainder_reviewed') is True
++            and assembly.get('shared_unroll')==dict(main_columns=3,remainder_source_columns=1,remainder_max_columns=2,other_stage_columns=1),
++            'Accepted independent shared triple/u1-remainder identity or review missing')
++        require(prepared.get('assembly_review_schema')=='ac-shared3-paths-v1'
++            and prepared.get('shared_kernel_columns_per_iteration')==3
+             and prepared.get('shared_remainder_source_columns_per_iteration')==1
+-            and prepared.get('shared_remainder_max_columns')==3,
+-            'Initial AA shared contract mismatch')
++            and prepared.get('shared_remainder_max_columns')==2,
++            'Initial AC shared contract mismatch')
+         phase_ids=[f'input_{i}' for i in range(6)]+['shared']+[f'trailing_{i}' for i in range(6)]
+         helpers=assembly.get('helpers') or []
+         require(helpers,'Missing accepted rowseven helpers')
+@@ -162,14 +162,14 @@
+                     require(stage.get('kernel_columns_per_iteration')==1,'Non-shared stage work changed')
+                     continue
+                 blocks=stage.get('blocks') or []
+-                require({block.get('role') for block in blocks}=={'quad_main','u1_remainder'},
+-                    'Accepted shared quad/u1 evidence incomplete')
++                require({block.get('role') for block in blocks}=={'triple_main','u1_remainder'},
++                    'Accepted shared triple/u1 evidence incomplete')
+                 ids=[block.get('block_id') for block in blocks]
+                 require(all(isinstance(x,str) and x for x in ids) and len(set(ids))==len(ids),'Accepted block IDs missing/duplicated')
+                 for block in blocks:
+                     work=block.get('kernel_columns_per_iteration'); kind=block.get('region_kind')
+                     derived=block.get('derived_counts') or {}
+-                    require(type(work) is int and (work==4 if block['role']=='quad_main' else 1<=work<=3)
++                    require(type(work) is int and (work==3 if block['role']=='triple_main' else 1<=work<=2)
+                         and kind in ('loop','straight_line')
+                         and (block['role']!='u1_remainder' or kind!='loop' or work==1)
+                         and derived.get('fmul')==derived.get('fadd')==21*work,
+@@ -179,9 +179,9 @@
+                         and helper['line_start']<=r['line_start']<=r['line_end']<helper['line_end'] for r in intervals),
+                         'Accepted actual shared intervals missing/invalid')
+                     region_count+=len(intervals)
+-                require(any(b['role']=='quad_main' and b['region_kind']=='loop' for b in blocks),'Accepted quad backedge missing')
++                require(any(b['role']=='triple_main' and b['region_kind']=='loop' for b in blocks),'Accepted triple backedge missing')
+                 paths=stage.get('remainder_paths') or []
+-                require({p.get('remainder_columns') for p in paths}=={0,1,2,3},'Accepted remainder coverage incomplete')
++                require({p.get('remainder_columns') for p in paths}=={0,1,2},'Accepted remainder coverage incomplete')
+                 lookup={b['block_id']:b for b in blocks}; used=set()
+                 for path in paths:
+                     sequence=path.get('sequence'); work=0
+@@ -190,7 +190,7 @@
+                     for step in sequence:
+                         block=lookup.get(step.get('block_id')); repeat=step.get('executions')
+                         require(block is not None and block['role']=='u1_remainder'
+-                            and type(repeat) is int and 1<=repeat<=3
++                            and type(repeat) is int and 1<=repeat<=2
+                             and (block['region_kind']=='loop' or repeat==1),'Invalid accepted remainder sequence')
+                         work+=repeat*block['kernel_columns_per_iteration']; used.add(block['block_id'])
+                     require(type(path['remainder_columns']) is int and work==path['remainder_columns'],'Accepted remainder path work mismatch')
+@@ -214,8 +214,8 @@
+     parser.add_argument('--failed',action='store_true')
+     args=parser.parse_args()
+     source=BASE/args.version
+-    target=BASE.parent/args.version/'sve-correctness-sep13aa'
+-    staging=target.with_name('.sve-correctness-sep13aa.preparing')
++    target=BASE.parent/args.version/'sve-correctness-sep13ac'
++    staging=target.with_name('.sve-correctness-sep13ac.preparing')
+     require(source.is_dir() and target.parent.is_dir(),'Source/candidate directory missing')
+     # Respect shared workflow locking, but do not modify any other evidence.
+     with (ROOT/'.runs/.workflow.lock').open('a') as handle:
+--- .runs/conv/sep13aa-checks/C54-row7x3shared4/source/candidate.env
++++ .runs/conv/sep13ac-checks/C55-row7x3shared3/source/candidate.env
+@@ -1,4 +1,4 @@
+-CANDIDATE=C54-row7x3shared4
++CANDIDATE=C55-row7x3shared3
+ EXPECTED_ACC=3
+ EXPECTED_FULL=5744
+ EXPECTED_DISPATCH=1212
+--- .runs/conv/sep13aa-checks/C54-row7x3shared4/source/conv2d.c
++++ .runs/conv/sep13ac-checks/C55-row7x3shared3/source/conv2d.c
+@@ -1485,8 +1485,8 @@
+             const float *kf = kernel + ((size_t)t - 5) * (size_t)kw;
+             const float *kg = kernel + ((size_t)t - 6) * (size_t)kw;
+             int ik = 0;
+-            /* Preserve each accumulator order: columns ik, ik+1, ik+2, ik+3. */
+-            for (; kw - ik >= 4; ik += 4) {
++            /* Preserve each accumulator order: columns ik, ik+1, ik+2. */
++            for (; kw - ik >= 3; ik += 3) {
+                 {
+                     const int column = ik;
+                     const svfloat32_t ak = svdup_n_f32(ka[column]);
+@@ -1571,47 +1571,6 @@
+                 }
+                 {
+                     const int column = ik + 2;
+-                    const svfloat32_t ak = svdup_n_f32(ka[column]);
+-                    const svfloat32_t bk = svdup_n_f32(kb[column]);
+-                    const svfloat32_t ck = svdup_n_f32(kc[column]);
+-                    const svfloat32_t dk = svdup_n_f32(kd[column]);
+-                    const svfloat32_t ek = svdup_n_f32(ke[column]);
+-                    const svfloat32_t fk = svdup_n_f32(kf[column]);
+-                    const svfloat32_t gk = svdup_n_f32(kg[column]);
+-                    /* One source-level input window; GCC may reschedule. */
+-                    {
+-                        const svfloat32_t v = svld1(pg, row + column + 0 * lanes);
+-                        a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
+-                        b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
+-                        c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
+-                        d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
+-                        e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
+-                        f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
+-                        g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
+-                    }
+-                    {
+-                        const svfloat32_t v = svld1(pg, row + column + 1 * lanes);
+-                        a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
+-                        b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
+-                        c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
+-                        d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
+-                        e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
+-                        f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
+-                        g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
+-                    }
+-                    {
+-                        const svfloat32_t v = svld1(pg, row + column + 2 * lanes);
+-                        a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
+-                        b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
+-                        c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
+-                        d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
+-                        e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
+-                        f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
+-                        g2 = svadd_f32_x(pg, g2, svmul_f32_x(pg, v, gk));
+-                    }
+-                }
+-                {
+-                    const int column = ik + 3;
+                     const svfloat32_t ak = svdup_n_f32(ka[column]);
+                     const svfloat32_t bk = svdup_n_f32(kb[column]);
+                     const svfloat32_t ck = svdup_n_f32(kc[column]);
+--- .runs/conv/sep13aa-checks/C54-row7x3shared4/source/remote_job.sh
++++ .runs/conv/sep13ac-checks/C55-row7x3shared3/source/remote_job.sh
+@@ -46,7 +46,7 @@
+ print('NUMA_NODE=' + nodes[0])
+ CHECK_ALLOCATION
+ source candidate.env
+-[[ "$CANDIDATE" == C54-row7x3shared4 && "$EXPECTED_ACC" == 3 ]]
++[[ "$CANDIDATE" == C55-row7x3shared3 && "$EXPECTED_ACC" == 3 ]]
+ [[ "$EXPECTED_FULL" == 5744 && "$EXPECTED_DISPATCH" == 1212 && "$EXPECTED_DIRECT" == 432 && "$EXPECTED_TOTAL" == 44328 ]]
+ [[ "$EXPECTED_DISPATCH_ROWSEVEN_ENTRIES" == 1236 && "$EXPECTED_DIRECT_ROWSEVEN_ENTRIES" == 1080 ]]
+ printf 'CANDIDATE=%s\n' "$CANDIDATE"
+@@ -60,7 +60,7 @@
+ stage compiler compiler_check
+ write_manifest() {
+     sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env > source-sha256.txt || return "$?"
+-    printf '%s  conv2d.c\n' fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88 | sha256sum -c - || return "$?"
++    printf '%s  conv2d.c\n' cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138 | sha256sum -c - || return "$?"
+     cat source-sha256.txt
+ }
+ stage manifest write_manifest
+--- .runs/conv/sep13aa-checks/C54-row7x3shared4/source-hashes.json
++++ .runs/conv/sep13ac-checks/C55-row7x3shared3/source-hashes.json
+@@ -1,7 +1,7 @@
+ {
+-  "candidate.env": "d2480097020b7d087bc94547f103ebaf7c6d28bedddf0735b5cab992996aad8a",
++  "candidate.env": "751790be9095e0e92b10a5e11e3952a75d65c9df54d7dcb735b0fcc6a4f1685e",
+   "check_conv_guard.c": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+   "check_sve_dispatch.c": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+-  "conv2d.c": "fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88",
+-  "remote_job.sh": "6737a2d759a6342cb3ac2142657659d8586f0c64cf7be6393976871686b02688"
++  "conv2d.c": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
++  "remote_job.sh": "d187d0016c986df296fdb42357282de9acdfd8d29db8716ef1a2b3bbeafb561e"
+ }
+--- .runs/conv/sep13aa-checks/C54-row7x3shared4/source-manifest.json
++++ .runs/conv/sep13ac-checks/C55-row7x3shared3/source-manifest.json
+@@ -1,7 +1,7 @@
+ {
+   "candidate.env": {
+     "bytes": 204,
+-    "sha256": "d2480097020b7d087bc94547f103ebaf7c6d28bedddf0735b5cab992996aad8a"
++    "sha256": "751790be9095e0e92b10a5e11e3952a75d65c9df54d7dcb735b0fcc6a4f1685e"
+   },
+   "check_conv_guard.c": {
+     "bytes": 8698,
+@@ -12,11 +12,11 @@
+     "sha256": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d"
+   },
+   "conv2d.c": {
+-    "bytes": 113621,
+-    "sha256": "fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88"
++    "bytes": 111044,
++    "sha256": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138"
+   },
+   "remote_job.sh": {
+     "bytes": 3940,
+-    "sha256": "6737a2d759a6342cb3ac2142657659d8586f0c64cf7be6393976871686b02688"
++    "sha256": "d187d0016c986df296fdb42357282de9acdfd8d29db8716ef1a2b3bbeafb561e"
+   }
+ }
+--- .runs/conv/sep13aa-checks/C54-row7x3shared4/prepared.json
++++ .runs/conv/sep13ac-checks/C55-row7x3shared3/prepared.json
+@@ -1,22 +1,22 @@
+ {
+-  "candidate": "C54-row7x3shared4",
++  "candidate": "C55-row7x3shared3",
+   "status": "prepared",
+   "complete": false,
+-  "prepared_at": "2026-09-12T18:14:22+00:00",
++  "prepared_at": "2026-09-12T18:37:26.695703+00:00",
+   "source_parent": "C52-row7x3shared2",
+-  "source_experiment": "C54-row7x3shared4",
+-  "source_sha256": "fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88",
+-  "production_source_sha256": "fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88",
++  "source_experiment": "C55-row7x3shared3",
++  "source_sha256": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
++  "production_source_sha256": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
+   "source_hashes": {
+-    "candidate.env": "d2480097020b7d087bc94547f103ebaf7c6d28bedddf0735b5cab992996aad8a",
++    "candidate.env": "751790be9095e0e92b10a5e11e3952a75d65c9df54d7dcb735b0fcc6a4f1685e",
+     "check_conv_guard.c": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+     "check_sve_dispatch.c": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+-    "conv2d.c": "fa0f5b43fc7901e9853dbe189385653ea4ae8bf697fa3b67af7f288063a4fb88",
+-    "remote_job.sh": "6737a2d759a6342cb3ac2142657659d8586f0c64cf7be6393976871686b02688"
++    "conv2d.c": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
++    "remote_job.sh": "d187d0016c986df296fdb42357282de9acdfd8d29db8716ef1a2b3bbeafb561e"
+   },
+-  "source_hash_scope": "First five-file AA transport byte-count/SHA manifest; source copied from final C54, only T checker matrix extended",
+-  "guard_template": ".runs/conv/sep13t-checks/C52-row7x3shared2/source",
+-  "guard_change": "Preserve T full/dispatch/direct and add quad_boundary: full960/dispatch240; scalar reference, guards and direct unchanged",
++  "source_hash_scope": "First five-file AC transport byte-count/SHA manifest; final C55 source and exact final AA checker bytes",
++  "guard_template": ".runs/conv/sep13aa-checks/C54-row7x3shared4/source",
++  "guard_change": "No checker byte changes. quad_boundary and C54/four-column comments are inherited AA grid/origin labels, not C55 four-column work.",
+   "rows_per_group": 7,
+   "vectors_per_row": 3,
+   "accumulators": 21,
+@@ -148,16 +148,18 @@
+   "executed": false,
+   "verified": false,
+   "local_compilation_or_tests_run": false,
+-  "production_assembly_review": "Pending own actual C54 GCC10.3.1 uninstrumented .s. Thirteen semantic stages, quad4 and direct u1 remainder0..3 across actual intervals and paths; all helpers/clones, transitions, dispatch, FMA, scalar and vector stack/spills. No T PASS or codegen inherited.",
++  "production_assembly_review": "Pending own actual C55 GCC10.3.1 uninstrumented .s. Thirteen semantic stages, triple3 and direct u1 remainder0..2 across actual intervals and paths; all helpers/clones, transitions, dispatch, FMA, scalar and vector stack/spills. Neither T nor AA PASS/codegen inherited.",
+   "source_parent_frozen_directory": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t",
+   "source_parent_diagnostic_job_id": "1582134",
+   "expected_semantic_stage_count": 13,
+-  "shared_kernel_columns_per_iteration": 4,
++  "shared_kernel_columns_per_iteration": 3,
+   "shared_remainder_source_columns_per_iteration": 1,
+-  "shared_remainder_max_columns": 3,
++  "shared_remainder_max_columns": 2,
+   "other_stage_kernel_columns_per_iteration": 1,
+-  "assembly_review_schema": "aa-shared4-paths-v1",
++  "assembly_review_schema": "ac-shared3-paths-v1",
+   "preparation_authorizes_compute": false,
+   "performance_measured": false,
+-  "scheduling_scope": "Fixed original Y1582410/W1582256/S1582067/T1582134/X1582372 plus existing P/AA job reservations only; missing prepared P/AA job ignored, unresolved or nonterminal blocks."
++  "scheduling_scope": "Fixed AA1582656/Y1582410/X1582372/T1582134 plus present AB campaign/four member reservations and P/AC jobs only. Missing prepared P/AC jobs ignored; unknown, conflicting or nonterminal actual jobs block.",
++  "inherited_grid_name": "quad_boundary names the exact AA boundary grid only; C55 shared source main performs three columns.",
++  "shared_width_coverage": "kw1/2 skip main; kw3 one main; kw4/5 one main and remainder1/2; kw6/7/8 two main iterations and remainder0/1/2; kw15/81 multiple iterations. No optional kw79/80 cases added."
+ }

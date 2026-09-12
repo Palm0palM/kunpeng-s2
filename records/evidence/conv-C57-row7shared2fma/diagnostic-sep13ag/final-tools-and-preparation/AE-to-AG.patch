@@ -1,0 +1,377 @@
+--- AE/driver.py
++++ AG/driver.py
+@@ -1,4 +1,4 @@
+-"""Prepared AE diagnostic transport for C56; explicit root --go only.
++"""Prepared AG explicit-FMA feasibility transport for C57; explicit root --go only.
+ 
+ No work occurs on import. status/fetch reuse a saved unique job; no local
+ operator execution, automatic polling, acceptance, promotion or publication.
+@@ -21,23 +21,16 @@
+ sys.path.insert(0, str(ROOT / 'tools'))
+ import cluster
+ 
+-VERSIONS = ('C56-row7shared3fence',)
+-SOURCE_SHA256 = '6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c'
+-SOURCE_NAMES = {'conv2d.c', 'check_conv_guard.c', 'check_sve_dispatch.c', 'candidate.env', 'remote_job.sh'}
+-SOURCE_PARENTS = {'C56-row7shared3fence': 'C55-row7x3shared3'}
+-FENCE_CONTRACT = dict(source_fences_per_main_iteration=3, input_accumulators_per_fence=21,
+-    output_operands=0, memory_clobber=True, empty_template=True)
+-COUNTS = {'C56-row7shared3fence': dict(full_per_configuration=5744, dispatch_per_configuration=1212,
+-    direct_per_configuration=432, configurations=6, total=44328)}
++VERSIONS = ('C57-row7shared2fma',)
++SOURCE_SHA256 = '3cc03ec4d13422238b1e461dd7213876cc50283a7433132ee94b41c4724ec6c5'
++SOURCE_NAMES = {'conv2d.c', 'bench_conv.c', 'run.sh', 'README.md', 'remote_job.sh'}
++SOURCE_PARENTS = {'C57-row7shared2fma': 'C52-row7x3shared2'}
++COUNTS = {'C57-row7shared2fma': dict(official_cases_per_suite=4, suites=3, total=12)}
+ RESOURCES = dict(cpus=38, memory_mb=24576, numa_count=1,
+     numa_distribution='pack', walltime_seconds=1800)
+-STAGES = (['allocation', 'compiler', 'manifest', 'build-guard']
+-    + [f'guard-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4)]
+-    + ['build-dispatch']
+-    + [f'dispatch-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4)]
+-    + ['build-assembly', 'complete'])
++STAGES = ['allocation', 'compiler', 'manifest', 'build', 'assembly-candidate',
++    'assembly-reference', 'numerical-check', 'complete']
+ TERMINAL = {'SUCCEEDED', 'FAILED', 'CANCELLED', 'CANCELED', 'TIMEOUT', 'TERMINATED'}
+-# The frozen AE wrapper builds no retained production object for separate transfer.
+ OBJECT_ARTIFACTS = {name: set() for name in VERSIONS}
+ 
+ 
+@@ -80,140 +73,71 @@
+ 
+ 
+ def serial_gate(cfg):
+-    """Only fixed AD/AC/AB/AA/Y/X/T plus present P/AE reservations.
+-
+-    Prepared P/AE without job.json is not active. Unknown IDs/reservations,
+-    missing fixed evidence, query failure or nonterminal state block. This is
+-    not a distributed lock; root remains the sole submitter and never cancels.
+-    """
+-    identities = {}
+-    unresolved = []
+-    ignored_prepared = []
+-    for path in (ROOT / '.runs/conv/sep13p-checks/C50-row4dupfencenomem/job.json',
+-                 BASE / 'C56-row7shared3fence/job.json'):
+-        origin = str(path.relative_to(ROOT))
+-        if not path.exists():
+-            ignored_prepared.append(origin)
+-            continue
+-        job_id = str(read_json(path).get('job_id') or '')
+-        if not re.fullmatch(r'[0-9]+', job_id):
+-            unresolved.append(dict(path=origin, reason='Actual reservation lacks reconciled job ID'))
+-            continue
+-        identities.setdefault(job_id, []).append(origin)
+-    required = [('.runs/conv/sep13ad-campaign.json', 'performance_job', '1582956'),
+-                ('.runs/conv/sep13ac-checks/C55-row7x3shared3/job.json', 'job_id', '1582860'),
+-                ('.runs/conv/sep13ab-campaign.json', 'performance_job', '1582814'),
+-                ('.runs/conv/sep13aa-checks/C54-row7x3shared4/job.json', 'job_id', '1582656'),
+-                ('.runs/conv/sep13y-campaign.json', 'performance_job', '1582410'),
+-                ('.runs/conv/sep13x-checks/C53-row7cursors/job.json', 'job_id', '1582372'),
+-                ('.runs/conv/sep13t-checks/C52-row7x3shared2/job.json', 'job_id', '1582134')]
+-    for origin, field, expected_id in required:
+-        path = ROOT / origin
+-        if not path.exists():
+-            unresolved.append(dict(path=origin, reason='Required fixed evidence is missing'))
+-            continue
+-        job_id = str(read_json(path).get(field) or '')
+-        if job_id != expected_id:
+-            unresolved.append(dict(path=origin, reason='Required job differs from fixed ID ' + expected_id))
+-            continue
+-        identities.setdefault(job_id, []).append(origin)
+-    # Only the explicitly named performance group members; never scan peers.
+-    for expected_id, members in (
+-            ('1582956', ('C26-r32', 'C55-row7x3shared3', 'C52-r3', 'C26-r33')),
+-            ('1582814', ('C26-r30', 'C54-row7x3shared4', 'C52-r2', 'C26-r31'))):
+-        for version in members:
+-            path = ROOT / '.runs/conv' / version / 'cluster.json'
+-            origin = str(path.relative_to(ROOT))
+-            if not path.exists():
+-                unresolved.append(dict(path=origin, reason='Required fixed member manifest is missing'))
+-                continue
+-            job_id = str(read_json(path).get('job_id') or '')
+-            if job_id != expected_id:
+-                unresolved.append(dict(path=origin, reason='Member reservation differs from original fixed group ID'))
+-                continue
+-            identities.setdefault(job_id, []).append(origin)
++    """Only original AF, AE1583102 and present P reservation; no peer scan."""
++    af_path = ROOT / '.runs/conv/sep13af-campaign.json'
++    af = read_json(af_path)
++    require(af.get('status') == 'performance_complete', 'Original AF must be fully recorded first')
++    af_id = str(af.get('performance_job') or '')
++    require(re.fullmatch(r'[0-9]+', af_id), 'Missing reconciled AF job ID')
++    group = af.get('performance_group')
++    require(isinstance(group, str) and re.fullmatch(r'kp-conv-group-[0-9a-f]+', group),
++        'Missing or malformed original AF group')
++    require(af.get('measurement_order') == ['C26-r34', 'C56-row7shared3fence', 'C55-r1', 'C26-r35'],
++        'Unexpected AF original member order')
++    for version in af['measurement_order']:
++        member = read_json(ROOT / '.runs/conv' / version / 'cluster.json')
++        require(str(member.get('job_id')) == af_id and member.get('group') == group,
++            'AF member association differs from original campaign')
++    ae_path = ROOT / '.runs/conv/sep13ae-checks/C56-row7shared3fence/job.json'
++    require(str(read_json(ae_path).get('job_id')) == '1583102', 'Original AE job identity changed')
++    identities = {af_id: [str(af_path.relative_to(ROOT))], '1583102': [str(ae_path.relative_to(ROOT))]}
++    p = ROOT / '.runs/conv/sep13p-checks/C50-row4dupfencenomem/job.json'
++    if p.exists():
++        job_id = str(read_json(p).get('job_id') or '')
++        require(re.fullmatch(r'[0-9]+', job_id), 'Unreconciled P reservation')
++        identities.setdefault(job_id, []).append(str(p.relative_to(ROOT)))
+     evidence = [query_scheduler(cfg, job_id, origins) for job_id, origins in identities.items()]
+-    clear = not unresolved and all(
+-        row['query_exit'] == 0 and row['scheduler'] is not None
++    clear = all(row['query_exit'] == 0 and row['scheduler'] is not None
+         and str(row['scheduler'].get('jobId')) == row['job_id']
+         and row['scheduler'].get('status') in TERMINAL
+         and type(row['scheduler'].get('jobExitCode')) is int
+         and type(row['scheduler'].get('systemExitCode')) is int for row in evidence)
+-    return dict(checked_at=datetime.now(timezone.utc).isoformat(), jobs=evidence,
+-        unresolved_submissions=unresolved,
+-        ignored_packages_without_job_reservations=ignored_prepared, clear=clear)
++    return dict(checked_at=datetime.now(timezone.utc).isoformat(), jobs=evidence, clear=clear)
+ 
+ 
+ def frozen_source(base, version):
+     expected = read_json(base / 'source-hashes.json')
+-    require(set(expected) == SOURCE_NAMES, 'Unexpected frozen transport source set')
+-    require(expected['conv2d.c'] == SOURCE_SHA256, 'AE requires its own root-reviewed C56 source')
++    require(set(expected) == SOURCE_NAMES, 'Unexpected AG transport file set')
++    require(expected['conv2d.c'] == SOURCE_SHA256, 'AG fixed source mismatch')
++    require(expected['bench_conv.c'] == '2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927',
++        'Original official benchmark changed')
+     source = base / 'source'
+-    require(source.is_dir() and not source.is_symlink(), 'Source must be a real directory')
+-    actual = {}
+-    sizes = {}
+-    for path in sorted(source.iterdir()):
+-        require(path.is_file() and not path.is_symlink(), 'Only regular source files are allowed')
++    require(source.is_dir() and not source.is_symlink(), 'Expected actual source directory')
++    actual, sizes = {}, {}
++    for path in source.iterdir():
++        require(path.is_file() and not path.is_symlink(), 'Source must contain only regular files')
+         content = path.read_bytes()
+         actual[path.name] = hashlib.sha256(content).hexdigest()
+         sizes[path.name] = len(content)
+-    require(actual == expected, 'Prepared source changed; never silently refresh its frozen manifest')
+-    extra_manifest = base / 'source-manifest.json'
+-    require(extra_manifest.is_file() and not extra_manifest.is_symlink(),
+-        'Frozen AE bytes/SHA source-manifest.json is required')
+-    require(read_json(extra_manifest) == {name: dict(bytes=sizes[name], sha256=actual[name]) for name in actual},
+-        'Supplementary bytes/SHA manifest mismatch')
++    require(actual == expected, 'First source manifest changed; do not silently refresh')
++    require(read_json(base / 'source-manifest.json') == {
++        name: dict(bytes=sizes[name], sha256=actual[name]) for name in actual}, 'Bytes manifest mismatch')
+     record = read_json(ROOT / 'records/experiments/conv' / (version + '.json'))
+-    # Standard new/checkpoint has parent; later performance records explicitly
+-    # preserve source_parent when comparison parent is changed. Never rewrite either.
+-    require(record.get('version') == version
+-        and record.get('source_parent', record.get('parent')) == SOURCE_PARENTS[version],
+-        'Candidate checkpoint identity mismatch')
+-    require(record['source_hashes']['conv2d.c'] == expected['conv2d.c'], 'Candidate checkpoint/source mismatch')
+-    candidate_source = ROOT / '.runs/conv' / version / 'source/conv2d.c'
+-    require(hashlib.sha256(candidate_source.read_bytes()).hexdigest() == expected['conv2d.c'],
+-        'Candidate production source differs from the frozen diagnostic copy')
++    require(record['version'] == version and record.get('source_parent', record.get('parent')) == SOURCE_PARENTS[version],
++        'Candidate source parent mismatch')
++    require(record['source_hashes'] == {name: actual[name] for name in SOURCE_NAMES - {'remote_job.sh'}},
++        'Candidate checkpoint and transport source differ')
++    for name in SOURCE_NAMES - {'remote_job.sh'}:
++        require((ROOT / '.runs/conv' / version / 'source' / name).read_bytes() == (source / name).read_bytes(),
++            'Production candidate changed after first transport copy')
+     prepared = read_json(base / 'prepared.json')
+-    counts = COUNTS[version]
+-    require(prepared.get('candidate') == prepared.get('source_experiment') == version
+-        and prepared.get('source_parent') == SOURCE_PARENTS[version], 'Prepared candidate identity mismatch')
+-    require(prepared.get('source_hashes') == expected and prepared.get('source_sha256') == expected['conv2d.c'],
+-        'Prepared source identity mismatch')
+-    require(prepared.get('status') == 'prepared' and prepared.get('compiled') is False
+-        and prepared.get('executed') is False and prepared.get('verified') is False, 'Expected initial prepared metadata')
+-    require(prepared.get('configurations') == 6 and prepared.get('sve_bytes') == [16, 32, 64]
+-        and prepared.get('threads') == [1, 4], 'Prepared VL/thread matrix mismatch')
+-    require(prepared.get('full_cases_per_configuration') == counts['full_per_configuration']
+-        and prepared.get('dispatch_cases_per_configuration') == counts['dispatch_per_configuration']
+-        and prepared.get('direct_cases_per_configuration', 0) == counts['direct_per_configuration']
+-        and prepared.get('total_cases_planned') == counts['total']
+-        and prepared.get('runner_cases_planned') == 0, 'Prepared planned counts mismatch')
+-    for field, per_field in (('full_cases', 'full_per_configuration'),
+-                            ('dispatch_cases', 'dispatch_per_configuration'),
+-                            ('direct_cases', 'direct_per_configuration')):
+-        require(prepared.get(field, 0) == counts[per_field] * 6, 'Prepared total mismatch: ' + field)
+-    require(prepared.get('expected_stages') == STAGES and prepared.get('expected_compiler_version') == '10.3.1',
+-        'Prepared stage/compiler expectations mismatch')
+-    require(prepared.get('resources_required') == {key: value for key, value in RESOURCES.items() if key != 'walltime_seconds'},
+-        'Prepared resource expectations mismatch')
+-    require(prepared.get('expected_acc') == 3 and prepared.get('expected_checks') == counts,
+-        'AE matrix schema mismatch')
+-    require(prepared.get('rows_per_group') == 7 and prepared.get('vectors_per_row') == 3
+-        and prepared.get('accumulators') == 21, 'C56 seven-row/three-vector shape mismatch')
+-    require(prepared.get('expected_rowseven_entries') == dict(dispatch_per_configuration=1236, direct_per_configuration=1080),
+-        'Rowseven entry expectations mismatch')
+-    require(prepared.get('full_matrix_counts') == dict(core=3888, narrow=144, small=720, larger=32, quad_boundary=960)
+-        and prepared.get('dispatch_matrix_counts') == dict(core=972, quad_boundary=240)
+-        and prepared.get('expected_worker_masks') == {'1': 1, '4': 15}, 'Full-matrix/worker expectations mismatch')
+-    require(prepared.get('expected_semantic_stage_count') == 13
+-        and prepared.get('shared_kernel_columns_per_iteration') == 3
+-        and prepared.get('shared_remainder_source_columns_per_iteration') == 1
+-        and prepared.get('shared_remainder_max_columns') == 2
+-        and prepared.get('assembly_review_schema') == 'ae-shared3-fence-paths-v1'
+-        and prepared.get('other_stage_kernel_columns_per_iteration') == 1,
+-        'C56 shared triple/u1-remainder expectations mismatch')
+-    require(prepared.get('column_fence_contract') == FENCE_CONTRACT,
+-        'Prepared three-column input-only compiler fence contract mismatch')
++    require(prepared.get('candidate') == version and prepared.get('source_hashes') == expected,
++        'Initial preparation identity mismatch')
++    require(prepared.get('expected_checks') == COUNTS[version] and prepared.get('expected_stages') == STAGES,
++        'Predetermined official suite/stage contract changed')
++    require(prepared.get('compiled') is False and prepared.get('executed') is False
++        and prepared.get('verified') is False and prepared.get('actual_job_id') is None,
++        'Initial preparation metadata must remain initial')
+     return expected
+ 
+ 
+@@ -232,7 +156,7 @@
+     parser.add_argument('version', choices=VERSIONS)
+     parser.add_argument('config', help='Verified existing config; read only, never included in source or archive')
+     parser.add_argument('action', choices=('gate', 'submit', 'status', 'fetch'))
+-    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AE submission authorization')
++    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AG submission authorization')
+     args = parser.parse_args()
+     require(args.action == 'submit' or not args.go, '--go is valid only for submit')
+     base = BASE / args.version
+@@ -254,7 +178,7 @@
+         require(gate['clear'], 'Known CONV work active/unresolved or query incomplete; retain gate evidence and stop')
+         hashes = frozen_source(base, args.version)
+         created = stamp()
+-        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13ae-' + args.version + '-' + created
++        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13ag-' + args.version + '-' + created
+         data = dict(version=args.version, remote_dir=remote_dir, submitted=False,
+             submit_attempted=False, created_at=created, resources=RESOURCES,
+             expected_checks=COUNTS[args.version], expected_stages=STAGES,
+@@ -270,7 +194,7 @@
+         command = 'umask 077; mkdir -p ' + shlex.quote(remote_dir) + ' && tar -xzf - -C ' + shlex.quote(remote_dir)
+         result = logged_remote(cfg, command, base / 'upload.log', input=archive.getvalue(), timeout=cfg['transfer_timeout'])
+         require(result.returncode == 0, 'Upload failed; keep reservation/log and do not resubmit')
+-        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13ae-' + args.version)
++        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13ag-' + args.version)
+         data.update(command=command, submit_attempted=True)
+         save(manifest, data)
+         result = logged_remote(cfg, command, base / 'submit.log')
+@@ -334,7 +258,7 @@
+             path = dest / name
+             if not path.exists():
+                 path.write_bytes(content)
+-    print('Fetched immutable AE diagnostic text/assembly. Fetch is not acceptance or performance.')
++    print('Fetched immutable AG diagnostic text/assembly. Fetch is not acceptance or performance.')
+ 
+ 
+ if __name__ == '__main__':
+--- AE/remote_job.sh
++++ AG/remote_job.sh
+@@ -28,8 +28,12 @@
+ }
+ # Do not compile or execute on the laptop or login node.
+ stage allocation python3 - <<'CHECK_ALLOCATION'
+-import os, pathlib, platform
++import os, pathlib, platform, ctypes
+ assert platform.system() == 'Linux' and platform.machine() == 'aarch64'
++libc = ctypes.CDLL(None)
++libc.getauxval.restype = ctypes.c_ulong
++assert libc.getauxval(16) & (1 << 22), 'SVE hardware capability is required'
++print('HWCAP_SVE=1')
+ allowed = set(os.sched_getaffinity(0))
+ assert len(allowed) == 38, ('Expected38CPUs', sorted(allowed))
+ def cpus(text):
+@@ -45,58 +49,41 @@
+ print('ALLOWED_CPUS=' + ','.join(map(str, sorted(allowed))))
+ print('NUMA_NODE=' + nodes[0])
+ CHECK_ALLOCATION
+-source candidate.env
+-[[ "$CANDIDATE" == C56-row7shared3fence && "$EXPECTED_ACC" == 3 ]]
+-[[ "$EXPECTED_FULL" == 5744 && "$EXPECTED_DISPATCH" == 1212 && "$EXPECTED_DIRECT" == 432 && "$EXPECTED_TOTAL" == 44328 ]]
+-[[ "$EXPECTED_DISPATCH_ROWSEVEN_ENTRIES" == 1236 && "$EXPECTED_DIRECT_ROWSEVEN_ENTRIES" == 1080 ]]
+-printf 'CANDIDATE=%s\n' "$CANDIDATE"
+-date -u
+-hostname
+-compiler_check() {
+-    gcc --version || return "$?"
+-    gcc -dumpfullversion -dumpversion > compiler-version.txt || return "$?"
+-    [[ "$(cat compiler-version.txt)" == 10.3.1 ]]
++printf 'CANDIDATE=C57-row7shared2fma\n'
++stage compiler bash -c 'gcc --version; test "$(gcc -dumpfullversion -dumpversion)" = 10.3.1'
++stage manifest bash -o pipefail -c 'sha256sum conv2d.c bench_conv.c run.sh README.md remote_job.sh | tee source-sha256.txt'
++export OMP_NUM_THREADS=38 OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores
++flags=(-O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2)
++# Original official benchmark remains unedited and noncontracting. Explicit
++# candidate intrinsics alone may fuse; never globally enable fast-math.
++stage build gcc "${flags[@]}" bench_conv.c conv2d.c -o conv2d_test -lm
++stage assembly-candidate gcc "${flags[@]}" -S conv2d.c -o conv2d-sve.s
++stage assembly-reference gcc "${flags[@]}" -S bench_conv.c -o bench-reference.s
++: > case-exits.txt
++: > numerical-summary.txt
++failed=0
++run_original() {
++    local suite=$1 number=$2 code check
++    shift 2
++    local log="suite-${suite}-case-${number}.log"
++    # Unlike the production early-stop runner, retain every predetermined case.
++    # The executable and its arguments, reference, tolerance and timer are original.
++    if ./conv2d_test "$@" 1 > "$log" 2>&1; then code=0; else code=$?; fi
++    cat "$log"
++    printf 'SUITE=%s CASE=%s EXIT=%s\n' "$suite" "$number" "$code" >> case-exits.txt
++    if awk '$NF=="PASS" {pass++} $NF=="FAIL" {fail++} END {exit !(pass==1 && fail==0)}' "$log"; then check=0; else check=1; fi
++    printf 'SUITE=%s CASE=%s PROCESS_EXIT=%s PASS_CHECK=%s\n' "$suite" "$number" "$code" "$check" >> numerical-summary.txt
++    if (( code != 0 || check != 0 )); then failed=1; fi
++    return 0
+ }
+-stage compiler compiler_check
+-write_manifest() {
+-    sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env > source-sha256.txt || return "$?"
+-    printf '%s  conv2d.c\n' 6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c | sha256sum -c - || return "$?"
+-    cat source-sha256.txt
+-}
+-stage manifest write_manifest
+-export OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores
+-flags=(-O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp "-DEXPECTED_ACC=$EXPECTED_ACC")
+-build_logged() {
+-    local logfile=$1
+-    shift
+-    printf 'BUILD_COMMAND:'
+-    printf ' %q' "$@"
+-    printf '\n'
+-    "$@" > "$logfile" 2>&1
+-}
+-run_guard() {
+-    local bytes=$1 threads=$2
+-    OMP_NUM_THREADS="$threads" ./check_conv_guard "$bytes" | tee "guard-vl${bytes}-t${threads}.log"
+-}
+-run_dispatch() {
+-    local bytes=$1 threads=$2
+-    OMP_NUM_THREADS="$threads" ./check_sve_dispatch "$bytes" | tee "dispatch-vl${bytes}-t${threads}.log"
+-}
+-# Uninstrumented candidate and scalar guard are separate translation units.
+-stage build-guard build_logged build-guard.log gcc "${flags[@]}" check_conv_guard.c conv2d.c -o check_conv_guard
+-for bytes in 16 32 64; do
+-    for threads in 1 4; do
+-        stage "guard-vl${bytes}-t${threads}" run_guard "$bytes" "$threads"
+-    done
++for suite in 1 2 3; do
++    run_original "$suite" 1 4096 6144 39 39
++    run_original "$suite" 2 6144 4096 41 41
++    run_original "$suite" 3 4256 6390 55 55
++    run_original "$suite" 4 6390 4256 81 81
+ done
+-# This separate executable alone receives entry instrumentation; never time it.
+-stage build-dispatch build_logged build-dispatch.log gcc "${flags[@]}" -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
+-for bytes in 16 32 64; do
+-    for threads in 1 4; do
+-        stage "dispatch-vl${bytes}-t${threads}" run_dispatch "$bytes" "$threads"
+-    done
+-done
+-stage build-assembly build_logged build-assembly.log gcc "${flags[@]}" -S conv2d.c -o conv2d-sve.s
+-printf 'SANITIZER_STATUS=NOT_RUN; guard pages and bitwise reference checks only\n'
+-printf 'EXPECTED_TOTAL_CHECKS=%s\n' "$EXPECTED_TOTAL"
+-stage complete printf 'PROBE_COMPLETE=1\n'
++cat numerical-summary.txt
++printf 'OFFICIAL_CASES_PLANNED=12\nNUMERICAL_FAILURE=%s\n' "$failed"
++# Numerical FAIL is an actual failure; keep all 12 raw logs and a nonzero wrapper.
++stage numerical-check test "$failed" -eq 0
++stage complete printf 'FMA_FEASIBILITY_COMPLETE=1\n'
