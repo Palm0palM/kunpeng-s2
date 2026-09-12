@@ -1,0 +1,220 @@
+KML251_GCC_KBLAS_DYNAMIC
+
+Dynamic section at offset 0x17bf088 contains 30 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgomp.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-aarch64.so.1]
+ 0x000000000000000e (SONAME)             Library soname: [libkblas.so.25.1.0]
+ 0x000000000000000c (INIT)               0x7f520
+ 0x000000000000000d (FINI)               0x16d125c
+ 0x0000000000000019 (INIT_ARRAY)         0x17a0160
+ 0x000000000000001b (INIT_ARRAYSZ)       24 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x17a0178
+ 0x000000000000001c (FINI_ARRAYSZ)       16 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x228
+ 0x0000000000000005 (STRTAB)             0x4070
+ 0x0000000000000006 (SYMTAB)             0xf38
+ 0x000000000000000a (STRSZ)              5688 (bytes)
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x17bf2a8
+ 0x0000000000000002 (PLTRELSZ)           5928 (bytes)
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000017 (JMPREL)             0x7ddf8
+ 0x0000000000000007 (RELA)               0x5b58
+ 0x0000000000000008 (RELASZ)             492192 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x0000000000000018 (BIND_NOW)           
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW
+ 0x000000006ffffffe (VERNEED)            0x5ac8
+ 0x000000006fffffff (VERNEEDNUM)         3
+ 0x000000006ffffff0 (VERSYM)             0x56a8
+ 0x000000006ffffff9 (RELACOUNT)          20498
+ 0x0000000000000000 (NULL)               0x0
+KML251_GCC_KBLAS_REQUIRED_SYMBOLS
+     4: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND omp_get_num_threads@OMP_1.0 (2)
+    27: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND omp_get_thread_num@OMP_1.0 (2)
+    88: 00000000003fb730    48 FUNC    GLOBAL DEFAULT   11 BlasSetNumThreadsLocal
+   147: 000000000008c0f0  2092 FUNC    GLOBAL DEFAULT   11 cblas_dgemm
+   149: 00000000003faca0    20 FUNC    GLOBAL DEFAULT   11 BlasGetNumThreads
+   207: 00000000003f9f10     8 FUNC    GLOBAL DEFAULT   11 BlasSetNumThreadsLocal_
+   241: 00000000003facc0    56 FUNC    GLOBAL DEFAULT   11 BlasGetNumThreadsLocal
+   328: 0000000000096020  1208 FUNC    GLOBAL DEFAULT   11 cblas_domatcopy
+   352: 00000000003f9f00     8 FUNC    GLOBAL DEFAULT   11 BlasSetNumThreads_
+   431: 00000000003fb700    48 FUNC    GLOBAL DEFAULT   11 BlasSetNumThreads
+   445: 0000000000080460   444 FUNC    GLOBAL DEFAULT   11 KBLASGetVersion
+KML251_ENV_SETUP
+#!/bin/bash
+
+usage()
+{
+    echo "------------------------------------How to use------------------------------------"
+    echo "usage     : source setvars.sh"
+    echo "------------------------------Parameter Description-------------------------------"
+    echo "--kblas   : 'locking', 'nolocking', 'multi'"
+    echo "--kspblas : 'single', 'multi'. Default value is 'multi'"
+    echo "--kvml    : 'single', 'multi'. Default value is 'single'"
+    echo "Examples  : source setvars.sh --kblas=locking "
+    echo "----------------------------------------------------------------------------------"
+}
+
+implementer=$(cat /proc/cpuinfo | grep "CPU implementer" | awk 'NR==1{printf $4}')
+part=$(cat /proc/cpuinfo | grep "CPU part" | awk 'NR==1{printf $4}')
+cputype="${implementer}-${part}"
+
+if [ "$0" = "$BASH_SOURCE" ]; then
+    echo "Incorrect usage: ${_script_name} must be sourced."
+    usage
+    exit 0
+fi
+
+KMLROOT=$(
+  cd $(dirname $BASH_SOURCE)/..
+  pwd
+)
+
+
+kml_lib_path_config() (
+    kml_lib="$1"
+    env_lib="$2"
+
+    if [ "" = "${env_lib}" ]; then
+        printf "%s" "${kml_lib}"
+    else
+        printf "%s" "${kml_lib}:${env_lib}"
+    fi
+)
+
+setvars_kml_kblas_list=("locking" "nolocking" "multi")
+setvars_kml_kspblas_list=("multi" "single")
+setvars_kml_kvml_list=("multi" "single")
+kblas="multi"
+kspblas="multi"
+kvml="single"
+
+value_is_valid=""
+kml_check_options() {
+    local list
+    eval list="\${setvars_kml_${1}_list[@]}"
+    local value=$2
+    value_is_true="true"
+    if ! echo "${list[@]}" | grep -w -q "$value"; then
+        echo -e "\e[31m'$value' is invalid, 'kml_$1' has been set to the default value.\e[0m"
+        value_is_true="false"
+    fi
+}
+
+kml_parse_args() {
+    while [ "$#" -gt 0 ]; do
+        case "$1" in
+        --kblas=*)
+            kml_check_options kblas "${1#*=}"
+            if [[ $value_is_true == "true" ]] ; then
+                kblas="${1#*=}"
+            fi
+            shift
+            ;;
+        --kspblas=*)
+            kml_check_options kspblas "${1#*=}"
+            if [[ $value_is_true == "true" ]] ; then
+                kspblas="${1#*=}"
+            fi
+            shift
+            ;;
+        --kvml=*)
+            kml_check_options kvml "${1#*=}"
+            if [[ $value_is_true == "true" ]] ; then
+                kvml="${1#*=}"
+            fi
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            shift
+            ;;
+        esac
+    done
+}
+
+kml_parse_args $@
+
+libdir="neon"
+kblaslibdir="neon"
+get_libpath()
+{
+    if [ "${cputype}" = "0x48-0xd01" ]; then
+        libdir="neon"
+        kblaslibdir="neon"
+    elif [ "${cputype}" = "0x48-0xd02" ]; then
+        libdir="sve"
+        kblaslibdir="sve"
+    elif [ "${cputype}" = "0x48-0xd03" ]; then
+        libdir="sve"
+        kblaslibdir="sve"
+    elif [ "${cputype}" = "0x48-0xd06" ]; then
+        libdir="sve"
+        kblaslibdir="sve"
+    elif [ "${cputype}" = "0x48-0xd22" ]; then
+        libdir="sve512"
+        kblaslibdir="sme"
+    else
+        libdir="neon"
+    fi
+}
+
+get_libpath
+
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$kblaslibdir/kblas/$kblas" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$libdir/kspblas/$kspblas" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/noarch/kvml/$kvml" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/noarch" "${LIBRARY_PATH:-}")
+LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$libdir" "${LIBRARY_PATH:-}")
+
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$kblaslibdir/kblas/$kblas" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$libdir/kspblas/$kspblas" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/noarch/kvml/$kvml" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/noarch" "${LD_LIBRARY_PATH:-}")
+LD_LIBRARY_PATH=$(kml_lib_path_config "${KMLROOT}/lib/$libdir" "${LD_LIBRARY_PATH:-}")
+
+export KMLROOT
+export LIBRARY_PATH
+export LD_LIBRARY_PATH
+export CPATH=${KMLROOT}/include:$CPATH
+export INCLUDE=${KMLROOT}/include:$INCLUDE
+KML251_READMES
+KML251_HEADER_ABI
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2020-2023. All rights reserved.
+ * Description: cblas interface for the user
+ * Author:  KML
+ * Create: 2020-09-22
+ * Notes: NA
+ */
+
+#ifndef CBLAS_H
+#define CBLAS_H
+
+#include <stddef.h>
+#include <stdint.h>
+typedef int8_t BLASINT8;
+typedef uint8_t BLASUINT8;
+
+#ifndef BLAS_TYPES_DEF
+#define BLAS_TYPES_DEF
+typedef long BLASLONG;
+typedef unsigned long BLASULONG;
+#ifdef USE64BITINT
+typedef BLASLONG BLASINT;
+#define blasabs(x) labs(x)
+#else
+typedef int BLASINT;
+#define blasabs(x) abs(x)
+#endif // USE64BITINT
+
+/* C99 supports complex floating numbers natively, which GCC also offers as an
+   extension since version 3.0.  If neither are available, use a compatible
+   structure as fallback (see Clause 6.2.5.13 of the C99 standard). */
+#if ((defined(__STDC_IEC_559_COMPLEX__) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) ||\

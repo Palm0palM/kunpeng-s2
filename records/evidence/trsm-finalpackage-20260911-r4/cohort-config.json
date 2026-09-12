@@ -1,0 +1,39 @@
+{
+  "cohort_id": "trsm-package-2611fa5d0190",
+  "members": {
+    "trsm-package": {
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "KBLAS_LIB": "/CLUSTER_USER_HOME/other-20260907/blas-verified/libopenblas.a",
+          "TEST_RUNS": "3",
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      }
+    }
+  },
+  "round_order": [
+    [
+      "trsm-package"
+    ],
+    [
+      "trsm-package"
+    ],
+    [
+      "trsm-package"
+    ]
+  ]
+}
