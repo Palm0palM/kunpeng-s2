@@ -1,0 +1,71 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -971,46 +971,48 @@
+                 const svfloat32_t dk0 = svdup_n_f32(kd[ik]);
+                 const svfloat32_t dk1 = svdup_n_f32(kd[ik + 1]);
+                 const float *p = row + ik;
+-                const svfloat32_t v0 = svld1(pg, p);
+-                const svfloat32_t v1 = svld1(pg, p + 1 * lanes);
++                /* Complete column ik for all four vector positions. */
++                const svfloat32_t v0 = svld1(pg, p);
++                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v0, ak0));
++                b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v0, bk0));
++                c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v0, ck0));
++                d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v0, dk0));
++                const svfloat32_t v1 = svld1(pg, p + 1 * lanes);
++                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v1, ak0));
++                b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v1, bk0));
++                c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v1, ck0));
++                d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v1, dk0));
++                const svfloat32_t v2 = svld1(pg, p + 2 * lanes);
++                a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v2, ak0));
++                b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v2, bk0));
++                c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v2, ck0));
++                d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v2, dk0));
++                const svfloat32_t v3 = svld1(pg, p + 3 * lanes);
++                a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, v3, ak0));
++                b3 = svadd_f32_x(pg, b3, svmul_f32_x(pg, v3, bk0));
++                c3 = svadd_f32_x(pg, c3, svmul_f32_x(pg, v3, ck0));
++                d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, v3, dk0));
++                /* Complete column ik + 1 for all four vector positions. */
+                 const svfloat32_t x0 = svld1(pg, p + 0 * lanes + 1);
+-                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v0, ak0));
+                 a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, x0, ak1));
+-                b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v0, bk0));
+                 b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, x0, bk1));
+-                c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v0, ck0));
+                 c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, x0, ck1));
+-                d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v0, dk0));
+                 d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, x0, dk1));
+-                const svfloat32_t v2 = svld1(pg, p + 2 * lanes);
+                 const svfloat32_t x1 = svld1(pg, p + 1 * lanes + 1);
+-                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v1, ak0));
+                 a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, x1, ak1));
+-                b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v1, bk0));
+                 b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, x1, bk1));
+-                c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v1, ck0));
+                 c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, x1, ck1));
+-                d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v1, dk0));
+                 d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, x1, dk1));
+-                const svfloat32_t v3 = svld1(pg, p + 3 * lanes);
+                 const svfloat32_t x2 = svld1(pg, p + 2 * lanes + 1);
+-                a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v2, ak0));
+                 a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, x2, ak1));
+-                b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v2, bk0));
+                 b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, x2, bk1));
+-                c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v2, ck0));
+                 c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, x2, ck1));
+-                d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v2, dk0));
+                 d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, x2, dk1));
+                 /* Load only the final shifted window, not a whole v4. */
+                 const svfloat32_t x3 = svld1(pg, p + 3 * lanes + 1);
+-                a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, v3, ak0));
+                 a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, x3, ak1));
+-                b3 = svadd_f32_x(pg, b3, svmul_f32_x(pg, v3, bk0));
+                 b3 = svadd_f32_x(pg, b3, svmul_f32_x(pg, x3, bk1));
+-                c3 = svadd_f32_x(pg, c3, svmul_f32_x(pg, v3, ck0));
+                 c3 = svadd_f32_x(pg, c3, svmul_f32_x(pg, x3, ck1));
+-                d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, v3, dk0));
+                 d3 = svadd_f32_x(pg, d3, svmul_f32_x(pg, x3, dk1));
+             }
+             for (; ik < kw; ++ik) {

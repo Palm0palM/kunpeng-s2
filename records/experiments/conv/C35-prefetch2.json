@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C35-prefetch2",
+  "parent": "C26-r9",
+  "strategy": "Prefetch four complete input-vector starts two shared input rows ahead inside the quad middle phase only, guarded by kh-t>2; preserve all arithmetic, weights, stages, scheduling and runner settings",
+  "created_at": "2026-09-12T08:30:30.474983+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "f3869bd86297223921129ca98ee7a7c0835c9b0b28403747271bc88ab84e65cb",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C26-row4loads",
+  "comparison_baseline": "C26-r9",
+  "reference_only": false,
+  "recorded_at": "2026-09-12T09:06:28.740230+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12e",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "88ca4dee92a23be925f1f86730cfb7372f6dbee57702e2e0764d5007cfc760be",
+  "log": ".runs/conv/C35-prefetch2/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.75,
+        51.73,
+        51.75
+      ],
+      "median_ms": 51.75,
+      "min_ms": 51.73,
+      "max_ms": 51.75,
+      "spread_pct": 0.038647342995175124,
+      "gflops": [
+        1456.6411,
+        1457.1129,
+        1456.4123
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        61.71,
+        61.79,
+        61.59
+      ],
+      "median_ms": 61.71,
+      "min_ms": 61.59,
+      "max_ms": 61.79,
+      "spread_pct": 0.32409658078106585,
+      "gflops": [
+        1348.7954,
+        1347.0531,
+        1351.4708
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        107.64,
+        107.69,
+        107.58
+      ],
+      "median_ms": 107.64,
+      "min_ms": 107.58,
+      "max_ms": 107.69,
+      "spread_pct": 0.1021924934968408,
+      "gflops": [
+        1496.4581,
+        1495.6861,
+        1497.2247
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        231.52,
+        232.68,
+        231.46
+      ],
+      "median_ms": 231.52,
+      "min_ms": 231.46,
+      "max_ms": 232.68,
+      "spread_pct": 0.526952315134761,
+      "gflops": [
+        1493.509,
+        1486.0277,
+        1493.8454
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 452.62,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1579410",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 0.01% 未超过测量波动/最低1%门槛 2.74%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.47,
+        "candidate_ms": 51.75,
+        "gain_pct": -0.5440062172139133
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.96,
+        "candidate_ms": 61.71,
+        "gain_pct": 0.40348612007746937
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.46,
+        "candidate_ms": 107.64,
+        "gain_pct": -0.1675041876046965
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.76,
+        "candidate_ms": 231.52,
+        "gain_pct": 0.10355540214013666
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r8",
+    "eligible": false,
+    "reasons": [
+      "提速 -0.04% 未超过测量波动/最低1%门槛 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.47,
+        "candidate_ms": 51.75,
+        "gain_pct": -0.5440062172139133
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.94,
+        "candidate_ms": 61.71,
+        "gain_pct": 0.3713270907329624
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.35,
+        "candidate_ms": 107.64,
+        "gain_pct": -0.2701443875174721
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.67,
+        "candidate_ms": 231.52,
+        "gain_pct": 0.06474726982344597
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Does not meet predeclared comparison gate; preserve actual samples without promotion."
+}
