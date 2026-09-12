@@ -1,0 +1,53 @@
+{
+  "phase": "interleaved-T19-vs-wide4x32-unroll2",
+  "reference": "KML25.1/GCC12; not specified KML25.2.0",
+  "members": [
+    {
+      "run_name": "T19-control13-repeat-r17",
+      "version": "T19-control13",
+      "parent": null,
+      "source_from": "T19-control13",
+      "source_implementation_id": "T19-panel8x16budget",
+      "strategy": "Unchanged promoted T19 implementation, freshly measured as a parent-null KML25.1/GCC12 baseline for subsequent independent candidates.",
+      "repeat_existing": true,
+      "prior_job_id": "1581760"
+    },
+    {
+      "run_name": "T20-wideunroll2",
+      "version": "T20-wideunroll2",
+      "parent": "T19-control13",
+      "source_from": "T20-wideunroll2",
+      "source_implementation_id": "T20-wideunroll2",
+      "strategy": "Unroll only the existing large-path SVE 4x32 update k loop by two while preserving each increasing-k accumulator chain and a scalar-count tail. Keep the complete T19 small path, layout, dispatch, KB256/CT64 and fallback behavior unchanged."
+    }
+  ],
+  "measurement_protocol": {
+    "warmup_order": [
+      "T19-control13-repeat-r17",
+      "T20-wideunroll2"
+    ],
+    "warmup_suites_per_member": 1,
+    "formal_round_order": [
+      [
+        "T19-control13-repeat-r17",
+        "T20-wideunroll2"
+      ],
+      [
+        "T20-wideunroll2",
+        "T19-control13-repeat-r17"
+      ],
+      [
+        "T19-control13-repeat-r17",
+        "T20-wideunroll2"
+      ]
+    ],
+    "formal_suites_per_member": 3,
+    "TEST_RUNS": 3,
+    "formal_case_count": 18,
+    "warmup_case_count": 6,
+    "sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  },
+  "preflight_policy": "Both members run the complete CT64 wide32 module: 28 direct, 28 whole, 56 argument cases, 7 processes. Unchanged small-path source is associated with r16 evidence; no fresh 615-case claim.",
+  "hash_operations": false,
+  "local_task_tests": false
+}
