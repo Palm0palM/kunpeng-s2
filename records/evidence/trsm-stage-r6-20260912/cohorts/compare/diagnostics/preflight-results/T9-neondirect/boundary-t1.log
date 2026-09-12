@@ -1,0 +1,4 @@
+MODE=boundary THREADS=1 NARROW_VL=0 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+CASE_PASS m=4095 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+CASE_PASS m=4097 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0
+PASS whole_cases=2 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=3.8857805861880479e-16

@@ -1,0 +1,12 @@
+TRSM_SCHEDULER_JOB_ID=1579365
+CC=gcc
+CPU_TARGET=generic
+OMP_NUM_THREADS=1
+OMP_DYNAMIC=FALSE
+OMP_PROC_BIND=close
+OMP_PLACES=cores
+T7_SOURCE=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-1c753efb59cb/numeric-reference/T7/source
+T9_SOURCE=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-1c753efb59cb/T9-neondirect/source
+NUMERIC_REFERENCE=T7-diagpanel
+PERFORMANCE_BASELINE=T8-svepanel16
+BLAS_LINKED=none

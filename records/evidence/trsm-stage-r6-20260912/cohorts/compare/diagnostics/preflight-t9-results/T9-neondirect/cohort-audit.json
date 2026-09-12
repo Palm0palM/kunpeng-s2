@@ -1,0 +1,22 @@
+{
+  "candidate_version": "T9-neondirect",
+  "candidate_run": "T9-neondirect",
+  "numerical_reference": "T7-diagpanel",
+  "job_id": "1579365",
+  "purpose": "Numerical equivalence only; not a performance baseline",
+  "checks": {
+    "script_exit_zero": true,
+    "recorded_exit_zero": true,
+    "one_complete_marker": true,
+    "one_actual_numeric_marker": true,
+    "marker_verification_log": true,
+    "complete_actual_case_rows": true,
+    "no_numeric_failures": true,
+    "one_worker_and_job": true
+  },
+  "passed": true,
+  "script_exit_code": 0,
+  "expected_completion_marker": "TRSM_T9_NUMERIC_COMPLETE=1 CASES=105 ELEMENTS=62853 SOLVES=210 FINITE_NUMERIC_BITWISE=1 TOLERANCE=1e-12 PADDING_L_UNCHANGED=1",
+  "validation_policy": "No hash computation or validation",
+  "completed_at": "2026-09-12T08:31:31Z"
+}

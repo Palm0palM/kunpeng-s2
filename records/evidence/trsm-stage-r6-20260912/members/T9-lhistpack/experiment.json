@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T9-lhistpack",
+  "parent": "T8-control12",
+  "source_from": "T9-lhistpack",
+  "source_implementation_id": "T9-lhistpack",
+  "strategy": "以T8为来源，小路径共享打包16行块历史L系数为k-major连续布局，减少历史循环的地址运算与分散行访问；打包分配同步均计时，块内前代及大路径不变。",
+  "created_at": "2026-09-12T08:25:30.084331+00:00",
+  "status": "prepared",
+  "verified": false,
+  "validation_policy": "No hash computation or validation at explicit user request",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  }
+}
