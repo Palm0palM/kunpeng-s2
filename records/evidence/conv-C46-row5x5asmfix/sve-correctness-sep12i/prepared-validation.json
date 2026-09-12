@@ -1,0 +1,25 @@
+{
+  "status": "prepared",
+  "complete": false,
+  "candidate": "C46-row5x5asmfix",
+  "source_parent": "C42-row5x5asm",
+  "production_source_sha256": "a04c74c8701c394fd620d9fa91d421898cf4aa2b7c96b87de21cf301cd4e2e8d",
+  "expected_checks": {
+    "full_per_configuration": 3776,
+    "dispatch_per_configuration": 504,
+    "direct_per_configuration": 288,
+    "configurations": 6,
+    "total": 27408
+  },
+  "expected_rowquint_entries": {
+    "dispatch_per_configuration": 528,
+    "direct_per_configuration": 720
+  },
+  "executed_locally": false,
+  "executed_remotely": false,
+  "submission_gate": "Prepared I package only; explicit root GO and one reconciled scheduler job required. No job submitted.",
+  "template_candidate": "C42-row5x5asm",
+  "template_failed_job": "1579627",
+  "template_numerical_checks_executed": 0,
+  "production_assembly_review": "Pending target GCC10.3.1 default named-operand acceptance; five concrete asm blocks and all nine stages/transitions/whole-helper spills plus whole-source FMA"
+}

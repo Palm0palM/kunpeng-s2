@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C46-row5x5asmfix",
+  "parent": "C42-row5x5asm",
+  "strategy": "Fix only GCC10 SVE inline-asm operand formatting from unsupported percent-Z named operands to default named operands with .s; preserve C42 early-clobber constraints, arithmetic and memory compiler barrier; independent compile/correctness remains pending",
+  "created_at": "2026-09-12T10:42:59.840399+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "cbdadacaa24a28f2eff0b9d01810ccae69ddc127da22942f30b15a6713265def",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C42-row5x5asm",
+  "failed_source_job": "1579627",
+  "failed_source_checks_executed": 0,
+  "change_scope": "Only 150 named operand print modifiers in 50 assembly template lines: %Z[name].s -> %[name].s",
+  "operand_format_basis": "GCC10 aarch64_print_operand case0 prints single-register SVE data mode as zN",
+  "arithmetic_and_constraints_unchanged": true,
+  "compiler_acceptance": "pending independent target GCC10.3.1 diagnosis",
+  "execution_priority": "Prepared only; root owns independent review and explicit remote diagnostic approval",
+  "reference_only": false
+}

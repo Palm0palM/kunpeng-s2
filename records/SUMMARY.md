@@ -195,3 +195,7 @@ CONV 输入复制与行距对照完成：434,352项专项检查及12套件48/48�
 ## TRSM 2026-09-12 第十五轮：T18确认仍未越过波动门槛
 
 作业1579788 SUCCEEDED，18/18正式、6/6预热及全部预算/宽核预检通过。T8/T18合计449.97/433.41ms，T18小例快21.93%、中例慢0.28%、大例快6.76%，合计改善3.68%未超过11.86%波动门槛，保持T8提交包。两版本r14 prior完整保留，未混合历史样本。真实KML25.1/GCC12，非指定KML25.2复验；无本机题目运行、哈希或比赛提交。[完整报告](../docs/trsm-stage-r15-20260912.md)。
+
+## CONV I diagnostics
+
+C45-row4dup4 and C46-row5x5asmfix independently passed 121560 and 27408 scheduled-node checks (jobs 1579762 and 1579795). GCC 10.3.1, six VL/thread configurations, all 19 stage exits and scheduler/job/wrapper exits zero. Actual C45 shared loop has six vector spill loads/stores; C46 quint has none. Performance remains unmeasured; retain C6. [Full report](../docs/CONV_SEP12I.md).

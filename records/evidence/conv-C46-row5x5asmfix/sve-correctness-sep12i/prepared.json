@@ -1,0 +1,84 @@
+{
+  "candidate": "C46-row5x5asmfix",
+  "status": "prepared",
+  "complete": false,
+  "prepared_at": "2026-09-12T10:59:50.780561+00:00",
+  "source_parent": "C42-row5x5asm",
+  "source_experiment": "C46-row5x5asmfix",
+  "source_sha256": "a04c74c8701c394fd620d9fa91d421898cf4aa2b7c96b87de21cf301cd4e2e8d",
+  "production_source_sha256": "a04c74c8701c394fd620d9fa91d421898cf4aa2b7c96b87de21cf301cd4e2e8d",
+  "source_hashes": {
+    "candidate.env": "58d527e2ac1e4cd0504ebdebfb559b4a9e872a6df0a1103c4edce7a2dd3a2ae2",
+    "check_conv_guard.c": "dd603a5b3e6060f848b67ef0fb7c27235aca915da7800c26d8f43280504199b1",
+    "check_sve_dispatch.c": "da40cf39877f8e5c9ded8c0726e3045473755443ffb104c55bf9a8e183ecaa15",
+    "conv2d.c": "a04c74c8701c394fd620d9fa91d421898cf4aa2b7c96b87de21cf301cd4e2e8d",
+    "remote_job.sh": "ef7ffba8efef9057f0707f6cc2c946948ffec6185c9424f611df00c3c802f2a4"
+  },
+  "source_hash_scope": "First five-file package transport manifest; no repeated repository hash audit",
+  "guard_template": ".runs/conv/sep12g-checks/C42-row5x5asm/source",
+  "guard_files_byte_unchanged": true,
+  "configurations": 6,
+  "sve_bytes": [
+    16,
+    32,
+    64
+  ],
+  "threads": [
+    1,
+    4
+  ],
+  "expected_checks": {
+    "full_per_configuration": 3776,
+    "dispatch_per_configuration": 504,
+    "direct_per_configuration": 288,
+    "configurations": 6,
+    "total": 27408
+  },
+  "full_cases_per_configuration": 3776,
+  "dispatch_cases_per_configuration": 504,
+  "direct_cases_per_configuration": 288,
+  "full_cases": 22656,
+  "dispatch_cases": 3024,
+  "direct_cases": 1728,
+  "total_cases_planned": 27408,
+  "runner_cases_planned": 0,
+  "expected_acc": 5,
+  "expected_rowquint_entries": {
+    "dispatch_per_configuration": 528,
+    "direct_per_configuration": 720
+  },
+  "expected_stages": [
+    "allocation",
+    "compiler",
+    "manifest",
+    "build-guard",
+    "guard-vl16-t1",
+    "guard-vl16-t4",
+    "guard-vl32-t1",
+    "guard-vl32-t4",
+    "guard-vl64-t1",
+    "guard-vl64-t4",
+    "build-dispatch",
+    "dispatch-vl16-t1",
+    "dispatch-vl16-t4",
+    "dispatch-vl32-t1",
+    "dispatch-vl32-t4",
+    "dispatch-vl64-t1",
+    "dispatch-vl64-t4",
+    "build-assembly",
+    "complete"
+  ],
+  "expected_compiler_version": "10.3.1",
+  "resources_required": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack"
+  },
+  "actual_job_id": null,
+  "compiled": false,
+  "executed": false,
+  "verified": false,
+  "local_compilation_or_tests_run": false,
+  "production_assembly_review": "Pending target GCC10.3.1 default named-operand acceptance; five concrete asm blocks and all nine stages/transitions/whole-helper spills plus whole-source FMA"
+}

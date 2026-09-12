@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C45-row4dup4",
+  "parent": "C26-row4loads",
+  "strategy": "In quad shared middle only, batch four kernel columns with LD1RQ, explicit constant-lane DUP and ordinary separate FMUL/FADD in q-major order; retain C6 two/one remainders and all other code; diagnostic-first, no assumed speedup",
+  "created_at": "2026-09-12T10:38:33.624406+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C26-row4loads",
+  "source_hypothesis": "Four-column LD1RQ plus explicit constant DUP and ordinary FMUL/FADD, q-major shared-middle only",
+  "coefficient_columns_per_iteration": 4,
+  "rows_per_group": 4,
+  "vectors_per_row": 4,
+  "arithmetic_policy": "Each output retains kernel-row and kernel-column order; separate multiply then add",
+  "scope": "Only insertion before unchanged quad shared-middle two-column loop; all remainder/helper/dispatch/build files unchanged",
+  "prior_related_versions": [
+    "C29-row4lane4",
+    "C32-row4lane4staged"
+  ],
+  "compiler_risk": "GCC may fold DUP+ordinary multiply back to indexed FMUL or reschedule/introduce spills",
+  "performance_requires_distinct_actual_assembly": true,
+  "execution_priority": "Prepared only; root reviews and explicitly schedules future diagnostics, no automatic performance run",
+  "reference_only": false
+}
