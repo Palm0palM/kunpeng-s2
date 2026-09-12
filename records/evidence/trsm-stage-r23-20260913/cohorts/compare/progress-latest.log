@@ -1,0 +1,46 @@
+preflight-panel8x16-results/T19-control13-repeat-r23/summary.tsv l-t1	0	15
+wide-normal-t4	0	14
+wide-normal-t38	0	17
+wide-no-sve-t4	0	14
+wide-narrow-vl-t4	0	15
+wide-shared-fail-t4	0	14
+wide-x-fail-t4	0	15
+wide-all-fail-t4	0	15
+verify-results	0	0
+
+preflight-panel8x16-results/T25-smallpairload/summary.tsv l-t1	0	15
+wide-normal-t4	0	14
+wide-normal-t38	0	16
+wide-no-sve-t4	0	15
+wide-narrow-vl-t4	0	14
+wide-shared-fail-t4	0	14
+wide-x-fail-t4	0	15
+wide-all-fail-t4	0	14
+verify-results	0	0
+
+T19-control13-repeat-r23/benchmark.log completed suites 1 121.03     831.9427     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       180.24     823.2675     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-022350-zuEblK
+BENCH_REPEAT 1/3 END
+
+T25-smallpairload/benchmark.log completed suites 1 --------------------------------------------------------
+ 17024 x   512       180.66     821.3655     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-022359-qKRiLk
+BENCH_REPEAT 1/3 END
+
+BENCH_REPEAT 2/3 BEGIN COHORT=trsm-kml251-8fde9582beb3 MEMBER=T25-smallpairload
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=0-37 NUMA=0 threads=38
+Reference BLAS: official kblas
+
+COHORT_TAIL --------
+ 17024 x   512       180.66     821.3655     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260913-022359-qKRiLk
+Compiler: gcc (gcc for openEuler 3.0.2) 12.3.1
+CPUs=0-37 NUMA=0 threads=38
+Reference BLAS: official kblas
+

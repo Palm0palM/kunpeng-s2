@@ -1,0 +1,19 @@
+SOURCE_FEATURES_PASS panel16=1 packedL16=1 has_budget=1 history_budget_bytes=4194304 panel8x16=1
+MODE=budget THREADS=4 NARROW_VL=0 EXPECT_SVE16=0 EXPECT_PACKEDL16=0
+ALLOC_PASS m=1023 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=3999744 history_success=1 history_fail=0 x_calls=4 x_bytes=261888 x_success=0 x_fail=4 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=4 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1023 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=1023 n=9 calls=0 bad=0 expected_panel_stride=8184
+ALLOC_PASS m=1024 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=4128768 history_success=1 history_fail=0 x_calls=4 x_bytes=262144 x_success=0 x_fail=4 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=4 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1024 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=1024 n=9 calls=0 bad=0 expected_panel_stride=8192
+ALLOC_PASS m=1039 n=9 small=1 wide_path=0 history_expected=1 history_calls=1 history_bytes=4128768 history_success=1 history_fail=0 x_calls=4 x_bytes=265984 x_success=0 x_fail=4 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=5 injected=4 history_level=0 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1039 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=0 wrapper_expected=0
+ARGUMENTS_PASS m=1039 n=9 calls=0 bad=0 expected_panel_stride=8312
+ALLOC_PASS m=1040 n=9 small=1 wide_path=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=532480 x_success=0 x_fail=4 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=4 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1040 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=1 wrapper_expected=1
+ARGUMENTS_PASS m=1040 n=9 calls=0 bad=0 expected_panel_stride=8320
+ALLOC_PASS m=1041 n=9 small=1 wide_path=1 history_expected=0 history_calls=0 history_bytes=0 history_success=0 history_fail=0 x_calls=4 x_bytes=532992 x_success=0 x_fail=4 kb_calls=0 kb_bytes=0 kb_success=0 kb_fail=0 total=4 injected=4 history_level=-1 x_level=1 kb_level=-1 shape_bad=0 x_each_worker_once=1
+CASE_PASS m=1041 n=9 sve16_entries=0 expected=0 old_entries=0 packed_entries=0 packed_expected=0 wide_entries=0 wide_expected=0 wrapper_entries=1 wrapper_expected=1
+ARGUMENTS_PASS m=1041 n=9 calls=0 bad=0 expected_panel_stride=8328
+ALLOCATION_SUMMARY_PASS cases=5 budget_cases=5 shared_injection_cases=0
+PASS whole_cases=5 noop_cases=4 non_dyadic_long_double_RHS=1 padding_L_unchanged=1 max_error=1.1102230246251565e-16

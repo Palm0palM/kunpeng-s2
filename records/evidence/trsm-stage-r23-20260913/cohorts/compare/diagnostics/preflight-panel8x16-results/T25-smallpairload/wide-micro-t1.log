@@ -1,0 +1,21 @@
+SOURCE_FEATURES_PASS panel16=1 packedL16=1 has_budget=1 history_budget_bytes=4194304 panel8x16=1
+MODE=wide-micro THREADS=1 NARROW_VL=0 EXPECT_SVE16=1 EXPECT_PACKEDL16=1
+WIDE_MICRO_PASS start=0 lda=9 calls=1 arguments=1 bad=0 panel_stride=64
+WIDE_MICRO_PASS start=0 lda=15 calls=1 arguments=1 bad=0 panel_stride=64
+WIDE_MICRO_PASS start=1 lda=10 calls=1 arguments=1 bad=0 panel_stride=72
+WIDE_MICRO_PASS start=1 lda=16 calls=1 arguments=1 bad=0 panel_stride=72
+WIDE_MICRO_PASS start=7 lda=16 calls=1 arguments=1 bad=0 panel_stride=120
+WIDE_MICRO_PASS start=7 lda=22 calls=1 arguments=1 bad=0 panel_stride=120
+WIDE_MICRO_PASS start=8 lda=17 calls=1 arguments=1 bad=0 panel_stride=128
+WIDE_MICRO_PASS start=8 lda=23 calls=1 arguments=1 bad=0 panel_stride=128
+WIDE_MICRO_PASS start=9 lda=18 calls=1 arguments=1 bad=0 panel_stride=136
+WIDE_MICRO_PASS start=9 lda=24 calls=1 arguments=1 bad=0 panel_stride=136
+WIDE_MICRO_PASS start=15 lda=24 calls=1 arguments=1 bad=0 panel_stride=184
+WIDE_MICRO_PASS start=15 lda=30 calls=1 arguments=1 bad=0 panel_stride=184
+WIDE_MICRO_PASS start=16 lda=25 calls=1 arguments=1 bad=0 panel_stride=192
+WIDE_MICRO_PASS start=16 lda=31 calls=1 arguments=1 bad=0 panel_stride=192
+WIDE_MICRO_PASS start=255 lda=264 calls=1 arguments=1 bad=0 panel_stride=2104
+WIDE_MICRO_PASS start=255 lda=270 calls=1 arguments=1 bad=0 panel_stride=2104
+WIDE_MICRO_PASS start=256 lda=265 calls=1 arguments=1 bad=0 panel_stride=2112
+WIDE_MICRO_PASS start=256 lda=271 calls=1 arguments=1 bad=0 panel_stride=2112
+PASS wide_micro_cases=18 ordered_FMA_bitwise=1 prefix_padding_L_unchanged=1 two_panels_unchanged_outside_rows=1

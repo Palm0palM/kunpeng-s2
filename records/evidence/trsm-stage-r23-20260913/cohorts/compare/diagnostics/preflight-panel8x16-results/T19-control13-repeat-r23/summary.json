@@ -1,0 +1,265 @@
+{
+  "schema": "trsm-panel8x16-preflight-v1",
+  "complete": true,
+  "source_features": {
+    "has_panel16": true,
+    "has_packed_history": true,
+    "has_history_budget": true,
+    "history_budget_bytes": 4194304,
+    "has_panel8x16": true
+  },
+  "micro_cases": 46,
+  "old_micro_cases": 14,
+  "packed_micro_cases": 14,
+  "wide_micro_cases": 18,
+  "whole_cases": 615,
+  "noop_cases": 96,
+  "shared_fail_cases": 89,
+  "allocation_checked_cases": 615,
+  "budget_cases": 32,
+  "budget_shared_injections": 3,
+  "process_count": 27,
+  "max_error": 3.885780586188048e-16,
+  "processes": [
+    {
+      "label": "normal-t1",
+      "threads": 1,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "normal-t4",
+      "threads": 4,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "normal-t38",
+      "threads": 38,
+      "whole_cases": 4,
+      "noop_cases": 4,
+      "allocation_checked_cases": 4,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "boundary-t1",
+      "threads": 1,
+      "whole_cases": 2,
+      "noop_cases": 4,
+      "allocation_checked_cases": 2,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 3.885780586188048e-16
+    },
+    {
+      "label": "no-sve-t4",
+      "threads": 4,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "fail-alloc-t4",
+      "threads": 4,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "narrow-vl-t4",
+      "threads": 4,
+      "whole_cases": 80,
+      "noop_cases": 4,
+      "allocation_checked_cases": 80,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "shared-fail-t1",
+      "threads": 1,
+      "whole_cases": 40,
+      "noop_cases": 4,
+      "allocation_checked_cases": 40,
+      "budget_cases": 0,
+      "shared_fail_cases": 40,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "shared-fail-t4",
+      "threads": 4,
+      "whole_cases": 40,
+      "noop_cases": 4,
+      "allocation_checked_cases": 40,
+      "budget_cases": 0,
+      "shared_fail_cases": 40,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-t1",
+      "threads": 1,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-t38",
+      "threads": 38,
+      "whole_cases": 2,
+      "noop_cases": 4,
+      "allocation_checked_cases": 2,
+      "budget_cases": 2,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-x-fail-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-no-sve-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-narrow-vl-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "budget-shared-fail-t4",
+      "threads": 4,
+      "whole_cases": 5,
+      "noop_cases": 4,
+      "allocation_checked_cases": 5,
+      "budget_cases": 5,
+      "shared_fail_cases": 3,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "wide-normal-t1",
+      "threads": 1,
+      "whole_cases": 12,
+      "noop_cases": 4,
+      "allocation_checked_cases": 12,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "wide-normal-t4",
+      "threads": 4,
+      "whole_cases": 12,
+      "noop_cases": 4,
+      "allocation_checked_cases": 12,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "wide-normal-t38",
+      "threads": 38,
+      "whole_cases": 13,
+      "noop_cases": 4,
+      "allocation_checked_cases": 13,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "wide-no-sve-t4",
+      "threads": 4,
+      "whole_cases": 12,
+      "noop_cases": 4,
+      "allocation_checked_cases": 12,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "wide-narrow-vl-t4",
+      "threads": 4,
+      "whole_cases": 12,
+      "noop_cases": 4,
+      "allocation_checked_cases": 12,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "wide-shared-fail-t4",
+      "threads": 4,
+      "whole_cases": 12,
+      "noop_cases": 4,
+      "allocation_checked_cases": 12,
+      "budget_cases": 0,
+      "shared_fail_cases": 6,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "wide-x-fail-t4",
+      "threads": 4,
+      "whole_cases": 12,
+      "noop_cases": 4,
+      "allocation_checked_cases": 12,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "label": "wide-all-fail-t4",
+      "threads": 4,
+      "whole_cases": 12,
+      "noop_cases": 4,
+      "allocation_checked_cases": 12,
+      "budget_cases": 0,
+      "shared_fail_cases": 0,
+      "max_error": 1.1102230246251565e-16
+    }
+  ]
+}
