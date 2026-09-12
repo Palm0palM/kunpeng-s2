@@ -1,0 +1,58 @@
+{
+  "executed_argv": [
+    [
+      "python3",
+      ".runs/trsm/optimization-20260913-r18-compare/job_control.py",
+      "prepare"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260913-r18-compare/job_control.py",
+      "submit"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260913-r18-compare/job_control.py",
+      "collect"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T19-control13-repeat-r18",
+      "--environment",
+      "COMPUTE_NODE-numa2-gcc1231-generic38-kml251-test3-warmup1-job1582004",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+      "--repeat-existing"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T20-wideunroll2-repeat-r18",
+      "--environment",
+      "COMPUTE_NODE-numa2-gcc1231-generic38-kml251-test3-warmup1-job1582004",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+      "--repeat-existing"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T19-control13",
+      "T20-wideunroll2"
+    ]
+  ],
+  "exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+  ],
+  "job_id": "1582004",
+  "no_hash_operations": true
+}

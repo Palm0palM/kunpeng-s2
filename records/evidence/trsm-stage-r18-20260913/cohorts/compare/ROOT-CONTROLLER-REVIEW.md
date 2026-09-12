@@ -1,0 +1,7 @@
+# r18 controller review
+
+Reviewed full differences against the successfully executed r17 controller, driver and finish script. Both members are unchanged repeats (T19-control13 / T20-wideunroll2), in exclusive new run directories, and both require prior job 1581862. Original metadata identity, source snapshots and current parent are checked; prepare never overwrites the existing experiment records. Freeze checks cover all five uploaded source files. The comparison remains parent T19-control13 versus T20-wideunroll2 only, with no automatic promotion.
+
+Warmup AB, formal AB / BA / AB, one warmup and three full suites per member, TEST_RUNS=3. All 18 formal and 6 warmup PASS results and exact linkage/identity checks are required. All samples are retained. Both complete unchanged CT64 wide32 preflights run on the allocated compute node; prior small-path tests remain explicitly historical. Compiler/resource/reference/wrapper inputs match r17 byte for byte. No benchmark, tolerance, resource or thread changes.
+
+Finish requires the known succeeded job and collected diagnostics, verifies raw formal/warmup results and frozen sources before either record update, uses repeat-existing for both and preserves complete prior records. Finish and submission attempts remain exclusive and cannot be replayed. Local checks were Python AST and bash syntax only. No hashes or local task execution. The initial controller text-generation assertion was fixed by creating only the missing files; no prepare or submit occurred during that interruption.
