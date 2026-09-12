@@ -1,0 +1,3526 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "stage": "r15-20260912",
+  "created_at": "2026-09-12T12:02:00.395019+00:00",
+  "publication_scope": "Redacted public derivative; unredacted originals retained in local .runs/trsm directories.",
+  "validation_policy": "No hash computation or verification; no local compilation or tests; no promotion or contest submission by this script.",
+  "reference_scope": "KML 25.1.0 with private GCC 12.3.1; this archive does not establish the specified KML 25.2.0 revalidation.",
+  "verified_by_archive_creation": false,
+  "remote_source_identity_verified": false,
+  "transport_integrity_verified": false,
+  "public_copies_are_original_byte_evidence": false,
+  "missing_optional_or_expected_evidence": [],
+  "omitted_files": [],
+  "runs": [
+    {
+      "run": "T8-control12-repeat-r15",
+      "job_id": "1579788",
+      "run_state": "collected",
+      "matching_record_status": "passed",
+      "matching_record_reports_verified": true,
+      "recorded_at": "2026-09-12T11:59:08.797252+00:00",
+      "raw_member_evidence_present": [
+        "benchmark.log",
+        "environment.log",
+        "scheduler-status.txt",
+        "exit-code.txt",
+        "linkage.log"
+      ],
+      "note": "Existing local record claim only; archive creation does not revalidate measurements, source identity, or transport."
+    },
+    {
+      "run": "T18-budgetwide-repeat-r15",
+      "job_id": "1579788",
+      "run_state": "collected",
+      "matching_record_status": "passed",
+      "matching_record_reports_verified": true,
+      "recorded_at": "2026-09-12T11:59:08.857406+00:00",
+      "raw_member_evidence_present": [
+        "benchmark.log",
+        "environment.log",
+        "scheduler-status.txt",
+        "exit-code.txt",
+        "linkage.log"
+      ],
+      "note": "Existing local record claim only; archive creation does not revalidate measurements, source identity, or transport."
+    }
+  ],
+  "files": [
+    {
+      "path": "cohorts/compare/NOTES.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/NOTES.md",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 3842,
+      "public_bytes": 3842,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/RESULT-REVIEW.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/RESULT-REVIEW.md",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 4004,
+      "public_bytes": 4011,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/STATIC-CONTROLLER-REVIEW.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/STATIC-CONTROLLER-REVIEW.md",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1362,
+      "public_bytes": 1362,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/STATIC-READINESS.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/STATIC-READINESS.md",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1229,
+      "public_bytes": 1229,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/T18-budgetwide-repeat-r15-record.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/T18-budgetwide-repeat-r15-record.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 271,
+      "public_bytes": 271,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/T8-control12-repeat-r15-record.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/T8-control12-repeat-r15-record.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 257,
+      "public_bytes": 257,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/T8-control12-vs-T18-budgetwide.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/T8-control12-vs-T18-budgetwide.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 832,
+      "public_bytes": 832,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/actual-run-audit.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/actual-run-audit.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 70563,
+      "public_bytes": 70563,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/cohort-config.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 2642,
+      "public_bytes": 2642,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/cohort-submission.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/cohort-submission.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1125,
+      "public_bytes": 1100,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/cohort_driver.py",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 15840,
+      "public_bytes": 15840,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/collect.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/collect.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8466,
+      "public_bytes": 8494,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/continuation-state.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/continuation-state.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 443,
+      "public_bytes": 443,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/benchmark.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/benchmark.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 12272,
+      "public_bytes": 12219,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/environment.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/environment.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/exit-code.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/linkage.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/linkage.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 3618,
+      "public_bytes": 3573,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/runtime-settings.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/warmup/summary.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/warmup/summary.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 5221,
+      "public_bytes": 5186,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/warmup-linkage.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/warmup-linkage.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1220,
+      "public_bytes": 1205,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/warmup.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/warmup.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 9987,
+      "public_bytes": 9934,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/wrapper.stdout.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 12272,
+      "public_bytes": 12219,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/benchmark.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/benchmark.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 12266,
+      "public_bytes": 12213,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/environment.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/environment.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/exit-code.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/exit-code.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/linkage.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/linkage.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 3612,
+      "public_bytes": 3567,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/runtime-settings.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/runtime-settings.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/warmup/summary.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/warmup/summary.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 5218,
+      "public_bytes": 5183,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/warmup-linkage.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/warmup-linkage.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1218,
+      "public_bytes": 1203,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/warmup.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/warmup.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 9985,
+      "public_bytes": 9932,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/wrapper.stdout.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 12266,
+      "public_bytes": 12213,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/assigned-job-id.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/assigned-job-id.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 8,
+      "public_bytes": 8,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/cohort-config.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2642,
+      "public_bytes": 2642,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/cohort-exit-code.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/cohort-exit-code.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/compiler-environment.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/compiler-environment.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 386,
+      "public_bytes": 381,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/environment.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/environment.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 6121,
+      "public_bytes": 6098,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/omp-runtime-symbol.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/omp-runtime-symbol.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 205,
+      "public_bytes": 205,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/assembly.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/assembly.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/boundary-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/boundary-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1134,
+      "public_bytes": 1134,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-narrow-vl-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2321,
+      "public_bytes": 2321,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-no-sve-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2306,
+      "public_bytes": 2306,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-shared-fail-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2594,
+      "public_bytes": 2594,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-summary.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-summary.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 22451,
+      "public_bytes": 22451,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2352,
+      "public_bytes": 2352,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-t38.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-t38.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1177,
+      "public_bytes": 1177,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2357,
+      "public_bytes": 2357,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-x-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/budget-x-fail-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2321,
+      "public_bytes": 2321,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-fail-alloc.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-fail-alloc.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-fail-shared.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-fail-shared.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-fail-x.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-fail-x.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-no-sve.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-normal.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/build-normal.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/commands.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/commands.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 6066,
+      "public_bytes": 5881,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/compiler.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/compiler.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 239,
+      "public_bytes": 239,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/completion.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/completion.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 197,
+      "public_bytes": 197,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/fail-alloc-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/fail-alloc-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31463,
+      "public_bytes": 31463,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/guard.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/guard.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/guard.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/guard.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/micro-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/micro-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 243,
+      "public_bytes": 243,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/narrow-vl-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31463,
+      "public_bytes": 31463,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/no-sve-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31343,
+      "public_bytes": 31343,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/normal-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31492,
+      "public_bytes": 31492,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/normal-t38.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1938,
+      "public_bytes": 1938,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/normal-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31527,
+      "public_bytes": 31527,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/packed-micro-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/packed-micro-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 257,
+      "public_bytes": 257,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/shared-fail-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/shared-fail-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 19244,
+      "public_bytes": 19244,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/shared-fail-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 19259,
+      "public_bytes": 19259,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/summary.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/summary.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 4474,
+      "public_bytes": 4474,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/summary.tsv",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/summary.tsv",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 497,
+      "public_bytes": 497,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/trsm-panel16.s",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/trsm-panel16.s",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 108183,
+      "public_bytes": 108183,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/verify-results.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T18-budgetwide-repeat-r15/verify-results.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 197,
+      "public_bytes": 197,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/assembly.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/assembly.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/boundary-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/boundary-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1128,
+      "public_bytes": 1128,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-narrow-vl-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2300,
+      "public_bytes": 2300,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-no-sve-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2300,
+      "public_bytes": 2300,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-summary.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-summary.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 18894,
+      "public_bytes": 18894,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2325,
+      "public_bytes": 2325,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-t38.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-t38.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1162,
+      "public_bytes": 1162,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2330,
+      "public_bytes": 2330,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-x-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/budget-x-fail-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 2300,
+      "public_bytes": 2300,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/build-fail-alloc.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/build-fail-alloc.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/build-fail-x.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/build-fail-x.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/build-no-sve.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/build-normal.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/build-normal.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/commands.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/commands.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 4818,
+      "public_bytes": 4668,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/compiler.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/compiler.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 239,
+      "public_bytes": 239,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/completion.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/completion.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 195,
+      "public_bytes": 195,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/fail-alloc-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/fail-alloc-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31337,
+      "public_bytes": 31337,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/guard.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/guard.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/guard.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/guard.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/micro-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/micro-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 237,
+      "public_bytes": 237,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/narrow-vl-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31337,
+      "public_bytes": 31337,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/no-sve-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31337,
+      "public_bytes": 31337,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/normal-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31353,
+      "public_bytes": 31353,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/normal-t38.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1921,
+      "public_bytes": 1921,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/normal-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 31388,
+      "public_bytes": 31388,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/summary.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/summary.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 3717,
+      "public_bytes": 3717,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/summary.tsv",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/summary.tsv",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 391,
+      "public_bytes": 391,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/trsm-panel16.s",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/trsm-panel16.s",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 82325,
+      "public_bytes": 82325,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-results/T8-control12-repeat-r15/verify-results.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-results/T8-control12-repeat-r15/verify-results.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 195,
+      "public_bytes": 195,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/assembly.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/assembly.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/build-fail-shared.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/build-fail-shared.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/build-no-sve.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/build-no-sve.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/build-normal.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/build-normal.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/commands.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/commands.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 3565,
+      "public_bytes": 3455,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/compiler.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/compiler.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 239,
+      "public_bytes": 239,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/completion.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/completion.txt",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 116,
+      "public_bytes": 116,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/guard.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/guard.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/guard.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/guard.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 305,
+      "public_bytes": 312,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/instrument-source.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/instrument-source.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 71,
+      "public_bytes": 71,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/instrumented-trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/instrumented-trsm.c",
+      "provenance_role": "collected_preflight_instrumented_source_not_benchmark",
+      "source_bytes": 58309,
+      "public_bytes": 58309,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/micro-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/micro-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 3502,
+      "public_bytes": 3502,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/narrow-vl-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/narrow-vl-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 509,
+      "public_bytes": 509,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/no-sve-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/no-sve-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 471,
+      "public_bytes": 471,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/normal-t1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/normal-t1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 3086,
+      "public_bytes": 3086,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/normal-t38.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/normal-t38.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 485,
+      "public_bytes": 485,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/normal-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/normal-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 3086,
+      "public_bytes": 3086,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/shared-fail-t4.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/shared-fail-t4.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 520,
+      "public_bytes": 520,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/summary.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/summary.json",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 416,
+      "public_bytes": 416,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/summary.tsv",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/summary.tsv",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 271,
+      "public_bytes": 271,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/trsm-wide4x32.s",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/trsm-wide4x32.s",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 108183,
+      "public_bytes": 108183,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/verify-results.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32-results/T18-budgetwide-repeat-r15/verify-results.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 116,
+      "public_bytes": 116,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight-wide32.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight-wide32.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 12390,
+      "public_bytes": 12397,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/preflight.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/preflight.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 389026,
+      "public_bytes": 389040,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/reference-results/probe-ldd.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/reference-results/probe-ldd.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 669,
+      "public_bytes": 664,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/reference-results/probe.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/reference-results/probe.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 22510,
+      "public_bytes": 22464,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/diagnostics/wrapper.stdout.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/wrapper.stdout.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 409600,
+      "public_bytes": 409621,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/finish-attempt.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/finish-attempt.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 67,
+      "public_bytes": 67,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/finish-complete.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/finish-complete.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 208,
+      "public_bytes": 208,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/finish_records.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/finish_records.py",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 11178,
+      "public_bytes": 11178,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/job-marker.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/job-marker.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/job_control.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/job_control.py",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 18679,
+      "public_bytes": 18679,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/latest-status.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/latest-status.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8373,
+      "public_bytes": 8401,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/latest-wrapper-tail.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/latest-wrapper-tail.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 524,
+      "public_bytes": 524,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/plan.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/plan.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 2627,
+      "public_bytes": 2627,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight/README.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/preflight/README.md",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 7435,
+      "public_bytes": 7435,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight/check-panel.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/preflight/check-panel.c",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 23347,
+      "public_bytes": 23347,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight/guard.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/preflight/guard.py",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 1404,
+      "public_bytes": 1404,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/preflight/run.sh",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 16612,
+      "public_bytes": 16612,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight-wide32/README.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/preflight-wide32/README.md",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 8310,
+      "public_bytes": 8310,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight-wide32/check-wide32.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/preflight-wide32/check-wide32.c",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 17298,
+      "public_bytes": 17298,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight-wide32/guard.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/preflight-wide32/guard.py",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 1404,
+      "public_bytes": 1404,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight-wide32/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/preflight-wide32/run.sh",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 13294,
+      "public_bytes": 13294,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/preflight_audit.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/preflight_audit.py",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 7711,
+      "public_bytes": 7711,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/prepare.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/prepare.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 159,
+      "public_bytes": 159,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/prepared-repeat-readiness.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/prepared-repeat-readiness.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 413,
+      "public_bytes": 413,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/record-compare-commands.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/record-compare-commands.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1439,
+      "public_bytes": 1453,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/reference/audit-dependencies.py",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 1015,
+      "public_bytes": 1015,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/reference/probe.sh",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 2397,
+      "public_bytes": 2397,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/reference/required-symbols.c",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 1755,
+      "public_bytes": 1755,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/reference/target-environment.sh",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 2644,
+      "public_bytes": 2644,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/remote_job.sh",
+      "provenance_role": "current_local_preparation_or_audit_tool",
+      "source_bytes": 1412,
+      "public_bytes": 1407,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/result.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/result.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1573,
+      "public_bytes": 1573,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/scheduler-status.txt",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/scheduler-status.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/static-readiness.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/static-readiness.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1595,
+      "public_bytes": 1595,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submit.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/submit.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 35,
+      "public_bytes": 35,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/README.md",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/bench_trsm.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/compat/kblas.h",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/run.sh",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/trsm.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 58261,
+      "public_bytes": 58261,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/README.md",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/bench_trsm.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/compat/kblas.h",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/run.sh",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/trsm.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/cohort-config.json",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/cohort-config.json",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2642,
+      "public_bytes": 2642,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/cohort_driver.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/cohort_driver.py",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 15840,
+      "public_bytes": 15840,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight/README.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/preflight/README.md",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 7435,
+      "public_bytes": 7435,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight/check-panel.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/preflight/check-panel.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 23347,
+      "public_bytes": 23347,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight/guard.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/preflight/guard.py",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 1404,
+      "public_bytes": 1404,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/preflight/run.sh",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 16612,
+      "public_bytes": 16612,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-wide32/README.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/preflight-wide32/README.md",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 8310,
+      "public_bytes": 8310,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-wide32/check-wide32.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/preflight-wide32/check-wide32.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 17298,
+      "public_bytes": 17298,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-wide32/guard.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/preflight-wide32/guard.py",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 1404,
+      "public_bytes": 1404,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight-wide32/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/preflight-wide32/run.sh",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 13294,
+      "public_bytes": 13294,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/preflight_audit.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/preflight_audit.py",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 7711,
+      "public_bytes": 7711,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/audit-dependencies.py",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/reference/audit-dependencies.py",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 1015,
+      "public_bytes": 1015,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/probe.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/reference/probe.sh",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2397,
+      "public_bytes": 2397,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/required-symbols.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/reference/required-symbols.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 1755,
+      "public_bytes": 1755,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/reference/target-environment.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/reference/target-environment.sh",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2644,
+      "public_bytes": 2644,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/remote_job.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/remote_job.sh",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 1412,
+      "public_bytes": 1407,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "cohorts/compare/upload.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/upload.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 0,
+      "public_bytes": 0,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/benchmark.log",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/benchmark.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 12272,
+      "public_bytes": 12219,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/candidate-preparation/PREPARATION.md",
+      "source": ".runs/trsm/T18-budgetwide/PREPARATION.md",
+      "provenance_role": "historical_candidate_preparation",
+      "source_bytes": 3041,
+      "public_bytes": 3041,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/candidate-preparation/STATIC-REVIEW.md",
+      "source": ".runs/trsm/T18-budgetwide/STATIC-REVIEW.md",
+      "provenance_role": "historical_candidate_preparation",
+      "source_bytes": 4911,
+      "public_bytes": 4911,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/candidate-preparation/VALIDATION-PLAN.md",
+      "source": ".runs/trsm/T18-budgetwide/VALIDATION-PLAN.md",
+      "provenance_role": "historical_candidate_preparation",
+      "source_bytes": 3560,
+      "public_bytes": 3560,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/cluster.json",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/cluster.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 3136,
+      "public_bytes": 3106,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/environment.log",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/environment.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/exit-code.txt",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/exit-code.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/experiment.json",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/experiment.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1422,
+      "public_bytes": 1422,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/linkage.log",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/linkage.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 3618,
+      "public_bytes": 3573,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/benchmark.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 12272,
+      "public_bytes": 12219,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/cluster.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 3136,
+      "public_bytes": 3106,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/environment.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/exit-code.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/linkage.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 3618,
+      "public_bytes": 3573,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/scheduler-status.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/bench_trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/compat/kblas.h",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/run.sh",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 58261,
+      "public_bytes": 58261,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/prior-record.json",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/prior-record.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 6790,
+      "public_bytes": 6774,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/runtime-settings.json",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/runtime-settings.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/scheduler-status.txt",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/scheduler-status.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/README.md",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/README.md",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/bench_trsm.c",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/bench_trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/compat/kblas.h",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/compat/kblas.h",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/run.sh",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/run.sh",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/trsm.c",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 58261,
+      "public_bytes": 58261,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/warmup/summary.json",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/warmup/summary.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 5221,
+      "public_bytes": 5186,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/warmup-linkage.log",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/warmup-linkage.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1220,
+      "public_bytes": 1205,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/warmup.log",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/warmup.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 9987,
+      "public_bytes": 9934,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/wrapper.stdout.log",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/wrapper.stdout.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 12272,
+      "public_bytes": 12219,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/benchmark.log",
+      "source": ".runs/trsm/T8-control12-repeat-r15/benchmark.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 12266,
+      "public_bytes": 12213,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/cluster.json",
+      "source": ".runs/trsm/T8-control12-repeat-r15/cluster.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 3132,
+      "public_bytes": 3102,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/environment.log",
+      "source": ".runs/trsm/T8-control12-repeat-r15/environment.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/exit-code.txt",
+      "source": ".runs/trsm/T8-control12-repeat-r15/exit-code.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/experiment.json",
+      "source": ".runs/trsm/T8-control12-repeat-r15/experiment.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1343,
+      "public_bytes": 1343,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/linkage.log",
+      "source": ".runs/trsm/T8-control12-repeat-r15/linkage.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 3612,
+      "public_bytes": 3567,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/benchmark.log",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/benchmark.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 12266,
+      "public_bytes": 12213,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/cluster.json",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/cluster.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 3132,
+      "public_bytes": 3102,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/environment.log",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/environment.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8801,
+      "public_bytes": 8748,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/exit-code.txt",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/exit-code.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 2,
+      "public_bytes": 2,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/linkage.log",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/linkage.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 3612,
+      "public_bytes": 3567,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/scheduler-status.txt",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/scheduler-status.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/source/bench_trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/source/compat/kblas.h",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/source/run.sh",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/source/trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/prior-record.json",
+      "source": ".runs/trsm/T8-control12-repeat-r15/prior-record.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 10228,
+      "public_bytes": 10212,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/runtime-settings.json",
+      "source": ".runs/trsm/T8-control12-repeat-r15/runtime-settings.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 2549,
+      "public_bytes": 2519,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/scheduler-status.txt",
+      "source": ".runs/trsm/T8-control12-repeat-r15/scheduler-status.txt",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 8372,
+      "public_bytes": 8400,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/README.md",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/README.md",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/bench_trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/compat/kblas.h",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/run.sh",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/run.sh",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/trsm.c",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/warmup/summary.json",
+      "source": ".runs/trsm/T8-control12-repeat-r15/warmup/summary.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 5218,
+      "public_bytes": 5183,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/warmup-linkage.log",
+      "source": ".runs/trsm/T8-control12-repeat-r15/warmup-linkage.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 1218,
+      "public_bytes": 1203,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/warmup.log",
+      "source": ".runs/trsm/T8-control12-repeat-r15/warmup.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 9985,
+      "public_bytes": 9932,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/wrapper.stdout.log",
+      "source": ".runs/trsm/T8-control12-repeat-r15/wrapper.stdout.log",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 12266,
+      "public_bytes": 12213,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "records/latest/T18-budgetwide.json",
+      "source": "records/experiments/trsm/T18-budgetwide.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 7321,
+      "public_bytes": 7305,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "records/latest/T8-control12.json",
+      "source": "records/experiments/trsm/T8-control12.json",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 10619,
+      "public_bytes": 10603,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "tools/archive-r15.py",
+      "source": ".runs/trsm/archive-r15.py",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 29853,
+      "public_bytes": 29849,
+      "text_changed_by_redaction": true,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "tools/records-kml-NOTES.md",
+      "source": ".runs/trsm/nohash-tools/records-kml-NOTES.md",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 9637,
+      "public_bytes": 9637,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    },
+    {
+      "path": "tools/records-kml.py",
+      "source": ".runs/trsm/nohash-tools/records-kml.py",
+      "provenance_role": "local_evidence_record_or_preparation",
+      "source_bytes": 38549,
+      "public_bytes": 38549,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": false
+    }
+  ],
+  "SOURCE": [
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195650-qQDrFV/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195707-vnu5OH/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195715-0Qw1MV/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T18-budgetwide-repeat-r15/source/results/run-20260912-195739-x4F232/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195642-eLplYP/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195659-gTJd08/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195724-Hj98kj/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-0.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-0.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-1.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-1.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-2.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/case-2.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 281,
+      "public_bytes": 281,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/summary.log",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/diagnostics/T8-control12-repeat-r15/source/results/run-20260912-195732-iL08Xh/summary.log",
+      "provenance_role": "collected_result_or_log_not_revalidated_by_archive",
+      "source_bytes": 1023,
+      "public_bytes": 1023,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/README.md",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/bench_trsm.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/compat/kblas.h",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/run.sh",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T18-budgetwide-repeat-r15/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T18-budgetwide-repeat-r15/source/trsm.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 58261,
+      "public_bytes": 58261,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/README.md",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/README.md",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/bench_trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/bench_trsm.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/compat/kblas.h",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/compat/kblas.h",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/run.sh",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/run.sh",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "cohorts/compare/submitted-payload/T8-control12-repeat-r15/source/trsm.c",
+      "source": ".runs/trsm/optimization-20260912-r15-compare/payload/T8-control12-repeat-r15/source/trsm.c",
+      "provenance_role": "prepared_upload_snapshot",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/bench_trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/compat/kblas.h",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/run.sh",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/nohash-recorded-evidence/source/trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 58261,
+      "public_bytes": 58261,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/README.md",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/README.md",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/bench_trsm.c",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/bench_trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/compat/kblas.h",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/compat/kblas.h",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/run.sh",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/run.sh",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T18-budgetwide-repeat-r15/source/trsm.c",
+      "source": ".runs/trsm/T18-budgetwide-repeat-r15/source/trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 58261,
+      "public_bytes": 58261,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/source/bench_trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/source/compat/kblas.h",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/source/run.sh",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/source/run.sh",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/nohash-recorded-evidence/source/trsm.c",
+      "source": ".runs/trsm/T8-control12-repeat-r15/nohash-recorded-evidence/source/trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/README.md",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/README.md",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2401,
+      "public_bytes": 2401,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/bench_trsm.c",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/bench_trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 4799,
+      "public_bytes": 4799,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/compat/kblas.h",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/compat/kblas.h",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 615,
+      "public_bytes": 615,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/run.sh",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/run.sh",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 2686,
+      "public_bytes": 2686,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    },
+    {
+      "path": "members/T8-control12-repeat-r15/source/trsm.c",
+      "source": ".runs/trsm/T8-control12-repeat-r15/source/trsm.c",
+      "provenance_role": "run_local_source_snapshot",
+      "source_bytes": 36794,
+      "public_bytes": 36794,
+      "text_changed_by_redaction": false,
+      "utf8_decode_policy": "Replace invalid UTF-8 bytes in public copy only",
+      "source_snapshot": true
+    }
+  ],
+  "file_count_excluding_generated_readme_and_manifest": 279,
+  "failure_policy": "Only existing failed/partial logs are copied; missing logs and unverified runs are never filled with synthetic results.",
+  "repeat_policy": "T8 and T18 each retain their own r14 prior record from job 1579730. T8 refers to T8-control12-repeat-r14 and T18 to the original T18-budgetwide run; no historical samples are merged into r15.",
+  "preparation_policy": "static-readiness.json, prepared-repeat-readiness.json, STATIC-CONTROLLER-REVIEW, preflight STATIC-REVIEW and candidate documents are preparation evidence only; they do not establish r15 runtime or promotion success.",
+  "submitted_helper_policy": "Current preflight_audit.py and its frozen submitted-payload copy are both required and kept separately. The frozen copy is never replaced by the current helper when missing.",
+  "preflight_evidence_policy": "Both repeated members retain their own actual general allocation/budget logs and both JSON summaries. Only T18 is scheduled for the separate r12-derived wide32 module; its instrumented source is a preflight artifact, not benchmark source.",
+  "comparison_evidence": {
+    "promotion_parent": "T8-control12",
+    "baseline_comparison_files": [
+      "cohorts/compare/T8-control12-vs-T18-budgetwide.json"
+    ],
+    "mechanism_comparison_files": [],
+    "note_on_scope": "This cohort repeats only T8 and T18; r14 mechanism comparisons are historical and are not regenerated or presented as r15 measurements.",
+    "note": "References to expected actual outputs only; absent outputs remain missing and are never generated by this archive."
+  },
+  "prior_record_origins": [
+    {
+      "run": "T8-control12-repeat-r15",
+      "version": "T8-control12",
+      "record": "members/T8-control12-repeat-r15/prior-record.json",
+      "prior_run": "T8-control12-repeat-r14",
+      "prior_public_archive": "../trsm-stage-r14-20260912/",
+      "prior_public_record": "../trsm-stage-r14-20260912/records/latest/T8-control12.json",
+      "prior_run_cluster": "../trsm-stage-r14-20260912/members/T8-control12-repeat-r14/cluster.json",
+      "initial_baseline_archive": "../trsm-stage-r6-20260912/",
+      "initial_baseline_run": "../trsm-stage-r6-20260912/members/T8-control12/",
+      "expected_prior_job_id": "1579730",
+      "prior_run_job_id": "1579730",
+      "public_record_job_id": "1579730",
+      "record_job_id": "1579730",
+      "job_id_match": true,
+      "version_match": true,
+      "note": "Job ID/version association only. Each repeat uses its own historical run and public archive; this is not a byte identity claim. Different jobs are not merged into the r15 comparison."
+    },
+    {
+      "run": "T18-budgetwide-repeat-r15",
+      "version": "T18-budgetwide",
+      "record": "members/T18-budgetwide-repeat-r15/prior-record.json",
+      "prior_run": "T18-budgetwide",
+      "prior_public_archive": "../trsm-stage-r14-20260912/",
+      "prior_public_record": "../trsm-stage-r14-20260912/records/latest/T18-budgetwide.json",
+      "prior_run_cluster": "../trsm-stage-r14-20260912/members/T18-budgetwide/cluster.json",
+      "initial_baseline_archive": "../trsm-stage-r6-20260912/",
+      "initial_baseline_run": "../trsm-stage-r6-20260912/members/T8-control12/",
+      "expected_prior_job_id": "1579730",
+      "prior_run_job_id": "1579730",
+      "public_record_job_id": "1579730",
+      "record_job_id": "1579730",
+      "job_id_match": true,
+      "version_match": true,
+      "note": "Job ID/version association only. Each repeat uses its own historical run and public archive; this is not a byte identity claim. Different jobs are not merged into the r15 comparison."
+    }
+  ],
+  "candidate_preparation_origins": [
+    {
+      "run": "T18-budgetwide-repeat-r15",
+      "version": "T18-budgetwide",
+      "document": "members/T18-budgetwide-repeat-r15/candidate-preparation/PREPARATION.md",
+      "source": ".runs/trsm/T18-budgetwide/PREPARATION.md",
+      "historical_candidate_run": "T18-budgetwide",
+      "historical_public_archive": "../trsm-stage-r14-20260912/",
+      "note": "Original r14 candidate preparation, validation plan or static review only; not evidence of this repeat run passing a gate."
+    },
+    {
+      "run": "T18-budgetwide-repeat-r15",
+      "version": "T18-budgetwide",
+      "document": "members/T18-budgetwide-repeat-r15/candidate-preparation/VALIDATION-PLAN.md",
+      "source": ".runs/trsm/T18-budgetwide/VALIDATION-PLAN.md",
+      "historical_candidate_run": "T18-budgetwide",
+      "historical_public_archive": "../trsm-stage-r14-20260912/",
+      "note": "Original r14 candidate preparation, validation plan or static review only; not evidence of this repeat run passing a gate."
+    },
+    {
+      "run": "T18-budgetwide-repeat-r15",
+      "version": "T18-budgetwide",
+      "document": "members/T18-budgetwide-repeat-r15/candidate-preparation/STATIC-REVIEW.md",
+      "source": ".runs/trsm/T18-budgetwide/STATIC-REVIEW.md",
+      "historical_candidate_run": "T18-budgetwide",
+      "historical_public_archive": "../trsm-stage-r14-20260912/",
+      "note": "Original r14 candidate preparation, validation plan or static review only; not evidence of this repeat run passing a gate."
+    }
+  ],
+  "warmup_policy": "Warmup logs, linkage and warmup/summary.json are retained separately from timed run results; archive creation does not treat warmup as an additional measured round."
+}

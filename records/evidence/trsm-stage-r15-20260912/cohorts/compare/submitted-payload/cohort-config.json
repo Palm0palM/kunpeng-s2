@@ -1,0 +1,101 @@
+{
+  "cohort_id": "trsm-kml251-7e4bb86bfa10",
+  "members": {
+    "T8-control12-repeat-r15": {
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic",
+          "TEST_RUNS": "3",
+          "KBLAS_LIB": "",
+          "CC": "gcc"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      },
+      "version": "T8-control12",
+      "repeat_existing": true
+    },
+    "T18-budgetwide-repeat-r15": {
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic",
+          "TEST_RUNS": "3",
+          "KBLAS_LIB": "",
+          "CC": "gcc"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      },
+      "version": "T18-budgetwide",
+      "repeat_existing": true
+    }
+  },
+  "warmup_order": [
+    "T8-control12-repeat-r15",
+    "T18-budgetwide-repeat-r15"
+  ],
+  "warmup_suites_per_member": 1,
+  "warmup_protocol": {
+    "protocol_id": "trsm-r15-one-official-warmup-v1",
+    "declared_at": "2026-09-12T11:52:34.203791+00:00",
+    "declared_before_new_performance_data": true,
+    "purpose": "One identical full official suite per member after general preflight, to apply the startup-warming protocol declared before viewing r15 measurements.",
+    "runner": "./run.sh",
+    "TEST_RUNS": "3",
+    "cases": [
+      [
+        512,
+        19968
+      ],
+      [
+        2432,
+        17024
+      ],
+      [
+        17024,
+        512
+      ]
+    ],
+    "excluded_from_comparison": true,
+    "formal_suites_per_member": 3,
+    "formal_sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  },
+  "round_order": [
+    [
+      "T8-control12-repeat-r15",
+      "T18-budgetwide-repeat-r15"
+    ],
+    [
+      "T18-budgetwide-repeat-r15",
+      "T8-control12-repeat-r15"
+    ],
+    [
+      "T8-control12-repeat-r15",
+      "T18-budgetwide-repeat-r15"
+    ]
+  ]
+}
