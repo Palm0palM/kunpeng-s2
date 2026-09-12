@@ -1,0 +1,103 @@
+{
+  "checked_at": "2026-09-12T11:29:29.929234+00:00",
+  "checks": [
+    {
+      "kind": "python_ast",
+      "path": "cohort_driver.py",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "finish_records.py",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "job_control.py",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "preflight/guard.py",
+      "passed": true
+    },
+    {
+      "kind": "bash_syntax",
+      "path": "preflight/run.sh",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "preflight-wide32/guard.py",
+      "passed": true
+    },
+    {
+      "kind": "bash_syntax",
+      "path": "preflight-wide32/run.sh",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "preflight_audit.py",
+      "passed": true
+    },
+    {
+      "kind": "python_ast",
+      "path": "reference/audit-dependencies.py",
+      "passed": true
+    },
+    {
+      "kind": "bash_syntax",
+      "path": "reference/probe.sh",
+      "passed": true
+    },
+    {
+      "kind": "bash_syntax",
+      "path": "reference/target-environment.sh",
+      "passed": true
+    },
+    {
+      "kind": "bash_syntax",
+      "path": "remote_job.sh",
+      "passed": true
+    }
+  ],
+  "source_features": {
+    "T8-control12-repeat-r14": {
+      "panel16": true,
+      "packed": false,
+      "budget": false,
+      "wide": false
+    },
+    "T10-lhistbarrier-repeat-r14": {
+      "panel16": true,
+      "packed": true,
+      "budget": false,
+      "wide": false
+    },
+    "T17-lhistbudget4": {
+      "panel16": true,
+      "packed": true,
+      "budget": true,
+      "wide": false
+    },
+    "T18-budgetwide": {
+      "panel16": true,
+      "packed": true,
+      "budget": true,
+      "wide": true
+    }
+  },
+  "status": "ready",
+  "local_task_tests": false,
+  "hash_operations": false,
+  "controller_executed": false,
+  "independent_reviews": [
+    "STATIC-CONTROLLER-REVIEW.md",
+    "preflight/STATIC-REVIEW.md",
+    "../T17-lhistbudget4/STATIC-REVIEW.md",
+    "../T18-budgetwide/STATIC-REVIEW.md"
+  ],
+  "prepare_draft_guard_removed_after_review": true,
+  "review_completed_at": "2026-09-12T11:31:20.527324+00:00"
+}

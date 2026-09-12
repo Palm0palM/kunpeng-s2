@@ -1,0 +1,106 @@
+HOST=COMPUTE_NODE_1
+ARCH=aarch64
+NUMA_NODE=2
+ALLOWED_CPUS=76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113
+JOB_ID=1579730
+UTC=2026-09-12T11:31:56Z
+OMP_NUM_THREADS=38
+OMP_DYNAMIC=FALSE
+OMP_PROC_BIND=close
+OMP_PLACES=cores
+CPU_TARGET=generic
+TEST_RUNS=3
+KBLAS_LIB=
+CC=gcc
+KML251_ROOT=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0
+KML251_ARCH=sme
+KML251_LIBDIR=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi
+COMPILER_ROOT=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux
+GOMP_LIBRARY=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64/libgomp.so.1.0.0
+CPATH=/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/include
+LIBRARY_PATH=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib
+LD_LIBRARY_PATH=/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib64:/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-f6110e522b93/compiler-private/gcc-12.3.1-2025.03-aarch64-linux/lib:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme/kblas/multi:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/sme:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib/noarch:/opt/donaudata/donau/HPCKit_25.1.0_Linux-aarch64/package/KunpengHPCKit-kml.25.1.0/gcclib:/opt/stars:
+COMPILER_VERSION=gcc (gcc for openEuler 3.0.2) 12.3.1
+
+COMMAND ['lscpu']
+Architecture:                       aarch64
+CPU op-mode(s):                     64-bit
+Byte Order:                         Little Endian
+CPU(s):                             608
+On-line CPU(s) list:                0-607
+Vendor ID:                          HiSilicon
+Model:                              0
+Thread(s) per core:                 1
+Core(s) per socket:                 304
+Socket(s):                          2
+Stepping:                           0x0
+Frequency boost:                    enabled
+CPU max MHz:                        2000.0000
+CPU min MHz:                        1200.0000
+BogoMIPS:                           200.00
+Flags:                              fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm ssbs sb paca pacg dcpodp sve2 sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh ecv afp rpres sme smef64f64 smei8i32 smef16f32 smeb16f32 smef32f32 smefa64 wfxt
+L1d cache:                          19 MiB (608 instances)
+L1i cache:                          19 MiB (608 instances)
+L2 cache:                           456 MiB (608 instances)
+NUMA node(s):                       32
+NUMA node0 CPU(s):                  0-37
+NUMA node1 CPU(s):                  38-75
+NUMA node2 CPU(s):                  76-113
+NUMA node3 CPU(s):                  114-151
+NUMA node4 CPU(s):                  152-189
+NUMA node5 CPU(s):                  190-227
+NUMA node6 CPU(s):                  228-265
+NUMA node7 CPU(s):                  266-303
+NUMA node8 CPU(s):                  304-341
+NUMA node9 CPU(s):                  342-379
+NUMA node10 CPU(s):                 380-417
+NUMA node11 CPU(s):                 418-455
+NUMA node12 CPU(s):                 456-493
+NUMA node13 CPU(s):                 494-531
+NUMA node14 CPU(s):                 532-569
+NUMA node15 CPU(s):                 570-607
+NUMA node16 CPU(s):                 
+NUMA node17 CPU(s):                 
+NUMA node18 CPU(s):                 
+NUMA node19 CPU(s):                 
+NUMA node20 CPU(s):                 
+NUMA node21 CPU(s):                 
+NUMA node22 CPU(s):                 
+NUMA node23 CPU(s):                 
+NUMA node24 CPU(s):                 
+NUMA node25 CPU(s):                 
+NUMA node26 CPU(s):                 
+NUMA node27 CPU(s):                 
+NUMA node28 CPU(s):                 
+NUMA node29 CPU(s):                 
+NUMA node30 CPU(s):                 
+NUMA node31 CPU(s):                 
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Not affected
+Vulnerability Spec rstack overflow: Not affected
+Vulnerability Spec store bypass:    Not affected
+Vulnerability Spectre v1:           Mitigation; __user pointer sanitization
+Vulnerability Spectre v2:           Mitigation; CSV2, but not BHB
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
+
+COMMAND ['numactl', '--show']
+policy: default
+preferred node: current
+physcpubind: 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 
+cpubind: 2 
+nodebind: 2 
+membind: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+preferred: 
+
+COMMAND ['gcc', '--version']
+gcc (gcc for openEuler 3.0.2) 12.3.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

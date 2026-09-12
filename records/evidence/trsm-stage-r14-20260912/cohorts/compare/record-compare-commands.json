@@ -1,0 +1,112 @@
+{
+  "executed_argv": [
+    [
+      "python3",
+      ".runs/trsm/optimization-20260912-r14-compare/job_control.py",
+      "prepare"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260912-r14-compare/job_control.py",
+      "submit"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260912-r14-compare/job_control.py",
+      "collect"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T8-control12-repeat-r14",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579730",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+      "--repeat-existing"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T10-lhistbarrier-repeat-r14",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579730",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+      "--repeat-existing"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T17-lhistbudget4",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579730",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T18-budgetwide",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579730",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T8-control12",
+      "T10-lhistbarrier"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T8-control12",
+      "T17-lhistbudget4"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T8-control12",
+      "T18-budgetwide"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T10-lhistbarrier",
+      "T17-lhistbudget4"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T17-lhistbudget4",
+      "T18-budgetwide"
+    ]
+  ],
+  "exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "job_id": "1579730",
+  "no_hash_operations": true
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T18-budgetwide",
+  "parent": "T8-control12",
+  "source_from": "T18-budgetwide",
+  "source_implementation_id": "T18-budgetwide",
+  "strategy": "Combine the complete T17-lhistbudget4 small-path prefix with the complete T13-sve4x32 large-path suffix at the existing KB256/CT64 enum boundary. Compare with same-cohort T17 to isolate the wide large-path update; the promotion parent remains current T8, and neither source candidate is represented as promoted.",
+  "created_at": "2026-09-12T11:31:20.587731+00:00",
+  "status": "prepared",
+  "verified": false,
+  "validation_policy": "No hash computation or validation at explicit user request",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic",
+      "TEST_RUNS": "3",
+      "KBLAS_LIB": "",
+      "CC": "gcc"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  }
+}

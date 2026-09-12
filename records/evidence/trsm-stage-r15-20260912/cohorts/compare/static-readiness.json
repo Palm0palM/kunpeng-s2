@@ -1,0 +1,71 @@
+{
+  "status": "static_ready_pending_root_review",
+  "prepare_blocked": true,
+  "prior_job_id": "1579730",
+  "members": [
+    "T8-control12-repeat-r15",
+    "T18-budgetwide-repeat-r15"
+  ],
+  "formal_round_order": [
+    [
+      "T8-control12-repeat-r15",
+      "T18-budgetwide-repeat-r15"
+    ],
+    [
+      "T18-budgetwide-repeat-r15",
+      "T8-control12-repeat-r15"
+    ],
+    [
+      "T8-control12-repeat-r15",
+      "T18-budgetwide-repeat-r15"
+    ]
+  ],
+  "formal_pass_expected": 18,
+  "warmup_pass_expected": 6,
+  "python_ast_pass": [
+    "cohort_driver.py",
+    "finish_records.py",
+    "job_control.py",
+    "preflight/guard.py",
+    "preflight-wide32/guard.py",
+    "preflight_audit.py",
+    "reference/audit-dependencies.py"
+  ],
+  "bash_n_pass": [
+    "preflight/run.sh",
+    "preflight-wide32/run.sh",
+    "reference/probe.sh",
+    "reference/target-environment.sh",
+    "remote_job.sh"
+  ],
+  "embedded_python_ast_pass": [
+    {
+      "file": "preflight/run.sh",
+      "start_line": 82
+    },
+    {
+      "file": "preflight-wide32/run.sh",
+      "start_line": 71
+    },
+    {
+      "file": "reference/probe.sh",
+      "start_line": 7
+    },
+    {
+      "file": "reference/target-environment.sh",
+      "start_line": 12
+    }
+  ],
+  "source_snapshot_bytes_match": true,
+  "prior_identity_matches": true,
+  "reference_remote_config_exact_r14_copies": true,
+  "no_payload_or_submission_state": true,
+  "hash_operations": false,
+  "local_task_compile_or_execution": false,
+  "scheduler": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "walltime_seconds": 1800
+  }
+}

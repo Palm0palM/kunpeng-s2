@@ -1,0 +1,233 @@
+{
+  "status": "reviewed_no_promotion",
+  "job_id": "1579730",
+  "formal_pass_count": 36,
+  "warmup_pass_count": 12,
+  "baseline_version": "T8-control12",
+  "best_implementation": "T8-svepanel16",
+  "comparisons": {
+    "T10-lhistbarrier": {
+      "eligible": false,
+      "reasons": [
+        "total improvement -2.0827% does not exceed threshold 27.5570%",
+        "at least one official case regresses by more than 1%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 18.87,
+          "candidate_ms": 14.65,
+          "gain_pct": 22.363540010598836
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 235.97,
+          "candidate_ms": 264.35,
+          "gain_pct": -12.026952578717644
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 207.07,
+          "candidate_ms": 192.53,
+          "gain_pct": 7.021780074370983
+        }
+      ],
+      "total_gain_pct": -2.0826567946136705,
+      "noise_threshold_pct": 27.55696873343932,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    },
+    "T17-lhistbudget4": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 4.6329% does not exceed threshold 27.5570%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 18.87,
+          "candidate_ms": 14.49,
+          "gain_pct": 23.211446740858506
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 235.97,
+          "candidate_ms": 232.9,
+          "gain_pct": 1.3010128406153296
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 207.07,
+          "candidate_ms": 193.12,
+          "gain_pct": 6.736852272178486
+        }
+      ],
+      "total_gain_pct": 4.632937152259093,
+      "noise_threshold_pct": 27.55696873343932,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    },
+    "T18-budgetwide": {
+      "eligible": false,
+      "reasons": [
+        "total improvement 6.9278% does not exceed threshold 27.5570%"
+      ],
+      "cases": [
+        {
+          "dims": [
+            512,
+            19968
+          ],
+          "base_ms": 18.87,
+          "candidate_ms": 14.54,
+          "gain_pct": 22.94647588765237
+        },
+        {
+          "dims": [
+            2432,
+            17024
+          ],
+          "base_ms": 235.97,
+          "candidate_ms": 235.31,
+          "gain_pct": 0.27969657159808303
+        },
+        {
+          "dims": [
+            17024,
+            512
+          ],
+          "base_ms": 207.07,
+          "candidate_ms": 180.06,
+          "gain_pct": 13.043898198676773
+        }
+      ],
+      "total_gain_pct": 6.927756489359399,
+      "noise_threshold_pct": 27.55696873343932,
+      "validation_policy": "user-requested-no-hash",
+      "hash_validation": "not performed",
+      "metric": "sum of per-case median ms; not official score"
+    }
+  },
+  "mechanism_comparisons": {
+    "T10-lhistbarrier-vs-T17-lhistbudget4": {
+      "base": "T10-lhistbarrier",
+      "candidate": "T17-lhistbudget4",
+      "promotion_authorization": false,
+      "result": {
+        "eligible": false,
+        "reasons": [
+          "total improvement 6.5786% does not exceed threshold 12.5643%"
+        ],
+        "cases": [
+          {
+            "dims": [
+              512,
+              19968
+            ],
+            "base_ms": 14.65,
+            "candidate_ms": 14.49,
+            "gain_pct": 1.092150170648465
+          },
+          {
+            "dims": [
+              2432,
+              17024
+            ],
+            "base_ms": 264.35,
+            "candidate_ms": 232.9,
+            "gain_pct": 11.897106109324765
+          },
+          {
+            "dims": [
+              17024,
+              512
+            ],
+            "base_ms": 192.53,
+            "candidate_ms": 193.12,
+            "gain_pct": -0.3064457487144878
+          }
+        ],
+        "total_gain_pct": 6.578584607554129,
+        "noise_threshold_pct": 12.564275697293928,
+        "validation_policy": "user-requested-no-hash",
+        "hash_validation": "not performed",
+        "metric": "sum of per-case median ms; not official score"
+      }
+    },
+    "T17-lhistbudget4-vs-T18-budgetwide": {
+      "base": "T17-lhistbudget4",
+      "candidate": "T18-budgetwide",
+      "promotion_authorization": false,
+      "result": {
+        "eligible": false,
+        "reasons": [
+          "total improvement 2.4063% does not exceed threshold 11.3505%",
+          "at least one official case regresses by more than 1%"
+        ],
+        "cases": [
+          {
+            "dims": [
+              512,
+              19968
+            ],
+            "base_ms": 14.49,
+            "candidate_ms": 14.54,
+            "gain_pct": -0.34506556245685943
+          },
+          {
+            "dims": [
+              2432,
+              17024
+            ],
+            "base_ms": 232.9,
+            "candidate_ms": 235.31,
+            "gain_pct": -1.0347788750536695
+          },
+          {
+            "dims": [
+              17024,
+              512
+            ],
+            "base_ms": 193.12,
+            "candidate_ms": 180.06,
+            "gain_pct": 6.762634631317317
+          }
+        ],
+        "total_gain_pct": 2.4063017865655767,
+        "noise_threshold_pct": 11.350455675227845,
+        "validation_policy": "user-requested-no-hash",
+        "hash_validation": "not performed",
+        "metric": "sum of per-case median ms; not official score"
+      }
+    }
+  },
+  "medians_ms": {
+    "T8-control12": 461.90999999999997,
+    "T10-lhistbarrier": 471.53,
+    "T17-lhistbudget4": 440.51,
+    "T18-budgetwide": 429.90999999999997
+  },
+  "reference": "KML25.1/GCC12; not specified KML25.2",
+  "promoted": false,
+  "decision": "Keep T8-svepanel16 and original independently verified T8 ZIP. Preserve all samples; repeat unchanged T8/T18 in r15."
+}

@@ -1,0 +1,79 @@
+{
+  "phase": "interleaved-unchanged-T8-T18-confirmation-after-r14",
+  "reference": "Huawei KML 25.1.0 with private GCC 12.3.1; not specified official KML 25.2.0",
+  "members": [
+    {
+      "version": "T8-control12",
+      "parent": null,
+      "source_implementation_id": "T8-svepanel16",
+      "strategy": "已晋级T8-svepanel16原样三轮复测，建立本轮KML25.1/GCC12基线；后续以同版本新run和候选同分配交错比较。",
+      "run_name": "T8-control12-repeat-r15",
+      "source_from": "T8-control12",
+      "repeat_existing": true,
+      "prior_job_id": "1579730"
+    },
+    {
+      "run_name": "T18-budgetwide-repeat-r15",
+      "version": "T18-budgetwide",
+      "parent": "T8-control12",
+      "source_from": "T18-budgetwide",
+      "source_implementation_id": "T18-budgetwide",
+      "strategy": "Combine the complete T17-lhistbudget4 small-path prefix with the complete T13-sve4x32 large-path suffix at the existing KB256/CT64 enum boundary. Compare with same-cohort T17 to isolate the wide large-path update; the promotion parent remains current T8, and neither source candidate is represented as promoted.",
+      "repeat_existing": true,
+      "prior_job_id": "1579730"
+    }
+  ],
+  "integration_status": "STATIC PREPARATION ONLY: prepare is explicitly blocked pending root review.",
+  "measurement_protocol": {
+    "warmup_order": [
+      "T8-control12-repeat-r15",
+      "T18-budgetwide-repeat-r15"
+    ],
+    "warmup_suites_per_member": 1,
+    "formal_round_order": [
+      [
+        "T8-control12-repeat-r15",
+        "T18-budgetwide-repeat-r15"
+      ],
+      [
+        "T18-budgetwide-repeat-r15",
+        "T8-control12-repeat-r15"
+      ],
+      [
+        "T8-control12-repeat-r15",
+        "T18-budgetwide-repeat-r15"
+      ]
+    ],
+    "formal_suites_per_member": 3,
+    "TEST_RUNS": 3,
+    "formal_case_count": 18,
+    "warmup_case_count": 6,
+    "sample_policy": "Keep all three formal suites; no slow-sample exclusion"
+  },
+  "preflight_contract": {
+    "general_module": "preflight",
+    "audit_module": "preflight_audit.py",
+    "general_expected": {
+      "T8-control12-repeat-r15": {
+        "micro": 14,
+        "whole": 433,
+        "noop": 52,
+        "shared_fail": 0,
+        "budget_cases": 27
+      },
+      "T18-budgetwide-repeat-r15": {
+        "micro": 28,
+        "whole": 518,
+        "noop": 64,
+        "shared_fail": 83,
+        "budget_cases": 32
+      }
+    },
+    "wide32_member": "T18-budgetwide-repeat-r15",
+    "wide32_expected_CT": 64,
+    "wide32_micro": 28,
+    "wide32_whole": 28,
+    "wide32_argument_cases": 56,
+    "wide32_tile_processes": 7
+  }
+}
