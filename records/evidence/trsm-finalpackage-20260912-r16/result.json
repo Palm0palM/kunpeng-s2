@@ -1,0 +1,148 @@
+{
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        14.36,
+        15.22,
+        13.92
+      ],
+      "median_ms": 14.36,
+      "min_ms": 13.92,
+      "max_ms": 15.22,
+      "spread_pct": 9.052924791086356,
+      "gflops": [
+        364.6001,
+        343.9399,
+        375.9418
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        121.12,
+        120.51,
+        120.1
+      ],
+      "median_ms": 120.51,
+      "min_ms": 120.1,
+      "max_ms": 121.12,
+      "spread_pct": 0.8464027881503694,
+      "gflops": [
+        831.3056,
+        835.5076,
+        838.4094
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        182.14,
+        202.18,
+        181.04
+      ],
+      "median_ms": 182.14,
+      "min_ms": 181.04,
+      "max_ms": 202.18,
+      "spread_pct": 11.606456571867803,
+      "gflops": [
+        814.6842,
+        733.9465,
+        819.6369
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 317.01,
+  "official_score": null,
+  "ranking": null,
+  "job_id": "1581516",
+  "source_version": "T19-panel8x16budget",
+  "package_extracted_and_tested": true,
+  "reference": "KML 25.1.0; not specified KML 25.2.0",
+  "recorded_at": "2026-09-12T16:11:44.876348+00:00",
+  "archive_bytes": 15593,
+  "official_rows_passed": 9,
+  "package_metadata": {
+    "problem": "trsm",
+    "version": "T19-panel8x16budget",
+    "created_at": "2026-09-12T16:04:20.249057+00:00",
+    "archive": "trsm.zip",
+    "archive_bytes": 15593,
+    "files": [
+      {
+        "path": "trsm/README.md",
+        "bytes": 2820,
+        "mode": "0644"
+      },
+      {
+        "path": "trsm/bench_trsm.c",
+        "bytes": 4799,
+        "mode": "0644"
+      },
+      {
+        "path": "trsm/compat/kblas.h",
+        "bytes": 615,
+        "mode": "0644"
+      },
+      {
+        "path": "trsm/run.sh",
+        "bytes": 2686,
+        "mode": "0755"
+      },
+      {
+        "path": "trsm/trsm.c",
+        "bytes": 73077,
+        "mode": "0644"
+      }
+    ],
+    "source_record": "source-record.json",
+    "source_matches_measured_local_snapshot_by_bytes": true,
+    "source_validation": {
+      "job_id": "1579861",
+      "suites": 3,
+      "test_runs": 3,
+      "official_rows_passed": 9,
+      "max_error": 1.11e-15,
+      "case_median_ms": [
+        14.56,
+        118.82,
+        179.82
+      ],
+      "total_median_ms": 313.2,
+      "reference": "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0"
+    },
+    "implementation_provenance": {
+      "small_path": "T19 8x16 forward-history kernel only for safely computed over-budget small path; paired RHS8 scratch",
+      "large_path": "Unchanged complete T18 suffix, originally T13-sve4x32, from KB256/CT64 enum",
+      "immediate_source": "T18-budgetwide",
+      "derivation_sources_promoted_when_combined": false,
+      "final_target_requires_own_verified_promotion": true,
+      "packed_history_budget_bytes": 4194304,
+      "KB": 256,
+      "CT": 64
+    },
+    "package_validation": "private prepared ZIP; independent compute-node extraction and three suites pending",
+    "official_kml252_revalidated": false,
+    "hash_validation": "not performed at user request",
+    "local_compilation_or_tests": false,
+    "contest_submission": false,
+    "unvalidated_candidate_included": false,
+    "published": false
+  },
+  "source_and_zip_byte_equality": true,
+  "official_kml252_revalidated": false,
+  "hash_validation": "not performed at user request"
+}

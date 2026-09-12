@@ -1,0 +1,85 @@
+{
+  "executed_argv": [
+    [
+      "python3",
+      ".runs/trsm/optimization-20260912-r16-compare/job_control.py",
+      "prepare"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260912-r16-compare/job_control.py",
+      "submit"
+    ],
+    [
+      "python3",
+      ".runs/trsm/optimization-20260912-r16-compare/job_control.py",
+      "collect"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T8-control12-repeat-r16",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579861",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+      "--repeat-existing"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T18-budgetwide-repeat-r16",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579861",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0",
+      "--repeat-existing"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "record",
+      ".runs/trsm/T19-panel8x16budget",
+      "--environment",
+      "COMPUTE_NODE_1-numa2-gcc1231-generic38-kml251-test3-warmup1-job1579861",
+      "--reference",
+      "Huawei KML 25.1.0 real headers and default -lkblas; private GCC 12.3.1 libgomp; not specified official KML 25.2.0"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T8-control12",
+      "T18-budgetwide"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T8-control12",
+      "T19-panel8x16budget"
+    ],
+    [
+      "python3",
+      ".runs/trsm/nohash-tools/records-kml.py",
+      "compare",
+      "T18-budgetwide",
+      "T19-panel8x16budget"
+    ]
+  ],
+  "exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    2
+  ],
+  "job_id": "1579861",
+  "no_hash_operations": true
+}

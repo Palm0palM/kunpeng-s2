@@ -1,0 +1,18 @@
+{
+  "state": "collected",
+  "cohort_id": "trsm-kml251-package-r16-2aa944583c81",
+  "job_id": "1581516",
+  "remote_dir": "/CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-package-r16-2aa944583c81",
+  "source_version": "T19-panel8x16budget",
+  "created_at": "2026-09-12T16:04:32.616894+00:00",
+  "archive_bytes": 15593,
+  "private_archive": ".runs/trsm/final-package-20260912-r16/trsm.zip",
+  "reference": "KML 25.1.0; not specified KML 25.2.0",
+  "hash_validation": "not performed at user request",
+  "upload_command": "mkdir /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-package-r16-2aa944583c81 && tar -xzf - -C /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-package-r16-2aa944583c81",
+  "submit_command": "dsub -n trsm-kml251-package-r16-2aa944583c81 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-package-r16-2aa944583c81/wrapper.stdout.log /bin/bash -l /CLUSTER_USER_HOME/kunpeng-experiments/trsm-kml251-package-r16-2aa944583c81/remote_job.sh",
+  "submission_started_at": "2026-09-12T16:04:38.573396+00:00",
+  "submitted_at": "2026-09-12T16:04:39.072542+00:00",
+  "identity_marker_sent_at": "2026-09-12T16:04:39.435027+00:00",
+  "collected_at": "2026-09-12T16:11:44.877359+00:00"
+}

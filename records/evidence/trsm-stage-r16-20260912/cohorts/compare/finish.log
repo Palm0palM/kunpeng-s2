@@ -1,0 +1,148 @@
+{
+  "version": "T8-control12",
+  "status": "passed",
+  "verified": true,
+  "record_updated": true,
+  "validation_policy": "user-requested-no-hash",
+  "total_median_ms": 444.75,
+  "failures": [],
+  "metric": "sum of per-case median ms; not official score"
+}
+{
+  "version": "T18-budgetwide",
+  "status": "passed",
+  "verified": true,
+  "record_updated": true,
+  "validation_policy": "user-requested-no-hash",
+  "total_median_ms": 427.1,
+  "failures": [],
+  "metric": "sum of per-case median ms; not official score"
+}
+{
+  "version": "T19-panel8x16budget",
+  "status": "passed",
+  "verified": true,
+  "record_updated": true,
+  "validation_policy": "user-requested-no-hash",
+  "total_median_ms": 313.2,
+  "failures": [],
+  "metric": "sum of per-case median ms; not official score"
+}
+{
+  "eligible": false,
+  "reasons": [
+    "total improvement 3.9685% does not exceed threshold 15.4821%"
+  ],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 18.99,
+      "candidate_ms": 14.21,
+      "gain_pct": 25.17114270668772
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 232.28,
+      "candidate_ms": 232.66,
+      "gain_pct": -0.16359566040984821
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 193.48,
+      "candidate_ms": 180.23,
+      "gain_pct": 6.8482530494107925
+    }
+  ],
+  "total_gain_pct": 3.9685216413715523,
+  "noise_threshold_pct": 15.482054890921882,
+  "validation_policy": "user-requested-no-hash",
+  "hash_validation": "not performed",
+  "metric": "sum of per-case median ms; not official score"
+}
+{
+  "eligible": true,
+  "reasons": [],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 18.99,
+      "candidate_ms": 14.56,
+      "gain_pct": 23.328067403896778
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 232.28,
+      "candidate_ms": 118.82,
+      "gain_pct": 48.84622007921474
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 193.48,
+      "candidate_ms": 179.82,
+      "gain_pct": 7.060161256977464
+    }
+  ],
+  "total_gain_pct": 29.578414839797638,
+  "noise_threshold_pct": 8.530805687203797,
+  "validation_policy": "user-requested-no-hash",
+  "hash_validation": "not performed",
+  "metric": "sum of per-case median ms; not official score"
+}
+{
+  "eligible": false,
+  "reasons": [
+    "at least one official case regresses by more than 1%"
+  ],
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "base_ms": 14.21,
+      "candidate_ms": 14.56,
+      "gain_pct": -2.4630541871921157
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "base_ms": 232.66,
+      "candidate_ms": 118.82,
+      "gain_pct": 48.92976876128256
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "base_ms": 180.23,
+      "candidate_ms": 179.82,
+      "gain_pct": 0.22748709981689877
+    }
+  ],
+  "total_gain_pct": 26.668227581362686,
+  "noise_threshold_pct": 15.482054890921882,
+  "validation_policy": "user-requested-no-hash",
+  "hash_validation": "not performed",
+  "metric": "sum of per-case median ms; not official score"
+}
