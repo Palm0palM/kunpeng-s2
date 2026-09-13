@@ -1,0 +1,5 @@
+# C60 root independent source review
+
+Root read complete candidate.patch and STATIC_REVIEW.md. The only change is shared2 input materialization: load first column v0/v1/v2, plus only one active lane at row+ik+3L; use EXT immediate1 for second column. For each result lane, concatenation yields the identical original row[column+nL+j] value. Last EXT reads onlytail[0]; from i+3L<=ow andik<=kw-2, tailglobalindex<=ow+kw-2=W-1. No speculative fullVL tail load. All arithmetic expression lines, two column order,14weight accesses, remainingkernelcolumn,12boundaryhints and other helper/dispatchcode remain unchanged. Source companions match measuredC7. Uses intrinsic forms already present in parent; not a compilation claim. Four longer-lived inputs may create spill and EXT work may offset load savings.
+
+SourceparentC58-r1 is current confirmedC7; unlike rejectedC59, no boundaryhint removal is carried forward. New/checkpoint logs and originalcreationmeta preserved. This source review authorizes preparation of its own AN diagnostic only; no numerical/performance result yet. Only supercomputer nodes may compile or test. Stop40%, never reset.

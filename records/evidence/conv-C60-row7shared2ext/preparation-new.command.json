@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "tools/experiment.py",
+    "new",
+    "conv",
+    "C60-row7shared2ext",
+    "--parent",
+    "C58-r1",
+    "--strategy",
+    "C7/C58-r1 shared two-column rowseven loop: reuse three first-column SVE windows using EXT for column two; load only one required tail float under a one-lane predicate; preserve every separate mul/add and all other code. Hypothesis only; register pressure may regress."
+  ],
+  "cwd": "LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next",
+  "started_at": "2026-09-13T06:04:04.664973+00:00",
+  "finished_at": "2026-09-13T06:04:04.706825+00:00",
+  "exit_code": 0
+}
