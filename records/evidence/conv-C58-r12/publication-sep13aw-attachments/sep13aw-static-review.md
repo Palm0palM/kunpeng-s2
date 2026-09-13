@@ -1,0 +1,11 @@
+# AW performance template static preparation
+
+Prepared only from corrected sep13au-performance.py. Candidate C64-row7boundaryrowwise / fixed fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421, parent/current C7=C58-r1. Controls C58-r12/C58-r13 were checked absent in both run and records directories; neither created. Unique order C58-r12/C64/C58-r13, three complete suites each,36 samples.
+
+Required pending binding: AV_JOB_ID=None. Root must replace it with the actual original AV diagnostic ID after that job exists. diagnostic() rejects None before any remote query or experiment/campaign mutation; source must be accepted/frozen44328 in sve-correctness-sep13av with actual TARGETED_ASSEMBLY_REVIEW.md and ROOT_RETURNED_REVIEW.md. No AV ID, performance ID or PASS invented.
+
+Only exact identifiers, complete version strings, path components and word-boundary round names were mapped. TARGETED_ASSEMBLY_REVIEW.md and Exact12PASS/error0 explicitly preserved byte-for-byte, avoiding historical accidental substring replacement. Text syntax parsed with ast.parse only; no import/execution of AW, no network/GO.
+
+All corrected AU controls remain: current measured C7/source check, own fixed-source diagnostic, live original diagnostic success with both exits0, unchanged companion/settings check, unique campaign and controls before standard new/checkpoint, original creation fallback to creation-experiment-original.json, exclusive pre-aw snapshot of expanded metadata, source_parentC58-r1 and comparison parentC58-r13. Fixed C7 settings preserve38CPU24576MiBpackedNUMA1800/GCC10.3.1/generic and existing strict runner. Single group source/job/settings/machine/wrapper/full36 samples are checked with standard record and both standard comparisons. Both gates must pass, otherwise keepC7; qualified candidates only await independent confirmation. No automatic confirmation, promotion or packaging.
+
+Failure handling unchanged: true FAILED scheduler group stops before record-compare fetch; root must fetch original failed logs separately and record them without resubmission. Existing failures cannot be overwritten. No operator compilation/testing occurred locally. README/runner/reference and all other candidates/records untouched. This document records preparation review; root still reads final diff and binds actualAV identity.

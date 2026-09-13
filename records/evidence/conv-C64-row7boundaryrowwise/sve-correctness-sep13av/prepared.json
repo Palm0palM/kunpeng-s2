@@ -1,0 +1,73 @@
+{
+  "candidate": "C64-row7boundaryrowwise",
+  "source_experiment": "C64-row7boundaryrowwise",
+  "source_parent": "C58-r1",
+  "source_parent_label": "C7",
+  "status": "prepared",
+  "complete": false,
+  "actual_job_id": null,
+  "compiled": false,
+  "executed": false,
+  "verified": false,
+  "performance_measured": false,
+  "executed_locally": false,
+  "source_hashes": {
+    "candidate.env": "9c38c8f4efbcb066ec4e02f0144d603cec0954d8cab7bd3024c08227c99325ad",
+    "check_conv_guard.c": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+    "check_sve_dispatch.c": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+    "conv2d.c": "fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421",
+    "remote_job.sh": "088bb09df5b70354ec3c95610bab1254603ab7b5ff0d0fe0069796c74d7c1d2e"
+  },
+  "production_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "expected_checks": {
+    "full_per_configuration": 5744,
+    "dispatch_per_configuration": 1212,
+    "direct_per_configuration": 432,
+    "configurations": 6,
+    "total": 44328
+  },
+  "expected_stages": [
+    "allocation",
+    "compiler",
+    "manifest",
+    "build-guard",
+    "guard-vl16-t1",
+    "guard-vl16-t4",
+    "guard-vl32-t1",
+    "guard-vl32-t4",
+    "guard-vl64-t1",
+    "guard-vl64-t4",
+    "build-dispatch",
+    "dispatch-vl16-t1",
+    "dispatch-vl16-t4",
+    "dispatch-vl32-t1",
+    "dispatch-vl32-t4",
+    "dispatch-vl64-t1",
+    "dispatch-vl64-t4",
+    "build-assembly",
+    "complete"
+  ],
+  "prepared_at": "2026-09-13T07:48:02.681501+00:00",
+  "source_sha256": "fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421",
+  "resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "walltime_seconds": 1800
+  },
+  "assembly_review": "Pending actual C64 boundary-rowwise and shared2/u1 schedule, stack/frame/FMA; no AP result inherited.",
+  "scheduling_scope": "Only original AU1590659 complete recorded36 plus live terminal state and own AV reservation; preparation does not submit or query.",
+  "expected_acc": 3,
+  "root_review_status": "NOT_REVIEWED",
+  "independent_tools_review_status": "NOT_REVIEWED",
+  "review_archive_files": [
+    "ROOT_REVIEW.md",
+    "INDEPENDENT_TOOLS_REVIEW.md"
+  ]
+}

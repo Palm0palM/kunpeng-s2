@@ -1,0 +1,11 @@
+--- AW/unbound
++++ AW/bound
+@@ -14,7 +14,7 @@
+ def baseline():
+  need(e.read_json(ROOT/'outputs/conv-best.json')['label']=='C7' and e.read_json(ROOT/'records/best.json')['conv']=='C58-r1','Current C7')
+  source=e.source_files(ROOT/'conv');need(source==e.get_record('conv','C58-r1')['source_hashes'],'Current measured C7 source');return source
+-AV_JOB_ID=None  # REQUIRED: root binds the actual original AV job after its one-shot submit.
++AV_JOB_ID='1590847'  # Original AV job, bound after actual one-shot submit.
+ def diagnostic():
+  need(isinstance(AV_JOB_ID,str) and AV_JOB_ID.isdigit(),'Actual original AV job not yet bound')
+  val=e.read_json(DIAG/'validation.json');job=e.read_json(DIAG/'job.json')

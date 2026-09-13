@@ -1,7 +1,7 @@
 # CONV 当前最佳提交包
 
-当前版本 **C6 = C26-r1**（来源 C26-row4loads）。直接下载 [C6/conv.zip](C6/conv.zip)，无需重新压缩。
+当前版本 **C7 = C58-r1**（源码 C58-row7boundaryu2）。直接下载 [C7/conv.zip](C7/conv.zip) 原样提交，无需重新压缩。
 
-同资源 C5 → C6：**502.35 → 452.62 ms**，耗时减少 **9.90%**。原 ZIP 已在超算解压并完成三轮独立验证，12/12 PASS、最大误差 0，包验证合计 **452.66 ms**。这些是内部耗时，官方分数待实际反馈。
+独立同分配确认：**452.27 → 437.56 ms**，耗时减少 **3.25%**；A退化约0.80%，其余三例改善。最终原ZIP在超算解压三轮 **12/12 PASS、最大误差0**，包验证合计 **437.49 ms**。耗时为内部指标，非官方分数。
 
-[版本说明](C6/README.md) · [元数据与反馈](C6/metadata.json) · [完整报告](../../docs/CONV_SEP11C.md)。当前仅保留 C6；旧测量仍在 records/，历史 C5 原包可从 [固定 Git 版本](https://github.com/Palm0palM/kunpeng-s2/blob/0e2e5491d3a1da9992acb700cc1e9e2941670bcf/conv/result/C5/conv.zip) 获取。
+[C7版本说明](C7/README.md) · [元数据与反馈](C7/metadata.json) · [完整确认与原ZIP报告](../../docs/CONV_SEP13AK_AL.md)。当前仅保留C7提交包，历史测量留在records。本次修复索引中失效的C6链接，不是新晋级，也不改C7原ZIP。

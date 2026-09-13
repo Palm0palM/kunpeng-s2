@@ -1,0 +1,703 @@
+{
+  "created_at": "2026-09-13T07:53:04.293943+00:00",
+  "candidate": "C64-row7boundaryrowwise",
+  "job_id": "1590847",
+  "scope": "Original AV numerical/lifecycle logs only; no acceptance, freeze or performance.",
+  "legacy_coverage_rule": "Each named legacy helper must be nonzero, exactly as the original AV checker; reported counts are observed values, not expected values.",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1590847",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "wrapper_exit": 0,
+  "stage_count": 19,
+  "stages": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "sve_lanes": 4,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 1,
+          "expected_mask": 1
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 1,
+          "expected_mask": 1
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl16-t1.log",
+      "dispatch_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl16-t1.log"
+    },
+    {
+      "sve_bytes": 16,
+      "sve_lanes": 4,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 15,
+          "expected_mask": 15
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl16-t4.log",
+      "dispatch_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl16-t4.log"
+    },
+    {
+      "sve_bytes": 32,
+      "sve_lanes": 8,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 1,
+          "expected_mask": 1
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 1,
+          "expected_mask": 1
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl32-t1.log",
+      "dispatch_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl32-t1.log"
+    },
+    {
+      "sve_bytes": 32,
+      "sve_lanes": 8,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 15,
+          "expected_mask": 15
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl32-t4.log",
+      "dispatch_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl32-t4.log"
+    },
+    {
+      "sve_bytes": 64,
+      "sve_lanes": 16,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 1,
+          "expected_mask": 1
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 1,
+          "expected_mask": 1
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl64-t1.log",
+      "dispatch_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl64-t1.log"
+    },
+    {
+      "sve_bytes": 64,
+      "sve_lanes": 16,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432,
+      "total": 7388,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 1236,
+          "expected": 1236,
+          "worker_mask": 15,
+          "expected_mask": 15
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 10850,
+        "TAIL": 10850,
+        "ROWPAIR": 234,
+        "ROWTRIPLE": 2746,
+        "ROWQUAD": 1778
+      },
+      "guard_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl64-t4.log",
+      "dispatch_log": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl64-t4.log"
+    }
+  ],
+  "total_cases": 44328,
+  "full_cases": 34464,
+  "dispatch_cases": 7272,
+  "direct_cases": 2592,
+  "actual_compile_argv": [
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "check_conv_guard.c",
+      "conv2d.c",
+      "-o",
+      "check_conv_guard"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-finstrument-functions",
+      "check_sve_dispatch.c",
+      "-o",
+      "check_sve_dispatch"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-S",
+      "conv2d.c",
+      "-o",
+      "conv2d-sve.s"
+    ]
+  ],
+  "compiler_version": "10.3.1",
+  "omp": {
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PROC_BIND": "close",
+    "OMP_PLACES": "cores"
+  },
+  "scheduler_resources": {
+    "reqCPU": 38,
+    "reqMem": 24576,
+    "allocCPU": 38,
+    "allocMem": 24576,
+    "timeout": 1800,
+    "jobExitCode": 0,
+    "systemExitCode": 0,
+    "reqAffinity": "numa[count=1, distribution=pack]"
+  },
+  "requested_resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "walltime_seconds": 1800
+  },
+  "allowed_cpus": [
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151
+  ],
+  "numa_node": "node3",
+  "scheduler_node": "COMPUTE_NODE_1",
+  "probe_node": "COMPUTE_NODE_1",
+  "scheduler_cpu_text": "114-151",
+  "scheduler_cpus": [
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151
+  ],
+  "source_files": [
+    {
+      "name": "candidate.env",
+      "bytes": 210,
+      "sha256": "9c38c8f4efbcb066ec4e02f0144d603cec0954d8cab7bd3024c08227c99325ad",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "check_conv_guard.c",
+      "bytes": 8698,
+      "sha256": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "check_sve_dispatch.c",
+      "bytes": 7454,
+      "sha256": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "conv2d.c",
+      "bytes": 109072,
+      "sha256": "fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "remote_job.sh",
+      "bytes": 3946,
+      "sha256": "088bb09df5b70354ec3c95610bab1254603ab7b5ff0d0fe0069796c74d7c1d2e",
+      "all_manifests_and_transport_bytes_equal": true
+    }
+  ],
+  "source_sha256": "fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421",
+  "raw_files": [
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/build-assembly.log",
+      "bytes": 0
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/build-dispatch.log",
+      "bytes": 0
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/build-guard.log",
+      "bytes": 0
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/candidate.env",
+      "bytes": 210
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/check_conv_guard.c",
+      "bytes": 8698
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/check_sve_dispatch.c",
+      "bytes": 7454
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/compiler-version.txt",
+      "bytes": 7
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/conv2d-sve.s",
+      "bytes": 181958
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/conv2d.c",
+      "bytes": 109072
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl16-t1.log",
+      "bytes": 603
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl16-t4.log",
+      "bytes": 607
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl32-t1.log",
+      "bytes": 603
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl32-t4.log",
+      "bytes": 607
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl64-t1.log",
+      "bytes": 604
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/dispatch-vl64-t4.log",
+      "bytes": 608
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/exit-code.txt",
+      "bytes": 2
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl16-t1.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl16-t4.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl32-t1.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl32-t4.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl64-t1.log",
+      "bytes": 260
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/guard-vl64-t4.log",
+      "bytes": 260
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/probe.log",
+      "bytes": 16466
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/remote_job.sh",
+      "bytes": 3946
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/source-sha256.txt",
+      "bytes": 407
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/stage-exits.txt",
+      "bytes": 513
+    },
+    {
+      "path": ".runs/conv/sep13av-checks/C64-row7boundaryrowwise/raw/wrapper.stdout.log",
+      "bytes": 16543
+    }
+  ],
+  "outer_events": [
+    {
+      "argv": [
+        "python3",
+        ".runs/conv/sep13av-checks/driver.py",
+        "C64-row7boundaryrowwise",
+        "config/conv-sep12.local.json",
+        "status"
+      ],
+      "started_at": "2026-09-13T07:52:25.957249+00:00",
+      "ended_at": "2026-09-13T07:52:26.515690+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13av-lifecycle-status-001.stdout.txt",
+      "stderr_file": ".runs/conv/sep13av-lifecycle-status-001.stderr.txt",
+      "exit_file": ".runs/conv/sep13av-lifecycle-status-001.exit.txt"
+    },
+    {
+      "argv": [
+        "python3",
+        ".runs/conv/sep13av-checks/driver.py",
+        "C64-row7boundaryrowwise",
+        "config/conv-sep12.local.json",
+        "fetch"
+      ],
+      "started_at": "2026-09-13T07:52:37.016613+00:00",
+      "ended_at": "2026-09-13T07:52:37.539126+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13av-lifecycle-fetch-001.stdout.txt",
+      "stderr_file": ".runs/conv/sep13av-lifecycle-fetch-001.stderr.txt",
+      "exit_file": ".runs/conv/sep13av-lifecycle-fetch-001.exit.txt"
+    }
+  ],
+  "status_call_count": 1,
+  "status_wait_note": "First query was terminal; no repeated poll.",
+  "numerical_logs_complete": true,
+  "issues": [],
+  "accept_executed": false,
+  "freeze_executed": false,
+  "assembly_review_performed": false,
+  "performance_measured": false,
+  "new_job_submitted_by_lifecycle_agent": false,
+  "reset_card_used": false
+}
