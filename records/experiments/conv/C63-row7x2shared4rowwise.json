@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C63-row7x2shared4rowwise",
+  "parent": "C58-r11",
+  "strategy": "C7-based joint 7-row 2VL shared4 tile with rowwise weight lifetime: start from C62 design and only load two input vectors then broadcast one weight per output row within each of four ordered columns. Preserve 14 accumulators, other C62 code and strict arithmetic; own verification and measurement required.",
+  "created_at": "2026-09-13T07:26:08.185088+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "d78a863eb49c85d415420819e4b6ef8379260a34ad9f118da5bab1bdca7e94a8",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C58-r1",
+  "source_parent_label": "C7",
+  "design_source": "C62-row7x2shared4",
+  "design_source_hashes": {
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "conv2d.c": "e6cc9bdb4c14e9f6982f687123379ebf5dfb2013777f7bb076c04edd4827dc8a",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927"
+  },
+  "own_diagnostic_passed": false,
+  "performance_measured": false,
+  "executed_locally": false,
+  "prepared_only": true,
+  "comparison_baseline": "C58-r11",
+  "reference_only": false,
+  "promotion_allowed": true,
+  "qualified_for_confirmation": false,
+  "diagnostic_source_version": "C63-row7x2shared4rowwise",
+  "diagnostic_job_id": "1590603",
+  "diagnostic_evidence_directory": ".runs/conv/C63-row7x2shared4rowwise/sve-correctness-sep13at",
+  "recorded_at": "2026-09-13T07:40:35.039166+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep13au",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "5e46f68add5280d7f7715d34b90b6d2610c681d239ce5df22f7fdac81f932fd7",
+  "log": ".runs/conv/C63-row7x2shared4rowwise/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        55.26,
+        55.18,
+        55.15
+      ],
+      "median_ms": 55.18,
+      "min_ms": 55.15,
+      "max_ms": 55.26,
+      "spread_pct": 0.1993475897064143,
+      "gflops": [
+        1364.0742,
+        1366.0233,
+        1366.771
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        60.9,
+        60.95,
+        74.22
+      ],
+      "median_ms": 60.95,
+      "min_ms": 60.9,
+      "max_ms": 74.22,
+      "spread_pct": 21.853978671041837,
+      "gflops": [
+        1366.6879,
+        1365.5682,
+        1121.4921
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        109.92,
+        109.91,
+        110.02
+      ],
+      "median_ms": 109.92,
+      "min_ms": 109.91,
+      "max_ms": 110.02,
+      "spread_pct": 0.10007278020378405,
+      "gflops": [
+        1465.3729,
+        1465.4467,
+        1463.998
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        237.61,
+        237.57,
+        237.62
+      ],
+      "median_ms": 237.61,
+      "min_ms": 237.57,
+      "max_ms": 237.62,
+      "spread_pct": 0.021042885400450892,
+      "gflops": [
+        1455.2373,
+        1455.4714,
+        1455.1422
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 463.66,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1590659",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -5.96% 未超过测量波动/最低1%门槛 21.85%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.86,
+        "candidate_ms": 55.18,
+        "gain_pct": -6.401851137678366
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.41,
+        "candidate_ms": 60.95,
+        "gain_pct": -4.348570450265377
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.16,
+        "candidate_ms": 109.92,
+        "gain_pct": -5.529953917050697
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.15,
+        "candidate_ms": 237.61,
+        "gain_pct": -6.479946224512663
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r11"
+  },
+  "opening_control_comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -5.95% 未超过测量波动/最低1%门槛 21.85%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.86,
+        "candidate_ms": 55.18,
+        "gain_pct": -6.401851137678366
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.4,
+        "candidate_ms": 60.95,
+        "gain_pct": -4.366438356164391
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.15,
+        "candidate_ms": 109.92,
+        "gain_pct": -5.5400864138262085
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.22,
+        "candidate_ms": 237.61,
+        "gain_pct": -6.446554968192821
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r10"
+  },
+  "decision_note": "AU initial comparison rejected; retain C7 and all samples."
+}

@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python3",
+    "tools/experiment.py",
+    "checkpoint",
+    "conv",
+    "C63-row7x2shared4rowwise",
+    "--note",
+    "Prepared only: C62 quad body changed to two input vectors plus scoped rowwise weight; symbolic per-chain order and reverse-byte proof preserved. 56mul/56add/8loads/28broadcast, no diagnostic or performance yet."
+  ],
+  "started_at": "2026-09-13T07:27:33.656683+00:00",
+  "ended_at": "2026-09-13T07:27:33.690974+00:00",
+  "exit_code": 0
+}

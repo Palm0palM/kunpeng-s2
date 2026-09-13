@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python3",
+    "tools/experiment.py",
+    "new",
+    "conv",
+    "C63-row7x2shared4rowwise",
+    "--parent",
+    "C58-r1",
+    "--strategy",
+    "C7-based joint 7-row 2VL shared4 tile with rowwise weight lifetime: start from C62 design and only load two input vectors then broadcast one weight per output row within each of four ordered columns. Preserve 14 accumulators, other C62 code and strict arithmetic; own verification and measurement required."
+  ],
+  "started_at": "2026-09-13T07:26:08.139665+00:00",
+  "ended_at": "2026-09-13T07:26:08.188101+00:00",
+  "exit_code": 0
+}

@@ -1,0 +1,74 @@
+{
+  "candidate": "C63-row7x2shared4rowwise",
+  "source_experiment": "C63-row7x2shared4rowwise",
+  "source_parent": "C58-r1",
+  "source_parent_label": "C7",
+  "status": "prepared",
+  "complete": false,
+  "actual_job_id": null,
+  "compiled": false,
+  "executed": false,
+  "verified": false,
+  "performance_measured": false,
+  "executed_locally": false,
+  "source_hashes": {
+    "candidate.env": "5eb315180a0900cbbe6755f2ada21aedb5b9a6ca636aa1b99b0b2d6b61544ffc",
+    "check_conv_guard.c": "60f58d12373769f8308d438f97427ef2fd58b25b72b05daf3c8d8f5c5112e1ef",
+    "check_sve_dispatch.c": "54d23bf1ed995e0442d43fe7e5ff55f528eccbe3a3dd36c77dd954a0bb05c8a5",
+    "conv2d.c": "d78a863eb49c85d415420819e4b6ef8379260a34ad9f118da5bab1bdca7e94a8",
+    "remote_job.sh": "e3f0bc6e121c3251285887da7e4a8778f76a6cf8d363b649310de1dc14d6705e"
+  },
+  "production_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "d78a863eb49c85d415420819e4b6ef8379260a34ad9f118da5bab1bdca7e94a8",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "expected_checks": {
+    "full_per_configuration": 5744,
+    "dispatch_per_configuration": 1212,
+    "direct_per_configuration": 432,
+    "configurations": 6,
+    "total": 44328
+  },
+  "expected_stages": [
+    "allocation",
+    "compiler",
+    "manifest",
+    "build-guard",
+    "guard-vl16-t1",
+    "guard-vl16-t4",
+    "guard-vl32-t1",
+    "guard-vl32-t4",
+    "guard-vl64-t1",
+    "guard-vl64-t4",
+    "build-dispatch",
+    "dispatch-vl16-t1",
+    "dispatch-vl16-t4",
+    "dispatch-vl32-t1",
+    "dispatch-vl32-t4",
+    "dispatch-vl64-t1",
+    "dispatch-vl64-t4",
+    "build-assembly",
+    "complete"
+  ],
+  "prepared_at": "2026-09-13T07:29:39.015098+00:00",
+  "source_sha256": "d78a863eb49c85d415420819e4b6ef8379260a34ad9f118da5bab1bdca7e94a8",
+  "resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "walltime_seconds": 1800
+  },
+  "expected_acc": 2,
+  "assembly_review": "Pending own 7-row2VL/shared4 rowwise schedule, spill/frame/FMA; no result inherited from AR.",
+  "scheduling_scope": "Only original AS1590550 with complete recorded36 and live terminal state plus own AT reservation; preparation does not run or submit.",
+  "checker_count_derivation": "CHECKER_COUNTS.md",
+  "root_review_status": "NOT_REVIEWED",
+  "independent_tools_review_status": "NOT_REVIEWED",
+  "review_archive_files": [
+    "ROOT_REVIEW.md",
+    "INDEPENDENT_TOOLS_REVIEW.md"
+  ]
+}

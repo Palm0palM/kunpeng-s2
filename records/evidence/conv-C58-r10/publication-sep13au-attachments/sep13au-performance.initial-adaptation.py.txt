@@ -1,0 +1,85 @@
+"""C7/C63/C7 first performance comparison after C63's own AT diagnostic."""
+import argparse,contextlib,datetime,json,shlex,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'tools'));sys.dont_write_bytecode=True
+import experiment as e
+import cluster as c
+import cluster_group as g
+ORDER=['C58-r10','C63-row7x2shared4rowwise','C58-r11'];CAND=ORDER[1]
+PLAN=ROOT/'.runs/conv/sep13au-campaign.json'
+DIAG=ROOT/'.runs/conv'/CAND/'sve-correctness-sep13at'
+def need(ok,why):
+ if not ok:raise ValueError(why)
+def run(n):return ROOT/'.runs/conv'/n
+def baseline():
+ need(e.read_json(ROOT/'outputs/conv-best.json')['label']=='C7' and e.read_json(ROOT/'records/best.json')['conv']=='C58-r1','Current C7')
+ source=e.source_files(ROOT/'conv');need(source==e.get_record('conv','C58-r1')['source_hashes'],'Current measured C7 source');return source
+AT_JOB_ID=None  # Original AT job, bound after actual one-shot submit.
+def diagnostic():
+ need(isinstance(AT_JOB_ID,str) and AT_JOB_ID.isdigit(),'Actual original AT job not yet bound')
+ val=e.read_json(DIAG/'validation.json');job=e.read_json(DIAG/'job.json')
+ need(val['status']=='passed' and val['complete'] and val['total_cases']==44328 and val['candidate']==CAND,'C63 own complete diagnostic')
+ need(val['job_id']==job['job_id']==AT_JOB_ID and job['scheduler_status']['status']=='SUCCEEDED','Original bound AT')
+ need(val['source_hashes']['conv2d.c']==e.source_files(run(CAND)/'source')['conv2d.c'],'Diagnosed candidate source')
+ need(val['source_hashes']['conv2d.c']=='d78a863eb49c85d415420819e4b6ef8379260a34ad9f118da5bab1bdca7e94a8','Reviewed joint tile candidate')
+ need((DIAG/'TARGETED_AUSEMBLY_REVIEW.md').is_file() and (DIAG/'ROOT_RETURNED_REVIEW.md').is_file(),'Actual assembly reviewed');return val
+def submit(cfg):
+ need(not PLAN.exists(),'Existing campaign: never resubmit')
+ current=baseline();val=diagnostic();candidate=e.get_record('conv',CAND)
+ need(candidate['status']=='prepared' and not (run(CAND)/'cluster.json').exists(),'Unmeasured candidate')
+ need(all(not run(n).exists() and not e.record_path('conv',n).exists() for n in [ORDER[0],ORDER[-1]]),'Unique controls')
+ need(all(candidate['source_hashes'][k]==v for k,v in current.items() if k!='conv2d.c'),'Official companion files unchanged')
+ command=shlex.join(x.replace('{job_id}',AT_JOB_ID) for x in cfg['scheduler']['status_argv']);r=c.remote(cfg,command,timeout=45);raw=c.output_text(r);status=c.parse_scheduler_status(raw,AT_JOB_ID) if r.returncode==0 else None
+ e.write_json(ROOT/'.runs/conv/sep13au-live-gate.json',dict(command=command,exit_code=r.returncode,raw=raw,status=status))
+ need(status and status['status']=='SUCCEEDED' and status['jobExitCode']==status['systemExitCode']==0,'Original AT live successful terminal')
+ settings=e.get_record('conv','C58-r1')['settings'];need(c.effective_settings(cfg,{'settings':settings})==settings,'Same C7 benchmark settings')
+ plan=dict(round='sep13au',status='reserved',measurement_order=ORDER,candidate=CAND,baseline_label='C7',baseline_source=current,settings=settings,expected_benchmark_cases=36,diagnostic_job=AT_JOB_ID,confirmation_pending=[],automatic_promotion=False,automatic_packaging=False)
+ with e.locked():
+  need(not PLAN.exists(),'Concurrent reservation');e.write_json(PLAN,plan)
+  for n in [ORDER[0],ORDER[-1]]:e.new(argparse.Namespace(problem='conv',version=n,parent=None,strategy='Unchanged C7 control around C63 row-wise seven-row two-vector shared4 scheduling'))
+  for n in ORDER:
+   path=run(n)/'experiment.json';meta=e.read_json(path);original=run(n)/'creation-experiment.json'
+   if not original.exists() and (run(n)/'creation-experiment-original.json').exists():original=run(n)/'creation-experiment-original.json'
+   if original.exists():
+    creation=e.read_json(original)
+    need(all(creation[k]==meta[k] for k in ['problem','version','created_at','source_hashes']),'Original creation identity intact')
+    with (run(n)/'pre-au-experiment.json').open('xb') as f:f.write(path.read_bytes())
+   else:original.write_bytes(path.read_bytes())
+   meta['settings']=settings
+   if n==CAND:meta.update(parent=ORDER[-1],comparison_baseline=ORDER[-1],source_parent='C58-r1',reference_only=False,promotion_allowed=True,qualified_for_confirmation=False,diagnostic_source_version=CAND,diagnostic_job_id=AT_JOB_ID,diagnostic_evidence_directory=str(DIAG.relative_to(ROOT)))
+   e.write_json(path,meta);e.checkpoint(argparse.Namespace(problem='conv',version=n,note='AU C7/C63/C7 three suites each; own AT44328 accepted. No automatic confirmation, promotion or ZIP.'))
+  plan['status']='submit_attempted';e.write_json(PLAN,plan)
+ g.submit_group(cfg,[run(n) for n in ORDER])
+ manifests=[e.read_json(run(n)/'cluster.json') for n in ORDER];job=manifests[0]['job_id'];need(all(x['job_id']==job for x in manifests),'One group')
+ plan.update(status='running',performance_job=job,performance_group=manifests[0]['group']);e.write_json(PLAN,plan);print('AU_JOB_ID='+job)
+def record_compare(cfg):
+ plan=e.read_json(PLAN);need(plan['status']=='running' and plan['measurement_order']==ORDER,'Original AU running campaign')
+ baseline();diagnostic();stamp=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+ for n in ORDER:
+  with (run(n)/('au-status-'+stamp+'.log')).open('x') as f,contextlib.redirect_stdout(f):c.status(cfg,run(n))
+  m=e.read_json(run(n)/'cluster.json');s=m['scheduler_status'];need(m['job_id']==plan['performance_job'] and s['status']=='SUCCEEDED' and s['jobExitCode']==s['systemExitCode']==0,'Same original job successful')
+  old=e.get_record('conv',n)
+  if old['status']!='passed':
+   need(old['status'] in ['planned','prepared','unverified'],'Never overwrite failures')
+   with (run(n)/('au-fetch-'+stamp+'.log')).open('x') as f,contextlib.redirect_stdout(f):c.fetch(cfg,run(n))
+   with e.locked():e.record(argparse.Namespace(problem='conv',version=n,log=str(run(n)/'benchmark.log'),environment='kunpeng-gcc10-generic-38-sep13au',reference='官方内置参考',repeats=3,scheduler_status=None,failure=None))
+ records=[e.get_record('conv',n) for n in ORDER]
+ for n,r in zip(ORDER,records):
+  need(r['status']=='passed' and r['verified'] and all(r['checks'].values()) and r['repeats']==3,'All standard checks')
+  need(r['job_id']==plan['performance_job'] and r['settings']==plan['settings'] and r['machine']==records[0]['machine'],'Same job settings and machine')
+  need(r['source_hashes']==e.source_files(run(n)/'source')==e.read_json(run(n)/'cluster.json')['source_hashes'],'Submitted source')
+  need((run(n)/'exit-code.txt').read_text().strip()=='0','Wrapper0')
+  need(e.parse_log('conv',(run(n)/'benchmark.log').read_text(),3)['cases']==r['cases'],'All original samples')
+  need(len(r['cases'])==4 and all(len(x['times_ms'])==3 and x['max_error']==0 for x in r['cases']),'Exact12PAUS/error0')
+ machine=records[0]['machine'];need(machine['compiler_banners']==['gcc (GCC) 10.3.1'] and machine['ARCH']=='aarch64' and machine['OMP_NUM_THREADS']=='38' and machine['CPU_TARGET']=='generic' and len(set(machine['ALLOWED_CPUS'].split(',')))==38 and machine['NUMA_NODE'],'Actual compiler/allocation')
+ need(records[0]['source_hashes']==records[-1]['source_hashes']==plan['baseline_source'],'Both unchanged C7')
+ candidate=records[1];candidate['comparison']=dict(e.comparison(records[-1],candidate),baseline=ORDER[-1]);candidate['opening_control_comparison']=dict(e.comparison(records[0],candidate),baseline=ORDER[0]);candidate['qualified_for_confirmation']=candidate['comparison']['eligible'] and candidate['opening_control_comparison']['eligible']
+ candidate['decision_note']='AU initial comparison complete; independent confirmation required before promotion.' if candidate['qualified_for_confirmation'] else 'AU initial comparison rejected; retain C7 and all samples.'
+ rows=[dict(version=r['version'],total_median_ms=r['total_median_ms'],cases=r['cases']) for r in records]
+ plan.update(status='complete',results=rows,confirmation_pending=[CAND] if candidate['qualified_for_confirmation'] else [],comparison=candidate['comparison'],opening_control_comparison=candidate['opening_control_comparison'])
+ with e.locked():e.write_json(e.record_path('conv',CAND),candidate);e.write_json(PLAN,plan)
+ print(json.dumps(dict(qualified_for_confirmation=candidate['qualified_for_confirmation'],totals_ms=[r['total_median_ms'] for r in records],closing=candidate['comparison'],opening=candidate['opening_control_comparison']),indent=2))
+if __name__=='__main__':
+ parser=argparse.ArgumentParser();parser.add_argument('action',choices=['submit','record-compare']);parser.add_argument('--go',action='store_true');args=parser.parse_args();cfg=c.load_config(ROOT/'config/conv-sep12.local.json')
+ if args.action=='submit':need(args.go,'Explicit GO required');submit(cfg)
+ else:record_compare(cfg)
