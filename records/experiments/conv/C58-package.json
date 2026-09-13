@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C58-package",
+  "parent": "C58-r1",
+  "strategy": "Exact original ZIP correctness verification after AI initial and independent AK confirmation; no automatic promotion",
+  "created_at": "2026-09-13T05:42:44.831416+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C58-r1",
+  "source_origin": "C58-row7boundaryu2",
+  "reference_only": true,
+  "promotion_allowed": false,
+  "package_validation_only": true,
+  "initial_performance_job": "1583408",
+  "package_confirmation_job": "1583680",
+  "diagnostic_job_id": "1583350",
+  "expected_benchmark_cases": 12,
+  "automatic_promotion": false,
+  "recorded_at": "2026-09-13T05:46:23.347662+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep13al",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "9a5624dd44edc0b409f664499e0ae8c17d4b74c33a0af3abd4ff20ff5ab9047b",
+  "log": ".runs/conv/C58-package/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.75,
+        51.78,
+        51.74
+      ],
+      "median_ms": 51.75,
+      "min_ms": 51.74,
+      "max_ms": 51.78,
+      "spread_pct": 0.07729468599033651,
+      "gflops": [
+        1456.4566,
+        1455.5793,
+        1456.7557
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        58.43,
+        58.39,
+        58.41
+      ],
+      "median_ms": 58.41,
+      "min_ms": 58.39,
+      "max_ms": 58.43,
+      "spread_pct": 0.06848142441362634,
+      "gflops": [
+        1424.5411,
+        1425.5253,
+        1425.1376
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        104.16,
+        104.17,
+        104.28
+      ],
+      "median_ms": 104.17,
+      "min_ms": 104.16,
+      "max_ms": 104.28,
+      "spread_pct": 0.11519631371796539,
+      "gflops": [
+        1546.3512,
+        1546.2664,
+        1544.613
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        223.26,
+        223.16,
+        223.15
+      ],
+      "median_ms": 223.16,
+      "min_ms": 223.15,
+      "max_ms": 223.26,
+      "spread_pct": 0.04929198781142912,
+      "gflops": [
+        1548.7153,
+        1549.4438,
+        1549.5245
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 437.49,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1589186",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  }
+}

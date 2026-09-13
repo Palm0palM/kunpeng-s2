@@ -1,0 +1,288 @@
+{
+  "label": "C7",
+  "experiment": "C58-r1",
+  "source_experiment": "C58-row7boundaryu2",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "package_sha256": "74acb1025ea2463e4aa3d6cbc91f17dabde2e1f6c340af00069b240fef312bd6",
+  "total_median_ms": 437.56,
+  "metric": "sum of four per-case medians; not official score",
+  "controlled_comparison": {
+    "baseline": "C26-r39",
+    "baseline_total_median_ms": 452.27,
+    "candidate_total_median_ms": 437.56,
+    "time_reduction_pct": 3.252481924514113,
+    "opening_baseline": "C26-r38",
+    "opening_baseline_total_median_ms": 452.26,
+    "initial_candidate": "C58-row7boundaryu2",
+    "initial_candidate_job": "1583408",
+    "initial_candidate_total_median_ms": 437.56,
+    "confirmation_job": "1583680",
+    "samples_mixed_with_initial_round": false
+  },
+  "verification": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "zip_verification": {
+    "experiment": "C58-package",
+    "job_id": "1589186",
+    "total_median_ms": 437.49,
+    "suites": 3,
+    "cases_per_suite": 4,
+    "all_pass": true,
+    "max_error": 0,
+    "archive_verified_and_extracted_on_compute_node": true,
+    "same_source_as_promoted": true
+  },
+  "specialized_correctness": {
+    "source_experiment": "C58-row7boundaryu2",
+    "job_id": "1583350",
+    "checks": 44328,
+    "all_pass": true,
+    "threads": [
+      1,
+      4
+    ],
+    "sve_bits": [
+      128,
+      256,
+      512
+    ]
+  },
+  "official_submission": false,
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C7",
+  "archive": "conv.zip",
+  "archive_sha256": "74acb1025ea2463e4aa3d6cbc91f17dabde2e1f6c340af00069b240fef312bd6",
+  "archive_bytes": 15059,
+  "archive_root": "conv/",
+  "entrypoint": "conv/run.sh",
+  "archive_members": {
+    "conv/README.md": {
+      "sha256": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+      "bytes": 754,
+      "mode": "0o100644"
+    },
+    "conv/bench_conv.c": {
+      "sha256": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "bytes": 8125,
+      "mode": "0o100644"
+    },
+    "conv/conv2d.c": {
+      "sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+      "bytes": 108874,
+      "mode": "0o100644"
+    },
+    "conv/run.sh": {
+      "sha256": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+      "bytes": 5339,
+      "mode": "0o100755"
+    }
+  },
+  "ready_for_manual_submission": true,
+  "official_score": null,
+  "measurement_cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.84,
+        52.24,
+        51.74
+      ],
+      "median_ms": 51.84,
+      "min_ms": 51.74,
+      "max_ms": 52.24,
+      "spread_pct": 0.9645061728395061,
+      "gflops": [
+        1454.1183,
+        1442.8771,
+        1456.6973
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        58.4,
+        58.39,
+        58.39
+      ],
+      "median_ms": 58.39,
+      "min_ms": 58.39,
+      "max_ms": 58.4,
+      "spread_pct": 0.017126220243188918,
+      "gflops": [
+        1425.3187,
+        1425.4777,
+        1425.5556
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        104.15,
+        104.16,
+        104.15
+      ],
+      "median_ms": 104.15,
+      "min_ms": 104.15,
+      "max_ms": 104.16,
+      "spread_pct": 0.009601536245790594,
+      "gflops": [
+        1546.5906,
+        1546.343,
+        1546.6315
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        223.17,
+        223.49,
+        223.18
+      ],
+      "median_ms": 223.18,
+      "min_ms": 223.17,
+      "max_ms": 223.49,
+      "spread_pct": 0.143382023478816,
+      "gflops": [
+        1549.3648,
+        1547.1288,
+        1549.3208
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "package_verification_cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        51.75,
+        51.78,
+        51.74
+      ],
+      "median_ms": 51.75,
+      "min_ms": 51.74,
+      "max_ms": 51.78,
+      "spread_pct": 0.07729468599033651,
+      "gflops": [
+        1456.4566,
+        1455.5793,
+        1456.7557
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        58.43,
+        58.39,
+        58.41
+      ],
+      "median_ms": 58.41,
+      "min_ms": 58.39,
+      "max_ms": 58.43,
+      "spread_pct": 0.06848142441362634,
+      "gflops": [
+        1424.5411,
+        1425.5253,
+        1425.1376
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        104.16,
+        104.17,
+        104.28
+      ],
+      "median_ms": 104.17,
+      "min_ms": 104.16,
+      "max_ms": 104.28,
+      "spread_pct": 0.11519631371796539,
+      "gflops": [
+        1546.3512,
+        1546.2664,
+        1544.613
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        223.26,
+        223.16,
+        223.15
+      ],
+      "median_ms": 223.16,
+      "min_ms": 223.15,
+      "max_ms": 223.26,
+      "spread_pct": 0.04929198781142912,
+      "gflops": [
+        1548.7153,
+        1549.4438,
+        1549.5245
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "competition_feedback": {
+    "score": null,
+    "submitted_at": null,
+    "passed": null,
+    "notes": null
+  }
+}

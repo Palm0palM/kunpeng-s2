@@ -1,5 +1,5 @@
 {
-  "current_label": "C6",
+  "current_label": "C7",
   "notice": "C labels here count verified source improvements; experiment IDs and r suffixes also include rejected candidates and repeat measurements. Times are internal metrics, not official scores.",
   "versions": [
     {
@@ -154,8 +154,40 @@
         "same_source_as_promoted": true,
         "sha256": "6d6368d555eb46b24d13d0732189ab0bff422f3f1930fda0fa48b60d74e8e5fb"
       }
+    },
+    {
+      "label": "C7",
+      "experiment": "C58-r1",
+      "source_experiment": "C58-row7boundaryu2",
+      "parent_label": "C6",
+      "comparison_baseline": "C26-r39",
+      "kernel_sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+      "total_median_ms": 437.56,
+      "time_reduction_pct": 3.252481924514113,
+      "strategy": "Seven rows x three SVE vectors; shared columns in ordered pairs, twelve boundary loops unroll2, strict separate multiply/add",
+      "promoted_at": "2026-09-13T05:46:31.929541+00:00",
+      "official_score": null,
+      "repeat_measurements": [
+        {
+          "experiment": "C58-row7boundaryu2",
+          "job_id": "1583408",
+          "total_median_ms": 437.56
+        }
+      ],
+      "package_verification": {
+        "experiment": "C58-package",
+        "job_id": "1589186",
+        "total_median_ms": 437.49,
+        "suites": 3,
+        "cases_per_suite": 4,
+        "all_pass": true,
+        "max_error": 0,
+        "archive_verified_and_extracted_on_compute_node": true,
+        "same_source_as_promoted": true,
+        "sha256": "74acb1025ea2463e4aa3d6cbc91f17dabde2e1f6c340af00069b240fef312bd6"
+      }
     }
   ],
-  "current_measurement": "C26-r1",
-  "current_total_median_ms": 452.62
+  "current_measurement": "C58-r1",
+  "current_total_median_ms": 437.56
 }

@@ -1,0 +1,535 @@
+--- .runs/conv/sep13ai-submit-performance.py
++++ .runs/conv/sep13ak-submit-performance.py
+@@ -1,4 +1,4 @@
+-"""Prepared AI three-member performance comparison; explicit root --go only.
++"""Prepared AK independent three-member C58 confirmation; explicit root --go only.
+ 
+ C58 must have its own accepted/frozen AH44328. This module loads definitions
+ only. No automatic confirmation, promotion, packaging or retry.
+@@ -18,18 +18,20 @@
+ import cluster_group
+ import experiment as e
+ 
+-ORDER = ['C26-r36', 'C58-row7boundaryu2', 'C26-r37']
+-CANDIDATES = ['C58-row7boundaryu2']
++ORDER = ['C26-r38', 'C58-r1', 'C26-r39']
++CANDIDATES = [ORDER[1]]
+ REFERENCES = []
+ CONTROLS = [ORDER[0], ORDER[-1]]
+-SOURCE_VERSION = 'C52-row7x3shared2'
++SOURCE_VERSION = 'C58-row7boundaryu2'
+ SOURCE_PARENTS = {ORDER[1]: SOURCE_VERSION}
+-DIAGNOSTIC_SOURCE_VERSIONS = {ORDER[1]: ORDER[1]}
++DIAGNOSTIC_SOURCE_VERSIONS = {ORDER[1]: SOURCE_VERSION}
+ DIAGNOSTIC_EXPECTED_CHECKS = {ORDER[1]: 44328}
+ SOURCE_SHA = 'c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751'
+ BASELINE_SHA = '0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21'
+ AH_JOB_PATH = ROOT / '.runs/conv/sep13ah-checks/C58-row7boundaryu2/job.json'
+ AH_JOB_ID = '1583350'
++AI_JOB_ID = '1583408'
++AI_ORDER = ['C26-r36', SOURCE_VERSION, 'C26-r37']
+ FROZEN = ROOT / '.runs/conv/C58-row7boundaryu2/sve-correctness-sep13ah'
+ RESOURCES = dict(cpus=38, memory_mb=24576, numa_count=1,
+                  numa_distribution='pack', walltime_seconds=1800)
+@@ -55,38 +57,89 @@
+ 
+ 
+ def recent_evidence():
+-    # Bounded latest lifecycle decisions only; no previous round tool imports,
+-    # historical sample recomputation, or writes to earlier experiments.
+-    af = e.read_json(ROOT / '.runs/conv/sep13af-campaign.json')
+-    assert af['round'] == 'sep13af' and af['status'] == 'performance_complete'
+-    assert af['performance_job'] == '1583230' and af['expected_benchmark_cases'] == 48
+-    assert af['confirmation_pending'] == []
+-    assert [row['version'] for row in af['results']] == af['measurement_order']
+-    assert sum(len(a) for row in af['results'] for a in row['all_samples_ms']) == 48
+-    assert all(row['qualified_for_confirmation'] is False for row in af['results'])
+-    ag_path = ROOT / '.runs/conv/C57-row7shared2fma/AG_FAILURE_ASSOCIATION.json'
+-    ag = e.read_json(ag_path)
+-    assert ag['candidate'] == 'C57-row7shared2fma' and ag['diagnostic_job_id'] == '1583276'
+-    assert ag['status'] == 'failed' and ag['complete_collection'] is True
+-    assert ag['passes'] == 0 and ag['fails'] == 12 and ag['record_exit'] == 0
+-    assert e.get_record('conv', 'C57-row7shared2fma')['status'] == 'failed'
+-    paths = [ROOT / '.runs/conv/sep13af-campaign.json', ag_path,
+-             e.record_path('conv', 'C57-row7shared2fma')]
+-    return {str(path.relative_to(ROOT)): e.digest(path) for path in paths}
++    # Recheck only the complete original AI36; do not import AI or recurse
++    # through its historical eligibility dependencies.
++    path = ROOT / '.runs/conv/sep13ai-campaign.json'
++    plan = e.read_json(path)
++    assert plan['round'] == 'sep13ai' and plan['status'] == 'performance_complete'
++    assert plan['performance_job'] == AI_JOB_ID and plan['measurement_order'] == AI_ORDER
++    assert plan['candidate_versions'] == [SOURCE_VERSION] and plan['reference_only_versions'] == []
++    assert plan['opening_control'] == AI_ORDER[0] and plan['primary_baseline'] == AI_ORDER[-1]
++    assert plan['suites_per_member'] == 3 and plan['expected_benchmark_cases'] == 36
++    assert plan['settings'] == SETTINGS and plan['confirmation_only'] is False
++    assert plan['confirmation_pending'] == [SOURCE_VERSION]
++    assert all(plan[k] is False for k in ('automatic_confirmation','automatic_promotion','automatic_packaging'))
++    assert len(plan['results']) == 3 and [x['version'] for x in plan['results']] == AI_ORDER
++    assert re.fullmatch(r'kp-conv-group-[0-9a-f]+', plan['performance_group'])
++    records = {name:e.get_record('conv',name) for name in AI_ORDER}
++    paths = [path]
++    for index,name in enumerate(AI_ORDER):
++        rec = records[name]; run = ROOT/'.runs/conv'/name
++        manifest = e.read_json(run/'cluster.json'); row = plan['results'][index]
++        assert rec['status'] == 'passed' and rec['verified'] is True and rec['repeats'] == 3
++        assert rec['job_id'] == manifest['job_id'] == AI_JOB_ID
++        assert rec['settings'] == manifest['settings'] == SETTINGS
++        assert manifest['group'] == plan['performance_group'] and manifest['group_index'] == index
++        assert manifest['measurement_order'] == AI_ORDER
++        assert set(rec['checks']) == {'scheduler','fetched_log','benchmark','wrapper','source_hashes','machine'}
++        assert all(rec['checks'].values())
++        assert rec['source_hashes'] == manifest['source_hashes'] == e.source_files(run/'source')
++        assert rec['source_hashes']['conv2d.c'] == (SOURCE_SHA if name == SOURCE_VERSION else BASELINE_SHA)
++        status = manifest['scheduler_status']
++        assert str(status['jobId']) == AI_JOB_ID and status['status'] == 'SUCCEEDED'
++        assert type(status['jobExitCode']) is type(status['systemExitCode']) is int
++        assert status['jobExitCode'] == status['systemExitCode'] == 0
++        assert (run/'exit-code.txt').read_text().strip() == '0'
++        for filename in ('benchmark.log','environment.log','exit-code.txt','source-sha256.txt'):
++            assert e.digest(run/filename) == manifest['artifacts_sha256'][filename]
++        parsed = e.parse_log('conv',(run/'benchmark.log').read_text(),3)
++        assert parsed['cases'] == rec['cases'] and parsed['total_median_ms'] == rec['total_median_ms']
++        assert row['all_samples_ms'] == [case['times_ms'] for case in rec['cases']]
++        assert row['cases_ms'] == [case['median_ms'] for case in rec['cases']]
++        assert row['case_spreads_pct'] == [case['spread_pct'] for case in rec['cases']]
++        assert row['total_median_ms'] == rec['total_median_ms']
++        assert row['qualified_for_confirmation'] is rec['qualified_for_confirmation']
++        assert rec['machine'] == records[AI_ORDER[-1]]['machine']
++        machine = rec['machine']
++        assert machine['compiler_banners'] == ['gcc (GCC) 10.3.1']
++        assert machine['ARCH'] == 'aarch64' and machine['OMP_NUM_THREADS'] == '38' and machine['CPU_TARGET'] == 'generic'
++        cpus = machine['ALLOWED_CPUS'].split(',')
++        assert len(cpus) == len(set(cpus)) == 38 and all(cpu.isdigit() for cpu in cpus)
++        assert machine['HOST'] and machine['NUMA_NODE']
++        assert rec['environment'] == plan['record_environment'] == 'kunpeng-gcc10-generic-38-sep13ai'
++        assert rec['reference'] == plan['record_reference']
++        paths += [e.record_path('conv',name),run/'cluster.json']
++    candidate = records[SOURCE_VERSION]
++    assert candidate['qualified_for_confirmation'] is True and candidate.get('confirmation_passed') is not False
++    assert candidate['reference_only'] is False and candidate['promotion_allowed'] is True
++    assert candidate['source_hashes'] == plan['candidate_source_hashes'][SOURCE_VERSION]
++    baseline_source = e.get_record('conv','C26-row4loads')['source_hashes']
++    assert records[AI_ORDER[0]]['source_hashes'] == records[AI_ORDER[-1]]['source_hashes'] == baseline_source
++    assert all(candidate['source_hashes'][key] == baseline_source[key] for key in ('README.md','bench_conv.c','run.sh'))
++    for key,name in [('opening_control_comparison',AI_ORDER[0]),('comparison',AI_ORDER[-1])]:
++        base = records[name]
++        actual = dict(baseline=name,**e.comparison(base,candidate),
++            total_gain_pct=(base['total_median_ms']-candidate['total_median_ms'])/base['total_median_ms']*100,
++            threshold_pct=max([1.0]+[case['spread_pct'] for case in base['cases']+candidate['cases']]))
++        assert actual['eligible'] is True
++        assert candidate[key] == plan['results'][1][key] == actual
++    assert sum(len(case['times_ms']) for rec in records.values() for case in rec['cases']) == 36
++    return {str(item.relative_to(ROOT)):e.digest(item) for item in paths}
+ 
+ 
+ def diagnostic_jobs():
+     job = e.read_json(AH_JOB_PATH)
+-    assert job['version'] == ORDER[1] and str(job['job_id']) == AH_JOB_ID
++    assert job['version'] == SOURCE_VERSION and str(job['job_id']) == AH_JOB_ID
+     assert job['source_hashes']['conv2d.c'] == SOURCE_SHA
+     return {ORDER[1]: AH_JOB_ID}
+ 
+ 
+ def diagnostic_gate(name, source):
+     assert name == ORDER[1] and source['conv2d.c'] == SOURCE_SHA
++    assert source == e.get_record('conv', SOURCE_VERSION)['source_hashes']
+     diag = e.read_json(FROZEN / 'validation.json')
+     frozen = e.read_json(FROZEN / 'freeze-source.json')
+-    assert diag['candidate'] == frozen['candidate'] == name
++    assert diag['candidate'] == frozen['candidate'] == SOURCE_VERSION
+     assert str(diag['job_id']) == str(frozen['job_id']) == diagnostic_jobs()[name]
+     assert diag['status'] == frozen['mode'] == 'passed' and diag['complete'] is True
+     assert frozen['original_metadata_preserved'] is frozen['original_source_and_raw_preserved'] is True
+@@ -102,7 +155,7 @@
+     assert diag['stage_exits'] == [dict(stage=x,exit_code=0) for x in stages]
+     job = e.read_json(FROZEN / 'job.json')
+     original = e.read_json(AH_JOB_PATH)
+-    assert job['version'] == name and str(job['job_id']) == AH_JOB_ID
++    assert job['version'] == SOURCE_VERSION and str(job['job_id']) == AH_JOB_ID
+     assert job['source_hashes'] == original['source_hashes'] == diag['source_hashes']
+     assert job['resources'] == RESOURCES and diag['source_hashes_verified'] is True
+     assert diag['source_hashes']['conv2d.c'] == source['conv2d.c'] == e.digest(FROZEN / 'raw/conv2d.c')
+@@ -131,13 +184,13 @@
+ 
+ 
+ def serial_gate(cfg):
+-    # Query only these three actual jobs. Existing P/AI reservations without
+-    # a reconciled root identity block; a prepared directory alone does not.
+-    paths = [(AH_JOB_PATH, 'job_id', AH_JOB_ID, True, ORDER[1]),
+-             (ROOT / '.runs/conv/sep13af-campaign.json', 'performance_job', '1583230', True, None),
+-             (ROOT / '.runs/conv/sep13ag-fma/C57-row7shared2fma/job.json', 'job_id', '1583276', True, 'C57-row7shared2fma'),
++    # Fixed latest AI/AH only. A prepared P/AJ directory without job.json
++    # does not block; any unapproved P/AJ or any AK reservation blocks.
++    paths = [(AH_JOB_PATH, 'job_id', AH_JOB_ID, True, SOURCE_VERSION),
++             (ROOT / '.runs/conv/sep13ai-campaign.json', 'performance_job', AI_JOB_ID, True, None),
++             (ROOT / '.runs/conv/sep13aj-checks/C59-row7boundaryu2nofive/job.json', 'job_id', None, False, 'C59-row7boundaryu2nofive'),
+              (ROOT / '.runs/conv/sep13p-checks/C50-row4dupfencenomem/job.json', 'job_id', None, False, 'C50-row4dupfencenomem'),
+-             (ROOT / '.runs/conv/sep13ai-campaign.json', 'performance_job', None, False, None)]
++             (ROOT / '.runs/conv/sep13ak-campaign.json', 'performance_job', None, False, None)]
+     paths += [(ROOT / '.runs/conv' / name / 'cluster.json', 'job_id', None, False, None) for name in ORDER]
+     identities, unresolved = {}, []
+     for path, field, expected, required, version in paths:
+@@ -169,10 +222,10 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--go', action='store_true')
+     args = parser.parse_args()
+-    assert args.go, 'Prepared only; root explicit GO required before AI writes or SSH'
+-    path = ROOT / '.runs/conv/sep13ai-campaign.json'
+-    assert not path.exists(), 'AI already reserved; reconcile original job and never resubmit'
+-    for name in CONTROLS + REFERENCES:
++    assert args.go, 'Prepared only; root explicit GO required before AK writes or SSH'
++    path = ROOT / '.runs/conv/sep13ak-campaign.json'
++    assert not path.exists(), 'AK already reserved; reconcile original job and never resubmit'
++    for name in ORDER:
+         assert not (ROOT / '.runs/conv' / name).exists() and not e.record_path('conv', name).exists(), name
+     decisions = recent_evidence()
+     current = baseline_gate()
+@@ -182,14 +235,14 @@
+     assert c.effective_settings(cfg, {'settings':settings}) == settings
+     sources, jobs, frozen_paths = {}, {}, {}
+     for name in CANDIDATES + REFERENCES:
+-        origin = SOURCE_VERSION if name in REFERENCES else name
++        origin = SOURCE_VERSION
+         run = ROOT / '.runs/conv' / origin
+         rec = e.get_record('conv', origin)
+         if name in CANDIDATES:
+-            assert not (run / 'cluster.json').exists(), name
+-            assert rec['status'] == 'prepared' and rec['verified'] is False
++            assert rec['status'] == 'passed' and rec['verified'] is True
++            assert rec['job_id'] == AI_JOB_ID and rec['qualified_for_confirmation'] is True
+             assert rec['settings'] == settings
+-            assert rec.get('source_parent', rec.get('parent')) == SOURCE_PARENTS[name] and rec.get('reference_only',False) is False
++            assert rec.get('reference_only',False) is False
+         source = e.source_files(run / 'source')
+         assert source == rec['source_hashes'] and set(source) == set(current)
+         assert all(source[key] == current[key] for key in ('README.md','bench_conv.c','run.sh'))
+@@ -197,41 +250,43 @@
+         sources[name], jobs[name] = source, diag['job_id']
+     gate = serial_gate(cfg)
+     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+-    e.write_json(ROOT / '.runs/conv' / ('sep13ai-performance-gate-'+stamp+'.json'), gate)
+-    assert gate['clear'], 'Known AH/AF/AG or explicit P/AI work active/unknown; no AI reservation or submission'
+-    plan = dict(round='sep13ai', status='preparing', measurement_order=ORDER,
++    e.write_json(ROOT / '.runs/conv' / ('sep13ak-performance-gate-'+stamp+'.json'), gate)
++    assert gate['clear'], 'Known AI/AH or explicit AJ/P/AK work active/unknown; no AK reservation or submission'
++    plan = dict(round='sep13ak', status='preparing', measurement_order=ORDER,
+         candidate_versions=CANDIDATES, reference_only_versions=REFERENCES,
+         opening_control=CONTROLS[0], primary_baseline=CONTROLS[1], source_parent_reference=None,
+         suites_per_member=3, expected_benchmark_cases=36, settings=settings,
+-        expected_compiler_banners=['gcc (GCC) 10.3.1'], record_environment='kunpeng-gcc10-generic-38-sep13ai',
++        expected_compiler_banners=['gcc (GCC) 10.3.1'], record_environment='kunpeng-gcc10-generic-38-sep13ak',
+         record_reference='官方内置参考', best_label='C6', source_parents=SOURCE_PARENTS,
+         candidate_source_hashes=sources, diagnostic_jobs=jobs, diagnostic_evidence_directories=frozen_paths,
+         diagnostic_source_versions=DIAGNOSTIC_SOURCE_VERSIONS,
+         diagnostic_expected_checks=DIAGNOSTIC_EXPECTED_CHECKS,
+-        recent_evidence_sha256=decisions, auxiliary_comparisons={}, confirmation_only=False,
++        recent_evidence_sha256=decisions, auxiliary_comparisons={}, confirmation_only=True,
++        initial_qualification_round='sep13ai', initial_qualification_job=AI_JOB_ID,
+         failed_confirmation_retry_allowed=False,
+-        selection_rule='All36 AI samples: C58 must pass both same-job C6 controls. Total gain strictly exceeds max(1%, all compared case spreads); every case gain >= -1%. Keep slow samples. Initial eligibility only; root decides separately.',
+-        attribution_rule='C58 is new boundary-unroll source from original C52. No parent reference measured; do not claim same-job parent attribution. AF initial false, AG numerical failure and all earlier decisions remain untouched; no failed confirmation retry.',
++        selection_rule='Only original36 AK samples: C58-r1 must pass both current same-job C6 gates. Total gain strictly exceeds max(1%, all compared case spreads); every case gain >= -1%. Write confirmation_passed separately; keep all slow samples.',
++        attribution_rule='C58-r1 is byte-identical to AI C58 and reuses its own frozen AH1583350. This is first independent confirmation of AI-qualified C58, not a retry of Y/S. No mixing AI/AK samples, failed-confirmation retry or parent attribution.',
+         local_compilation_or_tests_run=False, official_score=None, automatic_confirmation=False,
+         automatic_promotion=False, automatic_packaging=False, submitted=False, submit_attempted=False)
+     with e.locked():
+         assert not path.exists()
+         assert recent_evidence() == decisions and baseline_gate() == current
+-        for name in CONTROLS + REFERENCES:
++        for name in ORDER:
+             assert not (ROOT/'.runs/conv'/name).exists() and not e.record_path('conv',name).exists(), name
+         for name, source in sources.items():
+-            origin = SOURCE_VERSION if name in REFERENCES else name
++            origin = SOURCE_VERSION
+             assert e.source_files(ROOT/'.runs/conv'/origin/'source') == source
+-            if name in CANDIDATES:
+-                assert not (ROOT/'.runs/conv'/name/'cluster.json').exists()
++            assert e.get_record('conv',origin)['status'] == 'passed'
+         # A saved reservation is irreversible for this submit entry point.
+         e.write_json(path, plan)
+         for name in CONTROLS:
+-            e.new(argparse.Namespace(problem='conv',version=name,parent=None,strategy='Unchanged C6 AI-round matched control'))
++            e.new(argparse.Namespace(problem='conv',version=name,parent=None,strategy='Unchanged C6 AK independent confirmation control'))
++        e.new(argparse.Namespace(problem='conv',version=ORDER[1],parent=SOURCE_VERSION,
++            strategy='First independent confirmation of AI-qualified C58; identical source, own C58 AH diagnostic reuse, no failed-confirmation retry.'))
+         for name in ORDER:
+             meta_path = ROOT/'.runs/conv'/name/'experiment.json'
+             # Freeze the exact creation metadata before its first association update.
+-            # Existing C58 author snapshots stay byte-identical; never refresh source hashes.
++            # All three members are new; preserve creation bytes before associations.
+             original_metadata = meta_path.read_bytes()
+             creation_path = meta_path.with_name('creation-experiment.json')
+             if creation_path.exists():
+@@ -244,16 +299,16 @@
+             meta['settings'] = settings
+             assert e.source_files(meta_path.parent/'source') == (current if name in CONTROLS else sources[name])
+             if name not in CONTROLS:
+-                meta.update(parent=CONTROLS[1],comparison_baseline=CONTROLS[1],source_parent=SOURCE_PARENTS[name],
++                meta.update(parent=CONTROLS[1],comparison_baseline=CONTROLS[1],comparison_parent=CONTROLS[1],source_parent=SOURCE_PARENTS[name],
+                     reference_only=name in REFERENCES,promotion_allowed=name in CANDIDATES,
+-                    qualified_for_confirmation=False,confirmation_only=False,failed_confirmation_retry_allowed=False,
++                    qualified_for_confirmation=False,confirmation_only=True,failed_confirmation_retry_allowed=False,
+                     diagnostic_source_version=DIAGNOSTIC_SOURCE_VERSIONS[name],
+                     diagnostic_evidence_directory=frozen_paths[name],diagnostic_job_id=jobs[name],
+-                    diagnostic_source_sha256=sources[name]['conv2d.c'],reused_identical_source_diagnostic=name in REFERENCES)
++                    diagnostic_source_sha256=sources[name]['conv2d.c'],reused_identical_source_diagnostic=True)
+             assert meta['source_hashes'] == e.read_json(creation_path)['source_hashes']
+             e.write_json(meta_path, meta)
+             e.checkpoint(argparse.Namespace(problem='conv',version=name,
+-                note='AI fixed C6/C58/C6 order, three original official suites each, total36. C58 requires its own frozen AH44328. No parent reference, local operator execution, automatic confirmation, promotion or ZIP. All history preserved.'))
++                note='AK fixed C6/C58-r1/C6 order, three original suites each,total36. Alias source_parent=C58 and comparison_parent=closing C26-r39; identical source reuses original C58 AH44328. Independent confirmation only; no AI/AK sample mixing, retry, automatic promotion or ZIP.'))
+         plan.update(status='prepared', submit_attempted=True)
+         e.write_json(path, plan)
+     cluster_group.submit_group(cfg, [ROOT/'.runs/conv'/name for name in ORDER])
+@@ -261,7 +316,7 @@
+     job, group = manifests[0]['job_id'], manifests[0]['group']
+     assert str(job).isdigit() and re.fullmatch(r'kp-conv-group-[0-9a-f]+', group or '')
+     assert all(item['job_id']==job and item['group']==group for item in manifests)
+-    assert str(job) not in {'1583350','1583230','1583276'}, 'Must be an independent new AI job'
++    assert str(job) not in {AH_JOB_ID,AI_JOB_ID}, 'Must be an independent new AK job'
+     plan.update(status='performance_running',performance_job=job,performance_group=group,submitted=True)
+     with e.locked():
+         e.write_json(path, plan)
+--- .runs/conv/sep13ai-record-group.py
++++ .runs/conv/sep13ak-record-group.py
+@@ -1,4 +1,4 @@
+-"""Record only the saved AI group; preserve all 36 original measurements.
++"""Record only the saved AK group; preserve all 36 original measurements.
+ 
+ No sources/campaigns/jobs are created. Actual matching terminal evidence is
+ required; failed measurements are not overwritten or silently excluded.
+@@ -18,7 +18,7 @@
+ import experiment as e
+ 
+ # Definition reuse only: the submit module has an explicit main guard.
+-spec = importlib.util.spec_from_file_location('sep13ai_submission_contract', Path(__file__).with_name('sep13ai-submit-performance.py'))
++spec = importlib.util.spec_from_file_location('sep13ak_submission_contract', Path(__file__).with_name('sep13ak-submit-performance.py'))
+ contract = importlib.util.module_from_spec(spec)
+ spec.loader.exec_module(contract)
+ ORDER = contract.ORDER
+@@ -36,7 +36,7 @@
+ 
+ 
+ def verify_plan(plan):
+-    assert plan['round'] == 'sep13ai' and plan['status'] in ('performance_running','performance_complete')
++    assert plan['round'] == 'sep13ak' and plan['status'] in ('performance_running','performance_complete')
+     assert plan['measurement_order'] == ORDER and plan['candidate_versions'] == contract.CANDIDATES
+     assert plan['reference_only_versions'] == contract.REFERENCES
+     assert plan['opening_control'] == ORDER[0] and plan['primary_baseline'] == ORDER[-1]
+@@ -49,18 +49,19 @@
+     assert {name:str(job) for name,job in plan['diagnostic_jobs'].items()} == contract.diagnostic_jobs()
+     assert plan['auxiliary_comparisons'] == {}
+     assert plan['recent_evidence_sha256'] == contract.recent_evidence()
+-    assert plan['confirmation_only'] is False and plan['failed_confirmation_retry_allowed'] is False
++    assert plan['confirmation_only'] is True and plan['failed_confirmation_retry_allowed'] is False
+     assert all(plan[key] is False for key in ('automatic_confirmation','automatic_promotion','automatic_packaging'))
+     assert str(plan.get('performance_job','')).isdigit()
+     assert contract.re.fullmatch(r'kp-conv-group-[0-9a-f]+', plan.get('performance_group') or '')
+-    assert str(plan['performance_job']) not in {'1583350','1583230','1583276'}
++    assert str(plan['performance_job']) not in {contract.AH_JOB_ID,contract.AI_JOB_ID}
++    assert plan['initial_qualification_round'] == 'sep13ai' and plan['initial_qualification_job'] == contract.AI_JOB_ID
+     assert plan['submitted'] is True and plan['submit_attempted'] is True
+     assert set(plan['creation_experiment_sha256']) == set(ORDER)
+     for name in ORDER:
+         creation = ROOT/'.runs/conv'/name/'creation-experiment.json'
+         assert e.digest(creation) == plan['creation_experiment_sha256'][name]
+     contract.verify_settings(plan['settings'])
+-    assert plan['record_environment'] == 'kunpeng-gcc10-generic-38-sep13ai'
++    assert plan['record_environment'] == 'kunpeng-gcc10-generic-38-sep13ak'
+     assert plan['record_reference'] == '官方内置参考'
+     assert set(plan['candidate_source_hashes']) == set(contract.CANDIDATES)
+     contract.baseline_gate()
+@@ -74,18 +75,19 @@
+         assert rec['source_hashes'] == baseline
+         return
+     assert rec['source_parent'] == contract.SOURCE_PARENTS[name]
+-    assert rec['parent'] == rec['comparison_baseline'] == plan['primary_baseline']
++    assert rec['parent'] == rec['comparison_baseline'] == rec['comparison_parent'] == plan['primary_baseline']
+     assert rec['reference_only'] is (name in contract.REFERENCES)
+     assert rec['promotion_allowed'] is (name in contract.CANDIDATES)
+-    assert rec['confirmation_only'] is False and rec['failed_confirmation_retry_allowed'] is False
++    assert rec['confirmation_only'] is True and rec['failed_confirmation_retry_allowed'] is False
+     assert rec['source_hashes'] == plan['candidate_source_hashes'][name]
+     assert all(rec['source_hashes'][key] == baseline[key] for key in ('README.md','bench_conv.c','run.sh'))
+     assert rec['diagnostic_source_version'] == contract.DIAGNOSTIC_SOURCE_VERSIONS[name]
+     assert rec['diagnostic_evidence_directory'] == plan['diagnostic_evidence_directories'][name]
+     assert str(rec['diagnostic_job_id']) == str(plan['diagnostic_jobs'][name])
+     assert rec['diagnostic_source_sha256'] == rec['source_hashes']['conv2d.c']
+-    assert rec['reused_identical_source_diagnostic'] is (name in contract.REFERENCES)
+-    # C58 must use its own accepted/frozen AH, never the C52 parent diagnostic.
++    assert rec['reused_identical_source_diagnostic'] is True
++    assert rec['source_hashes'] == e.get_record('conv',contract.SOURCE_VERSION)['source_hashes']
++    # C58-r1 is identical to original C58 and reuses C58 own AH, never C52 T.
+     diag, frozen = contract.diagnostic_gate(name, rec['source_hashes'])
+     assert frozen == rec['diagnostic_evidence_directory']
+     assert str(diag['job_id']) == str(rec['diagnostic_job_id'])
+@@ -115,7 +117,7 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('versions', nargs='*')
+     args = parser.parse_args()
+-    plan = e.read_json(ROOT/'.runs/conv/sep13ai-campaign.json')
++    plan = e.read_json(ROOT/'.runs/conv/sep13ak-campaign.json')
+     verify_plan(plan)
+     names = args.versions or ORDER
+     assert len(set(names)) == len(names) and all(n in ORDER for n in names)
+@@ -126,7 +128,7 @@
+         verify_manifest(cluster.read_json(ROOT/'.runs/conv'/name/'cluster.json'), plan, name)
+     for name in names:
+         run = ROOT/'.runs/conv'/name
+-        with (run/('status-driver-sep13ai-'+stamp+'.log')).open('x') as output, contextlib.redirect_stdout(output):
++        with (run/('status-driver-sep13ak-'+stamp+'.log')).open('x') as output, contextlib.redirect_stdout(output):
+             cluster.status(cfg, run)
+         manifest = cluster.read_json(run/'cluster.json')
+         verify_manifest(manifest, plan, name)
+@@ -142,7 +144,7 @@
+             print(name, 'already recorded; preserving all matching original measurements')
+             continue
+         assert previous['status'] in ('planned','prepared','unverified'), (name,'Failed/immutable evidence must remain unchanged')
+-        with (run/('fetch-driver-sep13ai-'+stamp+'.log')).open('x') as output, contextlib.redirect_stdout(output):
++        with (run/('fetch-driver-sep13ak-'+stamp+'.log')).open('x') as output, contextlib.redirect_stdout(output):
+             cluster.fetch(cfg, run)
+         verify_machine(e.machine_profile(run,(run/'benchmark.log').read_text(errors='replace')), plan)
+         metadata = e.read_json(run/'experiment.json')
+--- .runs/conv/sep13ai-compare.py
++++ .runs/conv/sep13ak-compare.py
+@@ -1,6 +1,6 @@
+-"""Compare all three saved AI records; never confirm, promote or package.
++"""Judge only the saved independent AK confirmation; never promote or package.
+ 
+-C58 requires both unchanged C6 gates. All 36 samples and historical outcomes
++C58-r1 requires both current C6 gates. All original36 samples and historical outcomes
+ remain intact. No same-job parent reference was measured.
+ """
+ import importlib.util
+@@ -13,7 +13,7 @@
+ sys.path.insert(0, str(ROOT / 'tools'))
+ import experiment as e
+ 
+-spec = importlib.util.spec_from_file_location('sep13ai_record_checks', Path(__file__).with_name('sep13ai-record-group.py'))
++spec = importlib.util.spec_from_file_location('sep13ak_record_checks', Path(__file__).with_name('sep13ak-record-group.py'))
+ checks = importlib.util.module_from_spec(spec)
+ spec.loader.exec_module(checks)
+ 
+@@ -28,7 +28,7 @@
+ 
+ 
+ def main():
+-    path = ROOT / '.runs/conv/sep13ai-campaign.json'
++    path = ROOT / '.runs/conv/sep13ak-campaign.json'
+     with e.locked():
+         plan = e.read_json(path)
+         checks.verify_plan(plan)
+@@ -58,10 +58,11 @@
+             rec['comparison_baseline'] = baseline['version']
+             rec['comparison'] = comparison(baseline, rec)
+             rec['opening_control_comparison'] = comparison(opening, rec)
+-            assert name == 'C58-row7boundaryu2' and rec['promotion_allowed'] is True and rec['reference_only'] is False
+-            rec['qualified_for_confirmation'] = bool(rec['comparison']['eligible'] and rec['opening_control_comparison']['eligible'])
+-            rec['decision_note'] = ('Initial C58 candidate qualifies versus both same-job C6 controls; return to root for an independent next-step decision. No automatic confirmation, promotion or ZIP.'
+-                if rec['qualified_for_confirmation'] else 'C58 does not meet both C6 gates; retain every sample and C6. No automatic confirmation, promotion or ZIP.')
++            assert name == 'C58-r1' and rec['promotion_allowed'] is True and rec['reference_only'] is False
++            rec['confirmation_passed'] = bool(rec['comparison']['eligible'] and rec['opening_control_comparison']['eligible'])
++            rec['confirmation_samples_scope'] = 'Only36 original AK samples; AI initial qualification remains separate.'
++            rec['decision_note'] = ('Independent C58 AK confirmation passed both current C6 gates. Return to root; no automatic promotion or ZIP.'
++                if rec['confirmation_passed'] else 'Independent C58 AK confirmation failed at least one current C6 gate; retain every sample and C6. Do not retry failed confirmation or mix AI/AK samples.')
+         rows = []
+         extra = ('comparison', 'opening_control_comparison')
+         for name, rec in records.items():
+@@ -72,18 +73,20 @@
+                 max_spread_pct=max(case['spread_pct'] for case in rec['cases']),
+                 gain_pct=(1 - rec['total_median_ms'] / baseline['total_median_ms']) * 100,
+                 reference_only=name in checks.contract.REFERENCES,
+-                qualified_for_confirmation=rec['qualified_for_confirmation'],
++                qualified_for_confirmation=False, confirmation_passed=rec.get('confirmation_passed'),
+                 decision_note=rec['decision_note'], **{key: rec.get(key) for key in extra}))
+         assert checks.contract.recent_evidence() == recent_evidence
+-        # These three AI records and AI campaign alone receive comparison fields.
++        # These three AK records and AK campaign alone receive comparison fields.
+         for name, rec in records.items():
+             e.write_json(e.record_path('conv', name), rec)
+         plan.update(status='performance_complete', results=rows, final_selection=None,
+-            confirmation_pending=[name for name in checks.contract.CANDIDATES if records[name]['qualified_for_confirmation']],
++            confirmation_pending=[],confirmation_passed=records['C58-r1']['confirmation_passed'],
++            samples_mixed_with_initial_round=False,failed_confirmation_retry_allowed=False,
+             prior_decisions_unchanged=True, automatic_confirmation=False,
+             automatic_promotion=False, automatic_packaging=False)
+         e.write_json(path, plan)
+-    print(json.dumps(dict(round='sep13ai', results=rows, prior_decisions_unchanged=True), ensure_ascii=False, indent=2))
++    print(json.dumps(dict(round='sep13ak',confirmation_passed=records['C58-r1']['confirmation_passed'],results=rows,
++        samples_mixed_with_initial_round=False,prior_decisions_unchanged=True), ensure_ascii=False, indent=2))
+ 
+ 
+ if __name__ == '__main__':
+--- .runs/conv/sep13ai-README.md
++++ .runs/conv/sep13ak-README.md
+@@ -1,26 +1,30 @@
+-# AI：C58 首次三成员性能测量（准备完成，未执行）
++# AK: first independent confirmation of AI-qualified C58 (prepared only)
+ 
+-固定顺序 `C26-r36 / C58-row7boundaryu2 / C26-r37`，每成员运行原官方四例的三套完整测试，合计 **36 个原始样本**。两端均为当前最佳 C6 原字节；本轮省略父参考，不能声称取得同作业的 C58 对 C52 归因测量。C58 是在原 `C52-row7x3shared2` 上仅增加 12 条边界循环 `GCC unroll 2` pragma 的新源码，不是重试 Y/S 失败确认。
++Fixed order: **C26-r38 / C58-r1 / C26-r39**, three complete official suites per member, four cases per suite: **36 original AK samples**. All three versions are new and will be created only after root reviews these tools and issues explicit GO. Preparation creates no member, campaign, job, source or record.
+ 
+-C58 `conv2d.c`：`c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751`。自身原 AH **1583350** 已由 root 首次接受/冻结（工具输出 `81701c/0`）；工具只认 `.runs/conv/C58-row7boundaryu2/sve-correctness-sep13ah/validation.json` 和 `freeze-source.json` 的真实通过合同，包含 44,328、六配置、19 个零退出阶段、source/job/scheduler 身份、目标汇编审查关联。没有套用 AE fence schema，也不以 C52 的 T 证据代替 C58。AH 数值通过没有证明性能提高。
++The required prior is only original AI1583408: C26-r36 / C58-row7boundaryu2 / C26-r37, all36 recorded PASS, source and actual job/group/settings/machine/wrapper identities intact, C58 qualified_for_confirmation=true and both recorded initial gates true. recent_evidence re-parses each original12-row benchmark, matches every sample/median/spread to the three records and campaign, and re-evaluates the unchanged standard comparison on those AI arrays. It does not import AI tools or recurse into AF/AG or older histories. AI source/result files are read-only and their association hashes are preserved in AK.
+ 
+-资源/环境固定为 `q_kunpeng`、38 CPU、24,576 MiB、单 NUMA pack、1,800 秒；`OMP_NUM_THREADS=38`、`OMP_DYNAMIC=FALSE`、`OMP_PROC_BIND=close`、`OMP_PLACES=cores`、`CPU_TARGET=generic`。要求真实 GCC 10.3.1、相同机器与所有设置。`README.md`、官方 `bench_conv.c`、`run.sh` 必须与 C6 完全一致；原输入、参考实现、1e-5 容差、计时与生产 flags 均不改。
++C58-r1 is a byte-identical alias of the already **passed** AI source C58-row7boundaryu2, not a new implementation. Its source_parent is C58-row7boundaryu2; parent/comparison_parent/comparison_baseline are closing C26-r39. The gate deliberately accepts the original C58 record in passed/verified/qualified state and does not require it to remain prepared or lack an AI cluster.json. All four source files must match that original source; conv2d SHA is c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751. The other three files remain identical to C6.
+ 
+-仅查询最新原作业 AH1583350、AF1583230、AG1583276 的实际终态及整数 job/system 退出。AG 的原失败释放资源，仍然是失败，不能当数值 PASS。P 若只有 prepared 目录不会阻止；若已有未由 root 核实的 job reservation（即使带 ID）则停止。任何 AI campaign/成员预约都会阻止再次提交。只保存 AF48 完整初筛 false 与 AG12FAIL 已登记身份的少量原件哈希，不加载历史轮次工具、不递归审核旧数据、不扫描队友作业。
++Diagnostic reuse is explicit: diagnostic_source_version=C58-row7boundaryu2, reused_identical_source_diagnostic=true, diagnostic_job_id=1583350, diagnostic_evidence_directory=.runs/conv/C58-row7boundaryu2/sve-correctness-sep13ah. AH must retain own passed/complete44328 (34464 full +7272 dispatch +2592 direct), six configurations (5744/1212/432 each),19 ordered zero stage exits, source/job/scheduler/wrapper identity, compiler10.3.1, fused0 and actual targeted/root review files. This is identical-source reuse of C58 own AH; it does not borrow C52 T or invent a new alias diagnostic PASS.
+ 
+-提交入口必须经 root 阅读本轮工具及独立审查后给出明确 GO。以下仅是待执行接口；本次准备没有执行它们：
++Resources and conditions stay q_kunpeng,38CPU,24576MiB,one packed NUMA,1800s; OMP38/FALSE/close/cores,generic,strict GCC10.3.1, original benchmark/inputs/tolerance/timing. Both control sources are unchanged current C6. No parent-reference member is measured and no same-job C58-to-C52 attribution is claimed.
+ 
+-```sh
+-python3 .runs/conv/sep13ai-submit-performance.py --go
+-python3 tools/cluster.py --config config/conv-sep12.local.json status .runs/conv/C26-r36
+-python3 .runs/conv/sep13ai-record-group.py
+-python3 .runs/conv/sep13ai-compare.py
++Serial scope is only actual AI1583408/AH1583350 plus explicit reservations: .runs/conv/sep13aj-checks/C59-row7boundaryu2nofive/job.json, .runs/conv/sep13p-checks/C50-row4dupfencenomem/job.json, .runs/conv/sep13ak-campaign.json and the three AK member cluster.json files. Prepared AJ/P directories without job.json do not block. No AJ/P job is authorized/reconciled for this template; any such reservation blocks even if it contains an ID, until root reconciles it. Any existing AK reservation blocks re-submission. Unknown/query-failed/nonterminal jobs or missing integer job/system exits block. No teammate or older job scan occurs.
++
++Future interfaces, **not executed during preparation**:
++
++```text
++python3 .runs/conv/sep13ak-submit-performance.py --go
++python3 tools/cluster.py --config config/conv-sep12.local.json status .runs/conv/C26-r38
++python3 .runs/conv/sep13ak-record-group.py
++python3 .runs/conv/sep13ak-compare.py
+ ```
+ 
+-执行器必须分别保存每次命令 argv/UTC/stdout/stderr/exit；status 间隔至少 45 秒，单次等待最多 45 秒。网络用已授权连接；严禁不明提交重投。新 campaign 在共享 workflow lock 内先排他预约，再标准 `experiment.new` 创建两个控制版；C58 现 prepared record 在本次准备中不修改。三成员初次 creation metadata 逐字节保存到 `creation-experiment.json`，已有 C58 快照只核对绝不刷新。实际提交时仅更新关联/settings，并标准 checkpoint；creation 中父源 hash 留原样，prepared/current hash 经独立字段核对。record 仅内存适配当前 source view，不能重写 creation。
++Submit checks all three IDs absent, reserves the unique campaign under the shared workflow lock, then calls standard new/checkpoint. Each member's exact creation-experiment.json is saved before association edits; creation source hashes are never refreshed. The confirmation alias is newly copied from original passed C58. Only after those preparations does one cluster_group submission occur. A partial/unknown submission is preserved, never retried through submit. The actual new job ID is read from all three matching manifests; no unknown AK ID is prefilled here. Every external command must retain argv/UTC/stdout/stderr/exit; repeated status queries must be at least45s apart, with waits at most45s.
+ 
+-原唯一 job 全部成功终态后，record 保留三个成员全部 36 个样本、逐例 PASS、调度器/系统/wrapper 退出、来源哈希、编译器和机器信息。标准记录器会保存 FAIL/不完整证据；首次 record/compare 失败应保存全部外层原输出并停报 root，不能改解析器、门槛或覆盖失败后重测。已登记 passed 记录只验证并保留。
++Record uses only the saved AK group and preserves all36 original samples, real PASS flags and terminal job/system/wrapper zero, four-source identity and actual machine/compiler/settings. Existing passed records are checked and preserved. A record/fetch/compare failure retains first original outputs and is reported to root; do not change thresholds or retry failed numerical/confirmation work. Creation metadata remains immutable; only the in-memory source association view is adapted when recording.
+ 
+-比较继续调用 `experiment.comparison` 原规则：四例中位数之和的收益必须**严格大于** `max(1%, 两版本所有逐例 spread)`，且每例退化不得超过 1%。开头、结尾两个 C6 门槛皆过才能令 `qualified_for_confirmation=true`。保留慢样本，禁止剔除；这是初筛资格，不是确认通过、官方分数或晋级。任何结果都不会自动确认/重试、promote、ZIP 或修改 best。S/Y/AD/AB/AF/AG 历史保持原件；C6 继续保留到 root 另行决策。
++This is confirmation_only=true. Comparison calls experiment.comparison separately for opening and closing C6: total gain must be strictly greater than max(1%, all compared per-case spreads), and each case gain must be at least-1%. The actual Boolean **confirmation_passed** is written to C58-r1 record, its campaign result row, and AK campaign; qualified_for_confirmation remains false and confirmation_pending is empty. Only AK36 determines that Boolean; do not pool AI36 or select samples. Failure is terminal for this confirmation, retaining all samples and C6; no retry. Success returns to root for a separate decision. No automatic confirmation, promote, ZIP, best edit or publication.
+ 
+-本机只做轻量文本处理。主额度达到 40% 保存并停止；不使用重置卡。
++AK is the first independent confirmation of new C58 after AI qualification, not a retry of the failed C52 Y or C51 S confirmations. C59/AJ is separate and untouched. Historical failures and all slow samples remain intact. Local work is text only; stop at40% account usage, never use a reset card.
+--- .runs/conv/sep13ai-STATIC_REVIEW.md
++++ .runs/conv/sep13ak-STATIC_REVIEW.md
+@@ -1,11 +1,15 @@
+-# AI 静态准备说明
++# AK static preparation review
+ 
+-只生成本目录前缀 `sep13ai-*` 的工具与说明；没有 import/执行这些工具，没有 AST、py_compile、本机题目/测试、SSH、new/checkpoint、预约或提交。C58 source、prepared record 和 creation 文件没有修改。
++Read the complete mature AI submit271/record171/compare90-line tools and their actual AI campaign schema; adapted only new AK paths/IDs, first independent confirmation, bounded AI36 qualification, C58-r1 identical-source AH reuse and explicit AJ/P reservation scope. The full AI-to-AK diff is sep13ak-from-ai.patch.
+ 
+-逐段静态阅读 AF 三工具后保留其 campaign 排他预约、shared workflow lock、原 creation 快照、group 一次提交、实际 group/job/机器检查、标准 record/current source 内存适配与双端比较流程。查询函数、机器检查及 comparison 展示公式直接复制先前已审 R 的小函数，不 import 旧 R/AF/AD 模块。删除父参考/辅助比较和庞大历史诊断审核，将 4 成员/48 改成 3 成员/36；完整差异见 `sep13ai-from-af.patch`。
++No AK import, execution, AST/py_compile, test, SSH, new/checkpoint, campaign reservation or job was performed. This is local source-text preparation only. Initial textual substitution briefly altered the FAILED token; complete static read caught and corrected it before finalization or execution. The final terminal set preserves FAILED.
+ 
+-新增简短 AH 自身冻结门槛，与已真实落盘的 `validation.json`/`freeze-source.json` 字段逐项对照：candidate/job、passed/complete、44328=34464+7272+2592、六配置、19 stage 全0、生产源 hash、实际 scheduler0、fused_instructions0 和目标审查文件。该门槛不重新读汇编或预填 PC/静态区域/动态次数，不保证无 spill 或提速。已确认 root 的 AH 首次 accept/freeze 81701c/0。
++The prior gate reads only the three original AI records/manifests/logs, matches original36 arrays to record/campaign, re-evaluates both standard initial gates and requires actual AI1583408 complete/qualifiedtrue. Artifact hashes, actual same machine/compiler/settings, wrapper and scheduler exits are retained. No AI module import or recursive old evidence audit is introduced.
+ 
+-静态计数：3 成员 × 3 套 × 4 原例=36；每例保存 3 个样本，候选同时比较两个原 C6 控制。`experiment.comparison` 源码的 `total_gain <= noise` 判拒、逐例 `< -1` 判拒原样复用；comparison wrapper 仅展示相同阈值。false 只写本 AI 记录的结论字段，不修改原失败或触发下一作业。
++All three AK versions are absent until future GO. Source origin is the passed original C58, not an alias directory that does not yet exist; AH diagnostic candidate/job remain original C58/1583350 while the returned mapping key is C58-r1. The new alias has explicit identical-source diagnostic reuse, source_parent C58 and comparison parent closing C26-r39. Only new member creation snapshots and metadata will be written by submit.
+ 
+-固定只查 AH1583350、AF1583230、AG1583276 和 P/AI reservation；未知/非终态停止。实际 AG FAILED/job1/system10001 是允许资源释放的真实终态，AF 初筛 false 与 AG12FAIL 登记原件必须保持。三新成员不可能借用这三个 ID。实际执行前由 root 独立审查并唯一 GO；本报告只陈述准备状态，无测试 PASS 声明。
++Record/compare keep original36 AK samples, strict source/job/settings/machine checks and the standard two comparisons. confirmation_passed is an actual Boolean on candidate record/result/campaign only after complete records; it is not prefilled. qualified_for_confirmation=false and confirmation_pending=[] prevent treating confirmation as a new initial qualifier. False preserves failed confirmation and no automatic action; true still requires root's separate next step. AI result/source, C58, C59/AJ and historical S/Y/AG decisions are never written.
++
++Serial checks only AI/AH known jobs; any explicit unreconciled AJ/P reservation or any AK campaign/member reservation blocks. A prepared directory with no job.json is not a reservation. Root/N confirmed the exact AJ path used by this template; AK currently has no actual ID. Current tools do not query any network until future --go or explicit lifecycle use.
++
++Ready for root/Q independent static review. FINAL/STOP will be reported after the full diff and final file identities are saved. No computational correctness or performance result is claimed by this preparation.

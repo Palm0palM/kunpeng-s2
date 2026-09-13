@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/sep13ak-record-group.py", line 173, in <module>
+    main()
+  File "LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/sep13ak-record-group.py", line 132, in main
+    cluster.status(cfg, run)
+  File "LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/tools/cluster.py", line 352, in status
+    raise ClusterError("Scheduler status query failed; see scheduler-status.txt")
+cluster.ClusterError: Scheduler status query failed; see scheduler-status.txt
