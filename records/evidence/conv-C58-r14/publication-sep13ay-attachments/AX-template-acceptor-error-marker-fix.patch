@@ -1,0 +1,16 @@
+--- AX/initial-accept_and_freeze.py.txt
++++ AX/accept_and_freeze.py
+@@ -31,7 +31,12 @@
+             g=(RAW/f'guard-vl{v}-t{t}.log').read_text();d=(RAW/f'dispatch-vl{v}-t{t}.log').read_text()
+             header=f'SVE_BYTES={v} SVE_LANES={v//4} BLOCK_OUTPUTS={3*v//4} THREADS={t}'
+             need(g.splitlines()[0]==d.splitlines()[0]==header,'Actual VL/thread')
+-            need(not re.search(r'FAIL|ERROR',g+d),'Numerical failure present')
++            # Preserve all FAIL/ERROR rejection except the one exact normal coverage line.
++            # ADDRESS_ERRORS is additionally parsed below and must equal zero.
++            normal_coverage=re.compile(r'OUTPUT_EXACT_ONCE_CASES=3156 EXPECTED=3156 OUTPUT_VALUES=[1-9][0-9]* ADDRESS_ERRORS=0')
++            error_lines=[line for line in (g+d).splitlines()
++                if re.search(r'FAIL|ERROR',line) and not normal_coverage.fullmatch(line)]
++            need(not error_lines,'Numerical failure/error line present')
+             need(re.findall(r'^PASS: (\d+) convolution cases;',g,re.M)==['5744'],'Full count')
+             need(re.findall(r'^PASS: (\d+) dispatch cases;',d,re.M)==['2724'],'Dispatch count')
+             need(re.findall(r'^PASS: (\d+) direct fallback cases;',d,re.M)==['432'],'Direct count')

@@ -1,0 +1,65 @@
+{
+  "note": "Arithmetic dispatch geometry only. Assumes uniform cost per output element and VL64; ignores helper and tail cost, so not measured speed.",
+  "cases": [
+    {
+      "output_shape": [
+        4058,
+        6106
+      ],
+      "vl_bytes_assumed": 64,
+      "threads": 38,
+      "old_max_output_elements": 683872,
+      "new_max_output_elements": 652554,
+      "model_recovery_pct": 4.579511955453652,
+      "old_calls": 580,
+      "new_calls": 617,
+      "total_elements": 24778148,
+      "expected_elements": 24778148
+    },
+    {
+      "output_shape": [
+        6104,
+        4056
+      ],
+      "vl_bytes_assumed": 64,
+      "threads": 38,
+      "old_max_output_elements": 653016,
+      "new_max_output_elements": 651840,
+      "model_recovery_pct": 0.18008747105737072,
+      "old_calls": 872,
+      "new_calls": 908,
+      "total_elements": 24757824,
+      "expected_elements": 24757824
+    },
+    {
+      "output_shape": [
+        4202,
+        6336
+      ],
+      "vl_bytes_assumed": 64,
+      "threads": 38,
+      "old_max_output_elements": 709632,
+      "new_max_output_elements": 701568,
+      "model_recovery_pct": 1.1363636363636365,
+      "old_calls": 601,
+      "new_calls": 636,
+      "total_elements": 26623872,
+      "expected_elements": 26623872
+    },
+    {
+      "output_shape": [
+        6310,
+        4176
+      ],
+      "vl_bytes_assumed": 64,
+      "threads": 38,
+      "old_max_output_elements": 701568,
+      "new_max_output_elements": 694176,
+      "model_recovery_pct": 1.053639846743295,
+      "old_calls": 902,
+      "new_calls": 939,
+      "total_elements": 26350560,
+      "expected_elements": 26350560
+    }
+  ]
+}

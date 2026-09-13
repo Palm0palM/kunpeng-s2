@@ -1,0 +1,87 @@
+"""AX returned-log acceptance/archive only; no operator or network execution."""
+from pathlib import Path
+import argparse,hashlib,json,re,shlex,shutil,datetime
+BASE=Path(__file__).resolve().parent
+ROOT=BASE.parents[2]
+VERSION='C65-row7balanced'
+SOURCE_SHA256='a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874'
+B=BASE/VERSION
+RAW=B/'raw'
+FROZEN=ROOT/'.runs/conv'/VERSION/'sve-correctness-sep13ax'
+def read(p):return json.loads(p.read_text())
+def need(ok,why):
+    if not ok:raise ValueError(why)
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--job-id',required=True,help='Original AX ID actually saved after root one-shot submission')
+    job_id=parser.parse_args().job_id
+    need(re.fullmatch(r'[0-9]+',job_id) and job_id != '1590883','Own original AX ID required')
+    need(not FROZEN.exists() and not (B/'validation.json').exists(),'Already accepted/frozen; do not overwrite')
+    s=read(B/'AX_SUMMARY.json');j=read(B/'job.json');prepared=read(B/'prepared.json')
+    need(s['candidate']==j['version']==VERSION and s['job_id']==j['job_id']==job_id,'Original job identity')
+    status=j['scheduler_status'];need(str(status.get('jobId'))==job_id,'Scheduler job association')
+    need(status['status']=='SUCCEEDED' and status['jobExitCode']==status['systemExitCode']==0,'Actual terminal exits')
+    need(int((RAW/'exit-code.txt').read_text())==0 and s['wrapper_exit']==0 and s['issues']==[],'Wrapper/summary issues')
+    stages=['allocation','compiler','manifest','build-guard']+[f'guard-vl{v}-t{t}' for v in (16,32,64) for t in (1,4,38)]+['build-dispatch']+[f'dispatch-vl{v}-t{t}' for v in (16,32,64) for t in (1,4,38)]+['build-assembly','complete']
+    need(re.findall(r'^STAGE=(\S+) EXIT=(-?\d+)$',(RAW/'stage-exits.txt').read_text(),re.M)==[(x,'0') for x in stages],'All25 actual ordered stages')
+    need(s['stages']==[dict(stage=x,exit_code=0) for x in stages],'Summary stage association')
+    configs=[]
+    for v in (16,32,64):
+        for t in (1,4,38):
+            g=(RAW/f'guard-vl{v}-t{t}.log').read_text();d=(RAW/f'dispatch-vl{v}-t{t}.log').read_text()
+            header=f'SVE_BYTES={v} SVE_LANES={v//4} BLOCK_OUTPUTS={3*v//4} THREADS={t}'
+            need(g.splitlines()[0]==d.splitlines()[0]==header,'Actual VL/thread')
+            # Preserve all FAIL/ERROR rejection except the one exact normal coverage line.
+            # ADDRESS_ERRORS is additionally parsed below and must equal zero.
+            normal_coverage=re.compile(r'OUTPUT_EXACT_ONCE_CASES=3156 EXPECTED=3156 OUTPUT_VALUES=[1-9][0-9]* ADDRESS_ERRORS=0')
+            error_lines=[line for line in (g+d).splitlines()
+                if re.search(r'FAIL|ERROR',line) and not normal_coverage.fullmatch(line)]
+            need(not error_lines,'Numerical failure/error line present')
+            need(re.findall(r'^PASS: (\d+) convolution cases;',g,re.M)==['5744'],'Full count')
+            need(re.findall(r'^PASS: (\d+) dispatch cases;',d,re.M)==['2724'],'Dispatch count')
+            need(re.findall(r'^PASS: (\d+) direct fallback cases;',d,re.M)==['432'],'Direct count')
+            need('FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960' in g,'Full families')
+            need('DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240 balance=1512' in d,'Dispatch families')
+            totals={1:4008,4:6168,38:24010};families={1:(756,480,2772),4:(1020,660,4488),38:(1386,880,21744)}
+            core,quad,balance=families[t]
+            need(f'DISPATCH_EXPECTED_FAMILIES core={core} quad_boundary={quad} balance={balance}' in d,'Fixed independently derived entry totals')
+            for name,n,mask in [('DISPATCH',totals[t],(1<<t)-1),('DIRECT',1080,1 if t==1 else 15)]:
+                need(f'{name}_ROWSEVEN_ACTUAL_ENTRIES={n} EXPECTED={n} WORKER_MASK={mask} EXPECTED_MASK={mask}' in d,'Per-case validated entries/workers and aggregate')
+            coverage=re.findall(r'^OUTPUT_EXACT_ONCE_CASES=(\d+) EXPECTED=(\d+) OUTPUT_VALUES=(\d+) ADDRESS_ERRORS=(\d+)$',d,re.M)
+            need(len(coverage)==1 and tuple(map(int,coverage[0][:2]))==(3156,3156) and int(coverage[0][2])>0 and coverage[0][3]=='0','Actual predicate-aware exactly-once SVE output coverage')
+            legacy={k:int(n) for k,n in re.findall(r'SVE_(PREFIX|TAIL|ROWPAIR|ROWTRIPLE|ROWQUAD)_ACTUAL_ENTRIES=(\d+)',d)}
+            need(set(legacy)=={'PREFIX','TAIL','ROWPAIR','ROWTRIPLE','ROWQUAD'} and all(n>0 for n in legacy.values()),'Original legacy nonzero coverage')
+            configs.append(dict(sve_bytes=v,threads=t,full_cases=5744,dispatch_cases=2724,direct_cases=432,exact_once_cases=3156))
+    flags=['gcc','-O3','-std=c11','-D_DEFAULT_SOURCE','-Wall','-Wextra','-fno-fast-math','-ffp-contract=off','-mcpu=generic','-fopenmp','-DEXPECTED_ACC=3']
+    expected=[flags+['check_conv_guard.c','conv2d.c','-o','check_conv_guard'],flags+['-finstrument-functions','check_sve_dispatch.c','-o','check_sve_dispatch'],flags+['-S','conv2d.c','-o','conv2d-sve.s']]
+    probe=(RAW/'probe.log').read_text()
+    observed=[shlex.split(x) for x in re.findall(r'^\+ (gcc -O3 .+)$',probe,re.M)]
+    need(observed==expected==s['actual_compile_argv'],'Three actual compile argv')
+    need((RAW/'compiler-version.txt').read_text().strip()==s['compiler_version']=='10.3.1','Actual compiler')
+    for k,v in [('OMP_DYNAMIC','FALSE'),('OMP_PROC_BIND','close'),('OMP_PLACES','cores')]:need(f'+ {k}={v}' in probe,'Actual OMP')
+    need(len(s['allowed_cpus'])==38 and s['requested_resources']==j['resources']==dict(cpus=38,memory_mb=24576,numa_count=1,numa_distribution='pack',walltime_seconds=1800),'Allocation')
+    hashes=read(B/'source-hashes.json');need(hashes==prepared['source_hashes']==j['source_hashes'],'Source association')
+    need({row['name']:row['sha256'] for row in s['source_files']}==hashes and all(row['all_manifests_and_transport_bytes_equal'] for row in s['source_files']),'Completed lifecycle source verification')
+    need(set(hashes)=={'conv2d.c','check_conv_guard.c','check_sve_dispatch.c','candidate.env','remote_job.sh'},'Exact five-file transport set')
+    need(hashes.get('conv2d.c')==SOURCE_SHA256,'Own C65 reviewed source identity')
+    need({name:hashlib.sha256((B/'source'/name).read_bytes()).hexdigest() for name in hashes}==hashes,'Actual original source hashes')
+    # Lifecycle already verified remote manifest; require the exact returned bytes still match originals.
+    for name in hashes:need((RAW/name).read_bytes()==(B/'source'/name).read_bytes(),'Returned source changed')
+    assembly=(RAW/'conv2d-sve.s').read_text()
+    need(not re.search(r'^\s*(?:fmla|fmls|fmad|fmsb|fnmla|fnmls|fnmad|fnmsb|fmadd|fmsub|fnmadd|fnmsub|fmlal2?|fmlsl2?|fmmla)\b',assembly,re.M),'Unexpected fused arithmetic')
+    review=B/'TARGETED_ASSEMBLY_REVIEW.md'
+    need(review.is_file() and (B/'ROOT_RETURNED_REVIEW.md').is_file(),'Root must first read targeted actual review')
+    result=dict(status='passed',complete=True,candidate=VERSION,job_id=job_id,scheduler=status,exit_code=0,total_cases=80100,full_cases=51696,dispatch_cases=24516,direct_cases=3888,runner_cases=0,configurations=configs,source_hashes=hashes,source_hashes_verified=True,compiler_version='10.3.1',build_commands=expected,stage_exits=s['stages'],allocation=s['scheduler_resources'],assembly=dict(fused_instructions=0,review='TARGETED_ASSEMBLY_REVIEW.md'),performance_measured=False,executed_locally=False,executed_remotely=True,sanitizer='NOT_RUN',issues=[],note='Original AX own numerical evidence; root-read actual balanced group/column dispatch with unchanged C7 helpers and diagnostic predicate-aware stores, spill and frame review. No speed claim or automatic promotion.')
+    # Archive existing evidence without altering raw/prepared/creation metadata.
+    temp=FROZEN.with_name(FROZEN.name+'.tmp');need(not temp.exists(),'Pending archive exists')
+    shutil.copytree(B,temp)
+    (temp/'validation.json').write_text(json.dumps(result,indent=2)+'\n')
+    for name in ['driver.py','accept_and_freeze.py','README.md','ROOT_REVIEW.md','INDEPENDENT_TOOLS_REVIEW.md']:
+        shutil.copy2(BASE/name,temp/('diagnostic-'+name))
+    (temp/'raw/conv2d-sve.assembly.txt').write_bytes((RAW/'conv2d-sve.s').read_bytes())
+    freeze=dict(candidate=VERSION,job_id=job_id,mode='passed',frozen_at=datetime.datetime.now(datetime.timezone.utc).isoformat(),source_directory=str(B.relative_to(ROOT)),original_metadata_preserved=True,original_source_and_raw_preserved=True,operator_executed=False,assembly_available=True)
+    (temp/'freeze-source.json').write_text(json.dumps(freeze,indent=2)+'\n')
+    temp.rename(FROZEN)
+    (B/'validation.json').write_text(json.dumps(result,indent=2)+'\n')
+    print('AX'+job_id+' accepted/frozen80100; performance unmeasured.')
+if __name__=='__main__':main()

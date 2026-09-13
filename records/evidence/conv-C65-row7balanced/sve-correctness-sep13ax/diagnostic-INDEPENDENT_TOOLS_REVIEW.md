@@ -1,0 +1,23 @@
+# AX independent static tools review
+
+Reviewer: independent from the C65 source and AX checker authors. Read the complete guard checker, dispatch checker, five-file wrapper/environment, driver, acceptor, preparation manifest, expected entry table and root's separate interval-intersection derivation. No operator/checker was imported, compiled or run; no network, job, acceptance or performance result was created.
+
+The reviewed production SHA-256 is `a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874`. Lightweight text/hash inspection confirmed all five transport hashes, both template/package checker byte identities, and no production `svst1_f32` call bypassing the diagnostic `svst1` replacement. The companion source review is `.runs/conv/C65-row7balanced/INDEPENDENT_REVIEW.md`.
+
+## Findings
+
+One actual acceptance blocker was reported to root: `re.search(r'FAIL|ERROR', g+d)` also matches the successful line `OUTPUT_EXACT_ONCE_CASES=3156 EXPECTED=3156 OUTPUT_VALUES=... ADDRESS_ERRORS=0`. Root corrected the acceptor; I re-read the final lines 34–39. It now exempts only a full-line match of the exact normal coverage summary with positive output count and zero address errors, retains rejection of other FAIL/ERROR lines, and separately parses coverage below. The blocker is resolved without changing either checker or the transport package.
+
+No other static execution/correctness blocker was found in the reviewed scope. Runtime compilation, numerical behavior, elapsed time and target assembly remain unverified at this preparation stage.
+
+## Scope checked
+
+- The original guard retains scalar bitwise reference, input/kernel read-only protection, guarded bounds, output poison and canaries. Its default observer hooks are no-ops in the separate uninstrumented full checker. Setup checks requested VL before worker creation, every worker's VL, actual team size and disabled dynamic teams; the allowed configurations are VL 16/32/64 bytes and 1/4/38 threads.
+- Dispatch expectations use an inverse tile-owner enumeration, independent from production's cursor loop. Only full seven-row groups contribute rowseven entries. Every case compares its entry delta and exact worker mask before aggregation; the q=0 branch cannot divide by zero. The fixed family totals match root's independent interval derivation: dispatch 4008/6168/24010 for 1/4/38 threads. Direct kh<7 checks retain 432 cases, 1080 entries and masks 1/15/15; they correctly do not require 38 active workers when there are at most four groups.
+- The observer materializes the actual predicate and counts each active output lane atomically with checked integer addresses, then performs the original `svst1_f32(predicate,dst,value)`. All production SVE stores use the intercepted spelling. Allocation/reset happens before the parallel work and exact-count validation/free after team completion. Identical duplicate writes therefore fail even when final floats match. `no_instrument_function` prevents recursive instrumentation. The 64-element predicate buffer covers the architectural maximum float-lane count. These hooks are diagnostic-only and are absent from the production source and performance build.
+- Per configuration there are 5744 full cases, 2724 dispatch cases (972+240+1512), and 432 direct cases; nine configurations total 80100. Dispatch/direct exactly-once validation covers 3156 cases per configuration. Retained legacy helper nonzero checks complement the new rowseven checks.
+- The wrapper has 25 ordered stages, the original strict GCC 10.3.1/generic/ACC3 flags and three actual compiler commands. It checks a 38-CPU single-NUMA allocation and preserves pipeline/command failures, stage exits and wrapper exit. Resources remain 24576 MiB, one packed NUMA and 1800 seconds through driver configuration checks.
+- The driver binds the actual prepared C65 checkpoint, current confirmed C7/C58-r1 parent and unchanged official companion files. It requires original AW 1590883's complete 36-sample campaign and live terminal scheduler evidence, then reserves exclusively before upload/submission. Uncertain submissions retain evidence and cannot silently resubmit. Status/fetch reuse the saved ID; returned files cannot replace differing bytes.
+- Acceptance requires the real original AX ID, terminal scheduler and wrapper exits, all stages, exact configuration/case/entry/coverage logs, compiler argv, transport hashes and returned source bytes, plus actual assembly/root review. It does not measure speed, confirm, promote or create a ZIP. Initial prepared/creation metadata stays historical.
+
+Review commands were read-only `cat`/`rg` plus a lightweight Python text/hash comparison (outer exit 0); neither diagnostic tool was imported or executed.

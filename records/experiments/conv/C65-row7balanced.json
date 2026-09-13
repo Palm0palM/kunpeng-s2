@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C65-row7balanced",
+  "parent": "C58-r15",
+  "strategy": "Balance only current C7 seven-row SVE dispatch: partition the flattened row-group/3VL-width-tile domain by actual OpenMP team using quotient/remainder intervals, merge each worker contiguous same-group tiles into one unchanged helper call, and preserve per-output arithmetic. One common 3VL partition width is selected after worker-local target-safe VL query. Existing helpers and all other dispatch remain unchanged. No fixed 256-column subcalls or timed allocation.",
+  "created_at": "2026-09-13T08:04:54.557174+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "comparison_baseline": "C58-r15",
+  "source_parent": "C58-r1",
+  "reference_only": false,
+  "promotion_allowed": true,
+  "qualified_for_confirmation": true,
+  "diagnostic_source_version": "C65-row7balanced",
+  "diagnostic_job_id": "1591086",
+  "diagnostic_evidence_directory": ".runs/conv/C65-row7balanced/sve-correctness-sep13ax",
+  "recorded_at": "2026-09-13T08:25:55.531586+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep13ay",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "3bcdb1ac2caab49b74e464c992839a4e93781cb3e69714317035b188ea85f601",
+  "log": ".runs/conv/C65-row7balanced/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        49.7,
+        49.43,
+        49.82
+      ],
+      "median_ms": 49.7,
+      "min_ms": 49.43,
+      "max_ms": 49.82,
+      "spread_pct": 0.784708249496983,
+      "gflops": [
+        1516.5593,
+        1524.8858,
+        1512.8938
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        58.66,
+        58.79,
+        58.75
+      ],
+      "median_ms": 58.75,
+      "min_ms": 58.66,
+      "max_ms": 58.79,
+      "spread_pct": 0.2212765957446852,
+      "gflops": [
+        1418.8934,
+        1415.8457,
+        1416.6693
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        102.91,
+        102.99,
+        102.96
+      ],
+      "median_ms": 102.96,
+      "min_ms": 102.91,
+      "max_ms": 102.99,
+      "spread_pct": 0.07770007770007606,
+      "gflops": [
+        1565.2694,
+        1564.011,
+        1564.4557
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        220.73,
+        220.79,
+        221.38
+      ],
+      "median_ms": 220.79,
+      "min_ms": 220.73,
+      "max_ms": 221.38,
+      "spread_pct": 0.2943973911861976,
+      "gflops": [
+        1566.511,
+        1566.0492,
+        1561.8813
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 432.2,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1591187",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.77,
+        "candidate_ms": 49.7,
+        "gain_pct": 3.9984547034962334
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.64,
+        "candidate_ms": 58.75,
+        "gain_pct": -0.1875852660300127
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.21,
+        "candidate_ms": 102.96,
+        "gain_pct": 1.1995010075808463
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.15,
+        "candidate_ms": 220.79,
+        "gain_pct": 1.0575845843603018
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r15"
+  },
+  "opening_control_comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.82,
+        "candidate_ms": 49.7,
+        "gain_pct": 4.0910845233500535
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.39,
+        "candidate_ms": 58.75,
+        "gain_pct": -0.6165439287549228
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.17,
+        "candidate_ms": 102.96,
+        "gain_pct": 1.161562829989448
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.15,
+        "candidate_ms": 220.79,
+        "gain_pct": 1.0575845843603018
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r14"
+  },
+  "decision_note": "AY initial comparison complete; independent confirmation required before promotion."
+}

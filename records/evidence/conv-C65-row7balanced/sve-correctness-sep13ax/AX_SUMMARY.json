@@ -1,0 +1,1014 @@
+{
+  "created_at": "2026-09-13T08:15:47.863804+00:00",
+  "candidate": "C65-row7balanced",
+  "job_id": "1591086",
+  "scope": "Original AX numerical/lifecycle logs only; no acceptance, freeze or performance.",
+  "legacy_coverage_rule": "Each named legacy helper must be nonzero, exactly as the original AX checker; reported counts are observed values, not expected values.",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1591086",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "wrapper_exit": 0,
+  "stage_count": 25,
+  "stages": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "sve_lanes": 4,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "total": 8900,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240,
+        "balance": 1512
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 4008,
+          "expected": 4008,
+          "worker_mask": 1,
+          "expected_mask": 1
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 1,
+          "expected_mask": 1
+        }
+      },
+      "independent_entry_families": {
+        "core": 756,
+        "quad_boundary": 480,
+        "balance": 2772
+      },
+      "exact_once_coverage": {
+        "actual_cases": 3156,
+        "expected_cases": 3156,
+        "actual_output_values": 5239404,
+        "address_errors": 0,
+        "independent_expected_output_values": 5239404
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 27290,
+        "TAIL": 27290,
+        "ROWPAIR": 612,
+        "ROWTRIPLE": 7048,
+        "ROWQUAD": 4130
+      },
+      "guard_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl16-t1.log",
+      "dispatch_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl16-t1.log"
+    },
+    {
+      "sve_bytes": 16,
+      "sve_lanes": 4,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "total": 8900,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240,
+        "balance": 1512
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 6168,
+          "expected": 6168,
+          "worker_mask": 15,
+          "expected_mask": 15
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "independent_entry_families": {
+        "core": 1020,
+        "quad_boundary": 660,
+        "balance": 4488
+      },
+      "exact_once_coverage": {
+        "actual_cases": 3156,
+        "expected_cases": 3156,
+        "actual_output_values": 5239404,
+        "address_errors": 0,
+        "independent_expected_output_values": 5239404
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 31636,
+        "TAIL": 31636,
+        "ROWPAIR": 1008,
+        "ROWTRIPLE": 7840,
+        "ROWQUAD": 4724
+      },
+      "guard_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl16-t4.log",
+      "dispatch_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl16-t4.log"
+    },
+    {
+      "sve_bytes": 16,
+      "sve_lanes": 4,
+      "threads": 38,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "total": 8900,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240,
+        "balance": 1512
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 24010,
+          "expected": 24010,
+          "worker_mask": 274877906943,
+          "expected_mask": 274877906943
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "independent_entry_families": {
+        "core": 1386,
+        "quad_boundary": 880,
+        "balance": 21744
+      },
+      "exact_once_coverage": {
+        "actual_cases": 3156,
+        "expected_cases": 3156,
+        "actual_output_values": 5239404,
+        "address_errors": 0,
+        "independent_expected_output_values": 5239404
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 54664,
+        "TAIL": 54664,
+        "ROWPAIR": 3582,
+        "ROWTRIPLE": 11956,
+        "ROWQUAD": 8270
+      },
+      "guard_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl16-t38.log",
+      "dispatch_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl16-t38.log"
+    },
+    {
+      "sve_bytes": 32,
+      "sve_lanes": 8,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "total": 8900,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240,
+        "balance": 1512
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 4008,
+          "expected": 4008,
+          "worker_mask": 1,
+          "expected_mask": 1
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 1,
+          "expected_mask": 1
+        }
+      },
+      "independent_entry_families": {
+        "core": 756,
+        "quad_boundary": 480,
+        "balance": 2772
+      },
+      "exact_once_coverage": {
+        "actual_cases": 3156,
+        "expected_cases": 3156,
+        "actual_output_values": 10478808,
+        "address_errors": 0,
+        "independent_expected_output_values": 10478808
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 27290,
+        "TAIL": 27290,
+        "ROWPAIR": 612,
+        "ROWTRIPLE": 7048,
+        "ROWQUAD": 4130
+      },
+      "guard_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl32-t1.log",
+      "dispatch_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl32-t1.log"
+    },
+    {
+      "sve_bytes": 32,
+      "sve_lanes": 8,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "total": 8900,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240,
+        "balance": 1512
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 6168,
+          "expected": 6168,
+          "worker_mask": 15,
+          "expected_mask": 15
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "independent_entry_families": {
+        "core": 1020,
+        "quad_boundary": 660,
+        "balance": 4488
+      },
+      "exact_once_coverage": {
+        "actual_cases": 3156,
+        "expected_cases": 3156,
+        "actual_output_values": 10478808,
+        "address_errors": 0,
+        "independent_expected_output_values": 10478808
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 31636,
+        "TAIL": 31636,
+        "ROWPAIR": 1008,
+        "ROWTRIPLE": 7840,
+        "ROWQUAD": 4724
+      },
+      "guard_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl32-t4.log",
+      "dispatch_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl32-t4.log"
+    },
+    {
+      "sve_bytes": 32,
+      "sve_lanes": 8,
+      "threads": 38,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "total": 8900,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240,
+        "balance": 1512
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 24010,
+          "expected": 24010,
+          "worker_mask": 274877906943,
+          "expected_mask": 274877906943
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "independent_entry_families": {
+        "core": 1386,
+        "quad_boundary": 880,
+        "balance": 21744
+      },
+      "exact_once_coverage": {
+        "actual_cases": 3156,
+        "expected_cases": 3156,
+        "actual_output_values": 10478808,
+        "address_errors": 0,
+        "independent_expected_output_values": 10478808
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 54664,
+        "TAIL": 54664,
+        "ROWPAIR": 3582,
+        "ROWTRIPLE": 11956,
+        "ROWQUAD": 8270
+      },
+      "guard_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl32-t38.log",
+      "dispatch_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl32-t38.log"
+    },
+    {
+      "sve_bytes": 64,
+      "sve_lanes": 16,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "total": 8900,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240,
+        "balance": 1512
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 4008,
+          "expected": 4008,
+          "worker_mask": 1,
+          "expected_mask": 1
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 1,
+          "expected_mask": 1
+        }
+      },
+      "independent_entry_families": {
+        "core": 756,
+        "quad_boundary": 480,
+        "balance": 2772
+      },
+      "exact_once_coverage": {
+        "actual_cases": 3156,
+        "expected_cases": 3156,
+        "actual_output_values": 20957616,
+        "address_errors": 0,
+        "independent_expected_output_values": 20957616
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 27290,
+        "TAIL": 27290,
+        "ROWPAIR": 612,
+        "ROWTRIPLE": 7048,
+        "ROWQUAD": 4130
+      },
+      "guard_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl64-t1.log",
+      "dispatch_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl64-t1.log"
+    },
+    {
+      "sve_bytes": 64,
+      "sve_lanes": 16,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "total": 8900,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240,
+        "balance": 1512
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 6168,
+          "expected": 6168,
+          "worker_mask": 15,
+          "expected_mask": 15
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "independent_entry_families": {
+        "core": 1020,
+        "quad_boundary": 660,
+        "balance": 4488
+      },
+      "exact_once_coverage": {
+        "actual_cases": 3156,
+        "expected_cases": 3156,
+        "actual_output_values": 20957616,
+        "address_errors": 0,
+        "independent_expected_output_values": 20957616
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 31636,
+        "TAIL": 31636,
+        "ROWPAIR": 1008,
+        "ROWTRIPLE": 7840,
+        "ROWQUAD": 4724
+      },
+      "guard_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl64-t4.log",
+      "dispatch_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl64-t4.log"
+    },
+    {
+      "sve_bytes": 64,
+      "sve_lanes": 16,
+      "threads": 38,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "total": 8900,
+      "full_families": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32,
+        "quad_boundary": 960
+      },
+      "dispatch_families": {
+        "core": 972,
+        "quad_boundary": 240,
+        "balance": 1512
+      },
+      "rowseven_entries": {
+        "dispatch": {
+          "actual": 24010,
+          "expected": 24010,
+          "worker_mask": 274877906943,
+          "expected_mask": 274877906943
+        },
+        "direct": {
+          "actual": 1080,
+          "expected": 1080,
+          "worker_mask": 15,
+          "expected_mask": 15
+        }
+      },
+      "independent_entry_families": {
+        "core": 1386,
+        "quad_boundary": 880,
+        "balance": 21744
+      },
+      "exact_once_coverage": {
+        "actual_cases": 3156,
+        "expected_cases": 3156,
+        "actual_output_values": 20957616,
+        "address_errors": 0,
+        "independent_expected_output_values": 20957616
+      },
+      "legacy_suite_entries": {
+        "PREFIX": 54664,
+        "TAIL": 54664,
+        "ROWPAIR": 3582,
+        "ROWTRIPLE": 11956,
+        "ROWQUAD": 8270
+      },
+      "guard_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl64-t38.log",
+      "dispatch_log": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl64-t38.log"
+    }
+  ],
+  "total_cases": 80100,
+  "full_cases": 51696,
+  "dispatch_cases": 24516,
+  "direct_cases": 3888,
+  "actual_compile_argv": [
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "check_conv_guard.c",
+      "conv2d.c",
+      "-o",
+      "check_conv_guard"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-finstrument-functions",
+      "check_sve_dispatch.c",
+      "-o",
+      "check_sve_dispatch"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-S",
+      "conv2d.c",
+      "-o",
+      "conv2d-sve.s"
+    ]
+  ],
+  "compiler_version": "10.3.1",
+  "omp": {
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PROC_BIND": "close",
+    "OMP_PLACES": "cores"
+  },
+  "scheduler_resources": {
+    "reqCPU": 38,
+    "reqMem": 24576,
+    "allocCPU": 38,
+    "allocMem": 24576,
+    "timeout": 1800,
+    "jobExitCode": 0,
+    "systemExitCode": 0,
+    "reqAffinity": "numa[count=1, distribution=pack]"
+  },
+  "requested_resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "walltime_seconds": 1800
+  },
+  "allowed_cpus": [
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113
+  ],
+  "numa_node": "node2",
+  "scheduler_node": "COMPUTE_NODE_1",
+  "probe_node": "COMPUTE_NODE_1",
+  "scheduler_cpu_text": "76-113",
+  "scheduler_cpus": [
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113
+  ],
+  "source_files": [
+    {
+      "name": "candidate.env",
+      "bytes": 270,
+      "sha256": "827f2146ddef7c599b90c7cbfab4b4852742c7eca5eeff894963fd77170fbce7",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "check_conv_guard.c",
+      "bytes": 8951,
+      "sha256": "e2484e9a0aa540ad8a910d1d5cbf26c0d1dcfe0e5e76892e284a0d68b997d34a",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "check_sve_dispatch.c",
+      "bytes": 12009,
+      "sha256": "22267b328cd836e6405f913f33f98180a0f66c2ca0d3e1ba98bd344a084d2497",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "conv2d.c",
+      "bytes": 111581,
+      "sha256": "a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874",
+      "all_manifests_and_transport_bytes_equal": true
+    },
+    {
+      "name": "remote_job.sh",
+      "bytes": 4030,
+      "sha256": "e12993a69b018c6930e105691d22fdded9e766e5a5622de857940bfb51df0035",
+      "all_manifests_and_transport_bytes_equal": true
+    }
+  ],
+  "source_sha256": "a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874",
+  "raw_files": [
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/build-assembly.log",
+      "bytes": 0
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/build-dispatch.log",
+      "bytes": 0
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/build-guard.log",
+      "bytes": 0
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/candidate.env",
+      "bytes": 270
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/check_conv_guard.c",
+      "bytes": 8951
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/check_sve_dispatch.c",
+      "bytes": 12009
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/compiler-version.txt",
+      "bytes": 7
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/conv2d-sve.s",
+      "bytes": 181608
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/conv2d.c",
+      "bytes": 111581
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl16-t1.log",
+      "bytes": 783
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl16-t38.log",
+      "bytes": 814
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl16-t4.log",
+      "bytes": 789
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl32-t1.log",
+      "bytes": 784
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl32-t38.log",
+      "bytes": 815
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl32-t4.log",
+      "bytes": 790
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl64-t1.log",
+      "bytes": 785
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl64-t38.log",
+      "bytes": 816
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/dispatch-vl64-t4.log",
+      "bytes": 791
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/exit-code.txt",
+      "bytes": 2
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl16-t1.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl16-t38.log",
+      "bytes": 260
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl16-t4.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl32-t1.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl32-t38.log",
+      "bytes": 260
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl32-t4.log",
+      "bytes": 259
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl64-t1.log",
+      "bytes": 260
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl64-t38.log",
+      "bytes": 261
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/guard-vl64-t4.log",
+      "bytes": 260
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/probe.log",
+      "bytes": 23093
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/remote_job.sh",
+      "bytes": 4030
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/source-sha256.txt",
+      "bytes": 407
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/stage-exits.txt",
+      "bytes": 690
+    },
+    {
+      "path": ".runs/conv/sep13ax-checks/C65-row7balanced/raw/wrapper.stdout.log",
+      "bytes": 23171
+    }
+  ],
+  "outer_events": [
+    {
+      "argv": [
+        "python3",
+        ".runs/conv/sep13ax-checks/driver.py",
+        "C65-row7balanced",
+        "config/conv-sep12.local.json",
+        "status"
+      ],
+      "started_at": "2026-09-13T08:13:32.265995+00:00",
+      "ended_at": "2026-09-13T08:13:32.703951+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13ax-lifecycle-status-001.stdout.txt",
+      "stderr_file": ".runs/conv/sep13ax-lifecycle-status-001.stderr.txt",
+      "exit_file": ".runs/conv/sep13ax-lifecycle-status-001.exit.txt"
+    },
+    {
+      "argv": [
+        "python3",
+        ".runs/conv/sep13ax-checks/driver.py",
+        "C65-row7balanced",
+        "config/conv-sep12.local.json",
+        "status"
+      ],
+      "started_at": "2026-09-13T08:15:21.059894+00:00",
+      "ended_at": "2026-09-13T08:15:21.447034+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13ax-lifecycle-status-002.stdout.txt",
+      "stderr_file": ".runs/conv/sep13ax-lifecycle-status-002.stderr.txt",
+      "exit_file": ".runs/conv/sep13ax-lifecycle-status-002.exit.txt"
+    },
+    {
+      "argv": [
+        "python3",
+        ".runs/conv/sep13ax-checks/driver.py",
+        "C65-row7balanced",
+        "config/conv-sep12.local.json",
+        "fetch"
+      ],
+      "started_at": "2026-09-13T08:15:31.316894+00:00",
+      "ended_at": "2026-09-13T08:15:31.822408+00:00",
+      "exit_code": 0,
+      "stdout_file": ".runs/conv/sep13ax-lifecycle-fetch-001.stdout.txt",
+      "stderr_file": ".runs/conv/sep13ax-lifecycle-fetch-001.stderr.txt",
+      "exit_file": ".runs/conv/sep13ax-lifecycle-fetch-001.exit.txt"
+    }
+  ],
+  "status_call_count": 2,
+  "status_wait_note": "Original1591086 polled at bounded intervals; final actual terminal status required. Earlier query errors, if any, are preserved without classifying the job terminal.",
+  "numerical_logs_complete": true,
+  "issues": [],
+  "accept_executed": false,
+  "freeze_executed": false,
+  "assembly_review_performed": false,
+  "performance_measured": false,
+  "new_job_submitted_by_lifecycle_agent": false,
+  "reset_card_used": false,
+  "exact_once_cases": 28404,
+  "exact_once_output_values": 110027484
+}
