@@ -1,0 +1,7 @@
+# AJ root returned evidence review
+
+Original1589289 succeeded with job/system/wrapper0. Root read AJ_SUMMARY.md and actual assembly around input_5, shared pair/remainder, helper prologue and trailing stack accesses. Summary records actual44328/19stages/GCC10.3.1/38CPU singleNUMA; acceptor independently rereads numerical logs and actual argv before acceptance.
+
+Input_5 .L405 lines6626-6681 is single-column:18FMUL18FADD,3LD1W6LD1RW,55instructions and0Zspill; add x1,1 gives one kernel column, six weights gives six output rows. Shared2 .L4076714-6837 remains123instructions42/42,6/14 and0spill; remainder.L4096841-6905 remains63instructions21/21,3/7 and0spill. All per-output multiply/add ordering remains source-defined and separately diagnosed. Actual prologue720B+2VL; Z stack addresses derive fromsp+720. Trailing transitions retain6reads12writes; targetinput5 former3reads3writes per paired iteration no longer present. ABI D8..15 preserved in four pairs; no Q/predicate stack operations observed. Whole assembly fused instruction count0.
+
+Independent c59_assembly_check agrees and corrects root initial instruction count: include operandlessret => helper2270 instructions, parentAH2448; reduced178. Initial2269 counter omittedret and is not used as final count. Scope is targeted lowering and stack accesses, not exhaustive proof of all basic blocks. No speed claim; authorize own accepted diagnostic then first controlled C7/C59/C7 performance round only if quota<40. No local compilation or tests; no reset.

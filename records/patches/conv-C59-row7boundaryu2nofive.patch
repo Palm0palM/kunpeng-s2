@@ -1,0 +1,10 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -1442,7 +1442,6 @@
+             const float *kd = kernel + ((size_t)2) * (size_t)kw;
+             const float *ke = kernel + ((size_t)1) * (size_t)kw;
+             const float *kf = kernel;
+-            #pragma GCC unroll 2
+             for (int ik = 0; ik < kw; ++ik) {
+                 const svfloat32_t ak = svdup_n_f32(ka[ik]);
+                 const svfloat32_t bk = svdup_n_f32(kb[ik]);

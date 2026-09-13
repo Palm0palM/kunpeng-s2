@@ -1,0 +1,4 @@
+  File "LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/conv/sep13am-prepare-publication.py", line 42
+    p=DST/'records/SUMMARY.md';p.write_text(p.read_text()+notice.replace('(docs/','(../docs/')))
+                                                                                               ^
+SyntaxError: unmatched ')'
