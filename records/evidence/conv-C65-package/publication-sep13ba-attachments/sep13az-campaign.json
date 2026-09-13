@@ -1,0 +1,455 @@
+{
+  "round": "sep13az",
+  "status": "complete",
+  "measurement_order": [
+    "C58-r16",
+    "C65-r1",
+    "C58-r17"
+  ],
+  "candidate": "C65-r1",
+  "baseline_label": "C7",
+  "baseline_source": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "expected_benchmark_cases": 36,
+  "diagnostic_job": "1591086",
+  "diagnostic_expected_cases": 80100,
+  "diagnostic_source_version": "C65-row7balanced",
+  "candidate_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "initial_qualification_job": "1591187",
+  "confirmation_only": true,
+  "samples_mixed_with_initial_round": false,
+  "failed_confirmation_retry_allowed": false,
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "performance_job": "1591241",
+  "performance_group": "kp-conv-group-7b9fcf247aac",
+  "results": [
+    {
+      "version": "C58-r16",
+      "total_median_ms": 437.65,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            52.07,
+            51.81,
+            51.74
+          ],
+          "median_ms": 51.81,
+          "min_ms": 51.74,
+          "max_ms": 52.07,
+          "spread_pct": 0.6369426751592323,
+          "gflops": [
+            1447.5327,
+            1454.9372,
+            1456.8142
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.4,
+            58.4,
+            58.39
+          ],
+          "median_ms": 58.4,
+          "min_ms": 58.39,
+          "max_ms": 58.4,
+          "spread_pct": 0.01712328767122947,
+          "gflops": [
+            1425.2025,
+            1425.233,
+            1425.5222
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            104.21,
+            104.14,
+            104.16
+          ],
+          "median_ms": 104.16,
+          "min_ms": 104.14,
+          "max_ms": 104.21,
+          "spread_pct": 0.06720430107526228,
+          "gflops": [
+            1545.648,
+            1546.6462,
+            1546.3586
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            223.76,
+            223.16,
+            223.28
+          ],
+          "median_ms": 223.28,
+          "min_ms": 223.16,
+          "max_ms": 223.76,
+          "spread_pct": 0.2687208885704023,
+          "gflops": [
+            1545.2624,
+            1549.4629,
+            1548.6304
+          ],
+          "max_error": 0.0
+        }
+      ]
+    },
+    {
+      "version": "C65-r1",
+      "total_median_ms": 431.87,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            49.63,
+            49.37,
+            49.39
+          ],
+          "median_ms": 49.39,
+          "min_ms": 49.37,
+          "max_ms": 49.63,
+          "spread_pct": 0.5264223527029867,
+          "gflops": [
+            1518.7,
+            1526.7554,
+            1526.1911
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.73,
+            58.76,
+            59.33
+          ],
+          "median_ms": 58.76,
+          "min_ms": 58.73,
+          "max_ms": 59.33,
+          "spread_pct": 1.021102791014298,
+          "gflops": [
+            1417.2168,
+            1416.5056,
+            1402.9674
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            102.92,
+            102.99,
+            102.91
+          ],
+          "median_ms": 102.92,
+          "min_ms": 102.91,
+          "max_ms": 102.99,
+          "spread_pct": 0.07773027594247793,
+          "gflops": [
+            1565.0483,
+            1564.0298,
+            1565.2109
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            220.8,
+            220.8,
+            220.95
+          ],
+          "median_ms": 220.8,
+          "min_ms": 220.8,
+          "max_ms": 220.95,
+          "spread_pct": 0.06793478260868535,
+          "gflops": [
+            1565.9868,
+            1566.0311,
+            1564.9288
+          ],
+          "max_error": 0.0
+        }
+      ]
+    },
+    {
+      "version": "C58-r17",
+      "total_median_ms": 437.54999999999995,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.81,
+            51.82,
+            51.82
+          ],
+          "median_ms": 51.82,
+          "min_ms": 51.81,
+          "max_ms": 51.82,
+          "spread_pct": 0.019297568506364358,
+          "gflops": [
+            1454.8027,
+            1454.6536,
+            1454.6184
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.39,
+            58.38,
+            58.68
+          ],
+          "median_ms": 58.39,
+          "min_ms": 58.38,
+          "max_ms": 58.68,
+          "spread_pct": 0.5137866072957649,
+          "gflops": [
+            1425.5189,
+            1425.6651,
+            1418.4398
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            104.17,
+            104.18,
+            104.15
+          ],
+          "median_ms": 104.17,
+          "min_ms": 104.15,
+          "max_ms": 104.18,
+          "spread_pct": 0.028799078429491348,
+          "gflops": [
+            1546.2175,
+            1546.1524,
+            1546.5004
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            223.18,
+            223.13,
+            223.17
+          ],
+          "median_ms": 223.17,
+          "min_ms": 223.13,
+          "max_ms": 223.18,
+          "spread_pct": 0.022404445041901408,
+          "gflops": [
+            1549.3281,
+            1549.6599,
+            1549.3955
+          ],
+          "max_error": 0.0
+        }
+      ]
+    }
+  ],
+  "comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.82,
+        "candidate_ms": 49.39,
+        "gain_pct": 4.689309147047471
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.39,
+        "candidate_ms": 58.76,
+        "gain_pct": -0.6336701489981117
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.17,
+        "candidate_ms": 102.92,
+        "gain_pct": 1.1999616012287606
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.17,
+        "candidate_ms": 220.8,
+        "gain_pct": 1.0619706949858745
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r17"
+  },
+  "opening_control_comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.81,
+        "candidate_ms": 49.39,
+        "gain_pct": 4.670912951167732
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.4,
+        "candidate_ms": 58.76,
+        "gain_pct": -0.6164383561643826
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.16,
+        "candidate_ms": 102.92,
+        "gain_pct": 1.1904761904761856
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.28,
+        "candidate_ms": 220.8,
+        "gain_pct": 1.1107130060910022
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r16"
+  },
+  "confirmation_passed": true
+}

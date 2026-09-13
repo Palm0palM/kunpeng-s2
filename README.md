@@ -6,7 +6,7 @@
 
 TRSM 最新提交包：**T19 = T19-panel8x16budget**，队友在 KML25.1/GCC12 同分配三轮较 T8 合计耗时减少 **29.58%**；最终原 ZIP 独立解压三轮 **9/9 PASS**，合计中位耗时 **317.01 ms**。[直接提交 T19/trsm.zip](trsm/result/T19/trsm.zip) · [最终交付与 KML 状态](docs/trsm-final-20260912-r16.md)。指定官方 KML25.2.0 复验仍未完成。
 
-**提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C7、ZGEMM Z1、TRSM T19；各题 result 目录保留版本说明、验证范围与平台反馈字段。
+**提交入口：[三题当前最佳提交包](SUBMISSIONS.md)。** 当前仅提供 CONV C8、ZGEMM Z1、TRSM T19；各题 result 目录保留版本说明、验证范围与平台反馈字段。
 
 CONV 七行方案 C51 在独立确认中合计耗时减少 **2.96%**，36/36 校验通过；结束 C6 对照的一项波动为 **5.35%**，未通过确认门槛，该轮保留 C6。所有慢样本保留，该方案没有生成新包。[独立确认完整记录](docs/CONV_SEP13S.md) · [此前初筛](docs/CONV_SEP13R.md)。
 
@@ -16,9 +16,9 @@ CONV C54四列展开已完成44328项专项和48/48性能样本：总中位706.9
 
 CONV C55三列展开完成44328项专项和48/48性能样本，总中位466.81ms，比结束C6慢3.13%，未通过初筛。全部样本（含275.28ms慢样本）、策略与实际汇编记录保留，该轮保留C6。[专项诊断](docs/CONV_SEP13AC.md) · [全部性能样本](docs/CONV_SEP13AD.md)。
 
-## 当前 CONV C7
+## 当前 CONV C8
 
-独立确认452.27 → 437.56 ms，耗时减少 **3.25%**；最终原ZIP三轮12/12 PASS、误差0。上面的C6结论为历史记录，当前以C7为准。[提交包](conv/result/C7/conv.zip) · [完整报告](docs/CONV_SEP13AK_AL.md)。
+独立确认437.55 → 431.87 ms，耗时减少 **1.2981%**；最终原ZIP三轮12/12 PASS、误差0。此前C7报告为历史记录，当前以C8为准。[提交包](conv/result/C8/conv.zip) · [完整报告](docs/CONV_SEP13AZ_BA.md)。
 
 ## 先把环境跑通
 
@@ -36,7 +36,7 @@ CONV 最新最佳版本、父子关系和耗时见 [晋级台账](records/conv-l
 
 2026-09-12 历史 CONV 为 **C6 = C26-r1**（来源 C26-row4loads）：四行共享方案采用直接加载移位窗口，调整输入加载与寄存器使用。同资源 C5 对照从 **502.35 ms 降至 452.62 ms（减少 9.90%）**。最终 ZIP 在超算解压并完成三轮独立复验，12/12 PASS、最大误差为零，包验证合计 **452.66 ms**。
 
-**当前 C7 直接提交 [conv/result/C7/conv.zip](conv/result/C7/conv.zip)**，无需重新压缩。当前仅保留最佳提交包，此前测量与策略继续保留。[C7完整报告](docs/CONV_SEP13AK_AL.md) · [C7逐版本记录](docs/CONV_SEP13AK_AL_ROUND_RECORDS.md) · [C6历史报告](docs/CONV_SEP11C.md) · [C5 历史报告](docs/CONV_SEP11B.md)。以上是内部指标，正式平台分数待队友手动提交后反馈。
+**当前 C8 直接提交 [conv/result/C8/conv.zip](conv/result/C8/conv.zip)**，无需重新压缩。当前仅保留最佳提交包，此前测量与策略继续保留。[C7历史完整报告](docs/CONV_SEP13AK_AL.md) · [C7历史逐版本记录](docs/CONV_SEP13AK_AL_ROUND_RECORDS.md) · [C6历史报告](docs/CONV_SEP11C.md) · [C5 历史报告](docs/CONV_SEP11B.md)。以上是内部指标，正式平台分数待队友手动提交后反馈。
 
 ## 先重测当前基线
 
@@ -148,4 +148,6 @@ CONV C63 四列共享逐行权重调度：AT44328项通过，AU36/36 PASS，合�
 
 CONV C64 十二个边界循环逐行权重调度：AV44328项通过，AW36/36 PASS，合计437.15ms，相对结束C7控制437.74ms耗时减少0.1348%。未通过初筛，保留C7。实际helper为7读13写Z栈访问、帧720B+2VL，速度判断以两端完整测量为准。[本轮记录](docs/CONV_SEP13AV_AW.md)。
 
-CONV C65 七行组与列片负载均分：AX 80100 项及实际输出恰好一次检查通过，AY 36/36 PASS，合计 432.20 ms，相对结束 C7 控制 437.77 ms 耗时减少1.2724%。初筛通过，仍须独立确认，当前继续提交C7。计算 helper 保持 C7，速度判断以两端完整测量为准。[本轮记录](docs/CONV_SEP13AX_AY.md)。
+CONV C65 七行组与列片负载均分：AX 80100 项及实际输出恰好一次检查通过，AY 初筛 36/36 PASS、合计 432.20 ms。随后 AZ 独立确认 36/36 PASS、合计 431.87 ms，最终原 ZIP 三轮复验通过，已晋级为当前 C8。计算 helper 保持 C7。[初筛记录](docs/CONV_SEP13AX_AY.md) · [独立确认与提交包](docs/CONV_SEP13AZ_BA.md)。
+
+当前最佳 CONV 已晋级 C8；本文此前各轮“保留C7/提交C7”均为历史结论，当前提交入口以C8为准。[C8完整确认与原ZIP](docs/CONV_SEP13AZ_BA.md)。

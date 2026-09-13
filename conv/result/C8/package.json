@@ -1,0 +1,96 @@
+{
+  "label": "C8",
+  "parent_label": "C7",
+  "experiment": "C65-r1",
+  "source_experiment": "C65-row7balanced",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "package_sha256": "bbb43ed6192bed87b386d7d3f789c12ef419346dc4eec459eac5315ce62f761b",
+  "total_median_ms": 431.87,
+  "metric": "sum of four per-case medians; not official score",
+  "controlled_comparison": {
+    "baseline": "C58-r17",
+    "baseline_total_median_ms": 437.54999999999995,
+    "candidate_total_median_ms": 431.87,
+    "time_reduction_pct": 1.2981373557307623,
+    "opening_baseline": "C58-r16",
+    "opening_baseline_total_median_ms": 437.65,
+    "initial_candidate": "C65-row7balanced",
+    "initial_candidate_job": "1591187",
+    "initial_candidate_total_median_ms": 432.2,
+    "confirmation_job": "1591241",
+    "samples_mixed_with_initial_round": false
+  },
+  "verification": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "zip_verification": {
+    "experiment": "C65-package",
+    "job_id": "1591477",
+    "total_median_ms": 431.95000000000005,
+    "suites": 3,
+    "cases_per_suite": 4,
+    "all_pass": true,
+    "max_error": 0,
+    "archive_verified_and_extracted_on_compute_node": true,
+    "same_source_as_promoted": true
+  },
+  "specialized_correctness": {
+    "source_experiment": "C65-row7balanced",
+    "job_id": "1591086",
+    "checks": 80100,
+    "all_pass": true,
+    "threads": [
+      1,
+      4,
+      38
+    ],
+    "sve_bits": [
+      128,
+      256,
+      512
+    ]
+  },
+  "official_submission": false,
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C8",
+  "archive": "conv.zip",
+  "archive_sha256": "bbb43ed6192bed87b386d7d3f789c12ef419346dc4eec459eac5315ce62f761b",
+  "archive_bytes": 15906,
+  "archive_root": "conv/",
+  "entrypoint": "conv/run.sh",
+  "archive_members": {
+    "conv/README.md": {
+      "sha256": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+      "bytes": 754,
+      "mode": "0o100644"
+    },
+    "conv/bench_conv.c": {
+      "sha256": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "bytes": 8125,
+      "mode": "0o100644"
+    },
+    "conv/conv2d.c": {
+      "sha256": "a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874",
+      "bytes": 111581,
+      "mode": "0o100644"
+    },
+    "conv/run.sh": {
+      "sha256": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+      "bytes": 5339,
+      "mode": "0o100755"
+    }
+  },
+  "ready_for_manual_submission": true,
+  "official_score": null
+}

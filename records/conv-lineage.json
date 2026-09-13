@@ -1,5 +1,5 @@
 {
-  "current_label": "C7",
+  "current_label": "C8",
   "notice": "C labels here count verified source improvements; experiment IDs and r suffixes also include rejected candidates and repeat measurements. Times are internal metrics, not official scores.",
   "versions": [
     {
@@ -186,8 +186,40 @@
         "same_source_as_promoted": true,
         "sha256": "74acb1025ea2463e4aa3d6cbc91f17dabde2e1f6c340af00069b240fef312bd6"
       }
+    },
+    {
+      "label": "C8",
+      "experiment": "C65-r1",
+      "source_experiment": "C65-row7balanced",
+      "parent_label": "C7",
+      "comparison_baseline": "C58-r17",
+      "kernel_sha256": "a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874",
+      "total_median_ms": 431.87,
+      "time_reduction_pct": 1.2981373557307623,
+      "strategy": "Balance seven-row/three-SVE-vector tiles across the actual OpenMP team, coalescing contiguous same-group slices; original C7 arithmetic helpers unchanged",
+      "promoted_at": "2026-09-13T08:36:54.506193+00:00",
+      "official_score": null,
+      "repeat_measurements": [
+        {
+          "experiment": "C65-row7balanced",
+          "job_id": "1591187",
+          "total_median_ms": 432.2
+        }
+      ],
+      "package_verification": {
+        "experiment": "C65-package",
+        "job_id": "1591477",
+        "total_median_ms": 431.95000000000005,
+        "suites": 3,
+        "cases_per_suite": 4,
+        "all_pass": true,
+        "max_error": 0,
+        "archive_verified_and_extracted_on_compute_node": true,
+        "same_source_as_promoted": true,
+        "sha256": "bbb43ed6192bed87b386d7d3f789c12ef419346dc4eec459eac5315ce62f761b"
+      }
     }
   ],
-  "current_measurement": "C58-r1",
-  "current_total_median_ms": 437.56
+  "current_measurement": "C65-r1",
+  "current_total_median_ms": 431.87
 }

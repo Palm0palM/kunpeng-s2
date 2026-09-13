@@ -1,0 +1,116 @@
+"""One independent C7/C65/C7 confirmation after eligible AY; no promotion or ZIP."""
+import argparse,contextlib,datetime,json,shlex,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'tools'));sys.dont_write_bytecode=True
+import experiment as e
+import cluster as c
+import cluster_group as g
+ORDER=['C58-r16','C65-r1','C58-r17'];CAND=ORDER[1]
+INITIAL_ORDER=['C58-r14','C65-row7balanced','C58-r15'];ORIGIN=INITIAL_ORDER[1]
+PLAN=ROOT/'.runs/conv/sep13az-campaign.json';INITIAL_PLAN=ROOT/'.runs/conv/sep13ay-campaign.json'
+DIAG=ROOT/'.runs/conv'/ORIGIN/'sve-correctness-sep13ax'
+AX_JOB_ID='1591086'
+AY_JOB_ID=None  # REQUIRED: root binds the actual completed initial performance job; never guess.
+EXPECTED_SOURCE_SHA256='a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874'
+RESOURCES=dict(cpus=38,memory_mb=24576,numa_count=1,numa_distribution='pack',walltime_seconds=1800)
+def need(ok,why):
+ if not ok:raise ValueError(why)
+def run(n):return ROOT/'.runs/conv'/n
+def bound():need(isinstance(AY_JOB_ID,str) and AY_JOB_ID.isdigit() and AY_JOB_ID!=AX_JOB_ID,'Bind actual original AY before any network or mutation')
+def terminal(s,job):return str(s.get('jobId'))==job and s.get('status')=='SUCCEEDED' and s.get('jobExitCode')==s.get('systemExitCode')==0
+def baseline():
+ need(e.read_json(ROOT/'outputs/conv-best.json')['label']=='C7' and e.read_json(ROOT/'records/best.json')['conv']=='C58-r1','Current C7')
+ parent=e.get_record('conv','C58-r1');source=e.source_files(ROOT/'conv')
+ need(parent['verified'] and parent['confirmation_passed'] and source==parent['source_hashes']==e.source_files(run('C58-r1')/'source'),'Confirmed unchanged C7 source');return source
+def diagnostic():
+ val=e.read_json(DIAG/'validation.json');job=e.read_json(DIAG/'job.json')
+ need(val['status']=='passed' and val['complete'] and val['total_cases']==80100 and val['candidate']==ORIGIN,'Own complete AX80100')
+ need(val['job_id']==job['job_id']==AX_JOB_ID and terminal(job['scheduler_status'],AX_JOB_ID),'Original accepted AX exits')
+ need(val['source_hashes']['conv2d.c']==EXPECTED_SOURCE_SHA256==e.source_files(run(ORIGIN)/'source')['conv2d.c'],'Diagnosed unchanged C65')
+ need((DIAG/'TARGETED_ASSEMBLY_REVIEW.md').is_file() and (DIAG/'ROOT_RETURNED_REVIEW.md').is_file(),'Actual AX assembly reviewed');return val
+def checked_records(plan,order,job):
+ need(plan['performance_job']==job and plan['measurement_order']==order and plan['expected_benchmark_cases']==36,'Original 36-sample campaign identity')
+ records=[e.get_record('conv',n) for n in order]
+ for index,(n,r) in enumerate(zip(order,records)):
+  m=e.read_json(run(n)/'cluster.json');log=(run(n)/'benchmark.log').read_text();parsed=e.parse_log('conv',log,3)
+  need(r['status']=='passed' and r['verified'] and all(r['checks'].values()) and r['repeats']==3,'All standard verification checks')
+  need(r['job_id']==m['job_id']==job and terminal(m['scheduler_status'],job),'Same original successful job')
+  need(m['group']==plan['performance_group'] and m['group_index']==index and m['measurement_order']==order,'Same ordered allocation group')
+  need(r['settings']==m['settings']==plan['settings'] and r['machine']==records[0]['machine']==e.machine_profile(run(n),log),'Same actual settings/machine')
+  need(all(r['settings']['scheduler_resources'].get(k)==v for k,v in RESOURCES.items()),'Exact scheduler resources')
+  need(r['source_hashes']==e.source_files(run(n)/'source')==m['source_hashes'],'Original submitted four-file source')
+  need(all(e.digest(run(n)/name)==m['artifacts_sha256'][name] for name in ('benchmark.log','environment.log','exit-code.txt','source-sha256.txt')),'Original fetched artifact hashes')
+  need((run(n)/'exit-code.txt').read_text().strip()=='0','Wrapper exit zero')
+  need(parsed['cases']==r['cases'] and parsed['total_median_ms']==r['total_median_ms'],'Every original sample and derived total')
+  need(len(r['cases'])==4 and all(len(x['times_ms'])==3 and x['max_error']==0 for x in r['cases']),'Exact 12 PASS/error zero per member')
+ machine=records[0]['machine']
+ need(machine['compiler_banners']==['gcc (GCC) 10.3.1'] and machine['ARCH']=='aarch64' and machine['OMP_NUM_THREADS']=='38' and machine['CPU_TARGET']=='generic' and len(set(machine['ALLOWED_CPUS'].split(',')))==38 and machine['NUMA_NODE'],'Actual GCC/allocation')
+ need(records[0]['source_hashes']==records[-1]['source_hashes']==plan['baseline_source']==baseline(),'Both unchanged current C7 controls')
+ return records
+def comparisons(records):
+ candidate=records[1]
+ return (dict(e.comparison(records[-1],candidate),baseline=records[-1]['version']),dict(e.comparison(records[0],candidate),baseline=records[0]['version']))
+def initial():
+ bound();plan=e.read_json(INITIAL_PLAN);need(plan['status']=='complete' and plan['candidate']==ORIGIN,'AY completely recorded')
+ records=checked_records(plan,INITIAL_ORDER,AY_JOB_ID);candidate=records[1];closing,opening=comparisons(records)
+ need(candidate.get('qualified_for_confirmation') is True and closing['eligible'] and opening['eligible'],'AY genuinely eligible at both controls')
+ need(candidate['comparison']==plan['comparison']==closing and candidate['opening_control_comparison']==plan['opening_control_comparison']==opening,'Recomputed original AY decisions')
+ need(plan['results']==[dict(version=r['version'],total_median_ms=r['total_median_ms'],cases=r['cases']) for r in records],'Complete original AY 36 samples')
+ diagnostic();need(candidate['source_hashes']['conv2d.c']==EXPECTED_SOURCE_SHA256,'AY measured diagnosed source');return candidate
+def live(cfg,job):
+ command=shlex.join(x.replace('{job_id}',job) for x in cfg['scheduler']['status_argv']);r=c.remote(cfg,command,timeout=45);raw=c.output_text(r)
+ status=c.parse_scheduler_status(raw,job) if r.returncode==0 else None
+ stamp=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+ with (ROOT/'.runs/conv'/('sep13az-live-'+job+'-'+stamp+'.json')).open('x') as f:json.dump(dict(command=command,exit_code=r.returncode,raw=raw,status=status),f,indent=2)
+ need(status and terminal(status,job),'Original prerequisite live successful terminal')
+def submit(cfg):
+ bound();need(not PLAN.exists(),'Existing AZ reservation: never resubmit')
+ origin=initial();current=baseline();settings=origin['settings']
+ need(all(not run(n).exists() and not e.record_path('conv',n).exists() for n in ORDER),'All three AZ identities must be unused')
+ need(all(origin['source_hashes'][k]==v for k,v in current.items() if k!='conv2d.c'),'Official companion files unchanged')
+ need(c.effective_settings(cfg,{'settings':settings})==settings==e.get_record('conv','C58-r1')['settings'],'Unchanged C7/AY benchmark settings')
+ live(cfg,AX_JOB_ID);live(cfg,AY_JOB_ID)
+ plan=dict(round='sep13az',status='reserved',measurement_order=ORDER,candidate=CAND,baseline_label='C7',baseline_source=current,settings=settings,expected_benchmark_cases=36,diagnostic_job=AX_JOB_ID,diagnostic_expected_cases=80100,diagnostic_source_version=ORIGIN,candidate_source_hashes=origin['source_hashes'],initial_qualification_job=AY_JOB_ID,confirmation_only=True,samples_mixed_with_initial_round=False,failed_confirmation_retry_allowed=False,automatic_promotion=False,automatic_packaging=False)
+ with e.locked():
+  need(not PLAN.exists() and baseline()==current and initial()['source_hashes']==origin['source_hashes'],'Unchanged qualification before reservation')
+  need(all(not run(n).exists() and not e.record_path('conv',n).exists() for n in ORDER),'Concurrent identity reservation')
+  with PLAN.open('x') as f:json.dump(plan,f,indent=2)
+  for n in ORDER:
+   e.new(argparse.Namespace(problem='conv',version=n,parent=ORIGIN if n==CAND else None,strategy='One independent C65 confirmation after eligible AY; exact source clone, unchanged C7 controls'))
+   path=run(n)/'experiment.json';meta=e.read_json(path)
+   with (run(n)/'creation-experiment-original.json').open('xb') as f:f.write(path.read_bytes())
+   need(meta['source_hashes']==(origin['source_hashes'] if n==CAND else current),'Exact immutable source clone')
+   meta['settings']=settings
+   if n==CAND:meta.update(parent=ORDER[-1],comparison_baseline=ORDER[-1],source_parent=ORIGIN,confirmation_of=ORIGIN,initial_qualification_job=AY_JOB_ID,reference_only=False,promotion_allowed=True,qualified_for_confirmation=False,diagnostic_source_version=ORIGIN,diagnostic_job_id=AX_JOB_ID,diagnostic_evidence_directory=str(DIAG.relative_to(ROOT)))
+   e.write_json(path,meta);e.checkpoint(argparse.Namespace(problem='conv',version=n,note='AZ independent 36 samples; same-byte accepted AX reuse. No automatic promotion or ZIP.'))
+  plan['status']='submit_attempted';e.write_json(PLAN,plan)
+ g.submit_group(cfg,[run(n) for n in ORDER])
+ manifests=[e.read_json(run(n)/'cluster.json') for n in ORDER];job=manifests[0]['job_id']
+ need(job not in (AX_JOB_ID,AY_JOB_ID) and all(m['job_id']==job for m in manifests),'One new independent AZ group')
+ plan.update(status='running',performance_job=job,performance_group=manifests[0]['group']);e.write_json(PLAN,plan);print('AZ_JOB_ID='+job)
+def record_compare(cfg):
+ bound();plan=e.read_json(PLAN);need(plan['status']=='running' and plan['measurement_order']==ORDER,'Original AZ running campaign only')
+ origin=initial();need(plan['initial_qualification_job']==AY_JOB_ID and plan['candidate_source_hashes']==origin['source_hashes'],'Original qualification/source binding')
+ job=plan['performance_job'];need(job not in (AX_JOB_ID,AY_JOB_ID),'Independent AZ job')
+ stamp=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+ for n in ORDER:
+  with (run(n)/('az-status-'+stamp+'.log')).open('x') as f,contextlib.redirect_stdout(f):c.status(cfg,run(n))
+  m=e.read_json(run(n)/'cluster.json');need(m['job_id']==job and terminal(m['scheduler_status'],job),'Original AZ job successful; preserve failures for manual fetch')
+  old=e.get_record('conv',n)
+  if old['status']!='passed':
+   need(old['status'] in ['planned','prepared','unverified'],'Never overwrite failed records')
+   with (run(n)/('az-fetch-'+stamp+'.log')).open('x') as f,contextlib.redirect_stdout(f):c.fetch(cfg,run(n))
+   with e.locked():e.record(argparse.Namespace(problem='conv',version=n,log=str(run(n)/'benchmark.log'),environment='kunpeng-gcc10-generic-38-sep13az',reference='官方内置参考',repeats=3,scheduler_status=None,failure=None))
+ records=checked_records(plan,ORDER,job);candidate=records[1]
+ need(candidate['source_hashes']==origin['source_hashes']==plan['candidate_source_hashes'],'Same AX/AY/C65-r1 source and runner')
+ closing,opening=comparisons(records);passed=bool(closing['eligible'] and opening['eligible'])
+ candidate.update(comparison=closing,opening_control_comparison=opening,qualified_for_confirmation=False,confirmation_passed=passed,confirmation_samples_scope='Only original AZ36; AY qualification samples remain separate.',decision_note='AZ independent confirmation passed both C7 controls; no automatic promotion or ZIP.' if passed else 'AZ confirmation rejected; retain C7 and all samples. Do not repeat failed confirmation.')
+ plan.update(status='complete',results=[dict(version=r['version'],total_median_ms=r['total_median_ms'],cases=r['cases']) for r in records],comparison=closing,opening_control_comparison=opening,confirmation_passed=passed)
+ with e.locked():e.write_json(e.record_path('conv',CAND),candidate);e.write_json(PLAN,plan)
+ print(json.dumps(dict(confirmation_passed=passed,totals_ms=[r['total_median_ms'] for r in records],closing=closing,opening=opening),indent=2))
+if __name__=='__main__':
+ parser=argparse.ArgumentParser();parser.add_argument('action',choices=['submit','record-compare']);parser.add_argument('--go',action='store_true');args=parser.parse_args();bound()
+ if args.action=='submit':need(args.go,'Explicit root GO required')
+ cfg=c.load_config(ROOT/'config/conv-sep12.local.json')
+ if args.action=='submit':submit(cfg)
+ else:record_compare(cfg)

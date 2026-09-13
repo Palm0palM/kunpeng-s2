@@ -4,11 +4,11 @@
 
 | 题目 | 当前版本与实验 | 可直接提交的包 | 说明与反馈 |
 | --- | --- | --- | --- |
-| CONV | C7 / C58-r1（来源 C58-row7boundaryu2） | [conv.zip](conv/result/C7/conv.zip) | [版本说明](conv/result/C7/README.md) · [元数据](conv/result/C7/metadata.json) |
+| CONV | C8 / C65-r1（来源 C65-row7balanced） | [conv.zip](conv/result/C8/conv.zip) | [版本说明](conv/result/C8/README.md) · [元数据](conv/result/C8/metadata.json) |
 | ZGEMM | Z1 / Z1-control2（来源 Z1-pack） | [zgemm.zip](zgemm/result/Z1/zgemm.zip) | [版本说明](zgemm/result/Z1/README.md) · [元数据](zgemm/result/Z1/metadata.json) |
 | TRSM | T19 / T19-panel8x16budget | [trsm.zip](trsm/result/T19/trsm.zip) | [版本说明](trsm/result/T19/README.md) · [元数据](trsm/result/T19/metadata.json) |
 
-CONV C7 独立确认较 C6 耗时减少3.25%；最终 ZIP 三轮复验12/12 PASS、最大误差0，合计中位耗时437.49 ms；ZGEMM Z1 保留已验证的原包。
+CONV C8 独立确认较 C7 耗时减少1.2981%；最终 ZIP 三轮复验12/12 PASS、最大误差0，合计中位耗时431.95 ms；ZGEMM Z1 保留已验证的原包。
 
 TRSM T19 原样复制队友 main 已验证的 ZIP，保持 **15,593 bytes**。作业 **1581516** 在计算节点解压后使用 **KML25.1/GCC12.3.1** 完成三轮，**9/9 PASS**，最大误差 **1.11e-15**，合计中位耗时 **317.01 ms**。优化收益来自独立的同分配作业1579861：T8→T19 **444.75→313.20 ms，减少29.58%**；不与最终包复验混算。指定官方 **KML25.2.0 复验仍未完成**；此次同步不重新压缩、不计算新哈希或运行题目。[T19最终交付](docs/trsm-final-20260912-r16.md) · [T8历史包](https://github.com/Palm0palM/kunpeng-s2/tree/ce44a3d0187ad316906107a4b00937ce95e0ba18/trsm/result/T8)。
 
