@@ -1,0 +1,223 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C59-row7boundaryu2nofive",
+  "job_id": "1589289",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1589289",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "total_cases": 44328,
+  "full_cases": 34464,
+  "dispatch_cases": 7272,
+  "direct_cases": 2592,
+  "runner_cases": 0,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 1212,
+      "direct_cases": 432
+    }
+  ],
+  "source_hashes": {
+    "candidate.env": "595f45c73c6aed9ff7804bdf4ab2483a21376ef9bbb54fc6bdb078907eda1f1e",
+    "check_conv_guard.c": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+    "check_sve_dispatch.c": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+    "conv2d.c": "17e39de400213c6143450ca51436eecb780ee5806b8375fd38f0b6694b2f4be9",
+    "remote_job.sh": "f7c25ed914b9d376f0fe5a2b8cd87e31d5865eea083da05684f04aeca0fabf6c"
+  },
+  "source_hashes_verified": true,
+  "compiler_version": "10.3.1",
+  "build_commands": [
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "check_conv_guard.c",
+      "conv2d.c",
+      "-o",
+      "check_conv_guard"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-finstrument-functions",
+      "check_sve_dispatch.c",
+      "-o",
+      "check_sve_dispatch"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-S",
+      "conv2d.c",
+      "-o",
+      "conv2d-sve.s"
+    ]
+  ],
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "allocation": {
+    "reqCPU": 38,
+    "reqMem": 24576,
+    "allocCPU": 38,
+    "allocMem": 24576,
+    "timeout": 1800,
+    "jobExitCode": 0,
+    "systemExitCode": 0,
+    "reqAffinity": "numa[count=1, distribution=pack]"
+  },
+  "assembly": {
+    "fused_instructions": 0,
+    "review": "TARGETED_ASSEMBLY_REVIEW.md"
+  },
+  "performance_measured": false,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "NOT_RUN",
+  "issues": [],
+  "note": "Original AJ own numerical evidence; root-read actual input_5/shared2 spill and frame review. No speed claim or automatic promotion."
+}

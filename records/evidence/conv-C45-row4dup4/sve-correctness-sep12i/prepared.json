@@ -1,0 +1,71 @@
+{
+  "candidate": "C45-row4dup4",
+  "status": "prepared",
+  "prepared_at": "2026-09-12T10:56:39.956918+00:00",
+  "source_parent": "C26-row4loads",
+  "source_experiment": "C45-row4dup4",
+  "source_sha256": "d428611f068b81befa4412a6bd11480468e3b7816906647d15cc0e9265c866a5",
+  "source_hashes": {
+    "candidate.env": "c3b865c164f5d0f794f58ee58bd9887c4c83040958de3971ed111a4db0180fa0",
+    "check_conv_guard.c": "cc863350467de6ab4d51847bbaba0c394daea77aa7c5f1201113ed527e362c37",
+    "check_sve_dispatch.c": "58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1",
+    "conv2d.c": "d428611f068b81befa4412a6bd11480468e3b7816906647d15cc0e9265c866a5",
+    "remote_job.sh": "8078f0056bc4224636393cca44e1b938edf08add8f03b6d2e22e92c6de0a2ff1"
+  },
+  "source_hash_scope": "First automated five-file transport manifest; no repeated manual audit",
+  "guard_template": ".runs/conv/C32-row4lane4staged/sve-correctness-sep12c/source",
+  "guard_files_byte_unchanged": true,
+  "configurations": 6,
+  "sve_bytes": [
+    16,
+    32,
+    64
+  ],
+  "threads": [
+    1,
+    4
+  ],
+  "full_cases_per_configuration": 20164,
+  "dispatch_cases_per_configuration": 96,
+  "full_cases": 120984,
+  "dispatch_cases": 576,
+  "total_cases_planned": 121560,
+  "runner_cases_planned": 0,
+  "expected_acc": 4,
+  "check_rowtriple": 1,
+  "check_rowquad": 1,
+  "expected_stages": [
+    "allocation",
+    "compiler",
+    "manifest",
+    "build-guard",
+    "guard-vl16-t1",
+    "guard-vl16-t4",
+    "guard-vl32-t1",
+    "guard-vl32-t4",
+    "guard-vl64-t1",
+    "guard-vl64-t4",
+    "build-dispatch",
+    "dispatch-vl16-t1",
+    "dispatch-vl16-t4",
+    "dispatch-vl32-t1",
+    "dispatch-vl32-t4",
+    "dispatch-vl64-t1",
+    "dispatch-vl64-t4",
+    "build-assembly",
+    "complete"
+  ],
+  "expected_compiler_version": "10.3.1",
+  "resources_required": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack"
+  },
+  "actual_job_id": null,
+  "compiled": false,
+  "executed": false,
+  "verified": false,
+  "local_compilation_or_tests_run": false,
+  "performance_requires_distinct_actual_assembly": true
+}

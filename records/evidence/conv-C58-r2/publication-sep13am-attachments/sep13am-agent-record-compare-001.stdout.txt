@@ -1,0 +1,119 @@
+C58-r2: passed, 437.58 ms; 官方分数未知
+C59-row7boundaryu2nofive: passed, 437.94 ms; 官方分数未知
+C58-r3: passed, 437.66 ms; 官方分数未知
+{
+  "qualified_for_confirmation": false,
+  "totals_ms": [
+    437.58,
+    437.94,
+    437.65999999999997
+  ],
+  "closing": {
+    "eligible": false,
+    "reasons": [
+      "\u63d0\u901f -0.06% \u672a\u8d85\u8fc7\u6d4b\u91cf\u6ce2\u52a8/\u6700\u4f4e1%\u95e8\u69db 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.86,
+        "candidate_ms": 51.96,
+        "gain_pct": -0.19282684149633905
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.43,
+        "candidate_ms": 58.49,
+        "gain_pct": -0.10268697586856457
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.2,
+        "candidate_ms": 104.23,
+        "gain_pct": -0.028790786948177674
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.17,
+        "candidate_ms": 223.26,
+        "gain_pct": -0.04032800107541489
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r3"
+  },
+  "opening": {
+    "eligible": false,
+    "reasons": [
+      "\u63d0\u901f -0.08% \u672a\u8d85\u8fc7\u6d4b\u91cf\u6ce2\u52a8/\u6700\u4f4e1%\u95e8\u69db 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.82,
+        "candidate_ms": 51.96,
+        "gain_pct": -0.27016595908915586
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.43,
+        "candidate_ms": 58.49,
+        "gain_pct": -0.10268697586856457
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.16,
+        "candidate_ms": 104.23,
+        "gain_pct": -0.06720430107527592
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.17,
+        "candidate_ms": 223.26,
+        "gain_pct": -0.04032800107541489
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r2"
+  }
+}

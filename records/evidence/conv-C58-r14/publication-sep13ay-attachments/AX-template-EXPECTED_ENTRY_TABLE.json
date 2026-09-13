@@ -1,0 +1,47 @@
+{
+  "scope": "Pre-execution independent mathematical owner-map counts, not actual results",
+  "threads": {
+    "1": {
+      "core": 756,
+      "quad_boundary": 480,
+      "balance": 2772,
+      "total": 4008,
+      "dispatch_mask": 1,
+      "direct_entries": 1080,
+      "direct_mask": 1
+    },
+    "4": {
+      "core": 1020,
+      "quad_boundary": 660,
+      "balance": 4488,
+      "total": 6168,
+      "dispatch_mask": 15,
+      "direct_entries": 1080,
+      "direct_mask": 15
+    },
+    "38": {
+      "core": 1386,
+      "quad_boundary": 880,
+      "balance": 21744,
+      "total": 24010,
+      "dispatch_mask": 274877906943,
+      "direct_entries": 1080,
+      "direct_mask": 15
+    }
+  },
+  "vector_bytes": [
+    16,
+    32,
+    64
+  ],
+  "per_configuration": {
+    "full_per_configuration": 5744,
+    "dispatch_per_configuration": 2724,
+    "direct_per_configuration": 432,
+    "configurations": 9,
+    "total": 80100
+  },
+  "extra_balance_cases": 1512,
+  "total_cases": 80100,
+  "stage_count": 25
+}

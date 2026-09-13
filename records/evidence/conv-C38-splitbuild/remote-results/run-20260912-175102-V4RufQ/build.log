@@ -1,0 +1,10 @@
+BUILD_COMMAND: gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c bench_conv.c -o CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-58d8c35659f5/member-2/source/results/run-20260912-175102-V4RufQ/bench_conv.o
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~
+BUILD_COMMAND: gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c conv2d.c -o CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-58d8c35659f5/member-2/source/results/run-20260912-175102-V4RufQ/conv2d.o
+BUILD_COMMAND: gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-58d8c35659f5/member-2/source/results/run-20260912-175102-V4RufQ/bench_conv.o CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-58d8c35659f5/member-2/source/results/run-20260912-175102-V4RufQ/conv2d.o -o CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-58d8c35659f5/member-2/source/results/run-20260912-175102-V4RufQ/conv2d_test -lm

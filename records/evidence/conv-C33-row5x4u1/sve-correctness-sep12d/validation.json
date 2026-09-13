@@ -1,0 +1,356 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C33-row5x4u1",
+  "job_id": "1579312",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579312",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "1608433218ec6e2ce9dda9da46810774696d7f877dbc6cfdd44cdc31bf19a841",
+    "check_conv_guard.c": "057b8d0a9ec6904326814b13cfe3170b2df6daa420631da01eea1ab566d28856",
+    "check_sve_dispatch.c": "70ddb8a6f2d737d1cfa6154aba9f967967057858378b361a117f62f6e6088c33",
+    "conv2d.c": "10e733346d811fd3bf7ec6d731af21a3ad3fa6043398ef64226e0695bc6dfafa",
+    "remote_job.sh": "c81124bb754a67064344c3bff27e328bee50a8e999acc4d4a1c1b45fcc75a104"
+  },
+  "source_manifest_remote_matches": true,
+  "source_hash_verification_scope": "Existing automated transport manifest matches remote wrapper SHA entries; no separate repeated manual byte-hash audit.",
+  "extra_manual_hash_audit": false,
+  "accumulators_per_row": 4,
+  "rows_per_group": 5,
+  "total_accumulators": 20,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 40804,
+      "smoke_cases": 864,
+      "helper_entries": {
+        "prefix": 7920,
+        "tail": 7920,
+        "rowpair": 768,
+        "rowtriple": 1776,
+        "rowquad": 1632,
+        "rowquint": 432
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 40804,
+      "smoke_cases": 864,
+      "helper_entries": {
+        "prefix": 7920,
+        "tail": 7920,
+        "rowpair": 768,
+        "rowtriple": 1776,
+        "rowquad": 1632,
+        "rowquint": 432
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 40804,
+      "smoke_cases": 864,
+      "helper_entries": {
+        "prefix": 7920,
+        "tail": 7920,
+        "rowpair": 768,
+        "rowtriple": 1776,
+        "rowquad": 1632,
+        "rowquint": 432
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 40804,
+      "smoke_cases": 864,
+      "helper_entries": {
+        "prefix": 7920,
+        "tail": 7920,
+        "rowpair": 768,
+        "rowtriple": 1776,
+        "rowquad": 1632,
+        "rowquint": 432
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 40804,
+      "smoke_cases": 864,
+      "helper_entries": {
+        "prefix": 7920,
+        "tail": 7920,
+        "rowpair": 768,
+        "rowtriple": 1776,
+        "rowquad": 1632,
+        "rowquint": 432
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 40804,
+      "smoke_cases": 864,
+      "helper_entries": {
+        "prefix": 7920,
+        "tail": 7920,
+        "rowpair": 768,
+        "rowtriple": 1776,
+        "rowquad": 1632,
+        "rowquint": 432
+      },
+      "passed": true
+    }
+  ],
+  "full_cases": 244824,
+  "smoke_cases": 5184,
+  "total_cases": 250008,
+  "coverage_extension": {
+    "kernel_shapes_added": [
+      [
+        5,
+        1
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        5
+      ]
+    ],
+    "output_heights": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      19,
+      20
+    ],
+    "purpose": "Five-row core and remaining1-4 rows, kh4/5/6 fallback boundaries, four quint workers."
+  },
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "review_complete": true,
+    "helper": "conv_sve_rowquint",
+    "inner_loops": [
+      {
+        "label": ".L409",
+        "stage": "first input row",
+        "kernel_columns_per_iteration": 1,
+        "instructions": 17,
+        "fmul": 4,
+        "fadd": 4,
+        "input_ld1w": 4,
+        "kernel_ld1rw": 1,
+        "kernel_ld1rqw": 0,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L411",
+        "stage": "second input row",
+        "kernel_columns_per_iteration": 1,
+        "instructions": 28,
+        "fmul": 8,
+        "fadd": 8,
+        "input_ld1w": 4,
+        "kernel_ld1rw": 2,
+        "kernel_ld1rqw": 0,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L413",
+        "stage": "third input row",
+        "kernel_columns_per_iteration": 1,
+        "instructions": 38,
+        "fmul": 12,
+        "fadd": 12,
+        "input_ld1w": 4,
+        "kernel_ld1rw": 3,
+        "kernel_ld1rqw": 0,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L415",
+        "stage": "fourth input row",
+        "kernel_columns_per_iteration": 1,
+        "instructions": 48,
+        "fmul": 16,
+        "fadd": 16,
+        "input_ld1w": 4,
+        "kernel_ld1rw": 4,
+        "kernel_ld1rqw": 0,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L417",
+        "stage": "shared five-output single-column loop",
+        "kernel_columns_per_iteration": 1,
+        "instructions": 58,
+        "fmul": 20,
+        "fadd": 20,
+        "input_ld1w": 4,
+        "kernel_ld1rw": 5,
+        "kernel_ld1rqw": 0,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L420",
+        "stage": "first trailing input row",
+        "kernel_columns_per_iteration": 1,
+        "instructions": 48,
+        "fmul": 16,
+        "fadd": 16,
+        "input_ld1w": 4,
+        "kernel_ld1rw": 4,
+        "kernel_ld1rqw": 0,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L422",
+        "stage": "second trailing input row",
+        "kernel_columns_per_iteration": 1,
+        "instructions": 38,
+        "fmul": 12,
+        "fadd": 12,
+        "input_ld1w": 4,
+        "kernel_ld1rw": 3,
+        "kernel_ld1rqw": 0,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L424",
+        "stage": "third trailing input row",
+        "kernel_columns_per_iteration": 1,
+        "instructions": 28,
+        "fmul": 8,
+        "fadd": 8,
+        "input_ld1w": 4,
+        "kernel_ld1rw": 2,
+        "kernel_ld1rqw": 0,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L426",
+        "stage": "last input row",
+        "kernel_columns_per_iteration": 1,
+        "instructions": 17,
+        "fmul": 4,
+        "fadd": 4,
+        "input_ld1w": 4,
+        "kernel_ld1rw": 1,
+        "kernel_ld1rqw": 0,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      }
+    ],
+    "whole_source_fma_count": 0,
+    "quint_frame_fixed_bytes": 528,
+    "quint_frame_extra_sve_vectors": 0,
+    "note": "Remote GCC10.3.1 strict-FP. Five-output single-column shared .L417 contains58 instructions,20 fmul+20 independent fadd,4 input ld1w and5 kernel ld1rw. Nine inner column loops have17/28/38/48/58/48/38/28/17 instructions, no vector spills, ext, movprfx or dup. No Z/Q ldr/str/ldp/stp in the entire quint helper. Fixed528-byte frame has scalar bookkeeping and ABI d8-d11 saves; neither is an accumulator spill. .L418 is the enclosing shared input-row loop, not another column stage. One column per iteration must be accounted for when comparing with two/four-column helpers. Assembly alone does not establish a performance benefit. Independent read-only review confirms main58 instructions, no Z/Q spills or addvl, fixed528B and ABI d8-d11.",
+    "independent_static_review": true
+  },
+  "evidence_directory": "raw"
+}

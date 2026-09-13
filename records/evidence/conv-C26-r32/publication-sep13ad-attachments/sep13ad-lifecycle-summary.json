@@ -1,0 +1,1908 @@
+{
+  "round": "sep13ad",
+  "job_id": "1582956",
+  "group": "kp-conv-group-e0e7b4c84d35",
+  "generated_at": "2026-09-12T19:11:54.811667+00:00",
+  "status": "performance_complete",
+  "measurement_order": [
+    "C26-r32",
+    "C55-row7x3shared3",
+    "C52-r3",
+    "C26-r33"
+  ],
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "diagnostic_jobs": {
+    "C55-row7x3shared3": "1582860",
+    "C52-r3": "1582134"
+  },
+  "diagnostic_source_versions": {
+    "C55-row7x3shared3": "C55-row7x3shared3",
+    "C52-r3": "C52-row7x3shared2"
+  },
+  "diagnostic_expected_checks": {
+    "C55-row7x3shared3": 44328,
+    "C52-r3": 37128
+  },
+  "source_parents": {
+    "C55-row7x3shared3": "C52-row7x3shared2",
+    "C52-r3": "C52-row7x3shared2"
+  },
+  "members": [
+    {
+      "version": "C26-r32",
+      "status": "passed",
+      "verified": true,
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "machine": {
+        "HOST": "COMPUTE_NODE_1",
+        "ARCH": "aarch64",
+        "NUMA_NODE": "2",
+        "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+        "OMP_NUM_THREADS": "38",
+        "CPU_TARGET": "generic",
+        "compiler_banners": [
+          "gcc (GCC) 10.3.1"
+        ]
+      },
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1582956",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "sample_count": 12,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.45,
+            51.45,
+            51.39
+          ],
+          "median_ms": 51.45,
+          "min_ms": 51.39,
+          "max_ms": 51.45,
+          "spread_pct": 0.11661807580175369,
+          "gflops": [
+            1465.1303,
+            1464.8848,
+            1466.7137
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            61.88,
+            61.94,
+            62.12
+          ],
+          "median_ms": 61.94,
+          "min_ms": 61.88,
+          "max_ms": 62.12,
+          "spread_pct": 0.3874717468517838,
+          "gflops": [
+            1345.1509,
+            1343.9038,
+            1339.837
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            107.3,
+            107.3,
+            107.38
+          ],
+          "median_ms": 107.3,
+          "min_ms": 107.3,
+          "max_ms": 107.38,
+          "spread_pct": 0.0745573159366247,
+          "gflops": [
+            1501.1479,
+            1501.1157,
+            1500.0292
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            231.66,
+            231.72,
+            231.78
+          ],
+          "median_ms": 231.72,
+          "min_ms": 231.66,
+          "max_ms": 231.78,
+          "spread_pct": 0.0517866390471278,
+          "gflops": [
+            1492.5909,
+            1492.2037,
+            1491.8056
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "raw_pass_rows": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 51.45,
+          "gflops": 1465.1303,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 61.88,
+          "gflops": 1345.1509,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 107.3,
+          "gflops": 1501.1479,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 231.66,
+          "gflops": 1492.5909,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 51.45,
+          "gflops": 1464.8848,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 61.94,
+          "gflops": 1343.9038,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 107.3,
+          "gflops": 1501.1157,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 231.72,
+          "gflops": 1492.2037,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 51.39,
+          "gflops": 1466.7137,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 62.12,
+          "gflops": 1339.837,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 107.38,
+          "gflops": 1500.0292,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 231.78,
+          "gflops": 1491.8056,
+          "max_error": 0.0
+        }
+      ],
+      "raw_rows_match_record_arrays": true,
+      "suite_pass_counts": [
+        4,
+        4,
+        4
+      ],
+      "total_median_ms": 452.40999999999997,
+      "max_spread_pct": 0.3874717468517838,
+      "reference_only": false,
+      "promotion_allowed": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 control; not a new candidate."
+    },
+    {
+      "version": "C55-row7x3shared3",
+      "status": "passed",
+      "verified": true,
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "machine": {
+        "HOST": "COMPUTE_NODE_1",
+        "ARCH": "aarch64",
+        "NUMA_NODE": "2",
+        "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+        "OMP_NUM_THREADS": "38",
+        "CPU_TARGET": "generic",
+        "compiler_banners": [
+          "gcc (GCC) 10.3.1"
+        ]
+      },
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1582956",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "sample_count": 12,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            55.36,
+            55.47,
+            55.47
+          ],
+          "median_ms": 55.47,
+          "min_ms": 55.36,
+          "max_ms": 55.47,
+          "spread_pct": 0.19830539030106262,
+          "gflops": [
+            1361.4786,
+            1358.8937,
+            1358.9628
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            60.97,
+            60.95,
+            60.96
+          ],
+          "median_ms": 60.96,
+          "min_ms": 60.95,
+          "max_ms": 60.97,
+          "spread_pct": 0.032808398950124704,
+          "gflops": [
+            1365.2288,
+            1365.6504,
+            1365.388
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            111.68,
+            111.64,
+            111.66
+          ],
+          "median_ms": 111.66,
+          "min_ms": 111.64,
+          "max_ms": 111.68,
+          "spread_pct": 0.03582303421100327,
+          "gflops": [
+            1442.295,
+            1442.7704,
+            1442.6042
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            275.28,
+            238.56,
+            238.72
+          ],
+          "median_ms": 238.72,
+          "min_ms": 238.56,
+          "max_ms": 275.28,
+          "spread_pct": 15.382037533512053,
+          "gflops": [
+            1256.0671,
+            1449.4421,
+            1448.4191
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "raw_pass_rows": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 55.36,
+          "gflops": 1361.4786,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 60.97,
+          "gflops": 1365.2288,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 111.68,
+          "gflops": 1442.295,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 275.28,
+          "gflops": 1256.0671,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 55.47,
+          "gflops": 1358.8937,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 60.95,
+          "gflops": 1365.6504,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 111.64,
+          "gflops": 1442.7704,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 238.56,
+          "gflops": 1449.4421,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 55.47,
+          "gflops": 1358.9628,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 60.96,
+          "gflops": 1365.388,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 111.66,
+          "gflops": 1442.6042,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 238.72,
+          "gflops": 1448.4191,
+          "max_error": 0.0
+        }
+      ],
+      "raw_rows_match_record_arrays": true,
+      "suite_pass_counts": [
+        4,
+        4,
+        4
+      ],
+      "total_median_ms": 466.81,
+      "max_spread_pct": 15.382037533512053,
+      "reference_only": false,
+      "promotion_allowed": true,
+      "qualified_for_confirmation": false,
+      "decision_note": "C55 does not meet both C6 gates; retain every sample and C6. No automatic confirmation, promotion or ZIP.",
+      "comparison": {
+        "baseline": "C26-r33",
+        "eligible": false,
+        "reasons": [
+          "\u63d0\u901f -3.13% \u672a\u8d85\u8fc7\u6d4b\u91cf\u6ce2\u52a8/\u6700\u4f4e1%\u95e8\u69db 15.38%",
+          "\u81f3\u5c11\u4e00\u7ec4\u9000\u6b65\u8d85\u8fc71%\uff0c\u9700\u8bc4\u4f30\u5b98\u65b9\u8ba1\u5206\u6743\u91cd\u540e\u518d\u51b3\u5b9a"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.45,
+            "candidate_ms": 55.47,
+            "gain_pct": -7.813411078717193
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.95,
+            "candidate_ms": 60.96,
+            "gain_pct": 1.5980629539951603
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.38,
+            "candidate_ms": 111.66,
+            "gain_pct": -3.985844663810767
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.88,
+            "candidate_ms": 238.72,
+            "gain_pct": -2.9498016215283784
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": -3.1259665090796704,
+        "threshold_pct": 15.382037533512053
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r32",
+        "eligible": false,
+        "reasons": [
+          "\u63d0\u901f -3.18% \u672a\u8d85\u8fc7\u6d4b\u91cf\u6ce2\u52a8/\u6700\u4f4e1%\u95e8\u69db 15.38%",
+          "\u81f3\u5c11\u4e00\u7ec4\u9000\u6b65\u8d85\u8fc71%\uff0c\u9700\u8bc4\u4f30\u5b98\u65b9\u8ba1\u5206\u6743\u91cd\u540e\u518d\u51b3\u5b9a"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.45,
+            "candidate_ms": 55.47,
+            "gain_pct": -7.813411078717193
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.94,
+            "candidate_ms": 60.96,
+            "gain_pct": 1.5821762996448125
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 111.66,
+            "gain_pct": -4.063373718546131
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.72,
+            "candidate_ms": 238.72,
+            "gain_pct": -3.0208872777490074
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": -3.1829535156163735,
+        "threshold_pct": 15.382037533512053
+      },
+      "source_parent_reference_comparison": {
+        "baseline": "C52-r3",
+        "eligible": false,
+        "reasons": [
+          "\u63d0\u901f -6.86% \u672a\u8d85\u8fc7\u6d4b\u91cf\u6ce2\u52a8/\u6700\u4f4e1%\u95e8\u69db 15.38%",
+          "\u81f3\u5c11\u4e00\u7ec4\u9000\u6b65\u8d85\u8fc71%\uff0c\u9700\u8bc4\u4f30\u5b98\u65b9\u8ba1\u5206\u6743\u91cd\u540e\u518d\u51b3\u5b9a"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.74,
+            "candidate_ms": 55.47,
+            "gain_pct": -7.209122535755695
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 58.42,
+            "candidate_ms": 60.96,
+            "gain_pct": -4.347826086956521
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 103.92,
+            "candidate_ms": 111.66,
+            "gain_pct": -7.44803695150115
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 222.77,
+            "candidate_ms": 238.72,
+            "gain_pct": -7.159850967365439
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": -6.8581893098317455,
+        "threshold_pct": 15.382037533512053
+      }
+    },
+    {
+      "version": "C52-r3",
+      "status": "passed",
+      "verified": true,
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "machine": {
+        "HOST": "COMPUTE_NODE_1",
+        "ARCH": "aarch64",
+        "NUMA_NODE": "2",
+        "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+        "OMP_NUM_THREADS": "38",
+        "CPU_TARGET": "generic",
+        "compiler_banners": [
+          "gcc (GCC) 10.3.1"
+        ]
+      },
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1582956",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "sample_count": 12,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.74,
+            51.7,
+            51.78
+          ],
+          "median_ms": 51.74,
+          "min_ms": 51.7,
+          "max_ms": 51.78,
+          "spread_pct": 0.15461925009663371,
+          "gflops": [
+            1456.8187,
+            1457.8066,
+            1455.5657
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.42,
+            58.49,
+            58.42
+          ],
+          "median_ms": 58.42,
+          "min_ms": 58.42,
+          "max_ms": 58.49,
+          "spread_pct": 0.11982197877439282,
+          "gflops": [
+            1424.7096,
+            1423.127,
+            1424.803
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            103.86,
+            103.98,
+            103.92
+          ],
+          "median_ms": 103.92,
+          "min_ms": 103.86,
+          "max_ms": 103.98,
+          "spread_pct": 0.11547344110854942,
+          "gflops": [
+            1550.8842,
+            1549.1131,
+            1549.9874
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            222.73,
+            223.12,
+            222.77
+          ],
+          "median_ms": 222.77,
+          "min_ms": 222.73,
+          "max_ms": 223.12,
+          "spread_pct": 0.17506845625533723,
+          "gflops": [
+            1552.4611,
+            1549.7384,
+            1552.1812
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "raw_pass_rows": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 51.74,
+          "gflops": 1456.8187,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 58.42,
+          "gflops": 1424.7096,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 103.86,
+          "gflops": 1550.8842,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 222.73,
+          "gflops": 1552.4611,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 51.7,
+          "gflops": 1457.8066,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 58.49,
+          "gflops": 1423.127,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 103.98,
+          "gflops": 1549.1131,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 223.12,
+          "gflops": 1549.7384,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 51.78,
+          "gflops": 1455.5657,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 58.42,
+          "gflops": 1424.803,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 103.92,
+          "gflops": 1549.9874,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 222.77,
+          "gflops": 1552.1812,
+          "max_error": 0.0
+        }
+      ],
+      "raw_rows_match_record_arrays": true,
+      "suite_pass_counts": [
+        4,
+        4,
+        4
+      ],
+      "total_median_ms": 436.85,
+      "max_spread_pct": 0.17506845625533723,
+      "reference_only": true,
+      "promotion_allowed": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Same-source C52 background reference for C55. Never qualifies or promotes; Y/S confirmations remain false. This is not a failed Y confirmation retry.",
+      "comparison": {
+        "baseline": "C26-r33",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.45,
+            "candidate_ms": 51.74,
+            "gain_pct": -0.5636540330417865
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.95,
+            "candidate_ms": 58.42,
+            "gain_pct": 5.698143664245361
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.38,
+            "candidate_ms": 103.92,
+            "gain_pct": 3.2222015272862676
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.88,
+            "candidate_ms": 222.77,
+            "gain_pct": 3.928756253234425
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.492687668448714,
+        "threshold_pct": 1.0
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r32",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.45,
+            "candidate_ms": 51.74,
+            "gain_pct": -0.5636540330417865
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.94,
+            "candidate_ms": 58.42,
+            "gain_pct": 5.682918953826277
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.3,
+            "candidate_ms": 103.92,
+            "gain_pct": 3.150046598322456
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.72,
+            "candidate_ms": 222.77,
+            "gain_pct": 3.8624201622647973
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.439358104374339,
+        "threshold_pct": 1.0
+      },
+      "prior_confirmation_version": "C52-r1",
+      "prior_confirmation_passed": false,
+      "prior_confirmation_job": "1582410"
+    },
+    {
+      "version": "C26-r33",
+      "status": "passed",
+      "verified": true,
+      "source_hashes": {
+        "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+        "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+        "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+        "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+      },
+      "machine": {
+        "HOST": "COMPUTE_NODE_1",
+        "ARCH": "aarch64",
+        "NUMA_NODE": "2",
+        "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+        "OMP_NUM_THREADS": "38",
+        "CPU_TARGET": "generic",
+        "compiler_banners": [
+          "gcc (GCC) 10.3.1"
+        ]
+      },
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1582956",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "sample_count": 12,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.5,
+            51.45,
+            51.39
+          ],
+          "median_ms": 51.45,
+          "min_ms": 51.39,
+          "max_ms": 51.5,
+          "spread_pct": 0.21379980563653922,
+          "gflops": [
+            1463.6404,
+            1465.0494,
+            1466.727
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            61.98,
+            61.95,
+            61.86
+          ],
+          "median_ms": 61.95,
+          "min_ms": 61.86,
+          "max_ms": 61.98,
+          "spread_pct": 0.19370460048425736,
+          "gflops": [
+            1342.9437,
+            1343.6316,
+            1345.5037
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            107.39,
+            107.32,
+            107.38
+          ],
+          "median_ms": 107.38,
+          "min_ms": 107.32,
+          "max_ms": 107.39,
+          "spread_pct": 0.06518904823990258,
+          "gflops": [
+            1499.9157,
+            1500.9363,
+            1500.0694
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            231.64,
+            231.97,
+            231.88
+          ],
+          "median_ms": 231.88,
+          "min_ms": 231.64,
+          "max_ms": 231.97,
+          "spread_pct": 0.14231499051233937,
+          "gflops": [
+            1492.7335,
+            1490.6088,
+            1491.176
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "raw_pass_rows": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 51.5,
+          "gflops": 1463.6404,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 61.98,
+          "gflops": 1342.9437,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 107.39,
+          "gflops": 1499.9157,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 231.64,
+          "gflops": 1492.7335,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 51.45,
+          "gflops": 1465.0494,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 61.95,
+          "gflops": 1343.6316,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 107.32,
+          "gflops": 1500.9363,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 231.97,
+          "gflops": 1490.6088,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "time_ms": 51.39,
+          "gflops": 1466.727,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "time_ms": 61.86,
+          "gflops": 1345.5037,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "time_ms": 107.38,
+          "gflops": 1500.0694,
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "time_ms": 231.88,
+          "gflops": 1491.176,
+          "max_error": 0.0
+        }
+      ],
+      "raw_rows_match_record_arrays": true,
+      "suite_pass_counts": [
+        4,
+        4,
+        4
+      ],
+      "total_median_ms": 452.65999999999997,
+      "max_spread_pct": 0.21379980563653922,
+      "reference_only": false,
+      "promotion_allowed": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 control; not a new candidate."
+    }
+  ],
+  "total_samples": 48,
+  "all_48_samples_passed": true,
+  "all_max_errors_zero": true,
+  "all_scheduler_job_system_wrapper_zero": true,
+  "all_checks_true": true,
+  "status_calls": 4,
+  "status_intervals_seconds": [
+    94.474509,
+    85.202986,
+    84.131209
+  ],
+  "status_intervals_at_least45": true,
+  "record_group_exit": 0,
+  "compare_exit": 0,
+  "outer_events": [
+    {
+      "operation": "compare",
+      "argv": [
+        "python3",
+        ".runs/conv/sep13ad-compare.py"
+      ],
+      "job_id": "1582956",
+      "started_at": "2026-09-12T19:09:27.971898+00:00",
+      "ended_at": "2026-09-12T19:09:28.084718+00:00",
+      "exit_code": 0,
+      "stdout": ".runs/conv/sep13ad-lifecycle-compare.stdout.txt",
+      "stderr": ".runs/conv/sep13ad-lifecycle-compare.stderr.txt",
+      "submitted_new_job": false
+    },
+    {
+      "operation": "record",
+      "argv": [
+        "python3",
+        ".runs/conv/sep13ad-record-group.py"
+      ],
+      "job_id": "1582956",
+      "started_at": "2026-09-12T19:09:02.111900+00:00",
+      "ended_at": "2026-09-12T19:09:06.003865+00:00",
+      "exit_code": 0,
+      "stdout": ".runs/conv/sep13ad-lifecycle-record.stdout.txt",
+      "stderr": ".runs/conv/sep13ad-lifecycle-record.stderr.txt",
+      "submitted_new_job": false
+    },
+    {
+      "operation": "status",
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C26-r32"
+      ],
+      "job_id": "1582956",
+      "started_at": "2026-09-12T19:04:08.812601+00:00",
+      "ended_at": "2026-09-12T19:04:09.191029+00:00",
+      "exit_code": 0,
+      "stdout": ".runs/conv/sep13ad-lifecycle-status-001.stdout.txt",
+      "stderr": ".runs/conv/sep13ad-lifecycle-status-001.stderr.txt",
+      "submitted_new_job": false
+    },
+    {
+      "operation": "status",
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C26-r32"
+      ],
+      "job_id": "1582956",
+      "started_at": "2026-09-12T19:05:43.665538+00:00",
+      "ended_at": "2026-09-12T19:05:44.040875+00:00",
+      "exit_code": 0,
+      "stdout": ".runs/conv/sep13ad-lifecycle-status-002.stdout.txt",
+      "stderr": ".runs/conv/sep13ad-lifecycle-status-002.stderr.txt",
+      "submitted_new_job": false
+    },
+    {
+      "operation": "status",
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C26-r32"
+      ],
+      "job_id": "1582956",
+      "started_at": "2026-09-12T19:07:09.243861+00:00",
+      "ended_at": "2026-09-12T19:07:09.623220+00:00",
+      "exit_code": 0,
+      "stdout": ".runs/conv/sep13ad-lifecycle-status-003.stdout.txt",
+      "stderr": ".runs/conv/sep13ad-lifecycle-status-003.stderr.txt",
+      "submitted_new_job": false
+    },
+    {
+      "operation": "status",
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C26-r32"
+      ],
+      "job_id": "1582956",
+      "started_at": "2026-09-12T19:08:33.754429+00:00",
+      "ended_at": "2026-09-12T19:08:34.314674+00:00",
+      "exit_code": 0,
+      "stdout": ".runs/conv/sep13ad-lifecycle-status-004.stdout.txt",
+      "stderr": ".runs/conv/sep13ad-lifecycle-status-004.stderr.txt",
+      "submitted_new_job": false
+    }
+  ],
+  "all_outer_stderr_empty": true,
+  "confirmation_pending": [],
+  "best_retained": "C6",
+  "prior_decisions": {
+    "G_qualified": false,
+    "J_qualified": true,
+    "K_confirmation_passed": false,
+    "N_reference_only": true,
+    "N_promotion_allowed": false,
+    "N_qualified": false,
+    "N_reference_job": "1581459",
+    "original_versions": [
+      "C40-row6x3u1",
+      "C40-r1",
+      "C40-r2",
+      "C40-r3"
+    ],
+    "R_reference_only": true,
+    "R_promotion_allowed": false,
+    "R_qualified": false,
+    "R_reference_job": "1581911",
+    "S_confirmation_passed": false,
+    "S_confirmation_job": "1582067",
+    "C51_reference_only": true,
+    "C51_promotion_allowed": false,
+    "C51_qualified": false,
+    "failed_S_confirmation_retried": false,
+    "W_C51_reference_only": true,
+    "W_C51_promotion_allowed": false,
+    "W_C51_qualified": false,
+    "W_reference_job": "1582256",
+    "C51_confirmation_retried": false,
+    "Y_confirmation_passed": false,
+    "Y_confirmation_job": "1582410",
+    "C52_reference_only": true,
+    "C52_promotion_allowed": false,
+    "C52_qualified": false,
+    "failed_Y_confirmation_retried": false,
+    "AB_job": "1582814",
+    "AB_C54_qualified": false,
+    "AB_C52_reference_only": true,
+    "AB_C52_promotion_allowed": false,
+    "AB_C52_qualified": false
+  },
+  "prior_decisions_unchanged": true,
+  "automatic_confirmation": false,
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "source_or_final_tools_modified": false,
+  "root_submit_origin": ".runs/conv/sep13ad-lifecycle-submit-origin.json",
+  "root_submit_files": [
+    ".runs/conv/sep13ad-root-submit.stdout.txt",
+    ".runs/conv/sep13ad-root-submit.stderr.txt",
+    ".runs/conv/sep13ad-root-submit.exit.txt"
+  ],
+  "outer_evidence_files": [
+    ".runs/conv/sep13ad-lifecycle-compare.json",
+    ".runs/conv/sep13ad-lifecycle-compare.stderr.txt",
+    ".runs/conv/sep13ad-lifecycle-compare.stdout.txt",
+    ".runs/conv/sep13ad-lifecycle-record.json",
+    ".runs/conv/sep13ad-lifecycle-record.stderr.txt",
+    ".runs/conv/sep13ad-lifecycle-record.stdout.txt",
+    ".runs/conv/sep13ad-lifecycle-status-001.json",
+    ".runs/conv/sep13ad-lifecycle-status-001.stderr.txt",
+    ".runs/conv/sep13ad-lifecycle-status-001.stdout.txt",
+    ".runs/conv/sep13ad-lifecycle-status-002.json",
+    ".runs/conv/sep13ad-lifecycle-status-002.stderr.txt",
+    ".runs/conv/sep13ad-lifecycle-status-002.stdout.txt",
+    ".runs/conv/sep13ad-lifecycle-status-003.json",
+    ".runs/conv/sep13ad-lifecycle-status-003.stderr.txt",
+    ".runs/conv/sep13ad-lifecycle-status-003.stdout.txt",
+    ".runs/conv/sep13ad-lifecycle-status-004.json",
+    ".runs/conv/sep13ad-lifecycle-status-004.stderr.txt",
+    ".runs/conv/sep13ad-lifecycle-status-004.stdout.txt",
+    ".runs/conv/sep13ad-lifecycle-submit-origin.json",
+    ".runs/conv/sep13ad-lifecycle-summary.json",
+    ".runs/conv/sep13ad-lifecycle-summary.md"
+  ],
+  "standard_record_fetch_driver_files": [
+    ".runs/conv/C26-r32/status-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C26-r32/fetch-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C55-row7x3shared3/status-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C55-row7x3shared3/fetch-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C52-r3/status-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C52-r3/fetch-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C26-r33/status-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C26-r33/fetch-driver-sep13ad-20260912T190902235183Z.log"
+  ],
+  "member_artifact_files": [
+    ".runs/conv/C26-r32/benchmark.log",
+    ".runs/conv/C26-r32/cluster.json",
+    ".runs/conv/C26-r32/environment.log",
+    ".runs/conv/C26-r32/evidence/benchmark.log",
+    ".runs/conv/C26-r32/evidence/scheduler-status.txt",
+    ".runs/conv/C26-r32/exit-code.txt",
+    ".runs/conv/C26-r32/experiment.json",
+    ".runs/conv/C26-r32/fetch-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C26-r32/fetch.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030246-Vqwwv6/build.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030246-Vqwwv6/case-1.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030246-Vqwwv6/case-2.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030246-Vqwwv6/case-3.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030246-Vqwwv6/case-4.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030246-Vqwwv6/conv2d_test",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030246-Vqwwv6/environment.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030246-Vqwwv6/summary.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030310-JrccqX/build.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030310-JrccqX/case-1.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030310-JrccqX/case-2.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030310-JrccqX/case-3.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030310-JrccqX/case-4.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030310-JrccqX/conv2d_test",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030310-JrccqX/environment.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030310-JrccqX/summary.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030335-DdtxHn/build.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030335-DdtxHn/case-1.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030335-DdtxHn/case-2.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030335-DdtxHn/case-3.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030335-DdtxHn/case-4.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030335-DdtxHn/conv2d_test",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030335-DdtxHn/environment.log",
+    ".runs/conv/C26-r32/remote-results/run-20260913-030335-DdtxHn/summary.log",
+    ".runs/conv/C26-r32/scheduler-status.txt",
+    ".runs/conv/C26-r32/source-sha256.txt",
+    ".runs/conv/C26-r32/status-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C26-r32/submit.log",
+    ".runs/conv/C26-r32/upload.log",
+    ".runs/conv/C55-row7x3shared3/BOUNDARY_MATRIX.md",
+    ".runs/conv/C55-row7x3shared3/COMMANDS.md",
+    ".runs/conv/C55-row7x3shared3/INDEPENDENT_SOURCE_REVIEW.md",
+    ".runs/conv/C55-row7x3shared3/PLAN.md",
+    ".runs/conv/C55-row7x3shared3/STATIC_REVIEW.md",
+    ".runs/conv/C55-row7x3shared3/benchmark.log",
+    ".runs/conv/C55-row7x3shared3/candidate.patch",
+    ".runs/conv/C55-row7x3shared3/cluster.json",
+    ".runs/conv/C55-row7x3shared3/commands-final-source-audit-result.json",
+    ".runs/conv/C55-row7x3shared3/commands-final-source-audit.txt",
+    ".runs/conv/C55-row7x3shared3/commands-new-command.txt",
+    ".runs/conv/C55-row7x3shared3/commands-new-result.json",
+    ".runs/conv/C55-row7x3shared3/commands-prepare-command.txt",
+    ".runs/conv/C55-row7x3shared3/commands-prepare-result.json",
+    ".runs/conv/C55-row7x3shared3/commands-prepare-tool-result.json",
+    ".runs/conv/C55-row7x3shared3/commands-prepare.stderr.txt",
+    ".runs/conv/C55-row7x3shared3/commands-prepare.stdout.txt",
+    ".runs/conv/C55-row7x3shared3/environment.log",
+    ".runs/conv/C55-row7x3shared3/evidence/benchmark.log",
+    ".runs/conv/C55-row7x3shared3/evidence/scheduler-status.txt",
+    ".runs/conv/C55-row7x3shared3/exit-code.txt",
+    ".runs/conv/C55-row7x3shared3/experiment.json",
+    ".runs/conv/C55-row7x3shared3/fetch-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C55-row7x3shared3/fetch.log",
+    ".runs/conv/C55-row7x3shared3/prepare-source.py",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/ORIGINS.json",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/ORIGINS.md",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/freeze-execution/sep13ac-root-freeze.exit.txt",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/freeze-execution/sep13ac-root-freeze.stderr.txt",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/freeze-execution/sep13ac-root-freeze.stdout.txt",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/preparation/AA-to-AC.patch",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/preparation/INDEPENDENT_TOOLS_REVIEW.md",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/preparation/PREPARATION_COMMANDS.md",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/preparation/PREPARED_FILES.json",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/preparation/ROOT_REVIEW.md",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/preparation/STATIC_REVIEW.md",
+    ".runs/conv/C55-row7x3shared3/publication-sep13ac-attachments/preparation/SUBMISSION_INTERFACE.md",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030401-S4odY3/build.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030401-S4odY3/case-1.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030401-S4odY3/case-2.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030401-S4odY3/case-3.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030401-S4odY3/case-4.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030401-S4odY3/conv2d_test",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030401-S4odY3/environment.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030401-S4odY3/summary.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030426-7Awyx9/build.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030426-7Awyx9/case-1.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030426-7Awyx9/case-2.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030426-7Awyx9/case-3.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030426-7Awyx9/case-4.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030426-7Awyx9/conv2d_test",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030426-7Awyx9/environment.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030426-7Awyx9/summary.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030451-snY5ok/build.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030451-snY5ok/case-1.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030451-snY5ok/case-2.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030451-snY5ok/case-3.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030451-snY5ok/case-4.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030451-snY5ok/conv2d_test",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030451-snY5ok/environment.log",
+    ".runs/conv/C55-row7x3shared3/remote-results/run-20260913-030451-snY5ok/summary.log",
+    ".runs/conv/C55-row7x3shared3/scheduler-status.txt",
+    ".runs/conv/C55-row7x3shared3/source-audit.json",
+    ".runs/conv/C55-row7x3shared3/source-sha256.txt",
+    ".runs/conv/C55-row7x3shared3/status-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C55-row7x3shared3/submit.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/HELPER_REVIEW.md",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/assembly-dispatch-review.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/assembly-helper-review.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/assembly-review.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/assembly-source.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/diagnostic-INTERFACE.md",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/diagnostic-accept_returned.py",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/diagnostic-driver.py",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/diagnostic-freeze_returned.py",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/freeze-source.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/gate-20260912T184922714771Z.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/helper-text-counts.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/job.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/prepared.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/build-assembly.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/build-dispatch.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/build-guard.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/candidate.env",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/check_conv_guard.c",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/check_sve_dispatch.c",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/compiler-version.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/conv2d-sve.assembly.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/conv2d-sve.s",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/conv2d.c",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/dispatch-vl16-t1.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/dispatch-vl16-t4.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/dispatch-vl32-t1.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/dispatch-vl32-t4.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/dispatch-vl64-t1.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/dispatch-vl64-t4.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/exit-code.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/guard-vl16-t1.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/guard-vl16-t4.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/guard-vl32-t1.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/guard-vl32-t4.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/guard-vl64-t1.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/guard-vl64-t4.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/probe.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/remote_job.sh",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/source-sha256.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/stage-exits.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/wrapper.stdout.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/root-accept.exit.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/root-accept.stderr.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/root-accept.stdout.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/root-submit-decision.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/root-submit.exit.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/root-submit.stderr.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/root-submit.stdout.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/scheduler.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/sep13ac-fetch.exit.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/sep13ac-fetch.stderr.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/sep13ac-fetch.stdout.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/sep13ac-lifecycle-summary.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/sep13ac-status-1.exit.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/sep13ac-status-1.stderr.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/sep13ac-status-1.stdout.txt",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/source-hashes.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/source-manifest.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/submit.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/upload.log",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/validation.json",
+    ".runs/conv/C55-row7x3shared3/upload.log",
+    ".runs/conv/C52-r3/benchmark.log",
+    ".runs/conv/C52-r3/cluster.json",
+    ".runs/conv/C52-r3/environment.log",
+    ".runs/conv/C52-r3/evidence/benchmark.log",
+    ".runs/conv/C52-r3/evidence/scheduler-status.txt",
+    ".runs/conv/C52-r3/exit-code.txt",
+    ".runs/conv/C52-r3/experiment.json",
+    ".runs/conv/C52-r3/fetch-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C52-r3/fetch.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030519-KOkhcs/build.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030519-KOkhcs/case-1.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030519-KOkhcs/case-2.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030519-KOkhcs/case-3.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030519-KOkhcs/case-4.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030519-KOkhcs/conv2d_test",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030519-KOkhcs/environment.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030519-KOkhcs/summary.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030544-wkUOag/build.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030544-wkUOag/case-1.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030544-wkUOag/case-2.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030544-wkUOag/case-3.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030544-wkUOag/case-4.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030544-wkUOag/conv2d_test",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030544-wkUOag/environment.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030544-wkUOag/summary.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030609-SC77Xy/build.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030609-SC77Xy/case-1.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030609-SC77Xy/case-2.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030609-SC77Xy/case-3.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030609-SC77Xy/case-4.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030609-SC77Xy/conv2d_test",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030609-SC77Xy/environment.log",
+    ".runs/conv/C52-r3/remote-results/run-20260913-030609-SC77Xy/summary.log",
+    ".runs/conv/C52-r3/scheduler-status.txt",
+    ".runs/conv/C52-r3/source-sha256.txt",
+    ".runs/conv/C52-r3/status-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C52-r3/submit.log",
+    ".runs/conv/C52-r3/upload.log",
+    ".runs/conv/C26-r33/benchmark.log",
+    ".runs/conv/C26-r33/cluster.json",
+    ".runs/conv/C26-r33/environment.log",
+    ".runs/conv/C26-r33/evidence/benchmark.log",
+    ".runs/conv/C26-r33/evidence/scheduler-status.txt",
+    ".runs/conv/C26-r33/exit-code.txt",
+    ".runs/conv/C26-r33/experiment.json",
+    ".runs/conv/C26-r33/fetch-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C26-r33/fetch.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030636-SraBF7/build.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030636-SraBF7/case-1.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030636-SraBF7/case-2.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030636-SraBF7/case-3.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030636-SraBF7/case-4.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030636-SraBF7/conv2d_test",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030636-SraBF7/environment.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030636-SraBF7/summary.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030700-DZdZkf/build.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030700-DZdZkf/case-1.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030700-DZdZkf/case-2.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030700-DZdZkf/case-3.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030700-DZdZkf/case-4.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030700-DZdZkf/conv2d_test",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030700-DZdZkf/environment.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030700-DZdZkf/summary.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030725-b3Gwlc/build.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030725-b3Gwlc/case-1.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030725-b3Gwlc/case-2.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030725-b3Gwlc/case-3.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030725-b3Gwlc/case-4.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030725-b3Gwlc/conv2d_test",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030725-b3Gwlc/environment.log",
+    ".runs/conv/C26-r33/remote-results/run-20260913-030725-b3Gwlc/summary.log",
+    ".runs/conv/C26-r33/scheduler-status.txt",
+    ".runs/conv/C26-r33/source-sha256.txt",
+    ".runs/conv/C26-r33/status-driver-sep13ad-20260912T190902235183Z.log",
+    ".runs/conv/C26-r33/submit.log",
+    ".runs/conv/C26-r33/upload.log"
+  ],
+  "campaign": ".runs/conv/sep13ad-campaign.json",
+  "record_files": [
+    "records/experiments/conv/C26-r32.json",
+    "records/experiments/conv/C55-row7x3shared3.json",
+    "records/experiments/conv/C52-r3.json",
+    "records/experiments/conv/C26-r33.json"
+  ],
+  "issues": [],
+  "new_job_submitted_by_lifecycle_worker": false,
+  "reset_card_used": false,
+  "note": "One original AD job; all48 original rows/case arrays retained, including C55 D275.28. First record and compare succeeded. Initial qualification false is a performance result, not an operator correctness failure. No retry, confirmation, package or promotion."
+}

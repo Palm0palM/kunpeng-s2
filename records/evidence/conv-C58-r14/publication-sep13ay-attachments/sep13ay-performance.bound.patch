@@ -1,0 +1,15 @@
+--- AY/unbound
++++ AY/bound
+@@ -14,9 +14,9 @@
+ def baseline():
+  need(e.read_json(ROOT/'outputs/conv-best.json')['label']=='C7' and e.read_json(ROOT/'records/best.json')['conv']=='C58-r1','Current C7')
+  source=e.source_files(ROOT/'conv');need(source==e.get_record('conv','C58-r1')['source_hashes'],'Current measured C7 source');return source
+-AX_JOB_ID=None  # REQUIRED: root binds actual original AX job.
+-EXPECTED_DIAGNOSTIC_CASES=None  # REQUIRED: actual accepted AX total, including new38-thread/coverage tests.
+-EXPECTED_SOURCE_SHA256=None  # REQUIRED: actual reviewed C65 production source.
++AX_JOB_ID='1591086'  # REQUIRED: root binds actual original AX job.
++EXPECTED_DIAGNOSTIC_CASES=80100  # REQUIRED: actual accepted AX total, including new38-thread/coverage tests.
++EXPECTED_SOURCE_SHA256='a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874'  # REQUIRED: actual reviewed C65 production source.
+ def diagnostic():
+  need(isinstance(AX_JOB_ID,str) and AX_JOB_ID.isdigit(),'Actual original AX job not yet bound')
+  need(type(EXPECTED_DIAGNOSTIC_CASES) is int and EXPECTED_DIAGNOSTIC_CASES>0,'Actual AX diagnostic total not yet bound')

@@ -1,0 +1,7 @@
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~

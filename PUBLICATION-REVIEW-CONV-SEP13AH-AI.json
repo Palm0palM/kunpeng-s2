@@ -1,0 +1,128 @@
+{
+  "created_at": "2026-09-12T20:37:09.500452+00:00",
+  "scope": "Lightweight original-copy/metadata/privacy check; no computation or network",
+  "exporter_tool_chunk": "4f0ee6",
+  "exporter_exit_code": 0,
+  "versions": [
+    "C26-r36",
+    "C58-row7boundaryu2",
+    "C26-r37"
+  ],
+  "exported_evidence_files": 257,
+  "attachment_copies": 42,
+  "attachment_directory_files": 44,
+  "manifest": "records/conv-sep13ah-ai-publication.json",
+  "public_table": "docs/CONV_SEP13AH_AI_RECORDS.md",
+  "notice": "PUBLICATION-CONV-SEP13AH-AI.md",
+  "hash_errors": [],
+  "json_numeric_boolean_files_checked": 47,
+  "json_numeric_boolean_errors": [],
+  "missing_attachments_or_internal_logs": [],
+  "privacy_findings": [],
+  "records": [
+    {
+      "version": "C26-r36",
+      "cases_equal": true,
+      "source_hashes_equal": true,
+      "source_parent_equal": true,
+      "diagnostic_source_fields_equal": true,
+      "sample_count": 12,
+      "total_median_ms": 452.40999999999997,
+      "qualified_for_confirmation": false,
+      "conv2d_source_sha256": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21"
+    },
+    {
+      "version": "C58-row7boundaryu2",
+      "cases_equal": true,
+      "source_hashes_equal": true,
+      "source_parent_equal": true,
+      "diagnostic_source_fields_equal": true,
+      "sample_count": 12,
+      "total_median_ms": 437.56,
+      "qualified_for_confirmation": true,
+      "conv2d_source_sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751"
+    },
+    {
+      "version": "C26-r37",
+      "cases_equal": true,
+      "source_hashes_equal": true,
+      "source_parent_equal": true,
+      "diagnostic_source_fields_equal": true,
+      "sample_count": 12,
+      "total_median_ms": 452.41999999999996,
+      "qualified_for_confirmation": false,
+      "conv2d_source_sha256": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21"
+    }
+  ],
+  "total_samples": 36,
+  "candidate_qualified_for_confirmation": true,
+  "confirmation_passed": null,
+  "best_retained": "C6",
+  "generated_table_label": "Initial eligibility only, awaiting independent confirmation; not promotion",
+  "assembly_text_present": true,
+  "skipped": [
+    {
+      "version": "C26-r36",
+      "path": "remote-results/run-20260913-042705-xYru1c/conv2d_test",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C26-r36",
+      "path": "remote-results/run-20260913-042729-D3jlJx/conv2d_test",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C26-r36",
+      "path": "remote-results/run-20260913-042753-SMFBnQ/conv2d_test",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C58-row7boundaryu2",
+      "path": "remote-results/run-20260913-042820-IrxXIT/conv2d_test",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C58-row7boundaryu2",
+      "path": "remote-results/run-20260913-042845-IUNI67/conv2d_test",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C58-row7boundaryu2",
+      "path": "remote-results/run-20260913-042910-sBo6cO/conv2d_test",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C58-row7boundaryu2",
+      "path": "sve-correctness-sep13ah/raw/candidate.env",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C58-row7boundaryu2",
+      "path": "sve-correctness-sep13ah/raw/conv2d-sve.s",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C26-r37",
+      "path": "remote-results/run-20260913-042938-7kzrwl/conv2d_test",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C26-r37",
+      "path": "remote-results/run-20260913-043002-7zINZ8/conv2d_test",
+      "reason": "非文本白名单或超过2MiB"
+    },
+    {
+      "version": "C26-r37",
+      "path": "remote-results/run-20260913-043026-5gQG7f/conv2d_test",
+      "reason": "非文本白名单或超过2MiB"
+    }
+  ],
+  "jsonl_found": [],
+  "raw_env_skipped_note": "candidate.env outside whitelist; source-manifest/summary/raw wrapper preserve identity/constants. .s has an existing assembly.txt byte copy.",
+  "root_docs_not_copied": [
+    "docs/CONV_SEP13AH.md",
+    "docs/CONV_SEP13AI.md"
+  ],
+  "original_source_record_freeze_best_zip_git_or_network_modified": false,
+  "reset_card_used": false
+}

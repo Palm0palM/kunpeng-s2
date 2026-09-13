@@ -1,0 +1,1392 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C46-row5x5asmfix",
+  "job_id": "1579795",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579795",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "expected_checks": {
+    "full_per_configuration": 3776,
+    "dispatch_per_configuration": 504,
+    "direct_per_configuration": 288,
+    "configurations": 6,
+    "total": 27408
+  },
+  "total_cases": 27408,
+  "full_cases": 22656,
+  "dispatch_cases": 3024,
+  "direct_cases": 1728,
+  "runner_cases": 0,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 20,
+      "full_cases": 3776,
+      "dispatch_cases": 504,
+      "direct_cases": 288,
+      "helper_entries": {
+        "prefix": 3513,
+        "tail": 3513,
+        "rowpair": 96,
+        "rowtriple": 738,
+        "rowquad": 780
+      },
+      "passed": true,
+      "dispatch_entries": 528,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 720,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 20,
+      "full_cases": 3776,
+      "dispatch_cases": 504,
+      "direct_cases": 288,
+      "helper_entries": {
+        "prefix": 3513,
+        "tail": 3513,
+        "rowpair": 96,
+        "rowtriple": 738,
+        "rowquad": 780
+      },
+      "passed": true,
+      "dispatch_entries": 528,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 720,
+      "direct_worker_mask": 15
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 40,
+      "full_cases": 3776,
+      "dispatch_cases": 504,
+      "direct_cases": 288,
+      "helper_entries": {
+        "prefix": 3513,
+        "tail": 3513,
+        "rowpair": 96,
+        "rowtriple": 738,
+        "rowquad": 780
+      },
+      "passed": true,
+      "dispatch_entries": 528,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 720,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 40,
+      "full_cases": 3776,
+      "dispatch_cases": 504,
+      "direct_cases": 288,
+      "helper_entries": {
+        "prefix": 3513,
+        "tail": 3513,
+        "rowpair": 96,
+        "rowtriple": 738,
+        "rowquad": 780
+      },
+      "passed": true,
+      "dispatch_entries": 528,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 720,
+      "direct_worker_mask": 15
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 80,
+      "full_cases": 3776,
+      "dispatch_cases": 504,
+      "direct_cases": 288,
+      "helper_entries": {
+        "prefix": 3513,
+        "tail": 3513,
+        "rowpair": 96,
+        "rowtriple": 738,
+        "rowquad": 780
+      },
+      "passed": true,
+      "dispatch_entries": 528,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 720,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 80,
+      "full_cases": 3776,
+      "dispatch_cases": 504,
+      "direct_cases": 288,
+      "helper_entries": {
+        "prefix": 3513,
+        "tail": 3513,
+        "rowpair": 96,
+        "rowtriple": 738,
+        "rowquad": 780
+      },
+      "passed": true,
+      "dispatch_entries": 528,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 720,
+      "direct_worker_mask": 15
+    }
+  ],
+  "source_hashes": {
+    "candidate.env": "58d527e2ac1e4cd0504ebdebfb559b4a9e872a6df0a1103c4edce7a2dd3a2ae2",
+    "check_conv_guard.c": "dd603a5b3e6060f848b67ef0fb7c27235aca915da7800c26d8f43280504199b1",
+    "check_sve_dispatch.c": "da40cf39877f8e5c9ded8c0726e3045473755443ffb104c55bf9a8e183ecaa15",
+    "conv2d.c": "a04c74c8701c394fd620d9fa91d421898cf4aa2b7c96b87de21cf301cd4e2e8d",
+    "remote_job.sh": "ef7ffba8efef9057f0707f6cc2c946948ffec6185c9424f611df00c3c802f2a4"
+  },
+  "source_hashes_verified": true,
+  "source_manifest_remote_matches": true,
+  "extra_manual_hash_audit": false,
+  "compiler_version": "10.3.1",
+  "build_commands": {
+    "commands": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=5",
+        "check_conv_guard.c",
+        "conv2d.c",
+        "-o",
+        "check_conv_guard"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=5",
+        "-finstrument-functions",
+        "check_sve_dispatch.c",
+        "-o",
+        "check_sve_dispatch"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=5",
+        "-S",
+        "conv2d.c",
+        "-o",
+        "conv2d-sve.s"
+      ]
+    ],
+    "actual_trace_locations": {
+      "probe.log": [
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=5",
+          "check_conv_guard.c",
+          "conv2d.c",
+          "-o",
+          "check_conv_guard"
+        ],
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=5",
+          "-finstrument-functions",
+          "check_sve_dispatch.c",
+          "-o",
+          "check_sve_dispatch"
+        ],
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=5",
+          "-S",
+          "conv2d.c",
+          "-o",
+          "conv2d-sve.s"
+        ]
+      ],
+      "build-guard.log": [],
+      "build-dispatch.log": [],
+      "build-assembly.log": []
+    }
+  },
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "allocation": {
+    "cpus": [
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151
+    ],
+    "numa_node": "node3"
+  },
+  "assembly": {
+    "candidate": "C46-row5x5asmfix",
+    "job_id": "1579795",
+    "source_sha256": "a04c74c8701c394fd620d9fa91d421898cf4aa2b7c96b87de21cf301cd4e2e8d",
+    "compiler_version": "10.3.1",
+    "assembly_sha256": "54d31274376af1e7a508c9d93ab408b2f0161f7fa13062358cb08a3ed32acd6f",
+    "review_scope": "Actual helper-only fragment from returned uninstrumented production -S artifact. Bohr independently supplies explicit-asm operand/liveness proof and conv2d/outlined-dispatch review before Avicenna merges and accepts. This fragment does not claim a retained production-object review or performance improvement.",
+    "review_complete": true,
+    "production_uninstrumented": true,
+    "whole_helper_stack_reviewed": true,
+    "all_stages_and_transitions_reviewed": true,
+    "abi_saves_distinguished": true,
+    "whole_source_fma_count": 0,
+    "whole_source_fma_reviewed": true,
+    "production_object_disassembly_available": false,
+    "production_build_evidence": "raw/probe.log records actual GCC 10.3.1 argv, including -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=5 -S conv2d.c -o conv2d-sve.s. Guard+candidate are separate TUs; only the separate dispatch build has -finstrument-functions. The compiler banner and .ident agree. No production object was retained by this wrapper.",
+    "helpers": [
+      {
+        "symbol": "conv_sve_rowquint",
+        "line_start": 5890,
+        "line_end": 6997,
+        "actual_clones": [],
+        "stack_frame_description": "SUB sp,sp,#640 at5893 gives a fixed640-byte frame; there is no ADDVL/RDVL scalable allocation. STP/LDP d8,d9 atsp+112, d10,d11 at+128, d12,d13 at+144 and d14,d15 at+160 preserve ABI low64-bit values. The remaining stack accesses are X/W register saves, scalar dimensions, input/kernel/output pointer locals and outgoing scalar call arguments.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_count_scope": "Static Z/Q/predicate data-spill instruction sites in the complete actual helper including all setup, transitions, skipped-loop initialization, output stores and both fallback paths. ABI D-register saves/restores are excluded; these numbers are not dynamic memory-operation counts.",
+        "spill_notes": "No Z/Q LDR/STR, no predicate spill and no vector LD/ST through a stack-derived address were found in5890..6997. The only constructed SP alias is x29=sp+16, which never becomes a vector-memory base. Integer LDR/LDP reload external pointers from fixed slots: input-row bases atsp+184..312 and+464..600, kernel bases at+432..456/+512/+608..624, and output pointers at+392..424. Their provenance is input/kernel/dst arguments plus row/column offsets, not the stack locations themselves. All45 LD1W and25 LD1RW static sites in the nine loops use those external pointers; the25 ST1W sites at6684..6740 target the five output rows. Four vector MOV instructions in shared are register-to-register relocations, not spills.",
+        "spill_slot_mapping": [],
+        "accumulator_register_mapping_after_shared_iteration": {
+          "a": [
+            "z21",
+            "z22",
+            "z23",
+            "z20",
+            "z17"
+          ],
+          "b": [
+            "z14",
+            "z13",
+            "z18",
+            "z19",
+            "z16"
+          ],
+          "c": [
+            "z24",
+            "z25",
+            "z26",
+            "z27",
+            "z7"
+          ],
+          "d": [
+            "z28",
+            "z29",
+            "z30",
+            "z31",
+            "z6"
+          ],
+          "e": [
+            "z8",
+            "z9",
+            "z10",
+            "z11",
+            "z5"
+          ]
+        },
+        "transition_spill_review": "Read the entire helper5890..6997, not only its arithmetic loops. Entry5970..6125 constructs external input/kernel pointers and integer locals; leading stage exits6167..6183,6218..6231 and6278..6290 initialize the next output row without vector stack traffic. .L408 at6349 initializes e and sets t=4; .L418 at6371 enters shared. Kernel pointers x4/x5/x6/x7/x11 initially represent rows4/3/2/1/0, advance by x13=4*kw at6478..6482, and input row pointers advance by x14=4*stride at6483..6486. t increments once at6477 and .L418 repeats until kh. At shared entry/exit the25 acc remain in registers; n0 temporarily relocates b0 fromz14 toz12, restores it, then n1 similarly relocates b1 fromz13 toz12 and restores it. The trailing stages6490..6673 read their final kernel rows in order with no spill/reload between phases. .L419 at6674 emits25 full-vector output stores before horizontal pointers advance. .L429 at6843 supplies zero-valued accumulators when kw<=0 and rejoins .L408; it does not materialize stack-resident vectors. No live output accumulator crosses a fallback call.",
+        "tail_and_fallback_review": "Entry CMP w3,4 / BLE .L405 implements kh<5 before leading-row pointer construction or arithmetic. .L4056947..6979 calls rowquad for outputs0..3 with original width, then tail-branches prefix for output4 at base+4*stride. Full horizontal tiles are gated by CNTW mul#5 and ow-i>=5*lanes; INCW mul#5 at6725 advances exactly that tile width. .L4496980..6994 initializes i=0 for ow<5*lanes, then .L407 compares ow with i. .L4506886..6946 handles any remaining0<ow-i<5*lanes by rowquad at column i for the first four rows and prefix at input row4, column i for the fifth row; dst pointers retain their external row spacing. It restores the frame before the prefix tail branch. The vector-using path restores d8..d15 before entering .L407; width-small and kh<5 paths branch before those saves and do not restore unsaved D registers. Every phase is a single-column loop starting ik=0 and incrementing by1, with CMP/BGT against kw; odd/even kw and kw=1 use the same loop, with no paired/quartet remainder or wide coefficient read. The final loaded horizontal vector starts at i+4*lanes+ik and ends at i+5*lanes+ik-1; the full-tile condition and ik<kw bound it by ow+kw-2. The last input row is kh+3, needed by output row4. Per-output kernel rows and columns remain increasing, with separate FMUL then FADD.",
+        "stages": [
+          {
+            "stage": "input_0",
+            "label": ".L409",
+            "line_start": 6146,
+            "line_end": 6166,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row 0 / kernel row 0 -> output a, horizontal vectors 0..4.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate stack access in this actual loop. All LD1W addresses derive from external input-row pointers, and LD1RW addresses derive from external kernel-row pointers. Whole-helper setup, transitions, final stores and fallback were also reviewed independently of these loop ranges.",
+            "observed_counts": {
+              "instructions": 20,
+              "fmul": 5,
+              "fmul_ordinary": 5,
+              "fmul_indexed": 0,
+              "fadd": 5,
+              "ld1w": 5,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 20,
+              "fmul": 5,
+              "fmul_ordinary": 5,
+              "fmul_indexed": 0,
+              "fadd": 5,
+              "ld1w": 5,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_1",
+            "label": ".L411",
+            "line_start": 6184,
+            "line_end": 6217,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row 1 / kernel rows 1,0 -> outputs a,b, horizontal vectors 0..4.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate stack access in this actual loop. All LD1W addresses derive from external input-row pointers, and LD1RW addresses derive from external kernel-row pointers. Whole-helper setup, transitions, final stores and fallback were also reviewed independently of these loop ranges.",
+            "observed_counts": {
+              "instructions": 33,
+              "fmul": 10,
+              "fmul_ordinary": 10,
+              "fmul_indexed": 0,
+              "fadd": 10,
+              "ld1w": 5,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 33,
+              "fmul": 10,
+              "fmul_ordinary": 10,
+              "fmul_indexed": 0,
+              "fadd": 10,
+              "ld1w": 5,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_2",
+            "label": ".L413",
+            "line_start": 6232,
+            "line_end": 6277,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row 2 / kernel rows 2,1,0 -> outputs a,b,c, horizontal vectors 0..4.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate stack access in this actual loop. All LD1W addresses derive from external input-row pointers, and LD1RW addresses derive from external kernel-row pointers. Whole-helper setup, transitions, final stores and fallback were also reviewed independently of these loop ranges.",
+            "observed_counts": {
+              "instructions": 45,
+              "fmul": 15,
+              "fmul_ordinary": 15,
+              "fmul_indexed": 0,
+              "fadd": 15,
+              "ld1w": 5,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 45,
+              "fmul": 15,
+              "fmul_ordinary": 15,
+              "fmul_indexed": 0,
+              "fadd": 15,
+              "ld1w": 5,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_3",
+            "label": ".L415",
+            "line_start": 6291,
+            "line_end": 6348,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row 3 / kernel rows 3,2,1,0 -> outputs a,b,c,d, horizontal vectors 0..4.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate stack access in this actual loop. All LD1W addresses derive from external input-row pointers, and LD1RW addresses derive from external kernel-row pointers. Whole-helper setup, transitions, final stores and fallback were also reviewed independently of these loop ranges.",
+            "observed_counts": {
+              "instructions": 57,
+              "fmul": 20,
+              "fmul_ordinary": 20,
+              "fmul_indexed": 0,
+              "fadd": 20,
+              "ld1w": 5,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 57,
+              "fmul": 20,
+              "fmul_ordinary": 20,
+              "fmul_indexed": 0,
+              "fadd": 20,
+              "ld1w": 5,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "shared",
+            "label": ".L417",
+            "line_start": 6377,
+            "line_end": 6475,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row t=4..kh-1 / kernel rows t,t-1,t-2,t-3,t-4 -> outputs a,b,c,d,e; each loop advances ik by one. Five actual inline-asm blocks consume input vectors 0..4 in order.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate stack access in this actual loop. All LD1W addresses derive from external input-row pointers, and LD1RW addresses derive from external kernel-row pointers. Whole-helper setup, transitions, final stores and fallback were also reviewed independently of these loop ranges.",
+            "observed_counts": {
+              "instructions": 73,
+              "fmul": 25,
+              "fmul_ordinary": 25,
+              "fmul_indexed": 0,
+              "fadd": 25,
+              "ld1w": 5,
+              "ld1rw": 5,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 4
+            },
+            "derived_counts": {
+              "instructions": 73,
+              "fmul": 25,
+              "fmul_ordinary": 25,
+              "fmul_indexed": 0,
+              "fadd": 25,
+              "ld1w": 5,
+              "ld1rw": 5,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_0",
+            "label": ".L420",
+            "line_start": 6499,
+            "line_end": 6556,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh / kernel rows kh-1,kh-2,kh-3,kh-4 -> outputs b,c,d,e, horizontal vectors 0..4.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate stack access in this actual loop. All LD1W addresses derive from external input-row pointers, and LD1RW addresses derive from external kernel-row pointers. Whole-helper setup, transitions, final stores and fallback were also reviewed independently of these loop ranges.",
+            "observed_counts": {
+              "instructions": 57,
+              "fmul": 20,
+              "fmul_ordinary": 20,
+              "fmul_indexed": 0,
+              "fadd": 20,
+              "ld1w": 5,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 57,
+              "fmul": 20,
+              "fmul_ordinary": 20,
+              "fmul_indexed": 0,
+              "fadd": 20,
+              "ld1w": 5,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_1",
+            "label": ".L422",
+            "line_start": 6563,
+            "line_end": 6608,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+1 / kernel rows kh-1,kh-2,kh-3 -> outputs c,d,e, horizontal vectors 0..4.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate stack access in this actual loop. All LD1W addresses derive from external input-row pointers, and LD1RW addresses derive from external kernel-row pointers. Whole-helper setup, transitions, final stores and fallback were also reviewed independently of these loop ranges.",
+            "observed_counts": {
+              "instructions": 45,
+              "fmul": 15,
+              "fmul_ordinary": 15,
+              "fmul_indexed": 0,
+              "fadd": 15,
+              "ld1w": 5,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 45,
+              "fmul": 15,
+              "fmul_ordinary": 15,
+              "fmul_indexed": 0,
+              "fadd": 15,
+              "ld1w": 5,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_2",
+            "label": ".L424",
+            "line_start": 6615,
+            "line_end": 6648,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+2 / kernel rows kh-1,kh-2 -> outputs d,e, horizontal vectors 0..4.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate stack access in this actual loop. All LD1W addresses derive from external input-row pointers, and LD1RW addresses derive from external kernel-row pointers. Whole-helper setup, transitions, final stores and fallback were also reviewed independently of these loop ranges.",
+            "observed_counts": {
+              "instructions": 33,
+              "fmul": 10,
+              "fmul_ordinary": 10,
+              "fmul_indexed": 0,
+              "fadd": 10,
+              "ld1w": 5,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 33,
+              "fmul": 10,
+              "fmul_ordinary": 10,
+              "fmul_indexed": 0,
+              "fadd": 10,
+              "ld1w": 5,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_3",
+            "label": ".L426",
+            "line_start": 6653,
+            "line_end": 6673,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+3 / kernel row kh-1 -> output e, horizontal vectors 0..4.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate stack access in this actual loop. All LD1W addresses derive from external input-row pointers, and LD1RW addresses derive from external kernel-row pointers. Whole-helper setup, transitions, final stores and fallback were also reviewed independently of these loop ranges.",
+            "observed_counts": {
+              "instructions": 20,
+              "fmul": 5,
+              "fmul_ordinary": 5,
+              "fmul_indexed": 0,
+              "fadd": 5,
+              "ld1w": 5,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 20,
+              "fmul": 5,
+              "fmul_ordinary": 5,
+              "fmul_indexed": 0,
+              "fadd": 5,
+              "ld1w": 5,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          }
+        ],
+        "nonshared_remainder_review": "All nine actual phases advance one kernel column per iteration; there is no nonshared or shared unrolled-column remainder. Horizontal remaining columns are handled by rowquad plus prefix as described above.",
+        "observed_whole_helper_counts": {
+          "instructions": 938,
+          "fmul": 125,
+          "fmul_ordinary": 125,
+          "fmul_indexed": 0,
+          "fadd": 125,
+          "ld1w": 45,
+          "ld1rw": 25,
+          "ld1rqw": 0,
+          "dup": 0,
+          "ext": 0,
+          "movprfx": 0,
+          "vector_mov": 49
+        },
+        "whole_helper_count_scope": "Static instruction sites from function label through .size. Shared repeats for each middle input row and every phase repeats for kw, so125 FMUL/125 FADD/45 input loads/25 broadcasts here are not per-call dynamic totals. Whole-helper ST1W count is25. Internal input-pointer bookkeeping and ABI traffic are included in total instructions.",
+        "shared_instruction_interpretation": "73 instructions per single-column iteration include25 ordinary vector FMUL,25 FADD,5 input LD1W,5 coefficient LD1RW,4 vector MOV,1 LSL,6 ADD,1 CMP and1 BGT. No indexed FMUL, LD1RQW, DUP, EXT, MOVPRFX or vector stack access occurs there. The explicit asm has no hardware barrier instruction; Bohr separately reviews concrete operands and compiler constraints. This machine evidence alone does not establish throughput or a speedup."
+      }
+    ],
+    "performance_claim": "None. This is an actual assembly review for diagnostic acceptance only; compiler acceptance and zero spills do not imply a faster implementation.",
+    "dispatch_reviewed": true,
+    "dispatch_functions": [
+      {
+        "symbol": "conv2d._omp_fn.2",
+        "line_start": 662,
+        "line_end": 2269,
+        "role": "Legacy non-SVE row-parallel worker, inline NEON tiles plus preserved conditional prefix branch.",
+        "control_flow_notes": "omp_get_num_threads/thread_num at680/682 divide output height into quotient/remainder static row intervals (.L58/.L141); empty intervals exit.L57. .L67 builds the current input row and output row. Captured use_sve at+48 is loaded tosp172; public non-SVE branch passes zero, so .L60 call conv_sve_prefix at1556 is not taken from that public path. .L61/.L124/.L110/.L98/.L88/.L78 select32/16/8/4/2/1 width tiles; .L76 advances input stride, global output ow and row index. Full trailing cold labels rejoin the matching kw loops and do not introduce allocation or cross-row writes. All branches/calls from label through.size were covered; no malloc/memcpy/free or instrumentation calls.",
+        "stack_notes": "Fixed368-byte frame. Scalar ABI x19..x28/x29/x30; d8..d15 low64bits preserved by4 paired STP at745/748/751/754 and4 paired LDP at1465/1468/1471/1474. sp160..239 contains scalar row/loop state; sp240..367 is the local output tile array. x18=sp240 aliases at769/1185 are used by GPR LDP copying completed arrays to output, not hidden SVE reloads.14 static STR Q instructions at1135..1156(8),1412..1421(4),2059/2062(2) materialize completed32/16/8-float tiles after kh loops. Subsequent GPR LDP/STP copies are at1159..1177,1424..1434,2065..2070. No non-ABI vector stack reload or hotspot accumulator spill/reload pair observed. Real materialization and ABI traffic must not be reported as a stack-free program.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "vector_stack_materialization_stores": 14,
+        "abi_fp_save_pair_instructions": 4,
+        "abi_fp_restore_pair_instructions": 4,
+        "actual_assembly_comparison": "All actual legacy-worker instruction text was compared with returned C45 fn1 at the same 662..2269 range, normalizing whitespace only: equal. C46 prologue, branches, row advance, 14 Q materialization stores, indirect sp240 tile copies, ABI D restores and cold continuations were read. This is returned compiler-text comparison, not object or whole-program identity."
+      },
+      {
+        "symbol": "conv2d._omp_fn.1",
+        "line_start": 5706,
+        "line_end": 5885,
+        "role": "Original C6 static four-row SVE fallback worker.",
+        "control_flow_notes": "Capture offsets 0/8/16/24 are input/kernel/output/input stride, 32/36 kh/kw, 40/44 oh/ow, 48 ceil(oh/4). OMP queries 5725/5727 compute contiguous quotient/remainder static group intervals at .L391/.L399; empty intervals exit .L390. First row is group<<2, remaining is oh-first; input uses first*stride and output first*global ow. .L395 remaining>3 calls quad at5806; equal3 .L396 calls triple5871; equal2 .L397 calls pair5856; remaining1 uses prefix5778. .L398 advances by four original input rows and four global output rows, decrements remaining4, and stops at group end. Horizontal widths are original ow, handled by existing helpers. All argument construction, branch destinations, cold return paths and restores through .size were read. No allocation/copy or new arithmetic in this worker.",
+        "stack_notes": "Fixed160-byte frame, scalar callee saves x19..x28/x29/x30. sp124 group end, sp128 input step, sp136 preserved kernel pointer, sp144/152 output row offsets. Outgoing helper scalar arguments use sp0/sp8. No vector operations or vector stack spill; scalar ABI arguments and pointer reloads are not accumulator spills.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "symbol": "conv2d._omp_fn.0",
+        "line_start": 7002,
+        "line_end": 7233,
+        "role": "Candidate size_t static five-row group dispatcher.",
+        "control_flow_notes": "Capture offsets 0/8/16/24 are input/kernel/output/original input stride, 32/40 size_t oh/ow, 48 size_t ceil(oh/5), 56/60 kh/kw, 64 original int ow. Group count zero exits .L451. OMP queries7023/7025 and unsigned udiv/msub implement quotient/remainder static groups (.L453/.L462); empty thread ranges exit .L466. x20 is group index, first row=5*group via add x2,x20,x20,lsl2; x28=oh-first. Input pointer x22 advances5*stride floats and output pointers advance5*global ow. .L457 x28>4 calls quint7117 with five distinct row destinations; remaining4 .L458 calls quad7207;3 .L459 triple7220;2 .L460 pair7191;1 prefix7087. x24/x6/x27 hold row0/row1/row2 destinations, extra quad/quint destinations use global ow offsets at sp176/184 and outgoing sp0/8. .L461 advances one group and exits before another dispatch when at end; unsigned remaining subtraction may wrap after the final partial group but is then dead because the group-end test exits, never used as a new row bound. For valid groups first<=oh-1; size_t five-row index/offset calculations remain under valid-buffer contract. No overlapping writes, width truncation, allocation/copy or testcase recognition in this path.",
+        "stack_notes": "Fixed192-byte frame. Scalar saves x19..x28/x29/x30; sp136 output-row bytes, sp144 five-input-row step, sp152 five-output-row step, sp160 six-output-row bytes used to advance the row1 cursor from previous row0, sp172 int ow, sp176/184 extra row offsets. Outgoing quint destinations use sp0/sp8 and ow sp16. All early no-group/no-thread-work exits restore only saved subsets correctly. No vector instructions or vector stack operations in this dispatcher.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      },
+      {
+        "symbol": "conv2d",
+        "line_start": 7238,
+        "line_end": 7406,
+        "role": "Public dimension and HWCAP gate selecting five-row SVE, original four-row SVE or non-SVE worker.",
+        "control_flow_notes": "Positive kh/kw checked before frame allocation; .L474 returns for invalid kernel. kh<=height/kw<=width is checked before subtraction, otherwise .L468 restores and returns. .L477 computes positive oh/ow and sign-extends original width to input stride. getauxval(16)7290 and mask4194304 test SVE bit22. Conditional compare kh against4 plus oh against4 select .L478 only for SVE && kh>=5 && oh>=5. SVE small kh/oh takes .L471, computes oh/4+(oh%4!=0) via tst/asr/cinc, and GOMP_parallel7311 invokes original fn1. Absent SVE .L470 sets captured use_sve=0 and GOMP_parallel7353 invokes legacy fn2. .L478 sign-extends positive oh/ow to size_t, uses umulh reciprocal division by5 and remainder comparison to compute ceil(oh/5) without oh+4, then GOMP_parallel7396 invokes fn0. Original pointers, global ow and input stride are passed unchanged. All three GOMP calls join before frame restoration/return; no malloc/memcpy/free, persistent state, hidden timing exclusion or additional resource setting.",
+        "stack_notes": "Fixed160-byte frame for positive kernels, scalar x19..x26/x29/x30 saves and captured argument struct sp88..155. Nonpositive kernel exit has no frame. Dimension-failure and all three GOMP exits restore matching saved subsets. No FP/SVE operation or accumulator state in this function.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0
+      }
+    ],
+    "explicit_asm_review": {
+      "compiler_accepted": true,
+      "concrete_operands_reviewed": true,
+      "scratch_disjoint_from_inputs_and_accumulators": true,
+      "accumulator_order_reviewed": true,
+      "notes": "Five source scopes at1454/1475/1496/1517/1538 correspond to the five disjoint actual ten-instruction ranges. Actual stable 25-accumulator register mapping is recorded per row; n0/n1 temporarily move b0/b1 through z12, yielding four actual vector MOV instructions across a shared single-column iteration. Five LD1RW loads retain coefficients z0..z4, scratch is z15 throughout, inputs are z14/z13/z12/z12/z12. No stack-backed live accumulator was observed in shared .L4176377..6475; this statement is limited to these actual instructions, not a claim from the 32-source-value budget or a whole-program stack-free claim. Full helper frame, nine stages and spill totals are independently reviewed by Popper. Each scope preserves strict separate FMUL then FADD and source a,b,c,d,e order; the loop increments ik by1 only after all five scopes and t advances only after kw completes. Memory clobbers are compiler barriers, not emitted hardware fences or synchronization between threads. Actual register allocations satisfy the +&w outputs, =&w scratch and w inputs; no assumed fixed registers are used in source. The returned .s has no object counterpart for an object-level proof.",
+      "stable_shared_accumulator_mapping": {
+        "a": [
+          "z21",
+          "z22",
+          "z23",
+          "z20",
+          "z17"
+        ],
+        "b": [
+          "z14",
+          "z13",
+          "z18",
+          "z19",
+          "z16"
+        ],
+        "c": [
+          "z24",
+          "z25",
+          "z26",
+          "z27",
+          "z7"
+        ],
+        "d": [
+          "z28",
+          "z29",
+          "z30",
+          "z31",
+          "z6"
+        ],
+        "e": [
+          "z8",
+          "z9",
+          "z10",
+          "z11",
+          "z5"
+        ]
+      },
+      "blocks": [
+        {
+          "input_vector": 0,
+          "line_start": 6393,
+          "line_end": 6402,
+          "source_asm_line": 1454,
+          "scratch_register": "z15",
+          "input_register": "z14",
+          "accumulator_registers": [
+            "z21",
+            "z12",
+            "z24",
+            "z28",
+            "z8"
+          ],
+          "coefficient_registers": [
+            "z0",
+            "z1",
+            "z2",
+            "z3",
+            "z4"
+          ],
+          "live_accumulator_registers": [
+            "z21",
+            "z22",
+            "z23",
+            "z20",
+            "z17",
+            "z12",
+            "z13",
+            "z18",
+            "z19",
+            "z16",
+            "z24",
+            "z25",
+            "z26",
+            "z27",
+            "z7",
+            "z28",
+            "z29",
+            "z30",
+            "z31",
+            "z6",
+            "z8",
+            "z9",
+            "z10",
+            "z11",
+            "z5"
+          ],
+          "live_accumulator_mapping": {
+            "a": [
+              "z21",
+              "z22",
+              "z23",
+              "z20",
+              "z17"
+            ],
+            "b": [
+              "z12",
+              "z13",
+              "z18",
+              "z19",
+              "z16"
+            ],
+            "c": [
+              "z24",
+              "z25",
+              "z26",
+              "z27",
+              "z7"
+            ],
+            "d": [
+              "z28",
+              "z29",
+              "z30",
+              "z31",
+              "z6"
+            ],
+            "e": [
+              "z8",
+              "z9",
+              "z10",
+              "z11",
+              "z5"
+            ]
+          },
+          "liveness_and_spill_notes": "Before n0, line6379 MOV z12.d,z14.d preserves b0 while LD1W6385 places current input0 in z14; all other24 accumulator registers stay live. After the block, line6406 MOV z14.d,z12.d restores updated b0. No stack slot holds a live accumulator in this shared loop. z15 is disjoint from all25 actual live accumulator registers, the input register and all five coefficients. Every early-clobber accumulator output is disjoint from input/coefficient operands; the five output registers are mutually distinct. Other live accumulators do not appear as destinations in the ten instructions. Each row output is updated by one ordinary FMUL into z15 immediately followed by FADD back to its own accumulator, in a,b,c,d,e order."
+        },
+        {
+          "input_vector": 1,
+          "line_start": 6411,
+          "line_end": 6420,
+          "source_asm_line": 1475,
+          "scratch_register": "z15",
+          "input_register": "z13",
+          "accumulator_registers": [
+            "z22",
+            "z12",
+            "z25",
+            "z29",
+            "z9"
+          ],
+          "coefficient_registers": [
+            "z0",
+            "z1",
+            "z2",
+            "z3",
+            "z4"
+          ],
+          "live_accumulator_registers": [
+            "z21",
+            "z22",
+            "z23",
+            "z20",
+            "z17",
+            "z14",
+            "z12",
+            "z18",
+            "z19",
+            "z16",
+            "z24",
+            "z25",
+            "z26",
+            "z27",
+            "z7",
+            "z28",
+            "z29",
+            "z30",
+            "z31",
+            "z6",
+            "z8",
+            "z9",
+            "z10",
+            "z11",
+            "z5"
+          ],
+          "live_accumulator_mapping": {
+            "a": [
+              "z21",
+              "z22",
+              "z23",
+              "z20",
+              "z17"
+            ],
+            "b": [
+              "z14",
+              "z12",
+              "z18",
+              "z19",
+              "z16"
+            ],
+            "c": [
+              "z24",
+              "z25",
+              "z26",
+              "z27",
+              "z7"
+            ],
+            "d": [
+              "z28",
+              "z29",
+              "z30",
+              "z31",
+              "z6"
+            ],
+            "e": [
+              "z8",
+              "z9",
+              "z10",
+              "z11",
+              "z5"
+            ]
+          },
+          "liveness_and_spill_notes": "Line6407 MOV z12.d,z13.d preserves b1 after b0 has been restored to z14; line6408 LD1W loads input1 into z13. Line6424 MOV z13.d,z12.d restores updated b1. The other24 accumulator registers remain live; no shared-loop accumulator spills. z15 is disjoint from all25 actual live accumulator registers, the input register and all five coefficients. Every early-clobber accumulator output is disjoint from input/coefficient operands; the five output registers are mutually distinct. Other live accumulators do not appear as destinations in the ten instructions. Each row output is updated by one ordinary FMUL into z15 immediately followed by FADD back to its own accumulator, in a,b,c,d,e order."
+        },
+        {
+          "input_vector": 2,
+          "line_start": 6428,
+          "line_end": 6437,
+          "source_asm_line": 1496,
+          "scratch_register": "z15",
+          "input_register": "z12",
+          "accumulator_registers": [
+            "z23",
+            "z18",
+            "z26",
+            "z30",
+            "z10"
+          ],
+          "coefficient_registers": [
+            "z0",
+            "z1",
+            "z2",
+            "z3",
+            "z4"
+          ],
+          "live_accumulator_registers": [
+            "z21",
+            "z22",
+            "z23",
+            "z20",
+            "z17",
+            "z14",
+            "z13",
+            "z18",
+            "z19",
+            "z16",
+            "z24",
+            "z25",
+            "z26",
+            "z27",
+            "z7",
+            "z28",
+            "z29",
+            "z30",
+            "z31",
+            "z6",
+            "z8",
+            "z9",
+            "z10",
+            "z11",
+            "z5"
+          ],
+          "live_accumulator_mapping": {
+            "a": [
+              "z21",
+              "z22",
+              "z23",
+              "z20",
+              "z17"
+            ],
+            "b": [
+              "z14",
+              "z13",
+              "z18",
+              "z19",
+              "z16"
+            ],
+            "c": [
+              "z24",
+              "z25",
+              "z26",
+              "z27",
+              "z7"
+            ],
+            "d": [
+              "z28",
+              "z29",
+              "z30",
+              "z31",
+              "z6"
+            ],
+            "e": [
+              "z8",
+              "z9",
+              "z10",
+              "z11",
+              "z5"
+            ]
+          },
+          "liveness_and_spill_notes": "The n0/n1 b0/b1 moves are complete; all25 accumulators occupy the stable row mapping. Current input is loaded in z12, which is outside that set; no live accumulator is in a stack slot in .L417. n2/n3/n4 reuse this input register only after the preceding asm finishes. z15 is disjoint from all25 actual live accumulator registers, the input register and all five coefficients. Every early-clobber accumulator output is disjoint from input/coefficient operands; the five output registers are mutually distinct. Other live accumulators do not appear as destinations in the ten instructions. Each row output is updated by one ordinary FMUL into z15 immediately followed by FADD back to its own accumulator, in a,b,c,d,e order."
+        },
+        {
+          "input_vector": 3,
+          "line_start": 6444,
+          "line_end": 6453,
+          "source_asm_line": 1517,
+          "scratch_register": "z15",
+          "input_register": "z12",
+          "accumulator_registers": [
+            "z20",
+            "z19",
+            "z27",
+            "z31",
+            "z11"
+          ],
+          "coefficient_registers": [
+            "z0",
+            "z1",
+            "z2",
+            "z3",
+            "z4"
+          ],
+          "live_accumulator_registers": [
+            "z21",
+            "z22",
+            "z23",
+            "z20",
+            "z17",
+            "z14",
+            "z13",
+            "z18",
+            "z19",
+            "z16",
+            "z24",
+            "z25",
+            "z26",
+            "z27",
+            "z7",
+            "z28",
+            "z29",
+            "z30",
+            "z31",
+            "z6",
+            "z8",
+            "z9",
+            "z10",
+            "z11",
+            "z5"
+          ],
+          "live_accumulator_mapping": {
+            "a": [
+              "z21",
+              "z22",
+              "z23",
+              "z20",
+              "z17"
+            ],
+            "b": [
+              "z14",
+              "z13",
+              "z18",
+              "z19",
+              "z16"
+            ],
+            "c": [
+              "z24",
+              "z25",
+              "z26",
+              "z27",
+              "z7"
+            ],
+            "d": [
+              "z28",
+              "z29",
+              "z30",
+              "z31",
+              "z6"
+            ],
+            "e": [
+              "z8",
+              "z9",
+              "z10",
+              "z11",
+              "z5"
+            ]
+          },
+          "liveness_and_spill_notes": "The n0/n1 b0/b1 moves are complete; all25 accumulators occupy the stable row mapping. Current input is loaded in z12, which is outside that set; no live accumulator is in a stack slot in .L417. n2/n3/n4 reuse this input register only after the preceding asm finishes. z15 is disjoint from all25 actual live accumulator registers, the input register and all five coefficients. Every early-clobber accumulator output is disjoint from input/coefficient operands; the five output registers are mutually distinct. Other live accumulators do not appear as destinations in the ten instructions. Each row output is updated by one ordinary FMUL into z15 immediately followed by FADD back to its own accumulator, in a,b,c,d,e order."
+        },
+        {
+          "input_vector": 4,
+          "line_start": 6460,
+          "line_end": 6469,
+          "source_asm_line": 1538,
+          "scratch_register": "z15",
+          "input_register": "z12",
+          "accumulator_registers": [
+            "z17",
+            "z16",
+            "z7",
+            "z6",
+            "z5"
+          ],
+          "coefficient_registers": [
+            "z0",
+            "z1",
+            "z2",
+            "z3",
+            "z4"
+          ],
+          "live_accumulator_registers": [
+            "z21",
+            "z22",
+            "z23",
+            "z20",
+            "z17",
+            "z14",
+            "z13",
+            "z18",
+            "z19",
+            "z16",
+            "z24",
+            "z25",
+            "z26",
+            "z27",
+            "z7",
+            "z28",
+            "z29",
+            "z30",
+            "z31",
+            "z6",
+            "z8",
+            "z9",
+            "z10",
+            "z11",
+            "z5"
+          ],
+          "live_accumulator_mapping": {
+            "a": [
+              "z21",
+              "z22",
+              "z23",
+              "z20",
+              "z17"
+            ],
+            "b": [
+              "z14",
+              "z13",
+              "z18",
+              "z19",
+              "z16"
+            ],
+            "c": [
+              "z24",
+              "z25",
+              "z26",
+              "z27",
+              "z7"
+            ],
+            "d": [
+              "z28",
+              "z29",
+              "z30",
+              "z31",
+              "z6"
+            ],
+            "e": [
+              "z8",
+              "z9",
+              "z10",
+              "z11",
+              "z5"
+            ]
+          },
+          "liveness_and_spill_notes": "The n0/n1 b0/b1 moves are complete; all25 accumulators occupy the stable row mapping. Current input is loaded in z12, which is outside that set; no live accumulator is in a stack slot in .L417. n2/n3/n4 reuse this input register only after the preceding asm finishes. z15 is disjoint from all25 actual live accumulator registers, the input register and all five coefficients. Every early-clobber accumulator output is disjoint from input/coefficient operands; the five output registers are mutually distinct. Other live accumulators do not appear as destinations in the ten instructions. Each row output is updated by one ordinary FMUL into z15 immediately followed by FADD back to its own accumulator, in a,b,c,d,e order."
+        }
+      ]
+    },
+    "dispatch_review_notes": {
+      "review_scope": "Actual returned uninstrumented compiler .s: five concrete inline-asm scopes and complete conv2d/all three OMP worker ranges. Independent helper reviewer owns complete quint nine stages, transitions and total helper spill accounting.",
+      "build_evidence": "probe.log line386 actual gcc10.3.1 command emits -S conv2d.c using -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=5; build-assembly EXIT=0 at391. It has no -finstrument-functions. Actual guard build line92 separately includes check_conv_guard.c and conv2d.c; only dispatch build227 uses -finstrument-functions. Real #APP/#NO_APP and 50 FMUL/FADD instructions prove default %[name].s template was accepted, unlike prior immutable C42 failure. No production object/disassembly was returned.",
+      "coverage_limit": "This is static review of actual returned compiler output, not a local execution or a separate forced non-SVE dynamic test. Aggregate numeric acceptance belongs to the coordinator. No production .o was provided, and no object agreement is claimed. No new test, SSH, compile, job or promotion was performed.",
+      "review_conclusion": "No operand-alias, arithmetic-order, dispatch or stack-accounting blocker found in the actual five inline asm blocks and all four conv2d/OMP functions. C6 remains unchanged; complete helper and aggregate validation are separate gates."
+    },
+    "review_fragments": [
+      "assembly-helper-review.json",
+      "assembly-asm-dispatch-review.json"
+    ],
+    "merge_notes": "Independent actual nine-stage helper review combined with five concrete asm operand/liveness proofs and complete dispatch review of the same returned uninstrumented C46 compiler assembly. No retained object or performance conclusion.",
+    "stage_count": 9,
+    "fma_count": 0,
+    "transitions_reviewed": true,
+    "performance_submission_automatic": false
+  },
+  "performance_measured": false,
+  "performance_requires_root_review": true,
+  "automatic_performance_submission": false,
+  "spill_is_correctness_failure": false,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "note": "Actual independent I diagnostics only; old C32/C41/C42 logs provide no candidate PASS. No speed or promotion claim."
+}

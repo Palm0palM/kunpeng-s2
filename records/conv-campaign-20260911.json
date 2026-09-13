@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-11",
+  "problem": "conv",
+  "current_best_label": "C4",
+  "current_best_experiment": "C19-r2",
+  "status": "completed_package_verified",
+  "local_compilation_or_tests_run": false,
+  "suites_per_version": 3,
+  "suites": 45,
+  "official_case_checks": 180,
+  "diagnostic_checks": 110496,
+  "tool_unit_tests": 68,
+  "scheduler": {
+    "cpus": 38,
+    "numa_nodes": 1
+  },
+  "versions": [
+    "C13-r3",
+    "C15-pipe8",
+    "C16-pipe12",
+    "C13-r4",
+    "C13-r5",
+    "C17-pipe16",
+    "C18-tailpair",
+    "C13-r6",
+    "C13-r7",
+    "C19-sverow2",
+    "C19-r1",
+    "C13-r8",
+    "C13-r9",
+    "C19-r2",
+    "C19-package"
+  ],
+  "total_median_ms": {
+    "C13-r3": 590.1400000000001,
+    "C15-pipe8": 590.71,
+    "C16-pipe12": 586.78,
+    "C13-r4": 589.76,
+    "C13-r5": 589.0799999999999,
+    "C17-pipe16": 629.45,
+    "C18-tailpair": 588.27,
+    "C13-r6": 588.46,
+    "C13-r7": 588.87,
+    "C19-sverow2": 562.1200000000001,
+    "C19-r1": 562.3199999999999,
+    "C13-r8": 589.49,
+    "C13-r9": 591.29,
+    "C19-r2": 561.54,
+    "C19-package": 562.02
+  },
+  "package_sha256": "d0887d526ea122ebe10d3aef8b5fe724b82ff4fdbef32e31f2628b68ea9d7206"
+}

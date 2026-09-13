@@ -1,0 +1,198 @@
+{
+  "candidate": "C64-row7boundaryrowwise",
+  "source_parent": "C58-r1",
+  "bytes": 109072,
+  "source_sha256": "fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421",
+  "boundary_count": 12,
+  "boundaries": [
+    {
+      "boundary": "input_0",
+      "participating_rows": [
+        "a"
+      ],
+      "mul": 3,
+      "add": 3,
+      "loads": 3,
+      "broadcasts": 1,
+      "original_start_line": 1280,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "input_1",
+      "participating_rows": [
+        "a",
+        "b"
+      ],
+      "mul": 6,
+      "add": 6,
+      "loads": 3,
+      "broadcasts": 2,
+      "original_start_line": 1303,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "input_2",
+      "participating_rows": [
+        "a",
+        "b",
+        "c"
+      ],
+      "mul": 9,
+      "add": 9,
+      "loads": 3,
+      "broadcasts": 3,
+      "original_start_line": 1331,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "input_3",
+      "participating_rows": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "mul": 12,
+      "add": 12,
+      "loads": 3,
+      "broadcasts": 4,
+      "original_start_line": 1364,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "input_4",
+      "participating_rows": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "mul": 15,
+      "add": 15,
+      "loads": 3,
+      "broadcasts": 5,
+      "original_start_line": 1402,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "input_5",
+      "participating_rows": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f"
+      ],
+      "mul": 18,
+      "add": 18,
+      "loads": 3,
+      "broadcasts": 6,
+      "original_start_line": 1445,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "trailing_0",
+      "participating_rows": [
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g"
+      ],
+      "mul": 18,
+      "add": 18,
+      "loads": 3,
+      "broadcasts": 6,
+      "original_start_line": 1629,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "trailing_1",
+      "participating_rows": [
+        "c",
+        "d",
+        "e",
+        "f",
+        "g"
+      ],
+      "mul": 15,
+      "add": 15,
+      "loads": 3,
+      "broadcasts": 5,
+      "original_start_line": 1675,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "trailing_2",
+      "participating_rows": [
+        "d",
+        "e",
+        "f",
+        "g"
+      ],
+      "mul": 12,
+      "add": 12,
+      "loads": 3,
+      "broadcasts": 4,
+      "original_start_line": 1716,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "trailing_3",
+      "participating_rows": [
+        "e",
+        "f",
+        "g"
+      ],
+      "mul": 9,
+      "add": 9,
+      "loads": 3,
+      "broadcasts": 3,
+      "original_start_line": 1752,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "trailing_4",
+      "participating_rows": [
+        "f",
+        "g"
+      ],
+      "mul": 6,
+      "add": 6,
+      "loads": 3,
+      "broadcasts": 2,
+      "original_start_line": 1783,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    },
+    {
+      "boundary": "trailing_5",
+      "participating_rows": [
+        "g"
+      ],
+      "mul": 3,
+      "add": 3,
+      "loads": 3,
+      "broadcasts": 1,
+      "original_start_line": 1809,
+      "addresses_predicates_and_per_chain_expression_preserved": true
+    }
+  ],
+  "totals": {
+    "mul": 126,
+    "add": 126,
+    "loads": 36,
+    "broadcasts": 42
+  },
+  "reverse_reconstructs_entire_C7_bytes": true,
+  "shared2_and_remainder_bytes_unchanged": true,
+  "all_nonboundary_body_bytes_unchanged": true,
+  "all12_unroll2_hints_unchanged": true,
+  "companions_unchanged": true,
+  "compiled": false,
+  "executed": false,
+  "verified": false,
+  "performance_measured": false
+}

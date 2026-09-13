@@ -1,0 +1,1042 @@
+	.arch armv8-a
+	.file	"bench_conv.c"
+	.text
+	.align	2
+	.p2align 4,,11
+	.type	random_fmatrix._omp_fn.0, %function
+random_fmatrix._omp_fn.0:
+.LFB18:
+	.cfi_startproc
+	stp	x29, x30, [sp, -32]!
+	.cfi_def_cfa_offset 32
+	.cfi_offset 29, -32
+	.cfi_offset 30, -24
+	mov	x29, sp
+	stp	x19, x20, [sp, 16]
+	.cfi_offset 19, -16
+	.cfi_offset 20, -8
+	mov	x20, x0
+	bl	omp_get_thread_num
+	mov	w19, w0
+	bl	omp_get_num_threads
+	mov	w9, w0
+	ldr	w0, [x20, 8]
+	sdiv	w10, w0, w9
+	msub	w9, w10, w9, w0
+	cmp	w19, w9
+	blt	.L2
+.L7:
+	madd	w9, w10, w19, w9
+	add	w10, w10, w9
+	cmp	w9, w10
+	bge	.L3
+	ldp	w2, w12, [x20, 12]
+	ldr	w1, [x20, 20]
+	ldr	x0, [x20]
+	add	w1, w19, w1
+	cmp	w2, 0
+	ble	.L3
+	mul	w3, w12, w9
+	sub	w4, w2, #1
+	uxtw	x2, w2
+	add	x0, x0, 4
+	movi	v1.2s, 0x30, lsl 24
+	mov	w8, 2911
+	add	x3, x4, x3, sxtw
+	mov	w6, 62237
+	sbfiz	x12, x12, 2, 32
+	neg	x11, x2, lsl 2
+	add	x3, x0, x3, lsl 2
+	movk	w8, 0x834e, lsl 16
+	mov	w7, -2836
+	movk	w6, 0x1, lsl 16
+	mov	w5, 16807
+	mov	w4, 2147483647
+	.p2align 3,,7
+.L6:
+	add	x2, x11, x3
+	.p2align 3,,7
+.L5:
+	smull	x0, w1, w8
+	lsr	x0, x0, 32
+	add	w0, w1, w0
+	asr	w0, w0, 16
+	sub	w0, w0, w1, asr 31
+	msub	w1, w0, w6, w1
+	mul	w1, w1, w5
+	madd	w1, w0, w7, w1
+	cmp	w1, 0
+	add	w0, w1, w4
+	csel	w1, w0, w1, le
+	scvtf	s0, w1
+	fmul	s0, s0, s1
+	str	s0, [x2], 4
+	cmp	x2, x3
+	bne	.L5
+	add	w9, w9, 1
+	add	x3, x3, x12
+	cmp	w10, w9
+	bne	.L6
+.L3:
+	ldp	x19, x20, [sp, 16]
+	ldp	x29, x30, [sp], 32
+	.cfi_remember_state
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	b	GOMP_barrier
+.L2:
+	.cfi_restore_state
+	add	w10, w10, 1
+	mov	w9, 0
+	b	.L7
+	.cfi_endproc
+.LFE18:
+	.size	random_fmatrix._omp_fn.0, .-random_fmatrix._omp_fn.0
+	.align	2
+	.p2align 4,,11
+	.type	reference_conv2d._omp_fn.0, %function
+reference_conv2d._omp_fn.0:
+.LFB19:
+	.cfi_startproc
+	stp	x29, x30, [sp, -32]!
+	.cfi_def_cfa_offset 32
+	.cfi_offset 29, -32
+	.cfi_offset 30, -24
+	mov	x29, sp
+	stp	x19, x20, [sp, 16]
+	.cfi_offset 19, -16
+	.cfi_offset 20, -8
+	mov	x19, x0
+	bl	omp_get_num_threads
+	mov	w20, w0
+	bl	omp_get_thread_num
+	ldr	w2, [x19, 36]
+	mov	w12, w0
+	sdiv	w1, w2, w20
+	msub	w0, w1, w20, w2
+	cmp	w12, w0
+	blt	.L13
+.L22:
+	madd	w12, w1, w12, w0
+	add	w16, w1, w12
+	cmp	w12, w16
+	bge	.L12
+	ldr	w11, [x19, 40]
+	ldp	w6, w7, [x19, 24]
+	ldr	w4, [x19, 32]
+	ldp	x20, x15, [x19]
+	ldr	x14, [x19, 16]
+	cmp	w11, 0
+	ble	.L12
+	cmp	w7, 0
+	ble	.L12
+	cmp	w4, 0
+	ble	.L12
+	mul	w17, w6, w12
+	sxtw	x18, w6
+	mul	w13, w12, w11
+	sbfiz	x6, x6, 2, 32
+	sbfiz	x8, x4, 2, 32
+	sxtw	x17, w17
+.L18:
+	add	x10, x20, x17, lsl 2
+	mov	x9, 0
+	.p2align 3,,7
+.L19:
+	add	w3, w13, w9
+	mov	x2, x15
+	mov	x1, x10
+	mov	w5, 0
+	add	x3, x14, x3, sxtw 2
+	.p2align 3,,7
+.L16:
+	ldr	s1, [x3]
+	mov	x0, 0
+	.p2align 3,,7
+.L17:
+	ldr	s0, [x1, x0, lsl 2]
+	ldr	s2, [x2, x0, lsl 2]
+	add	x0, x0, 1
+	fmul	s0, s0, s2
+	fadd	s1, s1, s0
+	str	s1, [x3]
+	cmp	w4, w0
+	bgt	.L17
+	add	w5, w5, 1
+	add	x1, x1, x6
+	add	x2, x2, x8
+	cmp	w7, w5
+	bne	.L16
+	add	x9, x9, 1
+	add	x10, x10, 4
+	cmp	w11, w9
+	bgt	.L19
+	add	w12, w12, 1
+	add	w13, w13, w11
+	add	x17, x17, x18
+	cmp	w16, w12
+	bne	.L18
+.L12:
+	ldp	x19, x20, [sp, 16]
+	ldp	x29, x30, [sp], 32
+	.cfi_remember_state
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	ret
+.L13:
+	.cfi_restore_state
+	add	w1, w1, 1
+	mov	w0, 0
+	b	.L22
+	.cfi_endproc
+.LFE19:
+	.size	reference_conv2d._omp_fn.0, .-reference_conv2d._omp_fn.0
+	.align	2
+	.p2align 4,,11
+	.global	rand_lcg
+	.type	rand_lcg, %function
+rand_lcg:
+.LFB12:
+	.cfi_startproc
+	ldr	w4, [x0]
+	mov	w2, 2911
+	movk	w2, 0x834e, lsl 16
+	mov	w3, 62237
+	movk	w3, 0x1, lsl 16
+	mov	w7, -2836
+	mov	w6, 16807
+	mov	w5, 2147483647
+	smull	x1, w4, w2
+	lsr	x1, x1, 32
+	add	w1, w4, w1
+	asr	w1, w1, 16
+	sub	w1, w1, w4, asr 31
+	msub	w2, w1, w3, w4
+	mul	w1, w1, w7
+	madd	w1, w2, w6, w1
+	cmp	w1, 0
+	add	w2, w1, w5
+	csel	w1, w2, w1, le
+	str	w1, [x0]
+	scvtf	s0, w1, #31
+	ret
+	.cfi_endproc
+.LFE12:
+	.size	rand_lcg, .-rand_lcg
+	.align	2
+	.p2align 4,,11
+	.global	random_fmatrix
+	.type	random_fmatrix, %function
+random_fmatrix:
+.LFB13:
+	.cfi_startproc
+	fmov	s0, w1
+	mov	w5, w3
+	stp	x29, x30, [sp, -48]!
+	.cfi_def_cfa_offset 48
+	.cfi_offset 29, -48
+	.cfi_offset 30, -40
+	mov	x6, x0
+	ins	v0.s[1], w2
+	mov	x29, sp
+	add	x1, sp, 16
+	mov	w3, 0
+	mov	w2, 0
+	adrp	x0, random_fmatrix._omp_fn.0
+	ins	v0.s[2], w5
+	add	x0, x0, :lo12:random_fmatrix._omp_fn.0
+	str	x6, [sp, 16]
+	ins	v0.s[3], w4
+	str	q0, [sp, 24]
+	bl	GOMP_parallel
+	ldp	x29, x30, [sp], 48
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_def_cfa_offset 0
+	ret
+	.cfi_endproc
+.LFE13:
+	.size	random_fmatrix, .-random_fmatrix
+	.align	2
+	.p2align 4,,11
+	.global	reference_conv2d
+	.type	reference_conv2d, %function
+reference_conv2d:
+.LFB14:
+	.cfi_startproc
+	stp	x29, x30, [sp, -128]!
+	.cfi_def_cfa_offset 128
+	.cfi_offset 29, -128
+	.cfi_offset 30, -120
+	sub	w1, w1, w4
+	mov	x29, sp
+	stp	x19, x20, [sp, 16]
+	.cfi_offset 19, -112
+	.cfi_offset 20, -104
+	sub	w20, w2, w5
+	add	w20, w20, 1
+	stp	x23, x24, [sp, 48]
+	.cfi_offset 23, -80
+	.cfi_offset 24, -72
+	mov	w23, w2
+	mov	x24, x3
+	madd	w2, w1, w20, w20
+	add	w19, w1, 1
+	mov	w1, 0
+	stp	x21, x22, [sp, 32]
+	.cfi_offset 21, -96
+	.cfi_offset 22, -88
+	mov	w21, w5
+	mov	w22, w4
+	sbfiz	x2, x2, 2, 32
+	str	x25, [sp, 64]
+	.cfi_offset 25, -64
+	mov	x25, x0
+	mov	x0, x6
+	bl	memset
+	mov	x6, x0
+	add	x1, sp, 80
+	mov	w3, 0
+	mov	w2, 0
+	adrp	x0, reference_conv2d._omp_fn.0
+	add	x0, x0, :lo12:reference_conv2d._omp_fn.0
+	stp	x25, x24, [sp, 80]
+	str	x6, [sp, 96]
+	stp	w23, w22, [sp, 104]
+	stp	w21, w19, [sp, 112]
+	str	w20, [sp, 120]
+	bl	GOMP_parallel
+	ldp	x19, x20, [sp, 16]
+	ldp	x21, x22, [sp, 32]
+	ldp	x23, x24, [sp, 48]
+	ldr	x25, [sp, 64]
+	ldp	x29, x30, [sp], 128
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 25
+	.cfi_restore 23
+	.cfi_restore 24
+	.cfi_restore 21
+	.cfi_restore 22
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	ret
+	.cfi_endproc
+.LFE14:
+	.size	reference_conv2d, .-reference_conv2d
+	.section	.rodata.str1.8,"aMS",@progbits,1
+	.align	3
+.LC0:
+	.string	" Error at [%d][%d]: got %.6e, expected %.6e diff = %.6e \n"
+	.text
+	.align	2
+	.p2align 4,,11
+	.global	validate_result
+	.type	validate_result, %function
+validate_result:
+.LFB15:
+	.cfi_startproc
+	stp	x29, x30, [sp, -160]!
+	.cfi_def_cfa_offset 160
+	.cfi_offset 29, -160
+	.cfi_offset 30, -152
+	mov	x29, sp
+	stp	d8, d9, [sp, 96]
+	str	w2, [sp, 140]
+	stp	x0, x1, [sp, 144]
+	cmp	w2, 0
+	.cfi_offset 72, -64
+	.cfi_offset 73, -56
+	ble	.L45
+	movi	d9, #0
+	str	d10, [sp, 112]
+	.cfi_offset 74, -48
+	fmov	d10, d0
+	stp	x21, x22, [sp, 32]
+	.cfi_offset 22, -120
+	.cfi_offset 21, -128
+	mov	w22, w3
+	stp	x23, x24, [sp, 48]
+	.cfi_offset 24, -104
+	.cfi_offset 23, -112
+	adrp	x23, .LC0
+	mov	w24, w6
+	add	x23, x23, :lo12:.LC0
+	stp	x27, x28, [sp, 80]
+	.cfi_offset 28, -72
+	.cfi_offset 27, -80
+	sub	w28, w3, #1
+	stp	x19, x20, [sp, 16]
+	.cfi_offset 20, -136
+	.cfi_offset 19, -144
+	mov	w20, 0
+	stp	x25, x26, [sp, 64]
+	.cfi_offset 26, -88
+	.cfi_offset 25, -96
+	mov	w26, 0
+	mov	w25, 0
+	.p2align 3,,7
+.L38:
+	cmp	w22, 0
+	ble	.L44
+	ldr	x0, [sp, 144]
+	sbfiz	x21, x26, 2, 32
+	mov	x19, 0
+	add	x27, x0, x21
+	ldr	x0, [sp, 152]
+	add	x21, x0, x21
+	b	.L42
+	.p2align 2,,3
+.L48:
+	mov	x19, x4
+.L42:
+	ldr	s0, [x27, x19, lsl 2]
+	mov	w2, w19
+	ldr	s1, [x21, x19, lsl 2]
+	fcvt	d0, s0
+	fcvt	d1, s1
+	fabd	d8, d0, d1
+	fcmpe	d8, d10
+	bgt	.L39
+	fcmp	d8, d8
+	bvs	.L39
+.L40:
+	fcmpe	d8, d9
+	bgt	.L46
+	fcmp	d8, d8
+	fcsel	d9, d9, d8, vc
+.L41:
+	add	x4, x19, 1
+	cmp	x28, x19
+	bne	.L48
+.L44:
+	ldr	w0, [sp, 140]
+	add	w25, w25, 1
+	add	w26, w26, w22
+	cmp	w0, w25
+	bne	.L38
+	fmov	d0, d9
+	ldr	d10, [sp, 112]
+	.cfi_remember_state
+	.cfi_restore 74
+	ldp	x19, x20, [sp, 16]
+	.cfi_restore 20
+	.cfi_restore 19
+	ldp	x21, x22, [sp, 32]
+	.cfi_restore 22
+	.cfi_restore 21
+	ldp	x23, x24, [sp, 48]
+	.cfi_restore 24
+	.cfi_restore 23
+	ldp	x25, x26, [sp, 64]
+	.cfi_restore 26
+	.cfi_restore 25
+	ldp	x27, x28, [sp, 80]
+	.cfi_restore 28
+	.cfi_restore 27
+	ldp	d8, d9, [sp, 96]
+	ldp	x29, x30, [sp], 160
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 72
+	.cfi_restore 73
+	.cfi_def_cfa_offset 0
+	ret
+	.p2align 2,,3
+.L39:
+	.cfi_restore_state
+	add	w20, w20, 1
+	cmp	w20, w24
+	bgt	.L40
+	fmov	d2, d8
+	mov	w1, w25
+	mov	x0, x23
+	bl	printf
+	b	.L40
+	.p2align 2,,3
+.L46:
+	fmov	d9, d8
+	b	.L41
+.L45:
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_restore 21
+	.cfi_restore 22
+	.cfi_restore 23
+	.cfi_restore 24
+	.cfi_restore 25
+	.cfi_restore 26
+	.cfi_restore 27
+	.cfi_restore 28
+	.cfi_restore 74
+	movi	d9, #0
+	fmov	d0, d9
+	ldp	d8, d9, [sp, 96]
+	ldp	x29, x30, [sp], 160
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 72
+	.cfi_restore 73
+	.cfi_def_cfa_offset 0
+	ret
+	.cfi_endproc
+.LFE15:
+	.size	validate_result, .-validate_result
+	.section	.rodata.str1.8
+	.align	3
+.LC1:
+	.string	"\n================================= CONV\346\265\213\350\257\225 ================================"
+	.align	3
+.LC2:
+	.string	"\346\240\241\351\252\214"
+	.align	3
+.LC3:
+	.string	"\346\234\200\345\244\247\350\257\257\345\267\256"
+	.align	3
+.LC4:
+	.string	"GFLOPS"
+	.align	3
+.LC5:
+	.string	"Time(ms)"
+	.align	3
+.LC6:
+	.string	"kernelSize"
+	.align	3
+.LC7:
+	.string	"ImageSize"
+	.align	3
+.LC8:
+	.string	"%12s %12s %16s %12s %16s %12s\n"
+	.align	3
+.LC9:
+	.string	"---------------------------------------------------------------------------"
+	.align	3
+.LC10:
+	.string	"\345\206\205\345\255\230\345\210\206\351\205\215\345\244\261\350\264\245"
+	.align	3
+.LC11:
+	.string	"FAIL"
+	.align	3
+.LC12:
+	.string	"/"
+	.align	3
+.LC13:
+	.string	"%6d x%6d %6d x%6d %12s %12s %12.2e %8s\n"
+	.align	3
+.LC14:
+	.string	"PASS"
+	.align	3
+.LC15:
+	.string	"%6d x%6d %6d x%6d %12.2f %12.4f %12.2e %8s\n"
+	.text
+	.align	2
+	.p2align 4,,11
+	.global	test_performance
+	.type	test_performance, %function
+test_performance:
+.LFB16:
+	.cfi_startproc
+	stp	x29, x30, [sp, -256]!
+	.cfi_def_cfa_offset 256
+	.cfi_offset 29, -256
+	.cfi_offset 30, -248
+	mov	x29, sp
+	stp	x19, x20, [sp, 16]
+	.cfi_offset 19, -240
+	.cfi_offset 20, -232
+	mov	w19, w0
+	mov	w20, w1
+	stp	x21, x22, [sp, 32]
+	.cfi_offset 21, -224
+	.cfi_offset 22, -216
+	mov	w21, w2
+	mov	w22, w3
+	stp	x23, x24, [sp, 48]
+	stp	x25, x26, [sp, 64]
+	.cfi_offset 23, -208
+	.cfi_offset 24, -200
+	.cfi_offset 25, -192
+	.cfi_offset 26, -184
+	sub	w25, w1, w3
+	stp	x27, x28, [sp, 80]
+	stp	w0, w1, [sp, 184]
+	adrp	x0, .LC1
+	add	x0, x0, :lo12:.LC1
+	stp	w2, w3, [sp, 192]
+	str	w4, [sp, 200]
+	.cfi_offset 27, -176
+	.cfi_offset 28, -168
+	bl	puts
+	adrp	x6, .LC2
+	adrp	x5, .LC3
+	add	x6, x6, :lo12:.LC2
+	add	x5, x5, :lo12:.LC3
+	adrp	x4, .LC4
+	adrp	x3, .LC5
+	add	x4, x4, :lo12:.LC4
+	add	x3, x3, :lo12:.LC5
+	adrp	x2, .LC6
+	adrp	x1, .LC7
+	add	x2, x2, :lo12:.LC6
+	add	x1, x1, :lo12:.LC7
+	adrp	x0, .LC8
+	add	x0, x0, :lo12:.LC8
+	bl	printf
+	adrp	x0, .LC9
+	add	x0, x0, :lo12:.LC9
+	bl	puts
+	sub	w1, w19, w21
+	mul	w0, w19, w20
+	add	w20, w1, 1
+	add	w19, w25, 1
+	str	w1, [sp, 156]
+	sbfiz	x0, x0, 2, 32
+	str	w20, [sp, 204]
+	bl	malloc
+	mul	w23, w20, w19
+	mul	w1, w21, w22
+	mov	x21, x0
+	str	x0, [sp, 160]
+	sbfiz	x23, x23, 2, 32
+	sbfiz	x0, x1, 2, 32
+	bl	malloc
+	mov	x22, x0
+	str	x0, [sp, 168]
+	mov	x0, x23
+	bl	malloc
+	mov	x27, x0
+	mov	x0, x23
+	str	x27, [sp, 176]
+	bl	malloc
+	mov	x20, x0
+	mov	x0, x23
+	str	x20, [sp, 136]
+	bl	malloc
+	str	x0, [sp, 144]
+	cmp	x21, 0
+	ccmp	x22, 0, 4, ne
+	beq	.L52
+	cmp	x27, 0
+	ccmp	x20, 0, 4, ne
+	ccmp	x0, 0, 4, ne
+	beq	.L52
+	ldp	w5, w20, [sp, 184]
+	mov	w4, 12345
+	adrp	x0, random_fmatrix._omp_fn.0
+	add	x21, x0, :lo12:random_fmatrix._omp_fn.0
+	ldr	x24, [sp, 160]
+	mov	x0, x21
+	add	x1, sp, 208
+	mov	w3, 0
+	mov	w2, 0
+	stp	d8, d9, [sp, 96]
+	.cfi_offset 73, -152
+	.cfi_offset 72, -160
+	str	d10, [sp, 112]
+	.cfi_offset 74, -144
+	str	x24, [sp, 208]
+	stp	w5, w20, [sp, 216]
+	stp	w20, w4, [sp, 224]
+	bl	GOMP_parallel
+	mov	w4, 2354
+	mov	x0, x21
+	movk	w4, 0x1, lsl 16
+	add	x1, sp, 208
+	ldp	w27, w22, [sp, 192]
+	mov	w3, 0
+	ldr	x26, [sp, 168]
+	mov	w2, 0
+	str	x26, [sp, 208]
+	stp	w27, w22, [sp, 216]
+	stp	w22, w4, [sp, 224]
+	bl	GOMP_parallel
+	mov	w4, 13579
+	ldr	w28, [sp, 204]
+	mov	x0, x21
+	mov	w3, 0
+	ldr	x21, [sp, 176]
+	add	x1, sp, 208
+	mov	w2, 0
+	str	x21, [sp, 208]
+	stp	w28, w19, [sp, 216]
+	stp	w19, w4, [sp, 224]
+	bl	GOMP_parallel
+	ldr	x0, [sp, 136]
+	mov	x1, x21
+	mov	x2, x23
+	bl	memcpy
+	ldr	x0, [sp, 144]
+	mov	x1, x21
+	mov	x2, x23
+	bl	memcpy
+	ldr	x21, [sp, 136]
+	mov	x2, x23
+	mov	w1, 0
+	mov	x0, x21
+	bl	memset
+	add	x1, sp, 208
+	mov	w3, 0
+	mov	w2, 0
+	adrp	x0, reference_conv2d._omp_fn.0
+	add	x0, x0, :lo12:reference_conv2d._omp_fn.0
+	stp	x24, x26, [sp, 208]
+	str	x21, [sp, 224]
+	stp	w20, w27, [sp, 232]
+	stp	w22, w28, [sp, 240]
+	str	w19, [sp, 248]
+	bl	GOMP_parallel
+	ldr	w1, [sp, 184]
+	mov	w5, w22
+	ldr	x6, [sp, 144]
+	mov	w4, w27
+	mov	x3, x26
+	mov	w2, w20
+	mov	x0, x24
+	bl	conv2d
+	cmp	w28, 0
+	ble	.L66
+	adrp	x0, .LC16
+	movi	d9, #0
+	adrp	x21, .LC0
+	add	x21, x21, :lo12:.LC0
+	ldr	d10, [x0, #:lo12:.LC16]
+	mov	w26, 0
+	mov	w27, 0
+	mov	w28, 0
+	.p2align 3,,7
+.L55:
+	cmp	w19, 0
+	ble	.L62
+	ldr	x0, [sp, 144]
+	sbfiz	x5, x26, 2, 32
+	mov	x20, 0
+	add	x22, x0, x5
+	ldr	x0, [sp, 136]
+	add	x24, x0, x5
+	b	.L59
+	.p2align 2,,3
+.L69:
+	mov	x20, x0
+.L59:
+	ldr	s0, [x22, x20, lsl 2]
+	mov	w2, w20
+	ldr	s1, [x24, x20, lsl 2]
+	fcvt	d0, s0
+	fcvt	d1, s1
+	fabd	d8, d0, d1
+	fcmpe	d8, d10
+	bgt	.L56
+	fcmp	d8, d8
+	bvs	.L56
+.L57:
+	fcmpe	d8, d9
+	bgt	.L67
+	fcmp	d8, d8
+	fcsel	d9, d9, d8, vc
+.L58:
+	add	x0, x20, 1
+	cmp	x25, x20
+	bne	.L69
+.L62:
+	ldr	w1, [sp, 156]
+	add	w26, w26, w19
+	add	w0, w28, 1
+	cmp	w1, w28
+	beq	.L60
+	mov	w28, w0
+	b	.L55
+	.p2align 2,,3
+.L56:
+	add	w27, w27, 1
+	cmp	w27, 10
+	bgt	.L57
+	fmov	d2, d8
+	mov	w1, w28
+	mov	x0, x21
+	bl	printf
+	b	.L57
+	.p2align 2,,3
+.L67:
+	fmov	d9, d8
+	b	.L58
+	.p2align 2,,3
+.L60:
+	adrp	x0, .LC16
+	ldr	d0, [x0, #:lo12:.LC16]
+	fcmpe	d9, d0
+	bgt	.L63
+	fcmp	d9, d9
+	bvc	.L54
+.L63:
+	fmov	d0, d9
+	adrp	x6, .LC12
+	ldp	w1, w2, [sp, 184]
+	add	x6, x6, :lo12:.LC12
+	ldp	w3, w4, [sp, 192]
+	mov	x5, x6
+	adrp	x7, .LC11
+	adrp	x0, .LC13
+	add	x7, x7, :lo12:.LC11
+	add	x0, x0, :lo12:.LC13
+	bl	printf
+	ldr	x0, [sp, 160]
+	bl	free
+	ldr	x0, [sp, 168]
+	bl	free
+	ldr	x0, [sp, 176]
+	bl	free
+	ldr	x0, [sp, 136]
+	bl	free
+	ldr	x0, [sp, 144]
+.L74:
+	ldp	d8, d9, [sp, 96]
+	.cfi_restore 73
+	.cfi_restore 72
+	ldr	d10, [sp, 112]
+	.cfi_restore 74
+.L73:
+	ldp	x19, x20, [sp, 16]
+	ldp	x21, x22, [sp, 32]
+	ldp	x23, x24, [sp, 48]
+	ldp	x25, x26, [sp, 64]
+	ldp	x27, x28, [sp, 80]
+	ldp	x29, x30, [sp], 256
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 27
+	.cfi_restore 28
+	.cfi_restore 25
+	.cfi_restore 26
+	.cfi_restore 23
+	.cfi_restore 24
+	.cfi_restore 21
+	.cfi_restore 22
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	b	free
+.L66:
+	.cfi_def_cfa_offset 256
+	.cfi_offset 19, -240
+	.cfi_offset 20, -232
+	.cfi_offset 21, -224
+	.cfi_offset 22, -216
+	.cfi_offset 23, -208
+	.cfi_offset 24, -200
+	.cfi_offset 25, -192
+	.cfi_offset 26, -184
+	.cfi_offset 27, -176
+	.cfi_offset 28, -168
+	.cfi_offset 29, -256
+	.cfi_offset 30, -248
+	.cfi_offset 72, -160
+	.cfi_offset 73, -152
+	.cfi_offset 74, -144
+	movi	d9, #0
+.L54:
+	ldr	x0, [sp, 144]
+	bl	free
+	ldr	x0, [sp, 136]
+	bl	free
+	mov	x0, x23
+	bl	malloc
+	ldr	x1, [sp, 176]
+	mov	x20, x0
+	mov	x2, x23
+	bl	memcpy
+	ldp	x0, x3, [sp, 160]
+	mov	x6, x20
+	ldp	w1, w2, [sp, 184]
+	ldp	w4, w5, [sp, 192]
+	bl	conv2d
+	mov	x0, x20
+	bl	free
+	ldr	w0, [sp, 200]
+	movi	d10, #0
+	cmp	w0, 0
+	ble	.L64
+	mov	w20, 0
+	.p2align 3,,7
+.L65:
+	mov	x0, x23
+	bl	malloc
+	ldr	x1, [sp, 176]
+	mov	x2, x23
+	mov	x21, x0
+	add	w20, w20, 1
+	bl	memcpy
+	bl	omp_get_wtime
+	fmov	d8, d0
+	ldp	x0, x3, [sp, 160]
+	mov	x6, x21
+	ldp	w1, w2, [sp, 184]
+	ldp	w4, w5, [sp, 192]
+	bl	conv2d
+	bl	omp_get_wtime
+	fsub	d0, d0, d8
+	mov	x0, x21
+	fadd	d10, d10, d0
+	bl	free
+	ldr	w0, [sp, 200]
+	cmp	w0, w20
+	bne	.L65
+.L64:
+	ldr	w0, [sp, 200]
+	scvtf	d2, w19
+	ldp	w3, w4, [sp, 192]
+	adrp	x5, .LC14
+	scvtf	d6, w0
+	ldr	w0, [sp, 204]
+	scvtf	d5, w3
+	scvtf	d1, w4
+	ldp	w1, w2, [sp, 184]
+	scvtf	d3, w0
+	fdiv	d10, d10, d6
+	adrp	x0, .LC17
+	add	x5, x5, :lo12:.LC14
+	ldr	d4, [x0, #:lo12:.LC17]
+	mov	x0, 70368744177664
+	fmul	d3, d3, d2
+	movk	x0, 0x408f, lsl 48
+	fmov	d0, x0
+	fmov	d2, d9
+	adrp	x0, .LC15
+	add	x0, x0, :lo12:.LC15
+	fmul	d3, d3, d5
+	fmul	d3, d3, d1
+	fadd	d3, d3, d3
+	fdiv	d1, d3, d10
+	fmul	d0, d10, d0
+	fmul	d1, d1, d4
+	bl	printf
+	ldr	x0, [sp, 160]
+	bl	free
+	ldr	x0, [sp, 168]
+	bl	free
+	ldr	x0, [sp, 176]
+	b	.L74
+.L52:
+	.cfi_restore 72
+	.cfi_restore 73
+	.cfi_restore 74
+	adrp	x0, .LC10
+	add	x0, x0, :lo12:.LC10
+	bl	puts
+	ldr	x0, [sp, 160]
+	bl	free
+	ldr	x0, [sp, 168]
+	bl	free
+	ldr	x0, [sp, 176]
+	bl	free
+	ldr	x0, [sp, 136]
+	bl	free
+	ldr	x0, [sp, 144]
+	b	.L73
+	.cfi_endproc
+.LFE16:
+	.size	test_performance, .-test_performance
+	.section	.text.startup,"ax",@progbits
+	.align	2
+	.p2align 4,,11
+	.global	main
+	.type	main, %function
+main:
+.LFB17:
+	.cfi_startproc
+	stp	x29, x30, [sp, -64]!
+	.cfi_def_cfa_offset 64
+	.cfi_offset 29, -64
+	.cfi_offset 30, -56
+	mov	x29, sp
+	stp	x19, x20, [sp, 16]
+	stp	x21, x22, [sp, 32]
+	stp	x23, x24, [sp, 48]
+	.cfi_offset 19, -48
+	.cfi_offset 20, -40
+	.cfi_offset 21, -32
+	.cfi_offset 22, -24
+	.cfi_offset 23, -16
+	.cfi_offset 24, -8
+	cmp	w0, 4
+	bgt	.L82
+	mov	w22, 3
+	mov	w21, 1024
+	mov	w24, w22
+	mov	w23, w21
+	mov	w19, 5
+.L76:
+	mov	w4, w19
+	mov	w3, w22
+	mov	w2, w24
+	mov	w1, w21
+	mov	w0, w23
+	bl	test_performance
+	mov	w0, 0
+	ldp	x19, x20, [sp, 16]
+	ldp	x21, x22, [sp, 32]
+	ldp	x23, x24, [sp, 48]
+	ldp	x29, x30, [sp], 64
+	.cfi_remember_state
+	.cfi_restore 30
+	.cfi_restore 29
+	.cfi_restore 23
+	.cfi_restore 24
+	.cfi_restore 21
+	.cfi_restore 22
+	.cfi_restore 19
+	.cfi_restore 20
+	.cfi_def_cfa_offset 0
+	ret
+.L82:
+	.cfi_restore_state
+	mov	x20, x1
+	mov	w19, w0
+	mov	w2, 10
+	mov	x1, 0
+	ldr	x0, [x20, 8]
+	bl	strtol
+	mov	x23, x0
+	ldr	x0, [x20, 16]
+	mov	w2, 10
+	mov	x1, 0
+	bl	strtol
+	mov	x21, x0
+	ldr	x0, [x20, 24]
+	mov	w2, 10
+	mov	x1, 0
+	bl	strtol
+	mov	x24, x0
+	ldr	x0, [x20, 32]
+	mov	w2, 10
+	mov	x1, 0
+	bl	strtol
+	mov	w22, w0
+	cmp	w19, 5
+	beq	.L76
+	ldr	x0, [x20, 40]
+	mov	w2, 10
+	mov	x1, 0
+	bl	strtol
+	mov	w19, w0
+	b	.L76
+	.cfi_endproc
+.LFE17:
+	.size	main, .-main
+	.section	.rodata.cst8,"aM",@progbits,8
+	.align	3
+.LC16:
+	.word	-1998362383
+	.word	1055193269
+	.align	3
+.LC17:
+	.word	-400107883
+	.word	1041313291
+	.ident	"GCC: (GNU) 10.3.1"
+	.section	.note.GNU-stack,"",@progbits

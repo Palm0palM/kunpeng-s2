@@ -1,0 +1,41 @@
+{
+  "candidate": "C47-row6x4u1",
+  "job_id": "1579830",
+  "source_sha256": "e974915cb4e5e522526070bfdcff42b08dd7866412dbde11c76a07fac1b86d0a",
+  "compiler_version": "10.3.1",
+  "assembly_sha256": "ba18133a104dbc4e68f67e8ea22c1b4984040dd1a5b99a1f32131041b5e80b4b",
+  "dispatch_reviewed": true,
+  "review_complete": true,
+  "production_object_disassembly_available": false,
+  "scope": "Root read all four actual returned dispatcher functions, including complete non-SVE tile and scalar-tail body. This fragment makes no rowsix helper, numeric acceptance or performance conclusion. No local compile/test; actual .s only.",
+  "dispatch_functions": [
+    {
+      "symbol": "conv2d._omp_fn.2",
+      "line_start": 662,
+      "line_end": 2269,
+      "control_flow_notes": "Actual legacy per-output-row worker: omp thread quotient/remainder assigns disjoint row intervals at .L58/.L141; .L67 advances input by stride and output by ow. Context flag at +48 optionally calls prefix at .L60, then returned column offset enters remaining 32/16/8/4/2/1 output blocks (.L123/.L109/.L63/.L64/.L65/.L66). Non-SVE context stores flag zero in conv2d, so this runtime branch does not call SVE. Ordered kernel rows/columns and scalar-tail stores observed through .L76. No new six-row dispatch enters this path.",
+      "stack_notes": "Actual 368-byte fixed frame. x19..x30 ABI and scalar/pointer loop state at sp160..232; d8..d15 four STP/LDP ABI pairs at sp96..144. x18=sp240 aliases the local 32-float tile: zeroed sp240..352 then 8+4+2 STR Q sites materialize computed 32/16/8 blocks, subsequently copied via scalar LDP/STP. These 14 vector tile-store sites are real stack traffic, distinct from hot SVE accumulator spill and ABI saves. No Z/predicate stack access in this function; all non-SVE scalar and NEON paths reviewed."
+    },
+    {
+      "symbol": "conv2d._omp_fn.1",
+      "line_start": 6874,
+      "line_end": 7053,
+      "control_flow_notes": "Legacy SVE groups of four use signed quotient/remainder partition at .L446/.L454; current row is group*4, input advances four strides and output four ow. .L450 routes remaining>=4 to rowquad, 3 to rowtriple .L451, 2 to rowpair .L452, 1 to prefix. All return through .L453, increment group once, subtract remaining by4 and compare assigned group end; no overlap or skipped remainder observed.",
+      "stack_notes": "160-byte frame, integer ABI x19..x30 saves; outgoing rowquad/triple arguments at sp0..8, end/index/weight pointer and output strides at sp124..152. No vector/predicate stack transfers. Full entry, rare branches and epilogues reviewed."
+    },
+    {
+      "symbol": "conv2d._omp_fn.0",
+      "line_start": 7057,
+      "line_end": 7339,
+      "control_flow_notes": "New six-row worker uses unsigned quotient/remainder over ceil(oh/6) groups at .L461/.L471; .L465 calls rowsix only when remaining>5. Remaining5 at .L466 calls quad for first four and prefix at input+4*stride/output+4*ow; remaining4/3/2/1 use quad/triple/pair/prefix at .L467/.L468/.L469/default. .L470 increments group once, subtracts6 from remaining, advances input by6*stride and each output pointer by6*ow before next assigned-group boundary. rowsix receives six consecutive output addresses via x5/x6/x7 and sp0/8/16 plus width sp24. Context arithmetic uses 64-bit group indices, disjoint output ownership preserved.",
+      "stack_notes": "208-byte fixed frame, x19..x30 integer ABI saved at sp32..128. Outgoing args sp0..24, scalar width at132 and saved end/pointers/strides sp136..200; no Z/Q/predicate transfers or D ABI saves. The extra prefix for rem5 preserves first output/next-row pointers at168/192 correctly. Full paths and epilogues reviewed."
+    },
+    {
+      "symbol": "conv2d",
+      "line_start": 7344,
+      "line_end": 7511,
+      "control_flow_notes": "Rejects nonpositive kh/kw before frame, rejects kernels larger than input via .L477. Computes oh/ow once, obtains HWCAP bit4194304. Six-row context .L487 only when SVE present and kh>5 and oh>5. Uses constant-multiply division by6 plus remainder to construct ceil(oh/6), stores 64-bit oh/ow and original stride. SVE with smaller kh/oh falls to ceil(oh/4) old .omp_fn.1 at .L480. Absent SVE uses .omp_fn.2 with context flag0 via .L479. Each path invokes exactly one GOMP_parallel and rejoins/restores before return; no copies, allocator, cache or extra timing region introduced.",
+      "stack_notes": "160-byte frame, integer ABI and stack context at sp88..152; no vector/predicate memory access. Context fields match worker loads; no access beyond allocated frame. Early no-op return and every post-GOMP restore observed."
+    }
+  ]
+}

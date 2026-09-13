@@ -1,0 +1,58 @@
+{
+  "version": "C42-row5x5asm",
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12g-C42-row5x5asm-20260912T103813Z",
+  "submitted": true,
+  "expected_checks": {
+    "full_per_configuration": 3776,
+    "dispatch_per_configuration": 504,
+    "direct_per_configuration": 288,
+    "configurations": 6,
+    "total": 27408
+  },
+  "f_gate": {
+    "performance_job": "1579528",
+    "status": "performance_complete",
+    "records": [
+      {
+        "version": "C26-r10",
+        "verified": true,
+        "job_id": "1579528",
+        "qualified_for_confirmation": false
+      },
+      {
+        "version": "C37-row4u1",
+        "verified": true,
+        "job_id": "1579528",
+        "qualified_for_confirmation": false
+      },
+      {
+        "version": "C38-splitbuild",
+        "verified": true,
+        "job_id": "1579528",
+        "qualified_for_confirmation": false
+      },
+      {
+        "version": "C39-tunehip11",
+        "verified": true,
+        "job_id": "1579528",
+        "qualified_for_confirmation": false
+      },
+      {
+        "version": "C26-r11",
+        "verified": true,
+        "job_id": "1579528",
+        "qualified_for_confirmation": false
+      }
+    ]
+  },
+  "command": "dsub -n conv-sep12g-C42-row5x5asm -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12g-C42-row5x5asm-20260912T103813Z/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12g-C42-row5x5asm-20260912T103813Z/remote_job.sh",
+  "submit_attempted": true,
+  "job_id": "1579627",
+  "scheduler_status": {
+    "status": "FAILED",
+    "state": "FAILED",
+    "jobId": "1579627",
+    "jobExitCode": 1,
+    "systemExitCode": 10001
+  }
+}

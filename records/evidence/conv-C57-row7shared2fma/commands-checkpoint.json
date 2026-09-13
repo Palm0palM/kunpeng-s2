@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python3",
+    "tools/experiment.py",
+    "checkpoint",
+    "conv",
+    "C57-row7shared2fma",
+    "--note",
+    "Source-only prepared：原 C52/T1582134 为父来源，shared main42+u1余数21共63处显式 svmla；其它12阶段、dispatch/fallback、README/bench/run原字节保持。融合舍入可能超过原官方绝对误差1e-5，未编译/运行/SSH/提交；下一步须root独立GO后原官方四例三套数值可行性，不用旧memcmp/FMA0作为C57结论。C6/S/Y历史不变。"
+  ],
+  "started_at": "2026-09-12T19:36:27.426301+00:00",
+  "ended_at": "2026-09-12T19:36:27.457141+00:00",
+  "exit_code": 0
+}

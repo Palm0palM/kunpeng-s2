@@ -1,0 +1,15 @@
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+ Error at [0][2]: got 3.798019e+02, expected 3.798020e+02 diff = 3.051758e-05 
+ Error at [0][6]: got 3.867293e+02, expected 3.867293e+02 diff = 3.051758e-05 
+ Error at [0][7]: got 3.835440e+02, expected 3.835440e+02 diff = 3.051758e-05 
+ Error at [0][8]: got 3.787692e+02, expected 3.787692e+02 diff = 3.051758e-05 
+ Error at [0][9]: got 3.865398e+02, expected 3.865399e+02 diff = 3.051758e-05 
+ Error at [0][10]: got 3.875901e+02, expected 3.875901e+02 diff = 3.051758e-05 
+ Error at [0][12]: got 3.854051e+02, expected 3.854052e+02 diff = 3.051758e-05 
+ Error at [0][13]: got 3.899618e+02, expected 3.899618e+02 diff = 3.051758e-05 
+ Error at [0][16]: got 3.815237e+02, expected 3.815236e+02 diff = 6.103516e-05 
+ Error at [0][20]: got 3.781209e+02, expected 3.781209e+02 diff = 3.051758e-05 
+  4096 x  6144     39 x    39            /            /     1.53e-04     FAIL

@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C43-padinput",
+  "parent": "C26-r15",
+  "strategy": "Copy the complete input inside conv2d to an odd-number-of-16-float-lines internal row stride under common SVE/kh>=4/oh>=4/width>=64/changed-stride/512MiB gates; preserve C6 helpers and strict FP; allocation/copy/free remain timed and unmeasured",
+  "created_at": "2026-09-12T09:57:15.028717+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "a805f1a60d22fd8ed88ac079c030be8186fa0e1048e39e38430880f49f5a59fa",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C26-row4loads",
+  "copy_gate": "SVE, kernelHeight>=4, outputHeight>=4, inputWidth>=64, computed odd-line stride differs, validated padded allocation <=512MiB",
+  "line_parameter_floats": 16,
+  "allocation_limit_bytes": 536870912,
+  "allocation_policy": "Same padded_stride*inputHeight*sizeof(float) bytes in C43 and C44",
+  "actual_copy_stride": "padded_stride",
+  "parallel_policy": "Separate static parallel-for copy followed by unchanged C6 four-row-group static parallel-for",
+  "allocation_inside_operator": true,
+  "copy_inside_operator": true,
+  "free_inside_operator": true,
+  "reference_only": false,
+  "promotion_allowed": true,
+  "comparison_role": "Candidate must be measured against fresh C6 controls and same-allocation C44 copy/layout reference",
+  "execution_priority": "Prepared only; root owns independent review, remote validation and any future submission",
+  "comparison_baseline": "C26-r15",
+  "recorded_at": "2026-09-12T11:43:09.598044+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12h",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "e8c3a460aadd504acc64d5761e2d967c8e7715b42ec0eb75e96c8029ce9d16f4",
+  "log": ".runs/conv/C43-padinput/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        56.39,
+        55.93,
+        62.58
+      ],
+      "median_ms": 56.39,
+      "min_ms": 55.93,
+      "max_ms": 62.58,
+      "spread_pct": 11.79287107643199,
+      "gflops": [
+        1336.5822,
+        1347.6905,
+        1204.5331
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        67.83,
+        65.99,
+        65.59
+      ],
+      "median_ms": 65.99,
+      "min_ms": 65.59,
+      "max_ms": 67.83,
+      "spread_pct": 3.394453705106827,
+      "gflops": [
+        1227.0805,
+        1261.3797,
+        1269.0505
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        113.47,
+        113.5,
+        114.25
+      ],
+      "median_ms": 113.5,
+      "min_ms": 113.47,
+      "max_ms": 114.25,
+      "spread_pct": 0.6872246696035252,
+      "gflops": [
+        1419.5298,
+        1419.1641,
+        1409.8207
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        234.98,
+        235.14,
+        235.1
+      ],
+      "median_ms": 235.1,
+      "min_ms": 234.98,
+      "max_ms": 235.14,
+      "spread_pct": 0.06805614632071313,
+      "gflops": [
+        1471.4748,
+        1470.4879,
+        1470.7744
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 470.98,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1579748",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "qualified_for_confirmation": false,
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -4.10% 未超过测量波动/最低1%门槛 11.79%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.46,
+        "candidate_ms": 56.39,
+        "gain_pct": -9.580256509910608
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.93,
+        "candidate_ms": 65.99,
+        "gain_pct": -6.555788793799443
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.37,
+        "candidate_ms": 113.5,
+        "gain_pct": -5.7092297662289235
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.67,
+        "candidate_ms": 235.1,
+        "gain_pct": -1.4805542366296918
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r14",
+    "eligible": false,
+    "reasons": [
+      "提速 -4.11% 未超过测量波动/最低1%门槛 11.79%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.46,
+        "candidate_ms": 56.39,
+        "gain_pct": -9.580256509910608
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.92,
+        "candidate_ms": 65.99,
+        "gain_pct": -6.572997416020661
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.35,
+        "candidate_ms": 113.5,
+        "gain_pct": -5.728924080111789
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.67,
+        "candidate_ms": 235.1,
+        "gain_pct": -1.4805542366296918
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Does not meet both predeclared C6 gates; preserve actual measurements and retain C6.",
+  "copy_reference_comparison": {
+    "baseline": "C44-copyinput",
+    "eligible": false,
+    "reasons": [
+      "提速 0.18% 未超过测量波动/最低1%门槛 11.79%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 57.49,
+        "candidate_ms": 56.39,
+        "gain_pct": 1.9133762393459757
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 66.36,
+        "candidate_ms": 65.99,
+        "gain_pct": 0.557564798071134
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 112.11,
+        "candidate_ms": 113.5,
+        "gain_pct": -1.2398537151012403
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 235.89,
+        "candidate_ms": 235.1,
+        "gain_pct": 0.3349018610369206
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "padding_contribution_supported_in_initial_group": false,
+  "padding_attribution_note": "No qualified stride-padding benefit over C44 is established; do not attribute a C6 difference to padding. C43 usefulness versus C6 is judged separately."
+}

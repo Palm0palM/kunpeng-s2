@@ -1,0 +1,169 @@
+{
+  "candidate": "C56-row7shared3fence",
+  "diagnostic_round": "sep13ae",
+  "original_job_id": "1583102",
+  "mode": "byte-preserving-publication-attachments-only",
+  "frozen_tree": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae",
+  "copied_originals": [
+    {
+      "original": ".runs/conv/sep13ae-root-submit.command.json",
+      "attachment": "sep13ae-root-submit.command.json",
+      "bytes": 233,
+      "sha256": "28811d226c587f7deffdf8b1454aad2ac641e289cc7e8b47fea726ac5a3fd328"
+    },
+    {
+      "original": ".runs/conv/sep13ae-root-submit.stdout.txt",
+      "attachment": "sep13ae-root-submit.stdout.txt",
+      "bytes": 15,
+      "sha256": "8b7c763b340c04cd7bc8b4dd512923973943a51e864d0675cbc1081d3045451d"
+    },
+    {
+      "original": ".runs/conv/sep13ae-root-submit.stderr.txt",
+      "attachment": "sep13ae-root-submit.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": ".runs/conv/sep13ae-root-submit.exit.txt",
+      "attachment": "sep13ae-root-submit.exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "original": ".runs/conv/sep13ae-root-freeze.command.json",
+      "attachment": "sep13ae-root-freeze.command.json",
+      "bytes": 127,
+      "sha256": "a23c49a00d64f6e22c691955ec8533b8516e1c6c9d9ce91e7eb2900a182e9b0b"
+    },
+    {
+      "original": ".runs/conv/sep13ae-root-freeze.stdout.txt",
+      "attachment": "sep13ae-root-freeze.stdout.txt",
+      "bytes": 109,
+      "sha256": "a7eb791c4caeabdd10908e8a372835f35d1e600f908acd2c59a62b29192a75a2"
+    },
+    {
+      "original": ".runs/conv/sep13ae-root-freeze.stderr.txt",
+      "attachment": "sep13ae-root-freeze.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": ".runs/conv/sep13ae-root-freeze.exit.txt",
+      "attachment": "sep13ae-root-freeze.exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/ROOT_REVIEW.md",
+      "attachment": "ROOT_REVIEW.md",
+      "bytes": 1270,
+      "sha256": "251f75922eb91bc66e5fe8cb57f49d00bdad79f4805b201f3911b582d389f2c1"
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/INDEPENDENT_TOOLS_REVIEW.md",
+      "attachment": "INDEPENDENT_TOOLS_REVIEW.md",
+      "bytes": 7623,
+      "sha256": "bd23a7f3458154def6cb5ba4cec40389f820ddab215ee8d264f0d563ebb37b44"
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/README.md",
+      "attachment": "README.md",
+      "bytes": 1378,
+      "sha256": "5fa68f8e3d99d0b4368ddfd23a9bec8475d42f543cc55d986902d6c100ea9bc7"
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/STATIC_REVIEW.md",
+      "attachment": "STATIC_REVIEW.md",
+      "bytes": 2614,
+      "sha256": "560ca6c3041f1d2424e61d248533f63d270c48f397ef81f20f307925c04e74ae"
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/PREPARED_FILES.json",
+      "attachment": "PREPARED_FILES.json",
+      "bytes": 2975,
+      "sha256": "69517b205bb47ff5c09f89a95b6da33d8ed67d5333b810698e3b18fb8a315cda"
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/PREPARATION_COMMANDS.md",
+      "attachment": "PREPARATION_COMMANDS.md",
+      "bytes": 2180,
+      "sha256": "5069c8c45fae0a20eec8b706aae3ed00f6138eb6429dc39352d2194347472ed9"
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/preparation-failure-1.json",
+      "attachment": "preparation-failure-1.json",
+      "bytes": 713,
+      "sha256": "0332a7212c25b216296a8d3d690e4c1b1053303bdffe307ecf4df9cd6642e23c"
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/AC-to-AE.patch",
+      "attachment": "AC-to-AE.patch",
+      "bytes": 77830,
+      "sha256": "97ae1d8c882d10b9270881a60869a5e43f483ca656851ba1cb01649064050db7"
+    }
+  ],
+  "not_duplicated_because_already_frozen": [
+    {
+      "original": ".runs/conv/sep13ae-checks/driver.py",
+      "already_in_frozen_tree": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae/diagnostic-driver.py",
+      "bytes": 19970,
+      "sha256": "9da53a71ddf0258d378f387cd59afaa3df8f5ef76c6f5572d4ded4401d29ff88",
+      "byte_identical": true
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/accept_returned.py",
+      "already_in_frozen_tree": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae/diagnostic-accept_returned.py",
+      "bytes": 28822,
+      "sha256": "cf75ab3c04baa70ef06d9e3df626a7b2ad41fb28fea1183b75df9d34e26529d3",
+      "byte_identical": true
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/freeze_returned.py",
+      "already_in_frozen_tree": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae/diagnostic-freeze_returned.py",
+      "bytes": 19198,
+      "sha256": "2233acea93aebedf85ac6c0f3005a080020b197199f1f63014f8b6718ba75456",
+      "byte_identical": true
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/INTERFACE.md",
+      "already_in_frozen_tree": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae/diagnostic-INTERFACE.md",
+      "bytes": 11362,
+      "sha256": "be59da4a268c451dd76223909facdb8212128d766bf6a3d8a150bbeb1f3c5a17",
+      "byte_identical": true
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/C56-row7shared3fence/root-accept.command.json",
+      "already_in_frozen_tree": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae/root-accept.command.json",
+      "bytes": 127,
+      "sha256": "91f87194c8a86340585ecba04002e3bd75269496e7a4bdb4faf913df3f1130cf",
+      "byte_identical": true
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/C56-row7shared3fence/root-accept.stdout.txt",
+      "already_in_frozen_tree": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae/root-accept.stdout.txt",
+      "bytes": 131,
+      "sha256": "43a5808e932efd10d4fa1d823885541c89074e9459efdcca6d1aec771cd5fe10",
+      "byte_identical": true
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/C56-row7shared3fence/root-accept.stderr.txt",
+      "already_in_frozen_tree": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae/root-accept.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byte_identical": true
+    },
+    {
+      "original": ".runs/conv/sep13ae-checks/C56-row7shared3fence/root-accept.exit.txt",
+      "already_in_frozen_tree": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae/root-accept.exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "byte_identical": true
+    }
+  ],
+  "notes": [
+    "The frozen tree already retains the original numerical logs, source/manifests, submit/upload/scheduler logs, status/fetch lifecycle, helper/dispatch reviews, validation and freeze evidence; these are not recopied.",
+    "PREPARED_FILES.json and preparation-failure-1.json are copied as original historical preparation evidence; their content is not rewritten for the later executed state.",
+    "Root submit/accept/freeze command records describe their actual original invocations; no diagnostic or performance command was executed during attachment preparation.",
+    "No source, frozen evidence, experiment record, best output, tool or publication clone was modified."
+  ]
+}

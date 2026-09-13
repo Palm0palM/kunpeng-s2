@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C56-row7shared3fence",
+  "parent": "C26-r35",
+  "strategy": "Source-only hypothesis: after each of the three complete C55 shared-column scopes add one empty volatile asm with21 read-only w inputs and memory clobber, zero outputs. Preserve every arithmetic statement, triple3 loop, u1 remainder, other12 stages, dispatch and other submission files. Try to reduce cross-column live inputs and AC five-slot spill; compiler acceptance, scheduling and speed remain unverified. Own diagnostic required; parent AC1582860 PASS is not inherited.",
+  "created_at": "2026-09-12T19:10:40.216433+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "comparison_baseline": "C26-r35",
+  "source_parent": "C55-row7x3shared3",
+  "reference_only": false,
+  "promotion_allowed": true,
+  "qualified_for_confirmation": false,
+  "confirmation_only": false,
+  "failed_confirmation_retry_allowed": false,
+  "diagnostic_source_version": "C56-row7shared3fence",
+  "diagnostic_evidence_directory": ".runs/conv/C56-row7shared3fence/sve-correctness-sep13ae",
+  "diagnostic_job_id": "1583102",
+  "diagnostic_source_sha256": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c",
+  "reused_identical_source_diagnostic": false
+}

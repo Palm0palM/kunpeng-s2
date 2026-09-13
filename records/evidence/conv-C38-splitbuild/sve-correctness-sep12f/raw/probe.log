@@ -1,0 +1,367 @@
++ STAGE=allocation
++ python3 -
+ALLOWED_CPUS=114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151
+NUMA_NODE=node3
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' allocation
++ source candidate.env
+++ EXPECTED_ACC=4
+++ CHECK_ROWTRIPLE=1
+++ CHECK_ROWQUAD=1
+++ CANDIDATE=C38-splitbuild
+++ GUARD_MODE=smoke
+++ EXPECTED_GUARD_CASES=96
+++ DISPATCH_SMOKE=0
+++ EXPECTED_CHECKS=576
++ [[ 4 == 4 ]]
++ [[ 1 == 1 ]]
++ [[ 1 == 1 ]]
++ case "$CANDIDATE" in
++ [[ smoke == smoke ]]
++ [[ 96 == 96 ]]
++ [[ 0 == 0 ]]
++ TUNE_FLAGS=()
++ STAGE=source-manifest
++ sha256sum README.md bench_conv.c conv2d.c run.sh check_conv_guard.c check_sve_dispatch.c candidate.env remote_job.sh
++ cat source-sha256.txt
+97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8  README.md
+2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927  bench_conv.c
+0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21  conv2d.c
+2de9841c726a9633133ee06a60be89a331773a7328b2f53a1a208b938940a7a9  run.sh
+e184d64677614d515e4b13183c89865c76c7b1e750a52017992d551021a3344d  check_conv_guard.c
+58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1  check_sve_dispatch.c
+8ae1ada88bcb2ac88c4a3bb8235d06096183e19beed0d936d93e452d74598614  candidate.env
+1df75b95609d94891836f36d96401f26617106596a53eb545c38bb42773c010b  remote_job.sh
++ date -u
+Sat Sep 12 09:35:40 UTC 2026
++ hostname
+COMPUTE_NODE_1
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' source-manifest
++ set +e
++ printf '%q ' perf record -e cycles:u -F 99 -m 128 -T -P -o task-perf-probe.data -- /bin/true
++ printf '\n'
++ perf record -e cycles:u -F 99 -m 128 -T -P -o task-perf-probe.data -- /bin/true
++ probe_code=0
++ printf '%s\n' 0
++ STAGE=production-runner
++ export OMP_NUM_THREADS=38 OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores CPU_TARGET=generic
++ OMP_NUM_THREADS=38
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ CPU_TARGET=generic
++ source ./run.sh
+++ set -euo pipefail
++++ dirname CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/remote_job.sh
+++ cd CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z
+++ COMPILER=gcc
+++ case "$COMPILER" in
+++ COMPILER_MODULE=gcc/compiler12.3.1/gccmodule
+++ DEFAULT_CC=gcc
+++ MODULE_ROOT=CLUSTER_USER_HOME/HPCKit/latest/modulefiles
+++ type module
+++ [[ -d CLUSTER_USER_HOME/HPCKit/latest/modulefiles ]]
++++ uname -s
+++ [[ Linux == Linux ]]
+++ printf 'Compiler modules unavailable at %s; using compiler from PATH.\n' CLUSTER_USER_HOME/HPCKit/latest/modulefiles
+Compiler modules unavailable at CLUSTER_USER_HOME/HPCKit/latest/modulefiles; using compiler from PATH.
+++ CC=gcc
+++ CONV_BLOCK=32
+++ CONV_KERNEL_UNROLL=2
+++ [[ 32 =~ ^[1-9][0-9]{0,5}$ ]]
+++ case "$CONV_KERNEL_UNROLL" in
+++ THREADS=38
+++ [[ 38 =~ ^[1-9][0-9]{0,5}$ ]]
+++ ((  THREADS > 38  ))
+++ ARCH_FLAGS=()
+++ case "$(uname -m)" in
++++ uname -m
+++ ARCH_FLAGS=("-mcpu=${CPU_TARGET:-generic}")
+++ RUN_PREFIX=()
++++ uname -s
+++ [[ Linux == Linux ]]
+++ command -v numactl
+++ [[ -z '' ]]
++++ awk '/^Cpus_allowed_list:/ {print $2}' /proc/self/status
+++ allowed_cpus=114-151
+++ first_cpu=114-151
+++ first_cpu=114
+++ node_paths=(/sys/devices/system/cpu/cpu"$first_cpu"/node[0-9]*)
+++ [[ -d /sys/devices/system/cpu/cpu114/node3 ]]
+++ NUMA_NODE=3
+++ [[ 3 =~ ^[0-9]+$ ]]
++++ awk -v node=3 '$1 == "node" && $2 == node && $3 == "cpus:" {print NF - 3}'
++++ numactl --hardware
+++ node_cpus=38
+++ [[ 38 =~ ^[1-9][0-9]*$ ]]
+++ ((  THREADS <= node_cpus  ))
+++ RUN_PREFIX=(numactl -N "$NUMA_NODE")
+++ OMP_FLAGS=(-fopenmp)
+++ LINK_FLAGS=(-lm)
++++ uname -s
+++ [[ Linux == Darwin ]]
+++ export OMP_NUM_THREADS=38
+++ OMP_NUM_THREADS=38
+++ export OMP_DYNAMIC=FALSE
+++ OMP_DYNAMIC=FALSE
+++ export OMP_PROC_BIND=close
+++ OMP_PROC_BIND=close
+++ export OMP_PLACES=cores
+++ OMP_PLACES=cores
+++ mkdir -p results
+++++ date +%Y%m%d-%H%M%S
++++ mktemp -d CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-XXXXXX
+++ RUN_DIR=CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ
+++ tee CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/environment.log
+++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++++ hostname
+++ printf 'Host=%s CPU target=%s\n' COMPUTE_NODE_1 generic
+++ printf 'Block=%s Unroll=%s Threads=%s Bind=%s Places=%s Node=%s\n' 32 2 38 close cores 3
+Host=COMPUTE_NODE_1 CPU target=generic
+Block=32 Unroll=2 Threads=38 Bind=close Places=cores Node=3
+++ BUILD_FLAGS=(-O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off "${ARCH_FLAGS[@]}" "${OMP_FLAGS[@]}" "-DCONV_BLOCK=$CONV_BLOCK" "-DCONV_KERNEL_UNROLL=$CONV_KERNEL_UNROLL")
+++ tee CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/build.log
+++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c bench_conv.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o
+++ printf BUILD_COMMAND:
+BUILD_COMMAND:++ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c bench_conv.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c bench_conv.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o++ printf '\n'
+
+++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c bench_conv.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~
+++ tee -a CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/build.log
+++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c conv2d.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o
+++ printf BUILD_COMMAND:
+BUILD_COMMAND:++ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c conv2d.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c conv2d.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o++ printf '\n'
+
+++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c conv2d.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o
+++ tee -a CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/build.log
+++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test -lm
+++ printf BUILD_COMMAND:
+BUILD_COMMAND:++ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test -lm
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test -lm++ printf '\n'
+
+++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test -lm
+++ run_case 1 4096 6144 39 39
+++ local number=1
+++ shift
+++ tee CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-1.log
+++ numactl -N 3 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test 4096 6144 39 39 1
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4096 x  6144     39 x    39        51.49    1464.0041     0.00e+00     PASS
+++ awk '$NF == "PASS" {pass++} $NF == "FAIL" {fail++}
+              END {exit !(pass == 1 && fail == 0)}' CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-1.log
+++ run_case 2 6144 4096 41 41
+++ local number=2
+++ shift
+++ tee CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-2.log
+++ numactl -N 3 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test 6144 4096 41 41 1
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6144 x  4096     41 x    41        62.18    1338.5679     0.00e+00     PASS
+++ awk '$NF == "PASS" {pass++} $NF == "FAIL" {fail++}
+              END {exit !(pass == 1 && fail == 0)}' CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-2.log
+++ run_case 3 4256 6390 55 55
+++ local number=3
+++ shift
+++ tee CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-3.log
+++ numactl -N 3 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test 4256 6390 55 55 1
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4256 x  6390     55 x    55       107.31    1500.9734     0.00e+00     PASS
+++ awk '$NF == "PASS" {pass++} $NF == "FAIL" {fail++}
+              END {exit !(pass == 1 && fail == 0)}' CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-3.log
+++ run_case 4 6390 4256 81 81
+++ local number=4
+++ shift
+++ tee CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-4.log
+++ numactl -N 3 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test 6390 4256 81 81 1
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6390 x  4256     81 x    81       231.84    1491.4455     0.00e+00     PASS
+++ awk '$NF == "PASS" {pass++} $NF == "FAIL" {fail++}
+              END {exit !(pass == 1 && fail == 0)}' CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-4.log
+++ tee CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/summary.log
+++ awk '$NF == "PASS" {total += $7; count++}
+     END {printf "PASS cases: %d; total of printed times: %.2f ms\n", count, total}' CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-1.log CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-2.log CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-3.log CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-4.log
+PASS cases: 4; total of printed times: 452.82 ms
+++ printf 'Results: %s\n' CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ
+Results: CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ
++ printf 'RUNNER_RESULTS=%s\n' CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ
++ copy_runner_logs
++ [[ -n CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ ]]
++ [[ -d CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ ]]
++ local name
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/build.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/build.log runner-build.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/environment.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/environment.log runner-environment.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/summary.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/summary.log runner-summary.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-1.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-1.log runner-case-1.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-2.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-2.log runner-case-2.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-3.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-3.log runner-case-3.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-4.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-4.log runner-case-4.log
++ printf 'RUNNER_CASES=4 RUNNER_PASS=4 TIMINGS_NOT_PERFORMANCE_RECORD=1\n'
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-runner
++ STAGE=production-object
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o ]]
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o production-conv2d.o
++ sha256sum CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test production-conv2d.o
++ command -v objdump
++ objdump -d production-conv2d.o
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-object
++ STAGE=target-query
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -Q --help=target -c -x c /dev/null -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/target-query.o
++ [[ C38-splitbuild == C39-tunehip11 ]]
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' target-query
++ STAGE=production-assembly
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -S conv2d.c -o conv2d-sve.s
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-assembly
++ GUARD_FLAGS=("${BUILD_FLAGS[@]}" -D_DEFAULT_SOURCE "-DEXPECTED_ACC=$EXPECTED_ACC" "-DCHECK_ROWTRIPLE=$CHECK_ROWTRIPLE" "-DCHECK_ROWQUAD=$CHECK_ROWQUAD")
++ STAGE=guard-compile
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -D_DEFAULT_SOURCE -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -c check_conv_guard.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/check_conv_guard.o
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' guard-compile
++ STAGE=guard-link-production-object
++ run_build_command gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/check_conv_guard.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/check_conv_guard -lm
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' guard-link-production-object
++ GUARD_ARGS=()
++ [[ smoke == smoke ]]
++ GUARD_ARGS=(smoke)
++ for bytes in 16 32 64
++ for threads in 1 4
++ STAGE=production-guard-vl16-t1
++ tee guard-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 16 smoke
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=1
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl16-t1
++ for threads in 1 4
++ STAGE=production-guard-vl16-t4
++ tee guard-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 16 smoke
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=4
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl16-t4
++ for bytes in 16 32 64
++ for threads in 1 4
++ STAGE=production-guard-vl32-t1
++ tee guard-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 32 smoke
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=1
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl32-t1
++ for threads in 1 4
++ STAGE=production-guard-vl32-t4
++ tee guard-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 32 smoke
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=32 THREADS=4
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl32-t4
++ for bytes in 16 32 64
++ for threads in 1 4
++ STAGE=production-guard-vl64-t1
++ tee guard-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 64 smoke
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=1
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl64-t1
++ for threads in 1 4
++ STAGE=production-guard-vl64-t4
++ tee guard-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 64 smoke
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=64 THREADS=4
+PASS: 96 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ complete_stage
++ printf 'STAGE=%s EXIT=0\n' production-guard-vl64-t4
++ [[ 0 == 1 ]]
++ STAGE=complete
++ printf 'SANITIZER_STATUS=NOT_RUN; this job uses guard pages and bitwise reference checks\n'
+SANITIZER_STATUS=NOT_RUN; this job uses guard pages and bitwise reference checks
++ printf 'DIAGNOSTIC_CHECKS=%s RUNNER_CASES_SEPARATE=4\n' 576
+DIAGNOSTIC_CHECKS=576 RUNNER_CASES_SEPARATE=4
++ printf 'PROBE_COMPLETE=1\n'
+PROBE_COMPLETE=1
++ finish
++ local code=0 log_code=0 copy_code=0
++ trap - EXIT
++ set +e
++ copy_runner_logs
++ [[ -n CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ ]]
++ [[ -d CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ ]]
++ local name
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/build.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/build.log runner-build.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/environment.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/environment.log runner-environment.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/summary.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/summary.log runner-summary.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-1.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-1.log runner-case-1.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-2.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-2.log runner-case-2.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-3.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-3.log runner-case-3.log
++ for name in build.log environment.log summary.log case-1.log case-2.log case-3.log case-4.log
++ [[ -f CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-4.log ]]
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/case-4.log runner-case-4.log
++ copy_code=0
++ ((  code == 0 && copy_code != 0  ))
++ printf 'STAGE=%s EXIT=%s\n' complete 0
++ exec

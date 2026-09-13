@@ -1,0 +1,15 @@
+{
+  "version": "C23-row3loads",
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep11c-C23-row3loads-20260911T111640Z",
+  "submitted": true,
+  "command": "dsub -n conv-sep11c-C23-row3loads -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep11c-C23-row3loads-20260911T111640Z/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep11c-C23-row3loads-20260911T111640Z/remote_job.sh",
+  "submit_attempted": true,
+  "job_id": "1527754",
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1527754",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  }
+}

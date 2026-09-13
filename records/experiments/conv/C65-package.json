@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C65-package",
+  "parent": "C65-r1",
+  "strategy": "Exact original ZIP correctness verification after AY initial and independent AZ confirmation; no automatic promotion",
+  "created_at": "2026-09-13T08:34:28.671236+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C65-r1",
+  "source_origin": "C65-row7balanced",
+  "reference_only": true,
+  "promotion_allowed": false,
+  "package_validation_only": true,
+  "initial_performance_job": "1591187",
+  "package_confirmation_job": "1591241",
+  "diagnostic_job_id": "1591086",
+  "expected_benchmark_cases": 12,
+  "automatic_promotion": false,
+  "automatic_retry": false,
+  "recorded_at": "2026-09-13T08:36:49.606359+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep13ba",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "21f09527f8b8867b50830016aee1e19cbeb1c6bf8568c772555333db62cc5f4b",
+  "log": ".runs/conv/C65-package/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        49.38,
+        49.81,
+        49.39
+      ],
+      "median_ms": 49.39,
+      "min_ms": 49.38,
+      "max_ms": 49.81,
+      "spread_pct": 0.8706215833164603,
+      "gflops": [
+        1526.5077,
+        1513.2796,
+        1526.2155
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        58.92,
+        59.08,
+        58.7
+      ],
+      "median_ms": 58.92,
+      "min_ms": 58.7,
+      "max_ms": 59.08,
+      "spread_pct": 0.6449422946367879,
+      "gflops": [
+        1412.6832,
+        1408.7543,
+        1417.9784
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        102.92,
+        102.9,
+        102.89
+      ],
+      "median_ms": 102.9,
+      "min_ms": 102.89,
+      "max_ms": 102.92,
+      "spread_pct": 0.029154518950438423,
+      "gflops": [
+        1565.0018,
+        1565.3059,
+        1565.445
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        220.74,
+        220.77,
+        220.73
+      ],
+      "median_ms": 220.74,
+      "min_ms": 220.73,
+      "max_ms": 220.77,
+      "spread_pct": 0.01812086617741255,
+      "gflops": [
+        1566.4331,
+        1566.2312,
+        1566.5267
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 431.95000000000005,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1591477",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  }
+}

@@ -1,0 +1,490 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C39-tunehip11",
+  "job_id": "1579482",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579482",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "candidate.env": "9f7a419492167e154eaf70890e42a3b7e2f5c8269d9ca0f1ede213c5aa20a265",
+    "check_conv_guard.c": "3f93343d9afbef99b1d91e8ff9c236103ae8b8f667991742b828c1d3e55a7568",
+    "check_sve_dispatch.c": "58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "remote_job.sh": "08adba9a50b78b6ba287f375d58afc4d91aa5b32a64fb12fcb040b609da6ec7e",
+    "run.sh": "29d2edbd879e5366e3257047bfd0a123d23bdb5cb083b83569a6eb52d08cba5c"
+  },
+  "source_manifest_remote_matches": true,
+  "source_hash_verification_scope": "Existing automated transport manifest compared with remote wrapper SHA entries; no repeated manual byte-hash audit.",
+  "extra_manual_hash_audit": false,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "production_object_guard_cases": 7108,
+      "dispatch_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "production_object_guard_cases": 7108,
+      "dispatch_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "production_object_guard_cases": 7108,
+      "dispatch_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "production_object_guard_cases": 7108,
+      "dispatch_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "production_object_guard_cases": 7108,
+      "dispatch_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "production_object_guard_cases": 7108,
+      "dispatch_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    }
+  ],
+  "production_object_guard_cases": 42648,
+  "dispatch_cases": 576,
+  "total_cases": 43224,
+  "runner_cases": 4,
+  "combined_validation_cases": 43228,
+  "runner": {
+    "passed": true,
+    "case_count": 4,
+    "cases": [
+      {
+        "case": 1,
+        "dimensions": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "passed": true
+      },
+      {
+        "case": 2,
+        "dimensions": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "passed": true
+      },
+      {
+        "case": 3,
+        "dimensions": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "passed": true
+      },
+      {
+        "case": 4,
+        "dimensions": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "passed": true
+      }
+    ],
+    "build_commands": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-c",
+        "bench_conv.c",
+        "-o",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/bench_conv.o"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-mtune=hip11",
+        "-c",
+        "conv2d.c",
+        "-o",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d.o"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/bench_conv.o",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d.o",
+        "-o",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d_test",
+        "-lm"
+      ]
+    ],
+    "production_object_tested": true,
+    "benchmark_flags_untuned": true,
+    "kernel_tune": "hip11",
+    "timings_are_performance_record": false
+  },
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "source-manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-runner",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-object",
+      "exit_code": 0
+    },
+    {
+      "stage": "target-query",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-compile",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-link-production-object",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-build",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "production_artifacts": {
+    "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d.o": "5b5d145f8ef3242559e8ec281fac9487808093389a21c35cc4e281e84de6a5f6",
+    "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/bench_conv.o": "9f2f322fa79d947549e9db4e2e0c670b32eff7034c98e5bb518769e517558066",
+    "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d_test": "8c661610d9624118f8873c52457597287d32386bdf394b417352c4064b81ec2d",
+    "production-conv2d.o": "5b5d145f8ef3242559e8ec281fac9487808093389a21c35cc4e281e84de6a5f6"
+  },
+  "assembly": {
+    "review_complete": true,
+    "production_object_reviewed": true,
+    "helper": "conv_sve_rowquad",
+    "kernel_tune": "hip11",
+    "inner_loops": [
+      {
+        "label": ".L329",
+        "stage": "first input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4272,
+        "line_end": 4304,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "ext": 3,
+        "movprfx": 0,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L333",
+        "stage": "second input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4355,
+        "line_end": 4410,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "ext": 3,
+        "movprfx": 3,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L338",
+        "stage": "third input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4502,
+        "line_end": 4577,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "ext": 3,
+        "movprfx": 3,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L342",
+        "stage": "shared four-output two-column loop",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4739,
+        "line_end": 4832,
+        "instructions": 93,
+        "fmul": 32,
+        "fadd": 32,
+        "input_ld1w": 8,
+        "kernel_ld1rw": 8,
+        "ext": 0,
+        "movprfx": 0,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L347",
+        "stage": "first trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4962,
+        "line_end": 5037,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "ext": 3,
+        "movprfx": 3,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L351",
+        "stage": "second trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 5144,
+        "line_end": 5199,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "ext": 3,
+        "movprfx": 3,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L355",
+        "stage": "last input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 5282,
+        "line_end": 5314,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "ext": 3,
+        "movprfx": 0,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      }
+    ],
+    "whole_source_fma_count": 0,
+    "quad_frame_fixed_bytes": 752,
+    "quad_frame_extra_sve_vectors": 0,
+    "production_object_main_loop": {
+      "start": "0x40d8",
+      "end": "0x4248",
+      "instructions": 93,
+      "fmul": 32,
+      "fadd": 32,
+      "input_ld1w": 8,
+      "kernel_ld1rw": 8,
+      "stack_accesses": 0
+    },
+    "note": "Actual original production conv2d.o and production-flags .s reviewed. Target-query reports hip11 and actual kernel compile explicitly includes -mtune=hip11; benchmark, guard reference and final link are untuned. Shared.L342 has93 instructions/2columns (32FMUL+32FADD,8LD1W+8LD1RW); no FMA/EXT/MOVPRFX or stack references in main. Entire quad has no Z/Q ldr/str/ldp/stp or addvl; fixed752B scalar frame and d8-d11 ABI saves are not vector spills. Object disassembly independently has same seven main inner-loop counts32/55/75/93/75/55/32. Compared with C38, actual instruction scheduling and integer registers change (e.g. address ADD and second input LD1W move earlier), while operation counts remain identical. This verifies actual tune/codegen differences; it does not establish a performance gain."
+  },
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "evidence_directory": "raw"
+}

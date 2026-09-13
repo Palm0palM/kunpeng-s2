@@ -1,0 +1,20 @@
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c instrumented_candidate.c -o instrumented-conv2d.o
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c instrumented_candidate.c -o instrumented-conv2d.o+ printf '\n'
+
++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c instrumented_candidate.c -o instrumented-conv2d.o
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -D_DEFAULT_SOURCE -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -DCOPY_PATH_PROBE -c check_conv_guard.c -o copy-guard.o
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -D_DEFAULT_SOURCE -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -DCOPY_PATH_PROBE -c check_conv_guard.c -o copy-guard.o+ printf '\n'
+
++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -D_DEFAULT_SOURCE -DEXPECTED_ACC=4 -DCHECK_ROWTRIPLE=1 -DCHECK_ROWQUAD=1 -DCOPY_PATH_PROBE -c check_conv_guard.c -o copy-guard.o
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -DCOPY_EXPECT_PADDED=1 -c copy_probe.c -o copy-probe.o
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -DCOPY_EXPECT_PADDED=1 -c copy_probe.c -o copy-probe.o+ printf '\n'
+
++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -DCOPY_EXPECT_PADDED=1 -c copy_probe.c -o copy-probe.o
++ printf BUILD_COMMAND:
+BUILD_COMMAND:+ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 copy-guard.o instrumented-conv2d.o copy-probe.o -o check_input_copy -lm
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 copy-guard.o instrumented-conv2d.o copy-probe.o -o check_input_copy -lm+ printf '\n'
+
++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 copy-guard.o instrumented-conv2d.o copy-probe.o -o check_input_copy -lm

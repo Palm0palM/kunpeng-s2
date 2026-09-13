@@ -1,0 +1,22 @@
+++ printf BUILD_COMMAND:
+BUILD_COMMAND:++ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c bench_conv.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/bench_conv.o
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c bench_conv.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/bench_conv.o++ printf '\n'
+
+++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c bench_conv.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/bench_conv.o
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~
+++ printf BUILD_COMMAND:
+BUILD_COMMAND:++ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -mtune=hip11 -c conv2d.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d.o
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -mtune=hip11 -c conv2d.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d.o++ printf '\n'
+
+++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -mtune=hip11 -c conv2d.c -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d.o
+++ printf BUILD_COMMAND:
+BUILD_COMMAND:++ printf ' %q' gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/bench_conv.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d.o -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d_test -lm
+ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/bench_conv.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d.o -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d_test -lm++ printf '\n'
+
+++ gcc -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/bench_conv.o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d.o -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C39-tunehip11-20260912T093907Z/results/run-20260912-174157-e8nodn/conv2d_test -lm

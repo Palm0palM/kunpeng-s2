@@ -1,0 +1,7 @@
+{
+  "kind": "Optional read-only inspection path error after successful record/compare; not an operator or lifecycle failure",
+  "command": "sed -n '1,75p' .runs/conv/C26-r30/benchmark.log && rg -n 'MEMBER|EXIT|PASS|FAIL|GROUP' .runs/conv/C26-r30/wrapper.stdout.log",
+  "observed_error": "rg: .runs/conv/C26-r30/wrapper.stdout.log: IO error for operation on .runs/conv/C26-r30/wrapper.stdout.log: No such file or directory (os error 2)",
+  "exact_shell_exit_code": "not returned in the prior displayed output; not inferred",
+  "effect": "No file changed. Standard record already validated actual exit-code.txt for every member; no status/fetch/record/compare rerun. Reported immediately to root."
+}

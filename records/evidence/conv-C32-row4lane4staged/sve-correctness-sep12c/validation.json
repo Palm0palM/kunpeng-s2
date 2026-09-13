@@ -1,0 +1,323 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C32-row4lane4staged",
+  "job_id": "1579286",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579286",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "1608433218ec6e2ce9dda9da46810774696d7f877dbc6cfdd44cdc31bf19a841",
+    "check_conv_guard.c": "cc863350467de6ab4d51847bbaba0c394daea77aa7c5f1201113ed527e362c37",
+    "check_sve_dispatch.c": "58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1",
+    "conv2d.c": "af21a9cdfbbeed75aea6c7af8fdcd976d43a178ecb80d1c2bd8f9fc8e8d44f06",
+    "remote_job.sh": "c81124bb754a67064344c3bff27e328bee50a8e999acc4d4a1c1b45fcc75a104"
+  },
+  "source_manifest_remote_matches": true,
+  "source_hash_verification_scope": "Existing automated transport manifest matches remote wrapper SHA entries; no separate repeated manual byte-hash audit.",
+  "extra_manual_hash_audit": false,
+  "accumulators_per_row": 4,
+  "rows_per_group": 4,
+  "total_accumulators": 16,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 20164,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 20164,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 20164,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 20164,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 20164,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 20164,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 48,
+        "rowtriple": 96,
+        "rowquad": 96
+      },
+      "passed": true
+    }
+  ],
+  "full_cases": 120984,
+  "smoke_cases": 576,
+  "total_cases": 121560,
+  "coverage_extension": {
+    "kernel_shapes_added": [
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "purpose": "Four-column core followed separately by remainder1/remainder2; remainder0/remainder3 coverage retained."
+  },
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "review_complete": true,
+    "helper": "conv_sve_rowquad",
+    "inner_loops": [
+      {
+        "label": ".L329",
+        "stage": "first input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "ext": 3,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_register_moves": 0,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "kernel_ld1rqw": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0,
+        "indexed_fmul_count": 0
+      },
+      {
+        "label": ".L333",
+        "stage": "second input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "ext": 3,
+        "movprfx": 3,
+        "dup": 0,
+        "vector_register_moves": 0,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "kernel_ld1rqw": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0,
+        "indexed_fmul_count": 0
+      },
+      {
+        "label": ".L338",
+        "stage": "third input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "ext": 3,
+        "movprfx": 3,
+        "dup": 0,
+        "vector_register_moves": 0,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "kernel_ld1rqw": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0,
+        "indexed_fmul_count": 0
+      },
+      {
+        "label": ".L342",
+        "stage": "shared four-output four-column indexed loop",
+        "kernel_columns_per_iteration": 4,
+        "instructions": 159,
+        "fmul": 64,
+        "fadd": 64,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_register_moves": 3,
+        "input_ld1w": 16,
+        "kernel_ld1rw": 0,
+        "kernel_ld1rqw": 4,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0,
+        "indexed_fmul_count": 64,
+        "indexed_coefficient_register_counts": {
+          "z2": 13,
+          "z3": 16,
+          "z4": 19,
+          "z5": 16
+        },
+        "indexed_lane_counts": {
+          "0": 16,
+          "1": 16,
+          "2": 16,
+          "3": 16
+        },
+        "indexed_low_z0_to_z7_count": 64
+      },
+      {
+        "label": ".L344",
+        "stage": "shared four-output two-column remainder",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 93,
+        "fmul": 32,
+        "fadd": 32,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_register_moves": 0,
+        "input_ld1w": 8,
+        "kernel_ld1rw": 8,
+        "kernel_ld1rqw": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0,
+        "indexed_fmul_count": 0
+      },
+      {
+        "label": ".L349",
+        "stage": "first trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "ext": 3,
+        "movprfx": 3,
+        "dup": 0,
+        "vector_register_moves": 0,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "kernel_ld1rqw": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0,
+        "indexed_fmul_count": 0
+      },
+      {
+        "label": ".L353",
+        "stage": "second trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "ext": 3,
+        "movprfx": 3,
+        "dup": 0,
+        "vector_register_moves": 0,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "kernel_ld1rqw": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0,
+        "indexed_fmul_count": 0
+      },
+      {
+        "label": ".L357",
+        "stage": "last input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "ext": 3,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_register_moves": 0,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "kernel_ld1rqw": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0,
+        "indexed_fmul_count": 0
+      }
+    ],
+    "whole_source_fma_count": 0,
+    "note": "Remote GCC10.3.1 strict-FP; independent static cross-review agrees. Four-column .L342 has159 instructions,64 indexed fmul+64 fadd,16 input ld1w,4 ld1rqw,3 ordinary vector MOV,6 ADD and CMP/BNE. Indexed coefficients use z5=16,z4=19,z3=16,z2=13; all64 low z0-z7, each lane0-3 occurs16 times. Replicate-load destinations are z5/z4/z3/z29; dk in z29 is copied3 times for low-Z indexed use. No ext/movprfx/dup or vector stack loads/stores in the main loop; all listed paired loops also have no vector spills. Whole quad has no ldr/str/ldp/stp Z/Q; fixed frame784 bytes with no extra scalable allocation. ABI d8-d14 saves and outer scalar/pointer tables are not accumulator spills. C29 two vector loads plus two vector stores per four-column iteration are eliminated. This is an assembly observation only; performance must be measured.",
+    "independent_static_review": true,
+    "quad_frame_fixed_bytes": 784,
+    "quad_frame_extra_sve_vectors": 0
+  },
+  "evidence_directory": "raw"
+}

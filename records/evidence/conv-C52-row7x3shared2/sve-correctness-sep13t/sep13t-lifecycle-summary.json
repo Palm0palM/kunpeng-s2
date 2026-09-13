@@ -1,0 +1,365 @@
+{
+  "recorded_at": "2026-09-12T17:09:16.186973+00:00",
+  "candidate": "C52-row7x3shared2",
+  "job_id": "1582134",
+  "lifecycle_status": "terminal_raw_fetched_numeric_log_overview_complete",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1582134",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "status_command": "python3 .runs/conv/sep13t-checks/driver.py C52-row7x3shared2 config/conv-sep12.local.json status",
+  "status_process_exit_code": 0,
+  "status_tool_chunk": "065ac0",
+  "fetch_command": "python3 .runs/conv/sep13t-checks/driver.py C52-row7x3shared2 config/conv-sep12.local.json fetch",
+  "fetch_process_exit_code": 0,
+  "fetch_tool_chunk": "f8e66b",
+  "wrapper_exit_code": 0,
+  "actual_stage_count": 19,
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "compiler_version_observed": "10.3.1",
+  "allocation_observed": {
+    "allowed_cpus": [
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151
+    ],
+    "numa_node": "node3"
+  },
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "lanes": 4,
+      "threads": 1,
+      "block_outputs_per_row": 12,
+      "full_cases": 4784,
+      "full_matrix_counts": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32
+      },
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "dispatch_entries": 756,
+      "direct_entries": 1080,
+      "dispatch_worker_mask": 1,
+      "direct_worker_mask": 1,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "guard_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl16-t1.log",
+      "dispatch_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl16-t1.log",
+      "numeric_log_counts_match": true
+    },
+    {
+      "sve_bytes": 16,
+      "lanes": 4,
+      "threads": 4,
+      "block_outputs_per_row": 12,
+      "full_cases": 4784,
+      "full_matrix_counts": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32
+      },
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "dispatch_entries": 756,
+      "direct_entries": 1080,
+      "dispatch_worker_mask": 15,
+      "direct_worker_mask": 15,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "guard_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl16-t4.log",
+      "dispatch_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl16-t4.log",
+      "numeric_log_counts_match": true
+    },
+    {
+      "sve_bytes": 32,
+      "lanes": 8,
+      "threads": 1,
+      "block_outputs_per_row": 24,
+      "full_cases": 4784,
+      "full_matrix_counts": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32
+      },
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "dispatch_entries": 756,
+      "direct_entries": 1080,
+      "dispatch_worker_mask": 1,
+      "direct_worker_mask": 1,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "guard_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl32-t1.log",
+      "dispatch_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl32-t1.log",
+      "numeric_log_counts_match": true
+    },
+    {
+      "sve_bytes": 32,
+      "lanes": 8,
+      "threads": 4,
+      "block_outputs_per_row": 24,
+      "full_cases": 4784,
+      "full_matrix_counts": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32
+      },
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "dispatch_entries": 756,
+      "direct_entries": 1080,
+      "dispatch_worker_mask": 15,
+      "direct_worker_mask": 15,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "guard_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl32-t4.log",
+      "dispatch_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl32-t4.log",
+      "numeric_log_counts_match": true
+    },
+    {
+      "sve_bytes": 64,
+      "lanes": 16,
+      "threads": 1,
+      "block_outputs_per_row": 48,
+      "full_cases": 4784,
+      "full_matrix_counts": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32
+      },
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "dispatch_entries": 756,
+      "direct_entries": 1080,
+      "dispatch_worker_mask": 1,
+      "direct_worker_mask": 1,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "guard_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl64-t1.log",
+      "dispatch_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl64-t1.log",
+      "numeric_log_counts_match": true
+    },
+    {
+      "sve_bytes": 64,
+      "lanes": 16,
+      "threads": 4,
+      "block_outputs_per_row": 48,
+      "full_cases": 4784,
+      "full_matrix_counts": {
+        "core": 3888,
+        "narrow": 144,
+        "small": 720,
+        "larger": 32
+      },
+      "dispatch_cases": 972,
+      "direct_cases": 432,
+      "dispatch_entries": 756,
+      "direct_entries": 1080,
+      "dispatch_worker_mask": 15,
+      "direct_worker_mask": 15,
+      "helper_entries": {
+        "prefix": 8550,
+        "tail": 8550,
+        "rowpair": 234,
+        "rowtriple": 2106,
+        "rowquad": 1458
+      },
+      "guard_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl64-t4.log",
+      "dispatch_log": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl64-t4.log",
+      "numeric_log_counts_match": true
+    }
+  ],
+  "full_cases": 28704,
+  "dispatch_cases": 5832,
+  "direct_cases": 2592,
+  "total_cases": 37128,
+  "runner_cases": 0,
+  "numeric_log_counts_match": true,
+  "raw_directory": ".runs/conv/sep13t-checks/C52-row7x3shared2/raw",
+  "raw_artifacts": [
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/build-assembly.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/build-dispatch.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/build-guard.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/candidate.env",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/check_conv_guard.c",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/check_sve_dispatch.c",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/compiler-version.txt",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/conv2d-sve.s",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/conv2d.c",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl16-t1.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl16-t4.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl32-t1.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl32-t4.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl64-t1.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/dispatch-vl64-t4.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/exit-code.txt",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl16-t1.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl16-t4.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl32-t1.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl32-t4.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl64-t1.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/guard-vl64-t4.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/probe.log",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/remote_job.sh",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/source-sha256.txt",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/stage-exits.txt",
+    ".runs/conv/sep13t-checks/C52-row7x3shared2/raw/wrapper.stdout.log"
+  ],
+  "production_assembly_artifact_available": true,
+  "assembly_review_performed_by_this_agent": false,
+  "acceptance_performed_by_this_agent": false,
+  "freeze_performed_by_this_agent": false,
+  "source_digest_audit_performed_by_this_overview": false,
+  "source_expected_digest_from_saved_job": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+  "performance_measured": false,
+  "local_operator_execution": false,
+  "resubmission": false,
+  "note": "Transport and numerical log overview only. Actual source/build/assembly acceptance and freezing remain assigned to root and independent reviewers; numeric PASS here does not constitute final acceptance."
+}

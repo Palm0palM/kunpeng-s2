@@ -1,0 +1,63 @@
+{
+  "state": "submitted",
+  "created_at": "2026-09-12T02:25:21.812792+00:00",
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-d8b3a671cc1f/member-2",
+  "host": "CLUSTER_HOST",
+  "user": "REDACTED_USER",
+  "port": 22,
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "job_id": "1576034",
+  "group": "kp-conv-group-d8b3a671cc1f",
+  "group_index": 2,
+  "measurement_order": [
+    "C21-r6",
+    "C24-r1",
+    "C26-row4loads",
+    "C27-row3staged",
+    "C21-r7"
+  ],
+  "submission_started_at": "2026-09-12T02:25:24.221593+00:00",
+  "submit_command": "dsub -n kp-conv-group-d8b3a671cc1f -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-d8b3a671cc1f/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-d8b3a671cc1f/remote_job.sh",
+  "submitted_at": "2026-09-12T02:25:24.739184+00:00",
+  "status_checked_at": "2026-09-12T02:36:44.319551+00:00",
+  "status_returncode": 0,
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1576034",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "fetch_state": "complete",
+  "fetched_at": "2026-09-12T02:36:46.566922+00:00",
+  "artifacts_sha256": {
+    "benchmark.log": "d51743fe60d3b4d13755b0bb79b43502f73bc0bbbc7b0d9abf9b76ded423bb38",
+    "environment.log": "bc211bb92b085c1dc54b574f21fe4569eabd4dd5055ba130ef5aec02131930e5",
+    "source-sha256.txt": "e290dd24423be9a22535e1644e857a4d7e05e182695c286eba5c17eff9cbf8d3",
+    "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "problem": "zgemm",
+  "version": "Z2-mb48-pair2",
+  "parent": "Z1-control2",
+  "strategy": "仅将MB24改为MB48，保留三行A连续打包、3x4微内核和3M累加顺序；检验增加行复用能否降低B跨行块扫描开销，K512复用域理论约624KiB（不含C），仍需实测",
+  "created_at": "2026-09-08T01:51:59.061376+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
+    "bench_zgemm.c": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+    "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+    "zgemm.c": "8a9cc4791f6c16c4a8487e8c9a025eb89390d8ddafe54ae20a0efe36654401ec"
+  },
+  "status": "passed",
+  "custom_campaign_note": "源码与策略测前已冻结于 2026-09-08T01:36:40.130064+00:00；本候选在同作业测量后正式创建并关联，created_at 未倒填；来源已晋级Z1-pack-pair1；待测源码先以Z2-mb48创建和本机检查，仅MB24改为48；同作业基线晋级后正式关联为Z2-mb48-pair2；冻结来源 Z2-mb48，父版本 Z1-control2；冻结清单 SHA256=7f3cd5d13a7c2818180af737dc52f990f84a8f9f44632eac91586b5a06fffacb；真实共享 job=1485352",
+  "recorded_at": "2026-09-08T01:52:00.007831+00:00",
+  "environment": "kunpeng-zgemm-pair2-compute-node-A-aarch64-3-114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+  "reference": "官方 benchmark 内置 reference_zgemm；无外部 BLAS",
+  "verified": true,
+  "log_sha256": "129e680efff73d96f38ddb9549f11d3ffa1419f422bf6edd73e31a70e05c24f7",
+  "log": "benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        7427,
+        7427,
+        256
+      ],
+      "times_ms": [
+        234.92,
+        236.0,
+        235.33
+      ],
+      "median_ms": 235.33,
+      "min_ms": 234.92,
+      "max_ms": 236.0,
+      "spread_pct": 0.45893001317299636,
+      "gflops": [
+        480.8831,
+        478.677,
+        480.04
+      ],
+      "max_error": 3.05e-12
+    },
+    {
+      "dims": [
+        14848,
+        14848,
+        256
+      ],
+      "times_ms": [
+        929.12,
+        924.63,
+        919.38
+      ],
+      "median_ms": 924.63,
+      "min_ms": 919.38,
+      "max_ms": 929.12,
+      "spread_pct": 1.053394330705256,
+      "gflops": [
+        485.9535,
+        488.3129,
+        491.1008
+      ],
+      "max_error": 3.51e-12
+    },
+    {
+      "dims": [
+        37360,
+        8192,
+        512
+      ],
+      "times_ms": [
+        2712.08,
+        2698.92,
+        2702.26
+      ],
+      "median_ms": 2702.26,
+      "min_ms": 2698.92,
+      "max_ms": 2712.08,
+      "spread_pct": 0.48699977056241267,
+      "gflops": [
+        462.2259,
+        464.4802,
+        463.9051
+      ],
+      "max_error": 6.04e-12
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 3862.2200000000003,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "compute-node-A",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) <PRIVATE_IP>",
+      "gcc (GCC) <PRIVATE_IP>"
+    ]
+  },
+  "job_id": "1485352",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "publication_note": "Public copy: compute/login aliases and private paths/usernames redacted. Original log hashes refer to unredacted private evidence; public hashes are in artifact-manifest.json."
+}

@@ -1,0 +1,43 @@
+--- AP/source/check_conv_guard.c
++++ AR/source/check_conv_guard.c
+@@ -15,6 +15,9 @@
+ void conv2d(const float *, int, int, const float *, int, int, float *);
+ #ifndef EXPECTED_ACC
+ #error "Pass EXPECTED_ACC as the number of vectors per output row in the candidate main helper."
++#endif
++#if EXPECTED_ACC != 2
++#error "C62 AR checker requires exactly two vectors per output row."
+ #endif
+ struct guarded {
+     void *mapping;
+@@ -127,7 +130,7 @@
+ 
+ int main(int argc, char **argv) {
+     const int lanes = setup_config(argc, argv);
+-    const int widths[] = {3*lanes-1,3*lanes,3*lanes+1,6*lanes-1,6*lanes,6*lanes+1};
++    const int widths[] = {2*lanes-1,2*lanes,2*lanes+1,4*lanes-1,4*lanes,4*lanes+1};
+     const int heights[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,21,22,28};
+     int count = 0, core = 0, narrow = 0, small = 0, larger = 0, quad_boundary = 0;
+     for (unsigned w=0; w<sizeof(widths)/sizeof(*widths); ++w)
+@@ -148,7 +151,7 @@
+         if (!one_case(1,kh,kw,extra_heights[h],pad,leading)) return 1;
+         ++narrow; ++count;
+     }
+-    const int small_widths[] = {1,3*lanes-1,3*lanes+1};
++    const int small_widths[] = {1,2*lanes-1,2*lanes+1};
+     for (unsigned w=0; w<sizeof(small_widths)/sizeof(*small_widths); ++w)
+     for (int kh=1; kh<=5; ++kh)
+     for (int kw=1; kw<=3; ++kw)
+@@ -164,10 +167,10 @@
+     for (unsigned h=0; h<sizeof(larger_heights)/sizeof(*larger_heights); ++h)
+     for (int pad=0; pad<=1; ++pad)
+     for (int leading=0; leading<=1; ++leading) {
+-        if (!one_case(3*lanes+1,larger_kernels[k][0],larger_kernels[k][1],larger_heights[h],pad,leading)) return 1;
++        if (!one_case(2*lanes+1,larger_kernels[k][0],larger_kernels[k][1],larger_heights[h],pad,leading)) return 1;
+         ++larger; ++count;
+     }
+-    /* C54: actual four-column work, all u1 remainders, t and tile transitions. */
++    /* C62: actual four-column work, all u1 remainders, t and tile transitions. */
+     const int quad_heights[] = {7,8,14,28};
+     for (unsigned w=0; w<sizeof(widths)/sizeof(*widths); ++w)
+     for (int kh=7; kh<=8; ++kh)

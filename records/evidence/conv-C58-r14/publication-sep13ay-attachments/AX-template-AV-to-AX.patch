@@ -1,0 +1,655 @@
+--- AV/driver.py
++++ AX/driver.py
+@@ -1,4 +1,4 @@
+-"""Prepared AV diagnostic transport for C64; explicit root --go only.
++"""Prepared AX diagnostic transport for C65; explicit root --go only.
+ 
+ No work occurs on import. status/fetch reuse a saved unique job; no local
+ operator execution, automatic polling, acceptance, promotion or publication.
+@@ -21,24 +21,24 @@
+ sys.path.insert(0, str(ROOT / 'tools'))
+ import cluster
+ 
+-VERSIONS = ('C64-row7boundaryrowwise',)
+-SOURCE_SHA256 = 'fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421'
++VERSIONS = ('C65-row7balanced',)
++SOURCE_SHA256 = 'a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874'
+ SOURCE_NAMES = {'conv2d.c', 'check_conv_guard.c', 'check_sve_dispatch.c', 'candidate.env', 'remote_job.sh'}
+-SOURCE_PARENTS = {'C64-row7boundaryrowwise': 'C58-r1'}
+-AU_JOB_ID = '1590659'
++SOURCE_PARENTS = {'C65-row7balanced': 'C58-r1'}
++AW_JOB_ID = '1590883'
+ PARENT_SHA256 = 'c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751'
+ PRODUCTION_NAMES = {'conv2d.c', 'README.md', 'bench_conv.c', 'run.sh'}
+-COUNTS = {'C64-row7boundaryrowwise': dict(full_per_configuration=5744, dispatch_per_configuration=1212,
+-    direct_per_configuration=432, configurations=6, total=44328)}
++COUNTS = {'C65-row7balanced': dict(full_per_configuration=5744, dispatch_per_configuration=2724,
++    direct_per_configuration=432, configurations=9, total=80100)}
+ RESOURCES = dict(cpus=38, memory_mb=24576, numa_count=1,
+     numa_distribution='pack', walltime_seconds=1800)
+ STAGES = (['allocation', 'compiler', 'manifest', 'build-guard']
+-    + [f'guard-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4)]
++    + [f'guard-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4, 38)]
+     + ['build-dispatch']
+-    + [f'dispatch-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4)]
++    + [f'dispatch-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4, 38)]
+     + ['build-assembly', 'complete'])
+ TERMINAL = {'SUCCEEDED', 'FAILED', 'CANCELLED', 'CANCELED', 'TIMEOUT', 'TERMINATED'}
+-# The frozen AV wrapper builds no retained production object for separate transfer.
++# The frozen AX wrapper builds no retained production object for separate transfer.
+ OBJECT_ARTIFACTS = {name: set() for name in VERSIONS}
+ 
+ 
+@@ -80,32 +80,32 @@
+             query_exit=None, raw_status=exception_text(exc), scheduler=None, query_error=type(exc).__name__)
+ 
+ 
+-def completed_au_evidence():
+-    path = ROOT / '.runs/conv/sep13au-campaign.json'
++def completed_aw_evidence():
++    path = ROOT / '.runs/conv/sep13aw-campaign.json'
+     campaign = read_json(path)
+-    order = ['C58-r10', 'C63-row7x2shared4rowwise', 'C58-r11']
+-    require(campaign.get('performance_job') == AU_JOB_ID and campaign.get('status') == 'complete'
++    order = ['C58-r12', 'C64-row7boundaryrowwise', 'C58-r13']
++    require(campaign.get('performance_job') == AW_JOB_ID and campaign.get('status') == 'complete'
+         and campaign.get('measurement_order') == order and campaign.get('expected_benchmark_cases') == 36,
+-        'Original AU must be completely recorded')
++        'Original AW must be completely recorded')
+     rows = campaign.get('results', [])
+     require([r.get('version') for r in rows] == order
+         and all(len(r.get('cases', [])) == 4 and all(len(c.get('times_ms', [])) == 3 for c in r['cases']) for r in rows),
+-        'Original AU all36 samples required')
+-    return dict(path=str(path.relative_to(ROOT)), job_id=AU_JOB_ID, expected_samples=36, read_only=True)
++        'Original AW all36 samples required')
++    return dict(path=str(path.relative_to(ROOT)), job_id=AW_JOB_ID, expected_samples=36, read_only=True)
+ 
+ 
+ def serial_gate(cfg):
+-    identities = {AU_JOB_ID: ['.runs/conv/sep13au-campaign.json']}
++    identities = {AW_JOB_ID: ['.runs/conv/sep13aw-campaign.json']}
+     unresolved = []
+     try:
+-        completed_au_evidence()
++        completed_aw_evidence()
+     except (ValueError, OSError, KeyError) as exc:
+         unresolved.append(str(exc))
+     path = BASE / VERSIONS[0] / 'job.json'
+     if path.exists():
+         data = read_json(path); job_id = str(data.get('job_id') or '')
+         if data.get('version') != VERSIONS[0] or not re.fullmatch(r'[0-9]+', job_id):
+-            unresolved.append('Original AV reservation unknown; reconcile without resubmission')
++            unresolved.append('Original AX reservation unknown; reconcile without resubmission')
+         else:
+             identities.setdefault(job_id, []).append(str(path.relative_to(ROOT)))
+     evidence = [query_scheduler(cfg, job_id, origins) for job_id, origins in identities.items()]
+@@ -120,7 +120,7 @@
+ 
+ def frozen_source(base, version):
+     expected = read_json(base / 'source-hashes.json')
+-    require(set(expected) == SOURCE_NAMES and expected['conv2d.c'] == SOURCE_SHA256, 'Own C64 transport identity')
++    require(set(expected) == SOURCE_NAMES and expected['conv2d.c'] == SOURCE_SHA256, 'Own C65 transport identity')
+     source = base / 'source'
+     require(source.is_dir() and not source.is_symlink(), 'Real source directory required')
+     actual, manifest = {}, {}
+@@ -131,7 +131,7 @@
+     require(actual == expected and read_json(base / 'source-manifest.json') == manifest, 'Frozen five-file bytes changed')
+     record = read_json(ROOT / 'records/experiments/conv' / (version + '.json'))
+     require(record.get('version') == version and record.get('source_parent', record.get('parent')) == 'C58-r1'
+-        and record.get('status') == 'prepared' and record.get('verified') is False, 'Unmeasured C64 checkpoint')
++        and record.get('status') == 'prepared' and record.get('verified') is False, 'Unmeasured C65 checkpoint')
+     production = ROOT / '.runs/conv' / version / 'source'
+     require({p.name for p in production.iterdir()} == PRODUCTION_NAMES, 'Four production files')
+     hashes = {n: hashlib.sha256((production / n).read_bytes()).hexdigest() for n in PRODUCTION_NAMES}
+@@ -171,7 +171,7 @@
+     parser.add_argument('version', choices=VERSIONS)
+     parser.add_argument('config', help='Verified existing config; read only, never included in source or archive')
+     parser.add_argument('action', choices=('gate', 'submit', 'status', 'fetch'))
+-    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AV submission authorization')
++    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AX submission authorization')
+     args = parser.parse_args()
+     require(args.action == 'submit' or not args.go, '--go is valid only for submit')
+     base = BASE / args.version
+@@ -188,17 +188,17 @@
+     if args.action == 'submit':
+         require(args.go, 'Explicit root --go required; no automatic startup')
+         require(not manifest.exists(), 'Refusing second submit; reconcile/reuse this package job.json')
+-        au_evidence = completed_au_evidence()
++        aw_evidence = completed_aw_evidence()
+         gate = serial_gate(cfg)
+         save(base / ('gate-' + stamp() + '.json'), gate)
+         require(gate['clear'], 'Known CONV work active/unresolved or query incomplete; retain gate evidence and stop')
+         hashes = frozen_source(base, args.version)
+         created = stamp()
+-        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13av-' + args.version + '-' + created
++        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13ax-' + args.version + '-' + created
+         data = dict(version=args.version, remote_dir=remote_dir, submitted=False,
+             submit_attempted=False, created_at=created, resources=RESOURCES,
+             expected_checks=COUNTS[args.version], expected_stages=STAGES,
+-            source_hashes=hashes, known_job_gate=gate, completed_au_evidence=au_evidence, explicit_go=True, no_automatic_continuation=True)
++            source_hashes=hashes, known_job_gate=gate, completed_aw_evidence=aw_evidence, explicit_go=True, no_automatic_continuation=True)
+         # Per-package exclusive reservation precedes upload/submission. It is retained on any failure.
+         with manifest.open('x') as handle:
+             json.dump(data, handle, indent=2)
+@@ -210,7 +210,7 @@
+         command = 'umask 077; mkdir -p ' + shlex.quote(remote_dir) + ' && tar -xzf - -C ' + shlex.quote(remote_dir)
+         result = logged_remote(cfg, command, base / 'upload.log', input=archive.getvalue(), timeout=cfg['transfer_timeout'])
+         require(result.returncode == 0, 'Upload failed; keep reservation/log and do not resubmit')
+-        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13av-' + args.version)
++        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13ax-' + args.version)
+         data.update(command=command, submit_attempted=True)
+         save(manifest, data)
+         result = logged_remote(cfg, command, base / 'submit.log')
+@@ -274,7 +274,7 @@
+             path = dest / name
+             if not path.exists():
+                 path.write_bytes(content)
+-    print('Fetched immutable AV diagnostic text/assembly. Fetch is not acceptance or performance.')
++    print('Fetched immutable AX diagnostic text/assembly. Fetch is not acceptance or performance.')
+ 
+ 
+ if __name__ == '__main__':
+--- AV/accept_and_freeze.py
++++ AX/accept_and_freeze.py
+@@ -1,46 +1,52 @@
+-"""AV returned-log acceptance/archive only; no operator or network execution."""
++"""AX returned-log acceptance/archive only; no operator or network execution."""
+ from pathlib import Path
+ import argparse,hashlib,json,re,shlex,shutil,datetime
+ BASE=Path(__file__).resolve().parent
+ ROOT=BASE.parents[2]
+-VERSION='C64-row7boundaryrowwise'
+-SOURCE_SHA256='fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421'
++VERSION='C65-row7balanced'
++SOURCE_SHA256='a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874'
+ B=BASE/VERSION
+ RAW=B/'raw'
+-FROZEN=ROOT/'.runs/conv'/VERSION/'sve-correctness-sep13av'
++FROZEN=ROOT/'.runs/conv'/VERSION/'sve-correctness-sep13ax'
+ def read(p):return json.loads(p.read_text())
+ def need(ok,why):
+     if not ok:raise ValueError(why)
+ def main():
+     parser=argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument('--job-id',required=True,help='Original AV ID actually saved after root one-shot submission')
++    parser.add_argument('--job-id',required=True,help='Original AX ID actually saved after root one-shot submission')
+     job_id=parser.parse_args().job_id
+-    need(re.fullmatch(r'[0-9]+',job_id) and job_id != '1590659','Own original AV ID required')
++    need(re.fullmatch(r'[0-9]+',job_id) and job_id != '1590883','Own original AX ID required')
+     need(not FROZEN.exists() and not (B/'validation.json').exists(),'Already accepted/frozen; do not overwrite')
+-    s=read(B/'AV_SUMMARY.json');j=read(B/'job.json');prepared=read(B/'prepared.json')
++    s=read(B/'AX_SUMMARY.json');j=read(B/'job.json');prepared=read(B/'prepared.json')
+     need(s['candidate']==j['version']==VERSION and s['job_id']==j['job_id']==job_id,'Original job identity')
+     status=j['scheduler_status'];need(str(status.get('jobId'))==job_id,'Scheduler job association')
+     need(status['status']=='SUCCEEDED' and status['jobExitCode']==status['systemExitCode']==0,'Actual terminal exits')
+     need(int((RAW/'exit-code.txt').read_text())==0 and s['wrapper_exit']==0 and s['issues']==[],'Wrapper/summary issues')
+-    stages=['allocation','compiler','manifest','build-guard']+[f'guard-vl{v}-t{t}' for v in (16,32,64) for t in (1,4)]+['build-dispatch']+[f'dispatch-vl{v}-t{t}' for v in (16,32,64) for t in (1,4)]+['build-assembly','complete']
+-    need(re.findall(r'^STAGE=(\S+) EXIT=(-?\d+)$',(RAW/'stage-exits.txt').read_text(),re.M)==[(x,'0') for x in stages],'All19 actual ordered stages')
++    stages=['allocation','compiler','manifest','build-guard']+[f'guard-vl{v}-t{t}' for v in (16,32,64) for t in (1,4,38)]+['build-dispatch']+[f'dispatch-vl{v}-t{t}' for v in (16,32,64) for t in (1,4,38)]+['build-assembly','complete']
++    need(re.findall(r'^STAGE=(\S+) EXIT=(-?\d+)$',(RAW/'stage-exits.txt').read_text(),re.M)==[(x,'0') for x in stages],'All25 actual ordered stages')
+     need(s['stages']==[dict(stage=x,exit_code=0) for x in stages],'Summary stage association')
+     configs=[]
+     for v in (16,32,64):
+-        for t in (1,4):
++        for t in (1,4,38):
+             g=(RAW/f'guard-vl{v}-t{t}.log').read_text();d=(RAW/f'dispatch-vl{v}-t{t}.log').read_text()
+             header=f'SVE_BYTES={v} SVE_LANES={v//4} BLOCK_OUTPUTS={3*v//4} THREADS={t}'
+             need(g.splitlines()[0]==d.splitlines()[0]==header,'Actual VL/thread')
+             need(not re.search(r'FAIL|ERROR',g+d),'Numerical failure present')
+             need(re.findall(r'^PASS: (\d+) convolution cases;',g,re.M)==['5744'],'Full count')
+-            need(re.findall(r'^PASS: (\d+) dispatch cases;',d,re.M)==['1212'],'Dispatch count')
++            need(re.findall(r'^PASS: (\d+) dispatch cases;',d,re.M)==['2724'],'Dispatch count')
+             need(re.findall(r'^PASS: (\d+) direct fallback cases;',d,re.M)==['432'],'Direct count')
+             need('FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32 quad_boundary=960' in g,'Full families')
+-            need('DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240' in d,'Dispatch families')
+-            for name,n in [('DISPATCH',1236),('DIRECT',1080)]:
+-                mask=1 if t==1 else 15
+-                need(f'{name}_ROWSEVEN_ACTUAL_ENTRIES={n} EXPECTED={n} WORKER_MASK={mask} EXPECTED_MASK={mask}' in d,'Entries/workers')
+-            configs.append(dict(sve_bytes=v,threads=t,full_cases=5744,dispatch_cases=1212,direct_cases=432))
++            need('DISPATCH_MATRIX_COUNTS core=972 quad_boundary=240 balance=1512' in d,'Dispatch families')
++            totals={1:4008,4:6168,38:24010};families={1:(756,480,2772),4:(1020,660,4488),38:(1386,880,21744)}
++            core,quad,balance=families[t]
++            need(f'DISPATCH_EXPECTED_FAMILIES core={core} quad_boundary={quad} balance={balance}' in d,'Fixed independently derived entry totals')
++            for name,n,mask in [('DISPATCH',totals[t],(1<<t)-1),('DIRECT',1080,1 if t==1 else 15)]:
++                need(f'{name}_ROWSEVEN_ACTUAL_ENTRIES={n} EXPECTED={n} WORKER_MASK={mask} EXPECTED_MASK={mask}' in d,'Per-case validated entries/workers and aggregate')
++            coverage=re.findall(r'^OUTPUT_EXACT_ONCE_CASES=(\d+) EXPECTED=(\d+) OUTPUT_VALUES=(\d+) ADDRESS_ERRORS=(\d+)$',d,re.M)
++            need(len(coverage)==1 and tuple(map(int,coverage[0][:2]))==(3156,3156) and int(coverage[0][2])>0 and coverage[0][3]=='0','Actual predicate-aware exactly-once SVE output coverage')
++            legacy={k:int(n) for k,n in re.findall(r'SVE_(PREFIX|TAIL|ROWPAIR|ROWTRIPLE|ROWQUAD)_ACTUAL_ENTRIES=(\d+)',d)}
++            need(set(legacy)=={'PREFIX','TAIL','ROWPAIR','ROWTRIPLE','ROWQUAD'} and all(n>0 for n in legacy.values()),'Original legacy nonzero coverage')
++            configs.append(dict(sve_bytes=v,threads=t,full_cases=5744,dispatch_cases=2724,direct_cases=432,exact_once_cases=3156))
+     flags=['gcc','-O3','-std=c11','-D_DEFAULT_SOURCE','-Wall','-Wextra','-fno-fast-math','-ffp-contract=off','-mcpu=generic','-fopenmp','-DEXPECTED_ACC=3']
+     expected=[flags+['check_conv_guard.c','conv2d.c','-o','check_conv_guard'],flags+['-finstrument-functions','check_sve_dispatch.c','-o','check_sve_dispatch'],flags+['-S','conv2d.c','-o','conv2d-sve.s']]
+     probe=(RAW/'probe.log').read_text()
+@@ -52,7 +58,7 @@
+     hashes=read(B/'source-hashes.json');need(hashes==prepared['source_hashes']==j['source_hashes'],'Source association')
+     need({row['name']:row['sha256'] for row in s['source_files']}==hashes and all(row['all_manifests_and_transport_bytes_equal'] for row in s['source_files']),'Completed lifecycle source verification')
+     need(set(hashes)=={'conv2d.c','check_conv_guard.c','check_sve_dispatch.c','candidate.env','remote_job.sh'},'Exact five-file transport set')
+-    need(hashes.get('conv2d.c')==SOURCE_SHA256,'Own C64 reviewed source identity')
++    need(hashes.get('conv2d.c')==SOURCE_SHA256,'Own C65 reviewed source identity')
+     need({name:hashlib.sha256((B/'source'/name).read_bytes()).hexdigest() for name in hashes}==hashes,'Actual original source hashes')
+     # Lifecycle already verified remote manifest; require the exact returned bytes still match originals.
+     for name in hashes:need((RAW/name).read_bytes()==(B/'source'/name).read_bytes(),'Returned source changed')
+@@ -60,7 +66,7 @@
+     need(not re.search(r'^\s*(?:fmla|fmls|fmad|fmsb|fnmla|fnmls|fnmad|fnmsb|fmadd|fmsub|fnmadd|fnmsub|fmlal2?|fmlsl2?|fmmla)\b',assembly,re.M),'Unexpected fused arithmetic')
+     review=B/'TARGETED_ASSEMBLY_REVIEW.md'
+     need(review.is_file() and (B/'ROOT_RETURNED_REVIEW.md').is_file(),'Root must first read targeted actual review')
+-    result=dict(status='passed',complete=True,candidate=VERSION,job_id=job_id,scheduler=status,exit_code=0,total_cases=44328,full_cases=34464,dispatch_cases=7272,direct_cases=2592,runner_cases=0,configurations=configs,source_hashes=hashes,source_hashes_verified=True,compiler_version='10.3.1',build_commands=expected,stage_exits=s['stages'],allocation=s['scheduler_resources'],assembly=dict(fused_instructions=0,review='TARGETED_ASSEMBLY_REVIEW.md'),performance_measured=False,executed_locally=False,executed_remotely=True,sanitizer='NOT_RUN',issues=[],note='Original AV own numerical evidence; root-read actual 7-row3VL boundary-rowwise and shared2 load/broadcast schedule, spill and frame review. No speed claim or automatic promotion.')
++    result=dict(status='passed',complete=True,candidate=VERSION,job_id=job_id,scheduler=status,exit_code=0,total_cases=80100,full_cases=51696,dispatch_cases=24516,direct_cases=3888,runner_cases=0,configurations=configs,source_hashes=hashes,source_hashes_verified=True,compiler_version='10.3.1',build_commands=expected,stage_exits=s['stages'],allocation=s['scheduler_resources'],assembly=dict(fused_instructions=0,review='TARGETED_ASSEMBLY_REVIEW.md'),performance_measured=False,executed_locally=False,executed_remotely=True,sanitizer='NOT_RUN',issues=[],note='Original AX own numerical evidence; root-read actual balanced group/column dispatch with unchanged C7 helpers and diagnostic predicate-aware stores, spill and frame review. No speed claim or automatic promotion.')
+     # Archive existing evidence without altering raw/prepared/creation metadata.
+     temp=FROZEN.with_name(FROZEN.name+'.tmp');need(not temp.exists(),'Pending archive exists')
+     shutil.copytree(B,temp)
+@@ -72,5 +78,5 @@
+     (temp/'freeze-source.json').write_text(json.dumps(freeze,indent=2)+'\n')
+     temp.rename(FROZEN)
+     (B/'validation.json').write_text(json.dumps(result,indent=2)+'\n')
+-    print('AV'+job_id+' accepted/frozen44328; performance unmeasured.')
++    print('AX'+job_id+' accepted/frozen80100; performance unmeasured.')
+ if __name__=='__main__':main()
+--- AV/source/check_conv_guard.c
++++ AX/source/check_conv_guard.c
+@@ -15,6 +15,10 @@
+ void conv2d(const float *, int, int, const float *, int, int, float *);
+ #ifndef EXPECTED_ACC
+ #error "Pass EXPECTED_ACC as the number of vectors per output row in the candidate main helper."
++#endif
++#ifndef AX_OUTPUT_BEGIN
++#define AX_OUTPUT_BEGIN(P,N) ((void)0)
++#define AX_OUTPUT_END() 1
+ #endif
+ struct guarded {
+     void *mapping;
+@@ -92,8 +96,11 @@
+             sum += input.data[(size_t)(y + ky) * width + x + kx] * kernel.data[(size_t)ky * kw + kx];
+         ref[(size_t)y * ow + x] = sum;
+     }
++    AX_OUTPUT_BEGIN(output.data, no);
+     checked_conv(input.data, height, width, kernel.data, kh, kw, output.data);
++    const int output_coverage_good = AX_OUTPUT_END();
+     int good = memcmp(ref, output.data, no * sizeof(float)) == 0;
++    good = good && output_coverage_good;
+     good = good && outside_unchanged(&input) && outside_unchanged(&kernel) && outside_unchanged(&output);
+     if (!good) fprintf(stderr, "FAIL ow=%d kh=%d kw=%d oh=%d pad=%d leading=%d\n", ow, kh, kw, oh, pad, leading);
+     free(ref);
+@@ -116,7 +123,7 @@
+         #pragma omp single
+         actual_threads = omp_get_num_threads();
+     }
+-    if (bad_workers LOCAL_USERLOCAL_USER (actual_threads != 1 && actual_threads != 4)) {
++    if (bad_workers LOCAL_USERLOCAL_USER (actual_threads != 1 && actual_threads != 4 && actual_threads != 38)) {
+         fprintf(stderr, "Worker VL/thread mismatch: bad=%d threads=%d\n", bad_workers, actual_threads); exit(5);
+     }
+     if (actual_threads != omp_get_max_threads()) exit(5);
+--- AV/source/check_sve_dispatch.c
++++ AX/source/check_sve_dispatch.c
+@@ -1,127 +1,202 @@
+-/* Diagnostic-only instrumentation. Production source is included unchanged.
+- * These runs establish entries/branches and bitwise correctness, never speed. */
++/* AX diagnostic only: unchanged production source, instrumented SVE stores.
++ * Do not use this executable or its instrumentation to measure performance. */
++#include <stddef.h>
++#include <stdint.h>
++static void ax_output_begin(float *, size_t) __attribute__((no_instrument_function));
++static int ax_output_end(void) __attribute__((no_instrument_function));
++#define AX_OUTPUT_BEGIN(P,N) ax_output_begin((P),(N))
++#define AX_OUTPUT_END() ax_output_end()
+ #define main guard_main
+ #include "check_conv_guard.c"
+ #undef main
++
++static uintptr_t ax_output_address;
++static size_t ax_output_count;
++static unsigned *ax_writes;
++static unsigned ax_address_error;
++static unsigned long ax_coverage_cases;
++static unsigned long long ax_covered_values;
++static void ax_output_begin(float *output, size_t count) {
++    if (ax_writes LOCAL_USERLOCAL_USER !count LOCAL_USERLOCAL_USER count > SIZE_MAX / sizeof(*ax_writes)) abort();
++    ax_writes = calloc(count, sizeof(*ax_writes));
++    if (!ax_writes) abort();
++    ax_output_address = (uintptr_t)output;
++    ax_output_count = count;
++    ax_address_error = 0;
++}
++static int ax_output_end(void) {
++    int good = ax_address_error == 0;
++    for (size_t i = 0; i < ax_output_count; ++i) {
++        if (ax_writes[i] != 1) {
++            if (good) fprintf(stderr,"WRITE_COVERAGE_FAIL index=%zu actual=%u expected=1\n",i,ax_writes[i]);
++            good = 0;
++        }
++    }
++    if (good) { ++ax_coverage_cases; ax_covered_values += ax_output_count; }
++    else fprintf(stderr,"WRITE_COVERAGE_FAIL bad_address=%u\n",ax_address_error);
++    free(ax_writes); ax_writes = NULL; ax_output_count = 0;
++    return good;
++}
++/* Predicate is recorded lane-for-lane, followed by the original float store.
++ * Integer address checks avoid subtraction between pointers to different objects.
++ * Counters are private to each completed case and atomic across its worker team. */
++__attribute__((target("arch=armv8-a+sve"), no_instrument_function))
++static void ax_checked_svst1(svbool_t predicate, float *dst, svfloat32_t value) {
++    uint32_t active[64];
++    const size_t lanes = svcntw();
++    if (lanes > 64 LOCAL_USERLOCAL_USER !ax_writes) abort();
++    svst1_u32(svptrue_b32(), active, svsel_u32(predicate, svdup_n_u32(1), svdup_n_u32(0)));
++    const uintptr_t first = (uintptr_t)dst;
++    for (size_t lane = 0; lane < lanes; ++lane) if (active[lane]) {
++        const uintptr_t offset = lane * sizeof(float);
++        if (first > UINTPTR_MAX-offset) {
++            __atomic_store_n(&ax_address_error,1,__ATOMIC_RELAXED); continue;
++        }
++        const uintptr_t address = first+offset;
++        if (address < ax_output_address LOCAL_USERLOCAL_USER (address-ax_output_address)%sizeof(float) != 0 LOCAL_USERLOCAL_USER
++            (address-ax_output_address)/sizeof(float) >= ax_output_count) {
++            __atomic_store_n(&ax_address_error,1,__ATOMIC_RELAXED); continue;
++        }
++        __atomic_fetch_add(&ax_writes[(address-ax_output_address)/sizeof(float)],1,__ATOMIC_RELAXED);
++    }
++    svst1_f32(predicate,dst,value);
++}
++#define svst1 ax_checked_svst1
+ #include "conv2d.c"
++#undef svst1
+ 
+ static unsigned long prefix_entries, tail_entries, rowpair_entries;
+ static unsigned long rowtriple_entries, rowquad_entries, rowseven_entries;
+-static unsigned long rowseven_worker_mask;
+-
++static uint64_t rowseven_worker_mask;
+ void __cyg_profile_func_enter(void *, void *) __attribute__((no_instrument_function));
+ void __cyg_profile_func_exit(void *, void *) __attribute__((no_instrument_function));
+ void __cyg_profile_func_enter(void *fn, void *caller) {
+     (void)caller;
+     if (fn == (void *)conv_sve_rowseven) {
+-        __atomic_fetch_add(&rowseven_entries, 1, __ATOMIC_RELAXED);
+-        const int worker = omp_get_thread_num();
+-        if (worker >= 0 && worker < 4)
+-            __atomic_fetch_or(&rowseven_worker_mask, 1ul << worker, __ATOMIC_RELAXED);
+-    }
+-    if (fn == (void *)conv_sve_rowquad) __atomic_fetch_add(&rowquad_entries, 1, __ATOMIC_RELAXED);
+-    if (fn == (void *)conv_sve_rowtriple) __atomic_fetch_add(&rowtriple_entries, 1, __ATOMIC_RELAXED);
+-    if (fn == (void *)conv_sve_rowpair) __atomic_fetch_add(&rowpair_entries, 1, __ATOMIC_RELAXED);
+-    if (fn == (void *)conv_sve_prefix) __atomic_fetch_add(&prefix_entries, 1, __ATOMIC_RELAXED);
+-    if (fn == (void *)conv_sve_tail) __atomic_fetch_add(&tail_entries, 1, __ATOMIC_RELAXED);
+-}
+-void __cyg_profile_func_exit(void *fn, void *caller) { (void)fn; (void)caller; }
++        __atomic_fetch_add(&rowseven_entries,1,__ATOMIC_RELAXED);
++        const int worker=omp_get_thread_num();
++        if (worker<0 LOCAL_USERLOCAL_USER worker>=38) abort();
++        __atomic_fetch_or(&rowseven_worker_mask,UINT64_C(1)<<worker,__ATOMIC_RELAXED);
++    }
++    if(fn==(void*)conv_sve_rowquad)__atomic_fetch_add(&rowquad_entries,1,__ATOMIC_RELAXED);
++    if(fn==(void*)conv_sve_rowtriple)__atomic_fetch_add(&rowtriple_entries,1,__ATOMIC_RELAXED);
++    if(fn==(void*)conv_sve_rowpair)__atomic_fetch_add(&rowpair_entries,1,__ATOMIC_RELAXED);
++    if(fn==(void*)conv_sve_prefix)__atomic_fetch_add(&prefix_entries,1,__ATOMIC_RELAXED);
++    if(fn==(void*)conv_sve_tail)__atomic_fetch_add(&tail_entries,1,__ATOMIC_RELAXED);
++}
++void __cyg_profile_func_exit(void *fn,void *caller){(void)fn;(void)caller;}
+ 
+-/* Force the otherwise unreachable kh<7 defensive branch, using seven valid
+- * output rows per call. Distinct groups own distinct output rows. */
+-static void direct_rowseven(const float *input, int height, int width,
+-                          const float *kernel, int kh, int kw, float *output) {
+-    const int oh = height - kh + 1, ow = width - kw + 1;
+-    if ((oh != 7 && oh != 28) LOCAL_USERLOCAL_USER kh < 1 LOCAL_USERLOCAL_USER kh >= 7 LOCAL_USERLOCAL_USER kw < 1) {
+-        fprintf(stderr, "Invalid direct-helper diagnostic shape\n");
+-        exit(7);
+-    }
+-    const size_t input_stride = (size_t)width, output_stride = (size_t)ow;
+-    const size_t groups = (size_t)oh / 7;
++/* Retained direct kh<7 helper check, using distinct valid seven-row groups. */
++static void direct_rowseven(const float *input,int height,int width,const float *kernel,int kh,int kw,float *output) {
++    const int oh=height-kh+1,ow=width-kw+1;
++    if((oh!=7&&oh!=28)LOCAL_USER|kh<1||kh>=7||kw<1)exit(7);
++    const size_t stride=(size_t)width,outstride=(size_t)ow,groups=(size_t)oh/7;
+ #pragma omp parallel for schedule(static)
+-    for (size_t group = 0; group < groups; ++group) {
+-        const size_t row = group * 7;
+-        const float *base = input + row * input_stride;
+-        float *dst = output + row * output_stride;
+-        conv_sve_rowseven(base, input_stride, kernel, kh, kw,
+-                       dst, dst + output_stride, dst + 2 * output_stride,
+-                       dst + 3 * output_stride, dst + 4 * output_stride,
+-                       dst + 5 * output_stride, dst + 6 * output_stride, ow);
+-    }
+-}
+-
+-static int checked_entry_case(int ow, int kh, int kw, int oh, int pad,
+-                              int leading, unsigned long expected_entries) {
+-    const unsigned long before = __atomic_load_n(&rowseven_entries, __ATOMIC_RELAXED);
+-    if (!one_case(ow, kh, kw, oh, pad, leading)) return 0;
+-    const unsigned long delta = __atomic_load_n(&rowseven_entries, __ATOMIC_RELAXED) - before;
+-    if (delta != expected_entries) {
+-        fprintf(stderr, "ENTRY_FAIL ow=%d kh=%d kw=%d oh=%d actual=%lu expected=%lu\n",
+-                ow, kh, kw, oh, delta, expected_entries);
+-        return 0;
+-    }
+-    return 1;
+-}
+-
+-int main(int argc, char **argv) {
+-    const int lanes = setup_config(argc, argv);
+-    const unsigned long expected_mask = (1ul << omp_get_max_threads()) - 1;
+-    const int widths[] = {3*lanes-1,3*lanes,3*lanes+1,6*lanes-1,6*lanes,6*lanes+1};
+-    const int heights[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,21,22,28};
+-    int dispatch_count = 0, dispatch_core = 0, dispatch_quad_boundary = 0;
+-    checked_conv = conv2d;
+-    for (unsigned w=0; w<sizeof(widths)/sizeof(*widths); ++w)
+-    for (int kh=6; kh<=8; ++kh)
+-    for (int kw=1; kw<=3; ++kw)
+-    for (unsigned h=0; h<sizeof(heights)/sizeof(*heights); ++h) {
+-        const unsigned long expected = kh >= 7 && heights[h] >= 7 ? (unsigned long)heights[h] / 7 : 0;
+-        if (!checked_entry_case(widths[w],kh,kw,heights[h],1,0,expected)) return 1;
+-        ++dispatch_core; ++dispatch_count;
+-    }
+-    const int quad_heights[] = {7,8,14,28};
+-    for (unsigned w=0; w<sizeof(widths)/sizeof(*widths); ++w)
+-    for (int kh=7; kh<=8; ++kh)
+-    for (int kw=4; kw<=8; ++kw)
+-    for (unsigned h=0; h<sizeof(quad_heights)/sizeof(*quad_heights); ++h) {
+-        const unsigned long expected = (unsigned long)quad_heights[h] / 7;
+-        if (!checked_entry_case(widths[w],kh,kw,quad_heights[h],1,0,expected)) return 1;
+-        ++dispatch_quad_boundary; ++dispatch_count;
+-    }
+-    const unsigned long dispatch_entries = __atomic_load_n(&rowseven_entries, __ATOMIC_RELAXED);
+-    const unsigned long dispatch_mask = __atomic_load_n(&rowseven_worker_mask, __ATOMIC_RELAXED);
+-    const unsigned long prefix = __atomic_load_n(&prefix_entries, __ATOMIC_RELAXED);
+-    const unsigned long tail = __atomic_load_n(&tail_entries, __ATOMIC_RELAXED);
+-    const unsigned long pair = __atomic_load_n(&rowpair_entries, __ATOMIC_RELAXED);
+-    const unsigned long triple = __atomic_load_n(&rowtriple_entries, __ATOMIC_RELAXED);
+-    const unsigned long quad = __atomic_load_n(&rowquad_entries, __ATOMIC_RELAXED);
+-    printf("SVE_PREFIX_ACTUAL_ENTRIES=%lu SVE_TAIL_ACTUAL_ENTRIES=%lu\n",prefix,tail);
+-    printf("SVE_ROWPAIR_ACTUAL_ENTRIES=%lu SVE_ROWTRIPLE_ACTUAL_ENTRIES=%lu SVE_ROWQUAD_ACTUAL_ENTRIES=%lu\n",pair,triple,quad);
+-    printf("DISPATCH_MATRIX_COUNTS core=%d quad_boundary=%d\n",dispatch_core,dispatch_quad_boundary);
+-    printf("DISPATCH_ROWSEVEN_ACTUAL_ENTRIES=%lu EXPECTED=1236 WORKER_MASK=%lu EXPECTED_MASK=%lu\n",dispatch_entries,dispatch_mask,expected_mask);
+-    if (dispatch_core!=972 LOCAL_USERLOCAL_USER dispatch_quad_boundary!=240 LOCAL_USERLOCAL_USER dispatch_count!=1212 LOCAL_USERLOCAL_USER dispatch_entries!=1236 LOCAL_USERLOCAL_USER dispatch_mask!=expected_mask LOCAL_USERLOCAL_USER
+-        !prefix LOCAL_USERLOCAL_USER !tail LOCAL_USERLOCAL_USER !pair LOCAL_USERLOCAL_USER !triple LOCAL_USERLOCAL_USER !quad) return 4;
+-    printf("PASS: %d dispatch cases; exact per-case rowseven entries and bitwise scalar reference\n",dispatch_count);
+-
+-    /* Assignment and mask reset happen after every previous team has joined. */
+-    checked_conv = direct_rowseven;
+-    __atomic_store_n(&rowseven_worker_mask, 0, __ATOMIC_RELAXED);
+-    const int direct_widths[] = {3*lanes-1,3*lanes,3*lanes+1};
+-    const int direct_heights[] = {7,28};
+-    int direct_count = 0;
+-    for (unsigned w=0; w<sizeof(direct_widths)/sizeof(*direct_widths); ++w)
+-    for (int kh=1; kh<=6; ++kh)
+-    for (int kw=1; kw<=3; ++kw)
+-    for (unsigned h=0; h<sizeof(direct_heights)/sizeof(*direct_heights); ++h)
+-    for (int pad=0; pad<=1; ++pad)
+-    for (int leading=0; leading<=1; ++leading) {
+-        const unsigned long expected = (unsigned long)direct_heights[h] / 7;
+-        if (!checked_entry_case(direct_widths[w],kh,kw,direct_heights[h],pad,leading,expected)) return 1;
+-        ++direct_count;
+-    }
+-    const unsigned long direct_entries = __atomic_load_n(&rowseven_entries, __ATOMIC_RELAXED) - dispatch_entries;
+-    const unsigned long direct_mask = __atomic_load_n(&rowseven_worker_mask, __ATOMIC_RELAXED);
+-    printf("DIRECT_ROWSEVEN_ACTUAL_ENTRIES=%lu EXPECTED=1080 WORKER_MASK=%lu EXPECTED_MASK=%lu\n",direct_entries,direct_mask,expected_mask);
+-    if (direct_count!=432 LOCAL_USERLOCAL_USER direct_entries!=1080 LOCAL_USERLOCAL_USER direct_mask!=expected_mask) return 4;
+-    printf("PASS: %d direct fallback cases; kh1..6, readonly/guard/canary and bitwise scalar reference\n",direct_count);
++    for(size_t group=0;group<groups;++group){
++        const size_t row=group*7;
++        float *dst=output+row*outstride;
++        conv_sve_rowseven(input+row*stride,stride,kernel,kh,kw,
++            dst,dst+outstride,dst+2*outstride,dst+3*outstride,
++            dst+4*outstride,dst+5*outstride,dst+6*outstride,ow);
++    }
++}
++struct expected_entries { unsigned long entries; uint64_t mask; };
++/* Independent inverse owner map: enumerate tiles, not production cursor ranges.
++ * Empty-team partitions never appear as owners. q==0 reaches only the first arm. */
++static struct expected_entries balanced_expectation(int ow,int kh,int oh,int lanes,int workers){
++    struct expected_entries out={0,0};
++    if(kh<7||oh<7)return out;
++    const size_t tile=(size_t)3*lanes,cols=((size_t)ow+tile-1)/tile;
++    const size_t groups=((size_t)oh+6)/7,n=groups*cols;
++    const size_t q=n/(size_t)workers,r=n%(size_t)workers,cut=r*(q+1);
++    for(size_t g=0;g<(size_t)oh/7;++g){
++        size_t previous=SIZE_MAX;
++        for(size_t col=0;col<cols;++col){
++            const size_t k=g*cols+col;
++            size_t owner;
++            if(k<cut)owner=k/(q+1);
++            else { if(q==0)abort(); owner=r+(k-cut)/q; }
++            if(owner>=(size_t)workers)abort();
++            if(owner!=previous){++out.entries;out.mask|=UINT64_C(1)<<owner;previous=owner;}
++        }
++    }
++    return out;
++}
++static struct expected_entries direct_expectation(int oh,int workers){
++    const unsigned long groups=(unsigned long)oh/7;
++    const unsigned active=groups<(unsigned)workers?(unsigned)groups:(unsigned)workers;
++    return (struct expected_entries){groups,(UINT64_C(1)<<active)-1};
++}
++static uint64_t dispatch_mask,direct_mask;
++static unsigned long family_expected[3];
++static int checked_entry_case(int ow,int kh,int kw,int oh,int pad,int leading,
++                              struct expected_entries expected,uint64_t *aggregate){
++    const unsigned long before=__atomic_load_n(&rowseven_entries,__ATOMIC_RELAXED);
++    __atomic_store_n(&rowseven_worker_mask,0,__ATOMIC_RELAXED);
++    if(!one_case(ow,kh,kw,oh,pad,leading))return 0;
++    const unsigned long actual=__atomic_load_n(&rowseven_entries,__ATOMIC_RELAXED)-before;
++    const uint64_t mask=__atomic_load_n(&rowseven_worker_mask,__ATOMIC_RELAXED);
++    if(actual!=expected.entries||mask!=expected.mask){
++        fprintf(stderr,"ENTRY_FAIL ow=%d kh=%d kw=%d oh=%d actual=%lu expected=%lu mask=%llu expected_mask=%llu\n",
++            ow,kh,kw,oh,actual,expected.entries,(unsigned long long)mask,(unsigned long long)expected.mask);return 0;
++    }
++    *aggregate|=mask;return 1;
++}
++int main(int argc,char **argv){
++    const int lanes=setup_config(argc,argv),workers=omp_get_max_threads();
++    const int index=workers==1?0:workers==4?1:workers==38?2:-1;
++    if(index<0)exit(5);
++    /* Fixed before remote execution from independent owner-map enumeration. */
++    const unsigned long expected_core[3]={756,1020,1386};
++    const unsigned long expected_quad[3]={480,660,880};
++    const unsigned long expected_balance[3]={2772,4488,21744};
++    const unsigned long expected_total[3]={4008,6168,24010};
++    const uint64_t expected_dispatch_mask=(UINT64_C(1)<<workers)-1;
++    const uint64_t expected_direct_mask=workers==1?UINT64_C(1):UINT64_C(15);
++    const int widths[]={3*lanes-1,3*lanes,3*lanes+1,6*lanes-1,6*lanes,6*lanes+1};
++    const int heights[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,21,22,28};
++    unsigned core=0,quad=0,balance=0,direct=0;
++    checked_conv=conv2d;
++    for(unsigned w=0;w<6;++w)for(int kh=6;kh<=8;++kh)for(int kw=1;kw<=3;++kw)for(unsigned h=0;h<18;++h){
++        const struct expected_entries e=balanced_expectation(widths[w],kh,heights[h],lanes,workers);
++        if(!checked_entry_case(widths[w],kh,kw,heights[h],1,0,e,&dispatch_mask))return 1;
++        family_expected[0]+=e.entries;++core;
++    }
++    const int quad_heights[]={7,8,14,28};
++    for(unsigned w=0;w<6;++w)for(int kh=7;kh<=8;++kh)for(int kw=4;kw<=8;++kw)for(unsigned h=0;h<4;++h){
++        const struct expected_entries e=balanced_expectation(widths[w],kh,quad_heights[h],lanes,workers);
++        if(!checked_entry_case(widths[w],kh,kw,quad_heights[h],1,0,e,&dispatch_mask))return 1;
++        family_expected[1]+=e.entries;++quad;
++    }
++    const int tiles[]={1,2,3,4,37,38,39};
++    const int balance_heights[]={7,8,9,10,11,12,13,14,15,27,28,29};
++    const int balance_kw[]={1,4,7};
++    for(unsigned t=0;t<7;++t)for(int delta=-1;delta<=1;++delta)for(unsigned h=0;h<12;++h)for(int kh=7;kh<=8;++kh)for(unsigned k=0;k<3;++k){
++        const int ow=tiles[t]*3*lanes+delta,oh=balance_heights[h],kw=balance_kw[k];
++        const struct expected_entries e=balanced_expectation(ow,kh,oh,lanes,workers);
++        if(!checked_entry_case(ow,kh,kw,oh,1,0,e,&dispatch_mask))return 1;
++        family_expected[2]+=e.entries;++balance;
++    }
++    const unsigned long dispatch_entries=__atomic_load_n(&rowseven_entries,__ATOMIC_RELAXED);
++    printf("SVE_PREFIX_ACTUAL_ENTRIES=%lu SVE_TAIL_ACTUAL_ENTRIES=%lu\n",prefix_entries,tail_entries);
++    printf("SVE_ROWPAIR_ACTUAL_ENTRIES=%lu SVE_ROWTRIPLE_ACTUAL_ENTRIES=%lu SVE_ROWQUAD_ACTUAL_ENTRIES=%lu\n",rowpair_entries,rowtriple_entries,rowquad_entries);
++    printf("DISPATCH_MATRIX_COUNTS core=%u quad_boundary=%u balance=%u\n",core,quad,balance);
++    printf("DISPATCH_EXPECTED_FAMILIES core=%lu quad_boundary=%lu balance=%lu\n",family_expected[0],family_expected[1],family_expected[2]);
++    printf("DISPATCH_ROWSEVEN_ACTUAL_ENTRIES=%lu EXPECTED=%lu WORKER_MASK=%llu EXPECTED_MASK=%llu\n",dispatch_entries,expected_total[index],(unsigned long long)dispatch_mask,(unsigned long long)expected_dispatch_mask);
++    if(core!=972||quad!=240||balance!=1512||family_expected[0]!=expected_core[index]LOCAL_USER|family_expected[1]!=expected_quad[index]LOCAL_USER|family_expected[2]!=expected_balance[index]LOCAL_USER|dispatch_entries!=expected_total[index]LOCAL_USER|dispatch_mask!=expected_dispatch_mask|LOCAL_USER!prefix_entries|LOCAL_USER!tail_entries|LOCAL_USER!rowpair_entries|LOCAL_USER!rowtriple_entries|LOCAL_USER!rowquad_entries)return 4;
++    printf("PASS: %u dispatch cases; independent owner-map entries, bitwise reference and exactly-once SVE writes\n",core+quad+balance);
++    checked_conv=direct_rowseven;
++    const int direct_widths[]={3*lanes-1,3*lanes,3*lanes+1},direct_heights[]={7,28};
++    for(unsigned w=0;w<3;++w)for(int kh=1;kh<=6;++kh)for(int kw=1;kw<=3;++kw)for(unsigned h=0;h<2;++h)for(int pad=0;pad<=1;++pad)for(int leading=0;leading<=1;++leading){
++        const struct expected_entries e=direct_expectation(direct_heights[h],workers);
++        if(!checked_entry_case(direct_widths[w],kh,kw,direct_heights[h],pad,leading,e,&direct_mask))return 1;
++        ++direct;
++    }
++    const unsigned long direct_entries=__atomic_load_n(&rowseven_entries,__ATOMIC_RELAXED)-dispatch_entries;
++    printf("DIRECT_ROWSEVEN_ACTUAL_ENTRIES=%lu EXPECTED=1080 WORKER_MASK=%llu EXPECTED_MASK=%llu\n",direct_entries,(unsigned long long)direct_mask,(unsigned long long)expected_direct_mask);
++    if(direct!=432||direct_entries!=1080||direct_mask!=expected_direct_mask)return 4;
++    printf("PASS: %u direct fallback cases; original guarded shapes, bitwise and exactly-once SVE writes\n",direct);
++    printf("OUTPUT_EXACT_ONCE_CASES=%lu EXPECTED=3156 OUTPUT_VALUES=%llu ADDRESS_ERRORS=%u\n",ax_coverage_cases,ax_covered_values,ax_address_error);
++    if(ax_coverage_cases!=3156||ax_address_error)return 4;
+     return 0;
+ }
+--- AV/source/candidate.env
++++ AX/source/candidate.env
+@@ -1,8 +1,10 @@
+-CANDIDATE=C64-row7boundaryrowwise
++CANDIDATE=C65-row7balanced
+ EXPECTED_ACC=3
+ EXPECTED_FULL=5744
+-EXPECTED_DISPATCH=1212
++EXPECTED_DISPATCH=2724
+ EXPECTED_DIRECT=432
+-EXPECTED_DISPATCH_ROWSEVEN_ENTRIES=1236
++EXPECTED_DISPATCH_ROWSEVEN_T1=4008
++EXPECTED_DISPATCH_ROWSEVEN_T4=6168
++EXPECTED_DISPATCH_ROWSEVEN_T38=24010
+ EXPECTED_DIRECT_ROWSEVEN_ENTRIES=1080
+-EXPECTED_TOTAL=44328
++EXPECTED_TOTAL=80100
+--- AV/source/remote_job.sh
++++ AX/source/remote_job.sh
+@@ -46,9 +46,9 @@
+ print('NUMA_NODE=' + nodes[0])
+ CHECK_ALLOCATION
+ source candidate.env
+-[[ "$CANDIDATE" == C64-row7boundaryrowwise && "$EXPECTED_ACC" == 3 ]]
+-[[ "$EXPECTED_FULL" == 5744 && "$EXPECTED_DISPATCH" == 1212 && "$EXPECTED_DIRECT" == 432 && "$EXPECTED_TOTAL" == 44328 ]]
+-[[ "$EXPECTED_DISPATCH_ROWSEVEN_ENTRIES" == 1236 && "$EXPECTED_DIRECT_ROWSEVEN_ENTRIES" == 1080 ]]
++[[ "$CANDIDATE" == C65-row7balanced && "$EXPECTED_ACC" == 3 ]]
++[[ "$EXPECTED_FULL" == 5744 && "$EXPECTED_DISPATCH" == 2724 && "$EXPECTED_DIRECT" == 432 && "$EXPECTED_TOTAL" == 80100 ]]
++[[ "$EXPECTED_DISPATCH_ROWSEVEN_T1" == 4008 && "$EXPECTED_DISPATCH_ROWSEVEN_T4" == 6168 && "$EXPECTED_DISPATCH_ROWSEVEN_T38" == 24010 && "$EXPECTED_DIRECT_ROWSEVEN_ENTRIES" == 1080 ]]
+ printf 'CANDIDATE=%s\n' "$CANDIDATE"
+ date -u
+ hostname
+@@ -60,7 +60,7 @@
+ stage compiler compiler_check
+ write_manifest() {
+     sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env > source-sha256.txt LOCAL_USERLOCAL_USER return "$?"
+-    printf '%s  conv2d.c\n' fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421 LOCAL_USER sha256sum -c - LOCAL_USERLOCAL_USER return "$?"
++    printf '%s  conv2d.c\n' a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874 LOCAL_USER sha256sum -c - LOCAL_USERLOCAL_USER return "$?"
+     cat source-sha256.txt
+ }
+ stage manifest write_manifest
+@@ -85,14 +85,14 @@
+ # Uninstrumented candidate and scalar guard are separate translation units.
+ stage build-guard build_logged build-guard.log gcc "${flags[@]}" check_conv_guard.c conv2d.c -o check_conv_guard
+ for bytes in 16 32 64; do
+-    for threads in 1 4; do
++    for threads in 1 4 38; do
+         stage "guard-vl${bytes}-t${threads}" run_guard "$bytes" "$threads"
+     done
+ done
+ # This separate executable alone receives entry instrumentation; never time it.
+ stage build-dispatch build_logged build-dispatch.log gcc "${flags[@]}" -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
+ for bytes in 16 32 64; do
+-    for threads in 1 4; do
++    for threads in 1 4 38; do
+         stage "dispatch-vl${bytes}-t${threads}" run_dispatch "$bytes" "$threads"
+     done
+ done

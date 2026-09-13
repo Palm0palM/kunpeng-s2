@@ -1,0 +1,10 @@
+# CONV 版本与测量记录
+
+所有耗时均为内部比较指标，不是官方分数。空白表示尚无测量；未完成、失败与退化实验也保留。每版完整策略、环境、原始测量字段与结论见 JSON，所有公开证据经过脱敏。
+
+| 版本 | 父版本 | 状态 | 优化策略 | 各用例中位数 ms（按记录顺序） | 总中位数 ms | 可晋级 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [C26-r34](../records/experiments/conv/C26-r34.json) |  | passed | Unchanged C6 AF-round matched control | 4096×6144×39×39: 51.51; 6144×4096×41×41: 61.94; 4256×6390×55×55: 107.32; 6390×4256×81×81: 234.13 | 454.90 | 基线复测 | Unchanged C6 control; not a new candidate. |
+| [C56-row7shared3fence](../records/experiments/conv/C56-row7shared3fence.json) | C26-r35 | passed | Source-only hypothesis: after each of the three complete C55 shared-column scopes add one empty volatile asm with21 read-only w inputs and memory clobber, zero outputs. Preserve every arithmetic statement, triple3 loop, u1 remainder, other12 stages, dispatch and other submission files. Try to reduce cross-column live inputs and AC five-slot spill; compiler acceptance, scheduling and speed remain unverified. Own diagnostic required; parent AC1582860 PASS is not inherited. | 4096×6144×39×39: 55.12; 6144×4096×41×41: 62.19; 4256×6390×55×55: 110.96; 6390×4256×81×81: 239.19 | 467.46 | 否 | C56 does not meet both C6 gates; retain every sample and C6. No automatic confirmation, promotion or ZIP. |
+| [C55-r1](../records/experiments/conv/C55-r1.json) | C26-r35 | passed | Same-source C55 parent reference for C56; promotion forbidden, AD initial false preserved, no confirmation retry | 4096×6144×39×39: 55.44; 6144×4096×41×41: 60.98; 4256×6390×55×55: 111.67; 6390×4256×81×81: 238.55 | 466.64 | 仅参考，不晋级 | Same-source C55 parent reference for C56. Never qualifies or promotes; original AD C55 initial qualification and Y/S confirmations remain false. No confirmation retry. |
+| [C26-r35](../records/experiments/conv/C26-r35.json) |  | passed | Unchanged C6 AF-round matched control | 4096×6144×39×39: 51.41; 6144×4096×41×41: 61.95; 4256×6390×55×55: 107.32; 6390×4256×81×81: 231.65 | 452.33 | 基线复测 | Unchanged C6 control; not a new candidate. |

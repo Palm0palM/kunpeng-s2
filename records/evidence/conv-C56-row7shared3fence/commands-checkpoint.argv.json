@@ -1,0 +1,9 @@
+[
+  "/Library/Developer/CommandLineTools/usr/bin/python3",
+  "tools/experiment.py",
+  "checkpoint",
+  "conv",
+  "C56-row7shared3fence",
+  "--note",
+  "Source-only prepared: exactly three identical21 read-only w input plus memory empty volatile asm statements after parent C55 lines1530/1571/1612. Current conv2d.c SHA6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c; removing only inserted text recovers all parent bytes. README/bench/run unchanged. Source parent C55-row7x3shared3, frozen AC1582860 at .runs/conv/C55-row7x3shared3/sve-correctness-sep13ac; its PASS is not inherited. Only lightweight editing and text/hash/cmp checks performed. GCC10.3.1 acceptance, numeric correctness, actual schedule/spills and performance unverified. Own independent diagnostic requires separate root GO. Creation snapshots, source-audit, candidate.patch, PLAN/STATIC_REVIEW/BOUNDARY_MATRIX and exact new/prepare/checkpoint command outputs retained."
+]

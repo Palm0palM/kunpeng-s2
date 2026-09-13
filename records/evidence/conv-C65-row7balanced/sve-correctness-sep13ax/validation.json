@@ -1,0 +1,277 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C65-row7balanced",
+  "job_id": "1591086",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1591086",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "total_cases": 80100,
+  "full_cases": 51696,
+  "dispatch_cases": 24516,
+  "direct_cases": 3888,
+  "runner_cases": 0,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "exact_once_cases": 3156
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "exact_once_cases": 3156
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 38,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "exact_once_cases": 3156
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "exact_once_cases": 3156
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "exact_once_cases": 3156
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 38,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "exact_once_cases": 3156
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "exact_once_cases": 3156
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "exact_once_cases": 3156
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 38,
+      "full_cases": 5744,
+      "dispatch_cases": 2724,
+      "direct_cases": 432,
+      "exact_once_cases": 3156
+    }
+  ],
+  "source_hashes": {
+    "remote_job.sh": "e12993a69b018c6930e105691d22fdded9e766e5a5622de857940bfb51df0035",
+    "check_sve_dispatch.c": "22267b328cd836e6405f913f33f98180a0f66c2ca0d3e1ba98bd344a084d2497",
+    "conv2d.c": "a855c14b81c00f3d398ac36c5ece6726e15235f18ebf3fe4746570da25a7f874",
+    "candidate.env": "827f2146ddef7c599b90c7cbfab4b4852742c7eca5eeff894963fd77170fbce7",
+    "check_conv_guard.c": "e2484e9a0aa540ad8a910d1d5cbf26c0d1dcfe0e5e76892e284a0d68b997d34a"
+  },
+  "source_hashes_verified": true,
+  "compiler_version": "10.3.1",
+  "build_commands": [
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "check_conv_guard.c",
+      "conv2d.c",
+      "-o",
+      "check_conv_guard"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-finstrument-functions",
+      "check_sve_dispatch.c",
+      "-o",
+      "check_sve_dispatch"
+    ],
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=3",
+      "-S",
+      "conv2d.c",
+      "-o",
+      "conv2d-sve.s"
+    ]
+  ],
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t38",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "allocation": {
+    "reqCPU": 38,
+    "reqMem": 24576,
+    "allocCPU": 38,
+    "allocMem": 24576,
+    "timeout": 1800,
+    "jobExitCode": 0,
+    "systemExitCode": 0,
+    "reqAffinity": "numa[count=1, distribution=pack]"
+  },
+  "assembly": {
+    "fused_instructions": 0,
+    "review": "TARGETED_ASSEMBLY_REVIEW.md"
+  },
+  "performance_measured": false,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "NOT_RUN",
+  "issues": [],
+  "note": "Original AX own numerical evidence; root-read actual balanced group/column dispatch with unchanged C7 helpers and diagnostic predicate-aware stores, spill and frame review. No speed claim or automatic promotion."
+}

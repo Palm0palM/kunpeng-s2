@@ -1,0 +1,1933 @@
+{
+  "scope": "Lightweight text-only opcode/range counting and manual-stack-alias audit; not code execution or acceptance. All helper lines read independently. PC instruction counts are static, not dynamic timings.",
+  "candidate": "C54-row7x3shared4",
+  "job_id": "1582656",
+  "assembly_sha256": "c7f91d74c2089f80cf74643b1262785b181db6a9435aeb99056dd439d1965606",
+  "ranges": [
+    {
+      "id": "395",
+      "from": 6005,
+      "to": 6019,
+      "counts": {
+        "instructions": 14,
+        "add": 2,
+        "ld1w": 3,
+        "ld1rw": 1,
+        "fmul": 3,
+        "fadd": 3,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "397",
+      "from": 6035,
+      "to": 6058,
+      "counts": {
+        "instructions": 23,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 3,
+        "ld1rw": 2,
+        "fmul": 6,
+        "fadd": 6,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "399",
+      "from": 6079,
+      "to": 6110,
+      "counts": {
+        "instructions": 31,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 4,
+        "ld1rw": 3,
+        "fmul": 9,
+        "fadd": 9,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "401",
+      "from": 6135,
+      "to": 6174,
+      "counts": {
+        "instructions": 39,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 5,
+        "ld1rw": 4,
+        "fmul": 12,
+        "fadd": 12,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "403",
+      "from": 6207,
+      "to": 6254,
+      "counts": {
+        "instructions": 47,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 6,
+        "ld1rw": 5,
+        "fmul": 15,
+        "fadd": 15,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "405",
+      "from": 6299,
+      "to": 6354,
+      "counts": {
+        "instructions": 55,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 7,
+        "ld1rw": 6,
+        "fmul": 18,
+        "fadd": 18,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "407",
+      "from": 6450,
+      "to": 6779,
+      "counts": {
+        "instructions": 329,
+        "add": 31,
+        "ld1rw": 28,
+        "str": 30,
+        "addvl": 16,
+        "ld1w": 12,
+        "fmul": 84,
+        "ldr": 35,
+        "fadd": 84,
+        "incb": 6,
+        "mov": 1,
+        "cmp": 1,
+        "bne": 1
+      }
+    },
+    {
+      "id": "409",
+      "from": 6810,
+      "to": 6873,
+      "counts": {
+        "instructions": 63,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 8,
+        "ld1rw": 7,
+        "fmul": 21,
+        "fadd": 21,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "412",
+      "from": 6968,
+      "to": 7023,
+      "counts": {
+        "instructions": 55,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 7,
+        "ld1rw": 6,
+        "fmul": 18,
+        "fadd": 18,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "414",
+      "from": 7080,
+      "to": 7127,
+      "counts": {
+        "instructions": 47,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 6,
+        "ld1rw": 5,
+        "fmul": 15,
+        "fadd": 15,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "416",
+      "from": 7168,
+      "to": 7207,
+      "counts": {
+        "instructions": 39,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 5,
+        "ld1rw": 4,
+        "fmul": 12,
+        "fadd": 12,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "418",
+      "from": 7253,
+      "to": 7284,
+      "counts": {
+        "instructions": 31,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 4,
+        "ld1rw": 3,
+        "fmul": 9,
+        "fadd": 9,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "420",
+      "from": 7320,
+      "to": 7343,
+      "counts": {
+        "instructions": 23,
+        "lsl": 1,
+        "ld1w": 3,
+        "add": 3,
+        "ld1rw": 2,
+        "fmul": 6,
+        "fadd": 6,
+        "cmp": 1,
+        "bgt": 1
+      }
+    },
+    {
+      "id": "422",
+      "from": 7367,
+      "to": 7381,
+      "counts": {
+        "instructions": 14,
+        "add": 2,
+        "ld1w": 3,
+        "ld1rw": 1,
+        "fmul": 3,
+        "fadd": 3,
+        "cmp": 1,
+        "bgt": 1
+      }
+    }
+  ],
+  "whole_helper_static_instructions": 1908,
+  "whole_helper_z_stack_loads": 92,
+  "whole_helper_z_stack_stores": 150,
+  "z_stack_accesses": [
+    {
+      "line": 6023,
+      "operation": "str",
+      "register": "z4",
+      "address": "SP+816+18*VL",
+      "text": "str\tz4, [x0]"
+    },
+    {
+      "line": 6062,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+8*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 6066,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+18*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 6077,
+      "operation": "ldr",
+      "register": "z7",
+      "address": "SP+816+18*VL",
+      "text": "ldr\tz7, [x1, #18, mul vl]"
+    },
+    {
+      "line": 6114,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+8*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 6118,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+9*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 6121,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+18*VL",
+      "text": "str\tz7, [x0]"
+    },
+    {
+      "line": 6132,
+      "operation": "ldr",
+      "register": "z9",
+      "address": "SP+816+18*VL",
+      "text": "ldr\tz9, [x1, #18, mul vl]"
+    },
+    {
+      "line": 6178,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+8*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 6181,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+9*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 6184,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+10*VL",
+      "text": "str\tz7, [x0]"
+    },
+    {
+      "line": 6187,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+15*VL",
+      "text": "str\tz8, [x0]"
+    },
+    {
+      "line": 6191,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+18*VL",
+      "text": "str\tz9, [x0]"
+    },
+    {
+      "line": 6202,
+      "operation": "ldr",
+      "register": "z10",
+      "address": "SP+816+15*VL",
+      "text": "ldr\tz10, [x0, #15, mul vl]"
+    },
+    {
+      "line": 6204,
+      "operation": "ldr",
+      "register": "z13",
+      "address": "SP+816+18*VL",
+      "text": "ldr\tz13, [x0, #18, mul vl]"
+    },
+    {
+      "line": 6258,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+8*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 6261,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+9*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 6264,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+10*VL",
+      "text": "str\tz7, [x0]"
+    },
+    {
+      "line": 6267,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+11*VL",
+      "text": "str\tz8, [x0]"
+    },
+    {
+      "line": 6270,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+13*VL",
+      "text": "str\tz9, [x0]"
+    },
+    {
+      "line": 6274,
+      "operation": "str",
+      "register": "z10",
+      "address": "SP+816+15*VL",
+      "text": "str\tz10, [x0]"
+    },
+    {
+      "line": 6277,
+      "operation": "str",
+      "register": "z11",
+      "address": "SP+816+16*VL",
+      "text": "str\tz11, [x0]"
+    },
+    {
+      "line": 6281,
+      "operation": "str",
+      "register": "z13",
+      "address": "SP+816+18*VL",
+      "text": "str\tz13, [x0]"
+    },
+    {
+      "line": 6291,
+      "operation": "ldr",
+      "register": "z10",
+      "address": "SP+816+13*VL",
+      "text": "ldr\tz10, [x0, #13, mul vl]"
+    },
+    {
+      "line": 6293,
+      "operation": "ldr",
+      "register": "z13",
+      "address": "SP+816+15*VL",
+      "text": "ldr\tz13, [x0, #15, mul vl]"
+    },
+    {
+      "line": 6294,
+      "operation": "ldr",
+      "register": "z14",
+      "address": "SP+816+16*VL",
+      "text": "ldr\tz14, [x0, #16, mul vl]"
+    },
+    {
+      "line": 6295,
+      "operation": "ldr",
+      "register": "z17",
+      "address": "SP+816+18*VL",
+      "text": "ldr\tz17, [x0, #18, mul vl]"
+    },
+    {
+      "line": 6357,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+8*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 6360,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+9*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 6363,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+10*VL",
+      "text": "str\tz7, [x0]"
+    },
+    {
+      "line": 6366,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+11*VL",
+      "text": "str\tz8, [x0]"
+    },
+    {
+      "line": 6369,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+12*VL",
+      "text": "str\tz9, [x0]"
+    },
+    {
+      "line": 6372,
+      "operation": "str",
+      "register": "z10",
+      "address": "SP+816+13*VL",
+      "text": "str\tz10, [x0]"
+    },
+    {
+      "line": 6375,
+      "operation": "str",
+      "register": "z11",
+      "address": "SP+816+14*VL",
+      "text": "str\tz11, [x0]"
+    },
+    {
+      "line": 6378,
+      "operation": "str",
+      "register": "z13",
+      "address": "SP+816+15*VL",
+      "text": "str\tz13, [x0]"
+    },
+    {
+      "line": 6381,
+      "operation": "str",
+      "register": "z14",
+      "address": "SP+816+16*VL",
+      "text": "str\tz14, [x0]"
+    },
+    {
+      "line": 6384,
+      "operation": "str",
+      "register": "z16",
+      "address": "SP+816+17*VL",
+      "text": "str\tz16, [x0]"
+    },
+    {
+      "line": 6387,
+      "operation": "str",
+      "register": "z17",
+      "address": "SP+816+18*VL",
+      "text": "str\tz17, [x0]"
+    },
+    {
+      "line": 6412,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+7*VL",
+      "text": "str\tz0, [x0, #7, mul vl]"
+    },
+    {
+      "line": 6413,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+6*VL",
+      "text": "str\tz0, [x0, #6, mul vl]"
+    },
+    {
+      "line": 6414,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+5*VL",
+      "text": "str\tz0, [x0, #5, mul vl]"
+    },
+    {
+      "line": 6416,
+      "operation": "str",
+      "register": "z12",
+      "address": "SP+816+19*VL",
+      "text": "str\tz12, [x0]"
+    },
+    {
+      "line": 6427,
+      "operation": "str",
+      "register": "z29",
+      "address": "SP+816+20*VL",
+      "text": "str\tz29, [x14]"
+    },
+    {
+      "line": 6431,
+      "operation": "str",
+      "register": "z28",
+      "address": "SP+816+21*VL",
+      "text": "str\tz28, [x14]"
+    },
+    {
+      "line": 6435,
+      "operation": "str",
+      "register": "z26",
+      "address": "SP+816+22*VL",
+      "text": "str\tz26, [x14]"
+    },
+    {
+      "line": 6441,
+      "operation": "str",
+      "register": "z15",
+      "address": "SP+816+23*VL",
+      "text": "str\tz15, [x14]"
+    },
+    {
+      "line": 6445,
+      "operation": "str",
+      "register": "z27",
+      "address": "SP+816+24*VL",
+      "text": "str\tz27, [x14]"
+    },
+    {
+      "line": 6448,
+      "operation": "str",
+      "register": "z23",
+      "address": "SP+816+25*VL",
+      "text": "str\tz23, [x14]"
+    },
+    {
+      "line": 6456,
+      "operation": "str",
+      "register": "z12",
+      "address": "SP+816+1*VL",
+      "text": "str\tz12, [x14, #1, mul vl]"
+    },
+    {
+      "line": 6457,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+2*VL",
+      "text": "str\tz0, [x14, #2, mul vl]"
+    },
+    {
+      "line": 6458,
+      "operation": "str",
+      "register": "z13",
+      "address": "SP+816+3*VL",
+      "text": "str\tz13, [x14, #3, mul vl]"
+    },
+    {
+      "line": 6459,
+      "operation": "str",
+      "register": "z10",
+      "address": "SP+816+0*VL",
+      "text": "str\tz10, [x14]"
+    },
+    {
+      "line": 6462,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+28*VL",
+      "text": "str\tz8, [x14]"
+    },
+    {
+      "line": 6487,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+4*VL",
+      "text": "str\tz9, [x14, #4, mul vl]"
+    },
+    {
+      "line": 6491,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+29*VL",
+      "text": "str\tz7, [x14]"
+    },
+    {
+      "line": 6493,
+      "operation": "ldr",
+      "register": "z25",
+      "address": "SP+816+18*VL",
+      "text": "ldr\tz25, [x14, #18, mul vl]"
+    },
+    {
+      "line": 6504,
+      "operation": "str",
+      "register": "z26",
+      "address": "SP+816+18*VL",
+      "text": "str\tz26, [x14]"
+    },
+    {
+      "line": 6506,
+      "operation": "ldr",
+      "register": "z26",
+      "address": "SP+816+8*VL",
+      "text": "ldr\tz26, [x14, #8, mul vl]"
+    },
+    {
+      "line": 6517,
+      "operation": "str",
+      "register": "z25",
+      "address": "SP+816+8*VL",
+      "text": "str\tz25, [x14]"
+    },
+    {
+      "line": 6520,
+      "operation": "ldr",
+      "register": "z25",
+      "address": "SP+816+9*VL",
+      "text": "ldr\tz25, [x14, #9, mul vl]"
+    },
+    {
+      "line": 6530,
+      "operation": "str",
+      "register": "z26",
+      "address": "SP+816+9*VL",
+      "text": "str\tz26, [x14]"
+    },
+    {
+      "line": 6532,
+      "operation": "ldr",
+      "register": "z26",
+      "address": "SP+816+10*VL",
+      "text": "ldr\tz26, [x14, #10, mul vl]"
+    },
+    {
+      "line": 6537,
+      "operation": "str",
+      "register": "z31",
+      "address": "SP+816+26*VL",
+      "text": "str\tz31, [x14]"
+    },
+    {
+      "line": 6546,
+      "operation": "str",
+      "register": "z25",
+      "address": "SP+816+10*VL",
+      "text": "str\tz25, [x14]"
+    },
+    {
+      "line": 6548,
+      "operation": "ldr",
+      "register": "z25",
+      "address": "SP+816+11*VL",
+      "text": "ldr\tz25, [x14, #11, mul vl]"
+    },
+    {
+      "line": 6552,
+      "operation": "ldr",
+      "register": "z25",
+      "address": "SP+816+2*VL",
+      "text": "ldr\tz25, [x14, #2, mul vl]"
+    },
+    {
+      "line": 6560,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+11*VL",
+      "text": "str\tz7, [x14]"
+    },
+    {
+      "line": 6562,
+      "operation": "ldr",
+      "register": "z30",
+      "address": "SP+816+1*VL",
+      "text": "ldr\tz30, [x14, #1, mul vl]"
+    },
+    {
+      "line": 6563,
+      "operation": "ldr",
+      "register": "z7",
+      "address": "SP+816+0*VL",
+      "text": "ldr\tz7, [x14]"
+    },
+    {
+      "line": 6566,
+      "operation": "ldr",
+      "register": "z30",
+      "address": "SP+816+5*VL",
+      "text": "ldr\tz30, [x14, #5, mul vl]"
+    },
+    {
+      "line": 6567,
+      "operation": "ldr",
+      "register": "z7",
+      "address": "SP+816+12*VL",
+      "text": "ldr\tz7, [x14, #12, mul vl]"
+    },
+    {
+      "line": 6570,
+      "operation": "ldr",
+      "register": "z30",
+      "address": "SP+816+3*VL",
+      "text": "ldr\tz30, [x14, #3, mul vl]"
+    },
+    {
+      "line": 6579,
+      "operation": "str",
+      "register": "z2",
+      "address": "SP+816+27*VL",
+      "text": "str\tz2, [x14]"
+    },
+    {
+      "line": 6581,
+      "operation": "ldr",
+      "register": "z2",
+      "address": "SP+816+28*VL",
+      "text": "ldr\tz2, [x14, #28, mul vl]"
+    },
+    {
+      "line": 6582,
+      "operation": "ldr",
+      "register": "z31",
+      "address": "SP+816+4*VL",
+      "text": "ldr\tz31, [x14, #4, mul vl]"
+    },
+    {
+      "line": 6591,
+      "operation": "str",
+      "register": "z11",
+      "address": "SP+816+12*VL",
+      "text": "str\tz11, [x14]"
+    },
+    {
+      "line": 6596,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+5*VL",
+      "text": "str\tz1, [x14, #5, mul vl]"
+    },
+    {
+      "line": 6597,
+      "operation": "ldr",
+      "register": "z1",
+      "address": "SP+816+21*VL",
+      "text": "ldr\tz1, [x14, #21, mul vl]"
+    },
+    {
+      "line": 6601,
+      "operation": "ldr",
+      "register": "z1",
+      "address": "SP+816+20*VL",
+      "text": "ldr\tz1, [x14, #20, mul vl]"
+    },
+    {
+      "line": 6607,
+      "operation": "ldr",
+      "register": "z24",
+      "address": "SP+816+29*VL",
+      "text": "ldr\tz24, [x14, #29, mul vl]"
+    },
+    {
+      "line": 6613,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+21*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6620,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+20*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6622,
+      "operation": "ldr",
+      "register": "z1",
+      "address": "SP+816+22*VL",
+      "text": "ldr\tz1, [x14, #22, mul vl]"
+    },
+    {
+      "line": 6625,
+      "operation": "ldr",
+      "register": "z1",
+      "address": "SP+816+24*VL",
+      "text": "ldr\tz1, [x14, #24, mul vl]"
+    },
+    {
+      "line": 6635,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+22*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6644,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+24*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6646,
+      "operation": "ldr",
+      "register": "z19",
+      "address": "SP+816+23*VL",
+      "text": "ldr\tz19, [x14, #23, mul vl]"
+    },
+    {
+      "line": 6650,
+      "operation": "ldr",
+      "register": "z19",
+      "address": "SP+816+25*VL",
+      "text": "ldr\tz19, [x14, #25, mul vl]"
+    },
+    {
+      "line": 6657,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+23*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6668,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+25*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6670,
+      "operation": "ldr",
+      "register": "z1",
+      "address": "SP+816+19*VL",
+      "text": "ldr\tz1, [x14, #19, mul vl]"
+    },
+    {
+      "line": 6673,
+      "operation": "ldr",
+      "register": "z1",
+      "address": "SP+816+15*VL",
+      "text": "ldr\tz1, [x14, #15, mul vl]"
+    },
+    {
+      "line": 6683,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+19*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6692,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+15*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6694,
+      "operation": "ldr",
+      "register": "z15",
+      "address": "SP+816+13*VL",
+      "text": "ldr\tz15, [x14, #13, mul vl]"
+    },
+    {
+      "line": 6695,
+      "operation": "ldr",
+      "register": "z31",
+      "address": "SP+816+26*VL",
+      "text": "ldr\tz31, [x14, #26, mul vl]"
+    },
+    {
+      "line": 6696,
+      "operation": "ldr",
+      "register": "z14",
+      "address": "SP+816+2*VL",
+      "text": "ldr\tz14, [x14, #2, mul vl]"
+    },
+    {
+      "line": 6700,
+      "operation": "ldr",
+      "register": "z15",
+      "address": "SP+816+16*VL",
+      "text": "ldr\tz15, [x14, #16, mul vl]"
+    },
+    {
+      "line": 6711,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+13*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6718,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+16*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6720,
+      "operation": "ldr",
+      "register": "z15",
+      "address": "SP+816+14*VL",
+      "text": "ldr\tz15, [x14, #14, mul vl]"
+    },
+    {
+      "line": 6721,
+      "operation": "ldr",
+      "register": "z10",
+      "address": "SP+816+0*VL",
+      "text": "ldr\tz10, [x14]"
+    },
+    {
+      "line": 6724,
+      "operation": "ldr",
+      "register": "z15",
+      "address": "SP+816+6*VL",
+      "text": "ldr\tz15, [x14, #6, mul vl]"
+    },
+    {
+      "line": 6725,
+      "operation": "ldr",
+      "register": "z12",
+      "address": "SP+816+1*VL",
+      "text": "ldr\tz12, [x14, #1, mul vl]"
+    },
+    {
+      "line": 6728,
+      "operation": "ldr",
+      "register": "z15",
+      "address": "SP+816+17*VL",
+      "text": "ldr\tz15, [x14, #17, mul vl]"
+    },
+    {
+      "line": 6730,
+      "operation": "ldr",
+      "register": "z13",
+      "address": "SP+816+3*VL",
+      "text": "ldr\tz13, [x14, #3, mul vl]"
+    },
+    {
+      "line": 6733,
+      "operation": "ldr",
+      "register": "z15",
+      "address": "SP+816+7*VL",
+      "text": "ldr\tz15, [x14, #7, mul vl]"
+    },
+    {
+      "line": 6736,
+      "operation": "ldr",
+      "register": "z14",
+      "address": "SP+816+27*VL",
+      "text": "ldr\tz14, [x14, #27, mul vl]"
+    },
+    {
+      "line": 6739,
+      "operation": "ldr",
+      "register": "z12",
+      "address": "SP+816+4*VL",
+      "text": "ldr\tz12, [x14, #4, mul vl]"
+    },
+    {
+      "line": 6749,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+14*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6757,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+6*VL",
+      "text": "str\tz1, [x14, #6, mul vl]"
+    },
+    {
+      "line": 6768,
+      "operation": "str",
+      "register": "z1",
+      "address": "SP+816+17*VL",
+      "text": "str\tz1, [x14]"
+    },
+    {
+      "line": 6770,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+7*VL",
+      "text": "str\tz0, [x14, #7, mul vl]"
+    },
+    {
+      "line": 6783,
+      "operation": "ldr",
+      "register": "z29",
+      "address": "SP+816+20*VL",
+      "text": "ldr\tz29, [x0, #20, mul vl]"
+    },
+    {
+      "line": 6784,
+      "operation": "ldr",
+      "register": "z28",
+      "address": "SP+816+21*VL",
+      "text": "ldr\tz28, [x0, #21, mul vl]"
+    },
+    {
+      "line": 6785,
+      "operation": "ldr",
+      "register": "z26",
+      "address": "SP+816+22*VL",
+      "text": "ldr\tz26, [x0, #22, mul vl]"
+    },
+    {
+      "line": 6786,
+      "operation": "ldr",
+      "register": "z15",
+      "address": "SP+816+23*VL",
+      "text": "ldr\tz15, [x0, #23, mul vl]"
+    },
+    {
+      "line": 6787,
+      "operation": "ldr",
+      "register": "z27",
+      "address": "SP+816+24*VL",
+      "text": "ldr\tz27, [x0, #24, mul vl]"
+    },
+    {
+      "line": 6788,
+      "operation": "ldr",
+      "register": "z23",
+      "address": "SP+816+25*VL",
+      "text": "ldr\tz23, [x0, #25, mul vl]"
+    },
+    {
+      "line": 6794,
+      "operation": "ldr",
+      "register": "z4",
+      "address": "SP+816+8*VL",
+      "text": "ldr\tz4, [x0, #8, mul vl]"
+    },
+    {
+      "line": 6795,
+      "operation": "ldr",
+      "register": "z5",
+      "address": "SP+816+9*VL",
+      "text": "ldr\tz5, [x0, #9, mul vl]"
+    },
+    {
+      "line": 6796,
+      "operation": "ldr",
+      "register": "z6",
+      "address": "SP+816+10*VL",
+      "text": "ldr\tz6, [x0, #10, mul vl]"
+    },
+    {
+      "line": 6797,
+      "operation": "ldr",
+      "register": "z7",
+      "address": "SP+816+11*VL",
+      "text": "ldr\tz7, [x0, #11, mul vl]"
+    },
+    {
+      "line": 6798,
+      "operation": "ldr",
+      "register": "z8",
+      "address": "SP+816+12*VL",
+      "text": "ldr\tz8, [x0, #12, mul vl]"
+    },
+    {
+      "line": 6799,
+      "operation": "ldr",
+      "register": "z9",
+      "address": "SP+816+5*VL",
+      "text": "ldr\tz9, [x0, #5, mul vl]"
+    },
+    {
+      "line": 6800,
+      "operation": "ldr",
+      "register": "z10",
+      "address": "SP+816+19*VL",
+      "text": "ldr\tz10, [x0, #19, mul vl]"
+    },
+    {
+      "line": 6801,
+      "operation": "ldr",
+      "register": "z11",
+      "address": "SP+816+13*VL",
+      "text": "ldr\tz11, [x0, #13, mul vl]"
+    },
+    {
+      "line": 6802,
+      "operation": "ldr",
+      "register": "z12",
+      "address": "SP+816+14*VL",
+      "text": "ldr\tz12, [x0, #14, mul vl]"
+    },
+    {
+      "line": 6803,
+      "operation": "ldr",
+      "register": "z13",
+      "address": "SP+816+6*VL",
+      "text": "ldr\tz13, [x0, #6, mul vl]"
+    },
+    {
+      "line": 6804,
+      "operation": "ldr",
+      "register": "z14",
+      "address": "SP+816+15*VL",
+      "text": "ldr\tz14, [x0, #15, mul vl]"
+    },
+    {
+      "line": 6805,
+      "operation": "ldr",
+      "register": "z16",
+      "address": "SP+816+16*VL",
+      "text": "ldr\tz16, [x0, #16, mul vl]"
+    },
+    {
+      "line": 6806,
+      "operation": "ldr",
+      "register": "z17",
+      "address": "SP+816+17*VL",
+      "text": "ldr\tz17, [x0, #17, mul vl]"
+    },
+    {
+      "line": 6807,
+      "operation": "ldr",
+      "register": "z18",
+      "address": "SP+816+7*VL",
+      "text": "ldr\tz18, [x0, #7, mul vl]"
+    },
+    {
+      "line": 6808,
+      "operation": "ldr",
+      "register": "z19",
+      "address": "SP+816+18*VL",
+      "text": "ldr\tz19, [x0, #18, mul vl]"
+    },
+    {
+      "line": 6876,
+      "operation": "str",
+      "register": "z4",
+      "address": "SP+816+8*VL",
+      "text": "str\tz4, [x0]"
+    },
+    {
+      "line": 6879,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+9*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 6882,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+10*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 6885,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+11*VL",
+      "text": "str\tz7, [x0]"
+    },
+    {
+      "line": 6888,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+12*VL",
+      "text": "str\tz8, [x0]"
+    },
+    {
+      "line": 6890,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+5*VL",
+      "text": "str\tz9, [x0, #5, mul vl]"
+    },
+    {
+      "line": 6892,
+      "operation": "str",
+      "register": "z10",
+      "address": "SP+816+19*VL",
+      "text": "str\tz10, [x0]"
+    },
+    {
+      "line": 6895,
+      "operation": "str",
+      "register": "z11",
+      "address": "SP+816+13*VL",
+      "text": "str\tz11, [x0]"
+    },
+    {
+      "line": 6898,
+      "operation": "str",
+      "register": "z12",
+      "address": "SP+816+14*VL",
+      "text": "str\tz12, [x0]"
+    },
+    {
+      "line": 6900,
+      "operation": "str",
+      "register": "z13",
+      "address": "SP+816+6*VL",
+      "text": "str\tz13, [x0, #6, mul vl]"
+    },
+    {
+      "line": 6902,
+      "operation": "str",
+      "register": "z14",
+      "address": "SP+816+15*VL",
+      "text": "str\tz14, [x0]"
+    },
+    {
+      "line": 6905,
+      "operation": "str",
+      "register": "z16",
+      "address": "SP+816+16*VL",
+      "text": "str\tz16, [x0]"
+    },
+    {
+      "line": 6908,
+      "operation": "str",
+      "register": "z17",
+      "address": "SP+816+17*VL",
+      "text": "str\tz17, [x0]"
+    },
+    {
+      "line": 6910,
+      "operation": "str",
+      "register": "z18",
+      "address": "SP+816+7*VL",
+      "text": "str\tz18, [x0, #7, mul vl]"
+    },
+    {
+      "line": 6912,
+      "operation": "str",
+      "register": "z19",
+      "address": "SP+816+18*VL",
+      "text": "str\tz19, [x0]"
+    },
+    {
+      "line": 6940,
+      "operation": "ldr",
+      "register": "z12",
+      "address": "SP+816+19*VL",
+      "text": "ldr\tz12, [x0, #19, mul vl]"
+    },
+    {
+      "line": 6950,
+      "operation": "ldr",
+      "register": "z5",
+      "address": "SP+816+8*VL",
+      "text": "ldr\tz5, [x0, #8, mul vl]"
+    },
+    {
+      "line": 6952,
+      "operation": "ldr",
+      "register": "z6",
+      "address": "SP+816+9*VL",
+      "text": "ldr\tz6, [x0, #9, mul vl]"
+    },
+    {
+      "line": 6953,
+      "operation": "ldr",
+      "register": "z7",
+      "address": "SP+816+10*VL",
+      "text": "ldr\tz7, [x0, #10, mul vl]"
+    },
+    {
+      "line": 6954,
+      "operation": "ldr",
+      "register": "z8",
+      "address": "SP+816+11*VL",
+      "text": "ldr\tz8, [x0, #11, mul vl]"
+    },
+    {
+      "line": 6956,
+      "operation": "ldr",
+      "register": "z9",
+      "address": "SP+816+12*VL",
+      "text": "ldr\tz9, [x0, #12, mul vl]"
+    },
+    {
+      "line": 6957,
+      "operation": "ldr",
+      "register": "z10",
+      "address": "SP+816+5*VL",
+      "text": "ldr\tz10, [x0, #5, mul vl]"
+    },
+    {
+      "line": 6958,
+      "operation": "ldr",
+      "register": "z11",
+      "address": "SP+816+13*VL",
+      "text": "ldr\tz11, [x0, #13, mul vl]"
+    },
+    {
+      "line": 6960,
+      "operation": "ldr",
+      "register": "z13",
+      "address": "SP+816+14*VL",
+      "text": "ldr\tz13, [x0, #14, mul vl]"
+    },
+    {
+      "line": 6961,
+      "operation": "ldr",
+      "register": "z14",
+      "address": "SP+816+6*VL",
+      "text": "ldr\tz14, [x0, #6, mul vl]"
+    },
+    {
+      "line": 6962,
+      "operation": "ldr",
+      "register": "z16",
+      "address": "SP+816+15*VL",
+      "text": "ldr\tz16, [x0, #15, mul vl]"
+    },
+    {
+      "line": 6964,
+      "operation": "ldr",
+      "register": "z17",
+      "address": "SP+816+16*VL",
+      "text": "ldr\tz17, [x0, #16, mul vl]"
+    },
+    {
+      "line": 6965,
+      "operation": "ldr",
+      "register": "z18",
+      "address": "SP+816+17*VL",
+      "text": "ldr\tz18, [x0, #17, mul vl]"
+    },
+    {
+      "line": 6966,
+      "operation": "ldr",
+      "register": "z19",
+      "address": "SP+816+7*VL",
+      "text": "ldr\tz19, [x0, #7, mul vl]"
+    },
+    {
+      "line": 7027,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+8*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 7031,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+9*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 7035,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+10*VL",
+      "text": "str\tz7, [x0]"
+    },
+    {
+      "line": 7039,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+11*VL",
+      "text": "str\tz8, [x0]"
+    },
+    {
+      "line": 7043,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+12*VL",
+      "text": "str\tz9, [x0]"
+    },
+    {
+      "line": 7045,
+      "operation": "str",
+      "register": "z10",
+      "address": "SP+816+5*VL",
+      "text": "str\tz10, [x0, #5, mul vl]"
+    },
+    {
+      "line": 7047,
+      "operation": "str",
+      "register": "z11",
+      "address": "SP+816+13*VL",
+      "text": "str\tz11, [x0]"
+    },
+    {
+      "line": 7051,
+      "operation": "str",
+      "register": "z13",
+      "address": "SP+816+14*VL",
+      "text": "str\tz13, [x0]"
+    },
+    {
+      "line": 7053,
+      "operation": "str",
+      "register": "z14",
+      "address": "SP+816+6*VL",
+      "text": "str\tz14, [x0, #6, mul vl]"
+    },
+    {
+      "line": 7055,
+      "operation": "str",
+      "register": "z16",
+      "address": "SP+816+15*VL",
+      "text": "str\tz16, [x0]"
+    },
+    {
+      "line": 7059,
+      "operation": "str",
+      "register": "z17",
+      "address": "SP+816+16*VL",
+      "text": "str\tz17, [x0]"
+    },
+    {
+      "line": 7063,
+      "operation": "str",
+      "register": "z18",
+      "address": "SP+816+17*VL",
+      "text": "str\tz18, [x0]"
+    },
+    {
+      "line": 7065,
+      "operation": "str",
+      "register": "z19",
+      "address": "SP+816+7*VL",
+      "text": "str\tz19, [x0, #7, mul vl]"
+    },
+    {
+      "line": 7130,
+      "operation": "str",
+      "register": "z4",
+      "address": "SP+816+9*VL",
+      "text": "str\tz4, [x0]"
+    },
+    {
+      "line": 7133,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+10*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 7136,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+11*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 7139,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+12*VL",
+      "text": "str\tz7, [x0]"
+    },
+    {
+      "line": 7141,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+5*VL",
+      "text": "str\tz8, [x0, #5, mul vl]"
+    },
+    {
+      "line": 7143,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+13*VL",
+      "text": "str\tz9, [x0]"
+    },
+    {
+      "line": 7146,
+      "operation": "str",
+      "register": "z10",
+      "address": "SP+816+14*VL",
+      "text": "str\tz10, [x0]"
+    },
+    {
+      "line": 7148,
+      "operation": "str",
+      "register": "z11",
+      "address": "SP+816+6*VL",
+      "text": "str\tz11, [x0, #6, mul vl]"
+    },
+    {
+      "line": 7150,
+      "operation": "str",
+      "register": "z13",
+      "address": "SP+816+15*VL",
+      "text": "str\tz13, [x0]"
+    },
+    {
+      "line": 7153,
+      "operation": "str",
+      "register": "z14",
+      "address": "SP+816+16*VL",
+      "text": "str\tz14, [x0]"
+    },
+    {
+      "line": 7156,
+      "operation": "str",
+      "register": "z16",
+      "address": "SP+816+17*VL",
+      "text": "str\tz16, [x0]"
+    },
+    {
+      "line": 7158,
+      "operation": "str",
+      "register": "z17",
+      "address": "SP+816+7*VL",
+      "text": "str\tz17, [x0, #7, mul vl]"
+    },
+    {
+      "line": 7210,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+10*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 7214,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+11*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 7218,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+12*VL",
+      "text": "str\tz7, [x0]"
+    },
+    {
+      "line": 7220,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+5*VL",
+      "text": "str\tz8, [x0, #5, mul vl]"
+    },
+    {
+      "line": 7222,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+13*VL",
+      "text": "str\tz9, [x0]"
+    },
+    {
+      "line": 7226,
+      "operation": "str",
+      "register": "z10",
+      "address": "SP+816+14*VL",
+      "text": "str\tz10, [x0]"
+    },
+    {
+      "line": 7228,
+      "operation": "str",
+      "register": "z11",
+      "address": "SP+816+6*VL",
+      "text": "str\tz11, [x0, #6, mul vl]"
+    },
+    {
+      "line": 7230,
+      "operation": "str",
+      "register": "z13",
+      "address": "SP+816+15*VL",
+      "text": "str\tz13, [x0]"
+    },
+    {
+      "line": 7234,
+      "operation": "str",
+      "register": "z14",
+      "address": "SP+816+16*VL",
+      "text": "str\tz14, [x0]"
+    },
+    {
+      "line": 7238,
+      "operation": "str",
+      "register": "z16",
+      "address": "SP+816+17*VL",
+      "text": "str\tz16, [x0]"
+    },
+    {
+      "line": 7240,
+      "operation": "str",
+      "register": "z17",
+      "address": "SP+816+7*VL",
+      "text": "str\tz17, [x0, #7, mul vl]"
+    },
+    {
+      "line": 7287,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+11*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 7291,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+12*VL",
+      "text": "str\tz6, [x0]"
+    },
+    {
+      "line": 7293,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+5*VL",
+      "text": "str\tz7, [x0, #5, mul vl]"
+    },
+    {
+      "line": 7295,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+13*VL",
+      "text": "str\tz8, [x0]"
+    },
+    {
+      "line": 7299,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+14*VL",
+      "text": "str\tz9, [x0]"
+    },
+    {
+      "line": 7301,
+      "operation": "str",
+      "register": "z10",
+      "address": "SP+816+6*VL",
+      "text": "str\tz10, [x0, #6, mul vl]"
+    },
+    {
+      "line": 7303,
+      "operation": "str",
+      "register": "z11",
+      "address": "SP+816+16*VL",
+      "text": "str\tz11, [x0]"
+    },
+    {
+      "line": 7307,
+      "operation": "str",
+      "register": "z13",
+      "address": "SP+816+17*VL",
+      "text": "str\tz13, [x0]"
+    },
+    {
+      "line": 7309,
+      "operation": "str",
+      "register": "z14",
+      "address": "SP+816+7*VL",
+      "text": "str\tz14, [x0, #7, mul vl]"
+    },
+    {
+      "line": 7347,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+12*VL",
+      "text": "str\tz5, [x0]"
+    },
+    {
+      "line": 7349,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+5*VL",
+      "text": "str\tz6, [x0, #5, mul vl]"
+    },
+    {
+      "line": 7351,
+      "operation": "str",
+      "register": "z7",
+      "address": "SP+816+14*VL",
+      "text": "str\tz7, [x0]"
+    },
+    {
+      "line": 7353,
+      "operation": "str",
+      "register": "z8",
+      "address": "SP+816+6*VL",
+      "text": "str\tz8, [x0, #6, mul vl]"
+    },
+    {
+      "line": 7355,
+      "operation": "str",
+      "register": "z9",
+      "address": "SP+816+17*VL",
+      "text": "str\tz9, [x0]"
+    },
+    {
+      "line": 7357,
+      "operation": "str",
+      "register": "z10",
+      "address": "SP+816+7*VL",
+      "text": "str\tz10, [x0, #7, mul vl]"
+    },
+    {
+      "line": 7383,
+      "operation": "str",
+      "register": "z4",
+      "address": "SP+816+5*VL",
+      "text": "str\tz4, [x0, #5, mul vl]"
+    },
+    {
+      "line": 7384,
+      "operation": "str",
+      "register": "z5",
+      "address": "SP+816+6*VL",
+      "text": "str\tz5, [x0, #6, mul vl]"
+    },
+    {
+      "line": 7385,
+      "operation": "str",
+      "register": "z6",
+      "address": "SP+816+7*VL",
+      "text": "str\tz6, [x0, #7, mul vl]"
+    },
+    {
+      "line": 7390,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+18*VL",
+      "text": "ldr\tz0, [x3, #18, mul vl]"
+    },
+    {
+      "line": 7399,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+8*VL",
+      "text": "ldr\tz0, [x3, #8, mul vl]"
+    },
+    {
+      "line": 7402,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+9*VL",
+      "text": "ldr\tz0, [x3, #9, mul vl]"
+    },
+    {
+      "line": 7406,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+10*VL",
+      "text": "ldr\tz0, [x3, #10, mul vl]"
+    },
+    {
+      "line": 7408,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+11*VL",
+      "text": "ldr\tz0, [x3, #11, mul vl]"
+    },
+    {
+      "line": 7411,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+12*VL",
+      "text": "ldr\tz0, [x3, #12, mul vl]"
+    },
+    {
+      "line": 7414,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+5*VL",
+      "text": "ldr\tz0, [x3, #5, mul vl]"
+    },
+    {
+      "line": 7419,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+13*VL",
+      "text": "ldr\tz0, [x12, #13, mul vl]"
+    },
+    {
+      "line": 7434,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+14*VL",
+      "text": "ldr\tz0, [x12, #14, mul vl]"
+    },
+    {
+      "line": 7437,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+6*VL",
+      "text": "ldr\tz0, [x12, #6, mul vl]"
+    },
+    {
+      "line": 7439,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+15*VL",
+      "text": "ldr\tz0, [x12, #15, mul vl]"
+    },
+    {
+      "line": 7451,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+16*VL",
+      "text": "ldr\tz0, [x12, #16, mul vl]"
+    },
+    {
+      "line": 7454,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+17*VL",
+      "text": "ldr\tz0, [x12, #17, mul vl]"
+    },
+    {
+      "line": 7457,
+      "operation": "ldr",
+      "register": "z0",
+      "address": "SP+816+7*VL",
+      "text": "ldr\tz0, [x12, #7, mul vl]"
+    },
+    {
+      "line": 7612,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+17*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7616,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+14*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7620,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+12*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7624,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+16*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7628,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+13*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7632,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+11*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7636,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+15*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7640,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+10*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7643,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+9*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7646,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+8*VL",
+      "text": "str\tz0, [x0]"
+    },
+    {
+      "line": 7649,
+      "operation": "str",
+      "register": "z0",
+      "address": "SP+816+18*VL",
+      "text": "str\tz0, [x0]"
+    }
+  ]
+}

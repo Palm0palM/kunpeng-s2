@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C13-r7",
+  "parent": null,
+  "strategy": "C3与SVE双行输入复用候选同一分配开头控制测量",
+  "created_at": "2026-09-11T08:27:10.280474+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "418191b0a5f8b5a97b219b2648df30132b935ae602e6a4c066cfadd8680554c8",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-11T08:36:50.741661+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep11",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "056bf7868e3a108138a37f84a2181f2d9186152cf18d2e37beebe31fa7de74ac",
+  "log": ".runs/conv/C13-r7/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        66.24,
+        66.2,
+        70.78
+      ],
+      "median_ms": 66.24,
+      "min_ms": 66.2,
+      "max_ms": 70.78,
+      "spread_pct": 6.914251207729466,
+      "gflops": [
+        1137.9408,
+        1138.6555,
+        1064.9272
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        80.9,
+        81.56,
+        80.72
+      ],
+      "median_ms": 80.9,
+      "min_ms": 80.72,
+      "max_ms": 81.56,
+      "spread_pct": 1.0383189122373342,
+      "gflops": [
+        1028.8401,
+        1020.5163,
+        1031.1448
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        137.79,
+        137.89,
+        137.82
+      ],
+      "median_ms": 137.82,
+      "min_ms": 137.79,
+      "max_ms": 137.89,
+      "spread_pct": 0.07255840951965921,
+      "gflops": [
+        1168.9726,
+        1168.1104,
+        1168.7524
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        303.88,
+        303.91,
+        307.09
+      ],
+      "median_ms": 303.91,
+      "min_ms": 303.88,
+      "max_ms": 307.09,
+      "spread_pct": 1.0562337534138329,
+      "gflops": [
+        1137.8423,
+        1137.7534,
+        1125.9564
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 588.87,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1507686",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  }
+}

@@ -1,0 +1,95 @@
+Basic Details:
+    jobId                               	1485352                                           	
+    name                                	kp-zgemm-pair2-8d8ed09093fd                       	
+    state                               	SUCCEEDED                                         	
+    user                                	<CLUSTER_USER>                                       	
+    queue                               	q_kunpeng                                         	
+    account                             	common                                            	
+    cmd                                 	/bin/bash -l <REMOTE_PATH>	
+    submitNode                          	login-node-A                                           	
+    createTime                          	2026/09/08 09:37:02                               	
+    startTime                           	2026/09/08 09:37:05                               	
+    lastModifiedTime                    	-                                                 	
+    endTime                             	2026/09/08 09:50:55                               	
+    currentOperation                    	EMPTY                                             	
+    jobRequeueMaxCnt                    	0                                                 	
+    jobRequeueCurrentCnt                	0                                                 	
+    mpiType                             	DEFAULT                                           	
+    interactionMode                     	DEFAULT                                           	
+    assistJob                           	DEFAULT                                           	
+    x11ForwardEnabled                   	false                                             	
+    description                         	-                                                 	
+    transferType                        	LOCAL                                             	
+    forwardTime                         	-                                                 	
+    recallTime                          	-                                                 	
+    autoResize                          	false                                             	
+Scheduling Details:
+    exclusive                           	false                                             	
+    priority                            	1                                                 	
+    adminPriority                       	-1                                                	
+    expectSchedTime                     	-                                                 	
+    startTimeEstimated                  	-                                                 	
+    reserveRes                          	-                                                 	
+    backfillRes                         	-                                                 	
+    backfilledRes                       	-                                                 	
+Resource Details:
+    reqJobLicense                       	-
+    allocJobLicense                     	-
+    resGroup[0]:
+        minReplica                      	1                                                 	
+        replica                         	1                                                 	
+        labels                          	queue_q_kunpeng aarch64                           	
+        preferNodes                     	-                                                 	
+        reqNodeSelectPolicy             	-                                                 	
+        effNodeSelectPolicy             	SEQUENCE                                          	
+        reqCPU                          	38                                                	
+        reqMem                          	24576                                             	
+        reqGPU                          	gpu:0
+        reqNPU                          	0
+        allocCPU                        	38                                                	
+        allocMem                        	24576                                             	
+        allocGPU                        	gpu:0
+        allocNPU                        	0
+        reqTaskLicense                  	-
+        allocTaskLicense                	-
+        reqAffinity                     	numa[count=1, distribution=pack]                  	
+    allocAffinity                       	
+        execNode             resGroup resIndex hwThreads        gpuIds           npuIds          
+        compute-node-A              0        0/1      114-151          -                -               
+Runtime Details:
+    execNodes                           	compute-node-A                                           	
+    execNodeCnt                         	1                                                 	
+    execPath                            	<REMOTE_PATH>                           	
+    resizeCmd                           	-                                                 	
+    timeout                             	1800                                              	
+    stderrRedirectPath                  	-                                                 	
+    stderrRedirectType                  	append                                            	
+    stdoutRedirectPath                  	<REMOTE_PATH>	
+    stdoutRedirectType                  	append                                            	
+    totalUtime                          	24085                                             	
+    totalStime                          	31                                                	
+    totalMaxMemSwp                      	14372                                             	
+    totalMaxMem                         	14372                                             	
+    hostPreHookRunTime                  	0                                                 	
+    preHookRunTime                      	0                                                 	
+    jobWallclockDuration                	828                                               	
+    postHookRunTime                     	0                                                 	
+    hostPostHookRunTime                 	0                                                 	
+    jobSstoppedTime                     	0                                                 	
+    coreHours                           	31464                                             	
+    jobExitCode                         	0                                                 	
+    systemExitCode                      	0                                                 	
+    exitMessage                         	Job execution succeeded                           	
+    stderrRedirectOutputPath            	-                                                 	
+    stdoutRedirectOutputPath            	<REMOTE_PATH>	
+    nodeUsages                          	
+        execNode             resGroup resIndex utime    stime    wallclockDuration    sstoppedTime     cpuUtil          gpuUtil          npuUtil          memResource                     
+        compute-node-A              0        0/1      24085    31       828                  0                2914/2771        -                -                0/0/0/0/14906/14906/11349/0     
+    nodePids                            	
+        execNode             pids    
+        compute-node-A              -       
+    traceMessages                       	2026/09/08 09:37:02    :    [JOB_ADD] Job 1485352 is submitted by <CLUSTER_USER>, job state is PENDING.	
+                                        	2026/09/08 09:37:05    :    [JOB_START] Job 1485352 start message has been sent.	
+                                        	2026/09/08 09:37:05    :    [JOB_START_ACK] Job 1485352 start message has been received by agent compute-node-A.	
+                                        	2026/09/08 09:37:05    :    [JOB_EXECUTION] Job 1485352 state is from PENDING to RUNNING, execution path: <REMOTE_PATH>	
+                                        	2026/09/08 09:50:55    :    [JOB_FINISH] Job 1485352 state is from RUNNING to SUCCEEDED.	

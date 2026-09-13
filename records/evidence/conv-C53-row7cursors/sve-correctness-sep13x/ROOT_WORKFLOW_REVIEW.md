@@ -1,0 +1,7 @@
+# Root X workflow review
+
+Root read the complete Q-to-X.patch, INTERFACE.md and STATIC_REVIEW.md, against the previously reviewed Q workflow. Independent reviewer additionally read all three final tools and five-file manifest/wrapper/env and found no blocker, with both C checkers identical to Q and transport conv2d.c identical to the root-reviewed C53. Original prepared files remain unchanged.
+
+Only C53-row7cursors d83d535334dfd55925426a515a0fd5843c090fff4c56d44f870fd2460a4d5cd0 is accepted. Planned37128/19stages and thirteen u1 arithmetic regions are expectations, never evidence of execution. New cursor explanations cover per-tile reset, each kw increment/cross-t, last dereference/one-past and scalar GPR/stack representation; actual shared LSL/ADD lexical counts are classified manually and not assumed eliminated. T paired/odd blocks are forbidden. Existing whole-helper, transitions, spill-vs-ABI and complete dispatch review remain required.
+
+Fixed W1582256/T1582134/S1582067 have completed. No P/X reservation and no Y submission/campaign exists at this review. Root is the sole submitter and authorizes one X submit --go, with live bounded serial gate mandatory. No independent Y job is submitted while X is nonterminal. Only original X status/fetch follows; no retry, local operator, acceptance, freezing, performance, ZIP or promotion is implied. Actual returned assembly must be reviewed before accept/freeze. No reset credits.

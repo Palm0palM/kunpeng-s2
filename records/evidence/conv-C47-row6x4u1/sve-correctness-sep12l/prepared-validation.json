@@ -1,0 +1,24 @@
+{
+  "candidate": "C47-row6x4u1",
+  "status": "prepared",
+  "complete": false,
+  "source_parent": "C40-row6x3u1",
+  "production_source_sha256": "e974915cb4e5e522526070bfdcff42b08dd7866412dbde11c76a07fac1b86d0a",
+  "expected_checks": {
+    "full_per_configuration": 3560,
+    "dispatch_per_configuration": 432,
+    "direct_per_configuration": 360,
+    "configurations": 6,
+    "total": 26112
+  },
+  "expected_rowsix_entries": {
+    "dispatch_per_configuration": 432,
+    "direct_per_configuration": 900
+  },
+  "executed_locally": false,
+  "executed_remotely": false,
+  "submission_gate": "Prepared L single package only; explicit later root GO and unique reconciled scheduler job required.",
+  "template_candidate": "C40-row6x3u1",
+  "template_result_reused": false,
+  "production_assembly_review": "Pending actual eleven-stage rowsix, transitions, whole-helper direct/indirect stack and ABI review, whole-source FMA; no inherited C40 codegen result"
+}

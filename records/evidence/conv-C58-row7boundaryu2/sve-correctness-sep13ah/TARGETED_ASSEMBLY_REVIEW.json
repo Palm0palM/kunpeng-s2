@@ -1,0 +1,606 @@
+{
+  "candidate": "C58-row7boundaryu2",
+  "job_id": "1583350",
+  "review_kind": "targeted_boundary_unroll_stack",
+  "review_complete": true,
+  "source_sha256": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+  "assembly_sha256": "337724743825be9e4b51c86d0041726cf42e19c20f584647b14911c789e442b5",
+  "compiler_version": "10.3.1",
+  "parent": {
+    "candidate": "C52-row7x3shared2",
+    "job_id": "1582134",
+    "assembly_sha256": "e42a1f618c0007479b282f963829b654b6d1b5a8dc8301c702f296586f8df220"
+  },
+  "whole_source_fma_count": 0,
+  "whole_source_fused_opcode_matches": {},
+  "helper": {
+    "symbol": "conv_sve_rowseven",
+    "range": [
+      5705,
+      8334
+    ],
+    "instruction_count": 2448,
+    "parent_range": [
+      5705,
+      7053
+    ],
+    "parent_instruction_count": 1196,
+    "frame_fixed_bytes": 720,
+    "frame_scalable_vl": 3,
+    "parent_frame_fixed_bytes": 720,
+    "parent_frame_scalable_vl": 0,
+    "vector_spill_load_instructions": 9,
+    "vector_spill_store_instructions": 15,
+    "parent_vector_spill_load_instructions": 0,
+    "parent_vector_spill_store_instructions": 0,
+    "q_or_predicate_stack_accesses_observed": 0,
+    "d_abi_saved_registers": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "parent_d_abi_saved_registers": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "scalar_address_stack_nonzero": true
+  },
+  "boundary_main_loops": [
+    {
+      "stage": "input_0",
+      "main_range": [
+        5991,
+        6017
+      ],
+      "main_instructions": 26,
+      "main_kernel_columns": 2,
+      "main_fmul": 6,
+      "main_fadd": 6,
+      "main_ld1w": 6,
+      "main_ld1rw": 2,
+      "parent_main_range": [
+        5970,
+        5984
+      ],
+      "parent_main_instructions": 14,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          5977,
+          5989
+        ]
+      ],
+      "parity_form": "odd kw: peel one then pairs"
+    },
+    {
+      "stage": "input_1",
+      "main_range": [
+        6072,
+        6116
+      ],
+      "main_instructions": 44,
+      "main_kernel_columns": 2,
+      "main_fmul": 12,
+      "main_fadd": 12,
+      "main_ld1w": 6,
+      "main_ld1rw": 4,
+      "parent_main_range": [
+        5993,
+        6016
+      ],
+      "parent_main_instructions": 23,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          6019,
+          6045
+        ],
+        [
+          6047,
+          6068
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    },
+    {
+      "stage": "input_2",
+      "main_range": [
+        6188,
+        6248
+      ],
+      "main_instructions": 60,
+      "main_kernel_columns": 2,
+      "main_fmul": 18,
+      "main_fadd": 18,
+      "main_ld1w": 6,
+      "main_ld1rw": 6,
+      "parent_main_range": [
+        6027,
+        6058
+      ],
+      "parent_main_instructions": 31,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          6118,
+          6152
+        ],
+        [
+          6154,
+          6183
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    },
+    {
+      "stage": "input_3",
+      "main_range": [
+        6337,
+        6413
+      ],
+      "main_instructions": 76,
+      "main_kernel_columns": 2,
+      "main_fmul": 24,
+      "main_fadd": 24,
+      "main_ld1w": 6,
+      "main_ld1rw": 8,
+      "parent_main_range": [
+        6070,
+        6109
+      ],
+      "parent_main_instructions": 39,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          6250,
+          6292
+        ],
+        [
+          6294,
+          6331
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    },
+    {
+      "stage": "input_4",
+      "main_range": [
+        6518,
+        6610
+      ],
+      "main_instructions": 92,
+      "main_kernel_columns": 2,
+      "main_fmul": 30,
+      "main_fadd": 30,
+      "main_ld1w": 6,
+      "main_ld1rw": 10,
+      "parent_main_range": [
+        6122,
+        6169
+      ],
+      "parent_main_instructions": 47,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          6415,
+          6465
+        ],
+        [
+          6467,
+          6512
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    },
+    {
+      "stage": "input_5",
+      "main_range": [
+        6734,
+        6851
+      ],
+      "main_instructions": 117,
+      "main_kernel_columns": 2,
+      "main_fmul": 36,
+      "main_fadd": 36,
+      "main_ld1w": 6,
+      "main_ld1rw": 12,
+      "parent_main_range": [
+        6182,
+        6237
+      ],
+      "parent_main_instructions": 55,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          6612,
+          6670
+        ],
+        [
+          6672,
+          6728
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    },
+    {
+      "stage": "trailing_0",
+      "main_range": [
+        7103,
+        7211
+      ],
+      "main_instructions": 108,
+      "main_kernel_columns": 2,
+      "main_fmul": 36,
+      "main_fadd": 36,
+      "main_ld1w": 6,
+      "main_ld1rw": 12,
+      "parent_main_range": [
+        6482,
+        6537
+      ],
+      "parent_main_instructions": 55,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          8078,
+          8129
+        ]
+      ],
+      "parity_form": "odd kw: peel one then pairs"
+    },
+    {
+      "stage": "trailing_1",
+      "main_range": [
+        7319,
+        7411
+      ],
+      "main_instructions": 92,
+      "main_kernel_columns": 2,
+      "main_fmul": 30,
+      "main_fadd": 30,
+      "main_ld1w": 6,
+      "main_ld1rw": 10,
+      "parent_main_range": [
+        6544,
+        6591
+      ],
+      "parent_main_instructions": 47,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          7217,
+          7264
+        ],
+        [
+          7266,
+          7309
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    },
+    {
+      "stage": "trailing_2",
+      "main_range": [
+        7501,
+        7577
+      ],
+      "main_instructions": 76,
+      "main_kernel_columns": 2,
+      "main_fmul": 24,
+      "main_fadd": 24,
+      "main_ld1w": 6,
+      "main_ld1rw": 8,
+      "parent_main_range": [
+        6598,
+        6637
+      ],
+      "parent_main_instructions": 39,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          7418,
+          7457
+        ],
+        [
+          7459,
+          7494
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    },
+    {
+      "stage": "trailing_3",
+      "main_range": [
+        7650,
+        7710
+      ],
+      "main_instructions": 60,
+      "main_kernel_columns": 2,
+      "main_fmul": 18,
+      "main_fadd": 18,
+      "main_ld1w": 6,
+      "main_ld1rw": 6,
+      "parent_main_range": [
+        6644,
+        6675
+      ],
+      "parent_main_instructions": 31,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          7582,
+          7614
+        ],
+        [
+          7616,
+          7644
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    },
+    {
+      "stage": "trailing_4",
+      "main_range": [
+        7766,
+        7810
+      ],
+      "main_instructions": 44,
+      "main_kernel_columns": 2,
+      "main_fmul": 12,
+      "main_fadd": 12,
+      "main_ld1w": 6,
+      "main_ld1rw": 4,
+      "parent_main_range": [
+        6681,
+        6704
+      ],
+      "parent_main_instructions": 23,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          7714,
+          7739
+        ],
+        [
+          7741,
+          7762
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    },
+    {
+      "stage": "trailing_5",
+      "main_range": [
+        7850,
+        7876
+      ],
+      "main_instructions": 26,
+      "main_kernel_columns": 2,
+      "main_fmul": 6,
+      "main_fadd": 6,
+      "main_ld1w": 6,
+      "main_ld1rw": 2,
+      "parent_main_range": [
+        6710,
+        6724
+      ],
+      "parent_main_instructions": 14,
+      "parent_main_kernel_columns": 1,
+      "one_column_peel_ranges": [
+        [
+          7812,
+          7830
+        ],
+        [
+          7832,
+          7846
+        ]
+      ],
+      "parity_form": "peel first column; optional second for even kw; remaining columns in pairs"
+    }
+  ],
+  "shared": [
+    {
+      "kind": "paired",
+      "range": [
+        6886,
+        7009
+      ],
+      "parent_range": [
+        6270,
+        6393
+      ],
+      "kernel_columns": 2,
+      "instructions": 123,
+      "parent_instructions": 123,
+      "fmul": 42,
+      "fadd": 42,
+      "ld1w": 6,
+      "ld1rw": 14,
+      "vector_spill_loads": 0,
+      "vector_spill_stores": 0
+    },
+    {
+      "kind": "u1",
+      "range": [
+        7013,
+        7077
+      ],
+      "parent_range": [
+        6397,
+        6461
+      ],
+      "kernel_columns": 1,
+      "instructions": 63,
+      "parent_instructions": 63,
+      "fmul": 21,
+      "fadd": 21,
+      "ld1w": 3,
+      "ld1rw": 7,
+      "vector_spill_loads": 0,
+      "vector_spill_stores": 0
+    }
+  ],
+  "representative_stack_accesses": [
+    {
+      "line": 5830,
+      "instruction": "stp\td8, d9, [sp, 112]"
+    },
+    {
+      "line": 5835,
+      "instruction": "stp\td10, d11, [sp, 128]"
+    },
+    {
+      "line": 5840,
+      "instruction": "stp\td12, d13, [sp, 144]"
+    },
+    {
+      "line": 5845,
+      "instruction": "stp\td14, d15, [sp, 160]"
+    },
+    {
+      "line": 6752,
+      "instruction": "str\tz10, [x1, #2, mul vl]"
+    },
+    {
+      "line": 6764,
+      "instruction": "str\tz18, [x3, #1, mul vl]"
+    },
+    {
+      "line": 6778,
+      "instruction": "ldr\tz15, [x4, #2, mul vl]"
+    },
+    {
+      "line": 6781,
+      "instruction": "ldr\tz15, [x4, #1, mul vl]"
+    },
+    {
+      "line": 6791,
+      "instruction": "str\tz14, [x4]"
+    },
+    {
+      "line": 6792,
+      "instruction": "ldr\tz15, [x4]"
+    },
+    {
+      "line": 7098,
+      "instruction": "str\tz6, [x0, #1, mul vl]"
+    },
+    {
+      "line": 7100,
+      "instruction": "str\tz1, [x0]"
+    },
+    {
+      "line": 7214,
+      "instruction": "ldr\tz6, [x0, #1, mul vl]"
+    },
+    {
+      "line": 7215,
+      "instruction": "ldr\tz1, [x0]"
+    },
+    {
+      "line": 7316,
+      "instruction": "str\tz6, [x0, #1, mul vl]"
+    },
+    {
+      "line": 7317,
+      "instruction": "str\tz1, [x0]"
+    },
+    {
+      "line": 7414,
+      "instruction": "ldr\tz6, [x0, #1, mul vl]"
+    },
+    {
+      "line": 7416,
+      "instruction": "ldr\tz1, [x0]"
+    },
+    {
+      "line": 7498,
+      "instruction": "str\tz6, [x0, #1, mul vl]"
+    },
+    {
+      "line": 7499,
+      "instruction": "str\tz1, [x0]"
+    },
+    {
+      "line": 7579,
+      "instruction": "ldr\tz6, [x0, #1, mul vl]"
+    },
+    {
+      "line": 7580,
+      "instruction": "ldr\tz1, [x0]"
+    },
+    {
+      "line": 8016,
+      "instruction": "ldp\td8, d9, [sp, 112]"
+    },
+    {
+      "line": 8019,
+      "instruction": "ldp\td10, d11, [sp, 128]"
+    },
+    {
+      "line": 8022,
+      "instruction": "ldp\td12, d13, [sp, 144]"
+    },
+    {
+      "line": 8025,
+      "instruction": "ldp\td14, d15, [sp, 160]"
+    },
+    {
+      "line": 8134,
+      "instruction": "str\tz6, [x0, #1, mul vl]"
+    },
+    {
+      "line": 8135,
+      "instruction": "str\tz1, [x0]"
+    },
+    {
+      "line": 8143,
+      "instruction": "str\tz6, [x0, #1, mul vl]"
+    },
+    {
+      "line": 8145,
+      "instruction": "str\tz1, [x0]"
+    },
+    {
+      "line": 8157,
+      "instruction": "str\tz6, [x0, #1, mul vl]"
+    },
+    {
+      "line": 8158,
+      "instruction": "str\tz1, [x0]"
+    }
+  ],
+  "stack_interpretation": "input_5 main has3 Z loads/3 stores of temporary products using sp+720 aliases. trailing_0/1/2 store carried z6/z1 outside their paired main and restore after it; alternate parity entry store sites are mutually exclusive. Counts9/15 are static instruction occurrences across the complete helper, not per invocation. D8..15 low64 saves/restores are ABI, not Z spills.",
+  "limitations": [
+    "Targeted text review of actual original assembly; no claimed binary identity, full per-accumulator chain proof, exhaustive dispatch review, or measured performance.",
+    "Actual parity handling peels columns before paired loops; it is not uniformly a post-loop odd tail.",
+    "All12 paired loops exist, but additional one-column paths and register pressure prevent inferring speedup from unrolling.",
+    "No accept/freeze/record or numeric acceptance performed here; independent raw numerical/exit validation remains root responsibility."
+  ],
+  "analysis_note": {
+    "initial_text_probe_chunk": "7d3d69",
+    "initial_probe_exit": 1,
+    "reason": "Incorrect line enumeration start produced invalid helper end and IndexError; its intermediate counts were discarded.",
+    "corrected_text_probe_chunks": [
+      "f8bc9f",
+      "e2d0a7"
+    ],
+    "counts_include_ret": true
+  },
+  "operator_executed": false,
+  "ssh_used": false,
+  "raw_modified": false,
+  "acceptance_performed": false,
+  "performance_measured": false
+}

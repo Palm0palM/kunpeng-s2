@@ -1,0 +1,173 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -184,15 +184,17 @@
+ #endif
+ #if CONV_CAN_DISPATCH_SVE
+ /* Generic TU dispatches here only when Linux reports usable SVE. Each lane is
+- * an independent output; eight accumulators span the entire kernel. Keep the
+- * multiplication and addition separate, in the reference jk/ik order. */
++ * an independent output; twelve accumulators span the entire kernel. Stream
++ * adjacent input vectors to keep only the current/next vectors live in the
++ * source while reusing the shifted window. Keep separate multiplication and
++ * addition in reference jk/ik order. Actual register allocation is unverified. */
+ __attribute__((target("arch=armv8-a+sve"), noinline))
+ static int conv_sve_prefix(const float *restrict base, size_t stride,
+                            const float *restrict kernel, int kh, int kw,
+                            float *restrict dst, int ow)
+ {
+     const int lanes = (int)svcntw();
+-    const int block = 8 * lanes;
++    const int block = 12 * lanes;
+     const svbool_t pg = svptrue_b32();
+     int i = 0;
+     for (; ow - i >= block; i += block) {
+@@ -204,6 +206,10 @@
+         svfloat32_t a5 = svdup_n_f32(0.0f);
+         svfloat32_t a6 = svdup_n_f32(0.0f);
+         svfloat32_t a7 = svdup_n_f32(0.0f);
++        svfloat32_t a8 = svdup_n_f32(0.0f);
++        svfloat32_t a9 = svdup_n_f32(0.0f);
++        svfloat32_t a10 = svdup_n_f32(0.0f);
++        svfloat32_t a11 = svdup_n_f32(0.0f);
+         const float *krow = kernel;
+         for (int jk = 0; jk < kh; ++jk) {
+             const float *row = base + (size_t)jk * stride + i;
+@@ -212,53 +218,110 @@
+                 const svfloat32_t k0 = svdup_n_f32(krow[ik]);
+                 const svfloat32_t k1 = svdup_n_f32(krow[ik + 1]);
+                 const float *p = row + ik;
+-                const svfloat32_t v0 = svld1(pg, p + 0 * lanes);
+-                const svfloat32_t v1 = svld1(pg, p + 1 * lanes);
+-                const svfloat32_t v2 = svld1(pg, p + 2 * lanes);
+-                const svfloat32_t v3 = svld1(pg, p + 3 * lanes);
+-                const svfloat32_t v4 = svld1(pg, p + 4 * lanes);
+-                const svfloat32_t v5 = svld1(pg, p + 5 * lanes);
+-                const svfloat32_t v6 = svld1(pg, p + 6 * lanes);
+-                const svfloat32_t v7 = svld1(pg, p + 7 * lanes);
+-                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v0, k0));
+-                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v1, k0));
+-                a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v2, k0));
+-                a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, v3, k0));
+-                a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, v4, k0));
+-                a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, v5, k0));
+-                a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, v6, k0));
+-                a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, v7, k0));
+-                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svext_f32(v0, v1, 1), k1));
+-                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svext_f32(v1, v2, 1), k1));
+-                a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svext_f32(v2, v3, 1), k1));
+-                a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svext_f32(v3, v4, 1), k1));
+-                a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, svext_f32(v4, v5, 1), k1));
+-                a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, svext_f32(v5, v6, 1), k1));
+-                a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, svext_f32(v6, v7, 1), k1));
+-                a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, svld1(pg, p + 7 * lanes + 1), k1));
++                svfloat32_t current = svld1(pg, p);
++                /* Each scope consumes current before moving to the next vector.
++                 * Changing output order does not change any output's sum order. */
++                {
++                    const svfloat32_t next = svld1(pg, p + 1 * lanes);
++                    a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, current, k0));
++                    a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 2 * lanes);
++                    a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, current, k0));
++                    a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 3 * lanes);
++                    a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, current, k0));
++                    a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 4 * lanes);
++                    a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, current, k0));
++                    a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 5 * lanes);
++                    a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, current, k0));
++                    a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 6 * lanes);
++                    a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, current, k0));
++                    a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 7 * lanes);
++                    a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, current, k0));
++                    a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 8 * lanes);
++                    a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, current, k0));
++                    a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 9 * lanes);
++                    a8 = svadd_f32_x(pg, a8, svmul_f32_x(pg, current, k0));
++                    a8 = svadd_f32_x(pg, a8, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 10 * lanes);
++                    a9 = svadd_f32_x(pg, a9, svmul_f32_x(pg, current, k0));
++                    a9 = svadd_f32_x(pg, a9, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                {
++                    const svfloat32_t next = svld1(pg, p + 11 * lanes);
++                    a10 = svadd_f32_x(pg, a10, svmul_f32_x(pg, current, k0));
++                    a10 = svadd_f32_x(pg, a10, svmul_f32_x(pg, svext_f32(current, next, 1), k1));
++                    current = next;
++                }
++                a11 = svadd_f32_x(pg, a11, svmul_f32_x(pg, current, k0));
++                /* Load the last shifted window directly: loading a whole
++                 * thirteenth unshifted vector could exceed the input row. */
++                a11 = svadd_f32_x(pg, a11, svmul_f32_x(pg, svld1(pg, p + 11 * lanes + 1), k1));
+             }
+             for (; ik < kw; ++ik) {
+                 const svfloat32_t k = svdup_n_f32(krow[ik]);
+                 const float *p = row + ik;
+-                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svld1(pg, p), k));
+-                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + lanes), k));
++                a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, svld1(pg, p + 0 * lanes), k));
++                a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, svld1(pg, p + 1 * lanes), k));
+                 a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, svld1(pg, p + 2 * lanes), k));
+                 a3 = svadd_f32_x(pg, a3, svmul_f32_x(pg, svld1(pg, p + 3 * lanes), k));
+                 a4 = svadd_f32_x(pg, a4, svmul_f32_x(pg, svld1(pg, p + 4 * lanes), k));
+                 a5 = svadd_f32_x(pg, a5, svmul_f32_x(pg, svld1(pg, p + 5 * lanes), k));
+                 a6 = svadd_f32_x(pg, a6, svmul_f32_x(pg, svld1(pg, p + 6 * lanes), k));
+                 a7 = svadd_f32_x(pg, a7, svmul_f32_x(pg, svld1(pg, p + 7 * lanes), k));
++                a8 = svadd_f32_x(pg, a8, svmul_f32_x(pg, svld1(pg, p + 8 * lanes), k));
++                a9 = svadd_f32_x(pg, a9, svmul_f32_x(pg, svld1(pg, p + 9 * lanes), k));
++                a10 = svadd_f32_x(pg, a10, svmul_f32_x(pg, svld1(pg, p + 10 * lanes), k));
++                a11 = svadd_f32_x(pg, a11, svmul_f32_x(pg, svld1(pg, p + 11 * lanes), k));
+             }
+             krow += kw;
+         }
+-        svst1(pg, dst + i, a0);
+-        svst1(pg, dst + i + lanes, a1);
++        svst1(pg, dst + i + 0 * lanes, a0);
++        svst1(pg, dst + i + 1 * lanes, a1);
+         svst1(pg, dst + i + 2 * lanes, a2);
+         svst1(pg, dst + i + 3 * lanes, a3);
+         svst1(pg, dst + i + 4 * lanes, a4);
+         svst1(pg, dst + i + 5 * lanes, a5);
+         svst1(pg, dst + i + 6 * lanes, a6);
+         svst1(pg, dst + i + 7 * lanes, a7);
++        svst1(pg, dst + i + 8 * lanes, a8);
++        svst1(pg, dst + i + 9 * lanes, a9);
++        svst1(pg, dst + i + 10 * lanes, a10);
++        svst1(pg, dst + i + 11 * lanes, a11);
+     }
+     if (i < ow) {
+         conv_sve_tail(base + i, stride, kernel, kh, kw, dst + i, ow - i);

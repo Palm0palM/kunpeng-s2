@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C24-r1",
+  "parent": "C21-r7",
+  "strategy": "Repeat unchanged four-row/four-vector candidate alongside C26 and C27 and bracketed C5 controls",
+  "created_at": "2026-09-12T02:14:33.521859+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "dae78157f095d5cce265ea1741c496d7a8e909b23a31f9dd2639c0a899477a5a",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C24-row4x4",
+  "comparison_baseline": "C21-r7",
+  "parent_note": "Measurement parent is predeclared closing C5 control; source_parent preserves derivation before measurement.",
+  "recorded_at": "2026-09-12T02:36:46.135575+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "8997d0bb84bb9f9b2358896a132faf80e2df2d3582dc2e17a6b614f8f6e3dd57",
+  "log": ".runs/conv/C24-r1/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        55.06,
+        55.19,
+        55.05
+      ],
+      "median_ms": 55.06,
+      "min_ms": 55.05,
+      "max_ms": 55.19,
+      "spread_pct": 0.25426807119506095,
+      "gflops": [
+        1368.9328,
+        1365.7872,
+        1369.1355
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        65.67,
+        65.58,
+        65.8
+      ],
+      "median_ms": 65.67,
+      "min_ms": 65.58,
+      "max_ms": 65.8,
+      "spread_pct": 0.3350083752093785,
+      "gflops": [
+        1267.5018,
+        1269.1388,
+        1264.9781
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        114.86,
+        115.21,
+        114.91
+      ],
+      "median_ms": 114.91,
+      "min_ms": 114.86,
+      "max_ms": 115.21,
+      "spread_pct": 0.30458619789399904,
+      "gflops": [
+        1402.4026,
+        1398.1107,
+        1401.7135
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        248.19,
+        250.42,
+        248.12
+      ],
+      "median_ms": 248.19,
+      "min_ms": 248.12,
+      "max_ms": 250.42,
+      "spread_pct": 0.9267093758813744,
+      "gflops": [
+        1393.166,
+        1380.7721,
+        1393.5467
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 483.83,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "3",
+    "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1576034",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 57.01,
+        "candidate_ms": 55.06,
+        "gain_pct": 3.4204525521838196
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.33,
+        "candidate_ms": 65.67,
+        "gain_pct": 3.8928728230645344
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.46,
+        "candidate_ms": 114.91,
+        "gain_pct": 2.996792166132025
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.71,
+        "candidate_ms": 248.19,
+        "gain_pct": 4.066329094352743
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C21-r6",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 57.02,
+        "candidate_ms": 55.06,
+        "gain_pct": 3.4373903893370765
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.4,
+        "candidate_ms": 65.67,
+        "gain_pct": 3.991228070175444
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.41,
+        "candidate_ms": 114.91,
+        "gain_pct": 2.9558314331559834
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.55,
+        "candidate_ms": 248.19,
+        "gain_pct": 4.006961902920136
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "C24 source independently confirmed, but C26 is significantly faster in the same allocation; retain measurements without active submission archive."
+}

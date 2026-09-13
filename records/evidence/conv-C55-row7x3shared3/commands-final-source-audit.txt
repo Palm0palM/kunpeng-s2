@@ -1,0 +1,19 @@
+python3 - <<'PY'
+from pathlib import Path
+import hashlib,json
+b=Path('.runs/conv/C55-row7x3shared3')
+r=json.loads(Path('records/experiments/conv/C55-row7x3shared3.json').read_text())
+m=json.loads((b/'experiment.json').read_text()); a=json.loads((b/'source-audit.json').read_text())
+actual={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in (b/'source').iterdir() if p.is_file()}
+assert actual==a['source_hashes']==r['source_hashes']
+assert m['source_hashes']==a['parent_source_hashes']
+assert r['status']=='prepared' and r['verified'] is False
+assert r['source_parent']=='C52-row7x3shared2'
+assert actual['conv2d.c']=='cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138'
+assert {k:v for k,v in actual.items() if k!='conv2d.c'}=={k:v for k,v in a['parent_source_hashes'].items() if k!='conv2d.c'}
+assert json.loads(Path('records/best.json').read_text())['conv']=='C26-r1'
+for n in ['sep13s-campaign.json','sep13y-campaign.json']:
+    assert json.loads(Path('.runs/conv',n).read_text())['confirmation_passed'] is False
+print(json.dumps({'candidate':r['version'],'status':r['status'],'verified':r['verified'],'source_hashes':actual,'creation_snapshot_preserved':True,'best_label':'C6','S_confirmation_passed':False,'Y_confirmation_passed':False,'operator_executed':False,'owned_files':sorted(p.name for p in b.iterdir())},indent=2))
+PY
+

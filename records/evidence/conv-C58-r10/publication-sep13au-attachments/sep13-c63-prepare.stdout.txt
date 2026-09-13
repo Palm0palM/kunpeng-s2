@@ -1,0 +1,30 @@
+{
+  "candidate": "C63-row7x2shared4rowwise",
+  "source_parent": "C58-r1",
+  "design_source": "C62-row7x2shared4",
+  "bytes": 106993,
+  "source_sha256": "d78a863eb49c85d415420819e4b6ef8379260a34ad9f118da5bab1bdca7e94a8",
+  "quad_start_line": 1449,
+  "quad_end_line": 1610,
+  "source_quad_counts": {
+    "mul": 56,
+    "add": 56,
+    "input_load": 8,
+    "broadcast": 28
+  },
+  "accumulators": 14,
+  "column_order": [
+    "ik",
+    "ik+1",
+    "ik+2",
+    "ik+3"
+  ],
+  "outside_quad_bytes_equal_to_C62": true,
+  "companions_equal_to_C62_and_C7": true,
+  "boundary_pragma_count_unchanged": true,
+  "per_chain_symbolic_operations_and_addresses_unchanged": true,
+  "compiled": false,
+  "executed": false,
+  "verified": false,
+  "performance_measured": false
+}

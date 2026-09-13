@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C32-row4lane4staged",
+  "parent": "C26-r5",
+  "strategy": "Insert one empty volatile asm memory barrier after the first two vector positions in the four-coefficient quad middle loop, consuming eight completed accumulators to limit cross-half input-load hoisting while preserving all arithmetic and other code",
+  "created_at": "2026-09-12T07:10:22.148900+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "af21a9cdfbbeed75aea6c7af8fdcd976d43a178ecb80d1c2bd8f9fc8e8d44f06",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C29-row4lane4",
+  "comparison_baseline": "C26-r5",
+  "recorded_at": "2026-09-12T07:47:47.368861+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12c",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "9d0809472993e2614a8784e869a3c4ec50254effb8b0f556d6c9935def97dd21",
+  "log": ".runs/conv/C32-row4lane4staged/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        56.79,
+        57.27,
+        56.75
+      ],
+      "median_ms": 56.79,
+      "min_ms": 56.75,
+      "max_ms": 57.27,
+      "spread_pct": 0.9156541644655805,
+      "gflops": [
+        1327.1798,
+        1316.1958,
+        1328.2135
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        67.07,
+        67.08,
+        67.1
+      ],
+      "median_ms": 67.08,
+      "min_ms": 67.07,
+      "max_ms": 67.1,
+      "spread_pct": 0.04472271914132549,
+      "gflops": [
+        1240.9995,
+        1240.9022,
+        1240.4636
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        119.02,
+        119.5,
+        119.19
+      ],
+      "median_ms": 119.19,
+      "min_ms": 119.02,
+      "max_ms": 119.5,
+      "spread_pct": 0.40271834885477303,
+      "gflops": [
+        1353.3406,
+        1347.9157,
+        1351.4597
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        257.43,
+        257.39,
+        257.49
+      ],
+      "median_ms": 257.43,
+      "min_ms": 257.39,
+      "max_ms": 257.49,
+      "spread_pct": 0.038845511401166426,
+      "gflops": [
+        1343.1566,
+        1343.3728,
+        1342.8465
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 500.49,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1579297",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -10.62% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.43,
+        "candidate_ms": 56.79,
+        "gain_pct": -10.421932724090995
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.95,
+        "candidate_ms": 67.08,
+        "gain_pct": -8.28087167070217
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.32,
+        "candidate_ms": 119.19,
+        "gain_pct": -11.060380171449873
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.73,
+        "candidate_ms": 257.43,
+        "gain_pct": -11.090493246450619
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r4",
+    "eligible": false,
+    "reasons": [
+      "提速 -10.64% 未超过测量波动/最低1%门槛 1.00%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.38,
+        "candidate_ms": 56.79,
+        "gain_pct": -10.52938886726352
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.95,
+        "candidate_ms": 67.08,
+        "gain_pct": -8.28087167070217
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.3,
+        "candidate_ms": 119.19,
+        "gain_pct": -11.081081081081082
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.74,
+        "candidate_ms": 257.43,
+        "gain_pct": -11.085699490808663
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Does not meet predeclared comparison gate; preserve actual samples without promotion."
+}

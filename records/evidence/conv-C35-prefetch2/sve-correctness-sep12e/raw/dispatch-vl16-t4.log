@@ -1,0 +1,25 @@
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=16 THREADS=4
+PASS: 168 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+PREFETCH_CASE kh=5 ow=15 oh=4 hints=0 expected=0
+PREFETCH_CASE kh=5 ow=15 oh=16 hints=0 expected=0
+PREFETCH_CASE kh=5 ow=16 oh=4 hints=0 expected=0
+PREFETCH_CASE kh=5 ow=16 oh=16 hints=0 expected=0
+PREFETCH_CASE kh=5 ow=17 oh=4 hints=0 expected=0
+PREFETCH_CASE kh=5 ow=17 oh=16 hints=0 expected=0
+PREFETCH_CASE kh=6 ow=15 oh=4 hints=0 expected=0
+PREFETCH_CASE kh=6 ow=15 oh=16 hints=0 expected=0
+PREFETCH_CASE kh=6 ow=16 oh=4 hints=4 expected=4
+PREFETCH_CASE kh=6 ow=16 oh=16 hints=16 expected=16
+PREFETCH_CASE kh=6 ow=17 oh=4 hints=4 expected=4
+PREFETCH_CASE kh=6 ow=17 oh=16 hints=16 expected=16
+PREFETCH_CASE kh=7 ow=15 oh=4 hints=0 expected=0
+PREFETCH_CASE kh=7 ow=15 oh=16 hints=0 expected=0
+PREFETCH_CASE kh=7 ow=16 oh=4 hints=8 expected=8
+PREFETCH_CASE kh=7 ow=16 oh=16 hints=32 expected=32
+PREFETCH_CASE kh=7 ow=17 oh=4 hints=8 expected=8
+PREFETCH_CASE kh=7 ow=17 oh=16 hints=32 expected=32
+PREFETCH_PROBE_PASS cases=18 total_hints=120
+SVE_PREFIX_ACTUAL_ENTRIES=960 SVE_TAIL_ACTUAL_ENTRIES=960
+SVE_ROWPAIR_ACTUAL_ENTRIES=48
+SVE_ROWTRIPLE_ACTUAL_ENTRIES=198
+SVE_ROWQUAD_ACTUAL_ENTRIES=213

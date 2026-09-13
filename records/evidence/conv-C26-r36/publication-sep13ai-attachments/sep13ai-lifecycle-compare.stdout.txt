@@ -1,0 +1,247 @@
+{
+  "round": "sep13ai",
+  "results": [
+    {
+      "version": "C26-r36",
+      "total_median_ms": 452.40999999999997,
+      "cases_ms": [
+        51.43,
+        61.9,
+        107.37,
+        231.71
+      ],
+      "all_samples_ms": [
+        [
+          51.43,
+          51.44,
+          51.42
+        ],
+        [
+          61.9,
+          61.76,
+          61.93
+        ],
+        [
+          107.37,
+          107.39,
+          107.31
+        ],
+        [
+          231.71,
+          231.66,
+          231.92
+        ]
+      ],
+      "case_spreads_pct": [
+        0.0388878086719736,
+        0.2746365105008105,
+        0.0745087082052699,
+        0.11220922705105127
+      ],
+      "max_spread_pct": 0.2746365105008105,
+      "gain_pct": 0.0022103355289293525,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 control; not a new candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    },
+    {
+      "version": "C58-row7boundaryu2",
+      "total_median_ms": 437.56,
+      "cases_ms": [
+        51.83,
+        58.4,
+        104.18,
+        223.15
+      ],
+      "all_samples_ms": [
+        [
+          51.83,
+          51.75,
+          51.83
+        ],
+        [
+          58.41,
+          58.4,
+          58.39
+        ],
+        [
+          104.15,
+          104.18,
+          104.18
+        ],
+        [
+          223.29,
+          223.15,
+          223.13
+        ]
+      ],
+      "case_spreads_pct": [
+        0.15435076210688461,
+        0.03424657534245894,
+        0.028796314071799903,
+        0.07170064978713717
+      ],
+      "max_spread_pct": 0.15435076210688461,
+      "gain_pct": 3.2845585959948576,
+      "reference_only": false,
+      "qualified_for_confirmation": true,
+      "decision_note": "Initial C58 candidate qualifies versus both same-job C6 controls; return to root for an independent next-step decision. No automatic confirmation, promotion or ZIP.",
+      "comparison": {
+        "baseline": "C26-r37",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.43,
+            "candidate_ms": 51.83,
+            "gain_pct": -0.7777561734396239
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.91,
+            "candidate_ms": 58.4,
+            "gain_pct": 5.669520271361652
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.38,
+            "candidate_ms": 104.18,
+            "gain_pct": 2.980070776680936
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.7,
+            "candidate_ms": 223.15,
+            "gain_pct": 3.690116529995677
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.284558595994863,
+        "threshold_pct": 1.0
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r36",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.43,
+            "candidate_ms": 51.83,
+            "gain_pct": -0.7777561734396239
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.9,
+            "candidate_ms": 58.4,
+            "gain_pct": 5.654281098546042
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.37,
+            "candidate_ms": 104.18,
+            "gain_pct": 2.9710347396851984
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.71,
+            "candidate_ms": 223.15,
+            "gain_pct": 3.6942730136808954
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.2824208129793697,
+        "threshold_pct": 1.0
+      }
+    },
+    {
+      "version": "C26-r37",
+      "total_median_ms": 452.41999999999996,
+      "cases_ms": [
+        51.43,
+        61.91,
+        107.38,
+        231.7
+      ],
+      "all_samples_ms": [
+        [
+          51.45,
+          51.39,
+          51.43
+        ],
+        [
+          61.94,
+          61.86,
+          61.91
+        ],
+        [
+          107.38,
+          107.35,
+          107.4
+        ],
+        [
+          231.7,
+          231.76,
+          231.65
+        ]
+      ],
+      "case_spreads_pct": [
+        0.11666342601594842,
+        0.12921983524470732,
+        0.04656360588565037,
+        0.04747518342683868
+      ],
+      "max_spread_pct": 0.12921983524470732,
+      "gain_pct": 0.0,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 control; not a new candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    }
+  ],
+  "prior_decisions_unchanged": true
+}

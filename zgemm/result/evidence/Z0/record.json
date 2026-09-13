@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "problem": "zgemm",
+  "version": "Z0",
+  "parent": null,
+  "strategy": "当前ZGEMM已验证源码的同环境三轮基线复测",
+  "created_at": "2026-09-08T00:10:06.098331+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "TEST_RUNS": "3",
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
+    "bench_zgemm.c": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+    "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+    "zgemm.c": "1bf7a5630cbb5c75c21ff3b1407829ab3d26f0ea007510f819ec4a41fb9d1690"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T00:46:36.485337+00:00",
+  "environment": "kunpeng-compute-node-A-numa4-generic-38-test3",
+  "reference": "official-internal-reference_zgemm",
+  "verified": true,
+  "log_sha256": "11c9edda9bd59bcea1ee01184ffb0b6ad36af3af9f626575a0394b2d8bab198a",
+  "log": "Original measurement log retained in private working archive; raw log hash is preserved here.",
+  "cases": [
+    {
+      "dims": [
+        7427,
+        7427,
+        256
+      ],
+      "times_ms": [
+        306.33,
+        293.47,
+        292.42
+      ],
+      "median_ms": 293.47,
+      "min_ms": 292.42,
+      "max_ms": 306.33,
+      "spread_pct": 4.739837121341182,
+      "gflops": [
+        368.7847,
+        384.9457,
+        386.3273
+      ],
+      "max_error": 3.05e-12
+    },
+    {
+      "dims": [
+        14848,
+        14848,
+        256
+      ],
+      "times_ms": [
+        1156.96,
+        1181.0,
+        1156.52
+      ],
+      "median_ms": 1156.96,
+      "min_ms": 1156.52,
+      "max_ms": 1181.0,
+      "spread_pct": 2.115889918406861,
+      "gflops": [
+        390.2548,
+        382.3104,
+        390.4032
+      ],
+      "max_error": 3.51e-12
+    },
+    {
+      "dims": [
+        37360,
+        8192,
+        512
+      ],
+      "times_ms": [
+        3072.34,
+        3119.29,
+        3068.66
+      ],
+      "median_ms": 3072.34,
+      "min_ms": 3068.66,
+      "max_ms": 3119.29,
+      "spread_pct": 1.6479295911259857,
+      "gflops": [
+        408.0262,
+        401.8839,
+        408.515
+      ],
+      "max_error": 6.04e-12
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 4522.77,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "compute-node-A",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "4",
+    "ALLOWED_CPUS": "152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "Compiler: gcc (GCC) <PRIVATE_IP>",
+      "gcc (GCC) <PRIVATE_IP>"
+    ]
+  },
+  "job_id": "1485181",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "promoted_at": "2026-09-08T00:46:36.526092+00:00",
+  "publication_note": "Public copy: compute/login aliases and private paths/usernames redacted. Original log hashes refer to unredacted private evidence; public hashes are in artifact-manifest.json."
+}

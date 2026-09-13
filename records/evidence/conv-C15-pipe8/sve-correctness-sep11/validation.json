@@ -1,0 +1,110 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C15-pipe8",
+  "job_id": "1507579",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1507579",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "34d2afbd638d9241c81ec623f10f98d341e071684dab903f45d864e077b652e0",
+    "check_conv_guard.c": "b82ec6f3bc445ad28ca9b0d22c0ef005ef87dbf8769b7e68806e1fdc9015c223",
+    "check_sve_dispatch.c": "6adebfeae03eca0836bab48bad75f97d701c14e4df5df4a7cb1ef44d1549778f",
+    "conv2d.c": "9895bd9e0e0d71ff0f71dfcc6b25f389d46fb921aa3471562a5254c66988d1ab",
+    "remote_job.sh": "3313d76b501b8f4acd0704f65b4b6e4aa8a12be9f485a9d7cd246f0ce059470c"
+  },
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs": 32,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs": 32,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs": 64,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs": 64,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs": 128,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs": 128,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    }
+  ],
+  "full_cases": 19608,
+  "dispatch_cases": 144,
+  "total_cases": 19752,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "hot_loop_label": ".L41",
+    "hot_loop_instructions": 56,
+    "hot_loop_fmul": 16,
+    "hot_loop_fadd": 16,
+    "hot_loop_ext": 7,
+    "hot_loop_stack_accesses": 0,
+    "prefix_movprfx_count": 0,
+    "prefix_fma_count": 0,
+    "note": "Hot paired-kernel loop has no stack access or movprfx/FMA. Scalar address bookkeeping loads/stores exist outside the hot kernel loop; function stack frame 240 bytes. Assembly is uninstrumented generic-target GCC output."
+  },
+  "evidence_directory": "raw",
+  "transport_note": "First status query was denied by local network sandbox; retried through approved network escalation. The diagnostic job itself succeeded."
+}

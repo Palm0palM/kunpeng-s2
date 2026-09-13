@@ -1,0 +1,115 @@
+C58-r14: passed, 437.53 ms; 官方分数未知
+C65-row7balanced: passed, 432.20 ms; 官方分数未知
+C58-r15: passed, 437.77 ms; 官方分数未知
+{
+  "qualified_for_confirmation": true,
+  "totals_ms": [
+    437.53,
+    432.2,
+    437.77
+  ],
+  "closing": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.77,
+        "candidate_ms": 49.7,
+        "gain_pct": 3.9984547034962334
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.64,
+        "candidate_ms": 58.75,
+        "gain_pct": -0.1875852660300127
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.21,
+        "candidate_ms": 102.96,
+        "gain_pct": 1.1995010075808463
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.15,
+        "candidate_ms": 220.79,
+        "gain_pct": 1.0575845843603018
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r15"
+  },
+  "opening": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.82,
+        "candidate_ms": 49.7,
+        "gain_pct": 4.0910845233500535
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.39,
+        "candidate_ms": 58.75,
+        "gain_pct": -0.6165439287549228
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.17,
+        "candidate_ms": 102.96,
+        "gain_pct": 1.161562829989448
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.15,
+        "candidate_ms": 220.79,
+        "gain_pct": 1.0575845843603018
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r14"
+  }
+}

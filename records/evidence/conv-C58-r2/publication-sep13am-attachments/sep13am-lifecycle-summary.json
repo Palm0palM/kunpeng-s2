@@ -1,0 +1,656 @@
+{
+  "created_at": "2026-09-13T06:02:23.857376+00:00",
+  "job_id": "1589364",
+  "measurement_order": [
+    "C58-r2",
+    "C59-row7boundaryu2nofive",
+    "C58-r3"
+  ],
+  "total_samples": 36,
+  "results": [
+    {
+      "version": "C58-r2",
+      "total_median_ms": 437.58,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.82,
+            51.84,
+            51.82
+          ],
+          "median_ms": 51.82,
+          "min_ms": 51.82,
+          "max_ms": 51.84,
+          "spread_pct": 0.038595137012742434,
+          "gflops": [
+            1454.6541,
+            1453.9657,
+            1454.6723
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.39,
+            58.43,
+            58.46
+          ],
+          "median_ms": 58.43,
+          "min_ms": 58.39,
+          "max_ms": 58.46,
+          "spread_pct": 0.11980147184665461,
+          "gflops": [
+            1425.4469,
+            1424.6034,
+            1423.709
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            104.16,
+            104.15,
+            104.19
+          ],
+          "median_ms": 104.16,
+          "min_ms": 104.15,
+          "max_ms": 104.19,
+          "spread_pct": 0.03840245775728883,
+          "gflops": [
+            1546.4267,
+            1546.6133,
+            1546.0264
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            223.78,
+            223.17,
+            223.13
+          ],
+          "median_ms": 223.17,
+          "min_ms": 223.13,
+          "max_ms": 223.78,
+          "spread_pct": 0.2912577855446546,
+          "gflops": [
+            1545.1575,
+            1549.3654,
+            1549.6153
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1589364",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "scheduler_resources": {
+        "reqCPU": 38,
+        "reqMem": 24576,
+        "allocCPU": 38,
+        "allocMem": 24576,
+        "timeout": 1800,
+        "reqAffinity": "numa[count=1, distribution=pack]"
+      },
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      },
+      "machine": {
+        "HOST": "COMPUTE_NODE_1",
+        "ARCH": "aarch64",
+        "NUMA_NODE": "3",
+        "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+        "OMP_NUM_THREADS": "38",
+        "CPU_TARGET": "generic",
+        "compiler_banners": [
+          "gcc (GCC) 10.3.1"
+        ]
+      }
+    },
+    {
+      "version": "C59-row7boundaryu2nofive",
+      "total_median_ms": 437.94,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.96,
+            52.0,
+            51.96
+          ],
+          "median_ms": 51.96,
+          "min_ms": 51.96,
+          "max_ms": 52.0,
+          "spread_pct": 0.07698229407236172,
+          "gflops": [
+            1450.7295,
+            1449.5894,
+            1450.733
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.47,
+            58.49,
+            58.51
+          ],
+          "median_ms": 58.49,
+          "min_ms": 58.47,
+          "max_ms": 58.51,
+          "spread_pct": 0.06838775859121071,
+          "gflops": [
+            1423.4487,
+            1423.0065,
+            1422.6759
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            104.22,
+            104.23,
+            104.23
+          ],
+          "median_ms": 104.23,
+          "min_ms": 104.22,
+          "max_ms": 104.23,
+          "spread_pct": 0.009594166746622964,
+          "gflops": [
+            1545.4615,
+            1545.4178,
+            1545.3727
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            223.27,
+            223.23,
+            223.26
+          ],
+          "median_ms": 223.26,
+          "min_ms": 223.23,
+          "max_ms": 223.27,
+          "spread_pct": 0.017916330735474544,
+          "gflops": [
+            1548.6422,
+            1548.9435,
+            1548.7637
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1589364",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "scheduler_resources": {
+        "reqCPU": 38,
+        "reqMem": 24576,
+        "allocCPU": 38,
+        "allocMem": 24576,
+        "timeout": 1800,
+        "reqAffinity": "numa[count=1, distribution=pack]"
+      },
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      },
+      "machine": {
+        "HOST": "COMPUTE_NODE_1",
+        "ARCH": "aarch64",
+        "NUMA_NODE": "3",
+        "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+        "OMP_NUM_THREADS": "38",
+        "CPU_TARGET": "generic",
+        "compiler_banners": [
+          "gcc (GCC) 10.3.1"
+        ]
+      }
+    },
+    {
+      "version": "C58-r3",
+      "total_median_ms": 437.65999999999997,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            52.26,
+            51.86,
+            51.84
+          ],
+          "median_ms": 51.86,
+          "min_ms": 51.84,
+          "max_ms": 52.26,
+          "spread_pct": 0.809872734284602,
+          "gflops": [
+            1442.2327,
+            1453.363,
+            1454.0476
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.56,
+            58.43,
+            58.4
+          ],
+          "median_ms": 58.43,
+          "min_ms": 58.4,
+          "max_ms": 58.56,
+          "spread_pct": 0.2738319356495014,
+          "gflops": [
+            1421.3875,
+            1424.5048,
+            1425.3547
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            104.2,
+            104.22,
+            104.14
+          ],
+          "median_ms": 104.2,
+          "min_ms": 104.14,
+          "max_ms": 104.22,
+          "spread_pct": 0.07677543186180259,
+          "gflops": [
+            1545.7891,
+            1545.4558,
+            1546.7178
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            223.31,
+            223.16,
+            223.17
+          ],
+          "median_ms": 223.17,
+          "min_ms": 223.16,
+          "max_ms": 223.31,
+          "spread_pct": 0.06721333512569148,
+          "gflops": [
+            1548.3939,
+            1549.4617,
+            1549.3906
+          ],
+          "max_error": 0.0
+        }
+      ],
+      "checks": {
+        "scheduler": true,
+        "fetched_log": true,
+        "benchmark": true,
+        "wrapper": true,
+        "source_hashes": true,
+        "machine": true
+      },
+      "scheduler": {
+        "status": "SUCCEEDED",
+        "state": "SUCCEEDED",
+        "jobId": "1589364",
+        "jobExitCode": 0,
+        "systemExitCode": 0
+      },
+      "wrapper_exit": 0,
+      "scheduler_resources": {
+        "reqCPU": 38,
+        "reqMem": 24576,
+        "allocCPU": 38,
+        "allocMem": 24576,
+        "timeout": 1800,
+        "reqAffinity": "numa[count=1, distribution=pack]"
+      },
+      "settings": {
+        "bench_repeats": 3,
+        "environment": {
+          "OMP_NUM_THREADS": "38",
+          "OMP_DYNAMIC": "FALSE",
+          "OMP_PROC_BIND": "close",
+          "OMP_PLACES": "cores",
+          "CPU_TARGET": "generic"
+        },
+        "scheduler_resources": {
+          "queue": "q_kunpeng",
+          "cpus": 38,
+          "memory_mb": 24576,
+          "numa_count": 1,
+          "numa_distribution": "pack",
+          "walltime_seconds": 1800
+        },
+        "numa_policy": "38 allowed CPUs within one NUMA node"
+      },
+      "machine": {
+        "HOST": "COMPUTE_NODE_1",
+        "ARCH": "aarch64",
+        "NUMA_NODE": "3",
+        "ALLOWED_CPUS": "114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151",
+        "OMP_NUM_THREADS": "38",
+        "CPU_TARGET": "generic",
+        "compiler_banners": [
+          "gcc (GCC) 10.3.1"
+        ]
+      }
+    }
+  ],
+  "qualified_for_confirmation": false,
+  "closing_comparison": {
+    "eligible": false,
+    "reasons": [
+      "\u63d0\u901f -0.06% \u672a\u8d85\u8fc7\u6d4b\u91cf\u6ce2\u52a8/\u6700\u4f4e1%\u95e8\u69db 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.86,
+        "candidate_ms": 51.96,
+        "gain_pct": -0.19282684149633905
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.43,
+        "candidate_ms": 58.49,
+        "gain_pct": -0.10268697586856457
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.2,
+        "candidate_ms": 104.23,
+        "gain_pct": -0.028790786948177674
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.17,
+        "candidate_ms": 223.26,
+        "gain_pct": -0.04032800107541489
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r3"
+  },
+  "opening_comparison": {
+    "eligible": false,
+    "reasons": [
+      "\u63d0\u901f -0.08% \u672a\u8d85\u8fc7\u6d4b\u91cf\u6ce2\u52a8/\u6700\u4f4e1%\u95e8\u69db 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.82,
+        "candidate_ms": 51.96,
+        "gain_pct": -0.27016595908915586
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.43,
+        "candidate_ms": 58.49,
+        "gain_pct": -0.10268697586856457
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.16,
+        "candidate_ms": 104.23,
+        "gain_pct": -0.06720430107527592
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.17,
+        "candidate_ms": 223.26,
+        "gain_pct": -0.04032800107541489
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r2"
+  },
+  "confirmation_pending": [],
+  "current_best": "C7",
+  "decision": "Retain C7: C59 does not pass either initial performance gate.",
+  "outer_events": [
+    {
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C58-r2"
+      ],
+      "started_at": "2026-09-13T05:57:42.550139+00:00",
+      "ended_at": "2026-09-13T05:57:42.938499+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C58-r2"
+      ],
+      "started_at": "2026-09-13T05:58:47.211935+00:00",
+      "ended_at": "2026-09-13T05:58:47.609287+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C58-r2"
+      ],
+      "started_at": "2026-09-13T05:59:55.997051+00:00",
+      "ended_at": "2026-09-13T05:59:56.357758+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "tools/cluster.py",
+        "--config",
+        "config/conv-sep12.local.json",
+        "status",
+        ".runs/conv/C58-r2"
+      ],
+      "started_at": "2026-09-13T06:00:53.446508+00:00",
+      "ended_at": "2026-09-13T06:00:53.832120+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        ".runs/conv/sep13am-performance.py",
+        "record-compare"
+      ],
+      "started_at": "2026-09-13T06:01:18.838288+00:00",
+      "ended_at": "2026-09-13T06:01:21.856540+00:00",
+      "exit_code": 0
+    }
+  ],
+  "status_intervals_seconds": [
+    64.661796,
+    68.785116,
+    57.449457
+  ],
+  "record_compare_exit": 0,
+  "issues": [],
+  "local_operator_execution": false,
+  "confirmation_run": false,
+  "promotion_performed": false,
+  "packaging_performed": false,
+  "reset_card_used": false
+}

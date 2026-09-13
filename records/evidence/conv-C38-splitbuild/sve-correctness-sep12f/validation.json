@@ -1,0 +1,449 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C38-splitbuild",
+  "job_id": "1579469",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579469",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "candidate.env": "8ae1ada88bcb2ac88c4a3bb8235d06096183e19beed0d936d93e452d74598614",
+    "check_conv_guard.c": "e184d64677614d515e4b13183c89865c76c7b1e750a52017992d551021a3344d",
+    "check_sve_dispatch.c": "58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1",
+    "conv2d.c": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+    "remote_job.sh": "1df75b95609d94891836f36d96401f26617106596a53eb545c38bb42773c010b",
+    "run.sh": "2de9841c726a9633133ee06a60be89a331773a7328b2f53a1a208b938940a7a9"
+  },
+  "source_manifest_remote_matches": true,
+  "source_hash_verification_scope": "Existing automated transport manifest compared with remote wrapper SHA entries; no repeated manual byte-hash audit.",
+  "extra_manual_hash_audit": false,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "production_object_guard_cases": 96,
+      "dispatch_cases": 0,
+      "helper_entries": {},
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "production_object_guard_cases": 96,
+      "dispatch_cases": 0,
+      "helper_entries": {},
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "production_object_guard_cases": 96,
+      "dispatch_cases": 0,
+      "helper_entries": {},
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "production_object_guard_cases": 96,
+      "dispatch_cases": 0,
+      "helper_entries": {},
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "production_object_guard_cases": 96,
+      "dispatch_cases": 0,
+      "helper_entries": {},
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "production_object_guard_cases": 96,
+      "dispatch_cases": 0,
+      "helper_entries": {},
+      "production_object_tested": true,
+      "reference_untuned": true,
+      "passed": true
+    }
+  ],
+  "production_object_guard_cases": 576,
+  "dispatch_cases": 0,
+  "total_cases": 576,
+  "runner_cases": 4,
+  "combined_validation_cases": 580,
+  "runner": {
+    "passed": true,
+    "case_count": 4,
+    "cases": [
+      {
+        "case": 1,
+        "dimensions": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "passed": true
+      },
+      {
+        "case": 2,
+        "dimensions": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "passed": true
+      },
+      {
+        "case": 3,
+        "dimensions": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "passed": true
+      },
+      {
+        "case": 4,
+        "dimensions": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "passed": true
+      }
+    ],
+    "build_commands": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-c",
+        "bench_conv.c",
+        "-o",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-c",
+        "conv2d.c",
+        "-o",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o",
+        "-o",
+        "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test",
+        "-lm"
+      ]
+    ],
+    "production_object_tested": true,
+    "benchmark_flags_untuned": true,
+    "kernel_tune": null,
+    "timings_are_performance_record": false
+  },
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "source-manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-runner",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-object",
+      "exit_code": 0
+    },
+    {
+      "stage": "target-query",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-compile",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-link-production-object",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "production_artifacts": {
+    "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d.o": "4b1d4269f1b29dde1c7dae6ee8f753a5b5fddf2656f7d3a6b980ff83863574bf",
+    "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/bench_conv.o": "9f2f322fa79d947549e9db4e2e0c670b32eff7034c98e5bb518769e517558066",
+    "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12f-C38-splitbuild-20260912T093207Z/results/run-20260912-173542-LG8eKJ/conv2d_test": "e038285a8b83001f5df37b13e95ba9d819cfdf8d99044422243d4bcd9dc7e0c2",
+    "production-conv2d.o": "4b1d4269f1b29dde1c7dae6ee8f753a5b5fddf2656f7d3a6b980ff83863574bf"
+  },
+  "assembly": {
+    "review_complete": true,
+    "production_object_reviewed": true,
+    "helper": "conv_sve_rowquad",
+    "kernel_tune": null,
+    "inner_loops": [
+      {
+        "label": ".L329",
+        "stage": "first input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4265,
+        "line_end": 4297,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "ext": 3,
+        "movprfx": 0,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L333",
+        "stage": "second input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4346,
+        "line_end": 4401,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "ext": 3,
+        "movprfx": 3,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L338",
+        "stage": "third input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4492,
+        "line_end": 4567,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "ext": 3,
+        "movprfx": 3,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L342",
+        "stage": "shared four-output two-column loop",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4731,
+        "line_end": 4824,
+        "instructions": 93,
+        "fmul": 32,
+        "fadd": 32,
+        "input_ld1w": 8,
+        "kernel_ld1rw": 8,
+        "ext": 0,
+        "movprfx": 0,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L347",
+        "stage": "first trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 4953,
+        "line_end": 5028,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "ext": 3,
+        "movprfx": 3,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L351",
+        "stage": "second trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 5137,
+        "line_end": 5192,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "ext": 3,
+        "movprfx": 3,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L355",
+        "stage": "last input row",
+        "kernel_columns_per_iteration": 2,
+        "line_start": 5277,
+        "line_end": 5309,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "ext": 3,
+        "movprfx": 0,
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "stack_accesses": 0
+      }
+    ],
+    "whole_source_fma_count": 0,
+    "quad_frame_fixed_bytes": 752,
+    "quad_frame_extra_sve_vectors": 0,
+    "production_object_main_loop": {
+      "start": "0x4098",
+      "end": "0x4208",
+      "instructions": 93,
+      "fmul": 32,
+      "fadd": 32,
+      "input_ld1w": 8,
+      "kernel_ld1rw": 8,
+      "stack_accesses": 0
+    },
+    "note": "Actual original splitbuild conv2d.o and production-flags .s reviewed. Shared.L342 has93 instructions/2columns (32FMUL+32FADD,8LD1W+8LD1RW); no FMA/EXT/MOVPRFX or stack references in main. Entire quad contains no Z/Q ldr/str/ldp/stp or addvl; fixed752B scalar frame and d8-d11 ABI saves are not vector spills. Object disassembly independently has same seven inner-loop counts32/55/75/93/75/55/32; production guard links actual original object. Splitbuild alone is an attribution control, not promotion evidence."
+  },
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "evidence_directory": "raw",
+  "task_only_perf_probe": {
+    "command": [
+      "perf",
+      "record",
+      "-e",
+      "cycles:u",
+      "-F",
+      "99",
+      "-m",
+      "128",
+      "-T",
+      "-P",
+      "-o",
+      "task-perf-probe.data",
+      "--",
+      "/bin/true"
+    ],
+    "exit_code": 0,
+    "record_succeeded": true,
+    "correctness_gate": false,
+    "operator_metric": false,
+    "stderr_file": "raw/task-perf-probe.stderr.log",
+    "note": "Own /bin/true child only; no CPU-wide selector, privilege or sysctl changes. Zero samples are allowed. This probes event-open/record support and cannot establish an operator hotspot."
+  }
+}

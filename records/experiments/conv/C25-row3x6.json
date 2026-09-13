@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C25-row3x6",
+  "parent": "C21-r3",
+  "strategy": "Expand the C5 three-output-row tile from four to six vectors per row, amortizing kernel and loop overhead with eighteen accumulators",
+  "created_at": "2026-09-11T11:15:43.878957+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "ac8b2a5a102230cec1c23c2f7fd98577c35621d91778f2a1974eb385a15a61dc",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-11T16:42:55.786726+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep11c",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "b8b211e45643616d0d4fd7b50ae270616c103bb3775497a4953fe127a6196a5c",
+  "log": ".runs/conv/C25-row3x6/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        56.79,
+        56.65,
+        56.72
+      ],
+      "median_ms": 56.72,
+      "min_ms": 56.65,
+      "max_ms": 56.79,
+      "spread_pct": 0.2468265162200292,
+      "gflops": [
+        1327.3629,
+        1330.513,
+        1328.9837
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        66.26,
+        66.27,
+        66.29
+      ],
+      "median_ms": 66.27,
+      "min_ms": 66.26,
+      "max_ms": 66.29,
+      "spread_pct": 0.04526935264825885,
+      "gflops": [
+        1256.2259,
+        1256.0451,
+        1255.7058
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        117.71,
+        117.51,
+        117.66
+      ],
+      "median_ms": 117.66,
+      "min_ms": 117.51,
+      "max_ms": 117.71,
+      "spread_pct": 0.1699813020567641,
+      "gflops": [
+        1368.3486,
+        1370.6764,
+        1368.9892
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        258.36,
+        258.75,
+        258.29
+      ],
+      "median_ms": 258.36,
+      "min_ms": 258.29,
+      "max_ms": 258.75,
+      "spread_pct": 0.17804613717292905,
+      "gflops": [
+        1338.3517,
+        1336.3344,
+        1338.7205
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 499.01,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1531236",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison_baseline": "C21-r5",
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 0.66% 未超过测量波动/最低1%门槛 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 56.99,
+        "candidate_ms": 56.72,
+        "gain_pct": 0.47376732760133905
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.32,
+        "candidate_ms": 66.27,
+        "gain_pct": 3.000585480093673
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.42,
+        "candidate_ms": 117.66,
+        "gain_pct": 0.641783482519849
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.58,
+        "candidate_ms": 258.36,
+        "gain_pct": 0.08508005259493018
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C21-r4",
+    "eligible": false,
+    "reasons": [
+      "提速 0.66% 未超过测量波动/最低1%门槛 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 56.99,
+        "candidate_ms": 56.72,
+        "gain_pct": 0.47376732760133905
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.29,
+        "candidate_ms": 66.27,
+        "gain_pct": 2.9579733489530096
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.39,
+        "candidate_ms": 117.66,
+        "gain_pct": 0.6166061322746887
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.67,
+        "candidate_ms": 258.36,
+        "gain_pct": 0.11984381644566523
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "source_parent": "C21-r3",
+  "decision_note": "Initial same-allocation measurement retained; does not meet predeclared gate, no promotion"
+}

@@ -1,0 +1,129 @@
+{
+  "candidate": "C55-row7x3shared3",
+  "diagnostic": "sep13ac",
+  "job_id": "1582860",
+  "created_at_utc": "2026-09-12 19:05:52 UTC",
+  "status": "attachment_copy_complete",
+  "frozen_directory": ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac",
+  "frozen_tree_modified": false,
+  "source_scope": "Existing AC freeze execution outputs and AC preparation/tool-review originals outside the frozen tree.",
+  "file_count": 10,
+  "total_original_bytes": 62761,
+  "files": [
+    {
+      "source": ".runs/conv/sep13ac-root-freeze.stdout.txt",
+      "attachment": "freeze-execution/sep13ac-root-freeze.stdout.txt",
+      "bytes": 106,
+      "source_sha256": "0af6fdc93f02078fcd902aec0aebd5ff0a0b0b356a0a635aa7027d0911e3b82b",
+      "attachment_sha256": "0af6fdc93f02078fcd902aec0aebd5ff0a0b0b356a0a635aa7027d0911e3b82b",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    },
+    {
+      "source": ".runs/conv/sep13ac-root-freeze.stderr.txt",
+      "attachment": "freeze-execution/sep13ac-root-freeze.stderr.txt",
+      "bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attachment_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    },
+    {
+      "source": ".runs/conv/sep13ac-root-freeze.exit.txt",
+      "attachment": "freeze-execution/sep13ac-root-freeze.exit.txt",
+      "bytes": 2,
+      "source_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "attachment_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    },
+    {
+      "source": ".runs/conv/sep13ac-checks/ROOT_REVIEW.md",
+      "attachment": "preparation/ROOT_REVIEW.md",
+      "bytes": 1172,
+      "source_sha256": "b3185270f378bd0c4d156232736ccc491d29237fb9cdb916272aed3894011d04",
+      "attachment_sha256": "b3185270f378bd0c4d156232736ccc491d29237fb9cdb916272aed3894011d04",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    },
+    {
+      "source": ".runs/conv/sep13ac-checks/INDEPENDENT_TOOLS_REVIEW.md",
+      "attachment": "preparation/INDEPENDENT_TOOLS_REVIEW.md",
+      "bytes": 6510,
+      "source_sha256": "f90a6fa4c392d01d6d781b6207f0357bb8774098511f581e2118c9916dd1fcb7",
+      "attachment_sha256": "f90a6fa4c392d01d6d781b6207f0357bb8774098511f581e2118c9916dd1fcb7",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    },
+    {
+      "source": ".runs/conv/sep13ac-checks/SUBMISSION_INTERFACE.md",
+      "attachment": "preparation/SUBMISSION_INTERFACE.md",
+      "bytes": 4528,
+      "source_sha256": "7e9f096e9dbde267e98a8351cd499b91d4deb3a3bf06c7afc014edc44435c0db",
+      "attachment_sha256": "7e9f096e9dbde267e98a8351cd499b91d4deb3a3bf06c7afc014edc44435c0db",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    },
+    {
+      "source": ".runs/conv/sep13ac-checks/PREPARED_FILES.json",
+      "attachment": "preparation/PREPARED_FILES.json",
+      "bytes": 2813,
+      "source_sha256": "bbce1691271ddf49eb941ce2cb01e40e8ebc07c5f1abfab0d3f0b86ebc40c65f",
+      "attachment_sha256": "bbce1691271ddf49eb941ce2cb01e40e8ebc07c5f1abfab0d3f0b86ebc40c65f",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    },
+    {
+      "source": ".runs/conv/sep13ac-checks/PREPARATION_COMMANDS.md",
+      "attachment": "preparation/PREPARATION_COMMANDS.md",
+      "bytes": 1795,
+      "source_sha256": "bcd31569e1d003523a236aebb343b4d04dd5da4306adb6a799d01b9521fa3ab4",
+      "attachment_sha256": "bcd31569e1d003523a236aebb343b4d04dd5da4306adb6a799d01b9521fa3ab4",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    },
+    {
+      "source": ".runs/conv/sep13ac-checks/STATIC_REVIEW.md",
+      "attachment": "preparation/STATIC_REVIEW.md",
+      "bytes": 2161,
+      "source_sha256": "40221f83939b854c5c0344139b1e734e1e12d1cbe09f20e2ad526583f598ceac",
+      "attachment_sha256": "40221f83939b854c5c0344139b1e734e1e12d1cbe09f20e2ad526583f598ceac",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    },
+    {
+      "source": ".runs/conv/sep13ac-checks/AA-to-AC.patch",
+      "attachment": "preparation/AA-to-AC.patch",
+      "bytes": 43674,
+      "source_sha256": "1c47863902d04ccdc0ccf3b4f0e8cf150e2444c59dc7c8400ea74618d275940d",
+      "attachment_sha256": "1c47863902d04ccdc0ccf3b4f0e8cf150e2444c59dc7c8400ea74618d275940d",
+      "cmp_exit_code": 0,
+      "copy_method": "cp -p; unmodified file bytes"
+    }
+  ],
+  "existing_frozen_evidence_references": [
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/freeze-source.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/validation.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/job.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/prepared.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/source-hashes.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/source-manifest.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/assembly-review.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/assembly-helper-review.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/assembly-dispatch-review.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/HELPER_REVIEW.md",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/helper-text-counts.json",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/diagnostic-driver.py",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/diagnostic-accept_returned.py",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/diagnostic-freeze_returned.py",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/diagnostic-INTERFACE.md",
+    ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac/raw/"
+  ],
+  "notes": [
+    "Copies retain the original preparation wording and relative references; they do not overwrite later actual passed validation.",
+    "The root-freeze stdout contains the existing frozen destination, stderr is zero bytes and is preserved, exit is the original 0 newline.",
+    "PREPARED_FILES.json retains its original inventory and scope. Tool/interface/source evidence already archived in the frozen tree is referenced, not recopied or renamed here.",
+    "ORIGINS.json and ORIGINS.md are newly authored provenance records; they are excluded from the ten original-file count and hashes.",
+    "Only this attachment directory was created/written. No AC tool execution, reaccept/freeze, export, network, source/record/docs/package/best/TRSM changes or AD intervention. No reset."
+  ]
+}

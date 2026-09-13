@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C30-r1",
+  "parent": "C26-r5",
+  "strategy": "Independent exploratory repeat of unchanged C30; original inconclusive result retained",
+  "created_at": "2026-09-12T07:39:43.662142+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "8fc5b620c1fee673febc7d3f14a6d74dcb6ed42981221a7253c3fdfbf8c0cf51",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "comparison_baseline": "C26-r5",
+  "source_parent": "C30-colchunks",
+  "recorded_at": "2026-09-12T07:47:46.833669+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep12c",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "1c5cb2013d2c970646a962df69448b6212cf697a24ea42e146d9e7d0dc23acd8",
+  "log": ".runs/conv/C30-r1/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        50.97,
+        50.94,
+        51.04
+      ],
+      "median_ms": 50.97,
+      "min_ms": 50.94,
+      "max_ms": 51.04,
+      "spread_pct": 0.19619383951344208,
+      "gflops": [
+        1478.79,
+        1479.561,
+        1476.7975
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        61.31,
+        61.3,
+        62.64
+      ],
+      "median_ms": 61.31,
+      "min_ms": 61.3,
+      "max_ms": 62.64,
+      "spread_pct": 2.185614092317735,
+      "gflops": [
+        1357.5594,
+        1357.9038,
+        1328.7739
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        107.58,
+        106.5,
+        106.17
+      ],
+      "median_ms": 106.5,
+      "min_ms": 106.17,
+      "max_ms": 107.58,
+      "spread_pct": 1.323943661971828,
+      "gflops": [
+        1497.2495,
+        1512.4941,
+        1517.0937
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        229.44,
+        229.25,
+        229.19
+      ],
+      "median_ms": 229.25,
+      "min_ms": 229.19,
+      "max_ms": 229.44,
+      "spread_pct": 0.10905125408942204,
+      "gflops": [
+        1507.0184,
+        1508.2699,
+        1508.6563
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 448.03,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1579297",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 0.97% 未超过测量波动/最低1%门槛 2.19%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.43,
+        "candidate_ms": 50.97,
+        "gain_pct": 0.8944195994555723
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.95,
+        "candidate_ms": 61.31,
+        "gain_pct": 1.033091202582729
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.32,
+        "candidate_ms": 106.5,
+        "gain_pct": 0.7640700708162441
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.73,
+        "candidate_ms": 229.25,
+        "gain_pct": 1.0702110214473697
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C26-r4",
+    "eligible": false,
+    "reasons": [
+      "提速 0.96% 未超过测量波动/最低1%门槛 2.19%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.38,
+        "candidate_ms": 50.97,
+        "gain_pct": 0.7979758660957643
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 61.95,
+        "candidate_ms": 61.31,
+        "gain_pct": 1.033091202582729
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 107.3,
+        "candidate_ms": 106.5,
+        "gain_pct": 0.7455731593662602
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 231.74,
+        "candidate_ms": 229.25,
+        "gain_pct": 1.0744800207128717
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Does not meet predeclared comparison gate; preserve actual samples without promotion."
+}

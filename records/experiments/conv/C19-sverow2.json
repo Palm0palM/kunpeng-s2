@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C19-sverow2",
+  "parent": "C13-r7",
+  "strategy": "把两行各4个SVE向量合成8累加器，通过错开kernel行索引复用同一输入行；每个输出仍保持jk/ik累加顺序，减少相邻输出行的重复加载",
+  "created_at": "2026-09-11T08:24:58.119819+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C13-r5",
+  "comparison_design": "Before official measurement, use fresh opening C3 control C13-r7 as comparison parent; C13-r5 and C13-r7 have identical source hashes.",
+  "recorded_at": "2026-09-11T08:36:51.250087+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep11",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "4a76a91ec4354ead5d57b3daeaefb2255d453841d8e0c6e4be83e832e6ae0f5a",
+  "log": ".runs/conv/C19-sverow2/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        62.89,
+        62.89,
+        63.42
+      ],
+      "median_ms": 62.89,
+      "min_ms": 62.89,
+      "max_ms": 63.42,
+      "spread_pct": 0.8427412943234236,
+      "gflops": [
+        1198.4393,
+        1198.4933,
+        1188.4818
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        77.03,
+        77.53,
+        77.15
+      ],
+      "median_ms": 77.15,
+      "min_ms": 77.03,
+      "max_ms": 77.53,
+      "spread_pct": 0.6480881399870382,
+      "gflops": [
+        1080.5633,
+        1073.5941,
+        1078.8329
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        132.87,
+        132.9,
+        132.92
+      ],
+      "median_ms": 132.9,
+      "min_ms": 132.87,
+      "max_ms": 132.92,
+      "spread_pct": 0.037622272385239235,
+      "gflops": [
+        1212.2478,
+        1211.955,
+        1211.7931
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        289.27,
+        289.18,
+        288.82
+      ],
+      "median_ms": 289.18,
+      "min_ms": 288.82,
+      "max_ms": 289.27,
+      "spread_pct": 0.15561242132927194,
+      "gflops": [
+        1195.3232,
+        1195.6992,
+        1197.1697
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 562.1200000000001,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1507686",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 4.54% 未超过测量波动/最低1%门槛 6.91%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 66.24,
+        "candidate_ms": 62.89,
+        "gain_pct": 5.057367149758446
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 80.9,
+        "candidate_ms": 77.15,
+        "gain_pct": 4.635352286773794
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 137.82,
+        "candidate_ms": 132.9,
+        "gain_pct": 3.569873748367427
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 303.91,
+        "candidate_ms": 289.18,
+        "gain_pct": 4.846829653515849
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "comparison_baseline": "C13-r7",
+  "decision_note": "Total gain about 4.54%, all cases improve; initial control spread 6.91% fails automatic noise gate, so confirm with another fresh C3 control before promotion."
+}

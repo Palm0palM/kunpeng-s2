@@ -1,0 +1,35 @@
+{
+  "candidate": "C57-row7shared2fma",
+  "source_parent": "C52-row7x3shared2",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "3cc03ec4d13422238b1e461dd7213876cc50283a7433132ee94b41c4724ec6c5",
+    "remote_job.sh": "57bb5fba5b356e86a162a5e842bc7d1801137062067fc9c4620d238638fc7d52",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "prepared_at": "2026-09-12T19:38:43.791692+00:00",
+  "compiled": false,
+  "executed": false,
+  "verified": false,
+  "actual_job_id": null,
+  "expected_checks": {
+    "official_cases_per_suite": 4,
+    "suites": 3,
+    "total": 12
+  },
+  "expected_stages": [
+    "allocation",
+    "compiler",
+    "manifest",
+    "build",
+    "assembly-candidate",
+    "assembly-reference",
+    "numerical-check",
+    "complete"
+  ],
+  "numerical_tolerance": 1e-05,
+  "official_benchmark_unmodified": true,
+  "performance_measured": false,
+  "submission_authorized": false
+}

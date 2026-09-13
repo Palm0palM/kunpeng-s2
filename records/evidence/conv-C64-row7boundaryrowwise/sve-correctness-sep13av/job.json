@@ -1,0 +1,90 @@
+{
+  "version": "C64-row7boundaryrowwise",
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep13av-C64-row7boundaryrowwise-20260913T075201643372Z",
+  "submitted": true,
+  "submit_attempted": true,
+  "created_at": "20260913T075201643372Z",
+  "resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "walltime_seconds": 1800
+  },
+  "expected_checks": {
+    "full_per_configuration": 5744,
+    "dispatch_per_configuration": 1212,
+    "direct_per_configuration": 432,
+    "configurations": 6,
+    "total": 44328
+  },
+  "expected_stages": [
+    "allocation",
+    "compiler",
+    "manifest",
+    "build-guard",
+    "guard-vl16-t1",
+    "guard-vl16-t4",
+    "guard-vl32-t1",
+    "guard-vl32-t4",
+    "guard-vl64-t1",
+    "guard-vl64-t4",
+    "build-dispatch",
+    "dispatch-vl16-t1",
+    "dispatch-vl16-t4",
+    "dispatch-vl32-t1",
+    "dispatch-vl32-t4",
+    "dispatch-vl64-t1",
+    "dispatch-vl64-t4",
+    "build-assembly",
+    "complete"
+  ],
+  "source_hashes": {
+    "candidate.env": "9c38c8f4efbcb066ec4e02f0144d603cec0954d8cab7bd3024c08227c99325ad",
+    "check_conv_guard.c": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+    "check_sve_dispatch.c": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+    "conv2d.c": "fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421",
+    "remote_job.sh": "088bb09df5b70354ec3c95610bab1254603ab7b5ff0d0fe0069796c74d7c1d2e"
+  },
+  "known_job_gate": {
+    "checked_at": "2026-09-13T07:52:01.631601+00:00",
+    "jobs": [
+      {
+        "job_id": "1590659",
+        "origins": [
+          ".runs/conv/sep13au-campaign.json"
+        ],
+        "command": "djob -ll 1590659",
+        "query_exit": 0,
+        "raw_status": "Basic Details:\n    jobId                               \t1590659                                           \t\n    name                                \tkp-conv-group-fe4fa68c2216                        \t\n    state                               \tSUCCEEDED                                         \t\n    user                                \tREDACTED_USER                                       \t\n    queue                               \tq_kunpeng                                         \t\n    account                             \tcommon                                            \t\n    cmd                                 \t/bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-fe4fa68c2216/remote_job.sh\t\n    submitNode                          \tLOGIN_NODE_1                                           \t\n    createTime                          \t2026/09/13 15:36:02                               \t\n    startTime                           \t2026/09/13 15:36:02                               \t\n    lastModifiedTime                    \t-                                                 \t\n    endTime                             \t2026/09/13 15:40:00                               \t\n    currentOperation                    \tEMPTY                                             \t\n    jobRequeueMaxCnt                    \t0                                                 \t\n    jobRequeueCurrentCnt                \t0                                                 \t\n    mpiType                             \tDEFAULT                                           \t\n    interactionMode                     \tDEFAULT                                           \t\n    assistJob                           \tDEFAULT                                           \t\n    x11ForwardEnabled                   \tfalse                                             \t\n    description                         \t-                                                 \t\n    transferType                        \tLOCAL                                             \t\n    forwardTime                         \t-                                                 \t\n    recallTime                          \t-                                                 \t\n    autoResize                          \tfalse                                             \t\nScheduling Details:\n    exclusive                           \tfalse                                             \t\n    priority                            \t1                                                 \t\n    adminPriority                       \t-1                                                \t\n    expectSchedTime                     \t-                                                 \t\n    startTimeEstimated                  \t-                                                 \t\n    reserveRes                          \t-                                                 \t\n    backfillRes                         \t-                                                 \t\n    backfilledRes                       \t-                                                 \t\nResource Details:\n    reqJobLicense                       \t-\n    allocJobLicense                     \t-\n    resGroup[0]:\n        replica                         \t1                                                 \t\n        labels                          \tqueue_q_kunpeng aarch64                           \t\n        preferNodes                     \t-                                                 \t\n        reqNodeSelectPolicy             \t-                                                 \t\n        effNodeSelectPolicy             \tSEQUENCE                                          \t\n        reqCPU                          \t38                                                \t\n        reqMem                          \t24576                                             \t\n        reqGPU                          \tgpu:0\n        reqNPU                          \t0\n        allocCPU                        \t38                                                \t\n        allocMem                        \t24576                                             \t\n        allocGPU                        \tgpu:0\n        allocNPU                        \t0\n        reqTaskLicense                  \t-\n        allocTaskLicense                \t-\n        reqAffinity                     \tnuma[count=1, distribution=pack]                  \t\n    allocAffinity                       \t\n        execNode             resGroup resIndex hwThreads        gpuIds           npuIds          \n        COMPUTE_NODE_1              0        0/1      114-151          -                -               \nRuntime Details:\n    execNodes                           \tCOMPUTE_NODE_1                                           \t\n    execNodeCnt                         \t1                                                 \t\n    execPath                            \tCLUSTER_USER_HOME                           \t\n    resizeCmd                           \t-                                                 \t\n    timeout                             \t1800                                              \t\n    stderrRedirectPath                  \t-                                                 \t\n    stderrRedirectType                  \tappend                                            \t\n    stdoutRedirectPath                  \tCLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-fe4fa68c2216/wrapper.stdout.log\t\n    stdoutRedirectType                  \tappend                                            \t\n    totalUtime                          \t6750                                              \t\n    totalStime                          \t15                                                \t\n    totalMaxMemSwp                      \t415                                               \t\n    totalMaxMem                         \t415                                               \t\n    hostPreHookRunTime                  \t0                                                 \t\n    preHookRunTime                      \t0                                                 \t\n    jobWallclockDuration                \t236                                               \t\n    postHookRunTime                     \t0                                                 \t\n    hostPostHookRunTime                 \t0                                                 \t\n    jobSstoppedTime                     \t0                                                 \t\n    coreHours                           \t8968                                              \t\n    jobExitCode                         \t0                                                 \t\n    systemExitCode                      \t0                                                 \t\n    exitMessage                         \tJob execution succeeded                           \t\n    stderrRedirectOutputPath            \t-                                                 \t\n    stdoutRedirectOutputPath            \tCLUSTER_USER_HOME/kunpeng-experiments/kp-conv-group-fe4fa68c2216/wrapper.stdout.log\t\n    nodeUsages                          \t\n        execNode             resGroup resIndex utime    stime    wallclockDuration    sstoppedTime     cpuUtil          gpuUtil          npuUtil          memResource                     \n        COMPUTE_NODE_1              0        0/1      6750     15       236                  0                2866/3064        -                -                0/1/0/0/417/417/243/0           \n    nodePids                            \t\n        execNode             pids    \n        COMPUTE_NODE_1              -       \n    traceMessages                       \t2026/09/13 15:36:02    :    [JOB_ADD] Job 1590659 is submitted by REDACTED_USER, job state is PENDING.\t\n                                        \t2026/09/13 15:36:02    :    [JOB_START] Job 1590659 start message has been sent.\t\n                                        \t2026/09/13 15:36:02    :    [JOB_START_ACK] Job 1590659 start message has been received by agent COMPUTE_NODE_1.\t\n                                        \t2026/09/13 15:36:02    :    [JOB_EXECUTION] Job 1590659 state is from PENDING to RUNNING, execution path: CLUSTER_USER_HOME\t\n                                        \t2026/09/13 15:40:00    :    [JOB_FINISH] Job 1590659 state is from RUNNING to SUCCEEDED.\t\n",
+        "scheduler": {
+          "status": "SUCCEEDED",
+          "state": "SUCCEEDED",
+          "jobId": "1590659",
+          "jobExitCode": 0,
+          "systemExitCode": 0
+        }
+      }
+    ],
+    "unresolved_submissions": [],
+    "clear": true
+  },
+  "completed_au_evidence": {
+    "path": ".runs/conv/sep13au-campaign.json",
+    "job_id": "1590659",
+    "expected_samples": 36,
+    "read_only": true
+  },
+  "explicit_go": true,
+  "no_automatic_continuation": true,
+  "command": "dsub -n conv-sep13av-C64-row7boundaryrowwise -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep13av-C64-row7boundaryrowwise-20260913T075201643372Z/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep13av-C64-row7boundaryrowwise-20260913T075201643372Z/remote_job.sh",
+  "job_id": "1590847",
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1590847",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "status_checked_at": "2026-09-13T07:52:26.503287+00:00"
+}

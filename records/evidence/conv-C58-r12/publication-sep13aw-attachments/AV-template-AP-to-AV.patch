@@ -1,0 +1,232 @@
+--- AP/driver.py
++++ AV/driver.py
+@@ -1,4 +1,4 @@
+-"""Prepared AP diagnostic transport for C61; explicit root --go only.
++"""Prepared AV diagnostic transport for C64; explicit root --go only.
+ 
+ No work occurs on import. status/fetch reuse a saved unique job; no local
+ operator execution, automatic polling, acceptance, promotion or publication.
+@@ -21,14 +21,14 @@
+ sys.path.insert(0, str(ROOT / 'tools'))
+ import cluster
+ 
+-VERSIONS = ('C61-row7shared2rowwise',)
+-SOURCE_SHA256 = '40a3184f346983864593de73b3e3ade7973b1af9d2d273d566432e882a6904fa'
++VERSIONS = ('C64-row7boundaryrowwise',)
++SOURCE_SHA256 = 'fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421'
+ SOURCE_NAMES = {'conv2d.c', 'check_conv_guard.c', 'check_sve_dispatch.c', 'candidate.env', 'remote_job.sh'}
+-SOURCE_PARENTS = {'C61-row7shared2rowwise': 'C58-r1'}
+-AO_JOB_ID = '1589611'
++SOURCE_PARENTS = {'C64-row7boundaryrowwise': 'C58-r1'}
++AU_JOB_ID = '1590659'
+ PARENT_SHA256 = 'c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751'
+ PRODUCTION_NAMES = {'conv2d.c', 'README.md', 'bench_conv.c', 'run.sh'}
+-COUNTS = {'C61-row7shared2rowwise': dict(full_per_configuration=5744, dispatch_per_configuration=1212,
++COUNTS = {'C64-row7boundaryrowwise': dict(full_per_configuration=5744, dispatch_per_configuration=1212,
+     direct_per_configuration=432, configurations=6, total=44328)}
+ RESOURCES = dict(cpus=38, memory_mb=24576, numa_count=1,
+     numa_distribution='pack', walltime_seconds=1800)
+@@ -38,7 +38,7 @@
+     + [f'dispatch-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4)]
+     + ['build-assembly', 'complete'])
+ TERMINAL = {'SUCCEEDED', 'FAILED', 'CANCELLED', 'CANCELED', 'TIMEOUT', 'TERMINATED'}
+-# The frozen AP wrapper builds no retained production object for separate transfer.
++# The frozen AV wrapper builds no retained production object for separate transfer.
+ OBJECT_ARTIFACTS = {name: set() for name in VERSIONS}
+ 
+ 
+@@ -80,32 +80,32 @@
+             query_exit=None, raw_status=exception_text(exc), scheduler=None, query_error=type(exc).__name__)
+ 
+ 
+-def completed_ao_evidence():
+-    path = ROOT / '.runs/conv/sep13ao-campaign.json'
++def completed_au_evidence():
++    path = ROOT / '.runs/conv/sep13au-campaign.json'
+     campaign = read_json(path)
+-    order = ['C58-r4', 'C60-row7shared2ext', 'C58-r5']
+-    require(campaign.get('performance_job') == AO_JOB_ID and campaign.get('status') == 'complete'
++    order = ['C58-r10', 'C63-row7x2shared4rowwise', 'C58-r11']
++    require(campaign.get('performance_job') == AU_JOB_ID and campaign.get('status') == 'complete'
+         and campaign.get('measurement_order') == order and campaign.get('expected_benchmark_cases') == 36,
+-        'Original AO must be completely recorded')
++        'Original AU must be completely recorded')
+     rows = campaign.get('results', [])
+     require([r.get('version') for r in rows] == order
+         and all(len(r.get('cases', [])) == 4 and all(len(c.get('times_ms', [])) == 3 for c in r['cases']) for r in rows),
+-        'Original AO all36 samples required')
+-    return dict(path=str(path.relative_to(ROOT)), job_id=AO_JOB_ID, expected_samples=36, read_only=True)
++        'Original AU all36 samples required')
++    return dict(path=str(path.relative_to(ROOT)), job_id=AU_JOB_ID, expected_samples=36, read_only=True)
+ 
+ 
+ def serial_gate(cfg):
+-    identities = {AO_JOB_ID: ['.runs/conv/sep13ao-campaign.json']}
++    identities = {AU_JOB_ID: ['.runs/conv/sep13au-campaign.json']}
+     unresolved = []
+     try:
+-        completed_ao_evidence()
++        completed_au_evidence()
+     except (ValueError, OSError, KeyError) as exc:
+         unresolved.append(str(exc))
+     path = BASE / VERSIONS[0] / 'job.json'
+     if path.exists():
+         data = read_json(path); job_id = str(data.get('job_id') or '')
+         if data.get('version') != VERSIONS[0] or not re.fullmatch(r'[0-9]+', job_id):
+-            unresolved.append('Original AP reservation unknown; reconcile without resubmission')
++            unresolved.append('Original AV reservation unknown; reconcile without resubmission')
+         else:
+             identities.setdefault(job_id, []).append(str(path.relative_to(ROOT)))
+     evidence = [query_scheduler(cfg, job_id, origins) for job_id, origins in identities.items()]
+@@ -120,7 +120,7 @@
+ 
+ def frozen_source(base, version):
+     expected = read_json(base / 'source-hashes.json')
+-    require(set(expected) == SOURCE_NAMES and expected['conv2d.c'] == SOURCE_SHA256, 'Own C61 transport identity')
++    require(set(expected) == SOURCE_NAMES and expected['conv2d.c'] == SOURCE_SHA256, 'Own C64 transport identity')
+     source = base / 'source'
+     require(source.is_dir() and not source.is_symlink(), 'Real source directory required')
+     actual, manifest = {}, {}
+@@ -131,7 +131,7 @@
+     require(actual == expected and read_json(base / 'source-manifest.json') == manifest, 'Frozen five-file bytes changed')
+     record = read_json(ROOT / 'records/experiments/conv' / (version + '.json'))
+     require(record.get('version') == version and record.get('source_parent', record.get('parent')) == 'C58-r1'
+-        and record.get('status') == 'prepared' and record.get('verified') is False, 'Unmeasured C61 checkpoint')
++        and record.get('status') == 'prepared' and record.get('verified') is False, 'Unmeasured C64 checkpoint')
+     production = ROOT / '.runs/conv' / version / 'source'
+     require({p.name for p in production.iterdir()} == PRODUCTION_NAMES, 'Four production files')
+     hashes = {n: hashlib.sha256((production / n).read_bytes()).hexdigest() for n in PRODUCTION_NAMES}
+@@ -171,7 +171,7 @@
+     parser.add_argument('version', choices=VERSIONS)
+     parser.add_argument('config', help='Verified existing config; read only, never included in source or archive')
+     parser.add_argument('action', choices=('gate', 'submit', 'status', 'fetch'))
+-    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AP submission authorization')
++    parser.add_argument('--go', action='store_true', help='Explicit one-shot root AV submission authorization')
+     args = parser.parse_args()
+     require(args.action == 'submit' or not args.go, '--go is valid only for submit')
+     base = BASE / args.version
+@@ -188,17 +188,17 @@
+     if args.action == 'submit':
+         require(args.go, 'Explicit root --go required; no automatic startup')
+         require(not manifest.exists(), 'Refusing second submit; reconcile/reuse this package job.json')
+-        ao_evidence = completed_ao_evidence()
++        au_evidence = completed_au_evidence()
+         gate = serial_gate(cfg)
+         save(base / ('gate-' + stamp() + '.json'), gate)
+         require(gate['clear'], 'Known CONV work active/unresolved or query incomplete; retain gate evidence and stop')
+         hashes = frozen_source(base, args.version)
+         created = stamp()
+-        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13ap-' + args.version + '-' + created
++        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13av-' + args.version + '-' + created
+         data = dict(version=args.version, remote_dir=remote_dir, submitted=False,
+             submit_attempted=False, created_at=created, resources=RESOURCES,
+             expected_checks=COUNTS[args.version], expected_stages=STAGES,
+-            source_hashes=hashes, known_job_gate=gate, completed_ao_evidence=ao_evidence, explicit_go=True, no_automatic_continuation=True)
++            source_hashes=hashes, known_job_gate=gate, completed_au_evidence=au_evidence, explicit_go=True, no_automatic_continuation=True)
+         # Per-package exclusive reservation precedes upload/submission. It is retained on any failure.
+         with manifest.open('x') as handle:
+             json.dump(data, handle, indent=2)
+@@ -210,7 +210,7 @@
+         command = 'umask 077; mkdir -p ' + shlex.quote(remote_dir) + ' && tar -xzf - -C ' + shlex.quote(remote_dir)
+         result = logged_remote(cfg, command, base / 'upload.log', input=archive.getvalue(), timeout=cfg['transfer_timeout'])
+         require(result.returncode == 0, 'Upload failed; keep reservation/log and do not resubmit')
+-        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13ap-' + args.version)
++        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13av-' + args.version)
+         data.update(command=command, submit_attempted=True)
+         save(manifest, data)
+         result = logged_remote(cfg, command, base / 'submit.log')
+@@ -274,7 +274,7 @@
+             path = dest / name
+             if not path.exists():
+                 path.write_bytes(content)
+-    print('Fetched immutable AP diagnostic text/assembly. Fetch is not acceptance or performance.')
++    print('Fetched immutable AV diagnostic text/assembly. Fetch is not acceptance or performance.')
+ 
+ 
+ if __name__ == '__main__':
+--- AP/accept_and_freeze.py
++++ AV/accept_and_freeze.py
+@@ -1,23 +1,23 @@
+-"""AP returned-log acceptance/archive only; no operator or network execution."""
++"""AV returned-log acceptance/archive only; no operator or network execution."""
+ from pathlib import Path
+ import argparse,hashlib,json,re,shlex,shutil,datetime
+ BASE=Path(__file__).resolve().parent
+ ROOT=BASE.parents[2]
+-VERSION='C61-row7shared2rowwise'
+-SOURCE_SHA256='40a3184f346983864593de73b3e3ade7973b1af9d2d273d566432e882a6904fa'
++VERSION='C64-row7boundaryrowwise'
++SOURCE_SHA256='fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421'
+ B=BASE/VERSION
+ RAW=B/'raw'
+-FROZEN=ROOT/'.runs/conv'/VERSION/'sve-correctness-sep13ap'
++FROZEN=ROOT/'.runs/conv'/VERSION/'sve-correctness-sep13av'
+ def read(p):return json.loads(p.read_text())
+ def need(ok,why):
+     if not ok:raise ValueError(why)
+ def main():
+     parser=argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument('--job-id',required=True,help='Original AP ID actually saved after root one-shot submission')
++    parser.add_argument('--job-id',required=True,help='Original AV ID actually saved after root one-shot submission')
+     job_id=parser.parse_args().job_id
+-    need(re.fullmatch(r'[0-9]+',job_id) and job_id != '1589611','Own original AP ID required')
++    need(re.fullmatch(r'[0-9]+',job_id) and job_id != '1590659','Own original AV ID required')
+     need(not FROZEN.exists() and not (B/'validation.json').exists(),'Already accepted/frozen; do not overwrite')
+-    s=read(B/'AP_SUMMARY.json');j=read(B/'job.json');prepared=read(B/'prepared.json')
++    s=read(B/'AV_SUMMARY.json');j=read(B/'job.json');prepared=read(B/'prepared.json')
+     need(s['candidate']==j['version']==VERSION and s['job_id']==j['job_id']==job_id,'Original job identity')
+     status=j['scheduler_status'];need(str(status.get('jobId'))==job_id,'Scheduler job association')
+     need(status['status']=='SUCCEEDED' and status['jobExitCode']==status['systemExitCode']==0,'Actual terminal exits')
+@@ -52,7 +52,7 @@
+     hashes=read(B/'source-hashes.json');need(hashes==prepared['source_hashes']==j['source_hashes'],'Source association')
+     need({row['name']:row['sha256'] for row in s['source_files']}==hashes and all(row['all_manifests_and_transport_bytes_equal'] for row in s['source_files']),'Completed lifecycle source verification')
+     need(set(hashes)=={'conv2d.c','check_conv_guard.c','check_sve_dispatch.c','candidate.env','remote_job.sh'},'Exact five-file transport set')
+-    need(hashes.get('conv2d.c')==SOURCE_SHA256,'Own C61 reviewed source identity')
++    need(hashes.get('conv2d.c')==SOURCE_SHA256,'Own C64 reviewed source identity')
+     need({name:hashlib.sha256((B/'source'/name).read_bytes()).hexdigest() for name in hashes}==hashes,'Actual original source hashes')
+     # Lifecycle already verified remote manifest; require the exact returned bytes still match originals.
+     for name in hashes:need((RAW/name).read_bytes()==(B/'source'/name).read_bytes(),'Returned source changed')
+@@ -60,7 +60,7 @@
+     need(not re.search(r'^\s*(?:fmla|fmls|fmad|fmsb|fnmla|fnmls|fnmad|fnmsb|fmadd|fmsub|fnmadd|fnmsub|fmlal2?|fmlsl2?|fmmla)\b',assembly,re.M),'Unexpected fused arithmetic')
+     review=B/'TARGETED_ASSEMBLY_REVIEW.md'
+     need(review.is_file() and (B/'ROOT_RETURNED_REVIEW.md').is_file(),'Root must first read targeted actual review')
+-    result=dict(status='passed',complete=True,candidate=VERSION,job_id=job_id,scheduler=status,exit_code=0,total_cases=44328,full_cases=34464,dispatch_cases=7272,direct_cases=2592,runner_cases=0,configurations=configs,source_hashes=hashes,source_hashes_verified=True,compiler_version='10.3.1',build_commands=expected,stage_exits=s['stages'],allocation=s['scheduler_resources'],assembly=dict(fused_instructions=0,review='TARGETED_ASSEMBLY_REVIEW.md'),performance_measured=False,executed_locally=False,executed_remotely=True,sanitizer='NOT_RUN',issues=[],note='Original AP own numerical evidence; root-read actual row-wise shared2 load/broadcast schedule, spill and frame review. No speed claim or automatic promotion.')
++    result=dict(status='passed',complete=True,candidate=VERSION,job_id=job_id,scheduler=status,exit_code=0,total_cases=44328,full_cases=34464,dispatch_cases=7272,direct_cases=2592,runner_cases=0,configurations=configs,source_hashes=hashes,source_hashes_verified=True,compiler_version='10.3.1',build_commands=expected,stage_exits=s['stages'],allocation=s['scheduler_resources'],assembly=dict(fused_instructions=0,review='TARGETED_ASSEMBLY_REVIEW.md'),performance_measured=False,executed_locally=False,executed_remotely=True,sanitizer='NOT_RUN',issues=[],note='Original AV own numerical evidence; root-read actual 7-row3VL boundary-rowwise and shared2 load/broadcast schedule, spill and frame review. No speed claim or automatic promotion.')
+     # Archive existing evidence without altering raw/prepared/creation metadata.
+     temp=FROZEN.with_name(FROZEN.name+'.tmp');need(not temp.exists(),'Pending archive exists')
+     shutil.copytree(B,temp)
+@@ -72,5 +72,5 @@
+     (temp/'freeze-source.json').write_text(json.dumps(freeze,indent=2)+'\n')
+     temp.rename(FROZEN)
+     (B/'validation.json').write_text(json.dumps(result,indent=2)+'\n')
+-    print('AP'+job_id+' accepted/frozen44328; performance unmeasured.')
++    print('AV'+job_id+' accepted/frozen44328; performance unmeasured.')
+ if __name__=='__main__':main()
+--- AP/source/candidate.env
++++ AV/source/candidate.env
+@@ -1,4 +1,4 @@
+-CANDIDATE=C61-row7shared2rowwise
++CANDIDATE=C64-row7boundaryrowwise
+ EXPECTED_ACC=3
+ EXPECTED_FULL=5744
+ EXPECTED_DISPATCH=1212
+--- AP/source/remote_job.sh
++++ AV/source/remote_job.sh
+@@ -46,7 +46,7 @@
+ print('NUMA_NODE=' + nodes[0])
+ CHECK_ALLOCATION
+ source candidate.env
+-[[ "$CANDIDATE" == C61-row7shared2rowwise && "$EXPECTED_ACC" == 3 ]]
++[[ "$CANDIDATE" == C64-row7boundaryrowwise && "$EXPECTED_ACC" == 3 ]]
+ [[ "$EXPECTED_FULL" == 5744 && "$EXPECTED_DISPATCH" == 1212 && "$EXPECTED_DIRECT" == 432 && "$EXPECTED_TOTAL" == 44328 ]]
+ [[ "$EXPECTED_DISPATCH_ROWSEVEN_ENTRIES" == 1236 && "$EXPECTED_DIRECT_ROWSEVEN_ENTRIES" == 1080 ]]
+ printf 'CANDIDATE=%s\n' "$CANDIDATE"
+@@ -60,7 +60,7 @@
+ stage compiler compiler_check
+ write_manifest() {
+     sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env > source-sha256.txt LOCAL_USERLOCAL_USER return "$?"
+-    printf '%s  conv2d.c\n' 40a3184f346983864593de73b3e3ade7973b1af9d2d273d566432e882a6904fa LOCAL_USER sha256sum -c - LOCAL_USERLOCAL_USER return "$?"
++    printf '%s  conv2d.c\n' fcbfaf198157718355bee19a5cf9cab5e567508e69f38050595e146b3d57e421 LOCAL_USER sha256sum -c - LOCAL_USERLOCAL_USER return "$?"
+     cat source-sha256.txt
+ }
+ stage manifest write_manifest

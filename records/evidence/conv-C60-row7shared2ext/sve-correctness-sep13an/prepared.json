@@ -1,0 +1,66 @@
+{
+  "candidate": "C60-row7shared2ext",
+  "source_experiment": "C60-row7shared2ext",
+  "source_parent": "C58-r1",
+  "source_parent_label": "C7",
+  "status": "prepared",
+  "complete": false,
+  "actual_job_id": null,
+  "compiled": false,
+  "executed": false,
+  "verified": false,
+  "performance_measured": false,
+  "executed_locally": false,
+  "source_hashes": {
+    "candidate.env": "36c230d86a511d0596c0e29300e0db0770d93f0b0c04af0816fad788117c6320",
+    "check_conv_guard.c": "ccbba2637255b5d2733dfbfdddd88afd0d09815d5759ca86c9e8c498475990d5",
+    "check_sve_dispatch.c": "fa47796ed01ca2a7d925176b25a6b18d6d124385bf21c1e452a3c2f9afc0f81d",
+    "conv2d.c": "10df62b8d43c59a6164de7d23c1b59ab954bbaaebc330d57662e8f5d6b7f2168",
+    "remote_job.sh": "55c89f06a1764f5170bcf97ea3e04bc303b4925ac680173066172d50f172945d"
+  },
+  "production_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "10df62b8d43c59a6164de7d23c1b59ab954bbaaebc330d57662e8f5d6b7f2168",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "expected_checks": {
+    "full_per_configuration": 5744,
+    "dispatch_per_configuration": 1212,
+    "direct_per_configuration": 432,
+    "configurations": 6,
+    "total": 44328
+  },
+  "expected_stages": [
+    "allocation",
+    "compiler",
+    "manifest",
+    "build-guard",
+    "guard-vl16-t1",
+    "guard-vl16-t4",
+    "guard-vl32-t1",
+    "guard-vl32-t4",
+    "guard-vl64-t1",
+    "guard-vl64-t4",
+    "build-dispatch",
+    "dispatch-vl16-t1",
+    "dispatch-vl16-t4",
+    "dispatch-vl32-t1",
+    "dispatch-vl32-t4",
+    "dispatch-vl64-t1",
+    "dispatch-vl64-t4",
+    "build-assembly",
+    "complete"
+  ],
+  "prepared_at": "2026-09-13T06:07:09.497251+00:00",
+  "source_sha256": "10df62b8d43c59a6164de7d23c1b59ab954bbaaebc330d57662e8f5d6b7f2168",
+  "resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "walltime_seconds": 1800
+  },
+  "assembly_review": "Pending actual shared2 load/EXT counts, one-lane tail predicate, spill/frame/FMA; no expected-result claims.",
+  "scheduling_scope": "Only original completed AM1589364 and this AN reservation; root sole submitter and quota gate."
+}

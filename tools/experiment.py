@@ -53,10 +53,15 @@ def digest(path):
 def source_files(folder):
     files = {}
     for p in sorted(Path(folder).rglob('*')):
+        relative = p.relative_to(folder)
+        # Submission packages and their notes are not measured source. Exclude
+        # only the root result/ tree so snapshots and promotion leave it intact.
+        if relative.parts[0] == 'result':
+            continue
         if p.is_symlink():
             raise ValueError('源码快照不接受符号链接: ' + str(p))
         if p.is_file() and p.suffix in SUFFIXES:
-            files[p.relative_to(folder).as_posix()] = digest(p)
+            files[relative.as_posix()] = digest(p)
     return files
 
 

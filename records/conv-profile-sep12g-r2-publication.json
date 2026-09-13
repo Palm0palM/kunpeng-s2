@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-09-12T10:34:22.007859+00:00",
+  "profile": "conv-profile-sep12-r2",
+  "job_id": "1579588",
+  "purpose": "Reviewed task-only profile; raw automatic parser inconclusive retained. Performance values are diagnostic only.",
+  "notice": "Redacted public copies; original files unchanged. Raw ELF and perf.data excluded.",
+  "files": [
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/README.md",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/README.md",
+      "original_sha256": "f5e133808d39f68b92452db86702386aca47f784e9d385709b38cf6475eb8a6e",
+      "public_sha256": "f5e133808d39f68b92452db86702386aca47f784e9d385709b38cf6475eb8a6e",
+      "original_bytes": 5661,
+      "public_bytes": 5661,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/RESULT.md",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/RESULT.md",
+      "original_sha256": "116bc8b6d06d56876ab90e30b0a495e4fd34326758bf15e1eb986a1c5cba585b",
+      "public_sha256": "116bc8b6d06d56876ab90e30b0a495e4fd34326758bf15e1eb986a1c5cba585b",
+      "original_bytes": 1468,
+      "public_bytes": 1468,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/driver.py",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/driver.py",
+      "original_sha256": "e942cffca31a95c3f17a15f3417ceaff26224f329c30c7d68f0c114cd47dcc68",
+      "public_sha256": "e942cffca31a95c3f17a15f3417ceaff26224f329c30c7d68f0c114cd47dcc68",
+      "original_bytes": 5061,
+      "public_bytes": 5061,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/job.json",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/job.json",
+      "original_sha256": "01939460d13a58d04224dbab9ed15f65a78846052285b44d610e37b2e06b0ec4",
+      "public_sha256": "5b480adbbe4344b61b7d6d11f910379dd293c651a8ec3bcc5ec35c5fd1926183",
+      "original_bytes": 958,
+      "public_bytes": 940,
+      "redacted": true
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/prepared.json",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/prepared.json",
+      "original_sha256": "10d996d1b597910d39771a31ed419a40b4937c4c126eea6e112d71aaab468385",
+      "public_sha256": "10d996d1b597910d39771a31ed419a40b4937c4c126eea6e112d71aaab468385",
+      "original_bytes": 673,
+      "public_bytes": 673,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/profile-analysis.json",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/profile-analysis.json",
+      "original_sha256": "bde0c4c77bb48ffd9b0e3ae0ed3271b5eac87c8c025793a1de147a65b54197bc",
+      "public_sha256": "bde0c4c77bb48ffd9b0e3ae0ed3271b5eac87c8c025793a1de147a65b54197bc",
+      "original_bytes": 4189,
+      "public_bytes": 4189,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/provenance.json",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/provenance.json",
+      "original_sha256": "c88b38917652dbea0fc91caba411eac46dc88247f4bc452e95a558fb09128edd",
+      "public_sha256": "c88b38917652dbea0fc91caba411eac46dc88247f4bc452e95a558fb09128edd",
+      "original_bytes": 894,
+      "public_bytes": 894,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/allocation.json",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/allocation.json",
+      "original_sha256": "31d481c6ad56be95680dc380b5bdcb192516a3fa39d9b5e26f0467acb639745b",
+      "public_sha256": "31d481c6ad56be95680dc380b5bdcb192516a3fa39d9b5e26f0467acb639745b",
+      "original_bytes": 387,
+      "public_bytes": 387,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/analyze_profile.py",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/analyze_profile.py",
+      "original_sha256": "d2198833d0031234e50423b3496e8031233db37391332953ab33fa3eeafb7eea",
+      "public_sha256": "d2198833d0031234e50423b3496e8031233db37391332953ab33fa3eeafb7eea",
+      "original_bytes": 2240,
+      "public_bytes": 2240,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/annotate.exit.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/annotate.exit.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "original_bytes": 2,
+      "public_bytes": 2,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/annotate.stderr.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/annotate.stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "public_bytes": 0,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/bench_conv.c",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/bench_conv.c",
+      "original_sha256": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "public_sha256": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "original_bytes": 8125,
+      "public_bytes": 8125,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/benchmark.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/benchmark.log",
+      "original_sha256": "42ba753a1e1d62cbf57d081f174152dcf1249eb6a36a10858627cb2092944282",
+      "public_sha256": "42ba753a1e1d62cbf57d081f174152dcf1249eb6a36a10858627cb2092944282",
+      "original_bytes": 319,
+      "public_bytes": 319,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/build-id.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/build-id.txt",
+      "original_sha256": "70db74e4f2432a58f78244e24d117da90e1a1331d5e92aae6aebd6f16d624e90",
+      "public_sha256": "70db74e4f2432a58f78244e24d117da90e1a1331d5e92aae6aebd6f16d624e90",
+      "original_bytes": 1112,
+      "public_bytes": 1112,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/build.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/build.log",
+      "original_sha256": "dd00df88c4f441a01dd54f5e61bc1632438fa2c2bebe061763c13daf93dbeb73",
+      "public_sha256": "dd00df88c4f441a01dd54f5e61bc1632438fa2c2bebe061763c13daf93dbeb73",
+      "original_bytes": 479,
+      "public_bytes": 479,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/build.stdout.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/build.stdout.log",
+      "original_sha256": "48ce7cc3abd152a5edc3c1a0dd17b90e4f46c92954da879ea2128fd013db38fd",
+      "public_sha256": "f2ff7ef09009ecf9f9d256c705363cc2c357328a929491c91348ca4e8ede1d23",
+      "original_bytes": 3504,
+      "public_bytes": 3508,
+      "redacted": true
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/build_c6.sh",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/build_c6.sh",
+      "original_sha256": "71c4631c5c09cf3203a01d8efe412de5a3166f93d9cf257984e324745b086e5f",
+      "public_sha256": "3976ef3a79256828a7aa3761d7e8116562c4dfdb155e2c2cf79dee06ce57a977",
+      "original_bytes": 4485,
+      "public_bytes": 4493,
+      "redacted": true
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/compiler-version.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/compiler-version.txt",
+      "original_sha256": "19451a30d960cac8076e19edb9180b007babf3808256a48eb3975429ff6d3c49",
+      "public_sha256": "19451a30d960cac8076e19edb9180b007babf3808256a48eb3975429ff6d3c49",
+      "original_bytes": 7,
+      "public_bytes": 7,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/conv2d.c",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/conv2d.c",
+      "original_sha256": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+      "public_sha256": "0f71c88fb8898ff71bc4067abfd86ebbf29edd254e36ec57daf8924bd1727a21",
+      "original_bytes": 72661,
+      "public_bytes": 72661,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/environment.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/environment.log",
+      "original_sha256": "e825e14346ea20d2660ac4ac5cd8a89e4f2e2465396777bfb88758b673b2d1ab",
+      "public_sha256": "7289b28d3a6702db33158c61b909d63acdb5a77f7553faa6ad90041a74d65a81",
+      "original_bytes": 311,
+      "public_bytes": 318,
+      "redacted": true
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/exit-code.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/exit-code.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "original_bytes": 2,
+      "public_bytes": 2,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/objdump.exit.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/objdump.exit.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "original_bytes": 2,
+      "public_bytes": 2,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/objdump.stderr.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/objdump.stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "public_bytes": 0,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/perf-event-paranoid.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/perf-event-paranoid.txt",
+      "original_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "public_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "original_bytes": 2,
+      "public_bytes": 2,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/perf-path.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/perf-path.txt",
+      "original_sha256": "cafd7d78e6a50be31672a88880ff5b0117067917f83588a29ba2ae7480bb58c2",
+      "public_sha256": "cafd7d78e6a50be31672a88880ff5b0117067917f83588a29ba2ae7480bb58c2",
+      "original_bytes": 14,
+      "public_bytes": 14,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/perf-version.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/perf-version.txt",
+      "original_sha256": "8da45956f0f902389ced7a64a8d90e9bc26dcbc2a7e3bd917daf44ade80f1002",
+      "public_sha256": "8da45956f0f902389ced7a64a8d90e9bc26dcbc2a7e3bd917daf44ade80f1002",
+      "original_bytes": 46,
+      "public_bytes": 46,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/probe.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/probe.log",
+      "original_sha256": "41d7ad596e0ab151e99109971d29361bd74d8e70983f19769191e98b3f1ba55a",
+      "public_sha256": "614c102cac412d2538b2e8a6abeca4f5c860f6c06d50666f98ebae6509800eb4",
+      "original_bytes": 3601,
+      "public_bytes": 3583,
+      "redacted": true
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/profile-status.json",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/profile-status.json",
+      "original_sha256": "3f2105bf2b8d6bbe2644f347d4f667c71bd9bec971f5da26fd73335197b751ca",
+      "public_sha256": "3f2105bf2b8d6bbe2644f347d4f667c71bd9bec971f5da26fd73335197b751ca",
+      "original_bytes": 884,
+      "public_bytes": 884,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/profile_state.py",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/profile_state.py",
+      "original_sha256": "ab0f53a19a46e30b9cf1dbba170596cf0839a8a7229eb4ee84bab79ab9f00d67",
+      "public_sha256": "ab0f53a19a46e30b9cf1dbba170596cf0839a8a7229eb4ee84bab79ab9f00d67",
+      "original_bytes": 458,
+      "public_bytes": 458,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/quad.annotate.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/quad.annotate.txt",
+      "original_sha256": "f2eefe672a01be0ce3cb33ac13d46046f808181984186aba521103ca12edb033",
+      "public_sha256": "f2eefe672a01be0ce3cb33ac13d46046f808181984186aba521103ca12edb033",
+      "original_bytes": 71791,
+      "public_bytes": 71791,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/quad.disassembly.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/quad.disassembly.txt",
+      "original_sha256": "b531ae544b56ef8331b68467424b17160acb0f245bb289bb6161b4e1c3803d40",
+      "public_sha256": "b531ae544b56ef8331b68467424b17160acb0f245bb289bb6161b4e1c3803d40",
+      "original_bytes": 64624,
+      "public_bytes": 64624,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/quad.report.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/quad.report.txt",
+      "original_sha256": "9ceebfce892bcbb3652a970b32704949c88f080af4ee90433a2ddc32642b144a",
+      "public_sha256": "9ceebfce892bcbb3652a970b32704949c88f080af4ee90433a2ddc32642b144a",
+      "original_bytes": 3776,
+      "public_bytes": 3776,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/record-command.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/record-command.txt",
+      "original_sha256": "3e70544d74593703f62be7f44d7405a6e279075e55c15037260740318d1a6b34",
+      "public_sha256": "3e70544d74593703f62be7f44d7405a6e279075e55c15037260740318d1a6b34",
+      "original_bytes": 108,
+      "public_bytes": 108,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/record.exit.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/record.exit.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "original_bytes": 2,
+      "public_bytes": 2,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/record.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/record.log",
+      "original_sha256": "db1f795901a029ac8d8aee107eedbdab8e3c47fcfc602d07a570e4a0f724a0ab",
+      "public_sha256": "db1f795901a029ac8d8aee107eedbdab8e3c47fcfc602d07a570e4a0f724a0ab",
+      "original_bytes": 119,
+      "public_bytes": 119,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/remote_job.sh",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/remote_job.sh",
+      "original_sha256": "abe6089b9f7d2efb9e5fe75ccbda8a4fab1156f5e46d6a2f562c96028ffa1a83",
+      "public_sha256": "abe6089b9f7d2efb9e5fe75ccbda8a4fab1156f5e46d6a2f562c96028ffa1a83",
+      "original_bytes": 4659,
+      "public_bytes": 4659,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/report-all.exit.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/report-all.exit.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "original_bytes": 2,
+      "public_bytes": 2,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/report-all.stderr.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/report-all.stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "public_bytes": 0,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/report-quad.exit.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/report-quad.exit.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "original_bytes": 2,
+      "public_bytes": 2,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/report-quad.stderr.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/report-quad.stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "public_bytes": 0,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/run.sh",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/run.sh",
+      "original_sha256": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+      "public_sha256": "f2af0bbeb89757bb0e24c1919c13be66bbb91456701fa8e766504e202a4ac68a",
+      "original_bytes": 5339,
+      "public_bytes": 5347,
+      "redacted": true
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/source-sha256.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/source-sha256.txt",
+      "original_sha256": "1f3559790d6214c6e7a369b5f6dd9fbd255813a2510ac9da35fd8567e65aeb11",
+      "public_sha256": "1f3559790d6214c6e7a369b5f6dd9fbd255813a2510ac9da35fd8567e65aeb11",
+      "original_bytes": 553,
+      "public_bytes": 553,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/symbols.report.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/symbols.report.txt",
+      "original_sha256": "577fc8e42259cb43f967062d833fdb2542731ff102154e31ef1af8488f057484",
+      "public_sha256": "577fc8e42259cb43f967062d833fdb2542731ff102154e31ef1af8488f057484",
+      "original_bytes": 3431,
+      "public_bytes": 3431,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/symbols.stderr.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/symbols.stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "public_bytes": 0,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/symbols.txt",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/symbols.txt",
+      "original_sha256": "a3d131bbc15ea9895ef73dbf5d2436f957126459fe961c6d8a86c09db8412638",
+      "public_sha256": "a3d131bbc15ea9895ef73dbf5d2436f957126459fe961c6d8a86c09db8412638",
+      "original_bytes": 3253,
+      "public_bytes": 3253,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/raw/wrapper.stdout.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/raw/wrapper.stdout.log",
+      "original_sha256": "7ec03f91e0b4fdc6170bb09fded02604b6492e177267cd8d4cfe81cb1576081a",
+      "public_sha256": "5de18d4167bbea642e2796d17fe255ec1348a68a6e3a24dd41c09faa4551d0ce",
+      "original_bytes": 3679,
+      "public_bytes": 3661,
+      "redacted": true
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/retrieval.json",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/retrieval.json",
+      "original_sha256": "8ecc43a1f28a19f059f057c4dde3ac40c40b26a1927d8c9a0ba1a0bf9ec3b9e2",
+      "public_sha256": "8ecc43a1f28a19f059f057c4dde3ac40c40b26a1927d8c9a0ba1a0bf9ec3b9e2",
+      "original_bytes": 1066,
+      "public_bytes": 1066,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/scheduler.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/scheduler.log",
+      "original_sha256": "4453d2a76637837a9ed10aed3b7f1fb7dc25e1caa9d008d52b3590ebb97447db",
+      "public_sha256": "25fc5243a5550cb9fab98d1834b9186af788d38dfee62303d6e58841d9346b87",
+      "original_bytes": 8450,
+      "public_bytes": 8463,
+      "redacted": true
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/source-hashes.json",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/source-hashes.json",
+      "original_sha256": "da152d73299fea6f40b052d33417426f5b1fe9a6884dce1e0c2cb3dff0718efd",
+      "public_sha256": "da152d73299fea6f40b052d33417426f5b1fe9a6884dce1e0c2cb3dff0718efd",
+      "original_bytes": 605,
+      "public_bytes": 605,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/submit.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/submit.log",
+      "original_sha256": "cb9c13b7135d7b738a957cfd3d91e3a0112c6c4ccee54f5a0624df029adf78e4",
+      "public_sha256": "cb9c13b7135d7b738a957cfd3d91e3a0112c6c4ccee54f5a0624df029adf78e4",
+      "original_bytes": 35,
+      "public_bytes": 35,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/upload.log",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/upload.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "public_bytes": 0,
+      "redacted": false
+    },
+    {
+      "path": "records/evidence/conv-profile-sep12-r2/validation.json",
+      "source": ".runs/diagnostics/conv-profile-sep12-r2/validation.json",
+      "original_sha256": "636de7392d0bb4464b4a79efdea684bd614395811b1e4f8a8245e41e9f5ad2cc",
+      "public_sha256": "e7f24a86135355955b22651d7da83fa454ca743cddda21d2a3b49987e3798975",
+      "original_bytes": 6733,
+      "public_bytes": 6727,
+      "redacted": true
+    }
+  ],
+  "skipped": [
+    {
+      "path": "raw/allocation.env",
+      "reason": "non-whitelisted text or over2MiB"
+    },
+    {
+      "path": "raw/conv2d_profile",
+      "reason": "non-whitelisted text or over2MiB"
+    },
+    {
+      "path": "raw/perf.data",
+      "reason": "non-whitelisted text or over2MiB"
+    }
+  ]
+}

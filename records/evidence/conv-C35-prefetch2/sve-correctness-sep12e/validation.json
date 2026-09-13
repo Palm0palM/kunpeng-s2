@@ -1,0 +1,308 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C35-prefetch2",
+  "job_id": "1579388",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579388",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "1608433218ec6e2ce9dda9da46810774696d7f877dbc6cfdd44cdc31bf19a841",
+    "check_conv_guard.c": "8e5d5927ba4dcf274e09063829f4ad556ff336d4b695e9fd488b576a9baf2fa5",
+    "check_sve_dispatch.c": "b3cb5823d16ef73e63701a973d7929027d08b75150771fc846307bcb4695410c",
+    "conv2d.c": "f3869bd86297223921129ca98ee7a7c0835c9b0b28403747271bc88ab84e65cb",
+    "remote_job.sh": "976747d9c8faab641a65cd5bb77f0a1f8e61e01acdc02daef706c273f5184a0a"
+  },
+  "source_manifest_remote_matches": true,
+  "source_hash_verification_scope": "Existing automated transport manifest matches remote wrapper SHA entries; no separate repeated manual byte-hash audit.",
+  "extra_manual_hash_audit": false,
+  "accumulators_per_row": 4,
+  "rows_per_group": 4,
+  "total_accumulators": 16,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 29668,
+      "smoke_cases": 168,
+      "helper_entries": {
+        "prefix": 960,
+        "tail": 960,
+        "rowpair": 48,
+        "rowtriple": 198,
+        "rowquad": 213
+      },
+      "passed": true,
+      "prefetch_probe_cases": 18,
+      "prefetch_hints": 120,
+      "prefetch_case_counts_verified": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 16,
+      "full_cases": 29668,
+      "smoke_cases": 168,
+      "helper_entries": {
+        "prefix": 960,
+        "tail": 960,
+        "rowpair": 48,
+        "rowtriple": 198,
+        "rowquad": 213
+      },
+      "passed": true,
+      "prefetch_probe_cases": 18,
+      "prefetch_hints": 120,
+      "prefetch_case_counts_verified": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 29668,
+      "smoke_cases": 168,
+      "helper_entries": {
+        "prefix": 960,
+        "tail": 960,
+        "rowpair": 48,
+        "rowtriple": 198,
+        "rowquad": 213
+      },
+      "passed": true,
+      "prefetch_probe_cases": 18,
+      "prefetch_hints": 120,
+      "prefetch_case_counts_verified": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 32,
+      "full_cases": 29668,
+      "smoke_cases": 168,
+      "helper_entries": {
+        "prefix": 960,
+        "tail": 960,
+        "rowpair": 48,
+        "rowtriple": 198,
+        "rowquad": 213
+      },
+      "passed": true,
+      "prefetch_probe_cases": 18,
+      "prefetch_hints": 120,
+      "prefetch_case_counts_verified": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 29668,
+      "smoke_cases": 168,
+      "helper_entries": {
+        "prefix": 960,
+        "tail": 960,
+        "rowpair": 48,
+        "rowtriple": 198,
+        "rowquad": 213
+      },
+      "passed": true,
+      "prefetch_probe_cases": 18,
+      "prefetch_hints": 120,
+      "prefetch_case_counts_verified": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 64,
+      "full_cases": 29668,
+      "smoke_cases": 168,
+      "helper_entries": {
+        "prefix": 960,
+        "tail": 960,
+        "rowpair": 48,
+        "rowtriple": 198,
+        "rowquad": 213
+      },
+      "passed": true,
+      "prefetch_probe_cases": 18,
+      "prefetch_hints": 120,
+      "prefetch_case_counts_verified": true
+    }
+  ],
+  "full_cases": 178008,
+  "smoke_cases": 1008,
+  "prefetch_probe_cases": 108,
+  "total_cases": 179124,
+  "coverage_extension": {
+    "purpose": "C34: 256-column chunk boundaries and all-worker participation. C35: kh5/6/7 prefetch trigger counts at 4VL boundary and one/four row groups."
+  },
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "review_complete": true,
+    "helper": "conv_sve_rowquad",
+    "inner_loops": [
+      {
+        "label": ".L329",
+        "stage": "first input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "ext": 3,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L333",
+        "stage": "second input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "ext": 3,
+        "movprfx": 3,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L338",
+        "stage": "third input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "ext": 3,
+        "movprfx": 3,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L343",
+        "stage": "shared four-output two-column loop",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 93,
+        "fmul": 32,
+        "fadd": 32,
+        "input_ld1w": 8,
+        "kernel_ld1rw": 8,
+        "ext": 0,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L348",
+        "stage": "first trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 75,
+        "fmul": 24,
+        "fadd": 24,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 6,
+        "ext": 3,
+        "movprfx": 3,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L352",
+        "stage": "second trailing input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 55,
+        "fmul": 16,
+        "fadd": 16,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 4,
+        "ext": 3,
+        "movprfx": 3,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L356",
+        "stage": "last input row",
+        "kernel_columns_per_iteration": 2,
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "ext": 3,
+        "movprfx": 0,
+        "dup": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      }
+    ],
+    "whole_source_fma_count": 0,
+    "prefetch": {
+      "prfm_count": 4,
+      "hint_types": [
+        "PLDL1KEEP",
+        "PLDL1KEEP",
+        "PLDL1KEEP",
+        "PLDL1KEEP"
+      ],
+      "guard": "w20=kh-t; cmp w20,2; bls .L341 skips hints for kh-t<=2",
+      "address": "[sp256]=kh+2 minus w20 produces t+2; madd by stride with horizontal i; base plus byte-scaled offset; four offsets0/4lanes/8lanes/12lanes bytes",
+      "placement": "Four PLDL1KEEP in outer shared-row .L346 before .L341; inner ik loop .L343 does not revisit hints",
+      "source_condition_verified": true
+    },
+    "quad_frame_fixed_bytes": 800,
+    "quad_frame_extra_sve_vectors": 0,
+    "note": "Remote GCC10.3.1 strict-FP. Main.L343 remains93 instructions per2 columns,32 fmul+32 fadd,8 input ld1w,8 kernel ld1rw,0ext/movprfx/dup/spills. All seven paired loops have no vector spills. Four guarded PLDL1KEEP hints are in the shared input-row loop, not each kernel-column iteration. Fixed800-byte frame includes extra scalar address saves; ABI d8-d11 are not accumulator spills. Independent read-only review confirms w20=kh-t and future=(t+2)*stride+i. Whole source FMA0. Dynamic diagnostic proves exact branch counts; neither branch activity nor PRFM proves cache/performance benefit.",
+    "independent_static_review": true
+  },
+  "evidence_directory": "raw",
+  "pmu_metadata": {
+    "command": "/bin/true",
+    "status_codes": {
+      "COMMAND": 0,
+      "PARANOID": 0,
+      "STAT": 0
+    },
+    "perf_event_paranoid": 2,
+    "events": {
+      "cycles:u": 525449,
+      "instructions:u": 154116
+    },
+    "available_for_probe": true,
+    "correctness_gate": false,
+    "note": "Probe only establishes current allocated-node user-event availability; counts are for /bin/true, not the operator."
+  }
+}

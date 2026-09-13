@@ -1,0 +1,109 @@
+{
+  "candidate": "C58-row7boundaryu2",
+  "source_parent": "C52-row7x3shared2",
+  "parent_diagnostic_job_id": "1582134",
+  "parent_frozen_directory": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751"
+  },
+  "parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+    "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7"
+  },
+  "changed_files": [
+    "conv2d.c"
+  ],
+  "pragma": "GCC unroll 2",
+  "inserted_lines": 12,
+  "inserted_bytes": 396,
+  "loop_locations": [
+    {
+      "stage": "input_0",
+      "parent_loop_line": 1280,
+      "candidate_pragma_line": 1280,
+      "candidate_loop_line": 1281
+    },
+    {
+      "stage": "input_1",
+      "parent_loop_line": 1302,
+      "candidate_pragma_line": 1303,
+      "candidate_loop_line": 1304
+    },
+    {
+      "stage": "input_2",
+      "parent_loop_line": 1329,
+      "candidate_pragma_line": 1331,
+      "candidate_loop_line": 1332
+    },
+    {
+      "stage": "input_3",
+      "parent_loop_line": 1361,
+      "candidate_pragma_line": 1364,
+      "candidate_loop_line": 1365
+    },
+    {
+      "stage": "input_4",
+      "parent_loop_line": 1398,
+      "candidate_pragma_line": 1402,
+      "candidate_loop_line": 1403
+    },
+    {
+      "stage": "input_5",
+      "parent_loop_line": 1440,
+      "candidate_pragma_line": 1445,
+      "candidate_loop_line": 1446
+    },
+    {
+      "stage": "trailing_0",
+      "parent_loop_line": 1623,
+      "candidate_pragma_line": 1629,
+      "candidate_loop_line": 1630
+    },
+    {
+      "stage": "trailing_1",
+      "parent_loop_line": 1668,
+      "candidate_pragma_line": 1675,
+      "candidate_loop_line": 1676
+    },
+    {
+      "stage": "trailing_2",
+      "parent_loop_line": 1708,
+      "candidate_pragma_line": 1716,
+      "candidate_loop_line": 1717
+    },
+    {
+      "stage": "trailing_3",
+      "parent_loop_line": 1743,
+      "candidate_pragma_line": 1752,
+      "candidate_loop_line": 1753
+    },
+    {
+      "stage": "trailing_4",
+      "parent_loop_line": 1773,
+      "candidate_pragma_line": 1783,
+      "candidate_loop_line": 1784
+    },
+    {
+      "stage": "trailing_5",
+      "parent_loop_line": 1798,
+      "candidate_pragma_line": 1809,
+      "candidate_loop_line": 1810
+    }
+  ],
+  "removing_only_inserted_pragma_lines_restores_full_parent_bytes": true,
+  "shared_two_column_main_and_u1_remainder_unchanged": true,
+  "arithmetic_statements_unchanged": true,
+  "other_helpers_dispatch_tails_fallback_unchanged": true,
+  "other_three_submission_files_unchanged": true,
+  "compiler_flags_unchanged": true,
+  "compiled": false,
+  "executed": false,
+  "own_diagnostic_pass": false,
+  "performance_measured": false,
+  "parent_pass_applies_to_parent_bytes_only": true
+}

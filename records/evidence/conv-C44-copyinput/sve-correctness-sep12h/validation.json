@@ -1,0 +1,1032 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C44-copyinput",
+  "job_id": "1579729",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579729",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "source-manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-kernel",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "production-guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "instrumented-kernel",
+      "exit_code": 0
+    },
+    {
+      "stage": "instrumented-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-success-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-failure-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-success-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-failure-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-success-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-failure-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-success-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-failure-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-success-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-failure-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-success-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "copy-failure-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "compiler_version": "10.3.1",
+  "source_hashes_verified": true,
+  "source_manifest_remote_matches": true,
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "candidate.env": "52b032991a3af2f36845f607a7b4e49c68fe2743cf684a7c419afcf31eac101d",
+    "check_conv_guard.c": "68d05908db64163f1cdd2ed572e52e602618a5dd1c2ff5650549ca0f22beec79",
+    "conv2d.c": "8618bd699656a750a378bd008a863178ab738093a783dfda9619ec035945fb6d",
+    "copy_probe.c": "47537e458a8da6ade7fe81899fb90a729d8c18c94e630be46b155906a48b986b",
+    "copy_probe.h": "060b798b04fa62a3b0862812f2044ac08c2323525b5bd421051ff7876ca22967",
+    "instrumented_candidate.c": "54fff084175bd3d26113f2c103f0bfc098c41de95f16e74f15fcb7d1f1f5150e",
+    "remote_job.sh": "649896347b77cc00def3f9c3f16d715149dc5c5e4c95fdd0919aac56df7b0525",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "extra_manual_hash_audit": false,
+  "source_hash_verification_scope": "Automatic frozen/returned source identity only.",
+  "allocation": {
+    "cpus": [
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113
+    ],
+    "numa_node": "node2",
+    "requested_resources": {
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    }
+  },
+  "build_commands": {
+    "build-production.log": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-c",
+        "conv2d.c",
+        "-o",
+        "production-conv2d.o"
+      ]
+    ],
+    "build-guard.log": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-D_DEFAULT_SOURCE",
+        "-DEXPECTED_ACC=4",
+        "-DCHECK_ROWTRIPLE=1",
+        "-DCHECK_ROWQUAD=1",
+        "-c",
+        "check_conv_guard.c",
+        "-o",
+        "production-guard.o"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "production-guard.o",
+        "production-conv2d.o",
+        "-o",
+        "check_conv_guard",
+        "-lm"
+      ]
+    ],
+    "build-assembly.log": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-S",
+        "conv2d.c",
+        "-o",
+        "conv2d-sve.s"
+      ]
+    ],
+    "build-copy-probe.log": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-c",
+        "instrumented_candidate.c",
+        "-o",
+        "instrumented-conv2d.o"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-D_DEFAULT_SOURCE",
+        "-DEXPECTED_ACC=4",
+        "-DCHECK_ROWTRIPLE=1",
+        "-DCHECK_ROWQUAD=1",
+        "-DCOPY_PATH_PROBE",
+        "-c",
+        "check_conv_guard.c",
+        "-o",
+        "copy-guard.o"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "-DCOPY_EXPECT_PADDED=0",
+        "-c",
+        "copy_probe.c",
+        "-o",
+        "copy-probe.o"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DCONV_BLOCK=32",
+        "-DCONV_KERNEL_UNROLL=2",
+        "copy-guard.o",
+        "instrumented-conv2d.o",
+        "copy-probe.o",
+        "-o",
+        "check_input_copy",
+        "-lm"
+      ]
+    ]
+  },
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "lanes": 4,
+      "threads": 1,
+      "block_outputs_per_row": 16,
+      "production_guard_cases": 24100,
+      "copy_success_cases": 6048,
+      "copy_failure_cases": 6048,
+      "copy_success": {
+        "copy_probe_mode": "success",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 2800,
+        "forced_failures": 0,
+        "memcpy_calls": 28280,
+        "free_calls": 2800,
+        "error_count": 0
+      },
+      "copy_failure": {
+        "copy_probe_mode": "failure",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 0,
+        "forced_failures": 2800,
+        "memcpy_calls": 0,
+        "free_calls": 0,
+        "error_count": 0
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "lanes": 4,
+      "threads": 4,
+      "block_outputs_per_row": 16,
+      "production_guard_cases": 24100,
+      "copy_success_cases": 6048,
+      "copy_failure_cases": 6048,
+      "copy_success": {
+        "copy_probe_mode": "success",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 2800,
+        "forced_failures": 0,
+        "memcpy_calls": 28280,
+        "free_calls": 2800,
+        "error_count": 0
+      },
+      "copy_failure": {
+        "copy_probe_mode": "failure",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 0,
+        "forced_failures": 2800,
+        "memcpy_calls": 0,
+        "free_calls": 0,
+        "error_count": 0
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "lanes": 8,
+      "threads": 1,
+      "block_outputs_per_row": 32,
+      "production_guard_cases": 24100,
+      "copy_success_cases": 6048,
+      "copy_failure_cases": 6048,
+      "copy_success": {
+        "copy_probe_mode": "success",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 2800,
+        "forced_failures": 0,
+        "memcpy_calls": 28280,
+        "free_calls": 2800,
+        "error_count": 0
+      },
+      "copy_failure": {
+        "copy_probe_mode": "failure",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 0,
+        "forced_failures": 2800,
+        "memcpy_calls": 0,
+        "free_calls": 0,
+        "error_count": 0
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "lanes": 8,
+      "threads": 4,
+      "block_outputs_per_row": 32,
+      "production_guard_cases": 24100,
+      "copy_success_cases": 6048,
+      "copy_failure_cases": 6048,
+      "copy_success": {
+        "copy_probe_mode": "success",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 2800,
+        "forced_failures": 0,
+        "memcpy_calls": 28280,
+        "free_calls": 2800,
+        "error_count": 0
+      },
+      "copy_failure": {
+        "copy_probe_mode": "failure",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 0,
+        "forced_failures": 2800,
+        "memcpy_calls": 0,
+        "free_calls": 0,
+        "error_count": 0
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "lanes": 16,
+      "threads": 1,
+      "block_outputs_per_row": 64,
+      "production_guard_cases": 24100,
+      "copy_success_cases": 6048,
+      "copy_failure_cases": 6048,
+      "copy_success": {
+        "copy_probe_mode": "success",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 2800,
+        "forced_failures": 0,
+        "memcpy_calls": 28280,
+        "free_calls": 2800,
+        "error_count": 0
+      },
+      "copy_failure": {
+        "copy_probe_mode": "failure",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 0,
+        "forced_failures": 2800,
+        "memcpy_calls": 0,
+        "free_calls": 0,
+        "error_count": 0
+      },
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "lanes": 16,
+      "threads": 4,
+      "block_outputs_per_row": 64,
+      "production_guard_cases": 24100,
+      "copy_success_cases": 6048,
+      "copy_failure_cases": 6048,
+      "copy_success": {
+        "copy_probe_mode": "success",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 2800,
+        "forced_failures": 0,
+        "memcpy_calls": 28280,
+        "free_calls": 2800,
+        "error_count": 0
+      },
+      "copy_failure": {
+        "copy_probe_mode": "failure",
+        "stride_mode": "original",
+        "cases": 6048,
+        "eligible": 2800,
+        "disabled": 3248,
+        "malloc_attempts": 2800,
+        "malloc_successes": 0,
+        "forced_failures": 2800,
+        "memcpy_calls": 0,
+        "free_calls": 0,
+        "error_count": 0
+      },
+      "passed": true
+    }
+  ],
+  "production_guard_cases": 144600,
+  "copy_success_cases": 36288,
+  "copy_failure_cases": 36288,
+  "total_cases": 217176,
+  "runner_cases": 0,
+  "combined_validation_cases": 217176,
+  "copy_success_totals": {
+    "cases": 36288,
+    "eligible": 16800,
+    "disabled": 19488,
+    "malloc_attempts": 16800,
+    "malloc_successes": 16800,
+    "forced_failures": 0,
+    "memcpy_calls": 169680,
+    "free_calls": 16800,
+    "error_count": 0
+  },
+  "copy_failure_totals": {
+    "cases": 36288,
+    "eligible": 16800,
+    "disabled": 19488,
+    "malloc_attempts": 16800,
+    "malloc_successes": 0,
+    "forced_failures": 16800,
+    "memcpy_calls": 0,
+    "free_calls": 0,
+    "error_count": 0
+  },
+  "expected_checks": {
+    "configurations": 6,
+    "production_per_configuration": 24100,
+    "copy_success_per_configuration": 6048,
+    "copy_failure_per_configuration": 6048,
+    "production_cases": 144600,
+    "copy_success_cases": 36288,
+    "copy_failure_cases": 36288,
+    "total_cases": 217176,
+    "runner_cases": 0
+  },
+  "assembly": {
+    "candidate": "C44-copyinput",
+    "job_id": "1579729",
+    "source_sha256": "8618bd699656a750a378bd008a863178ab738093a783dfda9619ec035945fb6d",
+    "compiler_version": "10.3.1",
+    "production_object_sha256": "c4f32bab546b0401db8873f3b3d15fb0724d2e745ff9340b882f58de8ee0315c",
+    "assembly_sha256": "a1ebccb6d411f50139b803fa2852d7a72aa243ac782f58044162b616aa2afaf8",
+    "review_scope": "Independent actual C44 quad/object fragment only. The separate dispatch/copy/compute/allocation/free review must be merged before whole-program acceptance. C44 remains a reference-only candidate; this review supplies no timing result.",
+    "review_complete": true,
+    "production_uninstrumented": true,
+    "production_object_disassembly_reviewed": true,
+    "whole_source_fma_reviewed": true,
+    "whole_quad_reviewed": true,
+    "all_stages_and_transitions_reviewed": true,
+    "abi_saves_distinguished": true,
+    "whole_source_fma_count": 0,
+    "production_object_fma_count": 0,
+    "whole_machine_code_identical_claimed": false,
+    "c6_background": {
+      "source_version": "C26-row4loads",
+      "quad_phases": 7,
+      "notes": "C6 is source/design background only. The complete actual C44 quad compiler text and its production-object instruction/operand/opcode sequence were compared to the independently reviewed actual C43 quad, then C44 compiler/object correspondence was independently checked. No complete object or dispatch identity is claimed."
+    },
+    "quad_helpers": [
+      {
+        "symbol": "conv_sve_rowquad",
+        "line_start": 4076,
+        "line_end": 5780,
+        "actual_clones": [],
+        "stack_frame_description": "Fixed 752-byte frame, no ADDVL scalable stack allocation. General-register saves and numerous scalar/pointer temporaries occupy the frame. STP/LDP d8,d9 at sp+112 and d10,d11 at sp+128 are callee-saved low-64-bit SIMD ABI preservation, outside the arithmetic loops; they are not accumulator spills.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_notes": "Whole helper, including all out-of-line labels after the normal return, has no LDR/STR Z or Q, no predicate spill, and no LD1W/ST1W to stack storage. Actual vector stores at .L363 are the 16 output vectors. Their base pointers are recovered through the scalar pointer bundle at sp+552..576. The only stack-address aliases formed are x8=sp+552, frame x29=sp+16, and x0=sp+552; the bundle is accessed with integer STP/LDP, then loaded external destination pointers are used by ST1W. Other stack loads in stage setup are integer input/kernel address or loop-state reloads.",
+        "transition_spill_review": "Read every instruction from function label through .size, including the seven stage setup/exit sections, .L338 one-column loop, straight-line remaining-column paths under .L339/.L344/.L348/.L353/.L357/.L361, all .L335/.L373/.L374/.L393/.L394/.L396 initialization branches, .L350 row advance, .L363 output stores and horizontal-block advance, and .L332/.L392/.L395 fallback edges. Accumulators remain in Z registers across all phases. Integer address temporaries are saved/reloaded at transitions, but no vector value is spilled. No live output accumulator crosses a helper call; stores or the no-main-block path precede fallback calls.",
+        "tail_and_fallback_review": "Entry kh<=3 branches .L332 to rowtriple followed by prefix for row 3. Width below CNTB (4*svcntw float outputs) uses .L392/.L334 and .L395. After complete 4VL blocks, .L395 calls rowtriple for rows 0..2 at column i and then tail-branches to prefix for row 3 at the same column, with ow-i remaining. ABI restore order is valid on main, fallback and tail-branch paths. Original q0/q1 arithmetic ordering remains, while actual GCC remaining-column paths can contain up to two sequential single-column copies guarded by kw; these are not an additional paired-vector read.",
+        "stages": [
+          {
+            "stage": "input_0",
+            "label": ".L336",
+            "line_start": 4344,
+            "line_end": 4376,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input row 0 contributes kernel row 0 to output row 0.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+            "observed_counts": {
+              "instructions": 32,
+              "fmul": 8,
+              "fadd": 8,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 2,
+              "ext": 3,
+              "movprfx": 0
+            },
+            "production_object_address_start": "0x3a38",
+            "production_object_address_end": "0x3ab4",
+            "derived_counts": {
+              "instructions": 32,
+              "fmul": 8,
+              "fadd": 8,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 2,
+              "movprfx": 0,
+              "ext": 3
+            }
+          },
+          {
+            "stage": "input_1",
+            "label": ".L340",
+            "line_start": 4425,
+            "line_end": 4480,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input row 1 contributes kernel rows 1/0 to output rows 0/1.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+            "observed_counts": {
+              "instructions": 55,
+              "fmul": 16,
+              "fadd": 16,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 4,
+              "ext": 3,
+              "movprfx": 3
+            },
+            "production_object_address_start": "0x3b68",
+            "production_object_address_end": "0x3c40",
+            "derived_counts": {
+              "instructions": 55,
+              "fmul": 16,
+              "fadd": 16,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 4,
+              "movprfx": 3,
+              "ext": 3
+            }
+          },
+          {
+            "stage": "input_2",
+            "label": ".L345",
+            "line_start": 4571,
+            "line_end": 4646,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input row 2 contributes kernel rows 2/1/0 to output rows 0/1/2.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+            "observed_counts": {
+              "instructions": 75,
+              "fmul": 24,
+              "fadd": 24,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 6,
+              "ext": 3,
+              "movprfx": 3
+            },
+            "production_object_address_start": "0x3da0",
+            "production_object_address_end": "0x3ec8",
+            "derived_counts": {
+              "instructions": 75,
+              "fmul": 24,
+              "fadd": 24,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 6,
+              "movprfx": 3,
+              "ext": 3
+            }
+          },
+          {
+            "stage": "shared",
+            "label": ".L349",
+            "line_start": 4810,
+            "line_end": 4903,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Loop .L352 starts t=3 and advances to kh-1. Input row t contributes kernel rows t,t-1,t-2,t-3 to outputs 0,1,2,3. The paired loop increments ik by 2; separate FMUL and dependent FADD preserve q0 before q1 per output. Four unshifted and four offset-one input windows are loaded directly.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+            "observed_counts": {
+              "instructions": 93,
+              "fmul": 32,
+              "fadd": 32,
+              "input_ld1w": 8,
+              "kernel_ld1rw": 8,
+              "ext": 0,
+              "movprfx": 0
+            },
+            "production_object_address_start": "0x4148",
+            "production_object_address_end": "0x42b8",
+            "derived_counts": {
+              "instructions": 93,
+              "fmul": 32,
+              "fadd": 32,
+              "input_ld1w": 8,
+              "kernel_ld1rw": 8,
+              "movprfx": 0,
+              "ext": 0
+            }
+          },
+          {
+            "stage": "trailing_0",
+            "label": ".L354",
+            "line_start": 5032,
+            "line_end": 5107,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input row kh contributes kernel rows kh-1,kh-2,kh-3 to output rows 1,2,3.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+            "observed_counts": {
+              "instructions": 75,
+              "fmul": 24,
+              "fadd": 24,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 6,
+              "ext": 3,
+              "movprfx": 3
+            },
+            "production_object_address_start": "0x44b0",
+            "production_object_address_end": "0x45d8",
+            "derived_counts": {
+              "instructions": 75,
+              "fmul": 24,
+              "fadd": 24,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 6,
+              "movprfx": 3,
+              "ext": 3
+            }
+          },
+          {
+            "stage": "trailing_1",
+            "label": ".L358",
+            "line_start": 5216,
+            "line_end": 5271,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input row kh+1 contributes kernel rows kh-1,kh-2 to output rows 2,3.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+            "observed_counts": {
+              "instructions": 55,
+              "fmul": 16,
+              "fadd": 16,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 4,
+              "ext": 3,
+              "movprfx": 3
+            },
+            "production_object_address_start": "0x4780",
+            "production_object_address_end": "0x4858",
+            "derived_counts": {
+              "instructions": 55,
+              "fmul": 16,
+              "fadd": 16,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 4,
+              "movprfx": 3,
+              "ext": 3
+            }
+          },
+          {
+            "stage": "trailing_2",
+            "label": ".L362",
+            "line_start": 5356,
+            "line_end": 5388,
+            "kernel_columns_per_iteration": 2,
+            "source_mapping": "Input row kh+2 contributes kernel row kh-1 to output row 3.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+            "observed_counts": {
+              "instructions": 32,
+              "fmul": 8,
+              "fadd": 8,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 2,
+              "ext": 3,
+              "movprfx": 0
+            },
+            "production_object_address_start": "0x49a0",
+            "production_object_address_end": "0x4a1c",
+            "derived_counts": {
+              "instructions": 32,
+              "fmul": 8,
+              "fadd": 8,
+              "input_ld1w": 5,
+              "kernel_ld1rw": 2,
+              "movprfx": 0,
+              "ext": 3
+            }
+          }
+        ],
+        "production_object_correspondence": {
+          "object_symbol": "conv_sve_rowquad",
+          "address_start": "0x3664",
+          "address_last_instruction": "0x4eb4",
+          "nonpadding_instruction_count": 1554,
+          "local_branch_targets_checked": 43,
+          "local_branch_target_mismatches": 0,
+          "method": "Read the C44 remote-produced objdump text of production-conv2d.o. Matched all1554 non-padding compiler instructions and operands in order, plus43 internal label targets. Its entire quad compiler text and all object instructions/opcodes are exactly the same as reviewed actual C43 quad; addresses/labels/ranges do not shift. Only compiler-versus-objdump alias spelling requires normalization: PTRUE all omitted, AND32 -2 as0xfffffffe, UXTW x19,w9 asMOV w19,w9. Fallback targets remain rowtriple0x2684 and prefix0x3e4. This is helper-only evidence, not identity of dispatch or the full object.",
+          "production_flags_evidence": "raw/build-production.log actual + gcc command builds conv2d.c with -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c; raw/build-assembly.log has the same code-generation flags and -S. No instrumentation or probe include is present in either command."
+        },
+        "derived_function_counts": {
+          "instructions": 1553,
+          "fmul": 252,
+          "fadd": 252,
+          "input_ld1w": 90,
+          "kernel_ld1rw": 63,
+          "movprfx": 12,
+          "ext": 18
+        }
+      }
+    ],
+    "fma_scan_scope": "Entire returned conv2d-sve.s and production-conv2d-objdump.log, including all helpers and dispatch workers. Checked fused families fmla/fmls/fmad/fmsb/fnmla/fnmls/fnmad/fnmsb/fmadd/fmsub/fnmadd/fnmsub/fmlal/fmlal2/fmlsl/fmlsl2/fmmla; both counts are zero. This whole-source arithmetic scan does not replace the separate dispatch/copy-path control-flow review.",
+    "performance_measured": false,
+    "promotion_decision": "none",
+    "executed_locally": false,
+    "actual_c43_quad_comparison": {
+      "reference_review": "../C43-padinput/assembly-quad-review.json",
+      "reference_job_id": "1579692",
+      "current_job_id": "1579729",
+      "comparison_scope": "Only the entire actual conv_sve_rowquad helper, including setup, all seven paired loops, single-column paths, every transition, output stores, ABI restore and out-of-line fallback branches. All actual target symbols were enumerated; both contain exactly one quad with no clone.",
+      "full_compiler_helper_text_equal": true,
+      "nonpadding_instruction_count_each": 1554,
+      "object_mnemonics_operands_equal": true,
+      "object_encoded_nonpadding_instructions_equal": true,
+      "object_address_shift": 0,
+      "compiler_line_range_each": [
+        4076,
+        5780
+      ],
+      "local_label_range_or_address_differences": "None: complete helper text, seven actual loop labels/line ranges and object addresses all coincide. Whole compiler files and whole production objects differ and have distinct identities above.",
+      "independent_current_internal_branch_target_count": 43,
+      "independent_current_internal_branch_target_mismatches": 0,
+      "method": "Compared actual full helper text, then all 1554 production-object nonpadding instructions, operands and encoded words in order, not just function names or digests. Independently matched C44 compiler instructions to its object disassembly and resolved every internal branch to the next instruction at its compiler label. Reused the C43 per-stage/stack explanations only after these exact checks; no local assembler/disassembler or operator execution."
+    },
+    "whole_quad_and_dispatch_reviewed": true,
+    "dispatch_functions": [
+      {
+        "symbol": "conv2d._omp_fn.0",
+        "line_start": 7,
+        "line_end": 82,
+        "object_address_range": "0x0..0xb0 inclusive",
+        "role": "New OMP static row-copy worker, invoked only after successful allocation.",
+        "stack_frame_description": "64 bytes. Scalar ABI saves x19..x24 and x29/x30; no SVE/NEON stack state or vector arithmetic.",
+        "spill_notes": "No vector stack loads/stores or vector accumulator spills in this worker. Scalar callee saves preserve copy pointers across memcpy.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "copy_path_notes": "Capture [0,8] holds original input/original stride; [16,24] allocated destination/original stride (C44 public stores x28 in BOTH stride fields); [32] original width*4 bytes and [40] full height. Worker shifts each captured stride by2, computes first-row source/destination offsets, calls memcpy with exact row_bytes at0x80, increments both pointers by equal original-stride bytes at0x84/0x88. Allocation is deliberately based on larger padded capacity, but copying uses contiguous original-width rows, and unused allocation suffix is untouched. Partition and loop are actual C44 worker0 instructions.",
+        "control_flow_notes": "omp_get_num_threads/thread_num produce quotient/remainder static partition of inputHeight; .L2 grants one extra row to early threads, .L5 computes nonoverlapping contiguous first/end rows and exits empty partitions. .L4 copies exactly those rows; join occurs on parent GOMP_parallel return. No malloc/free or compute helper in worker.",
+        "derived_function_counts": {
+          "instructions": 43,
+          "fmul": 0,
+          "fadd": 0,
+          "input_ld1w": 0,
+          "kernel_ld1rw": 0,
+          "movprfx": 0,
+          "ext": 0
+        }
+      },
+      {
+        "symbol": "conv2d._omp_fn.2",
+        "line_start": 741,
+        "line_end": 2348,
+        "object_address_range": "0x8a4..0x1eac inclusive",
+        "role": "Legacy output-row static worker for the public non-SVE branch, with inline NEON tiles 32/16/8/4/2/1 and preserved conditional prefix branch.",
+        "stack_frame_description": "368 bytes. Scalar ABI x19..x28/x29/x30; d8..d15 saved at sp+96..159 and restored once on worker exit. sp+160..239 stores row/loop state. sp+240..367 is the local output tile array, reused for 32-,16-,8-float tails.",
+        "spill_notes": "No observed non-ABI vector reload from stack and no register-pressure accumulator spill/reload pair in kernel loops. Distinguish 4 STP/4 LDP instructions for ABI d8..d15 from 14 static STR Q instructions that materialize completed tile arrays after the kh backedge: lines1214..1235 (8),1491..1500 (4),2138/2141 (2). Those Q values are then read by GPR LDP and copied to final output at1238..1256,1503..1513,2144..2149. They are real stack traffic, explicitly not a claim of a stack-free program.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "vector_stack_materialization_stores": 14,
+        "abi_fp_save_pair_instructions": 4,
+        "abi_fp_restore_pair_instructions": 4,
+        "copy_path_notes": "No calls to malloc, memcpy, free or copy interposition. The local tile-array copy is output materialization and is distinct from the new whole-input copy. Public non-SVE capture passes original input/stride and use_sve=0, so the retained .L68 conv_sve_prefix branch is not reached from that public branch.",
+        "control_flow_notes": "Quotient/remainder OMP partitions output rows. .L75 forms row input/output bases; .L69/.L132/.L118/.L106/.L96/.L86 dispatch descending width tiles32/16/8/4/2/1. Per-row .L84 increments original input stride and global output ow. Hot kh loops retain FP values in registers; materialization follows their exits, then advances output tile. Remaining cold kw-unroll branches at end of function jump back into the same arithmetic flow. Object confirms 368-byte prologue0x8a4, ABI stores0x9ac..0x9b8, tile Q stores0xf74..0xfac/0x1384..0x139c/0x1c18..0x1c20 and GPR copies following each; conditional prefix call0x14d0. Only other calls are OMP thread queries.",
+        "derived_function_counts": {
+          "instructions": 1408,
+          "fmul": 197,
+          "fadd": 200,
+          "input_ld1w": 0,
+          "kernel_ld1rw": 0,
+          "movprfx": 0,
+          "ext": 0
+        }
+      },
+      {
+        "symbol": "conv2d._omp_fn.1",
+        "line_start": 5785,
+        "line_end": 5964,
+        "object_address_range": "0x4ec0..0x5090 inclusive",
+        "role": "SVE static group-of-four compute worker with quad/triple/pair/prefix remainder dispatch.",
+        "stack_frame_description": "160 bytes. Scalar ABI x19..x28/x29/x30, scalar loop/capture state sp+124..159, outgoing helper arguments sp+0/sp+8. No vector stack state in this worker; helpers have separate frames.",
+        "spill_notes": "No FP/SVE instructions or vector spills in the dispatcher. Scalar kernel pointer at sp+136 is preserved across helper calls; outgoing destination/ow arguments are not vector spills.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "copy_path_notes": "Public captures either original input or successful copied input; independent stride x27 is always original width in C44. Output base/global ow are unchanged. This actual worker advances input by4*original_stride floats and output by4*ow floats, and passes original stride to quad/triple/pair/prefix. No malloc/memcpy/free in the worker.",
+        "control_flow_notes": "Static quotient/remainder partition of ceil(oh/4) groups, first row=4*group. Remaining>3 selects quad (.s .L402/object call0x4ffc); remaining3 selects triple(.L403/0x507c),2 pair(.L404/0x5048),1 prefix(.L408/0x4f94). Destination row1/2/3 offsets derive from global ow, never padded stride. .L405 advances four rows and exits at group end; no overlapping output groups.",
+        "derived_function_counts": {
+          "instructions": 116,
+          "fmul": 0,
+          "fadd": 0,
+          "input_ld1w": 0,
+          "kernel_ld1rw": 0,
+          "movprfx": 0,
+          "ext": 0
+        }
+      },
+      {
+        "symbol": "conv2d",
+        "line_start": 5969,
+        "line_end": 6173,
+        "object_address_range": "0x5094..0x5270 inclusive",
+        "role": "Public validation/HWCAP dispatch, checked optional allocation, two sequential OMP regions, final release.",
+        "stack_frame_description": "176 bytes. Scalar ABI x19..x28/x29/x30, copy-capture pointer atsp+96, OMP capture structs sp+120..171. No FP/SVE stack operands. Unlike padded-stride variant, no padded-stride save/reload across malloc is needed: x28 remains the original stride throughout.",
+        "spill_notes": "No vector spills. Scalar ABI registers preserve original input/stride across malloc, allocation inx21 across copy/compute and copied input inx26; capture pointersp+96 survives copy GOMP. Padded capacity is not retained as compute stride.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "copy_path_notes": "Actual .L431 computes padded stride into x0 solely for unchanged-stride gate and padded allocation size/cap. .L432 malloc result\u2192x21; NULL branches to.L416 without changing x26/input orx28/stride. Success sets copy row_bytes=x28<<2, stores old x26/x28 as source, then x21/x28 as copy destination/stride, changes only x26 to copy, and launches worker0. After copy GOMP, common compute receives copiedx26 and still-originalx28. Compute returns before conditional tail free(x21).",
+        "control_flow_notes": "Invalid dimensions exit before subtracting or HWCAP. getauxval(16) bit22 selects nonSVE.L415 or SVE gate width>=64,kh>=4,oh>=4. Actual object public starts0x5094; gate0x511c..0x5128; padded-stride arithmetic0x51e8..0x51f4; product/cap0x51fc..0x521c; malloc0x522c, result0x5230,NULLbranch0x5238. Copy source capture0x5254 contains input/x28, destination capture0x525c contains allocation/x28; rowbytes0x5260,copy GOMP0x5268,branch0x5270 reaches compute0x5164. Free tail0x5188 follows compute return; nonSVE0x518c..0x51d0 bypasses allocation and passesuse_sve=0. This public range is three source lines/twelve object bytes shorter than C43, so no whole-machine-code equality claim.",
+        "derived_function_counts": {
+          "instructions": 118,
+          "fmul": 0,
+          "fadd": 0,
+          "input_ld1w": 0,
+          "kernel_ld1rw": 0,
+          "movprfx": 0,
+          "ext": 0
+        }
+      }
+    ],
+    "copy_path_review": {
+      "eligibility_and_overflow": "C44 actual entry validates positive kh/kw within dimensions, SVE bit22, width>=64/kh>=4/oh>=4. It computes ((width+15)/16 |1)*16 inx0 and compares with originalx28 before allocation. Positive int32 width implies padded stride<=2^31+16; height*padded_stride<2^63 and width*4/add15 fit64-bit. Actual product<=SIZE_MAX/4 precedes byte shift and cap536870912. The capacity remains height*padded_stride*sizeof(float), exactly the padded variant allocation/gate; actual copy/compute uses smaller original stride, so used extent fits allocated extent. Redundant source overflow guards are compiled out under positive-int bounds, not silently removed from source. 512MiB/size_t extremes remain static-only, not huge dynamicPASS.",
+      "malloc_and_null_fallback": "Actual malloc0x522c returns allocation intox21; cbz0x5238 reaches common original-input compute.L416. Only after nonnull branch does0x5258 assignx26=allocation; x28 is never overwritten. NULL launches no copy and skips free becausex21=0. One allocation and one eventual nonnull free per invocation; unused padded capacity is permitted and not input data.",
+      "row_memcpy_and_stride": "C44 public source capture[120,128] and destination capture[136,144] both contain original stridex28; exact row_bytes=x28*4 is stored atsp152. Worker0 static quotient/remainder owns disjoint input rows and copies each once at original row offsets. Full inputHeight*originalWidth data occupies the beginning of the larger padded-size allocation; no per-row padding is introduced or consumed in C44. Input/kernel remain readonly, output is separate.",
+      "compute_and_free_order": "Actual copy GOMP_parallel call0x5268 returns before0x5270 branches to common compute capture/GOMP0x5164. Compute uses copied input and original stride, with global output ow unchanged. After compute joins, allocation check0x5168 precedes tail free0x5188. These two OMP region returns supply the synchronization; no invented standalonebarrier. Scalar x21 ownership remains live until exactly that free.",
+      "noncopy_and_non_sve_fallback": "Gate disabled, unchanged padded stride, overcap and NULL cases all compute with original input/stride and no free. NonSVE branch directly calls actual worker2 with original addresses/stride and captured use_sve=0, bypassing all new memory operations. Invalid dimensions return immediately. Full legacy worker ranges/stack materialization were reviewed from actual returned C44 .s/objdump; six H configurations execute SVE, so this is not claimed forced dynamicnonSVE coverage."
+    },
+    "dispatch_review_notes": {
+      "review_scope": "Actual returned C44 production assembly: complete public conv2d and every OMP worker, independent original-stride allocation/copy/compute/free review against C44 production object. Quad arithmetic remains in the other reviewer fragment.",
+      "production_identity_notes": "build-production.log actual + gcc argv compiles conv2d.c alone with GCC 10.3.1, generic, -O3 -fno-fast-math -ffp-contract=off -fopenmp and original macros; it does not compile instrumented_candidate.c or include copy-probe interposition. The .s SHA is calculated once here from the returned file; object SHA is taken from returned production-object-sha256.txt.",
+      "object_mapping_limit": "The returned objdump is of a relocatable production object. Some adrp/add symbol-address placeholders show zero before link; worker identity is read from the named .s relocations and matched object instructions/control flow, not inferred from misleading unresolved zero addresses. No claim that .s text proves whole-program byte identity with C6.",
+      "dynamic_coverage_limit": "All six H configurations execute on SVE hardware (VL16/32/64, threads1/4). Legacy non-SVE worker inspection below is static actual-machine-code review, not an additional dynamically forced non-SVE test. 512 MiB and size_t extremes are static-only coverage.",
+      "review_conclusion": "No blocker found in C44 actual production dispatch/copy/object correspondence. Allocation capacity intentionally remains padded while copy/compute stride remains original. Four complete dispatcher/worker functions are accounted for, including legacy tile stack materialization. Quad completion and aggregate217176 correctness acceptance are owned by the coordinator; this fragment does not assert performance/promotion or whole-program no-stack.",
+      "actual_returned_comparison": "Both actual returned C44 .s and production objdump texts before public conv2d were compared directly against the actual C43 artifacts and are text-identical, covering all three worker ranges and their stack/call instructions. This observation comes from both returned artifacts, not source similarity. C44 public allocation/capture instructions differ and were read in full; whole object identity is not claimed. Current fragment still records C44 identities and actual worker observations independently."
+    },
+    "review_fragments": [
+      "assembly-quad-review.json",
+      "assembly-dispatch-review.json"
+    ],
+    "merge_notes": "Combined completed independent reviews of the same returned C44 production artifacts; compiler_version normalized from the dispatch banner to 10.3.1. Original fragments remain unchanged. C44 is reference-only; no speed or promotion decision.",
+    "derived_whole_source_fma_count": 0,
+    "derived_production_object_fma_count": 0
+  },
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "large_allocation_and_size_t_extremes": "static_only",
+  "production_object_uninstrumented": true,
+  "instrumentation_scope": "Separate included-source candidate malloc/free/memcpy only; guard allocations remain real libc.",
+  "helper_entry_instrumentation": false,
+  "reference_only": true,
+  "performance_measured": false,
+  "promotion_decision": "none",
+  "evidence_directory": "raw",
+  "issues": [],
+  "spill_is_correctness_failure": false,
+  "note": "Production bitwise/readonly/guard checks and separate copy-path success/failure proof passed. No runner, benchmark, helper-entry evidence, speed conclusion or promotion; C6 remains current."
+}

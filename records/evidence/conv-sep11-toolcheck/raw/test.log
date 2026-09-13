@@ -1,0 +1,92 @@
+test_djob_ll_multiple_job_ids_are_not_merged (test_cluster.ClusterTests) ... ok
+test_doctor_is_read_only (test_cluster.ClusterTests) ... ok
+test_duplicate_and_unknown_submissions_never_call_ssh (test_cluster.ClusterTests) ... ok
+test_fetch_archive_traversal_and_symlinks_rejected (test_cluster.ClusterTests) ... ok
+test_fetch_complete_keeps_source_immutable (test_cluster.ClusterTests) ... ok
+test_fetch_failure_and_partial_fetch_cannot_be_complete (test_cluster.ClusterTests) ... ok
+test_known_hosts_path_and_environment_overrides (test_cluster.ClusterTests) ... ok
+test_observed_djob_ll_status_is_saved_with_job_and_exit_codes (test_cluster.ClusterTests) ... ok
+test_optional_control_socket_reuses_local_interactive_login (test_cluster.ClusterTests) ... ok
+test_plain_text_or_wrong_job_does_not_verify_completion (test_cluster.ClusterTests) ... ok
+test_remote_paths_and_competition_resources_validated (test_cluster.ClusterTests) ... ok
+test_shell_metacharacters_are_quoted_as_one_argument (test_cluster.ClusterTests) ... ok
+test_status_failure_clears_stale_success (test_cluster.ClusterTests) ... ok
+test_status_requires_explicit_syntax_and_records_json (test_cluster.ClusterTests) ... ok
+test_submit_snapshot_settings_and_no_password (test_cluster.ClusterTests) ... ok
+test_submit_timeout_guards_against_retry (test_cluster.ClusterTests) ... ok
+test_unrecognized_or_nonzero_submit_never_assumes_success (test_cluster.ClusterTests) ... ok
+test_upload_failure_does_not_call_dsub (test_cluster.ClusterTests) ... ok
+test_upload_uses_snapshot_even_if_live_candidate_changes (test_cluster.ClusterTests) ... ok
+test_wrapper_checks_exact_cpu_count (test_cluster.ClusterTests) ... ok
+test_wrapper_ignores_memory_only_numa_nodes_with_empty_cpulist (test_cluster.ClusterTests) ... ok
+test_wrapper_records_actual_allocation_and_source_hashes (test_cluster.ClusterTests) ... ok
+test_wrapper_rejects_allocation_across_numa_nodes (test_cluster.ClusterTests) ... ok
+test_manifest_hashes_bind_uploaded_snapshot_after_live_edit (test_cluster_group.ClusterGroupTests) ... ok
+test_member_failure_fails_group_and_preserves_later_member_run (test_cluster_group.ClusterGroupTests) ... ok
+test_members_share_one_allocation_and_keep_independent_sources (test_cluster_group.ClusterGroupTests) ... ok
+test_reserved_member_and_repeated_member_never_connect (test_cluster_group.ClusterGroupTests) ... ok
+test_scheduler_metacharacters_remain_single_argument (test_cluster_group.ClusterGroupTests) ... ok
+test_uncertain_submit_cannot_be_retried (test_cluster_group.ClusterGroupTests) ... ok
+test_upload_failure_prevents_dsub_and_reserves_all_members (test_cluster_group.ClusterGroupTests) ... ok
+test_accepts_clear_same_environment_speedup_with_source_change (test_experiment.ComparisonTests) ... ok
+test_rejects_environment_reference_machine_or_benchmark_changes (test_experiment.ComparisonTests) ... ok
+test_rejects_evaluation_settings_changes (test_experiment.ComparisonTests) ... ok
+test_rejects_gain_inside_noise_or_one_percent_floor (test_experiment.ComparisonTests) ... ok
+test_rejects_missing_evidence_or_fewer_than_three_rounds_on_either_side (test_experiment.ComparisonTests) ... ok
+test_rejects_single_case_regression_even_if_total_is_faster (test_experiment.ComparisonTests) ... ok
+test_same_source_and_settings_is_a_retest_not_a_promotion (test_experiment.ComparisonTests) ... ok
+test_median_uses_repeated_rounds_instead_of_fastest_sample (test_experiment.ParseLogTests) ... ok
+test_rejects_fail_even_when_all_pass_rows_are_present (test_experiment.ParseLogTests) ... ok
+test_rejects_missing_duplicate_reordered_or_wrong_dimensions (test_experiment.ParseLogTests) ... ok
+test_rejects_nonfinite_or_nonpositive_metrics (test_experiment.ParseLogTests) ... ok
+test_requires_independent_complete_rounds (test_experiment.ParseLogTests) ... ok
+test_three_real_official_formats_and_case_totals (test_experiment.ParseLogTests) ... ok
+test_accepts_complete_artifacts_bound_to_same_job_and_source (test_experiment.RecordEvidenceTests) ... ok
+test_changed_environment_artifact_is_rejected (test_experiment.RecordEvidenceTests) ... ok
+test_identical_external_log_is_not_bound_to_fetched_artifacts (test_experiment.RecordEvidenceTests) ... ok
+test_missing_remote_source_hash_is_rejected (test_experiment.RecordEvidenceTests) ... ok
+test_prepared_can_be_measured_but_completed_measurement_cannot_be_overwritten (test_experiment.RecordEvidenceTests) ... ok
+test_rejects_success_status_from_a_different_job (test_experiment.RecordEvidenceTests) ... ok
+test_unverified_allows_same_source_and_log_to_gain_missing_job_evidence (test_experiment.RecordEvidenceTests) ... ok
+test_unverified_rejects_source_or_log_changes_and_preserves_prior_record (test_experiment.RecordEvidenceTests) ... ok
+test_valid_replacement_benchmark_with_stale_artifact_hash_is_rejected (test_experiment.RecordEvidenceTests) ... ok
+test_historical_donau_success_and_exit_codes (test_experiment.SchedulerTests) ... ok
+test_normalized_status_requires_explicit_success_and_zero_exits (test_experiment.SchedulerTests) ... ok
+test_clone_rejects_problem_source_that_differs_from_parent_record (test_experiment.SnapshotAndPromotionTests) ... ok
+test_clone_with_best_and_records_restores_parent_from_problem_directory (test_experiment.SnapshotAndPromotionTests) ... ok
+test_historical_parent_rejects_a_changed_operator (test_experiment.SnapshotAndPromotionTests) ... ok
+test_new_accepts_historical_parent_without_local_runs (test_experiment.SnapshotAndPromotionTests) ... ok
+test_new_records_planned_and_checkpoint_refreshes_prepared_source_hashes (test_experiment.SnapshotAndPromotionTests) ... ok
+test_new_rejects_modified_official_benchmark (test_experiment.SnapshotAndPromotionTests) ... ok
+test_promote_preserves_result_notes_zip_and_archived_source (test_experiment.SnapshotAndPromotionTests) ... ok
+test_promote_rejects_source_changed_after_measurement (test_experiment.SnapshotAndPromotionTests) ... ok
+test_result_files_do_not_change_parent_identity_or_enter_new_snapshot (test_experiment.SnapshotAndPromotionTests) ... ok
+test_binary_disguised_as_log_and_large_files_are_not_exported (test_export_conv_records.ExportConvRecordsTests) ... ok
+test_changed_candidate_source_is_rejected_before_publication (test_export_conv_records.ExportConvRecordsTests) ... ok
+test_existing_and_protected_output_directories_are_refused (test_export_conv_records.ExportConvRecordsTests) ... ok
+test_manifest_hashes_track_both_raw_and_public_content (test_export_conv_records.ExportConvRecordsTests) ... ok
+test_redaction_preserves_measurements_source_hashes_and_originals (test_export_conv_records.ExportConvRecordsTests) ... ok
+
+----------------------------------------------------------------------
+Ran 68 tests in 10.442s
+
+OK
+host
+help
+
+status_argv is unconfigured. Verify djob help, then configure its read-only verbose/JSON status command with {job_id}.
+Fetched artifacts to /tmp/tmp7vq2dle3/C0 with spaces; wrapper finished. Benchmark PASS still requires log validation.
+Fetched artifacts to /tmp/tmp19z1d2pe/C0 with spaces; job artifacts are incomplete. Benchmark PASS still requires log validation.
+Basic Details:
+    jobId       	1485173   	
+    state       	FAILED    	
+Runtime Details:
+    jobExitCode 	1         	
+    systemExitCode 	10001 	
+connection lost
+{"jobs": [{"jobId": "1234", "status": "SUCCEEDED", "jobExitCode": 0, "systemExitCode": 0}]}
+Submitted job 1234: CLUSTER_USER_HOME/experiments/kp-C0-with-spaces-6a9822c2415a
+Submitted job 1234: CLUSTER_USER_HOME/experiments/kp-C0-with-spaces-4693a63f2559
+Submitted group job 1234: C4 block 24, C5 block 48
+Submitted group job 1234: C4 block 24, C5 block 48
+Submitted group job 1234: C4 block 24, C5 block 48

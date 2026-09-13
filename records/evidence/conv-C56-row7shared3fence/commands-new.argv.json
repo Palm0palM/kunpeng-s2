@@ -1,0 +1,11 @@
+[
+  "/Library/Developer/CommandLineTools/usr/bin/python3",
+  "tools/experiment.py",
+  "new",
+  "conv",
+  "C56-row7shared3fence",
+  "--parent",
+  "C55-row7x3shared3",
+  "--strategy",
+  "Source-only hypothesis: after each of the three complete C55 shared-column scopes add one empty volatile asm with21 read-only w inputs and memory clobber, zero outputs. Preserve every arithmetic statement, triple3 loop, u1 remainder, other12 stages, dispatch and other submission files. Try to reduce cross-column live inputs and AC five-slot spill; compiler acceptance, scheduling and speed remain unverified. Own diagnostic required; parent AC1582860 PASS is not inherited."
+]

@@ -1,0 +1,17 @@
++ set +e
++ command -v perf
+/usr/bin/perf
++ command_exit=0
++ printf 'PERF_COMMAND_EXIT=%s\n' 0
+PERF_COMMAND_EXIT=0
++ cat /proc/sys/kernel/perf_event_paranoid
+2
++ paranoid_exit=0
++ printf 'PERF_PARANOID_EXIT=%s\n' 0
+PERF_PARANOID_EXIT=0
++ perf stat -x, -e cycles,instructions -- /bin/true
+494121,,cycles:u,2040740,100.00,,
+154116,,instructions:u,2040740,100.00,0.31,insn per cycle
++ stat_exit=0
++ printf 'PERF_STAT_EXIT=%s\n' 0
+PERF_STAT_EXIT=0

@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "problem": "zgemm",
+  "original_submission_zip_sha256": "37809fd6e17133f443f9c22e79e84326c92b432eb22ed75cb132e8f98c7a59c3",
+  "original_submission_layout": [
+    "zgemm/zgemm.c",
+    "zgemm/bench_zgemm.c",
+    "zgemm/run.sh",
+    "zgemm/README.md"
+  ],
+  "redaction_policy": "Private users, local/shared remote paths and compute/login identity redacted in public evidence only; source inside submission ZIP unchanged. /home/HPC module path in official-compatible runner is a generic platform installation location.",
+  "exported_original_file_hashes": [
+    {
+      "path": "evidence/Z0/record.json",
+      "original_sha256": "ac1f0b404df773a3114c741476d75bea8f2cb53248b253f421a2c64821918142",
+      "public_sha256": "f6628ac52964524fc409816f969f4402d800129121c10b10053877b511c191cc"
+    },
+    {
+      "path": "evidence/Z1-pack/record.json",
+      "original_sha256": "d4a24065db2fcc4189a9dd4bc873efdd717ebad3b9aa2ccdd9834ebca0472d01",
+      "public_sha256": "30f24c698095da6ff55f9525706cf5b159273f7c04cbf16ae3ab517f334d01c1"
+    },
+    {
+      "path": "evidence/Z0-pair1/record.json",
+      "original_sha256": "44f2006522a130ee295bb193caa572d58c302fe91717646643b20c1f15704f07",
+      "public_sha256": "4f6e16a745a1183141add48135c9089d3dc61a407dc7cf6f3e4590fc45165d6f"
+    },
+    {
+      "path": "evidence/Z0-pair1/benchmark.log",
+      "original_sha256": "e749bd2b9cc9d61d6d5ccb9fe0d3994dc70bd998ad5c947641fff27ec272bc37",
+      "public_sha256": "43605ce324d4c6d5d99aad62ed0b25b507d3d49a4fc64695347a8da406350c92"
+    },
+    {
+      "path": "evidence/Z0-pair1/scheduler-status.txt",
+      "original_sha256": "62a705168b03b5b88cd88ee75ff19d4938d14b312502c6559ce7fb01aa696924",
+      "public_sha256": "fc0f8ba669ec3b1290ba04f4fa3b888e468faee79739a990e578ad736a586802"
+    },
+    {
+      "path": "evidence/Z0-pair1/environment.log",
+      "original_sha256": "26c0698063f49d84eef745c39978c12eb8f087525bf8bed01f1b542824c8bf11",
+      "public_sha256": "97190f5e7a0800c09832597ba21fbaf6987a000423857269c5a46ee82615b48a"
+    },
+    {
+      "path": "evidence/Z0-pair1/source-sha256.txt",
+      "original_sha256": "b41c6a613e1e5ffb98314a1d67de326d624da8182016e6256eb235eadcdeb2d3",
+      "public_sha256": "b41c6a613e1e5ffb98314a1d67de326d624da8182016e6256eb235eadcdeb2d3"
+    },
+    {
+      "path": "evidence/Z0-pair1/exit-code.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/record.json",
+      "original_sha256": "26e7ff219bd8725a7a7fdfae9d25de3188c757488669a8f169c985227a3bc051",
+      "public_sha256": "fccb6cbb79d60a8ddae6af23a193b2e33c7c88192b1db361207b3a2fcdfdd346"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/benchmark.log",
+      "original_sha256": "1c91bcb2ba301739ea58b852285213cee2c3cc89cfd30e7624de6b6dd9e827c5",
+      "public_sha256": "f0df0db3cfa7fdda3cf3191254711519161bd6b3f2214d6a22c429e1e5ab49fc"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/scheduler-status.txt",
+      "original_sha256": "62a705168b03b5b88cd88ee75ff19d4938d14b312502c6559ce7fb01aa696924",
+      "public_sha256": "fc0f8ba669ec3b1290ba04f4fa3b888e468faee79739a990e578ad736a586802"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/environment.log",
+      "original_sha256": "e3aabcd91228e76e1c3eced6d5efb6ec984e2edcfa6e8a54cfb93841b24ee663",
+      "public_sha256": "255a93f4f3a0542dcf72c563c260203f5d1508f134bc4c6c8ca61c258cf8f41f"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/source-sha256.txt",
+      "original_sha256": "61313aaa1e41fee21c490702ebefc91cd3ef520e94b319f5f444d04b673f83a6",
+      "public_sha256": "61313aaa1e41fee21c490702ebefc91cd3ef520e94b319f5f444d04b673f83a6"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/exit-code.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/Z1-control2/record.json",
+      "original_sha256": "62709eacaf5b4ce2bda61451888f70711c489506b4d2ac7341b6ef2a1b0c47de",
+      "public_sha256": "73b986c995f5ab8ba309b0f25dc9ff0bf428b2bf05356e4380ed9a4d11d86173"
+    },
+    {
+      "path": "evidence/Z1-control2/benchmark.log",
+      "original_sha256": "6e9a4caf8cad1f237b79cdfdf724d883b18e43d04c2fd93eae1d63210302601b",
+      "public_sha256": "6620d804d1e842fca5867a2a832d1a4c8076636f2685f5db721328457aba6635"
+    },
+    {
+      "path": "evidence/Z1-control2/scheduler-status.txt",
+      "original_sha256": "d0d5ee3c1e0feeb261a72e5ca321db2c4e10e2f7ee00ac0d8f2f9a507c57f48b",
+      "public_sha256": "5e9e6d170343588b99ba631a25ac4b89adde793f07ea415516bf0eb807fae7a4"
+    },
+    {
+      "path": "evidence/Z1-control2/environment.log",
+      "original_sha256": "f8fd3612d769e7e26b47470f97fb208d9c06884ac73043838eff2368e2874f21",
+      "public_sha256": "68dfdd09159f1fa855a4fe8534948394c87b21afc27ccf138ba61cf4c2b9e1ab"
+    },
+    {
+      "path": "evidence/Z1-control2/source-sha256.txt",
+      "original_sha256": "61313aaa1e41fee21c490702ebefc91cd3ef520e94b319f5f444d04b673f83a6",
+      "public_sha256": "61313aaa1e41fee21c490702ebefc91cd3ef520e94b319f5f444d04b673f83a6"
+    },
+    {
+      "path": "evidence/Z1-control2/exit-code.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/Z2-mb48/record.json",
+      "original_sha256": "1aba9e8073655ce8bcd7514d02aa0a5664439aa2015aa021434175e4c429ff17",
+      "public_sha256": "272ad52c5bc7360d226ebb2e0029f276b51cb5d240a66ce4cdb0831a23ae994a"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/record.json",
+      "original_sha256": "69ad829a6abe747ad6d989f9a49fedb53a6dea9c3b22ecbf8455b59100f3e0d2",
+      "public_sha256": "ea69f12b8842a556c51100368c58198bf0c5ab67a8dc4495acf22b1241dd742c"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/benchmark.log",
+      "original_sha256": "129e680efff73d96f38ddb9549f11d3ffa1419f422bf6edd73e31a70e05c24f7",
+      "public_sha256": "92e94e4f489c1181f179a168fbe67a3707048415ad1b0fa9201dbbe8a0abd9e5"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/scheduler-status.txt",
+      "original_sha256": "d0d5ee3c1e0feeb261a72e5ca321db2c4e10e2f7ee00ac0d8f2f9a507c57f48b",
+      "public_sha256": "5e9e6d170343588b99ba631a25ac4b89adde793f07ea415516bf0eb807fae7a4"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/environment.log",
+      "original_sha256": "9d0a06fb8628e74f8a92d4735a467370d3d1d80585e6cfd1cba496edcaa0f091",
+      "public_sha256": "ca4ae7b2f57378e06f8058b54a847e17425c3581de44e679a6c222b5f593e87a"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/source-sha256.txt",
+      "original_sha256": "1e6ae682645e0382252913863176a231cc9b299295ed95c8d4cc82b081bfe854",
+      "public_sha256": "1e6ae682645e0382252913863176a231cc9b299295ed95c8d4cc82b081bfe854"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/exit-code.txt",
+      "original_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "public_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 2659,
+      "sha256": "a64b1ddd7860c4998f6df4f4724cfa61004ebbacd946b4b724a4df3831d9ced7"
+    },
+    {
+      "path": "Z1/README.md",
+      "bytes": 1965,
+      "sha256": "785885f275edf05c3ea53a2ced921ad919152b7f9d4f00e8574b7c1ac778667c"
+    },
+    {
+      "path": "Z1/SHA256SUMS",
+      "bytes": 76,
+      "sha256": "b4d709b26d968e30f19be3df227f9c685a873e3ebdc5c89f5b882d575b6fb223"
+    },
+    {
+      "path": "Z1/metadata.json",
+      "bytes": 7128,
+      "sha256": "8d7eb652ad9c5672cecba536b605492b29daca07f8ca5e3ab22afdd83f6c0df2"
+    },
+    {
+      "path": "Z1/zgemm.zip",
+      "bytes": 8573,
+      "sha256": "abc24285bd875eadab82fd43328506fc20f55e3a64c4ddb73492a55cd6fae221"
+    },
+    {
+      "path": "evidence/Z0/record.json",
+      "bytes": 3599,
+      "sha256": "f6628ac52964524fc409816f969f4402d800129121c10b10053877b511c191cc"
+    },
+    {
+      "path": "evidence/Z0-pair1/benchmark.log",
+      "bytes": 6017,
+      "sha256": "43605ce324d4c6d5d99aad62ed0b25b507d3d49a4fc64695347a8da406350c92"
+    },
+    {
+      "path": "evidence/Z0-pair1/environment.log",
+      "bytes": 4763,
+      "sha256": "97190f5e7a0800c09832597ba21fbaf6987a000423857269c5a46ee82615b48a"
+    },
+    {
+      "path": "evidence/Z0-pair1/exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/Z0-pair1/record.json",
+      "bytes": 3802,
+      "sha256": "4f6e16a745a1183141add48135c9089d3dc61a407dc7cf6f3e4590fc45165d6f"
+    },
+    {
+      "path": "evidence/Z0-pair1/scheduler-status.txt",
+      "bytes": 8180,
+      "sha256": "fc0f8ba669ec3b1290ba04f4fa3b888e468faee79739a990e578ad736a586802"
+    },
+    {
+      "path": "evidence/Z0-pair1/source-sha256.txt",
+      "bytes": 303,
+      "sha256": "b41c6a613e1e5ffb98314a1d67de326d624da8182016e6256eb235eadcdeb2d3"
+    },
+    {
+      "path": "evidence/Z1-control2/benchmark.log",
+      "bytes": 6017,
+      "sha256": "6620d804d1e842fca5867a2a832d1a4c8076636f2685f5db721328457aba6635"
+    },
+    {
+      "path": "evidence/Z1-control2/environment.log",
+      "bytes": 4763,
+      "sha256": "68dfdd09159f1fa855a4fe8534948394c87b21afc27ccf138ba61cf4c2b9e1ab"
+    },
+    {
+      "path": "evidence/Z1-control2/exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/Z1-control2/record.json",
+      "bytes": 3826,
+      "sha256": "73b986c995f5ab8ba309b0f25dc9ff0bf428b2bf05356e4380ed9a4d11d86173"
+    },
+    {
+      "path": "evidence/Z1-control2/scheduler-status.txt",
+      "bytes": 8180,
+      "sha256": "5e9e6d170343588b99ba631a25ac4b89adde793f07ea415516bf0eb807fae7a4"
+    },
+    {
+      "path": "evidence/Z1-control2/source-sha256.txt",
+      "bytes": 303,
+      "sha256": "61313aaa1e41fee21c490702ebefc91cd3ef520e94b319f5f444d04b673f83a6"
+    },
+    {
+      "path": "evidence/Z1-pack/record.json",
+      "bytes": 3657,
+      "sha256": "30f24c698095da6ff55f9525706cf5b159273f7c04cbf16ae3ab517f334d01c1"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/benchmark.log",
+      "bytes": 6017,
+      "sha256": "f0df0db3cfa7fdda3cf3191254711519161bd6b3f2214d6a22c429e1e5ab49fc"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/environment.log",
+      "bytes": 4763,
+      "sha256": "255a93f4f3a0542dcf72c563c260203f5d1508f134bc4c6c8ca61c258cf8f41f"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/record.json",
+      "bytes": 4134,
+      "sha256": "fccb6cbb79d60a8ddae6af23a193b2e33c7c88192b1db361207b3a2fcdfdd346"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/scheduler-status.txt",
+      "bytes": 8180,
+      "sha256": "fc0f8ba669ec3b1290ba04f4fa3b888e468faee79739a990e578ad736a586802"
+    },
+    {
+      "path": "evidence/Z1-pack-pair1/source-sha256.txt",
+      "bytes": 303,
+      "sha256": "61313aaa1e41fee21c490702ebefc91cd3ef520e94b319f5f444d04b673f83a6"
+    },
+    {
+      "path": "evidence/Z2-mb48/record.json",
+      "bytes": 2131,
+      "sha256": "272ad52c5bc7360d226ebb2e0029f276b51cb5d240a66ce4cdb0831a23ae994a"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/benchmark.log",
+      "bytes": 6017,
+      "sha256": "92e94e4f489c1181f179a168fbe67a3707048415ad1b0fa9201dbbe8a0abd9e5"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/environment.log",
+      "bytes": 4763,
+      "sha256": "ca4ae7b2f57378e06f8058b54a847e17425c3581de44e679a6c222b5f593e87a"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/record.json",
+      "bytes": 4294,
+      "sha256": "ea69f12b8842a556c51100368c58198bf0c5ab67a8dc4495acf22b1241dd742c"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/scheduler-status.txt",
+      "bytes": 8180,
+      "sha256": "5e9e6d170343588b99ba631a25ac4b89adde793f07ea415516bf0eb807fae7a4"
+    },
+    {
+      "path": "evidence/Z2-mb48-pair2/source-sha256.txt",
+      "bytes": 303,
+      "sha256": "1e6ae682645e0382252913863176a231cc9b299295ed95c8d4cc82b081bfe854"
+    },
+    {
+      "path": "evidence/pair1-comparison.json",
+      "bytes": 630,
+      "sha256": "7fd77d1f41fc7904bde1ac3223f36a39637719efdd6d3a78d0109d48dfd32e33"
+    },
+    {
+      "path": "evidence/pair2-comparison.json",
+      "bytes": 774,
+      "sha256": "897c66724b58a143b78c4a4984a82576aa4b3e72019cc86ff23badb635fdb4cc"
+    }
+  ]
+}

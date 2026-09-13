@@ -1,0 +1,378 @@
+{
+  "candidate": "C51-row7x3u1",
+  "created_at": "2026-09-12T16:27:13.630850+00:00",
+  "status": "source_prepared_author_static_review_complete",
+  "independent_review_pending": false,
+  "verified": false,
+  "parent": "C40-row6x3u1",
+  "parent_frozen_directory": ".runs/conv/C40-row6x3u1/sve-correctness-sep12g",
+  "parent_diagnostic_job_id": "1579597",
+  "parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "parent_frozen_kernel_sha256": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+  "helper_symbol": "conv_sve_rowseven",
+  "rows_per_group": 7,
+  "vectors_per_row": 3,
+  "accumulators": 21,
+  "stage_count": 13,
+  "kernel_columns_per_iteration": 1,
+  "helper_source_lines": {
+    "start": 1233,
+    "end": 1758
+  },
+  "dispatch_source_lines": {
+    "start": 1777,
+    "end": 1820
+  },
+  "stages": [
+    {
+      "stage_index": 0,
+      "label": "Input row 0: start output 0 and advance earlier outputs.",
+      "source_line_start": 1276,
+      "source_line_end": 1296,
+      "active_outputs": [
+        0
+      ],
+      "input_row_expression": "base + i",
+      "kernel_row_declarations": [
+        "kernel"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 1,
+      "source_mul_sites": 3,
+      "source_add_sites": 3
+    },
+    {
+      "stage_index": 1,
+      "label": "Input row 1: start output 1 and advance earlier outputs.",
+      "source_line_start": 1297,
+      "source_line_end": 1322,
+      "active_outputs": [
+        0,
+        1
+      ],
+      "input_row_expression": "base + (size_t)1 * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)1) * (size_t)kw",
+        "kernel"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 2,
+      "source_mul_sites": 6,
+      "source_add_sites": 6
+    },
+    {
+      "stage_index": 2,
+      "label": "Input row 2: start output 2 and advance earlier outputs.",
+      "source_line_start": 1323,
+      "source_line_end": 1353,
+      "active_outputs": [
+        0,
+        1,
+        2
+      ],
+      "input_row_expression": "base + (size_t)2 * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)2) * (size_t)kw",
+        "kernel + ((size_t)1) * (size_t)kw",
+        "kernel"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 3,
+      "source_mul_sites": 9,
+      "source_add_sites": 9
+    },
+    {
+      "stage_index": 3,
+      "label": "Input row 3: start output 3 and advance earlier outputs.",
+      "source_line_start": 1354,
+      "source_line_end": 1389,
+      "active_outputs": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "input_row_expression": "base + (size_t)3 * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)3) * (size_t)kw",
+        "kernel + ((size_t)2) * (size_t)kw",
+        "kernel + ((size_t)1) * (size_t)kw",
+        "kernel"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 4,
+      "source_mul_sites": 12,
+      "source_add_sites": 12
+    },
+    {
+      "stage_index": 4,
+      "label": "Input row 4: start output 4 and advance earlier outputs.",
+      "source_line_start": 1390,
+      "source_line_end": 1430,
+      "active_outputs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "input_row_expression": "base + (size_t)4 * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)4) * (size_t)kw",
+        "kernel + ((size_t)3) * (size_t)kw",
+        "kernel + ((size_t)2) * (size_t)kw",
+        "kernel + ((size_t)1) * (size_t)kw",
+        "kernel"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 5,
+      "source_mul_sites": 15,
+      "source_add_sites": 15
+    },
+    {
+      "stage_index": 5,
+      "label": "Input row 5: start output 5 and advance earlier outputs.",
+      "source_line_start": 1431,
+      "source_line_end": 1476,
+      "active_outputs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "input_row_expression": "base + (size_t)5 * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)5) * (size_t)kw",
+        "kernel + ((size_t)4) * (size_t)kw",
+        "kernel + ((size_t)3) * (size_t)kw",
+        "kernel + ((size_t)2) * (size_t)kw",
+        "kernel + ((size_t)1) * (size_t)kw",
+        "kernel"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 6,
+      "source_mul_sites": 18,
+      "source_add_sites": 18
+    },
+    {
+      "stage_index": 6,
+      "label": "Shared input rows advance all seven outputs in strict kernel-column order.",
+      "source_line_start": 1477,
+      "source_line_end": 1527,
+      "active_outputs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "input_row_expression": "base + (size_t)t * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)t) * (size_t)kw",
+        "kernel + ((size_t)t - 1) * (size_t)kw",
+        "kernel + ((size_t)t - 2) * (size_t)kw",
+        "kernel + ((size_t)t - 3) * (size_t)kw",
+        "kernel + ((size_t)t - 4) * (size_t)kw",
+        "kernel + ((size_t)t - 5) * (size_t)kw",
+        "kernel + ((size_t)t - 6) * (size_t)kw"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 7,
+      "source_mul_sites": 21,
+      "source_add_sites": 21
+    },
+    {
+      "stage_index": 7,
+      "label": "Trailing input row kh+0: finish output 1 and advance later outputs.",
+      "source_line_start": 1528,
+      "source_line_end": 1573,
+      "active_outputs": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "input_row_expression": "base + (size_t)kh * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)kh - 1) * (size_t)kw",
+        "kernel + ((size_t)kh - 2) * (size_t)kw",
+        "kernel + ((size_t)kh - 3) * (size_t)kw",
+        "kernel + ((size_t)kh - 4) * (size_t)kw",
+        "kernel + ((size_t)kh - 5) * (size_t)kw",
+        "kernel + ((size_t)kh - 6) * (size_t)kw"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 6,
+      "source_mul_sites": 18,
+      "source_add_sites": 18
+    },
+    {
+      "stage_index": 8,
+      "label": "Trailing input row kh+1: finish output 2 and advance later outputs.",
+      "source_line_start": 1574,
+      "source_line_end": 1614,
+      "active_outputs": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "input_row_expression": "base + ((size_t)kh + 1) * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)kh - 1) * (size_t)kw",
+        "kernel + ((size_t)kh - 2) * (size_t)kw",
+        "kernel + ((size_t)kh - 3) * (size_t)kw",
+        "kernel + ((size_t)kh - 4) * (size_t)kw",
+        "kernel + ((size_t)kh - 5) * (size_t)kw"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 5,
+      "source_mul_sites": 15,
+      "source_add_sites": 15
+    },
+    {
+      "stage_index": 9,
+      "label": "Trailing input row kh+2: finish output 3 and advance later outputs.",
+      "source_line_start": 1615,
+      "source_line_end": 1650,
+      "active_outputs": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "input_row_expression": "base + ((size_t)kh + 2) * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)kh - 1) * (size_t)kw",
+        "kernel + ((size_t)kh - 2) * (size_t)kw",
+        "kernel + ((size_t)kh - 3) * (size_t)kw",
+        "kernel + ((size_t)kh - 4) * (size_t)kw"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 4,
+      "source_mul_sites": 12,
+      "source_add_sites": 12
+    },
+    {
+      "stage_index": 10,
+      "label": "Trailing input row kh+3: finish output 4 and advance later outputs.",
+      "source_line_start": 1651,
+      "source_line_end": 1681,
+      "active_outputs": [
+        4,
+        5,
+        6
+      ],
+      "input_row_expression": "base + ((size_t)kh + 3) * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)kh - 1) * (size_t)kw",
+        "kernel + ((size_t)kh - 2) * (size_t)kw",
+        "kernel + ((size_t)kh - 3) * (size_t)kw"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 3,
+      "source_mul_sites": 9,
+      "source_add_sites": 9
+    },
+    {
+      "stage_index": 11,
+      "label": "Trailing input row kh+4: finish output 5 and advance later outputs.",
+      "source_line_start": 1682,
+      "source_line_end": 1707,
+      "active_outputs": [
+        5,
+        6
+      ],
+      "input_row_expression": "base + ((size_t)kh + 4) * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)kh - 1) * (size_t)kw",
+        "kernel + ((size_t)kh - 2) * (size_t)kw"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 2,
+      "source_mul_sites": 6,
+      "source_add_sites": 6
+    },
+    {
+      "stage_index": 12,
+      "label": "Trailing input row kh+5: finish output 6 and advance later outputs.",
+      "source_line_start": 1708,
+      "source_line_end": 1728,
+      "active_outputs": [
+        6
+      ],
+      "input_row_expression": "base + ((size_t)kh + 5) * stride + i",
+      "kernel_row_declarations": [
+        "kernel + ((size_t)kh - 1) * (size_t)kw"
+      ],
+      "source_vector_load_sites": 3,
+      "source_coefficient_broadcast_sites": 1,
+      "source_mul_sites": 3,
+      "source_add_sites": 3
+    }
+  ],
+  "unchanged_regions_sha256": {
+    "before_specialized_helper": "4837626cef534c2ede41490595217b25e99c94c95de52220c212c7b9ce4243d8",
+    "entry_before_specialized_dispatch": "ef1b01f130ef25be6f79e387818d1c87ae135919fedf9b9912b62534b2cb9d11",
+    "after_specialized_dispatch": "1dff09cc94c976afe3e7e326414e215231ac1f640db50e1bfb09612e056bcf97"
+  },
+  "unchanged_files": [
+    "README.md",
+    "bench_conv.c",
+    "run.sh"
+  ],
+  "patch_sha256": "6d0a20efc96225622ac22e461647cf99739379314cbd866ba0e4f77d1ef013e7",
+  "generator_sha256": "28be31fe6b14bfae9070d991f63f77ef4e80e57e92a84ada7fa40710362496fa",
+  "static_syntax_counts": {
+    "accumulator_initializations": 21,
+    "stores": 21,
+    "stage_column_loops": 13,
+    "input_load_sites": 39,
+    "coefficient_broadcast_sites": 49,
+    "multiply_calls": 147,
+    "add_calls": 147
+  },
+  "suggested_boundary_counts_not_executed": {
+    "configurations": 6,
+    "full_per_configuration": 5648,
+    "dispatch_per_configuration": 648,
+    "direct_per_configuration": 432,
+    "total_per_configuration": 6728,
+    "total": 40368,
+    "invalid_and_non_sve_cases_excluded": true
+  },
+  "record_created_via": "experiment.new under shared lock",
+  "record_prepared_via": "experiment.checkpoint under shared lock",
+  "source_generation_command": "python3 .runs/conv/C51-row7x3u1/prepare-source.py",
+  "operator_compile_run": false,
+  "operator_tests_run": false,
+  "diagnostic_package_created": false,
+  "diagnostic_job_submitted": false,
+  "performance_measured": false,
+  "local_operator_execution": false,
+  "remote_operator_execution": false,
+  "ssh_used": false,
+  "best_changed": false,
+  "zip_created": false,
+  "root_source_review_complete": true,
+  "independent_review_path": ".runs/conv/C51-row7x3u1/INDEPENDENT_REVIEW.md",
+  "independent_review_sha256": "39ea242b79c543dbd54d4c9dd0c2930983030c8e16ec3cc06415eee45126b875"
+}

@@ -1,0 +1,251 @@
+{
+  "round": "sep13s",
+  "confirmation_passed": false,
+  "results": [
+    {
+      "version": "C26-r24",
+      "total_median_ms": 452.26,
+      "cases_ms": [
+        51.39,
+        61.96,
+        107.28,
+        231.63
+      ],
+      "all_samples_ms": [
+        [
+          51.57,
+          51.39,
+          51.37
+        ],
+        [
+          61.96,
+          61.92,
+          61.96
+        ],
+        [
+          107.28,
+          107.28,
+          107.33
+        ],
+        [
+          231.68,
+          231.6,
+          231.63
+        ]
+      ],
+      "case_spreads_pct": [
+        0.3891807744697467,
+        0.06455777921239371,
+        0.046607009694255366,
+        0.034537840521526794
+      ],
+      "max_spread_pct": 0.3891807744697467,
+      "gain_pct": 0.0,
+      "confirmation_passed": null,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 confirmation control; not a candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    },
+    {
+      "version": "C51-r1",
+      "total_median_ms": 438.88,
+      "cases_ms": [
+        51.83,
+        59.29,
+        104.17,
+        223.59
+      ],
+      "all_samples_ms": [
+        [
+          51.8,
+          51.83,
+          51.84
+        ],
+        [
+          59.3,
+          59.26,
+          59.29
+        ],
+        [
+          104.22,
+          104.15,
+          104.17
+        ],
+        [
+          223.57,
+          223.6,
+          223.59
+        ]
+      ],
+      "case_spreads_pct": [
+        0.07717538105345602,
+        0.06746500252993616,
+        0.06719784966880404,
+        0.013417415805716329
+      ],
+      "max_spread_pct": 0.07717538105345602,
+      "gain_pct": 2.9584752133728354,
+      "confirmation_passed": false,
+      "qualified_for_confirmation": false,
+      "decision_note": "Independent S confirmation failed at least one current S C6 gate. Preserve every original sample and C6; do not repeat failed confirmation or combine R/S samples.",
+      "comparison": {
+        "baseline": "C26-r25",
+        "eligible": false,
+        "reasons": [
+          "提速 2.96% 未超过测量波动/最低1%门槛 5.35%"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.4,
+            "candidate_ms": 51.83,
+            "gain_pct": -0.8365758754863808
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.89,
+            "candidate_ms": 59.29,
+            "gain_pct": 4.2010017773469075
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.32,
+            "candidate_ms": 104.17,
+            "gain_pct": 2.9351472232575397
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.65,
+            "candidate_ms": 223.59,
+            "gain_pct": 3.479387006259444
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 2.9584752133728376,
+        "threshold_pct": 5.350194552529183
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r24",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.39,
+            "candidate_ms": 51.83,
+            "gain_pct": -0.8561977038334261
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.96,
+            "candidate_ms": 59.29,
+            "gain_pct": 4.309231762427375
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.28,
+            "candidate_ms": 104.17,
+            "gain_pct": 2.8989560029828483
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.63,
+            "candidate_ms": 223.59,
+            "gain_pct": 3.4710529724128962
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 2.9584752133728376,
+        "threshold_pct": 1.0
+      }
+    },
+    {
+      "version": "C26-r25",
+      "total_median_ms": 452.26,
+      "cases_ms": [
+        51.4,
+        61.89,
+        107.32,
+        231.65
+      ],
+      "all_samples_ms": [
+        [
+          54.13,
+          51.4,
+          51.38
+        ],
+        [
+          61.89,
+          61.88,
+          61.89
+        ],
+        [
+          107.28,
+          107.32,
+          107.34
+        ],
+        [
+          231.63,
+          231.65,
+          231.89
+        ]
+      ],
+      "case_spreads_pct": [
+        5.350194552529183,
+        0.01615769914363873,
+        0.05590756615728874,
+        0.11223829052449423
+      ],
+      "max_spread_pct": 5.350194552529183,
+      "gain_pct": 0.0,
+      "confirmation_passed": null,
+      "qualified_for_confirmation": false,
+      "decision_note": "Unchanged C6 confirmation control; not a candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    }
+  ],
+  "samples_mixed_with_initial_round": false,
+  "prior_c40_decisions_unchanged": true
+}

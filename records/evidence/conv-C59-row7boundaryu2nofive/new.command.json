@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "tools/experiment.py",
+    "new",
+    "conv",
+    "C59-row7boundaryu2nofive",
+    "--parent",
+    "C58-row7boundaryu2",
+    "--strategy",
+    "Only remove the GCC unroll 2 pragma before rowseven input_5 from C58. Preserve the other11 boundary pragmas, shared2/u1, all arithmetic, dispatch, flags and three companion files. Test possible reduction of repeated input_5 temporary-product spills; source-only preparation, performance unmeasured, no inherited AH PASS."
+  ],
+  "started_at": "2026-09-12T20:30:38.165981+00:00",
+  "standard_cli_workflow_lock": true,
+  "ended_at": "2026-09-12T20:30:38.211625+00:00",
+  "exit_code": 0
+}

@@ -1,0 +1,57 @@
+{
+  "candidate": "C55-row7x3shared3",
+  "parent": "C52-row7x3shared2",
+  "parent_job_id": "1582134",
+  "parent_frozen_directory": ".runs/conv/C52-row7x3shared2/sve-correctness-sep13t",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "8cf5dc086d0fd6c7ce21f0f5cfd2bbf50da820a9c18e12de328e970a28712bf7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "changed_files": [
+    "conv2d.c"
+  ],
+  "unchanged_submission_files": [
+    "README.md",
+    "bench_conv.c",
+    "run.sh"
+  ],
+  "changed_parent_line_start": 1488,
+  "changed_parent_line_end": 1572,
+  "changed_candidate_line_start": 1488,
+  "changed_candidate_line_end": 1613,
+  "entire_prefix_and_suffix_unchanged": true,
+  "other_12_stages_unchanged": true,
+  "original_u1_remainder_retained_verbatim": true,
+  "shared_paired_remainder_layer": false,
+  "main_column_body_order": [
+    "ik",
+    "ik+1",
+    "ik+2"
+  ],
+  "three_column_bodies_equal_original_modulo_column_declaration": true,
+  "scopes_are_lexical_only": true,
+  "statements_per_column": {
+    "coefficient_broadcasts": 7,
+    "input_loads": 3,
+    "multiplies": 21,
+    "adds": 21
+  },
+  "statements_per_main_iteration": {
+    "coefficient_broadcasts": 21,
+    "input_loads": 9,
+    "multiplies": 63,
+    "adds": 63
+  },
+  "compiled": false,
+  "executed": false,
+  "diagnostic_pass": false,
+  "performance_measured": false
+}

@@ -1,0 +1,208 @@
+{
+  "candidate": "C43-padinput",
+  "job_id": "1579692",
+  "source_sha256": "a805f1a60d22fd8ed88ac079c030be8186fa0e1048e39e38430880f49f5a59fa",
+  "compiler_version": "10.3.1",
+  "production_object_sha256": "269620bd1846a70074482ef7f8be22f1f99b38dc5599062c05d84d0219911b08",
+  "assembly_sha256": "f59f14a7aea3e9e509d8150f1f8e5f6d268d4ad186fd03a63fc840423a23ad25",
+  "review_scope": "Independent quad/object fragment only. Dispatch/copy/compute workers and allocation/free review are supplied separately and must be merged before whole-program acceptance.",
+  "review_complete": true,
+  "production_uninstrumented": true,
+  "production_object_disassembly_reviewed": true,
+  "whole_source_fma_reviewed": true,
+  "whole_quad_reviewed": true,
+  "all_stages_and_transitions_reviewed": true,
+  "abi_saves_distinguished": true,
+  "whole_source_fma_count": 0,
+  "production_object_fma_count": 0,
+  "whole_machine_code_identical_claimed": false,
+  "c6_background": {
+    "source_version": "C26-row4loads",
+    "quad_phases": 7,
+    "notes": "C6 is the source/design background only. This review used the returned C43 compiler assembly and actual production-object disassembly; it makes no complete machine-code identity claim against C6."
+  },
+  "quad_helpers": [
+    {
+      "symbol": "conv_sve_rowquad",
+      "line_start": 4076,
+      "line_end": 5780,
+      "actual_clones": [],
+      "stack_frame_description": "Fixed 752-byte frame, no ADDVL scalable stack allocation. General-register saves and numerous scalar/pointer temporaries occupy the frame. STP/LDP d8,d9 at sp+112 and d10,d11 at sp+128 are callee-saved low-64-bit SIMD ABI preservation, outside the arithmetic loops; they are not accumulator spills.",
+      "vector_spill_loads": 0,
+      "vector_spill_stores": 0,
+      "spill_notes": "Whole helper, including all out-of-line labels after the normal return, has no LDR/STR Z or Q, no predicate spill, and no LD1W/ST1W to stack storage. Actual vector stores at .L363 are the 16 output vectors. Their base pointers are recovered through the scalar pointer bundle at sp+552..576. The only stack-address aliases formed are x8=sp+552, frame x29=sp+16, and x0=sp+552; the bundle is accessed with integer STP/LDP, then loaded external destination pointers are used by ST1W. Other stack loads in stage setup are integer input/kernel address or loop-state reloads.",
+      "transition_spill_review": "Read every instruction from function label through .size, including the seven stage setup/exit sections, .L338 one-column loop, straight-line remaining-column paths under .L339/.L344/.L348/.L353/.L357/.L361, all .L335/.L373/.L374/.L393/.L394/.L396 initialization branches, .L350 row advance, .L363 output stores and horizontal-block advance, and .L332/.L392/.L395 fallback edges. Accumulators remain in Z registers across all phases. Integer address temporaries are saved/reloaded at transitions, but no vector value is spilled. No live output accumulator crosses a helper call; stores or the no-main-block path precede fallback calls.",
+      "tail_and_fallback_review": "Entry kh<=3 branches .L332 to rowtriple followed by prefix for row 3. Width below CNTB (4*svcntw float outputs) uses .L392/.L334 and .L395. After complete 4VL blocks, .L395 calls rowtriple for rows 0..2 at column i and then tail-branches to prefix for row 3 at the same column, with ow-i remaining. ABI restore order is valid on main, fallback and tail-branch paths. Original q0/q1 arithmetic ordering remains, while actual GCC remaining-column paths can contain up to two sequential single-column copies guarded by kw; these are not an additional paired-vector read.",
+      "stages": [
+        {
+          "stage": "input_0",
+          "label": ".L336",
+          "line_start": 4344,
+          "line_end": 4376,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row 0 contributes kernel row 0 to output row 0.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+          "observed_counts": {
+            "instructions": 32,
+            "fmul": 8,
+            "fadd": 8,
+            "input_ld1w": 5,
+            "kernel_ld1rw": 2,
+            "ext": 3,
+            "movprfx": 0
+          },
+          "production_object_address_start": "0x3a38",
+          "production_object_address_end": "0x3ab4"
+        },
+        {
+          "stage": "input_1",
+          "label": ".L340",
+          "line_start": 4425,
+          "line_end": 4480,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row 1 contributes kernel rows 1/0 to output rows 0/1.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+          "observed_counts": {
+            "instructions": 55,
+            "fmul": 16,
+            "fadd": 16,
+            "input_ld1w": 5,
+            "kernel_ld1rw": 4,
+            "ext": 3,
+            "movprfx": 3
+          },
+          "production_object_address_start": "0x3b68",
+          "production_object_address_end": "0x3c40"
+        },
+        {
+          "stage": "input_2",
+          "label": ".L345",
+          "line_start": 4571,
+          "line_end": 4646,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row 2 contributes kernel rows 2/1/0 to output rows 0/1/2.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+          "observed_counts": {
+            "instructions": 75,
+            "fmul": 24,
+            "fadd": 24,
+            "input_ld1w": 5,
+            "kernel_ld1rw": 6,
+            "ext": 3,
+            "movprfx": 3
+          },
+          "production_object_address_start": "0x3da0",
+          "production_object_address_end": "0x3ec8"
+        },
+        {
+          "stage": "shared",
+          "label": ".L349",
+          "line_start": 4810,
+          "line_end": 4903,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Loop .L352 starts t=3 and advances to kh-1. Input row t contributes kernel rows t,t-1,t-2,t-3 to outputs 0,1,2,3. The paired loop increments ik by 2; separate FMUL and dependent FADD preserve q0 before q1 per output. Four unshifted and four offset-one input windows are loaded directly.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+          "observed_counts": {
+            "instructions": 93,
+            "fmul": 32,
+            "fadd": 32,
+            "input_ld1w": 8,
+            "kernel_ld1rw": 8,
+            "ext": 0,
+            "movprfx": 0
+          },
+          "production_object_address_start": "0x4148",
+          "production_object_address_end": "0x42b8"
+        },
+        {
+          "stage": "trailing_0",
+          "label": ".L354",
+          "line_start": 5032,
+          "line_end": 5107,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row kh contributes kernel rows kh-1,kh-2,kh-3 to output rows 1,2,3.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+          "observed_counts": {
+            "instructions": 75,
+            "fmul": 24,
+            "fadd": 24,
+            "input_ld1w": 5,
+            "kernel_ld1rw": 6,
+            "ext": 3,
+            "movprfx": 3
+          },
+          "production_object_address_start": "0x44b0",
+          "production_object_address_end": "0x45d8"
+        },
+        {
+          "stage": "trailing_1",
+          "label": ".L358",
+          "line_start": 5216,
+          "line_end": 5271,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row kh+1 contributes kernel rows kh-1,kh-2 to output rows 2,3.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+          "observed_counts": {
+            "instructions": 55,
+            "fmul": 16,
+            "fadd": 16,
+            "input_ld1w": 5,
+            "kernel_ld1rw": 4,
+            "ext": 3,
+            "movprfx": 3
+          },
+          "production_object_address_start": "0x4780",
+          "production_object_address_end": "0x4858"
+        },
+        {
+          "stage": "trailing_2",
+          "label": ".L362",
+          "line_start": 5356,
+          "line_end": 5388,
+          "kernel_columns_per_iteration": 2,
+          "source_mapping": "Input row kh+2 contributes kernel row kh-1 to output row 3.",
+          "vector_spill_loads": 0,
+          "vector_spill_stores": 0,
+          "spill_notes": "No vector/predicate stack access inside this actual loop; LD1W and LD1RW addresses trace to input/kernel pointers, not to stack storage.",
+          "observed_counts": {
+            "instructions": 32,
+            "fmul": 8,
+            "fadd": 8,
+            "input_ld1w": 5,
+            "kernel_ld1rw": 2,
+            "ext": 3,
+            "movprfx": 0
+          },
+          "production_object_address_start": "0x49a0",
+          "production_object_address_end": "0x4a1c"
+        }
+      ],
+      "production_object_correspondence": {
+        "object_symbol": "conv_sve_rowquad",
+        "address_start": "0x3664",
+        "address_last_instruction": "0x4eb4",
+        "nonpadding_instruction_count": 1554,
+        "local_branch_targets_checked": 43,
+        "local_branch_target_mismatches": 0,
+        "method": "Read the remote-produced objdump text of production-conv2d.o. Matched all 1554 non-padding compiler instructions, operands and the 43 internal label targets in order; this was lightweight text inspection, not a local assembler/disassembler execution. All seven loop address ranges are recorded above. The only spelling/alias adjustments beyond punctuation/numeric formatting are PTRUE p0.b,all shown as PTRUE p0.b, 32-bit AND -2 shown as 0xfffffffe, and UXTW x19,w9 shown as MOV w19,w9. Four helper branches/calls resolve to rowtriple at 0x2684 and prefix at 0x3e4.",
+        "production_flags_evidence": "raw/build-production.log actual + gcc command builds conv2d.c with -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2 -c; raw/build-assembly.log has the same code-generation flags and -S. No instrumentation or probe include is present in either command."
+      }
+    }
+  ],
+  "fma_scan_scope": "Entire returned conv2d-sve.s and production-conv2d-objdump.log, including all helpers and dispatch workers. Checked fused families fmla/fmls/fmad/fmsb/fnmla/fnmls/fnmad/fnmsb/fmadd/fmsub/fnmadd/fnmsub/fmlal/fmlal2/fmlsl/fmlsl2/fmmla; both counts are zero. This whole-source arithmetic scan does not replace the separate dispatch/copy-path control-flow review.",
+  "performance_measured": false,
+  "promotion_decision": "none",
+  "executed_locally": false
+}

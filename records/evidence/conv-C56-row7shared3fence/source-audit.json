@@ -1,0 +1,114 @@
+{
+  "candidate": "C56-row7shared3fence",
+  "source_parent": "C55-row7x3shared3",
+  "parent_diagnostic_job_id": "1582860",
+  "parent_frozen_directory": ".runs/conv/C55-row7x3shared3/sve-correctness-sep13ac",
+  "parent_production_source_sha256": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
+  "parent_assembly_sha256": "0843c7259fdcb63d78d37965de48c229f81a505f59df81eb579fd792452aa39c",
+  "hypothesis_source": ".runs/conv/sep13-c55-next-hypothesis.md",
+  "hypothesis_source_sha256": "e24cf490dc557a9a77bc239ab2bd5828ff4f479e0200dfc7f80abe69eb3d03e3",
+  "prepared_at": "2026-09-12T19:12:38.087405+00:00",
+  "creation_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "cc6b51603928d7f7825f86ac09d139ec3e3846c8c40946e16fa9d110eb1a8138",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "current_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "6c48bff4086a137d5fa425936a96e776b08ffdbd86f8a9e2816feda0f673224c",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "current_source_bytes": {
+    "README.md": 754,
+    "bench_conv.c": 8125,
+    "conv2d.c": 112355,
+    "run.sh": 5339
+  },
+  "changed_submission_files": [
+    "conv2d.c"
+  ],
+  "unchanged_submission_files": [
+    "README.md",
+    "bench_conv.c",
+    "run.sh"
+  ],
+  "insert_after_parent_lines": [
+    1530,
+    1571,
+    1612
+  ],
+  "inserted_candidate_line_ranges": [
+    [
+      1531,
+      1540
+    ],
+    [
+      1582,
+      1591
+    ],
+    [
+      1633,
+      1642
+    ]
+  ],
+  "identical_insertions": 3,
+  "lines_added": 30,
+  "bytes_added": 1311,
+  "removing_only_inserted_asm_recovers_parent_bytes": true,
+  "all_existing_source_bytes_preserved_in_order": true,
+  "arithmetic_loop_remainder_other_stages_dispatch_unchanged": true,
+  "asm": {
+    "template": "",
+    "volatile": true,
+    "outputs": [],
+    "read_only_w_inputs_in_order": [
+      "a0",
+      "a1",
+      "a2",
+      "b0",
+      "b1",
+      "b2",
+      "c0",
+      "c1",
+      "c2",
+      "d0",
+      "d1",
+      "d2",
+      "e0",
+      "e1",
+      "e2",
+      "f0",
+      "f1",
+      "f2",
+      "g0",
+      "g1",
+      "g2"
+    ],
+    "input_count": 21,
+    "memory_clobber": true,
+    "register_clobbers": [],
+    "source_template_hardware_instructions": 0,
+    "compiler_acceptance_verified": false,
+    "emitted_instructions_or_markers_observed": false
+  },
+  "shared_main_columns": 3,
+  "shared_remainder_source_columns": 1,
+  "shared_remainder_max_columns": 2,
+  "semantic_stage_count": 13,
+  "compiled": false,
+  "operator_executed": false,
+  "verified": false,
+  "own_diagnostic_pass": false,
+  "parent_pass_inherited": false,
+  "performance_measured": false,
+  "job_created": false,
+  "local_operations": [
+    "read/copy source bytes",
+    "insert fixed text",
+    "SHA256",
+    "unified text diff"
+  ],
+  "scope": "Source-only preparation. Does not authorize compiler, diagnostic, performance, package or promotion."
+}

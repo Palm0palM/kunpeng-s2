@@ -1,0 +1,86 @@
+{
+  "known_job_evidence": {
+    "checked_at": "2026-09-12T12:08:45.122629+00:00",
+    "jobs": [
+      {
+        "job_id": "1579660",
+        "origins": [
+          "J performance",
+          ".runs/conv/sep12j-campaign.json"
+        ],
+        "command": "djob -ll 1579660",
+        "query_exit": 255,
+        "raw_status": "Control socket connect(LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/ssh-sep12): Operation not permitted\r\nssh: connect to host CLUSTER_HOST port 22: Operation not permitted\r\n",
+        "scheduler": null
+      },
+      {
+        "job_id": "1579677",
+        "origins": [
+          "K confirmation",
+          ".runs/conv/C26-r18/cluster.json",
+          ".runs/conv/C40-r2/cluster.json",
+          ".runs/conv/C26-r19/cluster.json",
+          ".runs/conv/sep12k-campaign.json"
+        ],
+        "command": "djob -ll 1579677",
+        "query_exit": 255,
+        "raw_status": "Control socket connect(LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/ssh-sep12): Operation not permitted\r\nssh: connect to host CLUSTER_HOST port 22: Operation not permitted\r\n",
+        "scheduler": null
+      },
+      {
+        "job_id": "1579692",
+        "origins": [
+          ".runs/conv/sep12h-checks/C43-padinput/job.json"
+        ],
+        "command": "djob -ll 1579692",
+        "query_exit": 255,
+        "raw_status": "Control socket connect(LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/ssh-sep12): Operation not permitted\r\nssh: connect to host CLUSTER_HOST port 22: Operation not permitted\r\n",
+        "scheduler": null
+      },
+      {
+        "job_id": "1579729",
+        "origins": [
+          ".runs/conv/sep12h-checks/C44-copyinput/job.json"
+        ],
+        "command": "djob -ll 1579729",
+        "query_exit": 255,
+        "raw_status": "Control socket connect(LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/ssh-sep12): Operation not permitted\r\nssh: connect to host CLUSTER_HOST port 22: Operation not permitted\r\n",
+        "scheduler": null
+      },
+      {
+        "job_id": "1579762",
+        "origins": [
+          ".runs/conv/sep12i-checks/C45-row4dup4/job.json"
+        ],
+        "command": "djob -ll 1579762",
+        "query_exit": 255,
+        "raw_status": "Control socket connect(LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/ssh-sep12): Operation not permitted\r\nssh: connect to host CLUSTER_HOST port 22: Operation not permitted\r\n",
+        "scheduler": null
+      },
+      {
+        "job_id": "1579795",
+        "origins": [
+          ".runs/conv/sep12i-checks/C46-row5x5asmfix/job.json"
+        ],
+        "command": "djob -ll 1579795",
+        "query_exit": 255,
+        "raw_status": "Control socket connect(LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/ssh-sep12): Operation not permitted\r\nssh: connect to host CLUSTER_HOST port 22: Operation not permitted\r\n",
+        "scheduler": null
+      },
+      {
+        "job_id": "1579748",
+        "origins": [
+          ".runs/conv/sep12h-campaign.json"
+        ],
+        "command": "djob -ll 1579748",
+        "query_exit": 255,
+        "raw_status": "Control socket connect(LOCAL_USER_HOME/Downloads/conv/kunpeng-conv-next/.runs/ssh-sep12): Operation not permitted\r\nssh: connect to host CLUSTER_HOST port 22: Operation not permitted\r\n",
+        "scheduler": null
+      }
+    ],
+    "unresolved_submissions": [],
+    "ignored_unsubmitted_prepared_campaigns": [],
+    "clear": false
+  },
+  "submit_authorized": false
+}

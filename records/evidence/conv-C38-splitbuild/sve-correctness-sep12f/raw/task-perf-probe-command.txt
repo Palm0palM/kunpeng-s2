@@ -1,0 +1,1 @@
+perf record -e cycles:u -F 99 -m 128 -T -P -o task-perf-probe.data -- /bin/true 

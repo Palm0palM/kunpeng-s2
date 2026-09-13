@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C53-row7cursors",
+  "parent": "C51-row7x3u1",
+  "strategy": "Replace only the seven rowseven shared coefficient row-base plus ik expressions with per-tile cursors initialized at kernel rows6..0 and advanced once per coefficient across t; preserve one-column ik loops,all21 ordered updates,input indices,other12 stages,dispatch and submission settings. Test actual address induction only; no assumed codegen or speed gain.",
+  "created_at": "2026-09-12T17:15:55.810106+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C51-row7x3u1",
+  "source_parent_frozen_directory": ".runs/conv/C51-row7x3u1/sve-correctness-sep13q",
+  "source_parent_diagnostic_job_id": "1581822",
+  "source_parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "rows_per_group": 7,
+  "vectors_per_row": 3,
+  "total_accumulators": 21,
+  "stage_count": 13,
+  "kernel_columns_per_iteration": 1,
+  "formal_best_label": "C6",
+  "source_scope": "Only shared coefficient address induction changed: seven per-tile cursors replace row-base plus ik and advance across t. Other12 stages,input indices,21 updates,stores,all fallback/dispatch and other submission files are unchanged.",
+  "source_hypothesis": "Observe whether seven continuous coefficient cursors remove the actual Q shared standalone LSL and outer coefficient row steps, or instead canonicalize/increase address or scalar-stack work. No codegen or speed conclusion.",
+  "runtime_validation_status": "Source preparation only; parent Q and R/S do not validate C53. No compilation, diagnostics or performance.",
+  "prepared_execution_policy": "Stop for root independent source review. No diagnostic directory/tools,compiler,operator,benchmark,SSH,job,ZIP,promotion or publication."
+}

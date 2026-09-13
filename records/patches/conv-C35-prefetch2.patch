@@ -1,0 +1,16 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -955,6 +955,13 @@
+         }
+         /* Each middle input row advances all four outputs. */
+         for (int t = 3; t < kh; ++t) {
++            if (kh - t > 2) {
++                const float *future = base + (size_t)(t + 2) * stride + i;
++                __builtin_prefetch(future + 0 * lanes, 0, 3);
++                __builtin_prefetch(future + 1 * lanes, 0, 3);
++                __builtin_prefetch(future + 2 * lanes, 0, 3);
++                __builtin_prefetch(future + 3 * lanes, 0, 3);
++            }
+             const float *row = base + (size_t)t * stride + i;
+             const float *ka = kernel + (size_t)t * kw;
+             const float *kb = kernel + (size_t)(t - 1) * kw;

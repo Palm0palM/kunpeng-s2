@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C40-r3",
+  "parent": "C26-r21",
+  "strategy": "Same-source C40 reference-only context for C47/C48; promotion forbidden, not a confirmation repeat",
+  "created_at": "2026-09-12T16:00:03.444330+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "comparison_baseline": "C26-r21",
+  "source_parent": "C40-row6x3u1",
+  "reference_only": true,
+  "promotion_allowed": false,
+  "diagnostic_source_version": "C40-row6x3u1",
+  "diagnostic_evidence_directory": ".runs/conv/C40-row6x3u1/sve-correctness-sep12g",
+  "diagnostic_job_id": "1579597",
+  "diagnostic_source_sha256": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+  "reused_identical_source_diagnostic": true
+}

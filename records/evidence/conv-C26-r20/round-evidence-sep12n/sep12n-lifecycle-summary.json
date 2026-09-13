@@ -1,0 +1,624 @@
+{
+  "job_id": "1581459",
+  "status": "SUCCEEDED",
+  "job_exit_code": 0,
+  "system_exit_code": 0,
+  "raw_pass": 96,
+  "raw_fail": 0,
+  "member_wrapper_exits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "campaign_status": "performance_complete",
+  "confirmation_pending": [],
+  "rank_by_candidate_total_median": [
+    "C48-row8x2u1",
+    "C47-row6x4u1",
+    "C49-row4dup4fence",
+    "C46-row5x5asmfix",
+    "C45-row4dup4"
+  ],
+  "prior_c40_decisions_unchanged": true,
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "record_resume_process_exit_code": 0,
+  "compare_process_exit_code": 0,
+  "local_operator_execution": false,
+  "resubmission": false,
+  "record_failure_evidence": ".runs/conv/sep12n-record-metadata-failure.json",
+  "original_record_tool_backup": ".runs/conv/sep12n-record-group.before-metadata-adaptation.py",
+  "final_record_tool_sha256": "fba8a89a545832254b5da23e0b2105c667f691e087b39dd9a13a9fdd2fb37b96",
+  "rows": [
+    {
+      "version": "C26-r20",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 452.54999999999995,
+      "cases_ms": [
+        51.42,
+        62.16,
+        107.31,
+        231.66
+      ],
+      "all_samples_ms": [
+        [
+          51.37,
+          51.44,
+          51.42
+        ],
+        [
+          62.0,
+          62.16,
+          62.72
+        ],
+        [
+          107.26,
+          107.31,
+          107.5
+        ],
+        [
+          231.74,
+          231.66,
+          231.66
+        ]
+      ],
+      "case_spreads_pct": [
+        0.13613380007779127,
+        1.1583011583011564,
+        0.2236511042773226,
+        0.0345333678667066
+      ],
+      "max_spread_pct": 1.1583011583011564,
+      "qualified_for_confirmation": false,
+      "reference_only": false
+    },
+    {
+      "version": "C45-row4dup4",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 557.3500000000001,
+      "cases_ms": [
+        63.31,
+        73.48,
+        133.27,
+        287.29
+      ],
+      "all_samples_ms": [
+        [
+          63.26,
+          71.94,
+          63.31
+        ],
+        [
+          73.53,
+          73.41,
+          73.48
+        ],
+        [
+          133.16,
+          133.78,
+          133.27
+        ],
+        [
+          287.29,
+          287.25,
+          287.48
+        ]
+      ],
+      "case_spreads_pct": [
+        13.710314326330753,
+        0.16330974414807367,
+        0.465220979965487,
+        0.08005847749661255
+      ],
+      "max_spread_pct": 13.710314326330753,
+      "qualified_for_confirmation": false,
+      "reference_only": false,
+      "gates": {
+        "C26-r20": {
+          "eligible": false,
+          "gain_pct": -23.15766213678051,
+          "threshold_pct": 13.710314326330753,
+          "reasons": [
+            "提速 -23.16% 未超过测量波动/最低1%门槛 13.71%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            -23.12329832749903,
+            -18.211068211068223,
+            -24.191594445997584,
+            -24.013640680307358
+          ]
+        },
+        "C26-r21": {
+          "eligible": false,
+          "gain_pct": -23.20394358724969,
+          "threshold_pct": 13.710314326330753,
+          "reasons": [
+            "提速 -23.20% 未超过测量波动/最低1%门槛 13.71%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            -22.979797979797993,
+            -18.688418672266206,
+            -24.20316868592732,
+            -23.9975829772541
+          ]
+        }
+      }
+    },
+    {
+      "version": "C49-row4dup4fence",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 511.76,
+      "cases_ms": [
+        58.02,
+        68.39,
+        121.58,
+        263.77
+      ],
+      "all_samples_ms": [
+        [
+          58.06,
+          58.02,
+          58.02
+        ],
+        [
+          68.36,
+          68.45,
+          68.39
+        ],
+        [
+          121.63,
+          121.58,
+          121.52
+        ],
+        [
+          263.61,
+          263.78,
+          263.77
+        ]
+      ],
+      "case_spreads_pct": [
+        0.06894174422612745,
+        0.13159818686943034,
+        0.09047540713933167,
+        0.0644500890927547
+      ],
+      "max_spread_pct": 0.13159818686943034,
+      "qualified_for_confirmation": false,
+      "reference_only": false,
+      "gates": {
+        "C26-r20": {
+          "eligible": false,
+          "gain_pct": -13.08363716716386,
+          "threshold_pct": 1.1583011583011564,
+          "reasons": [
+            "提速 -13.08% 未超过测量波动/最低1%门槛 1.16%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            -12.83547257876313,
+            -10.02252252252253,
+            -13.297921908489418,
+            -13.860830527497189
+          ]
+        },
+        "C26-r21": {
+          "eligible": false,
+          "gain_pct": -13.126132897121886,
+          "threshold_pct": 1.0,
+          "reasons": [
+            "提速 -13.13% 未超过测量波动/最低1%门槛 1.00%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            -12.703962703962718,
+            -10.466806654821523,
+            -13.308480894687793,
+            -13.846087444430049
+          ]
+        }
+      },
+      "compiler_scheduling_comparison": {
+        "baseline": "C45-row4dup4",
+        "eligible": false,
+        "gain_pct": 8.179779312819617,
+        "threshold_pct": 13.710314326330753,
+        "reasons": [
+          "提速 8.18% 未超过测量波动/最低1%门槛 13.71%"
+        ],
+        "case_gains_pct": [
+          8.355709998420469,
+          6.927054980947201,
+          8.771666541607273,
+          8.186849524870352
+        ]
+      }
+    },
+    {
+      "version": "C46-row5x5asmfix",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 516.89,
+      "cases_ms": [
+        58.42,
+        70.92,
+        124.0,
+        263.55
+      ],
+      "all_samples_ms": [
+        [
+          58.4,
+          58.43,
+          58.42
+        ],
+        [
+          70.86,
+          70.92,
+          71.07
+        ],
+        [
+          123.92,
+          124.0,
+          124.07
+        ],
+        [
+          263.55,
+          263.76,
+          263.51
+        ]
+      ],
+      "case_spreads_pct": [
+        0.051352276617598655,
+        0.29610829103214004,
+        0.120967741935477,
+        0.09485866059571238
+      ],
+      "max_spread_pct": 0.29610829103214004,
+      "qualified_for_confirmation": false,
+      "reference_only": false,
+      "gates": {
+        "C26-r20": {
+          "eligible": false,
+          "gain_pct": -14.217213567561604,
+          "threshold_pct": 1.1583011583011564,
+          "reasons": [
+            "提速 -14.22% 未超过测量波动/最低1%门槛 1.16%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            -13.613380007779075,
+            -14.092664092664101,
+            -15.553070543285804,
+            -13.765863765863774
+          ]
+        },
+        "C26-r21": {
+          "eligible": false,
+          "gain_pct": -14.260135284495334,
+          "threshold_pct": 1.0,
+          "reasons": [
+            "提速 -14.26% 未超过测量波动/最低1%门槛 1.00%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            -13.48096348096349,
+            -14.55338394443548,
+            -15.56383970177074,
+            -13.751132979412152
+          ]
+        }
+      }
+    },
+    {
+      "version": "C40-r3",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 444.44,
+      "cases_ms": [
+        50.46,
+        60.32,
+        107.3,
+        226.36
+      ],
+      "all_samples_ms": [
+        [
+          50.48,
+          50.46,
+          50.4
+        ],
+        [
+          60.29,
+          60.34,
+          60.32
+        ],
+        [
+          107.35,
+          107.3,
+          107.3
+        ],
+        [
+          226.36,
+          226.35,
+          226.41
+        ]
+      ],
+      "case_spreads_pct": [
+        0.15854141894569618,
+        0.0828912466843572,
+        0.04659832246038878,
+        0.02650644990281069
+      ],
+      "max_spread_pct": 0.15854141894569618,
+      "qualified_for_confirmation": false,
+      "reference_only": true,
+      "gates": {
+        "C26-r20": {
+          "eligible": true,
+          "gain_pct": 1.792067174897792,
+          "threshold_pct": 1.1583011583011564,
+          "reasons": [],
+          "case_gains_pct": [
+            1.8669778296382746,
+            2.9601029601029545,
+            0.009318796011560073,
+            2.2878356211689472
+          ]
+        },
+        "C26-r21": {
+          "eligible": true,
+          "gain_pct": 1.755161589813873,
+          "threshold_pct": 1.0,
+          "reasons": [],
+          "case_gains_pct": [
+            1.9813519813519735,
+            2.568244225488607,
+            0.0,
+            2.3004877206612218
+          ]
+        }
+      }
+    },
+    {
+      "version": "C47-row6x4u1",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 450.63,
+      "cases_ms": [
+        51.36,
+        60.78,
+        108.63,
+        229.86
+      ],
+      "all_samples_ms": [
+        [
+          51.36,
+          51.3,
+          51.39
+        ],
+        [
+          60.78,
+          60.79,
+          60.77
+        ],
+        [
+          108.63,
+          108.58,
+          108.64
+        ],
+        [
+          229.88,
+          229.85,
+          229.86
+        ]
+      ],
+      "case_spreads_pct": [
+        0.1752336448598197,
+        0.03290556103980918,
+        0.0552333609500159,
+        0.013051422605064446
+      ],
+      "max_spread_pct": 0.1752336448598197,
+      "qualified_for_confirmation": false,
+      "reference_only": false,
+      "gates": {
+        "C26-r20": {
+          "eligible": false,
+          "gain_pct": 0.42426251242955676,
+          "threshold_pct": 1.1583011583011564,
+          "reasons": [
+            "提速 0.42% 未超过测量波动/最低1%门槛 1.16%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            0.11668611435239648,
+            2.2200772200772128,
+            -1.230081073525294,
+            0.7770007770007696
+          ]
+        },
+        "C26-r21": {
+          "eligible": false,
+          "gain_pct": 0.38684291966930456,
+          "threshold_pct": 1.0,
+          "reasons": [
+            "提速 0.39% 未超过测量波动/最低1%门槛 1.00%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            0.23310023310022815,
+            1.8252301728315223,
+            -1.2395153774464103,
+            0.7898485044671691
+          ]
+        }
+      },
+      "rowsix_reference_comparison": {
+        "baseline": "C40-r3",
+        "eligible": false,
+        "gain_pct": -1.392763927639276,
+        "threshold_pct": 1.0,
+        "reasons": [
+          "提速 -1.39% 未超过测量波动/最低1%门槛 1.00%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "case_gains_pct": [
+          -1.7835909631391171,
+          -0.7625994694960226,
+          -1.2395153774464103,
+          -1.546209577663898
+        ]
+      }
+    },
+    {
+      "version": "C48-row8x2u1",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 448.13,
+      "cases_ms": [
+        52.86,
+        61.15,
+        105.68,
+        228.44
+      ],
+      "all_samples_ms": [
+        [
+          52.77,
+          52.88,
+          52.86
+        ],
+        [
+          61.15,
+          61.12,
+          61.2
+        ],
+        [
+          105.64,
+          105.68,
+          105.7
+        ],
+        [
+          228.52,
+          228.44,
+          228.42
+        ]
+      ],
+      "case_spreads_pct": [
+        0.20809685962920815,
+        0.1308258381030342,
+        0.05677517032551312,
+        0.04377517072317578
+      ],
+      "max_spread_pct": 0.20809685962920815,
+      "qualified_for_confirmation": false,
+      "reference_only": false,
+      "gates": {
+        "C26-r20": {
+          "eligible": false,
+          "gain_pct": 0.9766876588222206,
+          "threshold_pct": 1.1583011583011564,
+          "reasons": [
+            "提速 0.98% 未超过测量波动/最低1%门槛 1.16%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            -2.800466744457405,
+            1.6248391248391219,
+            1.5189637498835107,
+            1.3899680566347228
+          ]
+        },
+        "C26-r21": {
+          "eligible": false,
+          "gain_pct": 0.9394756620540253,
+          "threshold_pct": 1.0,
+          "reasons": [
+            "提速 0.94% 未超过测量波动/最低1%门槛 1.00%",
+            "至少一组退步超过1%，需评估官方计分权重后再决定"
+          ],
+          "case_gains_pct": [
+            -2.6806526806526856,
+            1.2275884348247426,
+            1.5097856477166733,
+            1.4027364150373345
+          ]
+        }
+      },
+      "rowsix_reference_comparison": {
+        "baseline": "C40-r3",
+        "eligible": false,
+        "gain_pct": -0.8302583025830254,
+        "threshold_pct": 1.0,
+        "reasons": [
+          "提速 -0.83% 未超过测量波动/最低1%门槛 1.00%",
+          "至少一组退步超过1%，需评估官方计分权重后再决定"
+        ],
+        "case_gains_pct": [
+          -4.7562425683709835,
+          -1.3759946949602093,
+          1.5097856477166733,
+          -0.9188902632973953
+        ]
+      }
+    },
+    {
+      "version": "C26-r21",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 452.38,
+      "cases_ms": [
+        51.48,
+        61.91,
+        107.3,
+        231.69
+      ],
+      "all_samples_ms": [
+        [
+          51.48,
+          51.5,
+          51.4
+        ],
+        [
+          61.91,
+          62.02,
+          61.91
+        ],
+        [
+          107.27,
+          107.38,
+          107.3
+        ],
+        [
+          231.69,
+          231.65,
+          232.06
+        ]
+      ],
+      "case_spreads_pct": [
+        0.19425019425019702,
+        0.1776772734614869,
+        0.1025163094128606,
+        0.1769605938970161
+      ],
+      "max_spread_pct": 0.19425019425019702,
+      "qualified_for_confirmation": false,
+      "reference_only": false
+    }
+  ]
+}

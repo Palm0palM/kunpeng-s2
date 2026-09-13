@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C47-row6x4u1",
+  "parent": "C26-r21",
+  "strategy": "Expand only the unchanged C40 six-row single-column helper from 3VL to 4VL (18 to 24 accumulators), preserving eleven phases, arithmetic order, six-row dispatch, existing helpers and build; source-only prepared hypothesis",
+  "created_at": "2026-09-12T11:00:42.735496+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "cb471782329b01b9bf72d6e992941edde1361d19ced2bb69a576ec5fa8ee69e7",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C40-row6x3u1",
+  "rows_per_group": 6,
+  "vectors_per_row": 4,
+  "total_accumulators": 24,
+  "kernel_columns_per_iteration": 1,
+  "stage_count": 11,
+  "source_hypothesis": "Only widen the C40 rowsix block from 3VL to 4VL; all stages, per-output arithmetic order, dispatch and build preserved",
+  "source_scope": "conv_sve_rowsix block/declarations/fourth-vector updates/stores only",
+  "formal_best_label": "C6",
+  "parent_measurement_context": "G C40 444.40 ms had both noise qualifications false; J1579660 repeat was pending when prepared; this source snapshot does not promote C40 or C47",
+  "reference_only": false,
+  "prepared_execution_policy": "Source only, no diagnostic package, no local compile/tests/SSH/jobs, root review required",
+  "comparison_baseline": "C26-r21",
+  "promotion_allowed": true,
+  "diagnostic_source_version": "C47-row6x4u1",
+  "diagnostic_evidence_directory": ".runs/conv/C47-row6x4u1/sve-correctness-sep12l",
+  "diagnostic_job_id": "1579830",
+  "diagnostic_source_sha256": "e974915cb4e5e522526070bfdcff42b08dd7866412dbde11c76a07fac1b86d0a",
+  "reused_identical_source_diagnostic": false
+}

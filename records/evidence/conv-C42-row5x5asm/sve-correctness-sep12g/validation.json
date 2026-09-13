@@ -1,0 +1,160 @@
+{
+  "status": "failed",
+  "complete": false,
+  "candidate": "C42-row5x5asm",
+  "job_id": "1579627",
+  "scheduler": {
+    "status": "FAILED",
+    "state": "FAILED",
+    "jobId": "1579627",
+    "jobExitCode": 1,
+    "systemExitCode": 10001
+  },
+  "exit_code": 1,
+  "reason": "GCC 10.3.1 rejects the %Z operand prefix in all five inline-asm blocks of conv_sve_rowquint during the first production guard build.",
+  "failure_stage": "build-production-guard",
+  "compiler_version": "10.3.1",
+  "build_commands": [
+    [
+      "gcc",
+      "-O3",
+      "-std=c11",
+      "-D_DEFAULT_SOURCE",
+      "-Wall",
+      "-Wextra",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-mcpu=generic",
+      "-fopenmp",
+      "-DEXPECTED_ACC=5",
+      "check_conv_guard.c",
+      "conv2d.c",
+      "-o",
+      "check_conv_guard"
+    ]
+  ],
+  "compiler_error_source_lines": [
+    1454,
+    1475,
+    1496,
+    1517,
+    1538
+  ],
+  "compiler_error_count": 150,
+  "source_hashes_verified": true,
+  "source_manifest_remote_matches": true,
+  "source_hashes": {
+    "conv2d.c": "cbdadacaa24a28f2eff0b9d01810ccae69ddc127da22942f30b15a6713265def",
+    "check_conv_guard.c": "dd603a5b3e6060f848b67ef0fb7c27235aca915da7800c26d8f43280504199b1",
+    "check_sve_dispatch.c": "da40cf39877f8e5c9ded8c0726e3045473755443ffb104c55bf9a8e183ecaa15",
+    "remote_job.sh": "5d0acbc4cd8023017c6251a896247da7e62d057dab3e14d6879836d05857190c",
+    "candidate.env": "212c280a51ffed809972f4ad3a4d4ebe40bec3423853481e85cc1ac49fbd21dd"
+  },
+  "source_manifest": {
+    "conv2d.c": {
+      "bytes": 100717,
+      "sha256": "cbdadacaa24a28f2eff0b9d01810ccae69ddc127da22942f30b15a6713265def"
+    },
+    "check_conv_guard.c": {
+      "bytes": 8094,
+      "sha256": "dd603a5b3e6060f848b67ef0fb7c27235aca915da7800c26d8f43280504199b1"
+    },
+    "check_sve_dispatch.c": {
+      "bytes": 6661,
+      "sha256": "da40cf39877f8e5c9ded8c0726e3045473755443ffb104c55bf9a8e183ecaa15"
+    },
+    "remote_job.sh": {
+      "bytes": 2892,
+      "sha256": "5d0acbc4cd8023017c6251a896247da7e62d057dab3e14d6879836d05857190c"
+    },
+    "candidate.env": {
+      "bytes": 152,
+      "sha256": "212c280a51ffed809972f4ad3a4d4ebe40bec3423853481e85cc1ac49fbd21dd"
+    }
+  },
+  "source_hash_verification_scope": "Existing automated transport manifest compared with returned source-sha256.txt; no repeated manual byte-hash audit.",
+  "extra_manual_hash_audit": false,
+  "expected_checks": {
+    "full_per_configuration": 3776,
+    "dispatch_per_configuration": 504,
+    "direct_per_configuration": 288,
+    "configurations": 6,
+    "total": 27408
+  },
+  "planned_total_cases": 27408,
+  "total_cases": 0,
+  "full_cases": 0,
+  "dispatch_cases": 0,
+  "direct_cases": 0,
+  "configurations": [],
+  "production_guard_executed": false,
+  "dispatch_executed": false,
+  "assembly_generated": false,
+  "assembly": {
+    "review_complete": false,
+    "compiler_accepted": false,
+    "fma_count": null,
+    "stage_count": null,
+    "spill_assessment": "unavailable: first build failed before production assembly"
+  },
+  "allocation": {
+    "cpus": [
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113
+    ],
+    "numa_node": "node2"
+  },
+  "executed_locally": false,
+  "executed_remotely": true,
+  "remote_execution_scope": "Allocated-node environment checks, source manifest and failed compiler invocation only; no operator binary execution.",
+  "sanitizer": "not_run",
+  "original_evidence_unchanged": true,
+  "candidate_source_unchanged": true,
+  "retry_submitted": false,
+  "retained_files": [
+    "raw/build-guard.log",
+    "raw/probe.log",
+    "raw/compiler-version.txt",
+    "raw/source-sha256.txt",
+    "raw/exit-code.txt",
+    "scheduler.log",
+    "job.json"
+  ],
+  "note": "This is a genuine target compiler failure. No correctness, register-allocation, spill, speed or promotion claim can be made for C42. C40/C41 passed independently; root decides whether to amend the performance group."
+}

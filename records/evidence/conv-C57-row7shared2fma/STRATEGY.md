@@ -1,0 +1,11 @@
+# C57 shared2 explicit FMA preparation
+
+C57-row7shared2fma derives only from original C52-row7x3shared2 / T1582134. Its single hypothesis is that explicit fused accumulation in the shared stage may reduce arithmetic work while still satisfying the original official absolute-error tolerance. No speed or numeric outcome is claimed.
+
+Only 63 statements change: two-column main 42 and original u1 remainder 21, each from `acc = svadd_f32_x(pg, acc, svmul_f32_x(pg, v, coefficient));` to `acc = svmla_f32_x(pg, acc, v, coefficient);`. The 21 chains retain column ik then ik+1 order, followed by the one-column remainder. The `kw - ik >= 2` / `ik < kw` bounds and all addresses remain. The other twelve stages, horizontal tail, kh<7 fallback, dispatch, and README/bench/run bytes stay as in the parent. No new asm, prefetch, partial sums or global contraction flags are added.
+
+Explicit fusion changes rounding: one fused result can differ from a separately rounded product and sum. This may exceed `1e-5` absolute error even if closer to the exact real-number result; no bitwise identity is expected or asserted. The old T/memcmp/FMA0 evidence is parent provenance and cannot determine C57 acceptance. C6 remains best; S/Y failures are preserved and this changed source is not a retry of their original bytes.
+
+The separately reviewed plan is `.runs/conv/sep13-fma-feasibility-plan.md`. Only a later root GO may run its unchanged official four cases in three complete suites on a scheduled compute node (38 CPU, 24576 MiB, one packed NUMA, GCC10.3.1/generic, OMP38/close/cores). Keep the original reference, seed, tolerance, test_runs=1, timing and strict flags including -fno-fast-math/-ffp-contract=off. Collect all twelve logs even on official numerical FAIL; require 12/12 original PASS and finite error <=1e-5 plus all real exits before calling only this narrow numerical screen passed. Any official mismatch must retain coordinates, got/expected/diff and maximum error and end this variant's follow-up. Companion times alone do not establish speed.
+
+Source preparation only: no compilation, local test, SSH, job, diagnostic, package or promotion. Full future boundary diagnostics, assembly review, independent performance confirmation and exact package validation remain separate decisions. No reset card.

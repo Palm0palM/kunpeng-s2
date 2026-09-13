@@ -1,0 +1,488 @@
+--- sep13q-checks/driver.py
++++ sep13x-checks/driver.py
+@@ -1,4 +1,4 @@
+-"""Prepared Q diagnostic transport for C51; explicit root --go only.
++"""Prepared X diagnostic transport for C53; explicit root --go only.
+ 
+ No work occurs on import. status/fetch reuse a saved unique job; no local
+ operator execution, automatic polling, acceptance, promotion or publication.
+@@ -21,10 +21,11 @@
+ sys.path.insert(0, str(ROOT / 'tools'))
+ import cluster
+ 
+-VERSIONS = ('C51-row7x3u1',)
++VERSIONS = ('C53-row7cursors',)
++SOURCE_SHA256 = 'd83d535334dfd55925426a515a0fd5843c090fff4c56d44f870fd2460a4d5cd0'
+ SOURCE_NAMES = {'conv2d.c', 'check_conv_guard.c', 'check_sve_dispatch.c', 'candidate.env', 'remote_job.sh'}
+-SOURCE_PARENTS = {'C51-row7x3u1': 'C40-row6x3u1'}
+-COUNTS = {'C51-row7x3u1': dict(full_per_configuration=4784, dispatch_per_configuration=972,
++SOURCE_PARENTS = {'C53-row7cursors': 'C51-row7x3u1'}
++COUNTS = {'C53-row7cursors': dict(full_per_configuration=4784, dispatch_per_configuration=972,
+     direct_per_configuration=432, configurations=6, total=37128)}
+ RESOURCES = dict(cpus=38, memory_mb=24576, numa_count=1,
+     numa_distribution='pack', walltime_seconds=1800)
+@@ -34,7 +35,7 @@
+     + [f'dispatch-vl{vl}-t{threads}' for vl in (16, 32, 64) for threads in (1, 4)]
+     + ['build-assembly', 'complete'])
+ TERMINAL = {'SUCCEEDED', 'FAILED', 'CANCELLED', 'CANCELED', 'TIMEOUT', 'TERMINATED'}
+-# The frozen Q wrapper builds no retained production object for separate transfer.
++# The frozen X wrapper builds no retained production object for separate transfer.
+ OBJECT_ARTIFACTS = {name: set() for name in VERSIONS}
+ 
+ 
+@@ -77,9 +78,9 @@
+ 
+ 
+ def serial_gate(cfg):
+-    """Bounded latest N and present P/Q package jobs; no teammate scan.
+-
+-    Prepared P/Q packages without job.json do not represent active jobs.
++    """Bounded fixed W/T/S and present P/X reservations; no teammate scan.
++
++    Prepared P/X packages without job.json do not represent active jobs.
+     Any actual unresolved reservation blocks. Only root is a compute submitter;
+     this check is not a distributed scheduling lock and never cancels work.
+     """
+@@ -87,7 +88,7 @@
+     unresolved = []
+     ignored_prepared = []
+     job_paths = [ROOT / '.runs/conv/sep13p-checks/C50-row4dupfencenomem/job.json',
+-                 BASE / 'C51-row7x3u1/job.json']
++                 BASE / 'C53-row7cursors/job.json']
+     for path in job_paths:
+         origin = str(path.relative_to(ROOT))
+         if not path.exists():
+@@ -99,16 +100,21 @@
+             unresolved.append(dict(path=origin, reason='Actual package reservation lacks reconciled job ID'))
+             continue
+         identities.setdefault(str(job_id), []).append(origin)
+-    path = ROOT / '.runs/conv/sep12n-campaign.json'
+-    origin = str(path.relative_to(ROOT))
+-    if not path.exists():
+-        unresolved.append(dict(path=origin, reason='Required latest N campaign evidence is missing'))
+-    else:
+-        job_id = read_json(path).get('performance_job')
+-        if str(job_id) != '1581459':
+-            unresolved.append(dict(path=origin, reason='N campaign differs from reviewed completed job1581459'))
+-        else:
+-            identities.setdefault(str(job_id), []).append(origin)
++    # These exact current jobs are required, including W even while it runs.
++    # An unknown W reservation or a nonterminal live query always blocks X.
++    required = [('.runs/conv/sep13w-campaign.json', 'performance_job', '1582256'),
++                ('.runs/conv/sep13t-checks/C52-row7x3shared2/job.json', 'job_id', '1582134'),
++                ('.runs/conv/sep13s-campaign.json', 'performance_job', '1582067')]
++    for origin, field, expected_id in required:
++        path = ROOT / origin
++        if not path.exists():
++            unresolved.append(dict(path=origin, reason='Required fixed W/T/S job evidence is missing'))
++            continue
++        job_id = read_json(path).get(field)
++        if str(job_id) != expected_id:
++            unresolved.append(dict(path=origin, reason='Required job differs from fixed ID ' + expected_id))
++            continue
++        identities.setdefault(str(job_id), []).append(origin)
+     evidence = [query_scheduler(cfg, job_id, origins) for job_id, origins in identities.items()]
+     clear = not unresolved and all(
+         row['query_exit'] == 0 and row['scheduler'] is not None
+@@ -124,6 +130,7 @@
+ def frozen_source(base, version):
+     expected = read_json(base / 'source-hashes.json')
+     require(set(expected) == SOURCE_NAMES, 'Unexpected frozen transport source set')
++    require(expected['conv2d.c'] == SOURCE_SHA256, 'X requires its own root-reviewed C53 source')
+     source = base / 'source'
+     require(source.is_dir() and not source.is_symlink(), 'Source must be a real directory')
+     actual = {}
+@@ -136,7 +143,7 @@
+     require(actual == expected, 'Prepared source changed; never silently refresh its frozen manifest')
+     extra_manifest = base / 'source-manifest.json'
+     require(extra_manifest.is_file() and not extra_manifest.is_symlink(),
+-        'Frozen Q bytes/SHA source-manifest.json is required')
++        'Frozen X bytes/SHA source-manifest.json is required')
+     require(read_json(extra_manifest) == {name: dict(bytes=sizes[name], sha256=actual[name]) for name in actual},
+         'Supplementary bytes/SHA manifest mismatch')
+     record = read_json(ROOT / 'records/experiments/conv' / (version + '.json'))
+@@ -170,13 +177,17 @@
+     require(prepared.get('resources_required') == {key: value for key, value in RESOURCES.items() if key != 'walltime_seconds'},
+         'Prepared resource expectations mismatch')
+     require(prepared.get('expected_acc') == 3 and prepared.get('expected_checks') == counts,
+-        'Q matrix schema mismatch')
++        'X matrix schema mismatch')
+     require(prepared.get('rows_per_group') == 7 and prepared.get('vectors_per_row') == 3
+-        and prepared.get('accumulators') == 21, 'C51 seven-row/three-vector shape mismatch')
++        and prepared.get('accumulators') == 21, 'C53 seven-row/three-vector shape mismatch')
+     require(prepared.get('expected_rowseven_entries') == dict(dispatch_per_configuration=756, direct_per_configuration=1080),
+         'Rowseven entry expectations mismatch')
+     require(prepared.get('full_matrix_counts') == dict(core=3888, narrow=144, small=720, larger=32)
+         and prepared.get('expected_worker_masks') == {'1': 1, '4': 15}, 'Full-matrix/worker expectations mismatch')
++    require(prepared.get('expected_semantic_stage_count') == 13
++        and prepared.get('kernel_columns_per_iteration') == 1
++        and prepared.get('shared_coefficient_representation') == 'seven_cross_t_cursors',
++        'Prepared cursor/u1 contract mismatch')
+     return expected
+ 
+ 
+@@ -195,7 +206,7 @@
+     parser.add_argument('version', choices=VERSIONS)
+     parser.add_argument('config', help='Verified existing config; read only, never included in source or archive')
+     parser.add_argument('action', choices=('gate', 'submit', 'status', 'fetch'))
+-    parser.add_argument('--go', action='store_true', help='Explicit one-shot root Q submission authorization')
++    parser.add_argument('--go', action='store_true', help='Explicit one-shot root X submission authorization')
+     args = parser.parse_args()
+     require(args.action == 'submit' or not args.go, '--go is valid only for submit')
+     base = BASE / args.version
+@@ -217,7 +228,7 @@
+         require(gate['clear'], 'Known CONV work active/unresolved or query incomplete; retain gate evidence and stop')
+         hashes = frozen_source(base, args.version)
+         created = stamp()
+-        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13q-' + args.version + '-' + created
++        remote_dir = cfg['remote_root'] + '/diagnostics/conv-sep13x-' + args.version + '-' + created
+         data = dict(version=args.version, remote_dir=remote_dir, submitted=False,
+             submit_attempted=False, created_at=created, resources=RESOURCES,
+             expected_checks=COUNTS[args.version], expected_stages=STAGES,
+@@ -233,7 +244,7 @@
+         command = 'umask 077; mkdir -p ' + shlex.quote(remote_dir) + ' && tar -xzf - -C ' + shlex.quote(remote_dir)
+         result = logged_remote(cfg, command, base / 'upload.log', input=archive.getvalue(), timeout=cfg['transfer_timeout'])
+         require(result.returncode == 0, 'Upload failed; keep reservation/log and do not resubmit')
+-        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13q-' + args.version)
++        command = cluster.submit_command(cfg, remote_dir, 'conv-sep13x-' + args.version)
+         data.update(command=command, submit_attempted=True)
+         save(manifest, data)
+         result = logged_remote(cfg, command, base / 'submit.log')
+@@ -297,7 +308,7 @@
+             path = dest / name
+             if not path.exists():
+                 path.write_bytes(content)
+-    print('Fetched immutable Q diagnostic text/assembly. Fetch is not acceptance or performance.')
++    print('Fetched immutable X diagnostic text/assembly. Fetch is not acceptance or performance.')
+ 
+ 
+ if __name__ == '__main__':
+--- sep13q-checks/accept_returned.py
++++ sep13x-checks/accept_returned.py
+@@ -1,4 +1,4 @@
+-"""Accept Q returned text only. No SSH, compilation, tests or operator execution.
++"""Accept X returned text only. No SSH, compilation, tests or operator execution.
+ 
+ Usage: accept_returned.py VERSION [--failed]. Source/raw never change. An existing
+ prepared validation is preserved verbatim before a real final record replaces it.
+@@ -17,7 +17,8 @@
+ sys.dont_write_bytecode=True
+ BASE=Path(__file__).resolve().parent
+ ROOT=BASE.parents[2]
+-PLANS={'C51-row7x3u1':dict(full=4784,dispatch=972,direct=432,total=37128,vectors=3,rows=7,helper='conv_sve_rowseven',parent='C40-row6x3u1')}
++PLANS={'C53-row7cursors':dict(full=4784,dispatch=972,direct=432,total=37128,vectors=3,rows=7,helper='conv_sve_rowseven',parent='C51-row7x3u1')}
++SOURCE_SHA256='d83d535334dfd55925426a515a0fd5843c090fff4c56d44f870fd2460a4d5cd0'
+ SOURCE_NAMES={'conv2d.c','check_conv_guard.c','check_sve_dispatch.c','remote_job.sh','candidate.env'}
+ FMA=r'^\s*(?:fmla|fmls|fmad|fmsb|fnmla|fnmls|fnmad|fnmsb|fmadd|fmsub|fnmadd|fnmsub|fmlal2?|fmlsl2?|fmmla)\b'
+ TERMINAL={'SUCCEEDED','FAILED','CANCELLED','CANCELED','TIMEOUT','TERMINATED'}
+@@ -41,12 +42,17 @@
+     hashes=read(base/'source-hashes.json')
+     prepared=read(base/'prepared.json')
+     require(set(hashes)==SOURCE_NAMES and job.get('source_hashes')==hashes,'Frozen/job source identity mismatch')
++    require(hashes['conv2d.c']==SOURCE_SHA256,'X source differs from root-reviewed C53')
+     require(prepared.get('candidate')==version and prepared.get('source_hashes')==hashes,'Prepared source identity mismatch')
+     require(prepared.get('total_cases_planned')==PLANS[version]['total'],'Prepared total mismatch')
++    require(prepared.get('expected_semantic_stage_count')==13
++        and prepared.get('kernel_columns_per_iteration')==1
++        and prepared.get('shared_coefficient_representation')=='seven_cross_t_cursors',
++        'Prepared cursor/u1 contract mismatch')
+     manifest=read(base/'source-manifest.json')
+     require({name:item['sha256'] for name,item in manifest.items()}==hashes,'Two original transport manifests disagree')
+     require(prepared.get('source_parent')==PLANS[version]['parent'] and prepared.get('rows_per_group')==7
+-        and prepared.get('vectors_per_row')==3 and prepared.get('accumulators')==21,'Prepared Q source/shape mismatch')
++        and prepared.get('vectors_per_row')==3 and prepared.get('accumulators')==21,'Prepared X source/shape mismatch')
+     record=read(ROOT/'records/experiments/conv'/(version+'.json'))
+     require(record.get('version')==version and record.get('source_parent')==PLANS[version]['parent'] and record['source_hashes']['conv2d.c']==hashes['conv2d.c'],'Candidate checkpoint mismatch')
+     path=base/'raw/source-sha256.txt'
+@@ -147,7 +153,7 @@
+     review=read(base/'assembly-review.json')
+     require(review.get('candidate')==job['version'] and review.get('job_id')==job['job_id'] and review.get('source_sha256')==source_hash and review.get('compiler_version')=='10.3.1','Actual assembly review identity mismatch')
+     require(review.get('assembly_sha256')==hashlib.sha256(content).hexdigest(),'Assembly review has wrong returned artifact')
+-    for key in ('review_complete','production_uninstrumented','whole_helper_stack_reviewed','all_stages_and_transitions_reviewed','abi_saves_distinguished','dispatch_reviewed'):
++    for key in ('review_complete','production_uninstrumented','whole_helper_stack_reviewed','all_stages_and_transitions_reviewed','abi_saves_distinguished','dispatch_reviewed','cursor_addressing_reviewed'):
+         require(review.get(key) is True,'Incomplete assembly review '+key)
+     fma=len(re.findall(FMA,text,re.M))
+     require(fma==review.get('whole_source_fma_count')==0,'Unexpected FMA')
+@@ -159,15 +165,28 @@
+     for helper in helpers:
+         outer=bounds(lines,helper['symbol'])
+         require((helper['line_start'],helper['line_end'])==outer,'Whole helper range mismatch')
+-        for key in ('stack_frame_description','spill_notes','transition_spill_review','tail_and_fallback_review','arithmetic_and_load_review'):
++        for key in ('stack_frame_description','spill_notes','transition_spill_review','tail_and_fallback_review','arithmetic_and_load_review',
++                    'cursor_initialization_and_tile_reset_review','cursor_step_and_cross_t_review',
++                    'cursor_bound_and_one_past_review','scalar_addressing_and_stack_review'):
+             require(bool(helper.get(key)),'Missing whole helper interpretation '+key)
+         for key in ('vector_spill_loads','vector_spill_stores'):
+             require(type(helper.get(key)) is int and helper[key]>=0,'Invalid whole helper spill count')
+         stages=helper.get('stages') or []
+         require([s['stage'] for s in stages]==phase_ids,'Missing/reordered thirteen rowseven phases')
+         ranges=[]
+-        for stage in stages:
++        for index,stage in enumerate(stages):
++            require('blocks' not in stage,'X retains thirteen u1 regions; do not import T paired/odd schema')
+             range_review(stage,lines,outer,ranges,1)
++            participants=min(index+1,13-index)
++            require(stage['derived_counts']['fmul']==stage['derived_counts']['fadd']==3*participants,
++                'Changed u1 arithmetic lowering; preserve actual assembly and stop for root review')
++            if stage['stage']=='shared':
++                require(bool(stage.get('address_generation_review')),
++                    'Missing actual shared LSL/kernel-address ADD/cursor-step interpretation')
++                actual=collections.Counter(name for name,operands in instructions(lines,stage['line_start'],stage['line_end']))
++                # Whole-region mnemonic counts only: not all ADDs are kernel-address ADDs.
++                # The manual interpretation must classify actual addresses/outer steps.
++                stage['derived_addressing_counts']={name:actual[name] for name in ('lsl','add','sub','ldr','str','ldp','stp')}
+     dispatch_symbols=sorted(s for s in symbols if s=='conv2d' or s.startswith('conv2d.'))
+     dispatch=review.get('dispatch_functions') or []
+     require(dispatch_symbols and sorted(x['symbol'] for x in dispatch)==dispatch_symbols,'Missing actual conv2d/outlined-worker review')
+@@ -175,10 +194,11 @@
+         require((item['line_start'],item['line_end'])==bounds(lines,item['symbol']),'Dispatch range mismatch')
+         require(bool(item.get('control_flow_notes')) and bool(item.get('stack_notes')),'Dispatch/fallback interpretation missing')
+     require(review.get('shape')==dict(rows_per_group=7,vectors_per_row=3,accumulators=21),
+-        'Missing actual review association with C51 seven-row/three-vector source shape')
++        'Missing actual review association with C53 seven-row/three-vector source shape')
+     require(review.get('whole_machine_code_identical_claimed') is False,
+-        'C40 is source background, not current C51 machine-code proof')
+-    review.update(stage_count=len(phase_ids),fma_count=fma,transitions_reviewed=True,
++        'Q/C51 is source background, not current C53 machine-code proof')
++    review.update(stage_count=len(phase_ids),arithmetic_region_count_per_helper=13,
++        shared_coefficient_representation='seven_cross_t_cursors',fma_count=fma,transitions_reviewed=True,
+         production_object_disassembly_available=False,performance_submission_automatic=False)
+     return review
+ 
+@@ -217,10 +237,10 @@
+             ending=r' convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference$'
+             one(r'^PASS: '+str(p['full'])+ending,guard,'Production full count/PASS missing')
+             entries={name:int(one(r'SVE_'+name.upper()+r'_ACTUAL_ENTRIES=(\d+)',dispatch,'Missing legacy entry '+name)) for name in ('prefix','tail','rowpair','rowtriple','rowquad')}
+-            one(r'^FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32$',guard,'Q matrix family mismatch')
+-            require(all(value>0 for value in entries.values()),'Q legacy helper not entered')
+-            one(r'^PASS: 972 dispatch cases; exact per-case rowseven entries and bitwise scalar reference$',dispatch,'Q dispatch972 missing')
+-            one(r'^PASS: 432 direct fallback cases; kh1\.\.6, readonly/guard/canary and bitwise scalar reference$',dispatch,'Q direct432 missing')
++            one(r'^FULL_MATRIX_COUNTS core=3888 narrow=144 small=720 larger=32$',guard,'X matrix family mismatch')
++            require(all(value>0 for value in entries.values()),'X legacy helper not entered')
++            one(r'^PASS: 972 dispatch cases; exact per-case rowseven entries and bitwise scalar reference$',dispatch,'X dispatch972 missing')
++            one(r'^PASS: 432 direct fallback cases; kh1\.\.6, readonly/guard/canary and bitwise scalar reference$',dispatch,'X direct432 missing')
+             mask=(1<<threads)-1
+             extra={}
+             for phase,n in (('dispatch',756),('direct',1080)):
+@@ -237,7 +257,7 @@
+         extra_manual_hash_audit=False,compiler_version='10.3.1',build_commands=commands,stage_exits=[dict(stage=s,exit_code=0) for s in stage_names()],
+         allocation=dict(cpus=cpus,numa_node=numa),assembly=assembly,performance_measured=False,performance_requires_root_review=True,
+         automatic_performance_submission=False,spill_is_correctness_failure=False,executed_locally=False,executed_remotely=True,
+-        sanitizer='not_run',issues=[],note='Actual independent Q diagnostics only; old C40/C47/C48 logs provide no C51 PASS. No speed or promotion claim.')
++        sanitizer='not_run',issues=[],note='Actual independent X diagnostics only; parent Q/C51 and other candidates provide no C53 PASS. No speed or promotion claim.')
+ 
+ 
+ def failed_result(base,version):
+--- sep13q-checks/freeze_returned.py
++++ sep13x-checks/freeze_returned.py
+@@ -1,6 +1,6 @@
+-"""Atomically freeze Q evidence; local file copying/text inspection only.
+-
+-Usage: python3 .runs/conv/sep13q-checks/freeze_returned.py VERSION [--failed]
++"""Atomically freeze X evidence; local file copying/text inspection only.
++
++Usage: python3 .runs/conv/sep13x-checks/freeze_returned.py VERSION [--failed]
+ This does not run acceptance, compile, test, submit, poll, SSH or publish.
+ Original metadata/source/raw files are copied unchanged. Existing destination
+ or staging trees are never removed or overwritten, including failed freezes.
+@@ -18,8 +18,9 @@
+ sys.dont_write_bytecode = True
+ BASE=Path(__file__).resolve().parent
+ ROOT=BASE.parents[2]
+-VERSIONS=('C51-row7x3u1',)
+-EXPECTED={'C51-row7x3u1':dict(full=4784,dispatch=972,direct=432,total=37128)}
++VERSIONS=('C53-row7cursors',)
++SOURCE_SHA256='d83d535334dfd55925426a515a0fd5843c090fff4c56d44f870fd2460a4d5cd0'
++EXPECTED={'C53-row7cursors':dict(full=4784,dispatch=972,direct=432,total=37128)}
+ SOURCE_NAMES={'conv2d.c','check_conv_guard.c','check_sve_dispatch.c','remote_job.sh','candidate.env'}
+ TERMINAL={'SUCCEEDED','FAILED','CANCELLED','CANCELED','TIMEOUT','TERMINATED'}
+ ATTACHMENTS={
+@@ -27,6 +28,9 @@
+     'accept_returned.py':'diagnostic-accept_returned.py',
+     'freeze_returned.py':'diagnostic-freeze_returned.py',
+     'INTERFACE.md':'diagnostic-INTERFACE.md',
++    'STATIC_REVIEW.md':'diagnostic-STATIC_REVIEW.md',
++    'Q-to-X.patch':'diagnostic-Q-to-X.patch',
++    'PREPARED_FILES.json':'diagnostic-PREPARED_FILES.json',
+ }
+ 
+ 
+@@ -48,6 +52,7 @@
+     job=read_json(source/'job.json')
+     prepared=read_json(source/'prepared.json')
+     hashes=read_json(source/'source-hashes.json')
++    require(hashes.get('conv2d.c')==SOURCE_SHA256,'X archive requires reviewed C53 source identity')
+     expected=EXPECTED[version]
+     require(job.get('version')==version and result.get('candidate')==version
+         and prepared.get('candidate')==version,'Candidate identity mismatch')
+@@ -67,7 +72,7 @@
+         and job.get('source_hashes')==hashes and prepared.get('source_hashes')==hashes
+         and prepared.get('source_sha256')==hashes['conv2d.c'],
+         'Original prepared/job source identity missing or inconsistent')
+-    # Preserve the mandatory original Q byte-count manifest; compare existing
++    # Preserve the mandatory original X byte-count manifest; compare existing
+     # metadata only, with no additional source digest computation.
+     manifest_path=source/'source-manifest.json'
+     manifest=read_json(manifest_path)
+@@ -111,7 +116,7 @@
+             and result.get('full_cases')==6*expected['full']
+             and result.get('dispatch_cases')==6*expected['dispatch']
+             and result.get('direct_cases',0)==6*expected['direct'],
+-            'Accepted per-path/total counts differ from Q plan')
++            'Accepted per-path/total counts differ from X plan')
+         configurations=result.get('configurations') or []
+         require(isinstance(configurations,list) and len(configurations)==6 and
+             {(row.get('sve_bytes'),row.get('threads')) for row in configurations}==
+@@ -130,6 +135,9 @@
+             and assembly.get('whole_source_fma_count')==0 and assembly.get('transitions_reviewed') is True
+             and assembly.get('whole_helper_stack_reviewed') is True
+             and assembly.get('all_stages_and_transitions_reviewed') is True
++            and assembly.get('cursor_addressing_reviewed') is True
++            and assembly.get('shared_coefficient_representation')=='seven_cross_t_cursors'
++            and assembly.get('arithmetic_region_count_per_helper')==13
+             and assembly.get('dispatch_reviewed') is True
+             and assembly.get('shape')==dict(rows_per_group=7,vectors_per_row=3,accumulators=21),
+             'Actual thirteen-stage rowseven and complete transition/dispatch review missing')
+@@ -148,8 +156,8 @@
+     parser.add_argument('--failed',action='store_true')
+     args=parser.parse_args()
+     source=BASE/args.version
+-    target=BASE.parent/args.version/'sve-correctness-sep13q'
+-    staging=target.with_name('.sve-correctness-sep13q.preparing')
++    target=BASE.parent/args.version/'sve-correctness-sep13x'
++    staging=target.with_name('.sve-correctness-sep13x.preparing')
+     require(source.is_dir() and target.parent.is_dir(),'Source/candidate directory missing')
+     # Respect shared workflow locking, but do not modify any other evidence.
+     with (ROOT/'.runs/.workflow.lock').open('a') as handle:
+--- sep13q-checks/C51-row7x3u1/source/candidate.env
++++ sep13x-checks/C53-row7cursors/source/candidate.env
+@@ -1,4 +1,4 @@
+-CANDIDATE=C51-row7x3u1
++CANDIDATE=C53-row7cursors
+ EXPECTED_ACC=3
+ EXPECTED_FULL=4784
+ EXPECTED_DISPATCH=972
+--- sep13q-checks/C51-row7x3u1/source/conv2d.c
++++ sep13x-checks/C53-row7cursors/source/conv2d.c
+@@ -1475,53 +1475,55 @@
+             }
+         }
+         /* Shared input rows advance all seven outputs in strict kernel-column order. */
+-        for (int t = 6; t < kh; ++t) {
+-            const float *row = base + (size_t)t * stride + i;
+-            const float *ka = kernel + ((size_t)t) * (size_t)kw;
+-            const float *kb = kernel + ((size_t)t - 1) * (size_t)kw;
+-            const float *kc = kernel + ((size_t)t - 2) * (size_t)kw;
+-            const float *kd = kernel + ((size_t)t - 3) * (size_t)kw;
+-            const float *ke = kernel + ((size_t)t - 4) * (size_t)kw;
+-            const float *kf = kernel + ((size_t)t - 5) * (size_t)kw;
+-            const float *kg = kernel + ((size_t)t - 6) * (size_t)kw;
+-            for (int ik = 0; ik < kw; ++ik) {
+-                const svfloat32_t ak = svdup_n_f32(ka[ik]);
+-                const svfloat32_t bk = svdup_n_f32(kb[ik]);
+-                const svfloat32_t ck = svdup_n_f32(kc[ik]);
+-                const svfloat32_t dk = svdup_n_f32(kd[ik]);
+-                const svfloat32_t ek = svdup_n_f32(ke[ik]);
+-                const svfloat32_t fk = svdup_n_f32(kf[ik]);
+-                const svfloat32_t gk = svdup_n_f32(kg[ik]);
+-                /* One source-level input window; GCC may reschedule. */
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
+-                    a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
+-                    b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
+-                    c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
+-                    d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
+-                    e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
+-                    f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
+-                    g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
+-                    a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
+-                    b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
+-                    c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
+-                    d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
+-                    e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
+-                    f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
+-                    g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
+-                }
+-                {
+-                    const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+-                    a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
+-                    b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
+-                    c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
+-                    d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
+-                    e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
+-                    f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
+-                    g2 = svadd_f32_x(pg, g2, svmul_f32_x(pg, v, gk));
++        {
++            const float *ka = kernel + (size_t)6 * (size_t)kw;
++            const float *kb = kernel + (size_t)5 * (size_t)kw;
++            const float *kc = kernel + (size_t)4 * (size_t)kw;
++            const float *kd = kernel + (size_t)3 * (size_t)kw;
++            const float *ke = kernel + (size_t)2 * (size_t)kw;
++            const float *kf = kernel + (size_t)1 * (size_t)kw;
++            const float *kg = kernel;
++            for (int t = 6; t < kh; ++t) {
++                const float *row = base + (size_t)t * stride + i;
++                for (int ik = 0; ik < kw; ++ik) {
++                    const svfloat32_t ak = svdup_n_f32(*ka++);
++                    const svfloat32_t bk = svdup_n_f32(*kb++);
++                    const svfloat32_t ck = svdup_n_f32(*kc++);
++                    const svfloat32_t dk = svdup_n_f32(*kd++);
++                    const svfloat32_t ek = svdup_n_f32(*ke++);
++                    const svfloat32_t fk = svdup_n_f32(*kf++);
++                    const svfloat32_t gk = svdup_n_f32(*kg++);
++                    /* One source-level input window; GCC may reschedule. */
++                    {
++                        const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
++                        a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v, ak));
++                        b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v, bk));
++                        c0 = svadd_f32_x(pg, c0, svmul_f32_x(pg, v, ck));
++                        d0 = svadd_f32_x(pg, d0, svmul_f32_x(pg, v, dk));
++                        e0 = svadd_f32_x(pg, e0, svmul_f32_x(pg, v, ek));
++                        f0 = svadd_f32_x(pg, f0, svmul_f32_x(pg, v, fk));
++                        g0 = svadd_f32_x(pg, g0, svmul_f32_x(pg, v, gk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
++                        a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v, ak));
++                        b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v, bk));
++                        c1 = svadd_f32_x(pg, c1, svmul_f32_x(pg, v, ck));
++                        d1 = svadd_f32_x(pg, d1, svmul_f32_x(pg, v, dk));
++                        e1 = svadd_f32_x(pg, e1, svmul_f32_x(pg, v, ek));
++                        f1 = svadd_f32_x(pg, f1, svmul_f32_x(pg, v, fk));
++                        g1 = svadd_f32_x(pg, g1, svmul_f32_x(pg, v, gk));
++                    }
++                    {
++                        const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
++                        a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v, ak));
++                        b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v, bk));
++                        c2 = svadd_f32_x(pg, c2, svmul_f32_x(pg, v, ck));
++                        d2 = svadd_f32_x(pg, d2, svmul_f32_x(pg, v, dk));
++                        e2 = svadd_f32_x(pg, e2, svmul_f32_x(pg, v, ek));
++                        f2 = svadd_f32_x(pg, f2, svmul_f32_x(pg, v, fk));
++                        g2 = svadd_f32_x(pg, g2, svmul_f32_x(pg, v, gk));
++                    }
+                 }
+             }
+         }
+--- sep13q-checks/C51-row7x3u1/source/remote_job.sh
++++ sep13x-checks/C53-row7cursors/source/remote_job.sh
+@@ -46,7 +46,7 @@
+ print('NUMA_NODE=' + nodes[0])
+ CHECK_ALLOCATION
+ source candidate.env
+-[[ "$CANDIDATE" == C51-row7x3u1 && "$EXPECTED_ACC" == 3 ]]
++[[ "$CANDIDATE" == C53-row7cursors && "$EXPECTED_ACC" == 3 ]]
+ [[ "$EXPECTED_FULL" == 4784 && "$EXPECTED_DISPATCH" == 972 && "$EXPECTED_DIRECT" == 432 && "$EXPECTED_TOTAL" == 37128 ]]
+ [[ "$EXPECTED_DISPATCH_ROWSEVEN_ENTRIES" == 756 && "$EXPECTED_DIRECT_ROWSEVEN_ENTRIES" == 1080 ]]
+ printf 'CANDIDATE=%s\n' "$CANDIDATE"
+@@ -60,6 +60,7 @@
+ stage compiler compiler_check
+ write_manifest() {
+     sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env > source-sha256.txt || return "$?"
++    printf '%s  conv2d.c\n' d83d535334dfd55925426a515a0fd5843c090fff4c56d44f870fd2460a4d5cd0 | sha256sum -c - || return "$?"
+     cat source-sha256.txt
+ }
+ stage manifest write_manifest

@@ -1,0 +1,123 @@
++ python3 -
+ALLOWED_CPUS=152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189
+NUMA_NODE=node4
++ source candidate.env
+++ EXPECTED_ACC=8
++ [[ 8 == 8 ]]
++ date -u
+Fri Sep 11 08:02:05 UTC 2026
++ hostname
+COMPUTE_NODE_1
++ gcc --version
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
++ sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env
++ cat source-sha256.txt
+9895bd9e0e0d71ff0f71dfcc6b25f389d46fb921aa3471562a5254c66988d1ab  conv2d.c
+b82ec6f3bc445ad28ca9b0d22c0ef005ef87dbf8769b7e68806e1fdc9015c223  check_conv_guard.c
+6adebfeae03eca0836bab48bad75f97d701c14e4df5df4a7cb1ef44d1549778f  check_sve_dispatch.c
+3313d76b501b8f4acd0704f65b4b6e4aa8a12be9f485a9d7cd246f0ce059470c  remote_job.sh
+34d2afbd638d9241c81ec623f10f98d341e071684dab903f45d864e077b652e0  candidate.env
++ export OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ flags=(-O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp "-DEXPECTED_ACC=$EXPECTED_ACC")
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=8 check_conv_guard.c conv2d.c -o check_conv_guard
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee guard-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=32 THREADS=1
+PASS: 3268 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for threads in 1 4
++ tee guard-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 16
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=32 THREADS=4
+PASS: 3268 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee guard-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=64 THREADS=1
+PASS: 3268 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for threads in 1 4
++ tee guard-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 32
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=64 THREADS=4
+PASS: 3268 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee guard-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=128 THREADS=1
+PASS: 3268 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ for threads in 1 4
++ tee guard-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_conv_guard 64
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=128 THREADS=4
+PASS: 3268 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=8 -finstrument-functions check_sve_dispatch.c -o check_sve_dispatch
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee dispatch-vl16-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 16 smoke
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=32 THREADS=1
+PASS: 24 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=120 SVE_TAIL_ACTUAL_ENTRIES=120
++ for threads in 1 4
++ tee dispatch-vl16-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 16 smoke
+SVE_BYTES=16 SVE_LANES=4 BLOCK_OUTPUTS=32 THREADS=4
+PASS: 24 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=120 SVE_TAIL_ACTUAL_ENTRIES=120
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee dispatch-vl32-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 32 smoke
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=64 THREADS=1
+PASS: 24 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=120 SVE_TAIL_ACTUAL_ENTRIES=120
++ for threads in 1 4
++ tee dispatch-vl32-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 32 smoke
+SVE_BYTES=32 SVE_LANES=8 BLOCK_OUTPUTS=64 THREADS=4
+PASS: 24 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=120 SVE_TAIL_ACTUAL_ENTRIES=120
++ for bytes in 16 32 64
++ for threads in 1 4
++ tee dispatch-vl64-t1.log
++ OMP_NUM_THREADS=1
++ ./check_sve_dispatch 64 smoke
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=128 THREADS=1
+PASS: 24 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=120 SVE_TAIL_ACTUAL_ENTRIES=120
++ for threads in 1 4
++ tee dispatch-vl64-t4.log
++ OMP_NUM_THREADS=4
++ ./check_sve_dispatch 64 smoke
+SVE_BYTES=64 SVE_LANES=16 BLOCK_OUTPUTS=128 THREADS=4
+PASS: 24 convolution cases; readonly input/kernel, guarded allocation edges, poisoned/guarded output, bitwise scalar reference
+SVE_PREFIX_ACTUAL_ENTRIES=120 SVE_TAIL_ACTUAL_ENTRIES=120
++ gcc -O3 -std=c11 -D_DEFAULT_SOURCE -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DEXPECTED_ACC=8 -S conv2d.c -o conv2d-sve.s
++ printf 'SANITIZER_STATUS=NOT_RUN; this job uses guard pages and bitwise reference checks\n'
+SANITIZER_STATUS=NOT_RUN; this job uses guard pages and bitwise reference checks
++ printf 'PROBE_COMPLETE=1\n'
+PROBE_COMPLETE=1
++ finish
++ local code=0 log_code=0
++ trap - EXIT
++ exec

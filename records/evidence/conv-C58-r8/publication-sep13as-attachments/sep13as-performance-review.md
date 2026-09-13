@@ -1,0 +1,16 @@
+# AS C62 performance driver static review
+
+Reviewer `/root/c61_review_resume`, 2026-09-13. Read complete `sep13as-performance.py` and its `from-aq.patch`. Python AST parsing only; no driver import/execution, network, operator compilation, test or submission. This file is the sole edit.
+
+**No functional static blocker found.** The active `AR_JOB_ID=None` deliberately prevents diagnostic gate completion and performance submission before an actual own AR job is saved and bound. The script must remain unexecuted for performance until C62's own AR acceptance and actual assembly review exist.
+
+- Candidate is C62-row7x2shared4, current record parent C58-r1, prepared and unverified. The source identity gate is exactly `e6cc9bdb4c14e9f6982f687123379ebf5dfb2013777f7bb076c04edd4827dc8a`. Control strategy correctly describes the joint seven-row/two-vector/shared4 tile. Original source parent remains C58-r1 even when the comparison parent is set to the closing control.
+- Independent controls are C58-r8 and C58-r9, around C62. At review, neither control directory/record nor AS campaign existed. Both controls are generated unchanged from the current C7 and later checked against the saved baseline source. Existing plans/member manifests block resubmission.
+- The diagnostic path is C62's `sve-correctness-sep13ar`; passed/complete, 44328 cases, candidate identity, bound original AR job, source identity and actual assembly/root reviews are required. A fresh AR scheduler query must return SUCCEEDED with zero job/system exits before reserving AS. The root must actually read the returned reviews, not rely merely on file presence.
+- Existing C7 effective settings must match exactly. The same unchanged group transport runs the three members in order within one allocation; each runs three full suites. Result collection preserves all four-case/three-sample member results, validates original job and wrapper exits, raw samples, same machine/settings/compiler/resources and maximum error zero. All **36** official-case samples are required.
+- Both opening and closing standard comparison gates must qualify before independent confirmation is considered. Numerical tolerance, sample count, machine comparison, performance eligibility and no-automatic-promotion/packaging behavior are unchanged from AQ. Slow or unsuccessful measurements remain evidence and do not replace C7.
+- Metadata snapshot logic retains original creation records and uses unique `pre-as-experiment.json`; it does not require original creation metadata to equal subsequently extended metadata wholesale.
+
+Two non-functional error strings remain from the template: `Original bound AP` should read `Original bound AR`, and `Reviewed single change` would more accurately say `Reviewed joint tile source`. Conditions use the correct AR variable and C62 hash, so these strings do not weaken or redirect a gate. Root may correct them before execution and retain the original preparation diff; reviewer did not edit the driver.
+
+AR diagnostic template itself is outside this review and must be reviewed separately when prepared, especially EXPECTED_ACC=2 and the changed 2VL/4VL width boundary coverage. This report does not claim C62 has passed any diagnostic or performance measurement.

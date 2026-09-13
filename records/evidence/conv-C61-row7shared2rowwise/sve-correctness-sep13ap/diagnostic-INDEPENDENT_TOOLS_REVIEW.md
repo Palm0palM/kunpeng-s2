@@ -1,0 +1,1 @@
+This template has root adaptation review only; no new independent agent claimed. It reuses previously independently reviewed/exercised AN transport and numerical acceptor, with identities changed to C61/AP and original AO1589611 gate. Full adaptation diffs retained. No checker or numerical threshold changes; actual returned assembly review remains pending.

@@ -1,0 +1,3 @@
+# AP C61 prepared diagnostic
+
+Source C61 row-wise coefficient lifetime from C7. Reuse AN two checker bytes exactly and same44328/19stage remote wrapper, only identity/SHA changed. CurrentC7 parent/source and candidate4file/transport5file identities checked. Gate originalAO1589611 complete36sample campaign plus live terminal status and own unique reservation. Resource38CPU24576MiBpackedNUMA1800/GCC10.3.1 strict/generic unchanged. Acceptor must read actual AP_SUMMARY and original logs; returned targetreview/rootreview required before freeze. No job has been submitted by this preparation. Root must read diff and currentquota<40 beforeGO. No localoperator or reset.

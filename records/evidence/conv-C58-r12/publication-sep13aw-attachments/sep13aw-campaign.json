@@ -1,0 +1,447 @@
+{
+  "round": "sep13aw",
+  "status": "complete",
+  "measurement_order": [
+    "C58-r12",
+    "C64-row7boundaryrowwise",
+    "C58-r13"
+  ],
+  "candidate": "C64-row7boundaryrowwise",
+  "baseline_label": "C7",
+  "baseline_source": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "expected_benchmark_cases": 36,
+  "diagnostic_job": "1590847",
+  "confirmation_pending": [],
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "performance_job": "1590883",
+  "performance_group": "kp-conv-group-d8130bfc5c88",
+  "results": [
+    {
+      "version": "C58-r12",
+      "total_median_ms": 438.15999999999997,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            52.01,
+            51.85,
+            51.86
+          ],
+          "median_ms": 51.86,
+          "min_ms": 51.85,
+          "max_ms": 52.01,
+          "spread_pct": 0.30852294639413147,
+          "gflops": [
+            1449.3071,
+            1453.6116,
+            1453.5618
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.4,
+            58.69,
+            58.43
+          ],
+          "median_ms": 58.43,
+          "min_ms": 58.4,
+          "max_ms": 58.69,
+          "spread_pct": 0.49632038336470846,
+          "gflops": [
+            1425.2592,
+            1418.2271,
+            1424.5793
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            104.35,
+            104.21,
+            104.53
+          ],
+          "median_ms": 104.35,
+          "min_ms": 104.21,
+          "max_ms": 104.53,
+          "spread_pct": 0.30666027791088396,
+          "gflops": [
+            1543.6523,
+            1545.6395,
+            1540.8824
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            223.52,
+            223.19,
+            224.14
+          ],
+          "median_ms": 223.52,
+          "min_ms": 223.19,
+          "max_ms": 224.14,
+          "spread_pct": 0.4250178954903313,
+          "gflops": [
+            1546.9744,
+            1549.2279,
+            1542.6772
+          ],
+          "max_error": 0.0
+        }
+      ]
+    },
+    {
+      "version": "C64-row7boundaryrowwise",
+      "total_median_ms": 437.15,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.67,
+            51.65,
+            51.8
+          ],
+          "median_ms": 51.67,
+          "min_ms": 51.65,
+          "max_ms": 51.8,
+          "spread_pct": 0.2903038513644254,
+          "gflops": [
+            1458.9146,
+            1459.4178,
+            1455.0753
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.36,
+            58.35,
+            58.41
+          ],
+          "median_ms": 58.36,
+          "min_ms": 58.35,
+          "max_ms": 58.41,
+          "spread_pct": 0.10281014393419322,
+          "gflops": [
+            1426.221,
+            1426.3832,
+            1425.0172
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            104.06,
+            104.07,
+            104.06
+          ],
+          "median_ms": 104.06,
+          "min_ms": 104.06,
+          "max_ms": 104.07,
+          "spread_pct": 0.009609840476639347,
+          "gflops": [
+            1547.883,
+            1547.7517,
+            1547.8783
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            223.03,
+            223.06,
+            223.06
+          ],
+          "median_ms": 223.06,
+          "min_ms": 223.03,
+          "max_ms": 223.06,
+          "spread_pct": 0.013449296153501808,
+          "gflops": [
+            1550.337,
+            1550.1083,
+            1550.1649
+          ],
+          "max_error": 0.0
+        }
+      ]
+    },
+    {
+      "version": "C58-r13",
+      "total_median_ms": 437.74,
+      "cases": [
+        {
+          "dims": [
+            4096,
+            6144,
+            39,
+            39
+          ],
+          "times_ms": [
+            51.82,
+            51.87,
+            51.77
+          ],
+          "median_ms": 51.82,
+          "min_ms": 51.77,
+          "max_ms": 51.87,
+          "spread_pct": 0.19297568506367102,
+          "gflops": [
+            1454.4314,
+            1453.0398,
+            1455.9435
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6144,
+            4096,
+            41,
+            41
+          ],
+          "times_ms": [
+            58.43,
+            58.41,
+            58.43
+          ],
+          "median_ms": 58.43,
+          "min_ms": 58.41,
+          "max_ms": 58.43,
+          "spread_pct": 0.03422899195619224,
+          "gflops": [
+            1424.543,
+            1425.1325,
+            1424.6535
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            4256,
+            6390,
+            55,
+            55
+          ],
+          "times_ms": [
+            104.49,
+            104.3,
+            104.16
+          ],
+          "median_ms": 104.3,
+          "min_ms": 104.16,
+          "max_ms": 104.49,
+          "spread_pct": 0.31639501438158996,
+          "gflops": [
+            1541.4694,
+            1544.35,
+            1546.4553
+          ],
+          "max_error": 0.0
+        },
+        {
+          "dims": [
+            6390,
+            4256,
+            81,
+            81
+          ],
+          "times_ms": [
+            223.19,
+            223.22,
+            223.16
+          ],
+          "median_ms": 223.19,
+          "min_ms": 223.16,
+          "max_ms": 223.22,
+          "spread_pct": 0.02688292486222603,
+          "gflops": [
+            1549.2397,
+            1549.0484,
+            1549.4228
+          ],
+          "max_error": 0.0
+        }
+      ]
+    }
+  ],
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 0.13% 未超过测量波动/最低1%门槛 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.82,
+        "candidate_ms": 51.67,
+        "gain_pct": 0.28946352759552024
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.43,
+        "candidate_ms": 58.36,
+        "gain_pct": 0.11980147184665461
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.3,
+        "candidate_ms": 104.06,
+        "gain_pct": 0.23010546500478896
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.19,
+        "candidate_ms": 223.06,
+        "gain_pct": 0.05824633720148549
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r13"
+  },
+  "opening_control_comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 0.23% 未超过测量波动/最低1%门槛 1.00%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.86,
+        "candidate_ms": 51.67,
+        "gain_pct": 0.3663709988430346
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.43,
+        "candidate_ms": 58.36,
+        "gain_pct": 0.11980147184665461
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.35,
+        "candidate_ms": 104.06,
+        "gain_pct": 0.2779108768567245
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.52,
+        "candidate_ms": 223.06,
+        "gain_pct": 0.20579813886900858
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r12"
+  }
+}

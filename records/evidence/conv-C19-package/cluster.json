@@ -1,0 +1,63 @@
+{
+  "state": "submitted",
+  "created_at": "2026-09-11T08:41:30.486499+00:00",
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/kp-C19-package-1a41fe654d0e",
+  "host": "CLUSTER_HOST",
+  "user": "REDACTED_USER",
+  "port": 22,
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "job_id": "1507738",
+  "submission_started_at": "2026-09-11T08:41:30.884332+00:00",
+  "submit_command": "dsub -n kp-C19-package-1a41fe654d0e -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/kp-C19-package-1a41fe654d0e/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/kp-C19-package-1a41fe654d0e/remote_job.sh",
+  "submitted_at": "2026-09-11T08:41:31.390744+00:00",
+  "package_verification": {
+    "zip_sha256": "d0887d526ea122ebe10d3aef8b5fe724b82ff4fdbef32e31f2628b68ea9d7206",
+    "source_hashes": {
+      "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+      "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "conv2d.c": "7e148fc0dbd2d3eb387a51861444d869a55917fd4d5f8bef40dd6b926ef6854c",
+      "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+    }
+  },
+  "status_checked_at": "2026-09-11T08:42:56.211299+00:00",
+  "status_returncode": 0,
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1507738",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "fetch_state": "complete",
+  "fetched_at": "2026-09-11T08:42:56.722303+00:00",
+  "artifacts_sha256": {
+    "benchmark.log": "2fb4d4c6f51306dd29aa64417d2ffe04ae8d393a650c5f57630e4ea9afb7aef9",
+    "environment.log": "6be7a861f9d4d6a4d9a20c98be88c5b6596126b1837aa83f1ac3426727165ef1",
+    "source-sha256.txt": "defb39f34c5f87cefc40d2e4090e0178f6862352edaaa5a539fb8b0488ea77d5",
+    "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  }
+}

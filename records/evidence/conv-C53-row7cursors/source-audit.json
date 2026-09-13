@@ -1,0 +1,64 @@
+{
+  "candidate": "C53-row7cursors",
+  "parent": "C51-row7x3u1",
+  "parent_job_id": "1581822",
+  "parent_frozen_directory": ".runs/conv/C51-row7x3u1/sve-correctness-sep13q",
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "d83d535334dfd55925426a515a0fd5843c090fff4c56d44f870fd2460a4d5cd0",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "parent_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "creation_source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "5c8a861915d9b172f2cbf7b1b45e028e2d8afab2a44e01dd328424fc6c1012ff",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "creation_metadata_hashes_preserved": true,
+  "prepared_record_matches_current_source": true,
+  "changed_files": [
+    "conv2d.c"
+  ],
+  "unchanged_submission_files": [
+    "README.md",
+    "bench_conv.c",
+    "run.sh"
+  ],
+  "changed_parent_line_start": 1477,
+  "changed_parent_line_end": 1527,
+  "changed_candidate_line_start": 1477,
+  "changed_candidate_line_end": 1529,
+  "before_shared_bytes_unchanged": true,
+  "after_shared_bytes_unchanged": true,
+  "original_input_and_arithmetic_lines_identical_except_scope_indent": true,
+  "original_ik_loop_unchanged": true,
+  "shared_scope_resets_each_output_tile": true,
+  "cursor_initial_kernel_rows": [
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    0
+  ],
+  "cursor_step_elements": 1,
+  "cursor_address_invariant": "At output row r, shared(t,ik): kernel+(6-r)*kw+(t-6)*kw+ik == kernel+(t-r)*kw+ik",
+  "statements_per_column": {
+    "coefficient_broadcasts": 7,
+    "input_loads": 3,
+    "multiplies": 21,
+    "adds": 21
+  },
+  "compiled": false,
+  "executed": false,
+  "diagnostic_pass": false,
+  "performance_measured": false
+}

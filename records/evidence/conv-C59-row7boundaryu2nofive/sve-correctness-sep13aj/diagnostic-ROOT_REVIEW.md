@@ -1,0 +1,5 @@
+# AJ root pre-submit review
+
+Root read the complete final driver and original acceptor on 2026-09-13. C59 production source previously independently verified to remove only input_5 unroll2 pragma from passed C58 source; all three companion files unchanged. AK1583680 confirmedtrue and AL1589186 exactZIP12PASS are complete; C7 is promoted and public at be4f21f. Added actual AL identity shares the real terminal query gate with fixed AK, AI and AH; no pending P/AJ reservation is allowed. Quota freshly read35%, stop40%, no reset.
+
+Transport retains exclusive reservation before upload, original job ID for status/fetch, complete resources38CPU24576MiBsingleNUMA1800, source manifest checks, failure evidence and original six-config44328 matrix. No local operator execution or numerical-rule change. Root accepts only actual returned numerical logs and targeted assembly review; prepared counts are not results. Original acceptor requires existing independent and root returned reviews before one-shot archive; neither performance nor promotion is automatic.

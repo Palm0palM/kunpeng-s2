@@ -1,0 +1,25 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -342,19 +342,19 @@
+                 const float *p = row + ik;
+                 const svfloat32_t v0 = svld1(pg, p);
+                 const svfloat32_t v1 = svld1(pg, p + 1 * lanes);
+-                const svfloat32_t x0 = svext_f32(v0, v1, 1);
++                const svfloat32_t x0 = svld1(pg, p + 0 * lanes + 1);
+                 a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, v0, ak0));
+                 a0 = svadd_f32_x(pg, a0, svmul_f32_x(pg, x0, ak1));
+                 b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, v0, bk0));
+                 b0 = svadd_f32_x(pg, b0, svmul_f32_x(pg, x0, bk1));
+                 const svfloat32_t v2 = svld1(pg, p + 2 * lanes);
+-                const svfloat32_t x1 = svext_f32(v1, v2, 1);
++                const svfloat32_t x1 = svld1(pg, p + 1 * lanes + 1);
+                 a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, v1, ak0));
+                 a1 = svadd_f32_x(pg, a1, svmul_f32_x(pg, x1, ak1));
+                 b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, v1, bk0));
+                 b1 = svadd_f32_x(pg, b1, svmul_f32_x(pg, x1, bk1));
+                 const svfloat32_t v3 = svld1(pg, p + 3 * lanes);
+-                const svfloat32_t x2 = svext_f32(v2, v3, 1);
++                const svfloat32_t x2 = svld1(pg, p + 2 * lanes + 1);
+                 a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, v2, ak0));
+                 a2 = svadd_f32_x(pg, a2, svmul_f32_x(pg, x2, ak1));
+                 b2 = svadd_f32_x(pg, b2, svmul_f32_x(pg, v2, bk0));

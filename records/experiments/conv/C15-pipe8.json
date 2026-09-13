@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C15-pipe8",
+  "parent": "C13-r3",
+  "strategy": "八累加器不变，逐对处理相邻输入向量，缩短输入寄存器生存期并减少 svext 前复制；浮点累加顺序保持",
+  "created_at": "2026-09-11T07:52:32.348816+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "9895bd9e0e0d71ff0f71dfcc6b25f389d46fb921aa3471562a5254c66988d1ab",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-11T08:12:36.436341+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep11",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "5ba1d67e16d33b342b1c6249e9824b887571cf6f421ea74a79288faee327692a",
+  "log": ".runs/conv/C15-pipe8/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        66.36,
+        67.43,
+        66.09
+      ],
+      "median_ms": 66.36,
+      "min_ms": 66.09,
+      "max_ms": 67.43,
+      "spread_pct": 2.0192887281494927,
+      "gflops": [
+        1135.8692,
+        1117.8948,
+        1140.5249
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        81.21,
+        81.46,
+        81.9
+      ],
+      "median_ms": 81.46,
+      "min_ms": 81.21,
+      "max_ms": 81.9,
+      "spread_pct": 0.8470414927571961,
+      "gflops": [
+        1024.962,
+        1021.8326,
+        1016.2923
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        138.22,
+        139.27,
+        138.74
+      ],
+      "median_ms": 138.74,
+      "min_ms": 138.22,
+      "max_ms": 139.27,
+      "spread_pct": 0.7568113017154471,
+      "gflops": [
+        1165.3455,
+        1156.5939,
+        1161.0067
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        304.03,
+        305.73,
+        304.15
+      ],
+      "median_ms": 304.15,
+      "min_ms": 304.03,
+      "max_ms": 305.73,
+      "spread_pct": 0.558934736149941,
+      "gflops": [
+        1137.2826,
+        1130.9633,
+        1136.8462
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 590.71,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "4",
+    "ALLOWED_CPUS": "152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1507595",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -0.10% 未超过测量波动/最低1%门槛 2.02%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 66.26,
+        "candidate_ms": 66.36,
+        "gain_pct": -0.15092061575610372
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 81.12,
+        "candidate_ms": 81.46,
+        "gain_pct": -0.4191321499013674
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 138.59,
+        "candidate_ms": 138.74,
+        "gain_pct": -0.10823291723790006
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 304.17,
+        "candidate_ms": 304.15,
+        "gain_pct": 0.006575270408008237
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "同编译器生成的完整汇编与C3逐字节相同；590.71ms较590.14ms无提升，不晋级。"
+}

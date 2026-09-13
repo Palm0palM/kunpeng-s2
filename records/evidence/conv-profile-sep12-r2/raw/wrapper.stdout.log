@@ -1,0 +1,102 @@
++ python3 -
++ source allocation.env
+++ PROFILE_CPUS=114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151
+++ NUMA_NODE=3
++ python3 profile_state.py running 'Allocated compute-node profile; no benchmark performance result will be recorded.'
++ sha256sum conv2d.c bench_conv.c run.sh build_c6.sh remote_job.sh profile_state.py analyze_profile.py
++ export COMPILER=gcc CC=gcc CPU_TARGET=generic CONV_BLOCK=32 CONV_KERNEL_UNROLL=2
++ COMPILER=gcc
++ CC=gcc
++ CPU_TARGET=generic
++ CONV_BLOCK=32
++ CONV_KERNEL_UNROLL=2
++ export OMP_NUM_THREADS=38 OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores NUMA_NODE
++ OMP_NUM_THREADS=38
++ OMP_DYNAMIC=FALSE
++ OMP_PROC_BIND=close
++ OMP_PLACES=cores
++ phase=build
++ source ./build_c6.sh
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/results/run-20260912-181226-UpXbHH/build.log build.log
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/results/run-20260912-181226-UpXbHH/environment.log environment.log
++ cp CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r2-20260912T101218Z/results/run-20260912-181226-UpXbHH/conv2d_test conv2d_profile
++ gcc -dumpfullversion -dumpversion
+++ cat compiler-version.txt
++ [[ 10.3.1 != 10.3.1 ]]
++ phase=tools
++ command -v perf
++ perf --version
++ cat /proc/sys/kernel/perf_event_paranoid
++ nm -an ./conv2d_profile
++ awk '$NF == "conv_sve_rowquad" {found++} END {exit found != 1}' symbols.txt
++ readelf -n ./conv2d_profile
+readelf: Warning: Gap in build notes detected from 0x400abd to 0x400ac3
++ set +e
++ objdump -d --disassemble=conv_sve_rowquad ./conv2d_profile
++ objdump_code=0
++ set -e
++ printf '%s\n' 0
++ phase=record
++ printf '%q ' perf record -e cycles:u -F 99 -m 128 -T -P -o perf.data -- numactl -N 3 ./conv2d_profile 6390 4256 81 81 1
++ printf '\n'
++ set +e
++ perf record -e cycles:u -F 99 -m 128 -T -P -o perf.data -- numactl -N 3 ./conv2d_profile 6390 4256 81 81 1
++ record_code=0
++ set -e
++ printf '%s\n' 0
++ ((  record_code != 0  ))
++ phase=reports
++ set +e
++ perf report -i perf.data --stdio --no-children -n --sort dso,symbol
++ printf '%s\n' 0
++ perf report -i perf.data --stdio --no-children -n --symbols conv_sve_rowquad --percentage absolute --sort pid,dso,symbol
++ printf '%s\n' 0
++ perf annotate -i perf.data --stdio --no-source --symbol conv_sve_rowquad --percent-type local-period
++ printf '%s\n' 0
++ set -e
++ phase=analysis
++ python3 analyze_profile.py
+{
+  "status": "inconclusive",
+  "reason": "Insufficient attributable quad samples, unparsed sample count, or incomplete disassembly.",
+  "complete": false,
+  "profile_is_benchmark": false,
+  "source_version": "C26-r1",
+  "formal_version": "C6",
+  "event": "cycles:u",
+  "frequency_hz": 99,
+  "case": [
+    6390,
+    4256,
+    81,
+    81,
+    1
+  ],
+  "scope": "All conv invocations in this official case, including validation/warmup/timed call; sampled IPs filtered to quad, not whole-process CPI.",
+  "benchmark_passes": 1,
+  "benchmark_failures": 0,
+  "benchmark_numeric_pass": true,
+  "tool_exit_codes": {
+    "record": 0,
+    "report-all": 0,
+    "report-quad": 0,
+    "annotate": 0,
+    "objdump": 0
+  },
+  "quad_samples": null,
+  "sample_threshold_for_region_review": 1000,
+  "sampling_warnings": [],
+  "undecoded_instruction_present": false,
+  "manual_review_required": true
+}
++ wait 667106
++ printf 'PROFILE_CAPTURE_FINISHED=1\n'
+PROFILE_CAPTURE_FINISHED=1
++ finish
++ local code=0 log_code=0
++ trap - EXIT
++ ((  code != 0  ))
++ exec
++ ((  code == 0 && log_code != 0  ))
++ printf '%s\n' 0
++ exit 0

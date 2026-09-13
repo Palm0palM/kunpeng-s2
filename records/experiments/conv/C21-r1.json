@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C21-r1",
+  "parent": "C19-r5",
+  "strategy": "Unchanged C21 three-output-row source; reversed-order confirmation against fresh C4 control C19-r5",
+  "created_at": "2026-09-11T10:45:30.766560+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "d5f40f40479dff5c10a300b28a392fffe2c3fa1978c2f2bd793600ca768836ac",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "source_parent": "C21-row3x4",
+  "comparison_baseline": "C19-r5",
+  "recorded_at": "2026-09-11T10:48:37.232231+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep11b",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "687f0afb4def54f60944a72feb44df1e2ffda91ee4804119aebfe1e70516d828",
+  "log": ".runs/conv/C21-r1/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        57.03,
+        57.02,
+        57.07
+      ],
+      "median_ms": 57.03,
+      "min_ms": 57.02,
+      "max_ms": 57.07,
+      "spread_pct": 0.0876731544800932,
+      "gflops": [
+        1321.6961,
+        1321.8743,
+        1320.7646
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        68.4,
+        68.23,
+        79.37
+      ],
+      "median_ms": 68.4,
+      "min_ms": 68.23,
+      "max_ms": 79.37,
+      "spread_pct": 16.286549707602337,
+      "gflops": [
+        1216.8216,
+        1219.8447,
+        1048.7043
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        118.4,
+        118.37,
+        118.39
+      ],
+      "median_ms": 118.39,
+      "min_ms": 118.37,
+      "max_ms": 118.4,
+      "spread_pct": 0.025339978038686657,
+      "gflops": [
+        1360.4812,
+        1360.7701,
+        1360.5007
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        258.49,
+        258.62,
+        258.49
+      ],
+      "median_ms": 258.49,
+      "min_ms": 258.49,
+      "max_ms": 258.62,
+      "spread_pct": 0.05029208093156232,
+      "gflops": [
+        1337.6776,
+        1337.0095,
+        1337.638
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 502.31,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1516233",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 10.67% 未超过测量波动/最低1%门槛 16.29%"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 62.95,
+        "candidate_ms": 57.03,
+        "gain_pct": 9.404289118347897
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 77.08,
+        "candidate_ms": 68.4,
+        "gain_pct": 11.261027503892052
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 132.94,
+        "candidate_ms": 118.39,
+        "gain_pct": 10.944787122009927
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 289.32,
+        "candidate_ms": 258.49,
+        "gain_pct": 10.656021014793303
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision_note": "Median improvement repeated, but one case spread 16.29% exceeds 10.67% gain; no promotion. Preserve all samples and repeat with opening and closing C4 controls."
+}

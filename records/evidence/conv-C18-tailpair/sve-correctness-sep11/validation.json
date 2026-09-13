@@ -1,0 +1,133 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C18-tailpair",
+  "job_id": "1507625",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1507625",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "34d2afbd638d9241c81ec623f10f98d341e071684dab903f45d864e077b652e0",
+    "check_conv_guard.c": "045d1da898595e56b3b2e588b4c167b3bb1ca24f1bf01a01fb2e4d1690b9037f",
+    "check_sve_dispatch.c": "6adebfeae03eca0836bab48bad75f97d701c14e4df5df4a7cb1ef44d1549778f",
+    "conv2d.c": "57b5a386417b736bb98b3e31e1ab14911af97419d43e9b263888895278937b92",
+    "remote_job.sh": "571c019484757fd045a28208ed9c2328373c175e935136c44e3e18309239df1a"
+  },
+  "current_candidate_source_matches": true,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs": 32,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs": 32,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs": 64,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs": 64,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs": 128,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs": 128,
+      "full_cases": 3268,
+      "dispatch_cases": 24,
+      "prefix_entries": 120,
+      "tail_entries": 120,
+      "passed": true
+    }
+  ],
+  "full_cases": 19608,
+  "dispatch_cases": 144,
+  "total_cases": 19752,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "tail_paired_loops": [
+      {
+        "vectors": 4,
+        "label": ".L5",
+        "instructions": 32,
+        "fmul": 8,
+        "fadd": 8,
+        "ext": 3,
+        "input_ld1w": 5,
+        "kernel_ld1rw": 2,
+        "stack_accesses": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0
+      },
+      {
+        "vectors": 2,
+        "label": ".L14",
+        "instructions": 20,
+        "fmul": 4,
+        "fadd": 4,
+        "ext": 1,
+        "input_ld1w": 3,
+        "kernel_ld1rw": 2,
+        "stack_accesses": 0,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0
+      }
+    ],
+    "tail_movprfx_count": 0,
+    "tail_fma_count": 0,
+    "whole_source_fma_count": 0,
+    "note": "Tail4 .L5 and tail2 .L14 use adjacent input ext reuse, separate strict multiplication/addition, and no vector accumulator spills, no stack-derived memory address in these loops, and no movprfx or FMA. Scalar setup/bookkeeping stack accesses exist outside the loops in a 176-byte frame. The unchanged predicated single-vector path remains present. Assembly observation only, not a speed result."
+  },
+  "evidence_directory": "raw"
+}

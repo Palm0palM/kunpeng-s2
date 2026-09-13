@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C60-row7shared2ext",
+  "parent": "C58-r5",
+  "strategy": "C7/C58-r1 shared two-column rowseven loop: reuse three first-column SVE windows using EXT for column two; load only one required tail float under a one-lane predicate; preserve every separate mul/add and all other code. Hypothesis only; register pressure may regress.",
+  "created_at": "2026-09-13T06:04:04.703188+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "planned",
+  "source_parent": "C58-r1",
+  "source_parent_label": "C7",
+  "source_origin": "C58-row7boundaryu2",
+  "own_diagnostic_passed": false,
+  "performance_measured": false,
+  "executed_locally": false,
+  "prepared_only": true,
+  "comparison_baseline": "C58-r5",
+  "reference_only": false,
+  "promotion_allowed": true,
+  "qualified_for_confirmation": false,
+  "diagnostic_source_version": "C60-row7shared2ext",
+  "diagnostic_job_id": "1589554",
+  "diagnostic_evidence_directory": ".runs/conv/C60-row7shared2ext/sve-correctness-sep13an"
+}

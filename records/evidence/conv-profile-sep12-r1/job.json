@@ -1,0 +1,25 @@
+{
+  "kind": "diagnostic_profile",
+  "source_version": "C26-r1",
+  "formal_version": "C6",
+  "profile_is_benchmark": false,
+  "complete": false,
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r1-20260912T092226Z",
+  "submitted": true,
+  "submit_attempted": true,
+  "resources": {
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "walltime_seconds": 1800
+  },
+  "command": "dsub -n conv-profile-sep12-r1 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r1-20260912T092226Z/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-profile-sep12-r1-20260912T092226Z/remote_job.sh",
+  "job_id": "1579456",
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579456",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  }
+}

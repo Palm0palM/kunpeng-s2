@@ -1,0 +1,347 @@
+{
+  "round": "sep13ak",
+  "status": "performance_complete",
+  "measurement_order": [
+    "C26-r38",
+    "C58-r1",
+    "C26-r39"
+  ],
+  "candidate_versions": [
+    "C58-r1"
+  ],
+  "reference_only_versions": [],
+  "opening_control": "C26-r38",
+  "primary_baseline": "C26-r39",
+  "source_parent_reference": null,
+  "suites_per_member": 3,
+  "expected_benchmark_cases": 36,
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "expected_compiler_banners": [
+    "gcc (GCC) 10.3.1"
+  ],
+  "record_environment": "kunpeng-gcc10-generic-38-sep13ak",
+  "record_reference": "官方内置参考",
+  "best_label": "C6",
+  "source_parents": {
+    "C58-r1": "C58-row7boundaryu2"
+  },
+  "candidate_source_hashes": {
+    "C58-r1": {
+      "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+      "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+      "conv2d.c": "c8d3fb6dc2a3b02ba509b029efe802dc1ec37430467642d23d5815f6beaea751",
+      "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+    }
+  },
+  "diagnostic_jobs": {
+    "C58-r1": "1583350"
+  },
+  "diagnostic_evidence_directories": {
+    "C58-r1": ".runs/conv/C58-row7boundaryu2/sve-correctness-sep13ah"
+  },
+  "diagnostic_source_versions": {
+    "C58-r1": "C58-row7boundaryu2"
+  },
+  "diagnostic_expected_checks": {
+    "C58-r1": 44328
+  },
+  "recent_evidence_sha256": {
+    ".runs/conv/sep13ai-campaign.json": "827cf53f415509a6fe5ed96cf867661b79bd60db7797fa50f16f0cb408553f04",
+    "records/experiments/conv/C26-r36.json": "60e67f3be91d44933f0f504f53c3e5a36d70cce6040254c01464dcb155df9ca0",
+    ".runs/conv/C26-r36/cluster.json": "e04d3c91636e371d2554610a5cb6876867512b8771e7cf4b572b29153b44d232",
+    "records/experiments/conv/C58-row7boundaryu2.json": "3c29cad8f86adaba6179ff22bfc73de0d59e2a1c42efc8687f28261b631ad26c",
+    ".runs/conv/C58-row7boundaryu2/cluster.json": "6f6f7714dba86f0c5d9db04df814a22183bba714eb56e76e14aedcb46ea8b717",
+    "records/experiments/conv/C26-r37.json": "feaf28aca98f92aa6e4160c79eccc00c68e24992f6d480235b6f0ab78e38520e",
+    ".runs/conv/C26-r37/cluster.json": "2252b77421b8420dc90ae5e2ee4b86d624222d8616a21e8cc7ef1a02423fa547"
+  },
+  "auxiliary_comparisons": {},
+  "confirmation_only": true,
+  "initial_qualification_round": "sep13ai",
+  "initial_qualification_job": "1583408",
+  "failed_confirmation_retry_allowed": false,
+  "selection_rule": "Only original36 AK samples: C58-r1 must pass both current same-job C6 gates. Total gain strictly exceeds max(1%, all compared case spreads); every case gain >= -1%. Write confirmation_passed separately; keep all slow samples.",
+  "attribution_rule": "C58-r1 is byte-identical to AI C58 and reuses its own frozen AH1583350. This is first independent confirmation of AI-qualified C58, not a retry of Y/S. No mixing AI/AK samples, failed-confirmation retry or parent attribution.",
+  "local_compilation_or_tests_run": false,
+  "official_score": null,
+  "automatic_confirmation": false,
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "submitted": true,
+  "submit_attempted": true,
+  "creation_experiment_sha256": {
+    "C26-r38": "2faab7421b8fa76df03a91c477e5ba029a26b4a76bf5ff78e4eb4f67f9061d9c",
+    "C58-r1": "26c967bf014d971e988489a88fd7490c2224c8b4ce85555ac1482f973adbe71e",
+    "C26-r39": "2e4cd54b6f636f25bcf538cfbd30220785f731f7bee8dbad78f966c2d817b09f"
+  },
+  "performance_job": "1583680",
+  "performance_group": "kp-conv-group-613c146139ea",
+  "results": [
+    {
+      "version": "C26-r38",
+      "total_median_ms": 452.26,
+      "cases_ms": [
+        51.42,
+        61.9,
+        107.31,
+        231.63
+      ],
+      "all_samples_ms": [
+        [
+          51.39,
+          51.42,
+          51.48
+        ],
+        [
+          61.87,
+          61.9,
+          61.93
+        ],
+        [
+          107.36,
+          107.29,
+          107.31
+        ],
+        [
+          231.63,
+          231.63,
+          231.73
+        ]
+      ],
+      "case_spreads_pct": [
+        0.1750291715285809,
+        0.09693053311793581,
+        0.06523157208088079,
+        0.04317230065189929
+      ],
+      "max_spread_pct": 0.1750291715285809,
+      "gain_pct": 0.002211068609458966,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "confirmation_passed": null,
+      "decision_note": "Unchanged C6 control; not a new candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    },
+    {
+      "version": "C58-r1",
+      "total_median_ms": 437.56,
+      "cases_ms": [
+        51.84,
+        58.39,
+        104.15,
+        223.18
+      ],
+      "all_samples_ms": [
+        [
+          51.84,
+          52.24,
+          51.74
+        ],
+        [
+          58.4,
+          58.39,
+          58.39
+        ],
+        [
+          104.15,
+          104.16,
+          104.15
+        ],
+        [
+          223.17,
+          223.49,
+          223.18
+        ]
+      ],
+      "case_spreads_pct": [
+        0.9645061728395061,
+        0.017126220243188918,
+        0.009601536245790594,
+        0.143382023478816
+      ],
+      "max_spread_pct": 0.9645061728395061,
+      "gain_pct": 3.2524819245141168,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "confirmation_passed": true,
+      "decision_note": "Independent C58 AK confirmation passed both current C6 gates. Return to root; no automatic promotion or ZIP.",
+      "comparison": {
+        "baseline": "C26-r39",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.43,
+            "candidate_ms": 51.84,
+            "gain_pct": -0.7972000777756245
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.91,
+            "candidate_ms": 58.39,
+            "gain_pct": 5.685672750767236
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.27,
+            "candidate_ms": 104.15,
+            "gain_pct": 2.9085485224200527
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.66,
+            "candidate_ms": 223.18,
+            "gain_pct": 3.6605369938703225
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.252481924514113,
+        "threshold_pct": 1.0
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r38",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.42,
+            "candidate_ms": 51.84,
+            "gain_pct": -0.8168028004667477
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.9,
+            "candidate_ms": 58.39,
+            "gain_pct": 5.670436187399027
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.31,
+            "candidate_ms": 104.15,
+            "gain_pct": 2.944739539651474
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.63,
+            "candidate_ms": 223.18,
+            "gain_pct": 3.648059405085692
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 3.2503427232123094,
+        "threshold_pct": 1.0
+      }
+    },
+    {
+      "version": "C26-r39",
+      "total_median_ms": 452.27,
+      "cases_ms": [
+        51.43,
+        61.91,
+        107.27,
+        231.66
+      ],
+      "all_samples_ms": [
+        [
+          51.43,
+          51.46,
+          51.36
+        ],
+        [
+          61.78,
+          61.91,
+          62.03
+        ],
+        [
+          107.26,
+          107.27,
+          107.29
+        ],
+        [
+          231.76,
+          231.66,
+          231.66
+        ]
+      ],
+      "case_spreads_pct": [
+        0.19443904335990944,
+        0.40381198513971894,
+        0.027966812715578576,
+        0.04316670983337405
+      ],
+      "max_spread_pct": 0.40381198513971894,
+      "gain_pct": 0.0,
+      "reference_only": false,
+      "qualified_for_confirmation": false,
+      "confirmation_passed": null,
+      "decision_note": "Unchanged C6 control; not a new candidate.",
+      "comparison": null,
+      "opening_control_comparison": null
+    }
+  ],
+  "final_selection": null,
+  "confirmation_pending": [],
+  "confirmation_passed": true,
+  "samples_mixed_with_initial_round": false,
+  "prior_decisions_unchanged": true
+}

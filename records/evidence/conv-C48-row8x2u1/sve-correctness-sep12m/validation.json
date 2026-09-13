@@ -1,0 +1,1134 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C48-row8x2u1",
+  "job_id": "1579843",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579843",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "expected_checks": {
+    "full_per_configuration": 5360,
+    "dispatch_per_configuration": 1080,
+    "direct_per_configuration": 504,
+    "configurations": 6,
+    "total": 41664
+  },
+  "total_cases": 41664,
+  "full_cases": 32160,
+  "dispatch_cases": 6480,
+  "direct_cases": 3024,
+  "runner_cases": 0,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 8,
+      "full_cases": 5360,
+      "dispatch_cases": 1080,
+      "direct_cases": 504,
+      "helper_entries": {
+        "prefix": 9528,
+        "tail": 9528,
+        "rowpair": 216,
+        "rowtriple": 2292,
+        "rowquad": 2280
+      },
+      "passed": true,
+      "dispatch_entries": 792,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 1260,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 8,
+      "full_cases": 5360,
+      "dispatch_cases": 1080,
+      "direct_cases": 504,
+      "helper_entries": {
+        "prefix": 9528,
+        "tail": 9528,
+        "rowpair": 216,
+        "rowtriple": 2292,
+        "rowquad": 2280
+      },
+      "passed": true,
+      "dispatch_entries": 792,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 1260,
+      "direct_worker_mask": 15
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 16,
+      "full_cases": 5360,
+      "dispatch_cases": 1080,
+      "direct_cases": 504,
+      "helper_entries": {
+        "prefix": 9528,
+        "tail": 9528,
+        "rowpair": 216,
+        "rowtriple": 2292,
+        "rowquad": 2280
+      },
+      "passed": true,
+      "dispatch_entries": 792,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 1260,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 16,
+      "full_cases": 5360,
+      "dispatch_cases": 1080,
+      "direct_cases": 504,
+      "helper_entries": {
+        "prefix": 9528,
+        "tail": 9528,
+        "rowpair": 216,
+        "rowtriple": 2292,
+        "rowquad": 2280
+      },
+      "passed": true,
+      "dispatch_entries": 792,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 1260,
+      "direct_worker_mask": 15
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 32,
+      "full_cases": 5360,
+      "dispatch_cases": 1080,
+      "direct_cases": 504,
+      "helper_entries": {
+        "prefix": 9528,
+        "tail": 9528,
+        "rowpair": 216,
+        "rowtriple": 2292,
+        "rowquad": 2280
+      },
+      "passed": true,
+      "dispatch_entries": 792,
+      "dispatch_worker_mask": 1,
+      "direct_entries": 1260,
+      "direct_worker_mask": 1
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 32,
+      "full_cases": 5360,
+      "dispatch_cases": 1080,
+      "direct_cases": 504,
+      "helper_entries": {
+        "prefix": 9528,
+        "tail": 9528,
+        "rowpair": 216,
+        "rowtriple": 2292,
+        "rowquad": 2280
+      },
+      "passed": true,
+      "dispatch_entries": 792,
+      "dispatch_worker_mask": 15,
+      "direct_entries": 1260,
+      "direct_worker_mask": 15
+    }
+  ],
+  "source_hashes": {
+    "candidate.env": "2bd53ab052acd30db6a78a9e458cf2fc8006bcf8659f8256da7b751afec4cc56",
+    "check_conv_guard.c": "affdc6ff80c5e0ba8cbc2dddb6b96ebc2c2c6b1822528b5769ac04171e44de0d",
+    "check_sve_dispatch.c": "a4108e2adba92df3da6f6ffedbef8ea1e9c0e262730de5f37ebfbc76cb549f4a",
+    "conv2d.c": "8623781dc784547e31b07facd65507b56ff40f6b5da3e617c1ef53f4a4f7f7c3",
+    "remote_job.sh": "5e2bc5eb820bb6baea2a690ec55275ee8ccbb290641b5be2f1c9ca45c6639332"
+  },
+  "source_hashes_verified": true,
+  "source_manifest_remote_matches": true,
+  "extra_manual_hash_audit": false,
+  "compiler_version": "10.3.1",
+  "build_commands": {
+    "commands": [
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=2",
+        "check_conv_guard.c",
+        "conv2d.c",
+        "-o",
+        "check_conv_guard"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=2",
+        "-finstrument-functions",
+        "check_sve_dispatch.c",
+        "-o",
+        "check_sve_dispatch"
+      ],
+      [
+        "gcc",
+        "-O3",
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-Wall",
+        "-Wextra",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-mcpu=generic",
+        "-fopenmp",
+        "-DEXPECTED_ACC=2",
+        "-S",
+        "conv2d.c",
+        "-o",
+        "conv2d-sve.s"
+      ]
+    ],
+    "actual_trace_locations": {
+      "probe.log": [
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=2",
+          "check_conv_guard.c",
+          "conv2d.c",
+          "-o",
+          "check_conv_guard"
+        ],
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=2",
+          "-finstrument-functions",
+          "check_sve_dispatch.c",
+          "-o",
+          "check_sve_dispatch"
+        ],
+        [
+          "gcc",
+          "-O3",
+          "-std=c11",
+          "-D_DEFAULT_SOURCE",
+          "-Wall",
+          "-Wextra",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-mcpu=generic",
+          "-fopenmp",
+          "-DEXPECTED_ACC=2",
+          "-S",
+          "conv2d.c",
+          "-o",
+          "conv2d-sve.s"
+        ]
+      ],
+      "build-guard.log": [],
+      "build-dispatch.log": [],
+      "build-assembly.log": []
+    }
+  },
+  "stage_exits": [
+    {
+      "stage": "allocation",
+      "exit_code": 0
+    },
+    {
+      "stage": "compiler",
+      "exit_code": 0
+    },
+    {
+      "stage": "manifest",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-guard",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "guard-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-dispatch",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl16-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl32-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t1",
+      "exit_code": 0
+    },
+    {
+      "stage": "dispatch-vl64-t4",
+      "exit_code": 0
+    },
+    {
+      "stage": "build-assembly",
+      "exit_code": 0
+    },
+    {
+      "stage": "complete",
+      "exit_code": 0
+    }
+  ],
+  "allocation": {
+    "cpus": [
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113
+    ],
+    "numa_node": "node2"
+  },
+  "assembly": {
+    "candidate": "C48-row8x2u1",
+    "job_id": "1579843",
+    "source_sha256": "8623781dc784547e31b07facd65507b56ff40f6b5da3e617c1ef53f4a4f7f7c3",
+    "compiler_version": "10.3.1",
+    "assembly_sha256": "3b6b3bff8b7e79e4f95c969a087107a0b00634a7b98e844fa7f50ddb05f90189",
+    "review_scope": "Actual uninstrumented roweight/helper fragment. Root independently reviews all actual conv2d/outlined dispatch functions before merging. No production object retained; no old-C40/C47 machine-code identity or performance claim.",
+    "review_complete": true,
+    "production_uninstrumented": true,
+    "whole_helper_stack_reviewed": true,
+    "all_stages_and_transitions_reviewed": true,
+    "abi_saves_distinguished": true,
+    "whole_source_fma_count": 0,
+    "whole_source_fma_reviewed": true,
+    "shape": {
+      "rows_per_group": 8,
+      "vectors_per_row": 2,
+      "accumulators": 16
+    },
+    "whole_machine_code_identical_claimed": false,
+    "production_object_disassembly_available": false,
+    "helpers": [
+      {
+        "symbol": "conv_sve_roweight",
+        "line_start": 5705,
+        "line_end": 6799,
+        "actual_clones": [],
+        "stack_frame_description": "Fixed624-byte frame from SUB sp,sp,#624 at5708; no scalable ADDVL/RDVL allocation. Only X/W register saves and scalar/pointer locals appear. Unlike C47, this actual helper uses no z8..z15 and has no D8..D15 ABI save/restore instructions. Saved X19..X28 and frame/link registers are integer ABI state, not vector spills. Arguments at old-SP are reused for the second rowquad tail call after restoring the frame.",
+        "vector_spill_loads": 0,
+        "vector_spill_stores": 0,
+        "spill_count_scope": "Static Z/Q/predicate data-spill instruction sites over the complete5705..6799 helper, including setup, all transitions, skipped-loop initialization, stores and fallback. These are not dynamic memory-operation totals.",
+        "spill_notes": "No Z/Q/predicate LDR/STR, no vector LD/ST through a stack-derived address and no D-register saves are present in the complete helper. x29=sp+16 is the only constructed SP alias and never feeds vector memory. Fixed slots112..216 and224..616 contain scalar dimensions, offsets or external input/kernel/output pointers; subsequent LD1W/LD1RW/ST1W through loaded external pointers are not stack spills. All16 accumulators remain in registers throughout the fifteen stages, while only two input windows and reused coefficient/product temporaries are needed. Scalar X26/X27 and X24 bookkeeping saves atsp+200/+208/+216 around shared are integer pointer preservation, not Z26/Z27 accumulator spills.",
+        "accumulator_register_mapping_after_shared_iteration": {
+          "a": [
+            "z20",
+            "z6"
+          ],
+          "b": [
+            "z19",
+            "z5"
+          ],
+          "c": [
+            "z21",
+            "z7"
+          ],
+          "d": [
+            "z22",
+            "z16"
+          ],
+          "e": [
+            "z23",
+            "z17"
+          ],
+          "f": [
+            "z24",
+            "z18"
+          ],
+          "g": [
+            "z25",
+            "z3"
+          ],
+          "h": [
+            "z26",
+            "z4"
+          ]
+        },
+        "transition_spill_review": "Read every line5705..6799 including all out-of-line branches. Leading phases initialize the next pair of accumulators in registers. input_6 .L4076160..6207 uses x0 as a moving kernel-column pointer and increments it by4 bytes while incrementing ik by1; it still performs exactly one kernel column, with14 FMUL/14 FADD. .L3946208 initializes h, saves scalar pointer state and sets t=7. Shared setup x4/x5/x6/x7/x8/x9/x10/x11 represents kernel rows7/6/5/4/3/2/1/0; x3 is input row t plus1VL, and x12=x3-oneVL_bytes is its first window. .L4086285 advances t, all eight kernel pointers by4*kw and x3 by4*stride, then repeats until t==kh. Shared exits restore only scalar pointer state. The seven trailing phases advance the still-active outputs and retain completed outputs in registers until16 ST1W stores in .L4116551. .L4276658 initializes the14 leading accumulators when kw<=0 then joins .L394, avoiding uninitialized values without vector stack materialization. No live output accumulator crosses either fallback call.",
+        "tail_and_fallback_review": "CMP kh,7 / BLE .L391 precedes the eight-row pointer setup. .L3916747..6781 calls rowquad on outputs0..3, then tail-branches rowquad at base+4*stride on outputs4..7. The second call writes dst7 and width into old-SP argument slots before restoring624 bytes, matching rowquad calling convention; these are scalar call arguments, not vector spills. Full tiles require ow-i >= CNTH, numerically2*svcntw float outputs; INCH advances i by precisely2*lanes, and x24 advances pointers by4*(2*lanes) bytes. Width-small .L4596782 sets i=0 and joins .L393. Positive horizontal remainder goes through .L4606687, two rowquad calls at column i and original global stride/dst-row pointers, covering outputs0..3 and4..7; no new full-vector load is issued for the partial tile by roweight. All fifteen phases increment ik by1 and check signed CMP/BGT kw, so kw=1 and odd/even kw need no separate unrolled-column remainder. Last input vector begins i+lanes+ik and ends i+2*lanes+ik-1 <= ow+kw-2. Last input row kh+6 is exactly required by output7. Per-output kernel rows0..kh-1 and columns0..kw-1 remain ordered, with separate FMUL/FADD.",
+        "arithmetic_and_load_review": "Shared .L4096230..6284 is54 actual instructions per single kernel column:16 ordinary FMUL,16 FADD,2 input LD1W,8 LD1RW coefficient broadcasts,1 LSL,9 ADD,1 CMP and1 BGT. No indexed FMUL, LD1RQW, DUP, EXT, MOVPRFX, vector MOV or spill occurs there. z1/z0 hold the two input windows; coefficient z2 is repeatedly broadcast/reused, with z27/z28 coefficient/product temporaries for the last two output rows. Thus actual scheduling mostly processes the two horizontal windows by output row; it does not hold eight coefficient vectors simultaneously. Fifteen-stage ordinary FMUL/FADD counts are2/4/6/8/10/12/14/16/14/12/10/8/6/4/2, with two input loads each and1..8..1 coefficient broadcasts. input_6 is47 instructions versus trailing_0 at48 because its kernel pointer increments directly rather than using an LSL; both normalize to one column. Static instruction/stack observations alone do not establish cycle count or a speed advantage.",
+        "stages": [
+          {
+            "stage": "input_0",
+            "label": ".L395",
+            "line_start": 5937,
+            "line_end": 5948,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row0, kernel rows0 -> output rows0; each of two horizontal vectors receives one kernel column.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 11,
+              "fmul": 2,
+              "fmul_ordinary": 2,
+              "fmul_indexed": 0,
+              "fadd": 2,
+              "ld1w": 2,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 11,
+              "fmul": 2,
+              "fmul_ordinary": 2,
+              "fmul_indexed": 0,
+              "fadd": 2,
+              "ld1w": 2,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_1",
+            "label": ".L397",
+            "line_start": 5956,
+            "line_end": 5974,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row1, kernel rows1,0 -> output rows0,1; each of two horizontal vectors receives one kernel column.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 18,
+              "fmul": 4,
+              "fmul_ordinary": 4,
+              "fmul_indexed": 0,
+              "fadd": 4,
+              "ld1w": 2,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 18,
+              "fmul": 4,
+              "fmul_ordinary": 4,
+              "fmul_indexed": 0,
+              "fadd": 4,
+              "ld1w": 2,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_2",
+            "label": ".L399",
+            "line_start": 5983,
+            "line_end": 6007,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row2, kernel rows2,1,0 -> output rows0,1,2; each of two horizontal vectors receives one kernel column.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 24,
+              "fmul": 6,
+              "fmul_ordinary": 6,
+              "fmul_indexed": 0,
+              "fadd": 6,
+              "ld1w": 2,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 24,
+              "fmul": 6,
+              "fmul_ordinary": 6,
+              "fmul_indexed": 0,
+              "fadd": 6,
+              "ld1w": 2,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_3",
+            "label": ".L401",
+            "line_start": 6017,
+            "line_end": 6047,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row3, kernel rows3,2,1,0 -> output rows0,1,2,3; each of two horizontal vectors receives one kernel column.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 30,
+              "fmul": 8,
+              "fmul_ordinary": 8,
+              "fmul_indexed": 0,
+              "fadd": 8,
+              "ld1w": 2,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 30,
+              "fmul": 8,
+              "fmul_ordinary": 8,
+              "fmul_indexed": 0,
+              "fadd": 8,
+              "ld1w": 2,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_4",
+            "label": ".L403",
+            "line_start": 6058,
+            "line_end": 6094,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row4, kernel rows4,3,2,1,0 -> output rows0,1,2,3,4; each of two horizontal vectors receives one kernel column.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 36,
+              "fmul": 10,
+              "fmul_ordinary": 10,
+              "fmul_indexed": 0,
+              "fadd": 10,
+              "ld1w": 2,
+              "ld1rw": 5,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 36,
+              "fmul": 10,
+              "fmul_ordinary": 10,
+              "fmul_indexed": 0,
+              "fadd": 10,
+              "ld1w": 2,
+              "ld1rw": 5,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_5",
+            "label": ".L405",
+            "line_start": 6106,
+            "line_end": 6148,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row5, kernel rows5,4,3,2,1,0 -> output rows0,1,2,3,4,5; each of two horizontal vectors receives one kernel column.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 42,
+              "fmul": 12,
+              "fmul_ordinary": 12,
+              "fmul_indexed": 0,
+              "fadd": 12,
+              "ld1w": 2,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 42,
+              "fmul": 12,
+              "fmul_ordinary": 12,
+              "fmul_indexed": 0,
+              "fadd": 12,
+              "ld1w": 2,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "input_6",
+            "label": ".L407",
+            "line_start": 6160,
+            "line_end": 6207,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row6, kernel rows6,5,4,3,2,1,0 -> output rows0,1,2,3,4,5,6; each of two horizontal vectors receives one kernel column.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 47,
+              "fmul": 14,
+              "fmul_ordinary": 14,
+              "fmul_indexed": 0,
+              "fadd": 14,
+              "ld1w": 2,
+              "ld1rw": 7,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 47,
+              "fmul": 14,
+              "fmul_ordinary": 14,
+              "fmul_indexed": 0,
+              "fadd": 14,
+              "ld1w": 2,
+              "ld1rw": 7,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "shared",
+            "label": ".L409",
+            "line_start": 6230,
+            "line_end": 6284,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row t=7..kh-1, kernel rows t,t-1,t-2,t-3,t-4,t-5,t-6,t-7 -> outputs0..7. Each iteration advances ik by1 across two input vectors.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 54,
+              "fmul": 16,
+              "fmul_ordinary": 16,
+              "fmul_indexed": 0,
+              "fadd": 16,
+              "ld1w": 2,
+              "ld1rw": 8,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 54,
+              "fmul": 16,
+              "fmul_ordinary": 16,
+              "fmul_indexed": 0,
+              "fadd": 16,
+              "ld1w": 2,
+              "ld1rw": 8,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_0",
+            "label": ".L412",
+            "line_start": 6308,
+            "line_end": 6356,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+0, kernel rowskh-1,kh-2,kh-3,kh-4,kh-5,kh-6,kh-7 -> output rows1,2,3,4,5,6,7; two horizontal vectors, one column per iteration.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 48,
+              "fmul": 14,
+              "fmul_ordinary": 14,
+              "fmul_indexed": 0,
+              "fadd": 14,
+              "ld1w": 2,
+              "ld1rw": 7,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 48,
+              "fmul": 14,
+              "fmul_ordinary": 14,
+              "fmul_indexed": 0,
+              "fadd": 14,
+              "ld1w": 2,
+              "ld1rw": 7,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_1",
+            "label": ".L414",
+            "line_start": 6362,
+            "line_end": 6404,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+1, kernel rowskh-1,kh-2,kh-3,kh-4,kh-5,kh-6 -> output rows2,3,4,5,6,7; two horizontal vectors, one column per iteration.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 42,
+              "fmul": 12,
+              "fmul_ordinary": 12,
+              "fmul_indexed": 0,
+              "fadd": 12,
+              "ld1w": 2,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 42,
+              "fmul": 12,
+              "fmul_ordinary": 12,
+              "fmul_indexed": 0,
+              "fadd": 12,
+              "ld1w": 2,
+              "ld1rw": 6,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_2",
+            "label": ".L416",
+            "line_start": 6410,
+            "line_end": 6446,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+2, kernel rowskh-1,kh-2,kh-3,kh-4,kh-5 -> output rows3,4,5,6,7; two horizontal vectors, one column per iteration.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 36,
+              "fmul": 10,
+              "fmul_ordinary": 10,
+              "fmul_indexed": 0,
+              "fadd": 10,
+              "ld1w": 2,
+              "ld1rw": 5,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 36,
+              "fmul": 10,
+              "fmul_ordinary": 10,
+              "fmul_indexed": 0,
+              "fadd": 10,
+              "ld1w": 2,
+              "ld1rw": 5,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_3",
+            "label": ".L418",
+            "line_start": 6452,
+            "line_end": 6482,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+3, kernel rowskh-1,kh-2,kh-3,kh-4 -> output rows4,5,6,7; two horizontal vectors, one column per iteration.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 30,
+              "fmul": 8,
+              "fmul_ordinary": 8,
+              "fmul_indexed": 0,
+              "fadd": 8,
+              "ld1w": 2,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 30,
+              "fmul": 8,
+              "fmul_ordinary": 8,
+              "fmul_indexed": 0,
+              "fadd": 8,
+              "ld1w": 2,
+              "ld1rw": 4,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_4",
+            "label": ".L420",
+            "line_start": 6487,
+            "line_end": 6511,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+4, kernel rowskh-1,kh-2,kh-3 -> output rows5,6,7; two horizontal vectors, one column per iteration.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 24,
+              "fmul": 6,
+              "fmul_ordinary": 6,
+              "fmul_indexed": 0,
+              "fadd": 6,
+              "ld1w": 2,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 24,
+              "fmul": 6,
+              "fmul_ordinary": 6,
+              "fmul_indexed": 0,
+              "fadd": 6,
+              "ld1w": 2,
+              "ld1rw": 3,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_5",
+            "label": ".L422",
+            "line_start": 6516,
+            "line_end": 6534,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+5, kernel rowskh-1,kh-2 -> output rows6,7; two horizontal vectors, one column per iteration.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 18,
+              "fmul": 4,
+              "fmul_ordinary": 4,
+              "fmul_indexed": 0,
+              "fadd": 4,
+              "ld1w": 2,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 18,
+              "fmul": 4,
+              "fmul_ordinary": 4,
+              "fmul_indexed": 0,
+              "fadd": 4,
+              "ld1w": 2,
+              "ld1rw": 2,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          },
+          {
+            "stage": "trailing_6",
+            "label": ".L424",
+            "line_start": 6539,
+            "line_end": 6550,
+            "kernel_columns_per_iteration": 1,
+            "source_mapping": "Input row kh+6, kernel rowskh-1 -> output rows7; two horizontal vectors, one column per iteration.",
+            "vector_spill_loads": 0,
+            "vector_spill_stores": 0,
+            "spill_notes": "No Z/Q/predicate spill in this actual loop; input/coefficient loads derive from external buffers. Complete setup, transition, output-store and fallback paths were inspected separately as part of the whole-helper review.",
+            "observed_counts": {
+              "instructions": 11,
+              "fmul": 2,
+              "fmul_ordinary": 2,
+              "fmul_indexed": 0,
+              "fadd": 2,
+              "ld1w": 2,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "st1w": 0,
+              "dup": 0,
+              "ext": 0,
+              "movprfx": 0,
+              "vector_mov": 0
+            },
+            "derived_counts": {
+              "instructions": 11,
+              "fmul": 2,
+              "fmul_ordinary": 2,
+              "fmul_indexed": 0,
+              "fadd": 2,
+              "ld1w": 2,
+              "ld1rw": 1,
+              "ld1rqw": 0,
+              "dup": 0,
+              "indexed_mov": 0,
+              "ext": 0,
+              "movprfx": 0
+            }
+          }
+        ],
+        "observed_whole_helper_counts": {
+          "instructions": 970,
+          "fmul": 128,
+          "fmul_ordinary": 128,
+          "fmul_indexed": 0,
+          "fadd": 128,
+          "ld1w": 30,
+          "ld1rw": 64,
+          "ld1rqw": 0,
+          "st1w": 16,
+          "dup": 0,
+          "ext": 0,
+          "movprfx": 0,
+          "vector_mov": 30
+        },
+        "whole_helper_count_scope": "Static instruction sites from function label through .size, not dynamic per-call totals: shared repeats over middle input rows and each phase over kw. The complete actual helper emits16 final ST1W output stores. Integer pointer bookkeeping and ABI traffic count toward total instructions."
+      }
+    ],
+    "dispatch_reviewed": true,
+    "dispatch_functions": [
+      {
+        "symbol": "conv2d._omp_fn.2",
+        "line_start": 662,
+        "line_end": 2269,
+        "control_flow_notes": "Actual legacy per-output-row worker: omp thread quotient/remainder assigns disjoint row intervals at .L58/.L141; .L67 advances input by stride and output by ow. Context flag at +48 optionally calls prefix at .L60, then returned column offset enters remaining 32/16/8/4/2/1 output blocks (.L123/.L109/.L63/.L64/.L65/.L66). Non-SVE context stores flag zero in conv2d, so this runtime branch does not call SVE. Ordered kernel rows/columns and scalar-tail stores observed through .L76. No new six-row dispatch enters this path. Exact returned C47 and C48 full function text (including labels, directives, instructions and all 1608 lines) was directly compared and equal; this reuses the independently read actual function, not an inference from unchanged C source. No claim about other helpers or whole-object identity.",
+        "stack_notes": "Actual 368-byte fixed frame. x19..x30 ABI and scalar/pointer loop state at sp160..232; d8..d15 four STP/LDP ABI pairs at sp96..144. x18=sp240 aliases the local 32-float tile: zeroed sp240..352 then 8+4+2 STR Q sites materialize computed 32/16/8 blocks, subsequently copied via scalar LDP/STP. These 14 vector tile-store sites are real stack traffic, distinct from hot SVE accumulator spill and ABI saves. No Z/predicate stack access in this function; all non-SVE scalar and NEON paths reviewed."
+      },
+      {
+        "symbol": "conv2d._omp_fn.1",
+        "line_start": 6804,
+        "line_end": 6983,
+        "control_flow_notes": "Actual four-row fallback worker inspected: .L462/.L470 quotient/remainder partitions ceil(oh/4) groups disjointly; .L466 remaining>=4 calls quad, rem3 .L467 triple, rem2 .L468 pair, rem1 prefix. .L469 increments group exactly once and advances input/output by4 rows. All helper calls/epilogues observed. This remains the small-kh/oh SVE route, not the new eight-row route.",
+        "stack_notes": "160-byte fixed frame, integer ABI x19..x30, outgoing quad/triple stack args at0/8; width/end/strides/saved kernel pointer at124..152. No vector/predicate stack operations or D ABI saves."
+      },
+      {
+        "symbol": "conv2d._omp_fn.0",
+        "line_start": 6987,
+        "line_end": 7336,
+        "control_flow_notes": "Actual new eight-row worker: .L477/.L489 unsigned quotient/remainder over ceil(oh/8); group*8 input/output offsets and remaining=oh-group*8. .L481 remaining>7 calls roweight with consecutive output rows in x5/x6/x7 and stack0/8/16/24/32, width40. Remaining7 .L482 calls quad then triple at input/output+4 rows; rem6 .L483 quad+pair; rem5 .L484 quad+prefix; rem4/3/2/1 .L485/.L486/.L487/default use old helpers. The second call arguments use x26=input+4*stride, x23=output+4*ow, x24=output+5*ow and generated row6 as needed. .L494/.L495 restore saved pointers/kh/weight before common .L488 increments once and advances input/output pointers eight rows. No outputs overlap between group ownership or remainder calls. Empty-work early exits also read.",
+        "stack_notes": "224-byte fixed frame. Integer ABI at48..144; outgoing8-row args0..40; width148/stride152/end160; saved context168..200 and row strides208/216. No Z/Q/predicate stack traffic or D ABI saves. Alternative rem5/6/7 call-save layout (weight168,kh176,input184,next-output192,inputstep200) is restored at .L494; ordinary call layout uses input168,weight176,kh184,next-output192,inputstep200 at .L495. Both layouts are internally consistent and below frame bound."
+      },
+      {
+        "symbol": "conv2d",
+        "line_start": 7341,
+        "line_end": 7504,
+        "control_flow_notes": "Rejects kh/kw<=0 and kernels larger than input; computes output dimensions, reads HWCAP SVE bit4194304. New .L507 route requires SVE plus kh>7 and oh>7; ceil(oh/8) is right shift3 plus nonzero low3 remainder. Context stores64-bit oh/ow/stride and originalkh/kw. Other SVE cases use ceil(oh/4) .omp_fn.1 at .L500. Absent SVE uses .omp_fn.2 with explicit flag0 at .L499. Exactly one GOMP_parallel call per valid path; joined return, no added allocator/cache/copy path.",
+        "stack_notes": "160-byte frame with integer ABI and context88..152. No vector/predicate stack transfers. All early-return/normal epilogues inspected, context layouts agree with worker loads."
+      }
+    ],
+    "independent_dispatch_fragment": "assembly-dispatch-review.json",
+    "stage_count": 15,
+    "fma_count": 0,
+    "transitions_reviewed": true,
+    "performance_submission_automatic": false
+  },
+  "performance_measured": false,
+  "performance_requires_root_review": true,
+  "automatic_performance_submission": false,
+  "spill_is_correctness_failure": false,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "note": "Actual independent M diagnostics only; old C40/C47 logs provide no C48 PASS. No speed or promotion claim."
+}

@@ -1,0 +1,212 @@
+{
+  "status": "passed",
+  "complete": true,
+  "candidate": "C27-row3staged",
+  "job_id": "1576009",
+  "scheduler": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1576009",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "exit_code": 0,
+  "source_hashes_verified": true,
+  "source_hashes": {
+    "candidate.env": "3e352981f8d546b09c25e62ce1df53466557ba95ae0b8c2247e26b5ef796b881",
+    "check_conv_guard.c": "2ae4711a53d40d94ccc02dac2e0955bb4f56af98eace6b04151e197d65c32afb",
+    "check_sve_dispatch.c": "58976c61bf04841e435f1ff2075a7a7f31f35cd286d5ab6c460e7841671f42c1",
+    "conv2d.c": "6df1ac9d226f8b74cdb87af6f4a080e83a927e4a0345c42a795e45012b8896ce",
+    "remote_job.sh": "c81124bb754a67064344c3bff27e328bee50a8e999acc4d4a1c1b45fcc75a104"
+  },
+  "source_manifest_remote_matches": true,
+  "source_hash_verification_scope": "Existing automated transport manifest matches the remote wrapper SHA entries; no separate repeated manual byte-hash audit.",
+  "extra_manual_hash_audit": false,
+  "accumulators_per_row": 6,
+  "rows_per_group": 3,
+  "total_accumulators": 18,
+  "configurations": [
+    {
+      "sve_bytes": 16,
+      "threads": 1,
+      "lanes": 4,
+      "block_outputs_per_row": 24,
+      "full_cases": 18052,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 144,
+        "rowtriple": 96
+      },
+      "rowquad": "not_applicable",
+      "passed": true
+    },
+    {
+      "sve_bytes": 16,
+      "threads": 4,
+      "lanes": 4,
+      "block_outputs_per_row": 24,
+      "full_cases": 18052,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 144,
+        "rowtriple": 96
+      },
+      "rowquad": "not_applicable",
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 1,
+      "lanes": 8,
+      "block_outputs_per_row": 48,
+      "full_cases": 18052,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 144,
+        "rowtriple": 96
+      },
+      "rowquad": "not_applicable",
+      "passed": true
+    },
+    {
+      "sve_bytes": 32,
+      "threads": 4,
+      "lanes": 8,
+      "block_outputs_per_row": 48,
+      "full_cases": 18052,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 144,
+        "rowtriple": 96
+      },
+      "rowquad": "not_applicable",
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 1,
+      "lanes": 16,
+      "block_outputs_per_row": 96,
+      "full_cases": 18052,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 144,
+        "rowtriple": 96
+      },
+      "rowquad": "not_applicable",
+      "passed": true
+    },
+    {
+      "sve_bytes": 64,
+      "threads": 4,
+      "lanes": 16,
+      "block_outputs_per_row": 96,
+      "full_cases": 18052,
+      "smoke_cases": 96,
+      "helper_entries": {
+        "prefix": 480,
+        "tail": 480,
+        "rowpair": 144,
+        "rowtriple": 96
+      },
+      "rowquad": "not_applicable",
+      "passed": true
+    }
+  ],
+  "full_cases": 108312,
+  "smoke_cases": 576,
+  "total_cases": 108888,
+  "executed_locally": false,
+  "executed_remotely": true,
+  "sanitizer": "not_run",
+  "issues": [],
+  "assembly": {
+    "review_complete": true,
+    "helper": "conv_sve_rowtriple",
+    "paired_loops": [
+      {
+        "label": ".L274",
+        "stage": "first input row",
+        "instructions": 44,
+        "fmul": 12,
+        "fadd": 12,
+        "ext": 5,
+        "movprfx": 0,
+        "input_ld1w": 7,
+        "kernel_ld1rw": 2,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L278",
+        "stage": "second input row",
+        "instructions": 77,
+        "fmul": 24,
+        "fadd": 24,
+        "ext": 5,
+        "movprfx": 5,
+        "input_ld1w": 7,
+        "kernel_ld1rw": 4,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L283",
+        "stage": "shared three-output interior row",
+        "instructions": 105,
+        "fmul": 36,
+        "fadd": 36,
+        "ext": 5,
+        "movprfx": 5,
+        "input_ld1w": 7,
+        "kernel_ld1rw": 6,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L288",
+        "stage": "penultimate input row",
+        "instructions": 77,
+        "fmul": 24,
+        "fadd": 24,
+        "ext": 5,
+        "movprfx": 5,
+        "input_ld1w": 7,
+        "kernel_ld1rw": 4,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      },
+      {
+        "label": ".L292",
+        "stage": "last input row",
+        "instructions": 44,
+        "fmul": 12,
+        "fadd": 12,
+        "ext": 5,
+        "movprfx": 0,
+        "input_ld1w": 7,
+        "kernel_ld1rw": 2,
+        "vector_spill_stores": 0,
+        "vector_spill_loads": 0,
+        "stack_accesses": 0
+      }
+    ],
+    "whole_source_fma_count": 0,
+    "note": "Static remote GCC 10.3.1 strict-FP assembly review. Five paired loops have no vector spills or stack memory accesses. Main .L283 retains eighteen register accumulators and consumes inputs in staged per-vector order. The C25 sp+912 vector spill load/store and additional VL stack allocation are absent; the frame is now 912 fixed bytes. Remaining d8-d15 saves are ABI preservation, with scalar address/bookkeeping outside paired loops. Main has 105 instructions, 36 fmul/36 fadd, seven input loads, six broadcasts, five ext/five movprfx. Empty asm emits no machine instruction. Elimination of this spill does not by itself establish a speed gain."
+  },
+  "evidence_directory": "raw"
+}

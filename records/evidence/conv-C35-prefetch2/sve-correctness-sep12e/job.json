@@ -1,0 +1,22 @@
+{
+  "version": "C35-prefetch2",
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12e-C35-prefetch2-20260912T084337Z",
+  "submitted": true,
+  "expected_checks": {
+    "full_per_configuration": 29668,
+    "smoke_per_configuration": 168,
+    "prefetch_probe_per_configuration": 18,
+    "configurations": 6,
+    "total": 179124
+  },
+  "command": "dsub -n conv-sep12e-C35-prefetch2 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12e-C35-prefetch2-20260912T084337Z/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep12e-C35-prefetch2-20260912T084337Z/remote_job.sh",
+  "submit_attempted": true,
+  "job_id": "1579388",
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1579388",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  }
+}

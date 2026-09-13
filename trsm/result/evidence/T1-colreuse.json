@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T1-colreuse",
+  "parent": "T0",
+  "strategy": "derived_from T1-panel：基于已测已解右端项打包实现，仅将 solve_blocked 更新微块内部 i/j 循环顺序交换为 j/i，使同一已解 RHS 连续面板依次供同一 CT 块的多行更新复用；父版本仍为当前最佳 T0，其余代码、分块、线程、精度、benchmark 和 runner 均不变，检验面板复用局部性的单一假设",
+  "created_at": "2026-09-08T00:42:14.179078+00:00",
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "e0cee4d518144cfbc83e25cfffc55e64cfabc1687ef79ac449720fa84ed76d9f"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T00:46:40.523192+00:00",
+  "reference": "OpenBLAS 0.3.28 static; USE_OPENMP ARMV8; SHA256=c1bb71567c95b7cdff011ecd65b1d10de9001d373a5e87ac6468d7b9755c0ed0; not official KML 25.2.0",
+  "verified": true,
+  "log_sha256": "776d0efafbfe051919715651d7246d2bc2dbcec7aa328922c5970ddb78f97416",
+  "cases": [
+    {
+      "dims": [
+        512,
+        19968
+      ],
+      "times_ms": [
+        22.33,
+        24.33,
+        23.2
+      ],
+      "median_ms": 23.2,
+      "min_ms": 22.33,
+      "max_ms": 24.33,
+      "spread_pct": 8.620689655172415,
+      "gflops": [
+        234.3883,
+        215.1697,
+        225.645
+      ],
+      "max_error": 1.67e-16
+    },
+    {
+      "dims": [
+        2432,
+        17024
+      ],
+      "times_ms": [
+        255.63,
+        255.93,
+        257.29
+      ],
+      "median_ms": 255.93,
+      "min_ms": 255.63,
+      "max_ms": 257.29,
+      "spread_pct": 0.6486148556245945,
+      "gflops": [
+        393.8901,
+        393.4279,
+        391.3447
+      ],
+      "max_error": 2.22e-16
+    },
+    {
+      "dims": [
+        17024,
+        512
+      ],
+      "times_ms": [
+        487.13,
+        486.96,
+        488.61
+      ],
+      "median_ms": 487.13,
+      "min_ms": 486.96,
+      "max_ms": 488.61,
+      "spread_pct": 0.33871861720691276,
+      "gflops": [
+        304.6124,
+        304.7194,
+        303.6878
+      ],
+      "max_error": 1.11e-15
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 766.26,
+  "official_score": null,
+  "ranking": null,
+  "job_id": "1485191",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "environment": {
+    "architecture": "aarch64",
+    "compiler": "GCC 10.3.1",
+    "cpu_target": "generic",
+    "threads": 38,
+    "numa_nodes": 1,
+    "test_runs_per_case": 3,
+    "independent_full_suites": 3,
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PROC_BIND": "close",
+    "OMP_PLACES": "cores",
+    "flags": "-O3 -ffp-contract=off -fopenmp -mcpu=generic",
+    "reference_library_sha256": "c1bb71567c95b7cdff011ecd65b1d10de9001d373a5e87ac6468d7b9755c0ed0"
+  },
+  "publication_note": "公开副本移除私有路径、用户与主机身份；原始记录保留在本地。log_sha256 是原始日志身份，公开文件校验见 evidence/manifest.json。",
+  "original_record_sha256": "af55b97da1a906312bd40abaf5cf2f9a818693248a64f340a2ea415469af71b9",
+  "published_log": "T1-colreuse/benchmark.log"
+}

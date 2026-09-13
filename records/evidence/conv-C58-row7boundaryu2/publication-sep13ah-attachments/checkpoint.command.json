@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "tools/experiment.py",
+    "checkpoint",
+    "conv",
+    "C58-row7boundaryu2",
+    "--note",
+    "Source preparation only: exactly 12 GCC unroll 2 pragma lines before six rowseven input and six trailing kernel-column loops. Removing those lines restores frozen C52/T bytes; shared2/remainder, arithmetic, helpers/dispatch/tails/fallback and other three submission files unchanged. Own C58 scheduled diagnostic is still required; no compilation/correctness/performance claim."
+  ],
+  "exit": 0,
+  "standard_cli_workflow_lock": true
+}

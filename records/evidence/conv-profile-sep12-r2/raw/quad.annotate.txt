@@ -1,0 +1,1566 @@
+ Percent |	Source code & Disassembly of conv2d_profile for cycles:u (2666 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         :            Disassembly of section .text:
+         :
+         :            0000000000404b14 <conv_sve_rowquad>:
+         :            conv_sve_rowquad():
+    0.00 :   404b14: sub     sp, sp, #0x2f0
+    0.00 :   404b18: add     x8, sp, #0x228
+    0.00 :   404b1c: stp     x29, x30, [sp, #16]
+    0.00 :   404b20: add     x29, sp, #0x10
+    0.00 :   404b24: ldr     x9, [sp, #752]
+    0.00 :   404b28: stp     x19, x20, [sp, #32]
+    0.00 :   404b2c: stp     x27, x28, [sp, #96]
+    0.00 :   404b30: mov     x28, x2
+    0.00 :   404b34: mov     w27, w4
+    0.00 :   404b38: stp     x9, x5, [x8]
+    0.00 :   404b3c: ldr     w9, [sp, #760]
+    0.00 :   404b40: stp     x6, x7, [x8, #16]
+    0.00 :   404b44: str     x0, [sp, #248]
+    0.00 :   404b48: str     w3, [sp, #480]
+    0.00 :   404b4c: str     w9, [sp, #600]
+    0.00 :   404b50: str     x1, [sp, #736]
+    0.00 :   404b54: cmp     w3, #0x3
+    0.00 :   404b58: b.le    4062e4 <conv_sve_rowquad+0x17d0>
+    0.00 :   404b5c: stp     x21, x22, [sp, #48]
+    0.00 :   404b60: cntb    x0
+    0.00 :   404b64: stp     x23, x24, [sp, #64]
+    0.00 :   404b68: cmp     w9, w0
+    0.00 :   404b6c: b.lt    406328 <conv_sve_rowquad+0x1814>  // b.tstop
+    0.00 :   404b70: mov     x11, x1
+    0.00 :   404b74: add     x23, x1, x1, lsl #1
+    0.00 :   404b78: stp     x25, x26, [sp, #80]
+    0.00 :   404b7c: lsl     x26, x1, #2
+    0.00 :   404b80: ldr     w1, [sp, #480]
+    0.00 :   404b84: ptrue   p0.b
+    0.00 :   404b88: sbfiz   x22, x4, #2, #32
+    0.00 :   404b8c: cntw    x6
+    0.00 :   404b90: sub     w19, w1, #0x2
+    0.00 :   404b94: cntw    x0, all, mul #3
+    0.00 :   404b98: sxtw    x3, w1
+    0.00 :   404b9c: sbfiz   x5, x0, #2, #32
+    0.00 :   404ba0: sbfiz   x8, x6, #2, #32
+    0.00 :   404ba4: sub     w18, w1, #0x1
+    0.00 :   404ba8: sub     w20, w1, #0x3
+    0.00 :   404bac: cnth    x0
+    0.00 :   404bb0: mul     x3, x3, x11
+    0.00 :   404bb4: sbfiz   x25, x0, #2, #32
+    0.00 :   404bb8: mov     x24, x8
+    0.00 :   404bbc: sub     w7, w27, #0x2
+    0.00 :   404bc0: add     x2, x3, x11
+    0.00 :   404bc4: stp     x24, x23, [sp, #256]
+    0.00 :   404bc8: add     x1, x2, x11
+    0.00 :   404bcc: lsl     x0, x11, #3
+    0.00 :   404bd0: lsl     x2, x2, #2
+    0.00 :   404bd4: lsl     x1, x1, #2
+    0.00 :   404bd8: madd    x19, x19, x22, x28
+    0.00 :   404bdc: and     w8, w7, #0xfffffffe
+    0.00 :   404be0: lsl     x7, x23, #2
+    0.00 :   404be4: add     x23, x25, #0x4
+    0.00 :   404be8: add     x14, x25, x0
+    0.00 :   404bec: add     x30, x25, x2
+    0.00 :   404bf0: mov     x9, x25
+    0.00 :   404bf4: str     x23, [sp, #168]
+    0.00 :   404bf8: add     x23, x28, x22
+    0.00 :   404bfc: stp     x19, x23, [sp, #208]
+    0.00 :   404c00: add     x19, x25, x1
+    0.00 :   404c04: lsl     x3, x3, #2
+    0.00 :   404c08: str     x25, [sp, #464]
+    0.00 :   404c0c: add     w8, w8, #0x2
+    0.00 :   404c10: ldr     x25, [sp, #256]
+    0.00 :   404c14: str     w8, [sp, #604]
+    0.00 :   404c18: madd    x8, x18, x22, x28
+    0.00 :   404c1c: add     x4, x5, #0x4
+    0.00 :   404c20: add     x25, x25, x3
+    0.00 :   404c24: str     x25, [sp, #200]
+    0.00 :   404c28: mov     x25, x9
+    0.00 :   404c2c: add     x9, x9, x3
+    0.00 :   404c30: add     x16, x5, x0
+    0.00 :   404c34: str     x8, [sp, #152]
+    0.00 :   404c38: add     x8, x5, x1
+    0.00 :   404c3c: str     x30, [sp, #160]
+    0.00 :   404c40: add     x30, x5, x2
+    0.00 :   404c44: str     x9, [sp, #224]
+    0.00 :   404c48: add     x9, x5, x3
+    0.00 :   404c4c: str     x5, [sp, #272]
+    0.00 :   404c50: ldr     x5, [sp, #168]
+    0.00 :   404c54: add     x18, x24, x1
+    0.00 :   404c58: sxtw    x6, w6
+    0.00 :   404c5c: str     x6, [sp, #168]
+    0.00 :   404c60: add     x5, x5, x7
+    0.00 :   404c64: stp     x9, x5, [sp, #232]
+    0.00 :   404c68: cnth    x6
+    0.00 :   404c6c: ldr     x9, [sp, #248]
+    0.00 :   404c70: add     x5, x28, x22
+    0.00 :   404c74: add     x10, x4, x0
+    0.00 :   404c78: add     x5, x5, x22
+    0.00 :   404c7c: add     x18, x9, x18
+    0.00 :   404c80: str     x18, [sp, #376]
+    0.00 :   404c84: sxtw    x18, w6
+    0.00 :   404c88: madd    x20, x20, x22, x28
+    0.00 :   404c8c: sub     x11, x10, x26
+    0.00 :   404c90: cntw    x6, all, mul #3
+    0.00 :   404c94: str     x18, [sp, #176]
+    0.00 :   404c98: add     x18, x9, x19
+    0.00 :   404c9c: str     x5, [sp, #488]
+    0.00 :   404ca0: mov     x5, x9
+    0.00 :   404ca4: add     x23, x0, x11
+    0.00 :   404ca8: add     x10, x5, x10
+    0.00 :   404cac: stp     d8, d9, [sp, #112]
+    0.00 :   404cb0: add     x12, x24, x0
+    0.00 :   404cb4: add     x21, x24, #0x4
+    0.00 :   404cb8: stp     d10, d11, [sp, #128]
+    0.00 :   404cbc: add     x24, x24, x2
+    0.00 :   404cc0: sub     x13, x12, x26
+    0.00 :   404cc4: str     x30, [sp, #184]
+    0.00 :   404cc8: sub     x15, x14, x26
+    0.00 :   404ccc: str     x18, [sp, #368]
+    0.00 :   404cd0: sxtw    x18, w6
+    0.00 :   404cd4: str     x18, [sp, #192]
+    0.00 :   404cd8: add     x18, x9, x8
+    0.00 :   404cdc: str     x20, [sp, #496]
+    0.00 :   404ce0: add     x30, x0, x15
+    0.00 :   404ce4: str     x18, [sp, #360]
+    0.00 :   404ce8: sub     x17, x16, x26
+    0.00 :   404cec: str     x10, [sp, #400]
+    0.00 :   404cf0: add     x10, x23, x5
+    0.00 :   404cf4: ldr     x6, [sp, #160]
+    0.00 :   404cf8: str     x10, [sp, #680]
+    0.00 :   404cfc: add     x10, x5, x11
+    0.00 :   404d00: str     x10, [sp, #432]
+    0.00 :   404d04: add     x10, x5, x24
+    0.00 :   404d08: str     x10, [sp, #288]
+    0.00 :   404d0c: add     x10, x5, x6
+    0.00 :   404d10: str     x10, [sp, #296]
+    0.00 :   404d14: ldr     x6, [sp, #184]
+    0.00 :   404d18: add     x20, x4, x1
+    0.00 :   404d1c: add     x18, x9, x20
+    0.00 :   404d20: add     x21, x21, x7
+    0.00 :   404d24: add     x10, x5, x6
+    0.00 :   404d28: add     x6, x4, x2
+    0.00 :   404d2c: add     x6, x5, x6
+    0.00 :   404d30: str     x6, [sp, #304]
+    0.00 :   404d34: add     x6, x2, x5
+    0.00 :   404d38: add     x2, x0, x13
+    0.00 :   404d3c: str     x6, [sp, #624]
+    0.00 :   404d40: add     x6, x5, x12
+    0.00 :   404d44: str     x6, [sp, #328]
+    0.00 :   404d48: add     x6, x2, x5
+    0.00 :   404d4c: str     x6, [sp, #640]
+    0.00 :   404d50: add     x6, x5, x13
+    0.00 :   404d54: str     x6, [sp, #408]
+    0.00 :   404d58: add     x6, x5, x14
+    0.00 :   404d5c: str     x6, [sp, #384]
+    0.00 :   404d60: add     x6, x30, x5
+    0.00 :   404d64: str     x6, [sp, #648]
+    0.00 :   404d68: add     x6, x5, x15
+    0.00 :   404d6c: add     x2, x0, x17
+    0.00 :   404d70: str     x6, [sp, #416]
+    0.00 :   404d74: add     x6, x5, x16
+    0.00 :   404d78: str     x6, [sp, #392]
+    0.00 :   404d7c: add     x6, x2, x5
+    0.00 :   404d80: add     x7, x7, x9
+    0.00 :   404d84: ldr     x2, [sp, #200]
+    0.00 :   404d88: str     x6, [sp, #664]
+    0.00 :   404d8c: ldr     x9, [sp, #224]
+    0.00 :   404d90: add     x6, x5, x17
+    0.00 :   404d94: str     x6, [sp, #424]
+    0.00 :   404d98: add     x6, x5, x2
+    0.00 :   404d9c: str     x6, [sp, #312]
+    0.00 :   404da0: add     x6, x5, x9
+    0.00 :   404da4: ldr     x9, [sp, #232]
+    0.00 :   404da8: str     x6, [sp, #320]
+    0.00 :   404dac: add     x0, x0, x5
+    0.00 :   404db0: str     x10, [sp, #344]
+    0.00 :   404db4: add     x6, x5, x9
+    0.00 :   404db8: add     x9, x4, x3
+    0.00 :   404dbc: add     x3, x3, x5
+    0.00 :   404dc0: str     x3, [sp, #632]
+    0.00 :   404dc4: add     x3, x5, x4
+    0.00 :   404dc8: str     x6, [sp, #336]
+    0.00 :   404dcc: add     x6, x5, x9
+    0.00 :   404dd0: str     x6, [sp, #280]
+    0.00 :   404dd4: str     x18, [sp, #352]
+    0.00 :   404dd8: add     x18, x1, x5
+    0.00 :   404ddc: str     x18, [sp, #616]
+    0.00 :   404de0: sub     w23, w27, #0x1
+    0.00 :   404de4: str     x0, [sp, #688]
+    0.00 :   404de8: mov     x0, x5
+    0.00 :   404dec: str     x3, [sp, #712]
+    0.00 :   404df0: add     x3, x21, x5
+    0.00 :   404df4: str     x3, [sp, #656]
+    0.00 :   404df8: add     x30, x28, #0x4
+    0.00 :   404dfc: ldr     x2, [sp, #240]
+    0.00 :   404e00: str     xzr, [sp, #184]
+    0.00 :   404e04: ldp     x1, x20, [sp, #488]
+    0.00 :   404e08: add     x2, x2, x0
+    0.00 :   404e0c: ldr     x24, [sp, #256]
+    0.00 :   404e10: str     wzr, [sp, #484]
+    0.00 :   404e14: ldr     x5, [sp, #272]
+    0.00 :   404e18: str     x2, [sp, #672]
+    0.00 :   404e1c: add     x1, x1, #0x4
+    0.00 :   404e20: str     x1, [sp, #720]
+    0.00 :   404e24: ldrsw   x1, [sp, #604]
+    0.00 :   404e28: add     x2, x7, #0x4
+    0.00 :   404e2c: str     x1, [sp, #744]
+    0.00 :   404e30: add     x1, x0, x24
+    0.00 :   404e34: str     x1, [sp, #440]
+    0.00 :   404e38: add     x1, x0, x25
+    0.00 :   404e3c: str     x1, [sp, #448]
+    0.00 :   404e40: add     x1, x0, x5
+    0.00 :   404e44: add     x0, x26, x0
+    0.00 :   404e48: str     x0, [sp, #696]
+    0.00 :   404e4c: sxtw    x0, w27
+    0.00 :   404e50: str     x0, [sp, #584]
+    0.00 :   404e54: cntb    x0
+    0.00 :   404e58: add     x5, x28, x22
+    0.00 :   404e5c: sxtw    x0, w0
+    0.00 :   404e60: str     x0, [sp, #608]
+    0.00 :   404e64: ldr     x25, [sp, #152]
+    0.00 :   404e68: cntb    x0
+    0.00 :   404e6c: ldr     x19, [sp, #208]
+    0.00 :   404e70: sbfiz   x24, x0, #2, #32
+    0.00 :   404e74: sbfiz   x0, x27, #1, #32
+    0.00 :   404e78: str     x1, [sp, #456]
+    0.00 :   404e7c: add     x1, x5, #0x4
+    0.00 :   404e80: str     x1, [sp, #536]
+    0.00 :   404e84: add     x1, x25, #0x4
+    0.00 :   404e88: str     x0, [sp, #592]
+    0.00 :   404e8c: mov     x0, x22
+    0.00 :   404e90: mov     x22, x24
+    0.00 :   404e94: mov     x24, x0
+    0.00 :   404e98: str     x1, [sp, #472]
+    0.00 :   404e9c: add     x1, x19, #0x4
+    0.00 :   404ea0: str     x1, [sp, #544]
+    0.00 :   404ea4: add     x1, x20, #0x4
+    0.00 :   404ea8: str     x2, [sp, #704]
+    0.00 :   404eac: str     x1, [sp, #728]
+    0.00 :   404eb0: ldr     x0, [sp, #184]
+    0.00 :   404eb4: ldr     x1, [sp, #248]
+    0.00 :   404eb8: add     x2, x1, x0
+    0.00 :   404ebc: cmp     w23, #0x0
+    0.00 :   404ec0: b.le    406204 <conv_sve_rowquad+0x16f0>
+    0.00 :   404ec4: ldp     x5, x6, [sp, #440]
+    0.00 :   404ec8: mov     z1.s, #0
+    0.00 :   404ecc: mov     z27.d, z1.d
+    0.00 :   404ed0: mov     z26.d, z1.d
+    0.00 :   404ed4: ldr     x1, [sp, #712]
+    0.00 :   404ed8: mov     z25.d, z1.d
+    0.00 :   404edc: ldr     x7, [sp, #456]
+    0.00 :   404ee0: add     x4, x1, x0
+    0.00 :   404ee4: mov     x0, #0x0                        // #0
+    0.00 :   404ee8: lsl     x1, x0, #2
+    0.04 :   404eec: ld1w    {z2.s}, p0/z, [x5, x0, lsl #2]
+    0.23 :   404ef0: ld1w    {z4.s}, p0/z, [x2, x0, lsl #2]
+    0.00 :   404ef4: add     x3, x28, x1
+    0.00 :   404ef8: add     x1, x30, x1
+    0.00 :   404efc: ld1rw   {z6.s}, p0/z, [x3]
+    0.00 :   404f00: ld1rw   {z5.s}, p0/z, [x1]
+    0.04 :   404f04: fmul    z8.s, z4.s, z6.s
+    0.00 :   404f08: ext     z4.b, z4.b, z2.b, #4
+    0.00 :   404f0c: fmul    z4.s, z4.s, z5.s
+    0.00 :   404f10: ld1w    {z0.s}, p0/z, [x6, x0, lsl #2]
+    0.04 :   404f14: ld1w    {z3.s}, p0/z, [x7, x0, lsl #2]
+    0.04 :   404f18: ld1w    {z7.s}, p0/z, [x4, x0, lsl #2]
+    0.00 :   404f1c: fadd    z25.s, z25.s, z8.s
+    0.00 :   404f20: add     x0, x0, #0x2
+    0.00 :   404f24: fmul    z8.s, z2.s, z6.s
+    0.04 :   404f28: fadd    z25.s, z25.s, z4.s
+    0.00 :   404f2c: ext     z2.b, z2.b, z0.b, #4
+    0.00 :   404f30: fmul    z4.s, z0.s, z6.s
+    0.00 :   404f34: ext     z0.b, z0.b, z3.b, #4
+    0.00 :   404f38: fmul    z0.s, z0.s, z5.s
+    0.00 :   404f3c: fadd    z26.s, z26.s, z8.s
+    0.00 :   404f40: fmul    z2.s, z2.s, z5.s
+    0.00 :   404f44: fadd    z27.s, z27.s, z4.s
+    0.00 :   404f48: fmul    z3.s, z3.s, z6.s
+    0.00 :   404f4c: fadd    z27.s, z27.s, z0.s
+    0.00 :   404f50: fadd    z1.s, z1.s, z3.s
+    0.00 :   404f54: fmul    z0.s, z7.s, z5.s
+    0.00 :   404f58: fadd    z26.s, z26.s, z2.s
+    0.00 :   404f5c: fadd    z1.s, z1.s, z0.s
+    0.00 :   404f60: cmp     w23, w0
+    0.04 :   404f64: b.gt    404ee8 <conv_sve_rowquad+0x3d4>
+    0.00 :   404f68: ldr     w0, [sp, #604]
+    0.00 :   404f6c: str     w0, [sp, #152]
+    0.00 :   404f70: cmp     w27, w0
+    0.00 :   404f74: b.le    406224 <conv_sve_rowquad+0x1710>
+    0.00 :   404f78: ldp     x3, x1, [sp, #248]
+    0.00 :   404f7c: ldr     x4, [sp, #464]
+    0.00 :   404f80: ldrsw   x0, [sp, #152]
+    0.00 :   404f84: add     x5, x3, x4
+    0.00 :   404f88: add     x6, x3, x1
+    0.00 :   404f8c: ldr     x4, [sp, #272]
+    0.00 :   404f90: mov     x1, x0
+    0.00 :   404f94: add     x4, x3, x4
+    0.00 :   404f98: add     x3, x28, x1, lsl #2
+    0.00 :   404f9c: ld1w    {z5.s}, p0/z, [x2, x1, lsl #2]
+    0.00 :   404fa0: ld1w    {z4.s}, p0/z, [x6, x1, lsl #2]
+    0.00 :   404fa4: ld1w    {z3.s}, p0/z, [x5, x1, lsl #2]
+    0.00 :   404fa8: ld1w    {z2.s}, p0/z, [x4, x1, lsl #2]
+    0.00 :   404fac: add     x1, x1, #0x1
+    0.00 :   404fb0: ld1rw   {z0.s}, p0/z, [x3]
+    0.00 :   404fb4: fmul    z5.s, z5.s, z0.s
+    0.00 :   404fb8: fmul    z4.s, z4.s, z0.s
+    0.00 :   404fbc: fmul    z3.s, z3.s, z0.s
+    0.00 :   404fc0: fadd    z25.s, z25.s, z5.s
+    0.00 :   404fc4: fmul    z0.s, z2.s, z0.s
+    0.00 :   404fc8: fadd    z26.s, z26.s, z4.s
+    0.00 :   404fcc: fadd    z27.s, z27.s, z3.s
+    0.00 :   404fd0: fadd    z1.s, z1.s, z0.s
+    0.00 :   404fd4: cmp     w27, w1
+    0.00 :   404fd8: b.gt    404f98 <conv_sve_rowquad+0x484>
+    0.00 :   404fdc: ldr     x1, [sp, #184]
+    0.00 :   404fe0: ldr     x2, [sp, #696]
+    0.00 :   404fe4: add     x1, x1, x2
+    0.00 :   404fe8: cmp     w23, #0x0
+    0.00 :   404fec: b.le    406244 <conv_sve_rowquad+0x1730>
+    0.00 :   404ff0: ldp     x6, x7, [sp, #408]
+    0.00 :   404ff4: mov     z2.s, #0
+    0.00 :   404ff8: mov     x2, #0x0                        // #0
+    0.00 :   404ffc: mov     z22.d, z2.d
+    0.00 :   405000: ldp     x8, x9, [sp, #424]
+    0.00 :   405004: mov     z21.d, z2.d
+    0.00 :   405008: mov     z24.d, z2.d
+    0.00 :   40500c: ldr     x5, [sp, #216]
+    0.00 :   405010: ldr     x10, [sp, #536]
+    0.00 :   405014: nop
+    0.04 :   405018: lsl     x3, x2, #2
+    0.00 :   40501c: ld1w    {z6.s}, p0/z, [x1, x2, lsl #2]
+    0.00 :   405020: add     x4, x5, x3
+    0.34 :   405024: ld1rw   {z4.s}, p0/z, [x4]
+    0.00 :   405028: fmul    z9.s, z6.s, z4.s
+    0.00 :   40502c: ld1w    {z3.s}, p0/z, [x6, x2, lsl #2]
+    0.00 :   405030: fadd    z25.s, z25.s, z9.s
+    0.00 :   405034: fmul    z9.s, z3.s, z4.s
+    0.00 :   405038: ld1w    {z0.s}, p0/z, [x7, x2, lsl #2]
+    0.04 :   40503c: ld1w    {z5.s}, p0/z, [x8, x2, lsl #2]
+    0.00 :   405040: movprfx z11, z6
+    0.00 :   405044: ext     z11.b, z11.b, z3.b, #4
+    0.00 :   405048: add     x4, x10, x3
+    0.00 :   40504c: fadd    z26.s, z26.s, z9.s
+    0.00 :   405050: ld1rw   {z7.s}, p0/z, [x4]
+    0.00 :   405054: fmul    z9.s, z0.s, z4.s
+    0.00 :   405058: fmul    z10.s, z11.s, z7.s
+    0.00 :   40505c: fmul    z4.s, z5.s, z4.s
+    0.04 :   405060: ld1w    {z8.s}, p0/z, [x9, x2, lsl #2]
+    0.00 :   405064: fadd    z27.s, z27.s, z9.s
+    0.00 :   405068: fadd    z1.s, z1.s, z4.s
+    0.00 :   40506c: movprfx z9, z0
+    0.11 :   405070: ext     z9.b, z9.b, z5.b, #4
+    0.00 :   405074: fadd    z25.s, z25.s, z10.s
+    0.00 :   405078: fmul    z4.s, z9.s, z7.s
+    0.00 :   40507c: movprfx z10, z3
+    0.00 :   405080: ext     z10.b, z10.b, z0.b, #4
+    0.00 :   405084: add     x2, x2, #0x2
+    0.00 :   405088: fmul    z16.s, z10.s, z7.s
+    0.00 :   40508c: fmul    z7.s, z8.s, z7.s
+    0.00 :   405090: add     x4, x28, x3
+    0.00 :   405094: fadd    z27.s, z27.s, z4.s
+    0.00 :   405098: add     x3, x30, x3
+    0.00 :   40509c: fadd    z1.s, z1.s, z7.s
+    0.08 :   4050a0: ld1rw   {z4.s}, p0/z, [x3]
+    0.00 :   4050a4: ld1rw   {z7.s}, p0/z, [x4]
+    0.00 :   4050a8: fmul    z11.s, z11.s, z4.s
+    0.00 :   4050ac: fmul    z6.s, z6.s, z7.s
+    0.00 :   4050b0: fmul    z3.s, z3.s, z7.s
+    0.00 :   4050b4: fadd    z24.s, z24.s, z6.s
+    0.00 :   4050b8: fadd    z21.s, z21.s, z3.s
+    0.00 :   4050bc: fmul    z0.s, z0.s, z7.s
+    0.00 :   4050c0: fmul    z5.s, z5.s, z7.s
+    0.00 :   4050c4: fadd    z22.s, z22.s, z0.s
+    0.00 :   4050c8: fadd    z2.s, z2.s, z5.s
+    0.00 :   4050cc: fmul    z10.s, z10.s, z4.s
+    0.00 :   4050d0: fmul    z9.s, z9.s, z4.s
+    0.00 :   4050d4: fmul    z8.s, z8.s, z4.s
+    0.00 :   4050d8: fadd    z26.s, z26.s, z16.s
+    0.00 :   4050dc: fadd    z24.s, z24.s, z11.s
+    0.00 :   4050e0: fadd    z21.s, z21.s, z10.s
+    0.00 :   4050e4: fadd    z22.s, z22.s, z9.s
+    0.00 :   4050e8: fadd    z2.s, z2.s, z8.s
+    0.00 :   4050ec: cmp     w23, w2
+    0.00 :   4050f0: b.gt    405018 <conv_sve_rowquad+0x504>
+    0.00 :   4050f4: ldr     w2, [sp, #152]
+    0.00 :   4050f8: cmp     w27, w2
+    0.00 :   4050fc: b.le    406238 <conv_sve_rowquad+0x1724>
+    0.00 :   405100: ldp     x6, x7, [sp, #168]
+    0.00 :   405104: lsl     x2, x0, #2
+    0.00 :   405108: ldr     x5, [sp, #216]
+    0.00 :   40510c: ldr     w3, [sp, #152]
+    0.00 :   405110: ldr     x8, [sp, #192]
+    0.00 :   405114: add     w4, w3, #0x1
+    0.00 :   405118: add     x3, x5, x2
+    0.00 :   40511c: ld1rw   {z0.s}, p0/z, [x3]
+    0.00 :   405120: add     x3, x1, x2
+    0.00 :   405124: ld1w    {z3.s}, p0/z, [x3]
+    0.00 :   405128: add     x3, x28, x2
+    0.00 :   40512c: fmul    z5.s, z3.s, z0.s
+    0.00 :   405130: ld1rw   {z4.s}, p0/z, [x3]
+    0.00 :   405134: fmul    z3.s, z3.s, z4.s
+    0.00 :   405138: add     x3, x6, x0
+    0.00 :   40513c: fadd    z25.s, z25.s, z5.s
+    0.00 :   405140: fadd    z24.s, z24.s, z3.s
+    0.00 :   405144: ld1w    {z3.s}, p0/z, [x1, x3, lsl #2]
+    0.00 :   405148: fmul    z5.s, z3.s, z0.s
+    0.00 :   40514c: fmul    z3.s, z3.s, z4.s
+    0.00 :   405150: add     x3, x7, x0
+    0.00 :   405154: fadd    z26.s, z26.s, z5.s
+    0.00 :   405158: fadd    z21.s, z21.s, z3.s
+    0.00 :   40515c: ld1w    {z3.s}, p0/z, [x1, x3, lsl #2]
+    0.00 :   405160: fmul    z5.s, z3.s, z0.s
+    0.00 :   405164: fmul    z3.s, z3.s, z4.s
+    0.00 :   405168: str     w4, [sp, #160]
+    0.00 :   40516c: add     x3, x8, x0
+    0.00 :   405170: fadd    z22.s, z22.s, z3.s
+    0.00 :   405174: fadd    z27.s, z27.s, z5.s
+    0.00 :   405178: ld1w    {z3.s}, p0/z, [x1, x3, lsl #2]
+    0.00 :   40517c: fmul    z0.s, z3.s, z0.s
+    0.00 :   405180: fmul    z3.s, z3.s, z4.s
+    0.00 :   405184: fadd    z1.s, z1.s, z0.s
+    0.00 :   405188: fadd    z2.s, z2.s, z3.s
+    0.00 :   40518c: cmp     w4, w27
+    0.00 :   405190: b.ge    40520c <conv_sve_rowquad+0x6f8>  // b.tcont
+    0.00 :   405194: add     x2, x2, #0x4
+    0.00 :   405198: sxtw    x3, w4
+    0.00 :   40519c: add     x4, x5, x2
+    0.00 :   4051a0: ld1rw   {z0.s}, p0/z, [x4]
+    0.00 :   4051a4: add     x4, x1, x2
+    0.00 :   4051a8: add     x2, x28, x2
+    0.00 :   4051ac: ld1w    {z3.s}, p0/z, [x4]
+    0.00 :   4051b0: ld1rw   {z4.s}, p0/z, [x2]
+    0.00 :   4051b4: fmul    z5.s, z3.s, z0.s
+    0.00 :   4051b8: fmul    z3.s, z3.s, z4.s
+    0.00 :   4051bc: add     x2, x6, x3
+    0.00 :   4051c0: fadd    z25.s, z25.s, z5.s
+    0.00 :   4051c4: fadd    z24.s, z24.s, z3.s
+    0.00 :   4051c8: ld1w    {z3.s}, p0/z, [x1, x2, lsl #2]
+    0.00 :   4051cc: fmul    z5.s, z3.s, z0.s
+    0.00 :   4051d0: fmul    z3.s, z3.s, z4.s
+    0.00 :   4051d4: add     x2, x7, x3
+    0.00 :   4051d8: fadd    z26.s, z26.s, z5.s
+    0.00 :   4051dc: add     x3, x8, x3
+    0.00 :   4051e0: ld1w    {z5.s}, p0/z, [x1, x2, lsl #2]
+    0.00 :   4051e4: fadd    z21.s, z21.s, z3.s
+    0.00 :   4051e8: fmul    z6.s, z5.s, z0.s
+    0.00 :   4051ec: ld1w    {z3.s}, p0/z, [x1, x3, lsl #2]
+    0.00 :   4051f0: fmul    z5.s, z5.s, z4.s
+    0.00 :   4051f4: fmul    z0.s, z3.s, z0.s
+    0.00 :   4051f8: fadd    z27.s, z27.s, z6.s
+    0.00 :   4051fc: fmul    z3.s, z3.s, z4.s
+    0.00 :   405200: fadd    z22.s, z22.s, z5.s
+    0.00 :   405204: fadd    z1.s, z1.s, z0.s
+    0.00 :   405208: fadd    z2.s, z2.s, z3.s
+    0.00 :   40520c: ldr     x1, [sp, #184]
+    0.00 :   405210: ldr     x2, [sp, #688]
+    0.00 :   405214: add     x4, x1, x2
+    0.00 :   405218: cmp     w23, #0x0
+    0.00 :   40521c: b.le    4061f0 <conv_sve_rowquad+0x16dc>
+    0.00 :   405220: ldp     x8, x9, [sp, #384]
+    0.00 :   405224: mov     z0.s, #0
+    0.00 :   405228: mov     x1, #0x0                        // #0
+    0.00 :   40522c: mov     z20.d, z0.d
+    0.00 :   405230: ldr     x6, [sp, #216]
+    0.00 :   405234: mov     z19.d, z0.d
+    0.00 :   405238: mov     z23.d, z0.d
+    0.00 :   40523c: ldr     x5, [sp, #328]
+    0.00 :   405240: ldr     x10, [sp, #400]
+    0.00 :   405244: ldr     x7, [sp, #488]
+    0.00 :   405248: ldr     x11, [sp, #536]
+    0.00 :   40524c: ldr     x12, [sp, #720]
+    0.26 :   405250: lsl     x2, x1, #2
+    0.00 :   405254: ld1w    {z4.s}, p0/z, [x5, x1, lsl #2]
+    0.00 :   405258: add     x3, x7, x2
+    0.60 :   40525c: ld1w    {z6.s}, p0/z, [x4, x1, lsl #2]
+    0.11 :   405260: ld1rw   {z7.s}, p0/z, [x3]
+    0.00 :   405264: movprfx z10, z6
+    0.00 :   405268: ext     z10.b, z10.b, z4.b, #4
+    0.00 :   40526c: fmul    z9.s, z6.s, z7.s
+    0.00 :   405270: add     x3, x12, x2
+    0.00 :   405274: ld1rw   {z16.s}, p0/z, [x3]
+    0.00 :   405278: fmul    z11.s, z10.s, z16.s
+    0.00 :   40527c: ld1w    {z3.s}, p0/z, [x8, x1, lsl #2]
+    0.04 :   405280: ld1w    {z5.s}, p0/z, [x9, x1, lsl #2]
+    0.00 :   405284: fadd    z25.s, z25.s, z9.s
+    0.00 :   405288: fmul    z9.s, z4.s, z7.s
+    0.00 :   40528c: fadd    z25.s, z25.s, z11.s
+    0.04 :   405290: fmul    z11.s, z3.s, z7.s
+    0.00 :   405294: fmul    z7.s, z5.s, z7.s
+    0.00 :   405298: fadd    z26.s, z26.s, z9.s
+    0.00 :   40529c: fadd    z27.s, z27.s, z11.s
+    0.00 :   4052a0: movprfx z9, z4
+    0.00 :   4052a4: ext     z9.b, z9.b, z3.b, #4
+    0.00 :   4052a8: movprfx z11, z3
+    0.00 :   4052ac: ext     z11.b, z11.b, z5.b, #4
+    0.00 :   4052b0: fmul    z17.s, z9.s, z16.s
+    0.00 :   4052b4: fadd    z1.s, z1.s, z7.s
+    0.00 :   4052b8: fmul    z7.s, z11.s, z16.s
+    0.07 :   4052bc: add     x3, x6, x2
+    0.00 :   4052c0: fadd    z26.s, z26.s, z17.s
+    0.00 :   4052c4: fadd    z27.s, z27.s, z7.s
+    0.00 :   4052c8: ld1rw   {z7.s}, p0/z, [x3]
+    0.00 :   4052cc: fmul    z17.s, z6.s, z7.s
+    0.04 :   4052d0: ld1w    {z8.s}, p0/z, [x10, x1, lsl #2]
+    0.04 :   4052d4: fadd    z24.s, z24.s, z17.s
+    0.00 :   4052d8: fmul    z16.s, z8.s, z16.s
+    0.00 :   4052dc: fmul    z17.s, z4.s, z7.s
+    0.04 :   4052e0: add     x3, x11, x2
+    0.00 :   4052e4: fadd    z21.s, z21.s, z17.s
+    0.00 :   4052e8: fadd    z1.s, z1.s, z16.s
+    0.00 :   4052ec: fmul    z17.s, z3.s, z7.s
+    0.00 :   4052f0: ld1rw   {z16.s}, p0/z, [x3]
+    0.00 :   4052f4: fmul    z18.s, z10.s, z16.s
+    0.00 :   4052f8: fmul    z7.s, z5.s, z7.s
+    0.00 :   4052fc: fadd    z22.s, z22.s, z17.s
+    0.00 :   405300: fadd    z24.s, z24.s, z18.s
+    0.00 :   405304: fmul    z17.s, z11.s, z16.s
+    0.00 :   405308: fmul    z18.s, z9.s, z16.s
+    0.00 :   40530c: add     x1, x1, #0x2
+    0.04 :   405310: fmul    z16.s, z8.s, z16.s
+    0.00 :   405314: add     x3, x28, x2
+    0.00 :   405318: fadd    z2.s, z2.s, z7.s
+    0.00 :   40531c: add     x2, x30, x2
+    0.00 :   405320: fadd    z2.s, z2.s, z16.s
+    0.00 :   405324: ld1rw   {z7.s}, p0/z, [x2]
+    0.04 :   405328: ld1rw   {z16.s}, p0/z, [x3]
+    0.00 :   40532c: fmul    z10.s, z10.s, z7.s
+    0.00 :   405330: fmul    z6.s, z6.s, z16.s
+    0.00 :   405334: fmul    z4.s, z4.s, z16.s
+    0.00 :   405338: fadd    z23.s, z23.s, z6.s
+    0.00 :   40533c: fadd    z19.s, z19.s, z4.s
+    0.00 :   405340: fmul    z3.s, z3.s, z16.s
+    0.00 :   405344: fmul    z5.s, z5.s, z16.s
+    0.00 :   405348: fadd    z20.s, z20.s, z3.s
+    0.00 :   40534c: fadd    z0.s, z0.s, z5.s
+    0.00 :   405350: fmul    z9.s, z9.s, z7.s
+    0.00 :   405354: fmul    z11.s, z11.s, z7.s
+    0.00 :   405358: fmul    z8.s, z8.s, z7.s
+    0.00 :   40535c: fadd    z21.s, z21.s, z18.s
+    0.00 :   405360: fadd    z22.s, z22.s, z17.s
+    0.00 :   405364: fadd    z23.s, z23.s, z10.s
+    0.00 :   405368: fadd    z19.s, z19.s, z9.s
+    0.00 :   40536c: fadd    z20.s, z20.s, z11.s
+    0.00 :   405370: fadd    z0.s, z0.s, z8.s
+    0.00 :   405374: cmp     w23, w1
+    0.00 :   405378: b.gt    405250 <conv_sve_rowquad+0x73c>
+    0.00 :   40537c: ldr     w1, [sp, #152]
+    0.00 :   405380: cmp     w1, w27
+    0.00 :   405384: b.ge    4054e0 <conv_sve_rowquad+0x9cc>  // b.tcont
+    0.00 :   405388: ldp     x5, x8, [sp, #168]
+    0.00 :   40538c: lsl     x1, x0, #2
+    0.00 :   405390: ldr     x6, [sp, #488]
+    0.00 :   405394: ldr     x7, [sp, #216]
+    0.00 :   405398: add     x2, x6, x1
+    0.04 :   40539c: ld1rw   {z4.s}, p0/z, [x2]
+    0.00 :   4053a0: add     x2, x4, x1
+    0.00 :   4053a4: ld1w    {z6.s}, p0/z, [x2]
+    0.00 :   4053a8: add     x2, x7, x1
+    0.00 :   4053ac: fmul    z7.s, z6.s, z4.s
+    0.04 :   4053b0: ldr     x9, [sp, #192]
+    0.00 :   4053b4: ld1rw   {z3.s}, p0/z, [x2]
+    0.00 :   4053b8: add     x3, x5, x0
+    0.00 :   4053bc: fadd    z25.s, z25.s, z7.s
+    0.00 :   4053c0: ld1w    {z5.s}, p0/z, [x4, x3, lsl #2]
+    0.00 :   4053c4: fmul    z7.s, z6.s, z3.s
+    0.00 :   4053c8: fmul    z8.s, z5.s, z4.s
+    0.00 :   4053cc: add     x2, x28, x1
+    0.00 :   4053d0: fadd    z24.s, z24.s, z7.s
+    0.00 :   4053d4: fadd    z26.s, z26.s, z8.s
+    0.00 :   4053d8: ld1rw   {z7.s}, p0/z, [x2]
+    0.00 :   4053dc: fmul    z8.s, z5.s, z3.s
+    0.00 :   4053e0: add     x2, x8, x0
+    0.00 :   4053e4: fmul    z6.s, z6.s, z7.s
+    0.00 :   4053e8: fmul    z5.s, z5.s, z7.s
+    0.00 :   4053ec: fadd    z23.s, z23.s, z6.s
+    0.00 :   4053f0: fadd    z19.s, z19.s, z5.s
+    0.00 :   4053f4: ld1w    {z5.s}, p0/z, [x4, x2, lsl #2]
+    0.00 :   4053f8: add     x2, x9, x0
+    0.00 :   4053fc: fmul    z6.s, z5.s, z3.s
+    0.00 :   405400: fadd    z21.s, z21.s, z8.s
+    0.00 :   405404: fadd    z22.s, z22.s, z6.s
+    0.00 :   405408: fmul    z8.s, z5.s, z4.s
+    0.00 :   40540c: fmul    z6.s, z5.s, z7.s
+    0.00 :   405410: ld1w    {z5.s}, p0/z, [x4, x2, lsl #2]
+    0.00 :   405414: ldr     w2, [sp, #160]
+    0.00 :   405418: fmul    z4.s, z5.s, z4.s
+    0.00 :   40541c: fmul    z3.s, z5.s, z3.s
+    0.00 :   405420: fadd    z27.s, z27.s, z8.s
+    0.00 :   405424: fmul    z5.s, z5.s, z7.s
+    0.00 :   405428: fadd    z20.s, z20.s, z6.s
+    0.00 :   40542c: fadd    z1.s, z1.s, z4.s
+    0.00 :   405430: fadd    z2.s, z2.s, z3.s
+    0.00 :   405434: fadd    z0.s, z0.s, z5.s
+    0.00 :   405438: cmp     w2, w27
+    0.00 :   40543c: b.ge    4054e0 <conv_sve_rowquad+0x9cc>  // b.tcont
+    0.00 :   405440: add     x1, x1, #0x4
+    0.00 :   405444: sxtw    x2, w2
+    0.00 :   405448: add     x3, x6, x1
+    0.00 :   40544c: ld1rw   {z4.s}, p0/z, [x3]
+    0.00 :   405450: add     x3, x4, x1
+    0.00 :   405454: ld1w    {z5.s}, p0/z, [x3]
+    0.00 :   405458: fmul    z3.s, z5.s, z4.s
+    0.00 :   40545c: add     x3, x7, x1
+    0.00 :   405460: fadd    z25.s, z25.s, z3.s
+    0.00 :   405464: add     x1, x28, x1
+    0.00 :   405468: ld1rw   {z3.s}, p0/z, [x3]
+    0.00 :   40546c: ld1rw   {z7.s}, p0/z, [x1]
+    0.00 :   405470: fmul    z6.s, z5.s, z3.s
+    0.00 :   405474: fmul    z5.s, z5.s, z7.s
+    0.00 :   405478: add     x1, x5, x2
+    0.00 :   40547c: fadd    z24.s, z24.s, z6.s
+    0.00 :   405480: fadd    z23.s, z23.s, z5.s
+    0.00 :   405484: ld1w    {z5.s}, p0/z, [x4, x1, lsl #2]
+    0.00 :   405488: fmul    z8.s, z5.s, z4.s
+    0.00 :   40548c: fmul    z6.s, z5.s, z3.s
+    0.00 :   405490: fmul    z5.s, z5.s, z7.s
+    0.00 :   405494: add     x1, x8, x2
+    0.00 :   405498: fadd    z26.s, z26.s, z8.s
+    0.00 :   40549c: add     x2, x9, x2
+    0.00 :   4054a0: fadd    z21.s, z21.s, z6.s
+    0.00 :   4054a4: fadd    z19.s, z19.s, z5.s
+    0.00 :   4054a8: ld1w    {z6.s}, p0/z, [x4, x1, lsl #2]
+    0.00 :   4054ac: ld1w    {z5.s}, p0/z, [x4, x2, lsl #2]
+    0.00 :   4054b0: fmul    z9.s, z6.s, z4.s
+    0.00 :   4054b4: fmul    z8.s, z6.s, z3.s
+    0.00 :   4054b8: fmul    z4.s, z5.s, z4.s
+    0.00 :   4054bc: fmul    z3.s, z5.s, z3.s
+    0.00 :   4054c0: fmul    z6.s, z6.s, z7.s
+    0.00 :   4054c4: fmul    z5.s, z5.s, z7.s
+    0.00 :   4054c8: fadd    z27.s, z27.s, z9.s
+    0.00 :   4054cc: fadd    z22.s, z22.s, z8.s
+    0.00 :   4054d0: fadd    z20.s, z20.s, z6.s
+    0.00 :   4054d4: fadd    z1.s, z1.s, z4.s
+    0.00 :   4054d8: fadd    z2.s, z2.s, z3.s
+    0.00 :   4054dc: fadd    z0.s, z0.s, z5.s
+    0.00 :   4054e0: ldr     x2, [sp, #584]
+    0.00 :   4054e4: mov     z3.s, #0
+    0.00 :   4054e8: stp     x25, x22, [sp, #504]
+    0.00 :   4054ec: mov     z16.d, z3.d
+    0.00 :   4054f0: ldr     w20, [sp, #160]
+    0.00 :   4054f4: mov     z7.d, z3.d
+    0.00 :   4054f8: ldr     x3, [sp, #592]
+    0.00 :   4054fc: mov     z18.d, z3.d
+    0.00 :   405500: add     x1, x2, x0
+    0.00 :   405504: sub     x5, x1, x20
+    0.00 :   405508: sub     x6, x2, x20
+    0.00 :   40550c: add     x16, x3, x20
+    0.00 :   405510: sub     x4, x0, x20
+    0.00 :   405514: ldr     x1, [sp, #168]
+    0.00 :   405518: lsl     x4, x4, #2
+    0.00 :   40551c: ldr     x3, [sp, #264]
+    0.00 :   405520: lsl     x6, x6, #2
+    0.00 :   405524: ldr     x7, [sp, #192]
+    0.00 :   405528: add     x19, x3, x20
+    0.00 :   40552c: add     x18, x3, x0
+    0.00 :   405530: add     x3, x1, x0
+    0.00 :   405534: ldr     x1, [sp, #176]
+    0.00 :   405538: lsl     x5, x5, #2
+    0.00 :   40553c: ldr     x8, [sp, #248]
+    0.00 :   405540: add     x2, x1, x0
+    0.00 :   405544: add     x1, x7, x0
+    0.00 :   405548: lsl     x0, x0, #2
+    0.00 :   40554c: lsl     x2, x2, #2
+    0.04 :   405550: str     x0, [sp, #200]
+    0.00 :   405554: lsl     x1, x1, #2
+    0.00 :   405558: stp     x1, x2, [sp, #224]
+    0.00 :   40555c: add     x19, x8, x19, lsl #2
+    0.00 :   405560: ldr     x0, [sp, #184]
+    0.00 :   405564: add     x18, x8, x18, lsl #2
+    0.00 :   405568: ldr     x1, [sp, #640]
+    0.00 :   40556c: add     x17, x28, x20, lsl #2
+    0.00 :   405570: add     x16, x28, x16, lsl #2
+    0.00 :   405574: neg     x20, x20, lsl #2
+    0.00 :   405578: add     x14, x0, x1
+    0.00 :   40557c: mov     x22, x6
+    0.00 :   405580: ldr     x1, [sp, #704]
+    0.00 :   405584: mov     x25, x5
+    0.00 :   405588: str     x28, [sp, #520]
+    0.00 :   40558c: mov     x28, x4
+    0.00 :   405590: add     x8, x1, x0
+    0.00 :   405594: str     x30, [sp, #528]
+    0.00 :   405598: ldr     x1, [sp, #648]
+    0.00 :   40559c: mov     x30, x7
+    0.00 :   4055a0: lsl     x3, x3, #2
+    0.00 :   4055a4: mov     w21, #0x3                       // #3
+    0.00 :   4055a8: add     x13, x0, x1
+    0.00 :   4055ac: str     x3, [sp, #240]
+    0.00 :   4055b0: ldr     x1, [sp, #656]
+    0.00 :   4055b4: add     x12, x0, x1
+    0.00 :   4055b8: ldr     x1, [sp, #664]
+    0.00 :   4055bc: add     x11, x0, x1
+    0.00 :   4055c0: ldr     x1, [sp, #672]
+    0.00 :   4055c4: add     x10, x0, x1
+    0.00 :   4055c8: ldr     x1, [sp, #680]
+    0.00 :   4055cc: add     x9, x0, x1
+    0.04 :   4055d0: sub     x15, x8, #0x4
+    0.00 :   4055d4: add     x6, x16, x22
+    0.00 :   4055d8: add     x5, x16, x20
+    0.00 :   4055dc: add     x3, x17, x22
+    0.00 :   4055e0: add     x4, x17, x20
+    0.00 :   4055e4: cmp     w23, #0x0
+    0.00 :   4055e8: b.le    40576c <conv_sve_rowquad+0xc58>
+    0.04 :   4055ec: mov     x2, #0x4                        // #4
+    0.00 :   4055f0: mov     x0, #0x0                        // #0
+    0.00 :   4055f4: nop
+    8.84 :   4055f8: lsl     x1, x0, #2
+    0.08 :   4055fc: ld1w    {z17.s}, p0/z, [x15, x0, lsl #2]
+    0.04 :   405600: add     x7, x6, x1
+   25.25 :   405604: ld1rw   {z8.s}, p0/z, [x7]
+    0.00 :   405608: fmul    z10.s, z17.s, z8.s
+    0.22 :   40560c: ld1w    {z6.s}, p0/z, [x14, x0, lsl #2]
+    0.00 :   405610: fadd    z25.s, z25.s, z10.s
+    2.60 :   405614: fmul    z10.s, z6.s, z8.s
+    2.44 :   405618: ld1w    {z5.s}, p0/z, [x13, x0, lsl #2]
+    0.00 :   40561c: fadd    z26.s, z26.s, z10.s
+    0.00 :   405620: fmul    z10.s, z5.s, z8.s
+    1.08 :   405624: ld1w    {z29.s}, p0/z, [x10, x0, lsl #2]
+    7.21 :   405628: ld1w    {z4.s}, p0/z, [x11, x0, lsl #2]
+    0.00 :   40562c: add     x7, x6, x2
+    0.00 :   405630: fmul    z8.s, z4.s, z8.s
+    1.80 :   405634: ld1rw   {z9.s}, p0/z, [x7]
+    0.00 :   405638: fadd    z27.s, z27.s, z10.s
+    0.00 :   40563c: fmul    z10.s, z29.s, z9.s
+    0.00 :   405640: add     x7, x5, x1
+    0.00 :   405644: fadd    z1.s, z1.s, z8.s
+    0.00 :   405648: fadd    z27.s, z27.s, z10.s
+    0.00 :   40564c: ld1rw   {z8.s}, p0/z, [x7]
+    0.00 :   405650: fmul    z10.s, z17.s, z8.s
+    2.07 :   405654: ld1w    {z31.s}, p0/z, [x8, x0, lsl #2]
+    0.00 :   405658: fadd    z24.s, z24.s, z10.s
+    0.00 :   40565c: fmul    z11.s, z31.s, z9.s
+    0.00 :   405660: fmul    z10.s, z6.s, z8.s
+    6.24 :   405664: ld1w    {z30.s}, p0/z, [x12, x0, lsl #2]
+    3.71 :   405668: ld1w    {z28.s}, p0/z, [x9, x0, lsl #2]
+    0.00 :   40566c: fadd    z21.s, z21.s, z10.s
+    0.00 :   405670: fadd    z25.s, z25.s, z11.s
+    0.00 :   405674: fmul    z10.s, z5.s, z8.s
+    3.75 :   405678: fmul    z11.s, z30.s, z9.s
+    0.00 :   40567c: fmul    z9.s, z28.s, z9.s
+    0.00 :   405680: add     x7, x5, x2
+    0.00 :   405684: fmul    z8.s, z4.s, z8.s
+    0.04 :   405688: fadd    z22.s, z22.s, z10.s
+    0.04 :   40568c: fadd    z1.s, z1.s, z9.s
+    0.19 :   405690: ld1rw   {z9.s}, p0/z, [x7]
+    0.00 :   405694: fmul    z10.s, z29.s, z9.s
+    0.00 :   405698: add     x7, x3, x1
+    0.00 :   40569c: fadd    z2.s, z2.s, z8.s
+    0.07 :   4056a0: fadd    z22.s, z22.s, z10.s
+    1.91 :   4056a4: ld1rw   {z8.s}, p0/z, [x7]
+    0.00 :   4056a8: fmul    z10.s, z17.s, z8.s
+    0.00 :   4056ac: fadd    z26.s, z26.s, z11.s
+    1.20 :   4056b0: fadd    z23.s, z23.s, z10.s
+    2.55 :   4056b4: fmul    z11.s, z31.s, z9.s
+    0.00 :   4056b8: fmul    z10.s, z6.s, z8.s
+    0.00 :   4056bc: fadd    z24.s, z24.s, z11.s
+    0.00 :   4056c0: fadd    z19.s, z19.s, z10.s
+    0.08 :   4056c4: fmul    z11.s, z30.s, z9.s
+    0.00 :   4056c8: fmul    z10.s, z5.s, z8.s
+    0.04 :   4056cc: fmul    z9.s, z28.s, z9.s
+    0.00 :   4056d0: fmul    z8.s, z4.s, z8.s
+    0.11 :   4056d4: add     x1, x4, x1
+    0.00 :   4056d8: add     x7, x3, x2
+    0.00 :   4056dc: fadd    z0.s, z0.s, z8.s
+    0.19 :   4056e0: fadd    z21.s, z21.s, z11.s
+    1.92 :   4056e4: ld1rw   {z8.s}, p0/z, [x1]
+    0.00 :   4056e8: fadd    z2.s, z2.s, z9.s
+    5.42 :   4056ec: fmul    z6.s, z6.s, z8.s
+    0.11 :   4056f0: ld1rw   {z9.s}, p0/z, [x7]
+    0.00 :   4056f4: fmul    z4.s, z4.s, z8.s
+    0.04 :   4056f8: fmul    z11.s, z31.s, z9.s
+    0.00 :   4056fc: add     x0, x0, #0x2
+    2.21 :   405700: add     x1, x4, x2
+    0.00 :   405704: fadd    z20.s, z20.s, z10.s
+    0.00 :   405708: fadd    z7.s, z7.s, z6.s
+    0.00 :   40570c: fmul    z10.s, z29.s, z9.s
+    0.08 :   405710: fadd    z3.s, z3.s, z4.s
+    0.00 :   405714: fadd    z23.s, z23.s, z11.s
+    0.19 :   405718: ld1rw   {z4.s}, p0/z, [x1]
+    0.00 :   40571c: fmul    z11.s, z30.s, z9.s
+    1.35 :   405720: fmul    z17.s, z17.s, z8.s
+    0.00 :   405724: fmul    z9.s, z28.s, z9.s
+    7.54 :   405728: fadd    z18.s, z18.s, z17.s
+    0.00 :   40572c: fmul    z6.s, z5.s, z8.s
+    0.00 :   405730: fmul    z31.s, z31.s, z4.s
+    0.00 :   405734: fadd    z5.s, z16.s, z6.s
+    0.04 :   405738: fmul    z30.s, z30.s, z4.s
+    0.04 :   40573c: fmul    z29.s, z29.s, z4.s
+    0.00 :   405740: fmul    z28.s, z28.s, z4.s
+    0.00 :   405744: add     x2, x2, #0x8
+    0.04 :   405748: fadd    z19.s, z19.s, z11.s
+    0.00 :   40574c: fadd    z20.s, z20.s, z10.s
+    0.90 :   405750: fadd    z0.s, z0.s, z9.s
+    1.00 :   405754: fadd    z18.s, z18.s, z31.s
+    0.00 :   405758: fadd    z7.s, z7.s, z30.s
+    0.15 :   40575c: fadd    z16.s, z5.s, z29.s
+    0.08 :   405760: fadd    z3.s, z3.s, z28.s
+    0.00 :   405764: cmp     w23, w0
+    0.04 :   405768: b.gt    4055f8 <conv_sve_rowquad+0xae4>
+    0.30 :   40576c: ldr     w0, [sp, #152]
+    0.00 :   405770: cmp     w0, w27
+    0.00 :   405774: b.ge    4058e0 <conv_sve_rowquad+0xdcc>  // b.tcont
+    0.41 :   405778: ld1w    {z8.s}, p0/z, [x18]
+    0.00 :   40577c: add     x0, x16, x25
+    0.41 :   405780: ld1rw   {z9.s}, p0/z, [x0]
+    0.00 :   405784: fmul    z5.s, z8.s, z9.s
+    0.00 :   405788: ldp     x1, x2, [sp, #168]
+    0.00 :   40578c: ld1w    {z6.s}, p0/z, [x18, x1, lsl #2]
+    0.00 :   405790: fmul    z4.s, z6.s, z9.s
+    0.00 :   405794: fadd    z25.s, z25.s, z5.s
+    0.00 :   405798: fadd    z26.s, z26.s, z4.s
+    0.37 :   40579c: ld1w    {z5.s}, p0/z, [x18, x2, lsl #2]
+    0.23 :   4057a0: ld1w    {z4.s}, p0/z, [x18, x30, lsl #2]
+    0.00 :   4057a4: fmul    z10.s, z5.s, z9.s
+    0.00 :   4057a8: fmul    z9.s, z4.s, z9.s
+    0.00 :   4057ac: add     x0, x16, x28
+    0.04 :   4057b0: fadd    z27.s, z27.s, z10.s
+    0.00 :   4057b4: fadd    z1.s, z1.s, z9.s
+    0.00 :   4057b8: ld1rw   {z9.s}, p0/z, [x0]
+    0.00 :   4057bc: fmul    z10.s, z6.s, z9.s
+    0.00 :   4057c0: fmul    z11.s, z8.s, z9.s
+    0.00 :   4057c4: fadd    z21.s, z21.s, z10.s
+    0.04 :   4057c8: fmul    z10.s, z5.s, z9.s
+    0.00 :   4057cc: fmul    z9.s, z4.s, z9.s
+    0.00 :   4057d0: add     x0, x17, x25
+    0.00 :   4057d4: fadd    z22.s, z22.s, z10.s
+    0.00 :   4057d8: fadd    z2.s, z2.s, z9.s
+    0.00 :   4057dc: ld1rw   {z9.s}, p0/z, [x0]
+    0.00 :   4057e0: fmul    z10.s, z6.s, z9.s
+    0.00 :   4057e4: add     x0, x17, x28
+    0.00 :   4057e8: fadd    z24.s, z24.s, z11.s
+    0.00 :   4057ec: fadd    z19.s, z19.s, z10.s
+    0.00 :   4057f0: fmul    z11.s, z8.s, z9.s
+    0.00 :   4057f4: fmul    z10.s, z5.s, z9.s
+    0.11 :   4057f8: fmul    z9.s, z4.s, z9.s
+    0.00 :   4057fc: fadd    z0.s, z0.s, z9.s
+    0.04 :   405800: ld1rw   {z9.s}, p0/z, [x0]
+    0.04 :   405804: ldr     w0, [sp, #160]
+    0.00 :   405808: fmul    z8.s, z8.s, z9.s
+    0.00 :   40580c: fmul    z6.s, z6.s, z9.s
+    0.00 :   405810: fmul    z5.s, z5.s, z9.s
+    0.00 :   405814: fmul    z4.s, z4.s, z9.s
+    0.04 :   405818: fadd    z23.s, z23.s, z11.s
+    0.00 :   40581c: fadd    z20.s, z20.s, z10.s
+    0.00 :   405820: fadd    z18.s, z18.s, z8.s
+    0.00 :   405824: fadd    z7.s, z7.s, z6.s
+    0.00 :   405828: fadd    z16.s, z16.s, z5.s
+    0.00 :   40582c: fadd    z3.s, z3.s, z4.s
+    0.00 :   405830: cmp     w27, w0
+    0.00 :   405834: b.le    4058e0 <conv_sve_rowquad+0xdcc>
+    0.00 :   405838: ld1w    {z9.s}, p0/z, [x19]
+    0.00 :   40583c: add     x0, x16, x24
+    0.00 :   405840: ld1rw   {z5.s}, p0/z, [x0]
+    0.00 :   405844: fmul    z6.s, z9.s, z5.s
+    0.00 :   405848: fadd    z25.s, z25.s, z6.s
+    0.00 :   40584c: ld1w    {z6.s}, p0/z, [x19, x2, lsl #2]
+    0.00 :   405850: fmul    z10.s, z6.s, z5.s
+    0.00 :   405854: ld1w    {z8.s}, p0/z, [x19, x1, lsl #2]
+    0.00 :   405858: add     x0, x17, x24
+    0.00 :   40585c: fmul    z4.s, z8.s, z5.s
+    0.00 :   405860: fadd    z27.s, z27.s, z10.s
+    0.00 :   405864: ld1rw   {z10.s}, p0/z, [x0]
+    0.00 :   405868: fmul    z17.s, z8.s, z10.s
+    0.00 :   40586c: fmul    z28.s, z9.s, z10.s
+    0.00 :   405870: fadd    z26.s, z26.s, z4.s
+    0.00 :   405874: fadd    z19.s, z19.s, z17.s
+    0.00 :   405878: ld1w    {z4.s}, p0/z, [x19, x30, lsl #2]
+    0.00 :   40587c: fmul    z17.s, z6.s, z10.s
+    0.00 :   405880: fmul    z5.s, z4.s, z5.s
+    0.00 :   405884: fmul    z10.s, z4.s, z10.s
+    0.00 :   405888: fadd    z1.s, z1.s, z5.s
+    0.00 :   40588c: fadd    z0.s, z0.s, z10.s
+    0.00 :   405890: ld1rw   {z5.s}, p0/z, [x16]
+    0.00 :   405894: ld1rw   {z10.s}, p0/z, [x17]
+    0.00 :   405898: fmul    z11.s, z9.s, z5.s
+    0.00 :   40589c: fmul    z9.s, z9.s, z10.s
+    0.00 :   4058a0: fadd    z24.s, z24.s, z11.s
+    0.00 :   4058a4: fadd    z18.s, z18.s, z9.s
+    0.00 :   4058a8: fmul    z11.s, z8.s, z5.s
+    0.00 :   4058ac: fmul    z9.s, z6.s, z5.s
+    0.00 :   4058b0: fmul    z8.s, z8.s, z10.s
+    0.00 :   4058b4: fmul    z5.s, z4.s, z5.s
+    0.00 :   4058b8: fmul    z6.s, z6.s, z10.s
+    0.00 :   4058bc: fmul    z4.s, z4.s, z10.s
+    0.00 :   4058c0: fadd    z23.s, z23.s, z28.s
+    0.00 :   4058c4: fadd    z20.s, z20.s, z17.s
+    0.00 :   4058c8: fadd    z21.s, z21.s, z11.s
+    0.00 :   4058cc: fadd    z7.s, z7.s, z8.s
+    0.00 :   4058d0: fadd    z22.s, z22.s, z9.s
+    0.00 :   4058d4: fadd    z16.s, z16.s, z6.s
+    0.00 :   4058d8: fadd    z2.s, z2.s, z5.s
+    0.00 :   4058dc: fadd    z3.s, z3.s, z4.s
+    0.04 :   4058e0: ldr     w0, [sp, #480]
+    0.00 :   4058e4: add     w21, w21, #0x1
+    0.00 :   4058e8: add     x16, x16, x24
+    0.00 :   4058ec: add     x17, x17, x24
+    0.08 :   4058f0: add     x19, x19, x26
+    0.00 :   4058f4: add     x18, x18, x26
+    0.00 :   4058f8: add     x14, x14, x26
+    0.00 :   4058fc: add     x8, x8, x26
+    0.00 :   405900: add     x13, x13, x26
+    0.00 :   405904: add     x12, x12, x26
+    0.00 :   405908: add     x11, x11, x26
+    0.00 :   40590c: add     x10, x10, x26
+    0.00 :   405910: add     x9, x9, x26
+    0.08 :   405914: cmp     w0, w21
+    0.00 :   405918: b.ne    4055d0 <conv_sve_rowquad+0xabc>  // b.any
+    0.00 :   40591c: ldr     x0, [sp, #184]
+    0.00 :   405920: ldr     x1, [sp, #632]
+    0.04 :   405924: ldp     x25, x22, [sp, #504]
+    0.00 :   405928: add     x3, x0, x1
+    0.00 :   40592c: ldr     x28, [sp, #520]
+    0.00 :   405930: ldr     x30, [sp, #528]
+    0.00 :   405934: cmp     w23, #0x0
+    0.00 :   405938: b.le    405a8c <conv_sve_rowquad+0xf78>
+    0.00 :   40593c: ldp     x5, x6, [sp, #312]
+    0.00 :   405940: mov     x0, #0x0                        // #0
+    0.00 :   405944: ldr     x8, [sp, #208]
+    0.00 :   405948: ldr     x4, [sp, #280]
+    0.00 :   40594c: ldr     x7, [sp, #336]
+    0.00 :   405950: ldr     x10, [sp, #472]
+    0.00 :   405954: ldr     x9, [sp, #496]
+    0.00 :   405958: ldr     x11, [sp, #544]
+    0.00 :   40595c: ldr     x12, [sp, #728]
+    0.15 :   405960: lsl     x1, x0, #2
+    0.00 :   405964: ld1w    {z4.s}, p0/z, [x5, x0, lsl #2]
+    0.00 :   405968: add     x2, x25, x1
+    0.23 :   40596c: ld1w    {z8.s}, p0/z, [x3, x0, lsl #2]
+    0.00 :   405970: ld1rw   {z10.s}, p0/z, [x2]
+    0.00 :   405974: movprfx z17, z8
+    0.00 :   405978: ext     z17.b, z17.b, z4.b, #4
+    0.00 :   40597c: add     x2, x10, x1
+    0.00 :   405980: ld1rw   {z29.s}, p0/z, [x2]
+    0.00 :   405984: fmul    z28.s, z17.s, z29.s
+    0.00 :   405988: ld1w    {z5.s}, p0/z, [x6, x0, lsl #2]
+    0.00 :   40598c: fmul    z11.s, z8.s, z10.s
+    0.00 :   405990: fadd    z24.s, z24.s, z11.s
+    0.00 :   405994: fadd    z24.s, z24.s, z28.s
+    0.11 :   405998: fmul    z28.s, z5.s, z10.s
+    0.00 :   40599c: ld1w    {z6.s}, p0/z, [x7, x0, lsl #2]
+    0.00 :   4059a0: fmul    z11.s, z4.s, z10.s
+    0.00 :   4059a4: fadd    z22.s, z22.s, z28.s
+    0.00 :   4059a8: fmul    z28.s, z6.s, z10.s
+    0.00 :   4059ac: fadd    z21.s, z21.s, z11.s
+    0.00 :   4059b0: movprfx z10, z5
+    0.00 :   4059b4: ext     z10.b, z10.b, z6.b, #4
+    0.00 :   4059b8: movprfx z11, z4
+    0.00 :   4059bc: ext     z11.b, z11.b, z5.b, #4
+    0.00 :   4059c0: fadd    z2.s, z2.s, z28.s
+    0.00 :   4059c4: fmul    z30.s, z11.s, z29.s
+    0.00 :   4059c8: fmul    z28.s, z10.s, z29.s
+    0.04 :   4059cc: add     x2, x8, x1
+    0.00 :   4059d0: fadd    z21.s, z21.s, z30.s
+    0.00 :   4059d4: fadd    z22.s, z22.s, z28.s
+    0.00 :   4059d8: ld1rw   {z28.s}, p0/z, [x2]
+    0.00 :   4059dc: fmul    z30.s, z8.s, z28.s
+    0.00 :   4059e0: ld1w    {z9.s}, p0/z, [x4, x0, lsl #2]
+    0.00 :   4059e4: fadd    z23.s, z23.s, z30.s
+    0.00 :   4059e8: fmul    z29.s, z9.s, z29.s
+    0.00 :   4059ec: fmul    z30.s, z4.s, z28.s
+    0.07 :   4059f0: add     x2, x11, x1
+    0.00 :   4059f4: fadd    z19.s, z19.s, z30.s
+    0.00 :   4059f8: fadd    z2.s, z2.s, z29.s
+    0.00 :   4059fc: fmul    z30.s, z5.s, z28.s
+    0.00 :   405a00: ld1rw   {z29.s}, p0/z, [x2]
+    0.00 :   405a04: fmul    z31.s, z17.s, z29.s
+    0.00 :   405a08: fmul    z28.s, z6.s, z28.s
+    0.00 :   405a0c: fadd    z20.s, z20.s, z30.s
+    0.00 :   405a10: fadd    z23.s, z23.s, z31.s
+    0.00 :   405a14: fmul    z30.s, z10.s, z29.s
+    0.00 :   405a18: fmul    z31.s, z11.s, z29.s
+    0.00 :   405a1c: add     x0, x0, #0x2
+    0.00 :   405a20: fmul    z29.s, z9.s, z29.s
+    0.00 :   405a24: add     x2, x9, x1
+    0.00 :   405a28: fadd    z0.s, z0.s, z28.s
+    0.00 :   405a2c: add     x1, x12, x1
+    0.00 :   405a30: fadd    z0.s, z0.s, z29.s
+    0.00 :   405a34: ld1rw   {z28.s}, p0/z, [x1]
+    0.11 :   405a38: ld1rw   {z29.s}, p0/z, [x2]
+    0.00 :   405a3c: fmul    z17.s, z17.s, z28.s
+    0.00 :   405a40: fmul    z8.s, z8.s, z29.s
+    0.00 :   405a44: fmul    z4.s, z4.s, z29.s
+    0.00 :   405a48: fadd    z18.s, z18.s, z8.s
+    0.00 :   405a4c: fadd    z7.s, z7.s, z4.s
+    0.00 :   405a50: fmul    z5.s, z5.s, z29.s
+    0.00 :   405a54: fmul    z6.s, z6.s, z29.s
+    0.00 :   405a58: fadd    z5.s, z16.s, z5.s
+    0.00 :   405a5c: fadd    z3.s, z3.s, z6.s
+    0.00 :   405a60: fmul    z11.s, z11.s, z28.s
+    0.04 :   405a64: fmul    z10.s, z10.s, z28.s
+    0.00 :   405a68: fmul    z9.s, z9.s, z28.s
+    0.00 :   405a6c: fadd    z19.s, z19.s, z31.s
+    0.00 :   405a70: fadd    z20.s, z20.s, z30.s
+    0.00 :   405a74: fadd    z18.s, z18.s, z17.s
+    0.00 :   405a78: fadd    z7.s, z7.s, z11.s
+    0.00 :   405a7c: fadd    z16.s, z5.s, z10.s
+    0.00 :   405a80: fadd    z3.s, z3.s, z9.s
+    0.00 :   405a84: cmp     w23, w0
+    0.00 :   405a88: b.gt    405960 <conv_sve_rowquad+0xe4c>
+    0.00 :   405a8c: ldr     w0, [sp, #152]
+    0.00 :   405a90: cmp     w0, w27
+    0.00 :   405a94: b.ge    405c00 <conv_sve_rowquad+0x10ec>  // b.tcont
+    0.00 :   405a98: ldp     x0, x4, [sp, #200]
+    0.00 :   405a9c: ldr     x5, [sp, #496]
+    0.00 :   405aa0: add     x2, x25, x0
+    0.00 :   405aa4: ld1rw   {z5.s}, p0/z, [x2]
+    0.00 :   405aa8: mov     x2, x0
+    0.00 :   405aac: add     x0, x3, x0
+    0.00 :   405ab0: ld1w    {z6.s}, p0/z, [x0]
+    0.00 :   405ab4: add     x0, x4, x2
+    0.00 :   405ab8: ld1rw   {z4.s}, p0/z, [x0]
+    0.00 :   405abc: add     x0, x5, x2
+    0.00 :   405ac0: ld1rw   {z9.s}, p0/z, [x0]
+    0.00 :   405ac4: ldr     x0, [sp, #240]
+    0.00 :   405ac8: fmul    z8.s, z6.s, z5.s
+    0.00 :   405acc: fadd    z24.s, z24.s, z8.s
+    0.00 :   405ad0: fmul    z8.s, z6.s, z4.s
+    0.00 :   405ad4: fadd    z23.s, z23.s, z8.s
+    0.00 :   405ad8: add     x0, x3, x0
+    0.00 :   405adc: fmul    z8.s, z6.s, z9.s
+    0.00 :   405ae0: ld1w    {z6.s}, p0/z, [x0]
+    0.00 :   405ae4: ldr     x0, [sp, #232]
+    0.00 :   405ae8: fmul    z10.s, z6.s, z5.s
+    0.00 :   405aec: fadd    z18.s, z18.s, z8.s
+    0.00 :   405af0: fmul    z8.s, z6.s, z4.s
+    0.00 :   405af4: fmul    z6.s, z6.s, z9.s
+    0.00 :   405af8: add     x0, x3, x0
+    0.00 :   405afc: fadd    z7.s, z7.s, z6.s
+    0.00 :   405b00: ld1w    {z6.s}, p0/z, [x0]
+    0.00 :   405b04: ldr     x0, [sp, #224]
+    0.00 :   405b08: fadd    z19.s, z19.s, z8.s
+    0.00 :   405b0c: fmul    z8.s, z6.s, z4.s
+    0.00 :   405b10: fadd    z21.s, z21.s, z10.s
+    0.00 :   405b14: fadd    z20.s, z20.s, z8.s
+    0.00 :   405b18: add     x0, x3, x0
+    0.00 :   405b1c: fmul    z10.s, z6.s, z5.s
+    0.00 :   405b20: fmul    z8.s, z6.s, z9.s
+    0.00 :   405b24: ld1w    {z6.s}, p0/z, [x0]
+    0.00 :   405b28: ldr     w0, [sp, #160]
+    0.00 :   405b2c: fmul    z5.s, z6.s, z5.s
+    0.00 :   405b30: fmul    z4.s, z6.s, z4.s
+    0.00 :   405b34: fadd    z22.s, z22.s, z10.s
+    0.00 :   405b38: fmul    z6.s, z6.s, z9.s
+    0.00 :   405b3c: fadd    z16.s, z16.s, z8.s
+    0.00 :   405b40: fadd    z2.s, z2.s, z5.s
+    0.00 :   405b44: fadd    z0.s, z0.s, z4.s
+    0.00 :   405b48: fadd    z3.s, z3.s, z6.s
+    0.00 :   405b4c: cmp     w27, w0
+    0.00 :   405b50: b.le    405c00 <conv_sve_rowquad+0x10ec>
+    0.00 :   405b54: sxtw    x1, w0
+    0.00 :   405b58: add     x0, x2, #0x4
+    0.00 :   405b5c: ldr     x2, [sp, #168]
+    0.00 :   405b60: add     x2, x2, x1
+    0.00 :   405b64: ld1w    {z6.s}, p0/z, [x3, x2, lsl #2]
+    0.00 :   405b68: add     x2, x25, x0
+    0.00 :   405b6c: ld1rw   {z5.s}, p0/z, [x2]
+    0.00 :   405b70: add     x2, x3, x0
+    0.00 :   405b74: fmul    z4.s, z6.s, z5.s
+    0.00 :   405b78: ld1w    {z8.s}, p0/z, [x2]
+    0.00 :   405b7c: fadd    z21.s, z21.s, z4.s
+    0.00 :   405b80: add     x2, x4, x0
+    0.00 :   405b84: fmul    z4.s, z8.s, z5.s
+    0.00 :   405b88: add     x0, x5, x0
+    0.00 :   405b8c: fadd    z24.s, z24.s, z4.s
+    0.00 :   405b90: ld1rw   {z9.s}, p0/z, [x0]
+    0.00 :   405b94: ld1rw   {z4.s}, p0/z, [x2]
+    0.00 :   405b98: ldr     x0, [sp, #176]
+    0.00 :   405b9c: fmul    z10.s, z8.s, z4.s
+    0.00 :   405ba0: fmul    z8.s, z8.s, z9.s
+    0.00 :   405ba4: fadd    z18.s, z18.s, z8.s
+    0.00 :   405ba8: ldr     x2, [sp, #192]
+    0.00 :   405bac: fmul    z8.s, z6.s, z4.s
+    0.00 :   405bb0: fmul    z6.s, z6.s, z9.s
+    0.00 :   405bb4: add     x0, x0, x1
+    0.00 :   405bb8: fadd    z23.s, z23.s, z10.s
+    0.00 :   405bbc: fadd    z19.s, z19.s, z8.s
+    0.00 :   405bc0: add     x1, x2, x1
+    0.00 :   405bc4: ld1w    {z8.s}, p0/z, [x3, x0, lsl #2]
+    0.00 :   405bc8: fadd    z7.s, z7.s, z6.s
+    0.00 :   405bcc: fmul    z11.s, z8.s, z5.s
+    0.00 :   405bd0: ld1w    {z6.s}, p0/z, [x3, x1, lsl #2]
+    0.00 :   405bd4: fmul    z10.s, z8.s, z4.s
+    0.00 :   405bd8: fmul    z5.s, z6.s, z5.s
+    0.00 :   405bdc: fmul    z4.s, z6.s, z4.s
+    0.00 :   405be0: fmul    z8.s, z8.s, z9.s
+    0.00 :   405be4: fmul    z6.s, z6.s, z9.s
+    0.00 :   405be8: fadd    z22.s, z22.s, z11.s
+    0.00 :   405bec: fadd    z20.s, z20.s, z10.s
+    0.00 :   405bf0: fadd    z16.s, z16.s, z8.s
+    0.00 :   405bf4: fadd    z2.s, z2.s, z5.s
+    0.00 :   405bf8: fadd    z0.s, z0.s, z4.s
+    0.00 :   405bfc: fadd    z3.s, z3.s, z6.s
+    0.00 :   405c00: ldr     x0, [sp, #184]
+    0.00 :   405c04: ldr     x1, [sp, #624]
+    0.00 :   405c08: add     x0, x0, x1
+    0.00 :   405c0c: cmp     w23, #0x0
+    0.00 :   405c10: b.le    405d0c <conv_sve_rowquad+0x11f8>
+    0.00 :   405c14: ldp     x4, x5, [sp, #288]
+    0.00 :   405c18: mov     x1, #0x0                        // #0
+    0.00 :   405c1c: ldr     x7, [sp, #208]
+    0.00 :   405c20: ldr     x6, [sp, #304]
+    0.00 :   405c24: ldr     x8, [sp, #344]
+    0.00 :   405c28: ldr     x9, [sp, #472]
+    0.04 :   405c2c: ldr     x10, [sp, #544]
+    0.08 :   405c30: lsl     x2, x1, #2
+    0.00 :   405c34: ld1w    {z4.s}, p0/z, [x4, x1, lsl #2]
+    0.00 :   405c38: add     x3, x25, x2
+    0.18 :   405c3c: ld1w    {z9.s}, p0/z, [x0, x1, lsl #2]
+    0.07 :   405c40: ld1rw   {z6.s}, p0/z, [x3]
+    0.00 :   405c44: movprfx z28, z9
+    0.00 :   405c48: ext     z28.b, z28.b, z4.b, #4
+    0.00 :   405c4c: fmul    z11.s, z9.s, z6.s
+    0.00 :   405c50: add     x3, x9, x2
+    0.00 :   405c54: ld1rw   {z17.s}, p0/z, [x3]
+    0.00 :   405c58: fmul    z29.s, z28.s, z17.s
+    0.00 :   405c5c: ld1w    {z5.s}, p0/z, [x5, x1, lsl #2]
+    0.04 :   405c60: ld1w    {z8.s}, p0/z, [x8, x1, lsl #2]
+    0.00 :   405c64: fadd    z23.s, z23.s, z11.s
+    0.00 :   405c68: fmul    z11.s, z4.s, z6.s
+    0.00 :   405c6c: fadd    z23.s, z23.s, z29.s
+    0.04 :   405c70: fmul    z29.s, z5.s, z6.s
+    0.00 :   405c74: fmul    z6.s, z8.s, z6.s
+    0.00 :   405c78: ld1w    {z10.s}, p0/z, [x6, x1, lsl #2]
+    0.00 :   405c7c: fadd    z19.s, z19.s, z11.s
+    0.00 :   405c80: fadd    z20.s, z20.s, z29.s
+    0.00 :   405c84: movprfx z11, z4
+    0.11 :   405c88: ext     z11.b, z11.b, z5.b, #4
+    0.00 :   405c8c: movprfx z29, z5
+    0.00 :   405c90: ext     z29.b, z29.b, z8.b, #4
+    0.00 :   405c94: fmul    z30.s, z11.s, z17.s
+    0.00 :   405c98: fadd    z0.s, z0.s, z6.s
+    0.00 :   405c9c: add     x1, x1, #0x2
+    0.00 :   405ca0: fmul    z6.s, z29.s, z17.s
+    0.00 :   405ca4: fmul    z17.s, z10.s, z17.s
+    0.00 :   405ca8: add     x3, x7, x2
+    0.00 :   405cac: fadd    z20.s, z20.s, z6.s
+    0.04 :   405cb0: add     x2, x10, x2
+    0.00 :   405cb4: fadd    z0.s, z0.s, z17.s
+    0.00 :   405cb8: ld1rw   {z6.s}, p0/z, [x2]
+    0.00 :   405cbc: ld1rw   {z17.s}, p0/z, [x3]
+    0.00 :   405cc0: fmul    z28.s, z28.s, z6.s
+    0.00 :   405cc4: fmul    z9.s, z9.s, z17.s
+    0.00 :   405cc8: fmul    z4.s, z4.s, z17.s
+    0.00 :   405ccc: fadd    z18.s, z18.s, z9.s
+    0.00 :   405cd0: fadd    z7.s, z7.s, z4.s
+    0.00 :   405cd4: fmul    z5.s, z5.s, z17.s
+    0.00 :   405cd8: fmul    z8.s, z8.s, z17.s
+    0.00 :   405cdc: fadd    z5.s, z16.s, z5.s
+    0.00 :   405ce0: fadd    z3.s, z3.s, z8.s
+    0.00 :   405ce4: fmul    z11.s, z11.s, z6.s
+    0.00 :   405ce8: fmul    z29.s, z29.s, z6.s
+    0.00 :   405cec: fmul    z10.s, z10.s, z6.s
+    0.04 :   405cf0: fadd    z19.s, z19.s, z30.s
+    0.00 :   405cf4: fadd    z18.s, z18.s, z28.s
+    0.00 :   405cf8: fadd    z7.s, z7.s, z11.s
+    0.00 :   405cfc: fadd    z16.s, z5.s, z29.s
+    0.00 :   405d00: fadd    z3.s, z3.s, z10.s
+    0.00 :   405d04: cmp     w23, w1
+    0.00 :   405d08: b.gt    405c30 <conv_sve_rowquad+0x111c>
+    0.00 :   405d0c: ldr     w1, [sp, #152]
+    0.00 :   405d10: cmp     w1, w27
+    0.00 :   405d14: b.ge    4061d8 <conv_sve_rowquad+0x16c4>  // b.tcont
+    0.00 :   405d18: ldp     x3, x5, [sp, #200]
+    0.00 :   405d1c: add     x1, x0, x3
+    0.00 :   405d20: ld1w    {z5.s}, p0/z, [x1]
+    0.00 :   405d24: add     x1, x5, x3
+    0.00 :   405d28: ld1rw   {z6.s}, p0/z, [x1]
+    0.00 :   405d2c: ldr     x1, [sp, #240]
+    0.00 :   405d30: add     x2, x25, x3
+    0.00 :   405d34: ld1rw   {z4.s}, p0/z, [x2]
+    0.00 :   405d38: fmul    z8.s, z5.s, z4.s
+    0.00 :   405d3c: fmul    z5.s, z5.s, z6.s
+    0.00 :   405d40: add     x1, x0, x1
+    0.00 :   405d44: fadd    z18.s, z18.s, z5.s
+    0.00 :   405d48: ld1w    {z5.s}, p0/z, [x1]
+    0.00 :   405d4c: ldr     x1, [sp, #232]
+    0.00 :   405d50: fadd    z23.s, z23.s, z8.s
+    0.00 :   405d54: fmul    z8.s, z5.s, z4.s
+    0.00 :   405d58: fmul    z5.s, z5.s, z6.s
+    0.00 :   405d5c: fadd    z7.s, z7.s, z5.s
+    0.00 :   405d60: add     x1, x0, x1
+    0.00 :   405d64: ld1w    {z5.s}, p0/z, [x1]
+    0.00 :   405d68: ldr     x1, [sp, #224]
+    0.00 :   405d6c: fadd    z19.s, z19.s, z8.s
+    0.00 :   405d70: fmul    z8.s, z5.s, z4.s
+    0.00 :   405d74: fmul    z5.s, z5.s, z6.s
+    0.00 :   405d78: fadd    z16.s, z16.s, z5.s
+    0.00 :   405d7c: fadd    z20.s, z20.s, z8.s
+    0.00 :   405d80: add     x1, x0, x1
+    0.00 :   405d84: ld1w    {z5.s}, p0/z, [x1]
+    0.00 :   405d88: ldr     w1, [sp, #160]
+    0.00 :   405d8c: fmul    z4.s, z5.s, z4.s
+    0.00 :   405d90: fmul    z5.s, z5.s, z6.s
+    0.00 :   405d94: fadd    z0.s, z0.s, z4.s
+    0.00 :   405d98: fadd    z3.s, z3.s, z5.s
+    0.00 :   405d9c: cmp     w27, w1
+    0.00 :   405da0: b.le    405e28 <conv_sve_rowquad+0x1314>
+    0.00 :   405da4: ldr     x4, [sp, #168]
+    0.00 :   405da8: sxtw    x1, w1
+    0.00 :   405dac: add     x3, x3, #0x4
+    0.00 :   405db0: add     x4, x4, x1
+    0.00 :   405db4: ld1w    {z5.s}, p0/z, [x0, x4, lsl #2]
+    0.00 :   405db8: add     x4, x25, x3
+    0.00 :   405dbc: ld1rw   {z4.s}, p0/z, [x4]
+    0.00 :   405dc0: add     x4, x0, x3
+    0.00 :   405dc4: fmul    z6.s, z5.s, z4.s
+    0.00 :   405dc8: add     x3, x5, x3
+    0.00 :   405dcc: ld1w    {z8.s}, p0/z, [x4]
+    0.00 :   405dd0: fadd    z19.s, z19.s, z6.s
+    0.00 :   405dd4: ld1rw   {z6.s}, p0/z, [x3]
+    0.00 :   405dd8: ldr     x3, [sp, #176]
+    0.00 :   405ddc: fmul    z9.s, z8.s, z4.s
+    0.00 :   405de0: fmul    z5.s, z5.s, z6.s
+    0.00 :   405de4: fmul    z8.s, z8.s, z6.s
+    0.00 :   405de8: ldr     x4, [sp, #192]
+    0.00 :   405dec: fadd    z23.s, z23.s, z9.s
+    0.00 :   405df0: add     x3, x3, x1
+    0.00 :   405df4: fadd    z18.s, z18.s, z8.s
+    0.00 :   405df8: fadd    z7.s, z7.s, z5.s
+    0.00 :   405dfc: ld1w    {z8.s}, p0/z, [x0, x3, lsl #2]
+    0.00 :   405e00: add     x1, x4, x1
+    0.00 :   405e04: fmul    z9.s, z8.s, z4.s
+    0.00 :   405e08: ld1w    {z5.s}, p0/z, [x0, x1, lsl #2]
+    0.00 :   405e0c: fmul    z8.s, z8.s, z6.s
+    0.00 :   405e10: fmul    z4.s, z5.s, z4.s
+    0.00 :   405e14: fadd    z20.s, z20.s, z9.s
+    0.00 :   405e18: fmul    z5.s, z5.s, z6.s
+    0.00 :   405e1c: fadd    z16.s, z16.s, z8.s
+    0.00 :   405e20: fadd    z0.s, z0.s, z4.s
+    0.00 :   405e24: fadd    z3.s, z3.s, z5.s
+    0.00 :   405e28: ldr     x0, [sp, #184]
+    0.00 :   405e2c: ldr     x1, [sp, #616]
+    0.00 :   405e30: add     x3, x0, x1
+    0.00 :   405e34: cmp     w23, #0x0
+    0.00 :   405e38: b.le    405ee4 <conv_sve_rowquad+0x13d0>
+    0.00 :   405e3c: ldp     x4, x5, [sp, #352]
+    0.00 :   405e40: mov     x0, #0x0                        // #0
+    0.00 :   405e44: ldp     x6, x7, [sp, #368]
+    0.00 :   405e48: ldr     x8, [sp, #472]
+    0.00 :   405e4c: nop
+    0.00 :   405e50: lsl     x1, x0, #2
+    0.04 :   405e54: ld1w    {z6.s}, p0/z, [x3, x0, lsl #2]
+    0.00 :   405e58: add     x2, x25, x1
+    0.37 :   405e5c: ld1rw   {z11.s}, p0/z, [x2]
+    0.00 :   405e60: fmul    z8.s, z6.s, z11.s
+    0.00 :   405e64: ld1w    {z5.s}, p0/z, [x7, x0, lsl #2]
+    0.11 :   405e68: ld1w    {z4.s}, p0/z, [x6, x0, lsl #2]
+    0.00 :   405e6c: ld1w    {z9.s}, p0/z, [x5, x0, lsl #2]
+    0.04 :   405e70: ld1w    {z28.s}, p0/z, [x4, x0, lsl #2]
+    0.00 :   405e74: ext     z6.b, z6.b, z5.b, #4
+    0.00 :   405e78: fadd    z18.s, z18.s, z8.s
+    0.00 :   405e7c: fmul    z17.s, z4.s, z11.s
+    0.00 :   405e80: fmul    z8.s, z5.s, z11.s
+    0.00 :   405e84: add     x1, x8, x1
+    0.00 :   405e88: ext     z5.b, z5.b, z4.b, #4
+    0.00 :   405e8c: ld1rw   {z10.s}, p0/z, [x1]
+    0.00 :   405e90: ext     z4.b, z4.b, z9.b, #4
+    0.00 :   405e94: add     x0, x0, #0x2
+    0.00 :   405e98: fmul    z4.s, z4.s, z10.s
+    0.00 :   405e9c: fadd    z7.s, z7.s, z8.s
+    0.00 :   405ea0: fmul    z6.s, z6.s, z10.s
+    0.00 :   405ea4: fmul    z8.s, z5.s, z10.s
+    0.00 :   405ea8: fmul    z9.s, z9.s, z11.s
+    0.00 :   405eac: fadd    z5.s, z16.s, z17.s
+    0.00 :   405eb0: fadd    z3.s, z3.s, z9.s
+    0.00 :   405eb4: fadd    z16.s, z5.s, z4.s
+    0.00 :   405eb8: fadd    z18.s, z18.s, z6.s
+    0.00 :   405ebc: fmul    z4.s, z28.s, z10.s
+    0.00 :   405ec0: fadd    z7.s, z7.s, z8.s
+    0.00 :   405ec4: fadd    z3.s, z3.s, z4.s
+    0.00 :   405ec8: cmp     w23, w0
+    0.00 :   405ecc: b.gt    405e50 <conv_sve_rowquad+0x133c>
+    0.00 :   405ed0: ldr     x0, [sp, #200]
+    0.00 :   405ed4: add     x2, x25, x0
+    0.00 :   405ed8: ldr     w0, [sp, #152]
+    0.00 :   405edc: cmp     w0, w27
+    0.00 :   405ee0: b.ge    405fa0 <conv_sve_rowquad+0x148c>  // b.tcont
+    0.00 :   405ee4: ldr     x0, [sp, #240]
+    0.00 :   405ee8: ld1rw   {z4.s}, p0/z, [x2]
+    0.00 :   405eec: add     x4, x3, x0
+    0.00 :   405ef0: ld1w    {z6.s}, p0/z, [x4]
+    0.00 :   405ef4: ldr     x0, [sp, #232]
+    0.00 :   405ef8: fmul    z6.s, z6.s, z4.s
+    0.00 :   405efc: fadd    z7.s, z7.s, z6.s
+    0.00 :   405f00: add     x1, x3, x0
+    0.00 :   405f04: ld1w    {z5.s}, p0/z, [x1]
+    0.00 :   405f08: ldr     x0, [sp, #224]
+    0.00 :   405f0c: fmul    z5.s, z5.s, z4.s
+    0.00 :   405f10: fadd    z16.s, z16.s, z5.s
+    0.00 :   405f14: ldr     x1, [sp, #200]
+    0.00 :   405f18: add     x0, x3, x0
+    0.00 :   405f1c: ld1w    {z6.s}, p0/z, [x0]
+    0.00 :   405f20: fmul    z6.s, z6.s, z4.s
+    0.00 :   405f24: fadd    z3.s, z3.s, z6.s
+    0.00 :   405f28: add     x0, x3, x1
+    0.00 :   405f2c: ld1w    {z5.s}, p0/z, [x0]
+    0.00 :   405f30: ldr     w0, [sp, #160]
+    0.00 :   405f34: fmul    z4.s, z5.s, z4.s
+    0.00 :   405f38: fadd    z18.s, z18.s, z4.s
+    0.00 :   405f3c: cmp     w27, w0
+    0.00 :   405f40: b.le    405fa0 <conv_sve_rowquad+0x148c>
+    0.00 :   405f44: add     x1, x1, #0x4
+    0.00 :   405f48: sxtw    x0, w0
+    0.00 :   405f4c: add     x2, x25, x1
+    0.00 :   405f50: add     x1, x3, x1
+    0.00 :   405f54: ld1w    {z6.s}, p0/z, [x1]
+    0.00 :   405f58: ldr     x1, [sp, #168]
+    0.00 :   405f5c: ld1rw   {z4.s}, p0/z, [x2]
+    0.00 :   405f60: fmul    z6.s, z6.s, z4.s
+    0.00 :   405f64: ldr     x2, [sp, #192]
+    0.00 :   405f68: fadd    z18.s, z18.s, z6.s
+    0.00 :   405f6c: add     x1, x1, x0
+    0.00 :   405f70: ld1w    {z5.s}, p0/z, [x3, x1, lsl #2]
+    0.00 :   405f74: ldr     x1, [sp, #176]
+    0.00 :   405f78: fmul    z5.s, z5.s, z4.s
+    0.00 :   405f7c: fadd    z7.s, z7.s, z5.s
+    0.00 :   405f80: add     x1, x1, x0
+    0.00 :   405f84: add     x0, x2, x0
+    0.00 :   405f88: ld1w    {z6.s}, p0/z, [x3, x1, lsl #2]
+    0.00 :   405f8c: ld1w    {z5.s}, p0/z, [x3, x0, lsl #2]
+    0.00 :   405f90: fmul    z6.s, z6.s, z4.s
+    0.00 :   405f94: fmul    z4.s, z5.s, z4.s
+    0.00 :   405f98: fadd    z16.s, z16.s, z6.s
+    0.00 :   405f9c: fadd    z3.s, z3.s, z4.s
+    0.00 :   405fa0: add     x0, sp, #0x228
+    0.00 :   405fa4: ldr     w9, [sp, #484]
+    0.00 :   405fa8: ldr     x2, [sp, #184]
+    0.00 :   405fac: incb    x9
+    0.00 :   405fb0: ldp     x8, x5, [x0]
+    0.00 :   405fb4: str     w9, [sp, #484]
+    0.00 :   405fb8: ldp     x6, x7, [x0, #16]
+    0.00 :   405fbc: ldr     x3, [sp, #256]
+    0.00 :   405fc0: add     x1, x5, x2
+    0.00 :   405fc4: st1w    {z25.s}, p0, [x1]
+    0.00 :   405fc8: ldr     x4, [sp, #464]
+    0.00 :   405fcc: add     x0, x6, x2
+    0.00 :   405fd0: st1w    {z24.s}, p0, [x0]
+    0.00 :   405fd4: add     x1, x7, x2
+    0.00 :   405fd8: add     x0, x8, x2
+    0.00 :   405fdc: st1w    {z23.s}, p0, [x1]
+    0.00 :   405fe0: add     x1, x5, x3
+    0.00 :   405fe4: st1w    {z18.s}, p0, [x0]
+    0.00 :   405fe8: add     x0, x6, x3
+    0.00 :   405fec: st1w    {z26.s}, p0, [x1]
+    0.00 :   405ff0: add     x1, x7, x3
+    0.00 :   405ff4: st1w    {z21.s}, p0, [x0]
+    0.00 :   405ff8: add     x0, x8, x3
+    0.00 :   405ffc: st1w    {z19.s}, p0, [x1]
+    0.00 :   406000: add     x1, x5, x4
+    0.00 :   406004: st1w    {z7.s}, p0, [x0]
+    0.00 :   406008: add     x0, x6, x4
+    0.00 :   40600c: st1w    {z27.s}, p0, [x1]
+    0.00 :   406010: add     x1, x7, x4
+    0.00 :   406014: st1w    {z22.s}, p0, [x0]
+    0.00 :   406018: add     x0, x8, x4
+    0.04 :   40601c: st1w    {z20.s}, p0, [x1]
+    0.00 :   406020: ldr     x1, [sp, #272]
+    0.00 :   406024: st1w    {z16.s}, p0, [x0]
+    0.00 :   406028: ldr     w0, [sp, #600]
+    0.00 :   40602c: sub     w19, w0, w9
+    0.00 :   406030: add     x0, x5, x1
+    0.00 :   406034: st1w    {z1.s}, p0, [x0]
+    0.00 :   406038: add     x0, x6, x1
+    0.00 :   40603c: st1w    {z2.s}, p0, [x0]
+    0.00 :   406040: add     x0, x7, x1
+    0.00 :   406044: st1w    {z0.s}, p0, [x0]
+    0.00 :   406048: add     x0, x8, x1
+    0.00 :   40604c: st1w    {z3.s}, p0, [x0]
+    0.00 :   406050: ldr     x0, [sp, #376]
+    0.00 :   406054: add     x0, x0, x22
+    0.00 :   406058: str     x0, [sp, #376]
+    0.00 :   40605c: ldr     x0, [sp, #368]
+    0.00 :   406060: add     x0, x0, x22
+    0.00 :   406064: str     x0, [sp, #368]
+    0.00 :   406068: ldr     x0, [sp, #360]
+    0.00 :   40606c: add     x0, x0, x22
+    0.00 :   406070: str     x0, [sp, #360]
+    0.00 :   406074: ldr     x0, [sp, #352]
+    0.00 :   406078: ldr     x5, [sp, #608]
+    0.00 :   40607c: add     x0, x0, x22
+    0.00 :   406080: str     x0, [sp, #352]
+    0.00 :   406084: ldr     x0, [sp, #288]
+    0.00 :   406088: add     x0, x0, x22
+    0.00 :   40608c: str     x0, [sp, #288]
+    0.00 :   406090: ldr     x0, [sp, #296]
+    0.00 :   406094: add     x0, x0, x22
+    0.00 :   406098: str     x0, [sp, #296]
+    0.00 :   40609c: ldr     x0, [sp, #344]
+    0.00 :   4060a0: add     x0, x0, x22
+    0.00 :   4060a4: str     x0, [sp, #344]
+    0.00 :   4060a8: ldr     x0, [sp, #304]
+    0.00 :   4060ac: add     x0, x0, x22
+    0.00 :   4060b0: str     x0, [sp, #304]
+    0.00 :   4060b4: ldr     x0, [sp, #312]
+    0.00 :   4060b8: add     x0, x0, x22
+    0.00 :   4060bc: str     x0, [sp, #312]
+    0.00 :   4060c0: ldr     x0, [sp, #320]
+    0.00 :   4060c4: add     x0, x0, x22
+    0.00 :   4060c8: str     x0, [sp, #320]
+    0.00 :   4060cc: ldr     x0, [sp, #336]
+    0.00 :   4060d0: add     x0, x0, x22
+    0.00 :   4060d4: str     x0, [sp, #336]
+    0.00 :   4060d8: ldr     x0, [sp, #280]
+    0.00 :   4060dc: add     x0, x0, x22
+    0.00 :   4060e0: str     x0, [sp, #280]
+    0.04 :   4060e4: ldr     x0, [sp, #264]
+    0.00 :   4060e8: add     x0, x0, x5
+    0.00 :   4060ec: str     x0, [sp, #264]
+    0.00 :   4060f0: ldr     x0, [sp, #328]
+    0.00 :   4060f4: add     x0, x0, x22
+    0.00 :   4060f8: str     x0, [sp, #328]
+    0.00 :   4060fc: ldr     x0, [sp, #384]
+    0.00 :   406100: add     x0, x0, x22
+    0.00 :   406104: str     x0, [sp, #384]
+    0.08 :   406108: ldr     x0, [sp, #392]
+    0.00 :   40610c: add     x0, x0, x22
+    0.00 :   406110: str     x0, [sp, #392]
+    0.00 :   406114: ldr     x0, [sp, #400]
+    0.00 :   406118: add     x0, x0, x22
+    0.00 :   40611c: str     x0, [sp, #400]
+    0.11 :   406120: ldr     x0, [sp, #408]
+    0.00 :   406124: add     x0, x0, x22
+    0.00 :   406128: str     x0, [sp, #408]
+    0.00 :   40612c: ldr     x0, [sp, #416]
+    0.00 :   406130: add     x0, x0, x22
+    0.00 :   406134: str     x0, [sp, #416]
+    0.04 :   406138: ldr     x0, [sp, #424]
+    0.00 :   40613c: add     x0, x0, x22
+    0.00 :   406140: str     x0, [sp, #424]
+    0.00 :   406144: ldr     x0, [sp, #432]
+    0.00 :   406148: add     x0, x0, x22
+    0.00 :   40614c: str     x0, [sp, #432]
+    0.00 :   406150: ldr     x0, [sp, #440]
+    0.00 :   406154: add     x0, x0, x22
+    0.00 :   406158: str     x0, [sp, #440]
+    0.00 :   40615c: ldr     x0, [sp, #448]
+    0.00 :   406160: add     x0, x0, x22
+    0.00 :   406164: str     x0, [sp, #448]
+    0.00 :   406168: ldr     x0, [sp, #456]
+    0.00 :   40616c: add     x0, x0, x22
+    0.00 :   406170: str     x0, [sp, #456]
+    0.00 :   406174: add     x0, x2, x22
+    0.04 :   406178: str     x0, [sp, #184]
+    0.00 :   40617c: add     x0, x3, x22
+    0.00 :   406180: str     x0, [sp, #256]
+    0.00 :   406184: add     x0, x4, x22
+    0.00 :   406188: str     x0, [sp, #464]
+    0.00 :   40618c: add     x0, x1, x22
+    0.00 :   406190: str     x0, [sp, #272]
+    0.00 :   406194: cntb    x0
+    0.00 :   406198: cmp     w19, w0
+    0.00 :   40619c: b.ge    404eb0 <conv_sve_rowquad+0x39c>  // b.tcont
+    0.00 :   4061a0: ldp     x25, x26, [sp, #80]
+    0.00 :   4061a4: ldp     d8, d9, [sp, #112]
+    0.00 :   4061a8: ldp     d10, d11, [sp, #128]
+    0.00 :   4061ac: ldr     w1, [sp, #484]
+    0.00 :   4061b0: ldr     w0, [sp, #600]
+    0.00 :   4061b4: cmp     w0, w1
+    0.00 :   4061b8: b.gt    406258 <conv_sve_rowquad+0x1744>
+    0.00 :   4061bc: ldp     x29, x30, [sp, #16]
+    0.00 :   4061c0: ldp     x19, x20, [sp, #32]
+    0.00 :   4061c4: ldp     x21, x22, [sp, #48]
+    0.00 :   4061c8: ldp     x23, x24, [sp, #64]
+    0.00 :   4061cc: ldp     x27, x28, [sp, #96]
+    0.00 :   4061d0: add     sp, sp, #0x2f0
+    0.00 :   4061d4: ret
+    0.00 :   4061d8: ldr     x0, [sp, #184]
+    0.00 :   4061dc: ldr     x1, [sp, #616]
+    0.00 :   4061e0: add     x3, x0, x1
+    0.00 :   4061e4: cmp     w23, #0x0
+    0.00 :   4061e8: b.gt    405e3c <conv_sve_rowquad+0x1328>
+    0.00 :   4061ec: b       405fa0 <conv_sve_rowquad+0x148c>
+    0.00 :   4061f0: mov     z0.s, #0
+    0.00 :   4061f4: mov     z20.d, z0.d
+    0.00 :   4061f8: mov     z19.d, z0.d
+    0.00 :   4061fc: mov     z23.d, z0.d
+    0.00 :   406200: b       40537c <conv_sve_rowquad+0x868>
+    0.00 :   406204: cmp     w27, #0x0
+    0.00 :   406208: b.le    406334 <conv_sve_rowquad+0x1820>
+    0.00 :   40620c: mov     z25.s, #0
+    0.00 :   406210: mov     z27.d, z25.d
+    0.00 :   406214: mov     z1.d, z25.d
+    0.00 :   406218: mov     z26.d, z25.d
+    0.00 :   40621c: str     wzr, [sp, #152]
+    0.00 :   406220: b       404f78 <conv_sve_rowquad+0x464>
+    0.00 :   406224: ldr     x0, [sp, #184]
+    0.00 :   406228: ldr     x1, [sp, #696]
+    0.00 :   40622c: add     x1, x0, x1
+    0.00 :   406230: ldr     x0, [sp, #744]
+    0.00 :   406234: b       404ff0 <conv_sve_rowquad+0x4dc>
+    0.00 :   406238: add     w1, w2, #0x1
+    0.00 :   40623c: str     w1, [sp, #160]
+    0.00 :   406240: b       40520c <conv_sve_rowquad+0x6f8>
+    0.00 :   406244: mov     z2.s, #0
+    0.00 :   406248: mov     z22.d, z2.d
+    0.00 :   40624c: mov     z21.d, z2.d
+    0.00 :   406250: mov     z24.d, z2.d
+    0.00 :   406254: b       4050f4 <conv_sve_rowquad+0x5e0>
+    0.00 :   406258: sbfiz   x21, x1, #2, #32
+    0.00 :   40625c: sxtw    x20, w1
+    0.00 :   406260: ldr     x1, [sp, #576]
+    0.00 :   406264: str     w19, [sp]
+    0.00 :   406268: ldr     x23, [sp, #248]
+    0.00 :   40626c: add     x7, x1, x21
+    0.00 :   406270: ldr     x1, [sp, #568]
+    0.00 :   406274: add     x0, x23, x21
+    0.00 :   406278: ldr     x22, [sp, #736]
+    0.00 :   40627c: add     x6, x1, x21
+    0.00 :   406280: ldr     x1, [sp, #560]
+    0.00 :   406284: mov     w4, w27
+    0.00 :   406288: ldr     w24, [sp, #480]
+    0.00 :   40628c: mov     x2, x28
+    0.00 :   406290: add     x5, x1, x21
+    0.00 :   406294: mov     x1, x22
+    0.00 :   406298: mov     w3, w24
+    0.00 :   40629c: bl      403b34 <conv_sve_rowtriple>
+    0.00 :   4062a0: add     x0, x22, x22, lsl #1
+    0.00 :   4062a4: mov     x1, x22
+    0.00 :   4062a8: ldr     x2, [sp, #552]
+    0.00 :   4062ac: add     x0, x0, x20
+    0.00 :   4062b0: mov     w6, w19
+    0.00 :   4062b4: mov     w4, w27
+    0.00 :   4062b8: add     x5, x2, x21
+    0.00 :   4062bc: mov     w3, w24
+    0.00 :   4062c0: add     x0, x23, x0, lsl #2
+    0.00 :   4062c4: mov     x2, x28
+    0.00 :   4062c8: ldp     x29, x30, [sp, #16]
+    0.00 :   4062cc: ldp     x19, x20, [sp, #32]
+    0.00 :   4062d0: ldp     x21, x22, [sp, #48]
+    0.00 :   4062d4: ldp     x23, x24, [sp, #64]
+    0.00 :   4062d8: ldp     x27, x28, [sp, #96]
+    0.00 :   4062dc: add     sp, sp, #0x2f0
+    0.00 :   4062e0: b       401890 <conv_sve_prefix>
+    0.00 :   4062e4: ldr     w19, [sp, #600]
+    0.00 :   4062e8: str     w19, [sp]
+    0.00 :   4062ec: bl      403b34 <conv_sve_rowtriple>
+    0.00 :   4062f0: mov     w6, w19
+    0.00 :   4062f4: mov     w4, w27
+    0.00 :   4062f8: mov     x2, x28
+    0.00 :   4062fc: ldr     w3, [sp, #480]
+    0.00 :   406300: ldp     x29, x30, [sp, #16]
+    0.00 :   406304: ldp     x19, x20, [sp, #32]
+    0.00 :   406308: ldp     x27, x28, [sp, #96]
+    0.00 :   40630c: ldr     x1, [sp, #736]
+    0.00 :   406310: ldr     x7, [sp, #248]
+    0.00 :   406314: ldr     x5, [sp, #552]
+    0.00 :   406318: add     x0, x1, x1, lsl #1
+    0.00 :   40631c: add     sp, sp, #0x2f0
+    0.00 :   406320: add     x0, x7, x0, lsl #2
+    0.00 :   406324: b       401890 <conv_sve_prefix>
+    0.00 :   406328: mov     w19, w9
+    0.00 :   40632c: str     wzr, [sp, #484]
+    0.00 :   406330: b       4061ac <conv_sve_rowquad+0x1698>
+    0.00 :   406334: mov     z2.s, #0
+    0.00 :   406338: mov     w1, #0x1                        // #1
+    0.00 :   40633c: mov     x0, #0x0                        // #0
+    0.00 :   406340: mov     z22.d, z2.d
+    0.00 :   406344: mov     z21.d, z2.d
+    0.00 :   406348: mov     z25.d, z2.d
+    0.00 :   40634c: mov     z27.d, z2.d
+    0.00 :   406350: mov     z1.d, z2.d
+    0.00 :   406354: mov     z24.d, z2.d
+    0.00 :   406358: mov     z26.d, z2.d
+    0.00 :   40635c: str     wzr, [sp, #152]
+    0.00 :   406360: str     w1, [sp, #160]
+    0.00 :   406364: b       40520c <conv_sve_rowquad+0x6f8>

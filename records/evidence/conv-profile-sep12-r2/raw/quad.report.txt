@@ -1,0 +1,55 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+# symbol: conv_sve_rowquad
+#
+# Total Lost Samples: 0
+#
+# Samples: 38K of event 'cycles:u'
+# Event count (approx.): 596793311525
+#
+# Overhead       Samples      Pid:Command         Shared Object   IPC   [IPC Coverage]
+# ........  ............  ......................  ..............  ....................
+#
+     0.18%            72   667552:conv2d_profile  conv2d_profile  -      -            
+     0.18%            72   667570:conv2d_profile  conv2d_profile  -      -            
+     0.18%            72   667563:conv2d_profile  conv2d_profile  -      -            
+     0.18%            72   667554:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667557:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667567:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667548:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667556:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667550:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667553:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667569:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667549:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667551:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667559:conv2d_profile  conv2d_profile  -      -            
+     0.18%            71   667595:conv2d_profile  conv2d_profile  -      -            
+     0.18%            74   667527:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667579:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667566:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667581:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667558:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667568:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667572:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667582:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667560:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667604:conv2d_profile  conv2d_profile  -      -            
+     0.18%            70   667606:conv2d_profile  conv2d_profile  -      -            
+     0.18%            69   667594:conv2d_profile  conv2d_profile  -      -            
+     0.18%            69   667580:conv2d_profile  conv2d_profile  -      -            
+     0.18%            69   667596:conv2d_profile  conv2d_profile  -      -            
+     0.17%            69   667592:conv2d_profile  conv2d_profile  -      -            
+     0.17%            69   667588:conv2d_profile  conv2d_profile  -      -            
+     0.17%            69   667575:conv2d_profile  conv2d_profile  -      -            
+     0.17%            69   667555:conv2d_profile  conv2d_profile  -      -            
+     0.17%            68   667598:conv2d_profile  conv2d_profile  -      -            
+     0.17%            68   667600:conv2d_profile  conv2d_profile  -      -            
+     0.17%            68   667583:conv2d_profile  conv2d_profile  -      -            
+     0.17%            68   667593:conv2d_profile  conv2d_profile  -      -            
+     0.17%            68   667585:conv2d_profile  conv2d_profile  -      -            
+
+
+#
+# (Tip: If you prefer Intel style assembly, try: perf annotate -M intel)
+#

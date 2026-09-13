@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C23-row3loads",
+  "parent": "C21-r3",
+  "strategy": "In the C5 three-output-row shared middle loop only, replace three ext windows with direct shifted loads to trade load bandwidth for fewer shuffle instructions",
+  "created_at": "2026-09-11T11:15:43.808708+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "3f297dd1bdca7e83591ff0f7bd5dc142b1b348e432f1b21802c1c18433879c2f",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-11T16:42:54.885600+00:00",
+  "environment": "kunpeng-gcc10-generic-38-sep11c",
+  "reference": "官方内置参考",
+  "verified": true,
+  "log_sha256": "b9c463ef170ed04f169606be83343477775e2a0e5702963d96d7a2c06d02b913",
+  "log": ".runs/conv/C23-row3loads/evidence/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        55.56,
+        55.59,
+        55.57
+      ],
+      "median_ms": 55.57,
+      "min_ms": 55.56,
+      "max_ms": 55.59,
+      "spread_pct": 0.053985963649453184,
+      "gflops": [
+        1356.6445,
+        1355.8768,
+        1356.3542
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        65.8,
+        65.85,
+        65.9
+      ],
+      "median_ms": 65.85,
+      "min_ms": 65.8,
+      "max_ms": 65.9,
+      "spread_pct": 0.15186028853456116,
+      "gflops": [
+        1264.9551,
+        1264.0982,
+        1263.0981
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        115.2,
+        115.22,
+        115.33
+      ],
+      "median_ms": 115.22,
+      "min_ms": 115.2,
+      "max_ms": 115.33,
+      "spread_pct": 0.11282763409129964,
+      "gflops": [
+        1398.1938,
+        1397.9654,
+        1396.6952
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        249.8,
+        249.91,
+        250.18
+      ],
+      "median_ms": 249.91,
+      "min_ms": 249.8,
+      "max_ms": 250.18,
+      "spread_pct": 0.15205473970629246,
+      "gflops": [
+        1384.2083,
+        1383.5682,
+        1382.1134
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 486.54999999999995,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1531236",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "comparison_baseline": "C21-r5",
+  "comparison": {
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 56.99,
+        "candidate_ms": 55.57,
+        "gain_pct": 2.4916652044218313
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.32,
+        "candidate_ms": 65.85,
+        "gain_pct": 3.615339578454331
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.42,
+        "candidate_ms": 115.22,
+        "gain_pct": 2.702246242188822
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.58,
+        "candidate_ms": 249.91,
+        "gain_pct": 3.352927527264285
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "opening_control_comparison": {
+    "baseline": "C21-r4",
+    "eligible": true,
+    "reasons": [],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 56.99,
+        "candidate_ms": 55.57,
+        "gain_pct": 2.4916652044218313
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 68.29,
+        "candidate_ms": 65.85,
+        "gain_pct": 3.572997510616506
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 118.39,
+        "candidate_ms": 115.22,
+        "gain_pct": 2.677591012754457
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 258.67,
+        "candidate_ms": 249.91,
+        "gain_pct": 3.3865542969807163
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "source_parent": "C21-r3",
+  "decision_note": "Initial C5 comparison passed. The four-row family was subsequently selected and independently confirmed; this alternative is retained as a measured experiment without a submission ZIP."
+}

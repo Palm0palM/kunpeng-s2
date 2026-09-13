@@ -1,0 +1,137 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -1452,16 +1452,16 @@
+                     const svfloat32_t v = svld1(pg, row + ik + 0 * lanes);
+                     svfloat32_t tmp;
+                     __asm__ __volatile__(
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ka].s\n\t"
+-                        "fadd %Z[a].s, %Z[a].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kb].s\n\t"
+-                        "fadd %Z[b].s, %Z[b].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kc].s\n\t"
+-                        "fadd %Z[c].s, %Z[c].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kd].s\n\t"
+-                        "fadd %Z[d].s, %Z[d].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ke].s\n\t"
+-                        "fadd %Z[e].s, %Z[e].s, %Z[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ka].s\n\t"
++                        "fadd %[a].s, %[a].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kb].s\n\t"
++                        "fadd %[b].s, %[b].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kc].s\n\t"
++                        "fadd %[c].s, %[c].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kd].s\n\t"
++                        "fadd %[d].s, %[d].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ke].s\n\t"
++                        "fadd %[e].s, %[e].s, %[t].s\n\t"
+                         : [a] "+&w"(a0), [b] "+&w"(b0),
+                           [c] "+&w"(c0), [d] "+&w"(d0),
+                           [e] "+&w"(e0), [t] "=&w"(tmp)
+@@ -1473,16 +1473,16 @@
+                     const svfloat32_t v = svld1(pg, row + ik + 1 * lanes);
+                     svfloat32_t tmp;
+                     __asm__ __volatile__(
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ka].s\n\t"
+-                        "fadd %Z[a].s, %Z[a].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kb].s\n\t"
+-                        "fadd %Z[b].s, %Z[b].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kc].s\n\t"
+-                        "fadd %Z[c].s, %Z[c].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kd].s\n\t"
+-                        "fadd %Z[d].s, %Z[d].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ke].s\n\t"
+-                        "fadd %Z[e].s, %Z[e].s, %Z[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ka].s\n\t"
++                        "fadd %[a].s, %[a].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kb].s\n\t"
++                        "fadd %[b].s, %[b].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kc].s\n\t"
++                        "fadd %[c].s, %[c].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kd].s\n\t"
++                        "fadd %[d].s, %[d].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ke].s\n\t"
++                        "fadd %[e].s, %[e].s, %[t].s\n\t"
+                         : [a] "+&w"(a1), [b] "+&w"(b1),
+                           [c] "+&w"(c1), [d] "+&w"(d1),
+                           [e] "+&w"(e1), [t] "=&w"(tmp)
+@@ -1494,16 +1494,16 @@
+                     const svfloat32_t v = svld1(pg, row + ik + 2 * lanes);
+                     svfloat32_t tmp;
+                     __asm__ __volatile__(
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ka].s\n\t"
+-                        "fadd %Z[a].s, %Z[a].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kb].s\n\t"
+-                        "fadd %Z[b].s, %Z[b].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kc].s\n\t"
+-                        "fadd %Z[c].s, %Z[c].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kd].s\n\t"
+-                        "fadd %Z[d].s, %Z[d].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ke].s\n\t"
+-                        "fadd %Z[e].s, %Z[e].s, %Z[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ka].s\n\t"
++                        "fadd %[a].s, %[a].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kb].s\n\t"
++                        "fadd %[b].s, %[b].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kc].s\n\t"
++                        "fadd %[c].s, %[c].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kd].s\n\t"
++                        "fadd %[d].s, %[d].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ke].s\n\t"
++                        "fadd %[e].s, %[e].s, %[t].s\n\t"
+                         : [a] "+&w"(a2), [b] "+&w"(b2),
+                           [c] "+&w"(c2), [d] "+&w"(d2),
+                           [e] "+&w"(e2), [t] "=&w"(tmp)
+@@ -1515,16 +1515,16 @@
+                     const svfloat32_t v = svld1(pg, row + ik + 3 * lanes);
+                     svfloat32_t tmp;
+                     __asm__ __volatile__(
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ka].s\n\t"
+-                        "fadd %Z[a].s, %Z[a].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kb].s\n\t"
+-                        "fadd %Z[b].s, %Z[b].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kc].s\n\t"
+-                        "fadd %Z[c].s, %Z[c].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kd].s\n\t"
+-                        "fadd %Z[d].s, %Z[d].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ke].s\n\t"
+-                        "fadd %Z[e].s, %Z[e].s, %Z[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ka].s\n\t"
++                        "fadd %[a].s, %[a].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kb].s\n\t"
++                        "fadd %[b].s, %[b].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kc].s\n\t"
++                        "fadd %[c].s, %[c].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kd].s\n\t"
++                        "fadd %[d].s, %[d].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ke].s\n\t"
++                        "fadd %[e].s, %[e].s, %[t].s\n\t"
+                         : [a] "+&w"(a3), [b] "+&w"(b3),
+                           [c] "+&w"(c3), [d] "+&w"(d3),
+                           [e] "+&w"(e3), [t] "=&w"(tmp)
+@@ -1536,16 +1536,16 @@
+                     const svfloat32_t v = svld1(pg, row + ik + 4 * lanes);
+                     svfloat32_t tmp;
+                     __asm__ __volatile__(
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ka].s\n\t"
+-                        "fadd %Z[a].s, %Z[a].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kb].s\n\t"
+-                        "fadd %Z[b].s, %Z[b].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kc].s\n\t"
+-                        "fadd %Z[c].s, %Z[c].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[kd].s\n\t"
+-                        "fadd %Z[d].s, %Z[d].s, %Z[t].s\n\t"
+-                        "fmul %Z[t].s, %Z[v].s, %Z[ke].s\n\t"
+-                        "fadd %Z[e].s, %Z[e].s, %Z[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ka].s\n\t"
++                        "fadd %[a].s, %[a].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kb].s\n\t"
++                        "fadd %[b].s, %[b].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kc].s\n\t"
++                        "fadd %[c].s, %[c].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[kd].s\n\t"
++                        "fadd %[d].s, %[d].s, %[t].s\n\t"
++                        "fmul %[t].s, %[v].s, %[ke].s\n\t"
++                        "fadd %[e].s, %[e].s, %[t].s\n\t"
+                         : [a] "+&w"(a4), [b] "+&w"(b4),
+                           [c] "+&w"(c4), [d] "+&w"(d4),
+                           [e] "+&w"(e4), [t] "=&w"(tmp)

@@ -1,0 +1,90 @@
+{
+  "shared": {
+    "start": 6661,
+    "end": 6822,
+    "instructions": 161,
+    "counts": {
+      "ld1w": 8,
+      "ld1rw": 28,
+      "fmul": 56,
+      "fadd": 56,
+      "add": 9,
+      "str": 1,
+      "ldr": 1,
+      "cmp": 1,
+      "bne": 1
+    },
+    "vector_stack": [
+      "\tstr\tz4, [x11]",
+      "\tldr\tz26, [x11]"
+    ]
+  },
+  "remainder": {
+    "start": 6827,
+    "end": 6876,
+    "instructions": 48,
+    "counts": {
+      "lsl": 1,
+      "ld1w": 2,
+      "add": 8,
+      "ld1rw": 7,
+      "fmul": 14,
+      "fadd": 14,
+      "cmp": 1,
+      "bgt": 1
+    },
+    "vector_stack": []
+  },
+  "helper": {
+    "start": 5705,
+    "end": 7876,
+    "instructions": 1990,
+    "counts": {
+      "addvl": 11,
+      "sub": 20,
+      "add": 275,
+      "stp": 13,
+      "ldr": 181,
+      "str": 85,
+      "mov": 92,
+      "cmp": 44,
+      "ble": 26,
+      "cnth": 3,
+      "blt": 2,
+      "sxtw": 4,
+      "ptrue": 1,
+      "ldrsw": 1,
+      "lsl": 26,
+      "neg": 1,
+      "mul": 2,
+      "smaddl": 2,
+      "cntw": 1,
+      "lsr": 1,
+      "madd": 1,
+      "ubfiz": 1,
+      "sbfiz": 2,
+      "tbz": 1,
+      "ld1rw": 196,
+      "ld1w": 102,
+      "fmul": 392,
+      "fadd": 392,
+      "bgt": 13,
+      "and": 10,
+      "cbz": 10,
+      "ldp": 39,
+      "bne": 2,
+      "b": 17,
+      "tbnz": 1,
+      "st1w": 14,
+      "inch": 1,
+      "bge": 1,
+      "ret": 1,
+      "bl": 2,
+      "uxtw": 1
+    },
+    "vector_stack": [
+      "\tstr\tz4, [x11]",
+      "\tldr\tz26, [x11]"
+    ]
+  }
+}

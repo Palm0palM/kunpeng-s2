@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python3",
+    "tools/experiment.py",
+    "new",
+    "conv",
+    "C64-row7boundaryrowwise",
+    "--parent",
+    "C58-r1",
+    "--strategy",
+    "Only reschedule all12 C7 rowseven boundary column bodies: load v0/v1/v2 first, then broadcast one participating output-row weight and update its three vectors. Preserve shared2/u1,12 unroll2 hints, predicates, addresses and strict per-chain arithmetic. Hypothesis only; no spill or performance claim."
+  ],
+  "started_at": "2026-09-13T07:46:16.161058+00:00",
+  "ended_at": "2026-09-13T07:46:16.208819+00:00",
+  "exit_code": 0
+}

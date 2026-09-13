@@ -1,0 +1,336 @@
+{
+  "job_id": "1582067",
+  "performance_group": "kp-conv-group-04e926400780",
+  "completed_at": "2026-09-12T17:04:28.601169+00:00",
+  "status": "SUCCEEDED",
+  "job_exit_code": 0,
+  "system_exit_code": 0,
+  "raw_pass": 36,
+  "raw_fail": 0,
+  "member_wrapper_exits": [
+    0,
+    0,
+    0
+  ],
+  "machine": {
+    "HOST": "COMPUTE_NODE_1",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "2",
+    "ALLOWED_CPUS": "76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "campaign_status": "performance_complete",
+  "confirmation_passed": false,
+  "confirmation_pending": [],
+  "prior_c40_decisions": {
+    "G_qualified": false,
+    "J_qualified": true,
+    "K_confirmation_passed": false,
+    "N_reference_only": true,
+    "N_promotion_allowed": false,
+    "N_qualified": false,
+    "N_reference_job": "1581459",
+    "original_versions": [
+      "C40-row6x3u1",
+      "C40-r1",
+      "C40-r2",
+      "C40-r3"
+    ],
+    "R_reference_only": true,
+    "R_promotion_allowed": false,
+    "R_qualified": false,
+    "R_reference_job": "1581911"
+  },
+  "prior_c40_decisions_unchanged": true,
+  "samples_mixed_with_initial_round": false,
+  "automatic_confirmation": false,
+  "automatic_promotion": false,
+  "automatic_packaging": false,
+  "failed_confirmation_retry_allowed": false,
+  "resubmission": false,
+  "measurement_rerun": false,
+  "local_operator_execution": false,
+  "record_command": "python3 .runs/conv/sep13s-record-group.py",
+  "record_process_exit_code": 0,
+  "record_output": ".runs/conv/sep13s-record-output.log",
+  "record_tool_output_origin": {
+    "pty_session_id": 39344,
+    "exit_chunk_id": "dafc58"
+  },
+  "compare_command": "python3 .runs/conv/sep13s-compare.py",
+  "compare_process_exit_code": 0,
+  "compare_output": ".runs/conv/sep13s-compare-output.json",
+  "compare_stderr": ".runs/conv/sep13s-compare-stderr.log",
+  "compare_tool_exit_chunk_id": "d78a4e",
+  "tool_adaptations_needed": false,
+  "rows": [
+    {
+      "version": "C26-r24",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 452.26,
+      "cases_ms": [
+        51.39,
+        61.96,
+        107.28,
+        231.63
+      ],
+      "all_samples_ms": [
+        [
+          51.57,
+          51.39,
+          51.37
+        ],
+        [
+          61.96,
+          61.92,
+          61.96
+        ],
+        [
+          107.28,
+          107.28,
+          107.33
+        ],
+        [
+          231.68,
+          231.6,
+          231.63
+        ]
+      ],
+      "case_spreads_pct": [
+        0.3891807744697467,
+        0.06455777921239371,
+        0.046607009694255366,
+        0.034537840521526794
+      ],
+      "max_spread_pct": 0.3891807744697467,
+      "confirmation_passed": null,
+      "qualified_for_confirmation": false,
+      "comparison": null,
+      "opening_control_comparison": null,
+      "artifact_hashes": {
+        "benchmark.log": "f2096d44eb6daa00e6dd4d035de10193840fa5807f14b1084053805a4f85c3c5",
+        "environment.log": "e227992df178a769fa93f9e6d6f4f3289205407294ec704f7ccf490899516aba",
+        "source-sha256.txt": "e290dd24423be9a22535e1644e857a4d7e05e182695c286eba5c17eff9cbf8d3",
+        "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    {
+      "version": "C51-r1",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 438.88,
+      "cases_ms": [
+        51.83,
+        59.29,
+        104.17,
+        223.59
+      ],
+      "all_samples_ms": [
+        [
+          51.8,
+          51.83,
+          51.84
+        ],
+        [
+          59.3,
+          59.26,
+          59.29
+        ],
+        [
+          104.22,
+          104.15,
+          104.17
+        ],
+        [
+          223.57,
+          223.6,
+          223.59
+        ]
+      ],
+      "case_spreads_pct": [
+        0.07717538105345602,
+        0.06746500252993616,
+        0.06719784966880404,
+        0.013417415805716329
+      ],
+      "max_spread_pct": 0.07717538105345602,
+      "confirmation_passed": false,
+      "qualified_for_confirmation": false,
+      "comparison": {
+        "baseline": "C26-r25",
+        "eligible": false,
+        "reasons": [
+          "提速 2.96% 未超过测量波动/最低1%门槛 5.35%"
+        ],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.4,
+            "candidate_ms": 51.83,
+            "gain_pct": -0.8365758754863808
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.89,
+            "candidate_ms": 59.29,
+            "gain_pct": 4.2010017773469075
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.32,
+            "candidate_ms": 104.17,
+            "gain_pct": 2.9351472232575397
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.65,
+            "candidate_ms": 223.59,
+            "gain_pct": 3.479387006259444
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 2.9584752133728376,
+        "threshold_pct": 5.350194552529183
+      },
+      "opening_control_comparison": {
+        "baseline": "C26-r24",
+        "eligible": true,
+        "reasons": [],
+        "cases": [
+          {
+            "dims": [
+              4096,
+              6144,
+              39,
+              39
+            ],
+            "base_ms": 51.39,
+            "candidate_ms": 51.83,
+            "gain_pct": -0.8561977038334261
+          },
+          {
+            "dims": [
+              6144,
+              4096,
+              41,
+              41
+            ],
+            "base_ms": 61.96,
+            "candidate_ms": 59.29,
+            "gain_pct": 4.309231762427375
+          },
+          {
+            "dims": [
+              4256,
+              6390,
+              55,
+              55
+            ],
+            "base_ms": 107.28,
+            "candidate_ms": 104.17,
+            "gain_pct": 2.8989560029828483
+          },
+          {
+            "dims": [
+              6390,
+              4256,
+              81,
+              81
+            ],
+            "base_ms": 231.63,
+            "candidate_ms": 223.59,
+            "gain_pct": 3.4710529724128962
+          }
+        ],
+        "metric": "sum of per-case median ms; not official score",
+        "total_gain_pct": 2.9584752133728376,
+        "threshold_pct": 1.0
+      },
+      "artifact_hashes": {
+        "benchmark.log": "86266acdc6015502bf5e18d0d1dea3a0cba356868fe855cf8692127bf7787a33",
+        "environment.log": "43ca112178649d4e8c32a82a79ac581eb444851ad5aa1c4dbfc59b61340f5603",
+        "source-sha256.txt": "f900c94f500ccd92b2acbbe77d838a42ee6f4d7b0302e5774ed40c42315a54ec",
+        "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    {
+      "version": "C26-r25",
+      "raw_pass": 12,
+      "raw_fail": 0,
+      "wrapper_exit_code": 0,
+      "total_median_ms": 452.26,
+      "cases_ms": [
+        51.4,
+        61.89,
+        107.32,
+        231.65
+      ],
+      "all_samples_ms": [
+        [
+          54.13,
+          51.4,
+          51.38
+        ],
+        [
+          61.89,
+          61.88,
+          61.89
+        ],
+        [
+          107.28,
+          107.32,
+          107.34
+        ],
+        [
+          231.63,
+          231.65,
+          231.89
+        ]
+      ],
+      "case_spreads_pct": [
+        5.350194552529183,
+        0.01615769914363873,
+        0.05590756615728874,
+        0.11223829052449423
+      ],
+      "max_spread_pct": 5.350194552529183,
+      "confirmation_passed": null,
+      "qualified_for_confirmation": false,
+      "comparison": null,
+      "opening_control_comparison": null,
+      "artifact_hashes": {
+        "benchmark.log": "937613f22c9e8e29fc2738f33f4072028c95a9861b15c3976ec813eb26336a1b",
+        "environment.log": "9720830fc21a3ac8a1a7769a47a0d061c997bd5e9a2e8ddbbf0007b00e0ae22e",
+        "source-sha256.txt": "e290dd24423be9a22535e1644e857a4d7e05e182695c286eba5c17eff9cbf8d3",
+        "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    }
+  ]
+}

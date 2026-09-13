@@ -1,0 +1,14 @@
++ python3 -
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+ValueError: invalid literal for int() with base 10: ''
++ finish
++ local code=1 log_code=0
++ trap - EXIT
++ ((  code != 0  ))
++ python3 profile_state.py failed 'Unexpected exit 1 during allocation; inspect original logs.'
++ wait 326214
++ exec
++ ((  code == 0 && log_code != 0  ))
++ printf '%s\n' 1
++ exit 1

@@ -1,0 +1,15 @@
+{
+  "version": "C17-pipe16",
+  "remote_dir": "CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep11-C17-pipe16-20260911T081257Z",
+  "submitted": true,
+  "command": "dsub -n conv-sep11-C17-pipe16 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep11-C17-pipe16-20260911T081257Z/wrapper.stdout.log /bin/bash -l CLUSTER_USER_HOME/kunpeng-experiments/diagnostics/conv-sep11-C17-pipe16-20260911T081257Z/remote_job.sh",
+  "submit_attempted": true,
+  "job_id": "1507615",
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1507615",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  }
+}

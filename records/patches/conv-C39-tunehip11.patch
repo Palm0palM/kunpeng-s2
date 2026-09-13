@@ -1,0 +1,32 @@
+--- a/run.sh
++++ b/run.sh
+@@ -98,11 +98,25 @@
+ } | tee "$RUN_DIR/environment.log"
+ 
+ # benchmark 和优化代码统一关闭 FMA contraction；不能用 *.c 混入备份版本。
+-"$CC" -O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off \
+-    "${ARCH_FLAGS[@]}" "${OMP_FLAGS[@]}" \
+-    "-DCONV_BLOCK=$CONV_BLOCK" "-DCONV_KERNEL_UNROLL=$CONV_KERNEL_UNROLL" \
+-    bench_conv.c conv2d.c -o "$RUN_DIR/conv2d_test" "${LINK_FLAGS[@]}" \
++BUILD_FLAGS=(-O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off
++    "${ARCH_FLAGS[@]}" "${OMP_FLAGS[@]}"
++    "-DCONV_BLOCK=$CONV_BLOCK" "-DCONV_KERNEL_UNROLL=$CONV_KERNEL_UNROLL")
++run_build_command() {
++    printf 'BUILD_COMMAND:'
++    printf ' %q' "$@"
++    printf '\n'
++    "$@"
++}
++run_build_command "$CC" "${BUILD_FLAGS[@]}" \
++    -c bench_conv.c -o "$RUN_DIR/bench_conv.o" \
+     2>&1 | tee "$RUN_DIR/build.log"
++run_build_command "$CC" "${BUILD_FLAGS[@]}" \
++    -mtune=hip11 -c conv2d.c -o "$RUN_DIR/conv2d.o" \
++    2>&1 | tee -a "$RUN_DIR/build.log"
++run_build_command "$CC" "${BUILD_FLAGS[@]}" \
++    "$RUN_DIR/bench_conv.o" "$RUN_DIR/conv2d.o" \
++    -o "$RUN_DIR/conv2d_test" "${LINK_FLAGS[@]}" \
++    2>&1 | tee -a "$RUN_DIR/build.log"
+ 
+ run_case() {
+     local number="$1"

@@ -1,0 +1,10 @@
+{
+  "tool_chunk": "fda8ec",
+  "tool_exit": 1,
+  "action": "Initial inline preparation script failed to parse before any statement executed",
+  "error": "SyntaxError: Non-UTF-8 code starting with '\\xe6' in file <stdin> on line 59, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details",
+  "new_or_checkpoint_executed_by_failed_script": false,
+  "candidate_and_record_absent_confirmed_before_actual_new": true,
+  "resolution": "Use ASCII-only preparation scripts; standard new is the first actual invocation",
+  "recorded_at": "2026-09-12T20:30:38.212275+00:00"
+}

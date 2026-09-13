@@ -1,0 +1,121 @@
+C58-r4: passed, 437.54 ms; 官方分数未知
+C60-row7shared2ext: passed, 458.47 ms; 官方分数未知
+C58-r5: passed, 437.55 ms; 官方分数未知
+{
+  "qualified_for_confirmation": false,
+  "totals_ms": [
+    437.53999999999996,
+    458.47,
+    437.55
+  ],
+  "closing": {
+    "eligible": false,
+    "reasons": [
+      "\u63d0\u901f -4.78% \u672a\u8d85\u8fc7\u6d4b\u91cf\u6ce2\u52a8/\u6700\u4f4e1%\u95e8\u69db 1.00%",
+      "\u81f3\u5c11\u4e00\u7ec4\u9000\u6b65\u8d85\u8fc71%\uff0c\u9700\u8bc4\u4f30\u5b98\u65b9\u8ba1\u5206\u6743\u91cd\u540e\u518d\u51b3\u5b9a"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.83,
+        "candidate_ms": 54.22,
+        "gain_pct": -4.611229017943278
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.42,
+        "candidate_ms": 60.35,
+        "gain_pct": -3.303663129065388
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.17,
+        "candidate_ms": 109.32,
+        "gain_pct": -4.943841797062485
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.13,
+        "candidate_ms": 234.58,
+        "gain_pct": -5.13153766862368
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r5"
+  },
+  "opening": {
+    "eligible": false,
+    "reasons": [
+      "\u63d0\u901f -4.78% \u672a\u8d85\u8fc7\u6d4b\u91cf\u6ce2\u52a8/\u6700\u4f4e1%\u95e8\u69db 1.00%",
+      "\u81f3\u5c11\u4e00\u7ec4\u9000\u6b65\u8d85\u8fc71%\uff0c\u9700\u8bc4\u4f30\u5b98\u65b9\u8ba1\u5206\u6743\u91cd\u540e\u518d\u51b3\u5b9a"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 51.82,
+        "candidate_ms": 54.22,
+        "gain_pct": -4.631416441528365
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 58.4,
+        "candidate_ms": 60.35,
+        "gain_pct": -3.339041095890416
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 104.17,
+        "candidate_ms": 109.32,
+        "gain_pct": -4.943841797062485
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 223.15,
+        "candidate_ms": 234.58,
+        "gain_pct": -5.1221151691687234
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score",
+    "baseline": "C58-r4"
+  }
+}
