@@ -1,0 +1,7 @@
+# AR C62 prepared diagnostic
+
+Own unexecuted diagnostic for C62-row7x2shared4, parent C58-r1=currentC7. Joint tile hypothesis: seven rows*two SVE vectors and four shared kernel columns; no measured spill reduction, correctness or speed claim. Source width2L and checker EXPECTED_ACC2 are consistent. Read CHECKER_COUNTS.md for the independent cardinality and per-case dispatch-entry reasoning; checkers retain44328 expected bitwise cases and19 stages while adapting every relevant width to2L/4L boundaries.
+
+The driver requires original AQ job1590254 campaign complete with order C58-r6/C61-row7shared2rowwise/C58-r7 and36 samples, plus its live terminal status; AR's own reservation is also checked. Preparation does not query AQ and does not mean it is complete. No submit/gate/status/fetch has been executed, and no AR job.json exists. Root must review checker diffs and actual code before the explicit one-shot --go. Acceptance later requires real AR_SUMMARY, exact original logs, a targeted actual shared4/u1 assembly review and root review. Do not inherit AP acceptance, assembly counts or fixed legacy fallback counts.
+
+Unchanged resource envelope:38CPU,24576MiB,one packed NUMA,1800 seconds; GCC10.3.1 strict/generic,VL16/32/64 bytes x1/4 threads. All operator compilation and execution must occur only on scheduled supercomputer compute nodes. No local operator execution, reset card, automatic promotion or packaging. User explicitly revoked40% quota threshold; historical stop records remain historical.

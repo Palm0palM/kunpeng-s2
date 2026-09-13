@@ -1,0 +1,20 @@
+--- AP/source/remote_job.sh
++++ AR/source/remote_job.sh
+@@ -46,7 +46,7 @@
+ print('NUMA_NODE=' + nodes[0])
+ CHECK_ALLOCATION
+ source candidate.env
+-[[ "$CANDIDATE" == C61-row7shared2rowwise && "$EXPECTED_ACC" == 3 ]]
++[[ "$CANDIDATE" == C62-row7x2shared4 && "$EXPECTED_ACC" == 2 ]]
+ [[ "$EXPECTED_FULL" == 5744 && "$EXPECTED_DISPATCH" == 1212 && "$EXPECTED_DIRECT" == 432 && "$EXPECTED_TOTAL" == 44328 ]]
+ [[ "$EXPECTED_DISPATCH_ROWSEVEN_ENTRIES" == 1236 && "$EXPECTED_DIRECT_ROWSEVEN_ENTRIES" == 1080 ]]
+ printf 'CANDIDATE=%s\n' "$CANDIDATE"
+@@ -60,7 +60,7 @@
+ stage compiler compiler_check
+ write_manifest() {
+     sha256sum conv2d.c check_conv_guard.c check_sve_dispatch.c remote_job.sh candidate.env > source-sha256.txt LOCAL_USERLOCAL_USER return "$?"
+-    printf '%s  conv2d.c\n' 40a3184f346983864593de73b3e3ade7973b1af9d2d273d566432e882a6904fa LOCAL_USER sha256sum -c - LOCAL_USERLOCAL_USER return "$?"
++    printf '%s  conv2d.c\n' e6cc9bdb4c14e9f6982f687123379ebf5dfb2013777f7bb076c04edd4827dc8a LOCAL_USER sha256sum -c - LOCAL_USERLOCAL_USER return "$?"
+     cat source-sha256.txt
+ }
+ stage manifest write_manifest

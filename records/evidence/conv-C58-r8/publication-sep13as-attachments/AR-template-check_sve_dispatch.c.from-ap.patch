@@ -1,0 +1,20 @@
+--- AP/source/check_sve_dispatch.c
++++ AR/source/check_sve_dispatch.c
+@@ -66,7 +66,7 @@
+ int main(int argc, char **argv) {
+     const int lanes = setup_config(argc, argv);
+     const unsigned long expected_mask = (1ul << omp_get_max_threads()) - 1;
+-    const int widths[] = {3*lanes-1,3*lanes,3*lanes+1,6*lanes-1,6*lanes,6*lanes+1};
++    const int widths[] = {2*lanes-1,2*lanes,2*lanes+1,4*lanes-1,4*lanes,4*lanes+1};
+     const int heights[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,21,22,28};
+     int dispatch_count = 0, dispatch_core = 0, dispatch_quad_boundary = 0;
+     checked_conv = conv2d;
+@@ -105,7 +105,7 @@
+     /* Assignment and mask reset happen after every previous team has joined. */
+     checked_conv = direct_rowseven;
+     __atomic_store_n(&rowseven_worker_mask, 0, __ATOMIC_RELAXED);
+-    const int direct_widths[] = {3*lanes-1,3*lanes,3*lanes+1};
++    const int direct_widths[] = {2*lanes-1,2*lanes,2*lanes+1};
+     const int direct_heights[] = {7,28};
+     int direct_count = 0;
+     for (unsigned w=0; w<sizeof(direct_widths)/sizeof(*direct_widths); ++w)
